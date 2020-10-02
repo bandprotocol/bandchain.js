@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bandprotocol/bandchain"
+    "url": "https://github.com/bandprotocol/bandchain.js"
   },
   "author": "Band Protocol <dev@bandprotocol.com> (https://github.com/bandprotocol)",
   "bugs": {
-    "url": "https://github.com/bandprotocol/bandchain/issues"
+    "url": "https://github.com/bandprotocol/bandchain.js/issues"
   },
-  "homepage": "https://github.com/bandprotocol/bandchain",
+  "homepage": "https://github.com/bandprotocol/bandchain.js",
   "keywords": [
     "oracle",
-    "blokchain",
+    "blockchain",
     "cross-chain",
     "cosmos-sdk",
     "decentralization"
