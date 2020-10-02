@@ -1191,10 +1191,20 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@bandprotocol/obi.js@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@bandprotocol/obi.js/-/obi.js-1.0.5.tgz#8f0bb161cf029b3df00cea4f227ee2de99ad080f"
-  integrity sha512-aUFwdePMWfogrLW5YHe+11rdZd4CWuuxLLxzXQh8vBLFnfsUDo0B7DSLK10Ak9YFJb/SQ0l3Ge8PjZQMrFP9Cw==
+"@bandprotocol/obi.js@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@bandprotocol/obi.js/-/obi.js-1.0.7.tgz#d4cbfa6bdcaf30a417be01ee5227e4df292cc265"
+  integrity sha512-IsknW3e/4A80R9naD2z4lAHVYmPZzmG7iHGahWLIhdDFyiGtJqAfF76ioZ7uyqdAJHh5yC5343HViyXdTlnHjg==
+  dependencies:
+    "@babel/cli" "^7.10.1"
+    "@babel/core" "^7.10.2"
+    "@babel/plugin-proposal-class-properties" "^7.10.1"
+    "@babel/plugin-syntax-class-properties" "^7.10.1"
+    "@babel/plugin-transform-runtime" "^7.10.1"
+    "@babel/preset-env" "^7.10.1"
+    "@babel/preset-react" "^7.10.1"
+    "@babel/runtime" "^7.10.2"
+    lodash "^4.17.15"
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"

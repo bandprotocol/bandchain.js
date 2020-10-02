@@ -356,7 +356,7 @@ class BandChain {
           'RLC',
           'OXT',
           'RVN',
-          'NANO',
+          'FNX',
         ],
       },
       {
@@ -422,6 +422,42 @@ class BandChain {
         ],
       },
       {
+        id: 8,
+        exponent: 9,
+        symbols: [
+          'NPXS',
+          'OST',
+          'PAY',
+          'PBTC',
+          'PLR',
+          'PLTC',
+          'PNK',
+          'PNT',
+          'POLY',
+          'POWR',
+          'QNT',
+          'RAE',
+          'REQ',
+          'RSV',
+          'SAN',
+          'SPIKE',
+          'SPN',
+          'STMX',
+          'TKN',
+          'TKX',
+          'TRYB',
+          'UBT',
+          'UPP',
+          'USDS',
+          'VIDT',
+        ],
+      },
+      {
+        id: 8,
+        exponent: 9,
+        symbols: ['CREAM', 'UNI', 'XHV'],
+      },
+      {
         id: 9,
         exponent: 9,
         symbols: [
@@ -441,6 +477,23 @@ class BandChain {
           'HKD',
           'XAU',
           'XAG',
+        ],
+      },
+      {
+        id: 9,
+        exponent: 9,
+        symbols: [
+          'XAG',
+          'XAU',
+          'AUD',
+          'CAD',
+          'CHF',
+          'CNY',
+          'EUR',
+          'GBP',
+          'JPY',
+          'NOK',
+          'NZD',
         ],
       },
     ]
@@ -494,7 +547,7 @@ class BandChain {
           pair: pair,
           rate: rate,
           updated: {
-            base: Number(Date.now() / 1000),
+            base: 0,
             quote: Number(symbolDict[quoteSymbol].updated),
           },
           rawRate: {
@@ -513,7 +566,7 @@ class BandChain {
             Math.pow(10, symbolDict[baseSymbol].decimals),
           updated: {
             base: Number(symbolDict[baseSymbol].updated),
-            quote: Math.round(Date.now() / 1000),
+            quote: 0,
           },
           rawRate: {
             value: symbolDict[baseSymbol].value,

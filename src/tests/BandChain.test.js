@@ -51,6 +51,7 @@ it('Test BandChain submitRequestTx', async () => {
     { minCount: 2, askCount: 4 },
     mnemonic,
   )
+  console.log(requestID)
   testRequestID = requestID
   expect(requestID).toBeDefined()
 })

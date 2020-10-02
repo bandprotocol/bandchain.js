@@ -126,3 +126,5 @@ const sendRequest = async (endpoint, minCount, askCount) => {
 
 getLatestRequestResult(endpoint, 3, 4);
 ```
+
+For more examples, please see [`example/index.js`](example/index.js)
