@@ -220,379 +220,52 @@ class BandChain {
     }
   }
 
-  async getLatestValue(oracleScriptID, parameters) {
-    const minCount = 3
-    const askCount = 4
-    const validatorCounts = { minCount, askCount }
-    const oracleScript = await this.getOracleScript(oracleScriptID)
-    let latestValue = await this.getLastMatchingRequestResult(
-      oracleScript,
-      parameters,
-      validatorCounts,
-    )
-    return latestValue
-  }
-
   async getReferenceData(pairs) {
-    const sourceList = [
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          'BTC',
-          'ETH',
-          'USDT',
-          'XRP',
-          'LINK',
-          'DOT',
-          'BCH',
-          'LTC',
-          'ADA',
-          'BSV',
-          'CRO',
-          'BNB',
-          'EOS',
-          'XTZ',
-          'TRX',
-          'XLM',
-          'ATOM',
-          'XMR',
-          'OKB',
-          'USDC',
-          'NEO',
-          'XEM',
-          'LEO',
-          'HT',
-          'VET',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          'YFI',
-          'MIOTA',
-          'LEND',
-          'SNX',
-          'DASH',
-          'COMP',
-          'ZEC',
-          'ETC',
-          'OMG',
-          'MKR',
-          'ONT',
-          'NXM',
-          'AMPL',
-          'BAT',
-          'THETA',
-          'DAI',
-          'REN',
-          'ZRX',
-          'ALGO',
-          'FTT',
-          'DOGE',
-          'KSM',
-          'WAVES',
-          'EWT',
-          'DGB',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          'KNC',
-          'ICX',
-          'TUSD',
-          'SUSHI',
-          'BTT',
-          'BAND',
-          'EGLD',
-          'ANT',
-          'NMR',
-          'PAX',
-          'LSK',
-          'LRC',
-          'HBAR',
-          'BAL',
-          'RUNE',
-          'YFII',
-          'LUNA',
-          'DCR',
-          'SC',
-          'STX',
-          'ENJ',
-          'BUSD',
-          'OCEAN',
-          'RSR',
-          'SXP',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          'BTG',
-          'BZRX',
-          'SRM',
-          'SNT',
-          'SOL',
-          'CKB',
-          'BNT',
-          'CRV',
-          'MANA',
-          'YFV',
-          'KAVA',
-          'MATIC',
-          'TRB',
-          'REP',
-          'FTM',
-          'TOMO',
-          'ONE',
-          'WNXM',
-          'PAXG',
-          'WAN',
-          'SUSD',
-          'RLC',
-          'OXT',
-          'RVN',
-          'FNX',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          'RENBTC',
-          'WBTC',
-          'DIA',
-          'BTM',
-          'IOTX',
-          'FET',
-          'JST',
-          'MCO',
-          'KMD',
-          'BTS',
-          'QKC',
-          'YAMV2',
-          'XZC',
-          'UOS',
-          'AKRO',
-          'HNT',
-          'HOT',
-          'KAI',
-          'OGN',
-          'WRX',
-          'KDA',
-          'ORN',
-          'FOR',
-          'AST',
-          'STORJ',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          '2KEY',
-          'ABYSS',
-          'BLZ',
-          'BTU',
-          'CND',
-          'CVC',
-          'DGX',
-          'ELF',
-          'EQUAD',
-          'EURS',
-          'FXC',
-          'GDC',
-          'GEN',
-          'GHT',
-          'GNO',
-          'GVT',
-          'IOST',
-          'KEY',
-          'LOOM',
-          'MET',
-          'MFG',
-          'MLN',
-          'MTL',
-          'MYB',
-          'NEXXO',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: [
-          'NPXS',
-          'OST',
-          'PAY',
-          'PBTC',
-          'PLR',
-          'PLTC',
-          'PNK',
-          'PNT',
-          'POLY',
-          'POWR',
-          'QNT',
-          'RAE',
-          'REQ',
-          'RSV',
-          'SAN',
-          'SPIKE',
-          'SPN',
-          'STMX',
-          'TKN',
-          'TKX',
-          'TRYB',
-          'UBT',
-          'UPP',
-          'USDS',
-          'VIDT',
-        ],
-      },
-      {
-        id: 8,
-        exponent: 9,
-        symbols: ['CREAM', 'UNI', 'XHV'],
-      },
-      {
-        id: 9,
-        exponent: 9,
-        symbols: [
-          'EUR',
-          'GBP',
-          'CNY',
-          'SGD',
-          'RMB',
-          'KRW',
-          'JPY',
-          'INR',
-          'RUB',
-          'CHF',
-          'AUD',
-          'BRL',
-          'CAD',
-          'HKD',
-          'XAU',
-          'XAG',
-        ],
-      },
-      {
-        id: 9,
-        exponent: 9,
-        symbols: [
-          'XAG',
-          'XAU',
-          'AUD',
-          'CAD',
-          'CHF',
-          'CNY',
-          'EUR',
-          'GBP',
-          'JPY',
-          'NOK',
-          'NZD',
-        ],
-      },
-    ]
-    let set = new Set()
+    let symbolSet = new Set()
     pairs.forEach((pair) => {
-      const [baseSymbol, quoteSymbol] = pair.split('/')
-      sourceList.forEach(({ symbols }, index) => {
-        if (symbols.includes(baseSymbol) || symbols.includes(quoteSymbol)) {
-          set.add(index)
+      let symbols = pair.split('/')
+      symbols.forEach((symbol) => {
+        if (symbol != 'USD') {
+          symbolSet.add(symbol)
         }
       })
     })
-    let symbolDict = {}
-    await Promise.all(
-      [...set].map(async (index) => {
-        let result = await this.getLatestValue(sourceList[index].id, {
-          symbols: sourceList[index].symbols,
-          multiplier: Math.pow(10, sourceList[index].exponent),
-        })
-        return sourceList[index].symbols.map((symbol, id) => {
-          symbolDict[symbol] = {
-            value: result.result.rates[id],
-            updated: result.resolve_time,
-            decimals: sourceList[index].exponent,
-          }
-        })
-      }),
-    )
-
-    let data = []
-    pairs.forEach((pair) => {
-      const [baseSymbol, quoteSymbol] = pair.split('/')
-      if (baseSymbol == 'USD' && quoteSymbol == 'USD') {
-        data.push({
-          pair: pair,
-          rate: 1.0,
-          updated: {
-            base: 0,
-            quote: 0,
-          },
-          rawRate: {
-            value: BigInt(1e9),
-            decimals: 9,
-          },
-        })
-      } else if (baseSymbol == 'USD') {
-        let rate =
-          Math.pow(10, symbolDict[quoteSymbol].decimals) /
-          Number(symbolDict[quoteSymbol].value)
-        data.push({
-          pair: pair,
-          rate: rate,
-          updated: {
-            base: 0,
-            quote: Number(symbolDict[quoteSymbol].updated),
-          },
-          rawRate: {
-            value: BigInt(
-              BigInt(Math.pow(10, symbolDict[quoteSymbol].decimals + 9)) /
-                symbolDict[quoteSymbol].value,
-            ),
-            decimals: 9,
-          },
-        })
-      } else if (quoteSymbol == 'USD') {
-        data.push({
-          pair: pair,
-          rate:
-            Number(symbolDict[baseSymbol].value) /
-            Math.pow(10, symbolDict[baseSymbol].decimals),
-          updated: {
-            base: Number(symbolDict[baseSymbol].updated),
-            quote: 0,
-          },
-          rawRate: {
-            value: symbolDict[baseSymbol].value,
-            decimals: symbolDict[baseSymbol].decimals,
-          },
-        })
-      } else {
-        data.push({
-          pair: pair,
-          rate:
-            Number(symbolDict[baseSymbol].value) /
-            Number(symbolDict[quoteSymbol].value),
-          updated: {
-            base: Number(symbolDict[baseSymbol].updated),
-            quote: Number(symbolDict[quoteSymbol].updated),
-          },
-          rawRate: {
-            value:
-              (symbolDict[baseSymbol].value * BigInt(1e9)) /
-              symbolDict[quoteSymbol].value,
-            decimals: 9,
-          },
-        })
-      }
+    let symbolList = Array.from(symbolSet)
+    const pricerEndpoint = `${this.endpoint}/oracle/request_prices`
+    let pricerResponse = await axios.post(pricerEndpoint, {
+      symbols: symbolList,
+      min_count: 3,
+      ask_count: 4,
     })
-    return data
+    try {
+      const priceData = pricerResponse.data.result
+      let symbolMap = {}
+      symbolMap['USD'] = {
+        multiplier: '1000000000',
+        px: '1000000000',
+        resolve_time: Math.round(Date.now() / 1000).toString(),
+      }
+      priceData.map((price, idx) => {
+        symbolMap[symbolList[idx]] = price
+      })
+      let data = []
+      pairs.forEach((pair) => {
+        let [baseSymbol, quoteSymbol] = pair.split('/')
+        data.push({
+          pair: pair,
+          rate:
+            (symbolMap[baseSymbol].px * symbolMap[quoteSymbol].multiplier) /
+            (symbolMap[quoteSymbol].px * symbolMap[baseSymbol].multiplier),
+          updated: {
+            base: Number(symbolMap[baseSymbol].resolve_time),
+            quote: Number(symbolMap[quoteSymbol].resolve_time),
+          },
+        })
+      })
+      return data
+    } catch {
+      throw new Error('Error quering prices')
+    }
   }
 }
 
