@@ -23,6 +23,7 @@ yarn-error.log*
 
 # Development folders and files
 public
+lib
 src
 scripts
 config

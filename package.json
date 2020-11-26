@@ -2,11 +2,16 @@
   "name": "@bandprotocol/bandchain.js",
   "version": "1.1.5",
   "description": "Library for interacting with BandChain in browser and Node.js environments",
-  "main": "lib/BandChain.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/cjs/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "build": "babel src --out-dir lib",
-    "postinstall": "node bin/postinstall"
+    "clean": "rimraf coverage lib",
+    "tsc": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
+    "prepublish": "yarn clean && yarn tsc",
+    "dev": "ts-node example.ts",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -26,37 +31,22 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "jest": "26.0.1"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          "regenerator": true
-        }
-      ]
-    ]
+    "@types/jest": "^26.0.15",
+    "@types/secp256k1": "^4.0.1",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
   },
   "dependencies": {
-    "@bandprotocol/obi.js": "^1.0.7",
-    "@cosmostation/cosmosjs": "0.5.8",
-    "axios": "0.19.2",
-    "delay": "4.3.0",
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/plugin-syntax-class-properties": "^7.10.1",
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/runtime": "^7.10.2",
-    "lodash": "^4.17.15"
+    "axios": "^0.21.0",
+    "bech32": "^1.1.4",
+    "bip32": "^2.0.6",
+    "bip39": "^3.0.2",
+    "bitcoinjs-lib": "^5.2.0",
+    "crypto": "^1.0.1",
+    "secp256k1": "^4.0.2"
   },
   "prettier": {
     "trailingComma": "all",
