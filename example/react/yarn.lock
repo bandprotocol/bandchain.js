@@ -1010,7 +1010,7 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@bandprotocol/bandchain.js@link:..":
+"@bandprotocol/bandchain.js@link:../..":
   version "0.0.0"
   uid ""
 
