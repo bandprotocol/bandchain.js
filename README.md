@@ -1,13 +1,12 @@
 # BandChain.js
 
-Library for interacting with BandChain in browser and Node.js environments
+BandChain.js is a ibrary for interacting with BandChain in browser and Node.js environments.
 
 ## ⭐️ Features
 
-- Making data requests to BandChain
-- Getting the results of the latest request on BandChain that matches specific parameters
-- Making send, delegate messages to BandChain
-- Controling the wallet for signing, getting public key or address by using mnemonic phrase
+- Interacting with your BandChain wallet
+- Making transactions on BandChain
+- Making data requests to BandChain's oracle
 
 ## 📦 Installation
 
@@ -25,7 +24,7 @@ yarn add @bandprotocol/bandchain.js
 
 ## Usage
 
-#### Querying previous request results
+#### Retrieving Price Data
 
 ```js
 const { Client } = require('@bandprotocol/bandchain.js')
