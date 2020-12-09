@@ -211,8 +211,8 @@ export default class Client {
     let symbolList: string[] = Array.from(symbolSet)
     let pricerBody = {
       symbols: symbolList,
-      min_count: 3,
-      ask_count: 4,
+      min_count: 10,
+      ask_count: 16,
     }
     let priceData = await this.postResult('/oracle/request_prices', pricerBody)
 
@@ -240,6 +240,10 @@ export default class Client {
         updatedAt: {
           base: Number(symbolMap[baseSymbol].resolve_time),
           quote: Number(symbolMap[quoteSymbol].resolve_time),
+        },
+        requestID: {
+          base: Number(symbolMap[baseSymbol].request_id),
+          quote: Number(symbolMap[quoteSymbol].request_id),
         },
       })
     })
