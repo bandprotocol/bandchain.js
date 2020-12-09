@@ -11,6 +11,7 @@ import {
   OracleScript,
   RequestInfo,
   HexBytes,
+  EVMProof,
 } from './data'
 import { Address } from './wallet'
 
@@ -91,11 +92,12 @@ export default class Client {
     }
   }
 
-  async getAccount(address: Address): Promise<Account> {
+  async getAccount(address: Address): Promise<Account | undefined> {
     const response = await this.getResult(
       `/auth/accounts/${address.toAccBech32()}`,
     )
     const value = response.value
+    if (!value.address) return
     return {
       address: Address.fromAccBech32(value.address),
       coins: value.coins.map(
@@ -221,6 +223,7 @@ export default class Client {
       symbol: 'USD',
       multiplier: '1000000000',
       px: '1000000000',
+      request_id: 0,
       resolve_time: Math.floor(Date.now() / 1000).toString(),
     }
     priceData.map((price: any) => {
@@ -488,5 +491,14 @@ export default class Client {
     }
 
     return requestIDs
+  }
+
+  async getRequestEVMProofByRequestID(requestID: number): Promise<EVMProof> {
+    if (!Number.isInteger(requestID)) throw Error('requestID is not an integer')
+    const response = await this.getResult(`/oracle/proof/${requestID}`)
+    return {
+      jsonProof: response.jsonProof,
+      evmProofBytes: Buffer.from(response.evmProofBytes, 'hex'),
+    }
   }
 }
