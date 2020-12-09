@@ -45,10 +45,16 @@ export interface ReferenceDataUpdated {
   quote: number
 }
 
+export interface ReferenceDataRequestID {
+  base: number
+  quote: number
+}
+
 export interface ReferenceData {
   pair: string
   rate: number
   updatedAt: ReferenceDataUpdated
+  requestID: ReferenceDataRequestID
 }
 
 export interface TransactionSyncMode {
