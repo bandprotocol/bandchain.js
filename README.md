@@ -30,7 +30,7 @@ yarn add @bandprotocol/bandchain.js
 const { Client } = require('@bandprotocol/bandchain.js')
 
 // BandChain's Proof-of-Authority REST endpoint
-const endpoint = 'http://poa-api.bandchain.org'
+const endpoint = 'https://api-gm-lb.bandchain.org'
 const client = new Client(endpoint)
 
 // This example demonstrates how to query price data from
