@@ -10,6 +10,8 @@ BandChain.js is a ibrary for interacting with BandChain in browser and Node.js e
 
 ## 📦 Installation
 
+BandChain.js is currently supported on NodeJS 10.x and 12.x only.
+
 ### NPM
 
 ```bash
