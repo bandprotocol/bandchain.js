@@ -1,6 +1,13 @@
 import { Coin } from './data'
 import { Address } from './wallet'
 import { MAX_DATA_SIZE } from './constant'
+import {
+  NegativeIntegerError,
+  NotIntegerError,
+  ValueTooLargeError,
+  InsufficientCoinError,
+  ValueError,
+} from './error'
 
 export abstract class Msg {
   abstract asJson(): { type: string; value: any }
@@ -53,18 +60,19 @@ export class MsgRequest extends Msg {
 
   validate() {
     if (this.oracleScriptID <= 0)
-      throw Error('oracleScriptID cannot less than zero')
+      throw new NegativeIntegerError('oracleScriptID cannot less than zero')
     if (!Number.isInteger(this.oracleScriptID))
-      throw Error('oracleScriptID is not an integer')
-    if (this.calldata.length > MAX_DATA_SIZE) throw Error('too large calldata')
+      throw new NotIntegerError('oracleScriptID is not an integer')
+    if (this.calldata.length > MAX_DATA_SIZE)
+      throw new ValueTooLargeError('too large calldata')
     if (!Number.isInteger(this.askCount))
-      throw Error('askCount is not an integer')
+      throw new NotIntegerError('askCount is not an integer')
     if (!Number.isInteger(this.minCount))
-      throw Error('minCount is not an integer')
+      throw new NotIntegerError('minCount is not an integer')
     if (this.minCount <= 0)
-      throw Error(`invalid minCount, got: minCount: ${this.minCount}`)
+      throw new ValueError(`invalid minCount, got: minCount: ${this.minCount}`)
     if (this.askCount < this.minCount)
-      throw Error(
+      throw new ValueError(
         `invalid askCount got: minCount: ${this.minCount}, askCount: ${this.askCount}`,
       )
 
@@ -101,7 +109,7 @@ export class MsgSend extends Msg {
 
   validate() {
     if (this.amount.length == 0) {
-      throw Error('Expect at least 1 coin')
+      throw new InsufficientCoinError('Expect at least 1 coin')
     }
     this.amount.forEach((coin) => coin.validate())
     return true

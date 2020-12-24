@@ -4,6 +4,12 @@ import * as bech32 from 'bech32'
 import secp256k1 from 'secp256k1'
 import crypto from 'crypto'
 import { ECPair } from 'bitcoinjs-lib'
+import {
+  UnsuccessfulCallError,
+  CreateError,
+  DecodeError,
+  ValueError,
+} from './error'
 
 const BECH32_PUBKEY_ACC_PREFIX = 'bandpub'
 const BECH32_PUBKEY_VAL_PREFIX = 'bandvaloperpub'
@@ -35,12 +41,12 @@ export class PrivateKey {
     const node = bip32.fromSeed(seed)
     const child = node.derivePath(path)
 
-    if (!child.privateKey) throw new Error('Cannot create private key')
+    if (!child.privateKey) throw new CreateError('Cannot create private key')
     const ecpair = ECPair.fromPrivateKey(child.privateKey, {
       compressed: false,
     })
 
-    if (!ecpair.privateKey) throw new Error('Cannot create private key')
+    if (!ecpair.privateKey) throw new CreateError('Cannot create private key')
     return new PrivateKey(ecpair.privateKey)
   }
 
@@ -74,8 +80,8 @@ export class PublicKey {
 
   private static fromBech32(bech: string, _prefix: string): PublicKey {
     const { prefix, words } = bech32.decode(bech)
-    if (prefix != _prefix) throw new Error('Invalid bech32 prefix')
-    if (words.length == 0) throw new Error('Cannot decode bech32')
+    if (prefix != _prefix) throw new ValueError('Invalid bech32 prefix')
+    if (words.length == 0) throw new DecodeError('Cannot decode bech32')
 
     return new PublicKey(Buffer.from(bech32.fromWords(words).slice(5)))
   }
@@ -102,7 +108,8 @@ export class PublicKey {
       this.verifyKey,
     ])
     const words = bech32.toWords(Buffer.from(hex))
-    if (words.length == 0) throw new Error('Unsuccessful bech32.toWords call')
+    if (words.length == 0)
+      throw new UnsuccessfulCallError('Unsuccessful bech32.toWords call')
 
     return bech32.encode(prefix, words)
   }
@@ -147,8 +154,8 @@ export class Address {
 
   private static fromBech32(bech: string, _prefix: string): Address {
     const { prefix, words } = bech32.decode(bech)
-    if (prefix != _prefix) throw new Error('Invalid bech32 prefix')
-    if (words.length == 0) throw new Error('Cannot decode bech32')
+    if (prefix != _prefix) throw new ValueError('Invalid bech32 prefix')
+    if (words.length == 0) throw new DecodeError('Cannot decode bech32')
 
     return new Address(Buffer.from(bech32.fromWords(words)))
   }
@@ -171,7 +178,8 @@ export class Address {
 
   private toBech32(prefix: string): string {
     const words = bech32.toWords(this.addr)
-    if (words.length == 0) throw new Error('Unsuccessful bech32.toWords call')
+    if (words.length == 0)
+      throw new UnsuccessfulCallError('Unsuccessful bech32.toWords call')
 
     return bech32.encode(prefix, words)
   }

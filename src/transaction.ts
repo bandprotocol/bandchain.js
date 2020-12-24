@@ -1,6 +1,12 @@
 import { Client } from 'index'
 import { Msg } from './message'
 import { PublicKey } from './wallet'
+import {
+  EmptyMsgError,
+  NotIntegerError,
+  UndefinedError,
+  NotFoundError,
+} from './error'
 
 export default class Transaction {
   msgs: Msg[] = []
@@ -18,13 +24,13 @@ export default class Transaction {
 
   async withAuto(client: Client): Promise<Transaction> {
     if (this.msgs.length == 0)
-      throw Error(
+      throw new EmptyMsgError(
         'Message is empty, please use withMessages at least 1 message.',
       )
 
     let addr = this.msgs[0].getSender()
     let account = await client.getAccount(addr)
-    if (!account) throw Error(`Account doesn't exist.`)
+    if (!account) throw new NotFoundError(`Account doesn't exist.`)
     this.accountNum = account.accountNumber
     this.sequence = account.sequence
     return this
@@ -32,7 +38,7 @@ export default class Transaction {
 
   withAccountNum(accountNum: number): Transaction {
     if (!Number.isInteger(accountNum)) {
-      throw Error('accountNum is not an integer')
+      throw new NotIntegerError('accountNum is not an integer')
     }
     this.accountNum = accountNum
     return this
@@ -40,7 +46,7 @@ export default class Transaction {
 
   withSequence(sequence: number): Transaction {
     if (!Number.isInteger(sequence)) {
-      throw Error('sequence is not an integer')
+      throw new NotIntegerError('sequence is not an integer')
     }
     this.sequence = sequence
     return this
@@ -53,7 +59,7 @@ export default class Transaction {
 
   withFee(fee: number): Transaction {
     if (!Number.isInteger(fee)) {
-      throw Error('fee is not an integer')
+      throw new NotIntegerError('fee is not an integer')
     }
     this.fee = fee
     return this
@@ -61,7 +67,7 @@ export default class Transaction {
 
   withGas(gas: number): Transaction {
     if (!Number.isInteger(gas)) {
-      throw Error('gas is not an integer')
+      throw new NotIntegerError('gas is not an integer')
     }
     this.gas = gas
     return this
@@ -74,19 +80,19 @@ export default class Transaction {
 
   getSignData(): Buffer {
     if (this.msgs.length == 0) {
-      throw Error('message is empty')
+      throw new EmptyMsgError('message is empty')
     }
 
     if (this.accountNum == null) {
-      throw Error('accountNum should be defined')
+      throw new UndefinedError('accountNum should be defined')
     }
 
     if (this.sequence == null) {
-      throw Error('sequence should be defined')
+      throw new UndefinedError('sequence should be defined')
     }
 
     if (this.chainID == null) {
-      throw Error('chainID should be defined')
+      throw new UndefinedError('chainID should be defined')
     }
 
     this.msgs.forEach((msg) => msg.validate())
@@ -117,11 +123,11 @@ export default class Transaction {
 
   getTxData(signature: Buffer, pubkey: PublicKey): Object {
     if (this.accountNum == null) {
-      throw Error('accountNum should be defined')
+      throw new UndefinedError('accountNum should be defined')
     }
 
     if (this.sequence == null) {
-      throw Error('sequence should be defined')
+      throw new UndefinedError('sequence should be defined')
     }
 
     return {
