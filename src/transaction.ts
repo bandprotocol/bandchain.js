@@ -1,11 +1,13 @@
 import { Client } from 'index'
 import { Msg } from './message'
 import { PublicKey } from './wallet'
+import { MAX_MEMO_CHARACTERS } from './constant'
 import {
   EmptyMsgError,
   NotIntegerError,
   UndefinedError,
   NotFoundError,
+  ValueTooLargeError
 } from './error'
 
 export default class Transaction {
@@ -74,6 +76,9 @@ export default class Transaction {
   }
 
   withMemo(memo: string): Transaction {
+    if (memo.length > MAX_MEMO_CHARACTERS) {
+      throw new ValueTooLargeError('memo is too large.')
+    }
     this.memo = memo
     return this
   }
