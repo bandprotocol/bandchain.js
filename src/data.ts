@@ -1,4 +1,5 @@
 import { Address } from 'wallet'
+import { NotIntegerError, NegativeIntegerError, ValueError } from './error'
 
 export type HexBytes = Buffer
 export type EpochTime = number
@@ -17,9 +18,9 @@ export class Coin {
   }
 
   validate(): boolean {
-    if (!Number.isInteger(this.amount)) throw Error('amount is not an integer')
-    if (this.amount < 0) throw Error('Expect amount more than 0')
-    if (this.denom.length === 0) throw Error('Expect denom')
+    if (!Number.isInteger(this.amount)) throw new NotIntegerError('amount is not an integer')
+    if (this.amount < 0) throw new NegativeIntegerError('Expect amount more than 0')
+    if (this.denom.length === 0) throw new ValueError('Expect denom')
 
     return true
   }
