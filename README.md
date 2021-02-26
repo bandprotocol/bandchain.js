@@ -1,6 +1,6 @@
 # BandChain.js
 
-BandChain.js is a ibrary for interacting with BandChain in browser and Node.js environments.
+BandChain.js is a library for interacting with BandChain in browser and Node.js environments.
 
 ## ⭐️ Features
 
