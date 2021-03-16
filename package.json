@@ -45,6 +45,7 @@
     "bip39": "^3.0.2",
     "bitcoinjs-lib": "^5.2.0",
     "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
     "secp256k1": "^4.0.2"
   },
   "prettier": {

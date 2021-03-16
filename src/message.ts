@@ -1,6 +1,7 @@
 import { Coin } from './data'
 import { Address } from './wallet'
 import { MAX_DATA_SIZE } from './constant'
+<<<<<<< HEAD
 import {
   NegativeIntegerError,
   NotIntegerError,
@@ -8,6 +9,9 @@ import {
   InsufficientCoinError,
   ValueError,
 } from './error'
+=======
+import fs from 'fs'
+>>>>>>> feat: add data source and oracle script messages support
 
 export abstract class Msg {
   abstract asJson(): { type: string; value: any }
@@ -147,6 +151,272 @@ export class MsgDelegate extends Msg {
   validate() {
     this.amount.validate()
 
+    return true
+  }
+}
+
+export class MsgCreateDataSource extends Msg {
+  owner: Address
+  name: string
+  description: string
+  script: string
+  sender: Address
+
+  constructor(
+    owner: Address,
+    name: string,
+    description: string,
+    script: string,
+    sender: Address,
+  ) {
+    super()
+    this.owner = owner
+    this.name = name
+    this.description = description
+    this.script = script
+    this.sender = sender
+  }
+
+  _replaceEmpty(placeholder: string, s?: string) {
+    if (s === undefined) return placeholder
+    return s
+  }
+
+  _readScript() {
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/CreateDataSource',
+      value: {
+        owner: this.owner.toAccBech32(),
+        name: this.name,
+        description: this._replaceEmpty('TBA', this.description),
+        executable: this._readScript(),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name.length <= 0) throw Error('Invalid data source name')
+    if (this.script.length <= 0)
+      throw Error('Missing or invalid data source path')
+    if (this._readScript().length <= 0) {
+      throw Error('Empty data source file')
+    }
+    return true
+  }
+}
+
+export class MsgEditDataSource extends Msg {
+  owner: Address
+  sender: Address
+  dataSourceID: number
+  name?: string
+  description?: string
+  script?: string
+
+  constructor(
+    owner: Address,
+    sender: Address,
+    dataSourceID: number,
+    name?: string,
+    description?: string,
+    script?: string,
+  ) {
+    super()
+    this.owner = owner
+    this.sender = sender
+    this.dataSourceID = dataSourceID
+    this.name = name
+    this.description = description
+    this.script = script
+  }
+
+  _replaceEmpty(placeholder: string, s?: string) {
+    if (s === undefined) return placeholder
+    return s
+  }
+
+  _readOptionalScript() {
+    if (!this.script) return Buffer.from('[do-not-modify]').toString('base64')
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/EditDataSource',
+      value: {
+        data_source_id: this.dataSourceID,
+        owner: this.owner.toAccBech32(),
+        name: this._replaceEmpty('[do-not-modify]', this.name),
+        description: this._replaceEmpty('[do-not-modify]', this.description),
+        executable: this._readOptionalScript(),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name !== undefined && !this.name)
+      throw Error('Invalid data source name')
+    if (this.script !== undefined && !this.script)
+      throw Error('Invalid data source path')
+    if (this.script !== undefined && this.script && !this._readOptionalScript())
+      throw Error('Empty data source file')
+    return true
+  }
+}
+
+export class MsgCreateOracleScript extends Msg {
+  owner: Address
+  name: string
+  description?: string
+  script: string
+  schema?: string
+  sourceCodeURL?: string
+  sender: Address
+
+  constructor(
+    owner: Address,
+    sender: Address,
+    name: string,
+    script: string,
+    description?: string,
+    schema?: string,
+    sourceCodeURL?: string,
+  ) {
+    super()
+    this.owner = owner
+    this.sender = sender
+    this.name = name
+    this.script = script
+    this.description = description
+    this.schema = schema
+    this.sourceCodeURL = sourceCodeURL
+  }
+
+  _replaceEmpty(placeholder: string, s?: string) {
+    if (s === undefined) return placeholder
+    return s
+  }
+
+  _readWasm() {
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/CreateOracleScript',
+      value: {
+        owner: this.owner.toAccBech32(),
+        name: this.name,
+        description: this._replaceEmpty('TBA', this.description),
+        code: this._readWasm(),
+        schema: this._replaceEmpty('TBA', this.schema),
+        source_code_url: this._replaceEmpty('', this.sourceCodeURL),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name.length <= 0)
+      throw Error('Missing or invalid oracle script name')
+    if (this.script.length <= 0)
+      throw Error('Missing or invalid oracle script path')
+    if (this._readWasm().length <= 0) {
+      throw Error('Empty wasm file')
+    }
+    return true
+  }
+}
+
+export class MsgEditOracleScript extends Msg {
+  owner: Address
+  oracleScriptID: number
+  schema?: string
+  sourceCodeURL?: string
+  sender: Address
+  name?: string
+  description?: string
+  script?: string
+
+  constructor(
+    owner: Address,
+    sender: Address,
+    oracleScriptID: number,
+    schema?: string,
+    sourceCodeURL?: string,
+    name?: string,
+    description?: string,
+    script?: string,
+  ) {
+    super()
+    this.owner = owner
+    this.sender = sender
+    this.oracleScriptID = oracleScriptID
+    this.schema = schema
+    this.sourceCodeURL = sourceCodeURL
+    this.name = name
+    this.description = description
+    this.script = script
+  }
+
+  _replaceEmpty(placeholder: string, s?: string) {
+    if (s === undefined) return placeholder
+    return s
+  }
+
+  _readOptionalScript() {
+    if (!this.script) return Buffer.from('[do-not-modify]').toString('base64')
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/EditOracleScript',
+      value: {
+        oracle_script_id: this.oracleScriptID,
+        owner: this.owner.toAccBech32(),
+        name: this._replaceEmpty('[do-not-modify]', this.name),
+        description: this._replaceEmpty('[do-not-modify]', this.description),
+        code: this._readOptionalScript(),
+        schema: this._replaceEmpty('[do-not-modify]', this.schema),
+        source_code_url: this._replaceEmpty(
+          '[do-not-modify]',
+          this.sourceCodeURL,
+        ),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name !== undefined && !this.name)
+      throw Error('Missing or invalid oracle script name')
+    if (this.script !== undefined && !this.script)
+      throw Error('Missing or invalid oracle script path')
+    if (this.script !== undefined && this.script && !this._readOptionalScript())
+      throw Error('Empty wasm file')
     return true
   }
 }

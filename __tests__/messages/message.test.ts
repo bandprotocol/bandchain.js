@@ -1,5 +1,5 @@
-import { Message, Data } from '../src/index'
-import { Address } from '../src/wallet'
+import { Message, Data } from '../../src/index'
+import { Address } from '../../src/wallet'
 
 const { MsgSend, MsgRequest, MsgDelegate } = Message
 const { Coin } = Data
