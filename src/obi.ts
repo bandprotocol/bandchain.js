@@ -1,3 +1,4 @@
+import { DecodeError, SchemaError } from './error'
 abstract class ObiBase {
   abstract encode(value: any): Buffer
   abstract decode(buff: Buffer): any[]
@@ -167,7 +168,7 @@ export class Obi {
   decodeInput(buff: Buffer): any {
     const [value, remaining] = this.inputObi.decode(buff)
     if (remaining.length != 0)
-      throw new Error('Not all data is consumed after decoding output')
+      throw new DecodeError('Not all data is consumed after decoding output')
     return value
   }
 
@@ -178,7 +179,7 @@ export class Obi {
   decodeOutput(buff: Buffer): any {
     const [value, remaining] = this.outputObi.decode(buff)
     if (remaining.length != 0)
-      throw new Error('Not all data is consumed after decoding output')
+      throw new DecodeError('Not all data is consumed after decoding output')
     return value
   }
 }
@@ -193,6 +194,6 @@ export class ObiSpec {
       }
     }
 
-    throw new Error(`No schema matched: <${schema}>`)
+    throw new SchemaError(`No schema matched: <${schema}>`)
   }
 }

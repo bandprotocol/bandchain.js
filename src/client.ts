@@ -13,6 +13,7 @@ import {
   HexBytes,
   EVMProof,
 } from './data'
+import { NotIntegerError, EmptyRequestMsgError } from './error'
 import { Address } from './wallet'
 
 export default class Client {
@@ -81,7 +82,7 @@ export default class Client {
    */
 
   async getDataSource(id: number): Promise<DataSource> {
-    if (!Number.isInteger(id)) throw Error('id is not an integer')
+    if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
 
     const response = await this.getResult(`/oracle/data_sources/${id}`)
     return {
@@ -116,7 +117,7 @@ export default class Client {
    */
 
   async getOracleScript(id: number): Promise<OracleScript> {
-    if (!Number.isInteger(id)) throw Error('id is not an integer')
+    if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
 
     const response = await this.getResult(`/oracle/oracle_scripts/${id}`)
     return {
@@ -261,8 +262,10 @@ export default class Client {
   }
 
   async getPriceSymbols(minCount: number, askCount: number): Promise<string[]> {
-    if (!Number.isInteger(minCount)) throw Error('minCount is not an integer')
-    if (!Number.isInteger(askCount)) throw Error('askCount is not an integer')
+    if (!Number.isInteger(minCount))
+      throw new NotIntegerError('minCount is not an integer')
+    if (!Number.isInteger(askCount))
+      throw new NotIntegerError('askCount is not an integer')
     let response = await this.getResult('/oracle/price_symbols', {
       min_count: minCount,
       ask_count: askCount,
@@ -284,9 +287,12 @@ export default class Client {
     minCount: number,
     askCount: number,
   ): Promise<RequestInfo> {
-    if (!Number.isInteger(oid)) throw Error('oid is not an integer')
-    if (!Number.isInteger(minCount)) throw Error('minCount is not an integer')
-    if (!Number.isInteger(askCount)) throw Error('askCount is not an integer')
+    if (!Number.isInteger(oid))
+      throw new NotIntegerError('oid is not an integer')
+    if (!Number.isInteger(minCount))
+      throw new NotIntegerError('minCount is not an integer')
+    if (!Number.isInteger(askCount))
+      throw new NotIntegerError('askCount is not an integer')
 
     const response = await this.getResult(`/oracle/request_search`, {
       params: {
@@ -385,7 +391,7 @@ export default class Client {
    */
 
   async getRequestByID(id: number): Promise<RequestInfo> {
-    if (!Number.isInteger(id)) throw Error('id is not an integer')
+    if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
 
     const response = await this.getResult(`/oracle/requests/${id}`)
     return {
@@ -487,14 +493,15 @@ export default class Client {
     })
 
     if (requestIDs.length == 0) {
-      throw new Error('There is no request message in this tx')
+      throw new EmptyRequestMsgError('There is no request message in this tx')
     }
 
     return requestIDs
   }
 
   async getRequestEVMProofByRequestID(requestID: number): Promise<EVMProof> {
-    if (!Number.isInteger(requestID)) throw Error('requestID is not an integer')
+    if (!Number.isInteger(requestID))
+      throw new NotIntegerError('requestID is not an integer')
     const response = await this.getResult(`/oracle/proof/${requestID}`)
     return {
       jsonProof: response.jsonProof,

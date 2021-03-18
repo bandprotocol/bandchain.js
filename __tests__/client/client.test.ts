@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Client } from '../../src'
 import { Coin } from '../../src/data'
+import { EmptyRequestMsgError } from '../../src/error'
 import { Address } from '../../src/wallet'
 
 jest.mock('axios')
@@ -919,7 +920,9 @@ describe('Client get request id by transaction hash', () => {
     )
 
     response.catch((err) =>
-      expect(err).toEqual(new Error('There is no request message in this tx')),
+      expect(err).toEqual(
+        new EmptyRequestMsgError('There is no request message in this tx'),
+      ),
     )
   })
 })
