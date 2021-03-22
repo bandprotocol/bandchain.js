@@ -13,7 +13,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
   it('msg create oracle script success', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_oracle_script.wasm',
+      '../mock_ds_os/example_oracle_script.wasm',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const code = Buffer.from(file).toString('base64')
@@ -48,7 +48,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
   it('msg create oracle script fail invalid name', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_oracle_script.wasm',
+      '../mock_ds_os/example_oracle_script.wasm',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const code = Buffer.from(file).toString('base64')
@@ -101,7 +101,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
   it('msg create oracle script fail invalid wasm', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/empty_oracle_script.wasm',
+      '../mock_ds_os/empty_oracle_script.wasm',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const code = Buffer.from(file).toString('base64')
@@ -138,7 +138,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
   it('msg edit oracle script full success', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_oracle_script.wasm',
+      '../mock_ds_os/example_oracle_script.wasm',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const code = Buffer.from(file).toString('base64')
@@ -175,7 +175,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
   it('msg edit oracle script empty name', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_oracle_script.wasm',
+      '../mock_ds_os/example_oracle_script.wasm',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const code = Buffer.from(file).toString('base64')
@@ -236,7 +236,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
   it('msg edit oracle script empty script path', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/empty_oracle_script.wasm',
+      '../mock_ds_os/empty_oracle_script.wasm',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const code = Buffer.from(file).toString('base64')

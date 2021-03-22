@@ -1,10 +1,7 @@
-import { Message, Data } from '../../src/index'
+import { Message } from '../../src/index'
 import { Address } from '../../src/wallet'
 
-const { MsgSend, MsgRequest, MsgDelegate } = Message
-const { Coin } = Data
-
-const coin = new Coin(100000, 'uband')
+const { MsgRequest } = Message
 
 describe('MsgRequest', () => {
   const senderAddr = Address.fromAccBech32(
@@ -66,69 +63,5 @@ describe('MsgRequest', () => {
         msg.validate()
       }).toThrowError(errorText[index])
     })
-  })
-})
-
-describe('MsgSend', () => {
-  it('create successfully', () => {
-    const msgSend = new MsgSend(
-      Address.fromAccBech32('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
-      Address.fromAccBech32('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
-      [coin],
-    )
-    expect(msgSend.asJson()).toEqual({
-      type: 'cosmos-sdk/MsgSend',
-      value: {
-        to_address: 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        from_address: 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        amount: [{ amount: '100000', denom: 'uband' }],
-      },
-    })
-    expect(msgSend.getSender().toAccBech32()).toEqual(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-    )
-    expect(msgSend.validate()).toBeTruthy()
-  })
-
-  it('error no coin', () => {
-    const msgSend = new MsgSend(
-      Address.fromAccBech32('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
-      Address.fromAccBech32('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
-      [],
-    )
-
-    expect(() => {
-      msgSend.validate()
-    }).toThrowError('Expect at least 1 coin')
-  })
-})
-
-describe('MsgDelegate', () => {
-  it('create successfully', () => {
-    const msgDelegate = new MsgDelegate(
-      Address.fromAccBech32('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
-      Address.fromValBech32(
-        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-      ),
-      coin,
-    )
-
-    expect(msgDelegate.asJson()).toEqual({
-      type: 'cosmos-sdk/MsgDelegate',
-      value: {
-        amount: {
-          amount: '100000',
-          denom: 'uband',
-        },
-        delegator_address: 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        validator_address: 'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-      },
-    })
-
-    expect(msgDelegate.getSender().toAccBech32()).toEqual(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-    )
-
-    expect(msgDelegate.validate()).toBeTruthy()
   })
 })

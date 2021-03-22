@@ -13,7 +13,7 @@ describe('MsgCreateDataSourceSuccess', () => {
   it('msg create data source success', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_data_source.py',
+      '../mock_ds_os/example_data_source.py',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const executable = Buffer.from(file).toString('base64')
@@ -56,7 +56,10 @@ describe('MsgCreateDataSourceSuccess', () => {
   })
 
   it('msg create data source empty script', () => {
-    const execPath = path.resolve(__dirname, '../mockDsOs/empty_data_source.py')
+    const execPath = path.resolve(
+      __dirname,
+      '../mock_ds_os/empty_data_source.py',
+    )
     const msgCreateDataSource = new MsgCreateDataSource(
       alice,
       'Empty Data Source Name',
@@ -73,7 +76,7 @@ describe('MsgCreateDataSourceSuccess', () => {
   it('msg edit data source full success', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_data_source.py',
+      '../mock_ds_os/example_data_source.py',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const executable = Buffer.from(file).toString('base64')
@@ -107,7 +110,7 @@ describe('MsgCreateDataSourceSuccess', () => {
   it('msg edit data source no name success', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_data_source.py',
+      '../mock_ds_os/example_data_source.py',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const executable = Buffer.from(file).toString('base64')
@@ -141,7 +144,7 @@ describe('MsgCreateDataSourceSuccess', () => {
   it('msg edit data source no description success', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_data_source.py',
+      '../mock_ds_os/example_data_source.py',
     )
     const file = fs.readFileSync(execPath, 'utf8')
     const executable = Buffer.from(file).toString('base64')
@@ -175,7 +178,7 @@ describe('MsgCreateDataSourceSuccess', () => {
   it('msg edit data source empty name', () => {
     const execPath = path.resolve(
       __dirname,
-      '../mockDsOs/example_data_source.py',
+      '../mock_ds_os/example_data_source.py',
     )
     const msgEditDataSource = new MsgEditDataSource(
       alice,
