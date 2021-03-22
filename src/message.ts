@@ -1,17 +1,20 @@
 import { Coin } from './data'
 import { Address } from './wallet'
 import { MAX_DATA_SIZE } from './constant'
-<<<<<<< HEAD
 import {
   NegativeIntegerError,
   NotIntegerError,
   ValueTooLargeError,
   InsufficientCoinError,
   ValueError,
+  InvalidDataSourceNameError,
+  InvalidDataSourcePathError,
+  InvalidDataSourceFileError,
+  InvalidOracleScriptNameError,
+  InvalidOracleScriptPathError,
+  InvalidOracleScriptFileError,
 } from './error'
-=======
 import fs from 'fs'
->>>>>>> feat: add data source and oracle script messages support
 
 export abstract class Msg {
   abstract asJson(): { type: string; value: any }
@@ -204,12 +207,13 @@ export class MsgCreateDataSource extends Msg {
   }
 
   validate() {
-    if (this.name.length <= 0) throw Error('Invalid data source name')
+    if (this.name.length <= 0)
+      throw new InvalidDataSourceNameError('got an empty string for the name')
     if (this.script.length <= 0)
-      throw Error('Missing or invalid data source path')
-    if (this._readScript().length <= 0) {
-      throw Error('Empty data source file')
-    }
+      throw new InvalidDataSourcePathError('got an empty string for the path')
+    if (this._readScript().length <= 0)
+      throw new InvalidDataSourceFileError('got an empty source file')
+
     return true
   }
 }
@@ -269,11 +273,12 @@ export class MsgEditDataSource extends Msg {
 
   validate() {
     if (this.name !== undefined && !this.name)
-      throw Error('Invalid data source name')
+      throw new InvalidDataSourceNameError('got an empty string for the name')
     if (this.script !== undefined && !this.script)
-      throw Error('Invalid data source path')
+      throw new InvalidDataSourcePathError('got an empty string for the path')
     if (this.script !== undefined && this.script && !this._readOptionalScript())
-      throw Error('Empty data source file')
+      throw new InvalidDataSourceFileError('got an empty source file')
+
     return true
   }
 }
@@ -336,12 +341,12 @@ export class MsgCreateOracleScript extends Msg {
 
   validate() {
     if (this.name.length <= 0)
-      throw Error('Missing or invalid oracle script name')
+      throw new InvalidOracleScriptNameError('got an empty string for the name')
     if (this.script.length <= 0)
-      throw Error('Missing or invalid oracle script path')
-    if (this._readWasm().length <= 0) {
-      throw Error('Empty wasm file')
-    }
+      throw new InvalidOracleScriptPathError('got an empty string for the path')
+    if (this._readWasm().length <= 0)
+      throw new InvalidOracleScriptFileError('got an empty wasm file')
+
     return true
   }
 }
@@ -412,11 +417,12 @@ export class MsgEditOracleScript extends Msg {
 
   validate() {
     if (this.name !== undefined && !this.name)
-      throw Error('Missing or invalid oracle script name')
+      throw new InvalidOracleScriptNameError('got an empty string for the name')
     if (this.script !== undefined && !this.script)
-      throw Error('Missing or invalid oracle script path')
+      throw new InvalidOracleScriptPathError('got an empty string for the path')
     if (this.script !== undefined && this.script && !this._readOptionalScript())
-      throw Error('Empty wasm file')
+      throw new InvalidOracleScriptFileError('got an empty wasm file')
+
     return true
   }
 }

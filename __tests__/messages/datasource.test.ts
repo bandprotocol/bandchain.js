@@ -52,7 +52,7 @@ describe('MsgCreateDataSourceSuccess', () => {
 
     expect(() => {
       msgCreateDataSource.validate()
-    }).toThrowError('Missing or invalid data source path')
+    }).toThrowError('got an empty string for the path')
   })
 
   it('msg create data source empty script', () => {
@@ -70,7 +70,7 @@ describe('MsgCreateDataSourceSuccess', () => {
 
     expect(() => {
       msgCreateDataSource.validate()
-    }).toThrowError('Empty data source file')
+    }).toThrowError('got an empty source file')
   })
 
   it('msg edit data source full success', () => {
@@ -191,7 +191,7 @@ describe('MsgCreateDataSourceSuccess', () => {
 
     expect(() => {
       msgEditDataSource.validate()
-    }).toThrowError('Invalid data source name')
+    }).toThrowError('got an empty string for the name')
   })
 
   it('msg edit data source no script success', () => {

@@ -108,3 +108,45 @@ export class SchemaError extends BandChainJSError {
     this.name = 'SchemaError'
   }
 }
+
+export class InvalidDataSourceNameError extends BandChainJSError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'InvalidDataSourceNameError'
+  }
+}
+
+export class InvalidDataSourcePathError extends BandChainJSError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'InvalidDataSourcePathError'
+  }
+}
+
+export class InvalidDataSourceFileError extends BandChainJSError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'InvalidDataSourceFileError'
+  }
+}
+
+export class InvalidOracleScriptNameError extends BandChainJSError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'InvalidOracleScriptNameError'
+  }
+}
+
+export class InvalidOracleScriptPathError extends BandChainJSError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'InvalidOracleScriptPathError'
+  }
+}
+
+export class InvalidOracleScriptFileError extends BandChainJSError {
+  constructor(message: string) {
+    super(message)
+    this.name = 'InvalidOracleScriptFileError'
+  }
+}

@@ -64,7 +64,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
 
     expect(() => {
       msgCreateOracleScript.validate()
-    }).toThrowError('Missing or invalid oracle script name')
+    }).toThrowError('got an empty string for the name')
     expect(msgCreateOracleScript.getSender().toAccBech32()).toEqual(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
     )
@@ -95,7 +95,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
 
     expect(() => {
       msgCreateOracleScript.validate()
-    }).toThrowError('Missing or invalid oracle script path')
+    }).toThrowError('got an empty string for the path')
   })
 
   it('msg create oracle script fail invalid wasm', () => {
@@ -117,7 +117,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
 
     expect(() => {
       msgCreateOracleScript.validate()
-    }).toThrowError('Empty wasm file')
+    }).toThrowError('got an empty wasm file')
     expect(msgCreateOracleScript.getSender().toAccBech32()).toEqual(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
     )
@@ -192,7 +192,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
 
     expect(() => {
       msgEditOracleScript.validate()
-    }).toThrowError('Missing or invalid oracle script name')
+    }).toThrowError('got an empty string for the name')
 
     expect(msgEditOracleScript.getSender().toAccBech32()).toEqual(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -226,7 +226,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
 
     expect(() => {
       msgEditOracleScript.validate()
-    }).toThrowError('Missing or invalid oracle script path')
+    }).toThrowError('got an empty string for the path')
 
     expect(msgEditOracleScript.getSender().toAccBech32()).toEqual(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -253,7 +253,7 @@ describe('MsgCreateOracleScriptSuccess', () => {
 
     expect(() => {
       msgEditOracleScript.validate()
-    }).toThrowError('Empty wasm file')
+    }).toThrowError('got an empty wasm file')
 
     expect(msgEditOracleScript.getSender().toAccBech32()).toEqual(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
