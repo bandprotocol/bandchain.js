@@ -1,6 +1,7 @@
 import { Coin } from './data'
 import { Address } from './wallet'
-import { MAX_DATA_SIZE } from './constant'
+import { MAX_DATA_SIZE, DO_NOT_MODIFY } from './constant'
+import { replaceEmpty } from './helper'
 import {
   NegativeIntegerError,
   NotIntegerError,
@@ -180,11 +181,6 @@ export class MsgCreateDataSource extends Msg {
     this.sender = sender
   }
 
-  _replaceEmpty(placeholder: string, s?: string) {
-    if (s === undefined) return placeholder
-    return s
-  }
-
   _readScript() {
     return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
   }
@@ -195,7 +191,7 @@ export class MsgCreateDataSource extends Msg {
       value: {
         owner: this.owner.toAccBech32(),
         name: this.name,
-        description: this._replaceEmpty('TBA', this.description),
+        description: replaceEmpty('TBA', this.description),
         executable: this._readScript(),
         sender: this.sender.toAccBech32(),
       },
@@ -243,13 +239,8 @@ export class MsgEditDataSource extends Msg {
     this.script = script
   }
 
-  _replaceEmpty(placeholder: string, s?: string) {
-    if (s === undefined) return placeholder
-    return s
-  }
-
   _readOptionalScript() {
-    if (!this.script) return Buffer.from('[do-not-modify]').toString('base64')
+    if (!this.script) return Buffer.from(DO_NOT_MODIFY).toString('base64')
     return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
   }
 
@@ -259,8 +250,8 @@ export class MsgEditDataSource extends Msg {
       value: {
         data_source_id: this.dataSourceID,
         owner: this.owner.toAccBech32(),
-        name: this._replaceEmpty('[do-not-modify]', this.name),
-        description: this._replaceEmpty('[do-not-modify]', this.description),
+        name: replaceEmpty(DO_NOT_MODIFY, this.name),
+        description: replaceEmpty(DO_NOT_MODIFY, this.description),
         executable: this._readOptionalScript(),
         sender: this.sender.toAccBech32(),
       },
@@ -311,11 +302,6 @@ export class MsgCreateOracleScript extends Msg {
     this.sourceCodeURL = sourceCodeURL
   }
 
-  _replaceEmpty(placeholder: string, s?: string) {
-    if (s === undefined) return placeholder
-    return s
-  }
-
   _readWasm() {
     return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
   }
@@ -326,10 +312,10 @@ export class MsgCreateOracleScript extends Msg {
       value: {
         owner: this.owner.toAccBech32(),
         name: this.name,
-        description: this._replaceEmpty('TBA', this.description),
+        description: replaceEmpty('TBA', this.description),
         code: this._readWasm(),
-        schema: this._replaceEmpty('TBA', this.schema),
-        source_code_url: this._replaceEmpty('', this.sourceCodeURL),
+        schema: replaceEmpty('TBA', this.schema),
+        source_code_url: replaceEmpty('', this.sourceCodeURL),
         sender: this.sender.toAccBech32(),
       },
     }
@@ -382,13 +368,8 @@ export class MsgEditOracleScript extends Msg {
     this.script = script
   }
 
-  _replaceEmpty(placeholder: string, s?: string) {
-    if (s === undefined) return placeholder
-    return s
-  }
-
   _readOptionalScript() {
-    if (!this.script) return Buffer.from('[do-not-modify]').toString('base64')
+    if (!this.script) return Buffer.from(DO_NOT_MODIFY).toString('base64')
     return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
   }
 
@@ -398,14 +379,11 @@ export class MsgEditOracleScript extends Msg {
       value: {
         oracle_script_id: this.oracleScriptID,
         owner: this.owner.toAccBech32(),
-        name: this._replaceEmpty('[do-not-modify]', this.name),
-        description: this._replaceEmpty('[do-not-modify]', this.description),
+        name: replaceEmpty(DO_NOT_MODIFY, this.name),
+        description: replaceEmpty(DO_NOT_MODIFY, this.description),
         code: this._readOptionalScript(),
-        schema: this._replaceEmpty('[do-not-modify]', this.schema),
-        source_code_url: this._replaceEmpty(
-          '[do-not-modify]',
-          this.sourceCodeURL,
-        ),
+        schema: replaceEmpty(DO_NOT_MODIFY, this.schema),
+        source_code_url: replaceEmpty(DO_NOT_MODIFY, this.sourceCodeURL),
         sender: this.sender.toAccBech32(),
       },
     }
