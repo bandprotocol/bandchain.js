@@ -39,11 +39,12 @@ export class ObiInteger extends ObiBase {
   }
 }
 
-export class ObiVector {
+export class ObiVector extends ObiBase {
   static REGEX = /^\[.*\]$/
   internalObi: any
 
   constructor(schema: string) {
+    super()
     this.internalObi = ObiSpec.fromSpec(schema.slice(1, -1))
   }
 
@@ -66,11 +67,12 @@ export class ObiVector {
   }
 }
 
-export class ObiStruct {
+export class ObiStruct extends ObiBase {
   static REGEX = /^{.*}$/
   internalObiKvs: any
 
   constructor(schema: string) {
+    super()
     this.internalObiKvs = []
 
     let curlyCount = 0
@@ -112,7 +114,7 @@ export class ObiStruct {
   }
 }
 
-export class ObiString {
+export class ObiString extends ObiBase {
   static REGEX = /^string$/
 
   encode(value: string): Buffer {
