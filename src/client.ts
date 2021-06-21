@@ -16,15 +16,29 @@ import {
 import { NotIntegerError, EmptyRequestMsgError } from './error'
 import { Address } from './wallet'
 
+interface Params { [key: string]: string | number | string[] };
+
 export default class Client {
   rpcUrl: string
   constructor(rpcUrl: string) {
     this.rpcUrl = rpcUrl
   }
 
-  private async get(path: string, params?: object) {
+  private async get(path: string, params?: Params) {
     let options
-    if (params) options = { params }
+    if (params !== undefined) {
+      const paramBuilder = new URLSearchParams();
+      Object.entries(params).forEach(([key, values]) => {
+        if (Array.isArray(values)) {
+          values.forEach((value) => {
+            paramBuilder.append(key, value)
+          })
+        } else {
+          paramBuilder.append(key, String(values))
+        }
+      });
+      options = { params: paramBuilder }
+    }
 
     const response = await axios.get(`${this.rpcUrl}${path}`, options)
     return response.data
@@ -35,13 +49,8 @@ export default class Client {
     return response.data
   }
 
-  private async getResult(path: string, params?: object) {
+  private async getResult(path: string, params?: Params) {
     const response = await this.get(`${path}`, params)
-    return response.result
-  }
-
-  private async postResult(path: string, data: object) {
-    const response = await this.post(`${path}`, data)
     return response.result
   }
 
@@ -212,12 +221,12 @@ export default class Client {
       })
     })
     let symbolList: string[] = Array.from(symbolSet)
-    let pricerBody = {
+    let pricerParams: Params = {
       symbols: symbolList,
-      min_count: 10,
-      ask_count: 16,
+      min_count: 3,
+      ask_count: 4,
     }
-    let priceData = await this.postResult('/oracle/request_prices', pricerBody)
+    let {price_results: priceData} = await this.get('/oracle/v1/request_prices', pricerParams)
 
     let symbolMap: any = {}
     symbolMap['USD'] = {
@@ -295,12 +304,10 @@ export default class Client {
       throw new NotIntegerError('askCount is not an integer')
 
     const response = await this.getResult(`/oracle/request_search`, {
-      params: {
-        oid: oid,
-        calldata: calldata.toString('base64'),
-        min_count: minCount,
-        ask_count: askCount,
-      },
+      oid: oid,
+      calldata: calldata.toString('base64'),
+      min_count: minCount,
+      ask_count: askCount,
     })
     return {
       request: {
