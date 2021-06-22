@@ -1,13 +1,21 @@
 import { Coin } from './data'
 import { Address } from './wallet'
-import { MAX_DATA_SIZE } from './constant'
+import { MAX_DATA_SIZE, DO_NOT_MODIFY } from './constant'
+import { replaceEmpty } from './helper'
 import {
   NegativeIntegerError,
   NotIntegerError,
   ValueTooLargeError,
   InsufficientCoinError,
   ValueError,
+  InvalidDataSourceNameError,
+  InvalidDataSourcePathError,
+  InvalidDataSourceFileError,
+  InvalidOracleScriptNameError,
+  InvalidOracleScriptPathError,
+  InvalidOracleScriptFileError,
 } from './error'
+import fs from 'fs'
 
 export abstract class Msg {
   abstract asJson(): { type: string; value: any }
@@ -146,6 +154,252 @@ export class MsgDelegate extends Msg {
 
   validate() {
     this.amount.validate()
+
+    return true
+  }
+}
+
+export class MsgCreateDataSource extends Msg {
+  owner: Address
+  name: string
+  description: string
+  script: string
+  sender: Address
+
+  constructor(
+    owner: Address,
+    name: string,
+    description: string,
+    script: string,
+    sender: Address,
+  ) {
+    super()
+    this.owner = owner
+    this.name = name
+    this.description = description
+    this.script = script
+    this.sender = sender
+  }
+
+  _readScript() {
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/CreateDataSource',
+      value: {
+        owner: this.owner.toAccBech32(),
+        name: this.name,
+        description: replaceEmpty('TBA', this.description),
+        executable: this._readScript(),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name.length <= 0)
+      throw new InvalidDataSourceNameError('got an empty string for the name')
+    if (this.script.length <= 0)
+      throw new InvalidDataSourcePathError('got an empty string for the path')
+    if (this._readScript().length <= 0)
+      throw new InvalidDataSourceFileError('got an empty source file')
+
+    return true
+  }
+}
+
+export class MsgEditDataSource extends Msg {
+  owner: Address
+  sender: Address
+  dataSourceID: number
+  name?: string
+  description?: string
+  script?: string
+
+  constructor(
+    owner: Address,
+    sender: Address,
+    dataSourceID: number,
+    name?: string,
+    description?: string,
+    script?: string,
+  ) {
+    super()
+    this.owner = owner
+    this.sender = sender
+    this.dataSourceID = dataSourceID
+    this.name = name
+    this.description = description
+    this.script = script
+  }
+
+  _readOptionalScript() {
+    if (!this.script) return Buffer.from(DO_NOT_MODIFY).toString('base64')
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/EditDataSource',
+      value: {
+        data_source_id: this.dataSourceID,
+        owner: this.owner.toAccBech32(),
+        name: replaceEmpty(DO_NOT_MODIFY, this.name),
+        description: replaceEmpty(DO_NOT_MODIFY, this.description),
+        executable: this._readOptionalScript(),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name !== undefined && !this.name)
+      throw new InvalidDataSourceNameError('got an empty string for the name')
+    if (this.script !== undefined && !this.script)
+      throw new InvalidDataSourcePathError('got an empty string for the path')
+    if (this.script !== undefined && this.script && !this._readOptionalScript())
+      throw new InvalidDataSourceFileError('got an empty source file')
+
+    return true
+  }
+}
+
+export class MsgCreateOracleScript extends Msg {
+  owner: Address
+  name: string
+  description?: string
+  script: string
+  schema?: string
+  sourceCodeURL?: string
+  sender: Address
+
+  constructor(
+    owner: Address,
+    sender: Address,
+    name: string,
+    script: string,
+    description?: string,
+    schema?: string,
+    sourceCodeURL?: string,
+  ) {
+    super()
+    this.owner = owner
+    this.sender = sender
+    this.name = name
+    this.script = script
+    this.description = description
+    this.schema = schema
+    this.sourceCodeURL = sourceCodeURL
+  }
+
+  _readWasm() {
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/CreateOracleScript',
+      value: {
+        owner: this.owner.toAccBech32(),
+        name: this.name,
+        description: replaceEmpty('TBA', this.description),
+        code: this._readWasm(),
+        schema: replaceEmpty('TBA', this.schema),
+        source_code_url: replaceEmpty('', this.sourceCodeURL),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name.length <= 0)
+      throw new InvalidOracleScriptNameError('got an empty string for the name')
+    if (this.script.length <= 0)
+      throw new InvalidOracleScriptPathError('got an empty string for the path')
+    if (this._readWasm().length <= 0)
+      throw new InvalidOracleScriptFileError('got an empty wasm file')
+
+    return true
+  }
+}
+
+export class MsgEditOracleScript extends Msg {
+  owner: Address
+  oracleScriptID: number
+  schema?: string
+  sourceCodeURL?: string
+  sender: Address
+  name?: string
+  description?: string
+  script?: string
+
+  constructor(
+    owner: Address,
+    sender: Address,
+    oracleScriptID: number,
+    schema?: string,
+    sourceCodeURL?: string,
+    name?: string,
+    description?: string,
+    script?: string,
+  ) {
+    super()
+    this.owner = owner
+    this.sender = sender
+    this.oracleScriptID = oracleScriptID
+    this.schema = schema
+    this.sourceCodeURL = sourceCodeURL
+    this.name = name
+    this.description = description
+    this.script = script
+  }
+
+  _readOptionalScript() {
+    if (!this.script) return Buffer.from(DO_NOT_MODIFY).toString('base64')
+    return Buffer.from(fs.readFileSync(this.script, 'utf8')).toString('base64')
+  }
+
+  asJson() {
+    return {
+      type: 'oracle/EditOracleScript',
+      value: {
+        oracle_script_id: this.oracleScriptID,
+        owner: this.owner.toAccBech32(),
+        name: replaceEmpty(DO_NOT_MODIFY, this.name),
+        description: replaceEmpty(DO_NOT_MODIFY, this.description),
+        code: this._readOptionalScript(),
+        schema: replaceEmpty(DO_NOT_MODIFY, this.schema),
+        source_code_url: replaceEmpty(DO_NOT_MODIFY, this.sourceCodeURL),
+        sender: this.sender.toAccBech32(),
+      },
+    }
+  }
+
+  getSender() {
+    return this.sender
+  }
+
+  validate() {
+    if (this.name !== undefined && !this.name)
+      throw new InvalidOracleScriptNameError('got an empty string for the name')
+    if (this.script !== undefined && !this.script)
+      throw new InvalidOracleScriptPathError('got an empty string for the path')
+    if (this.script !== undefined && this.script && !this._readOptionalScript())
+      throw new InvalidOracleScriptFileError('got an empty wasm file')
 
     return true
   }
