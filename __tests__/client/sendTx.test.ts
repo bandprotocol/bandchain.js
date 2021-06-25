@@ -5,6 +5,7 @@ const mockedAxios = axios as jest.Mocked<typeof axios>
 import { Client } from '../../src'
 
 const TEST_RPC = 'https://api-mock.bandprotocol.com/rest'
+const TEST_GRPC = 'http://localhost:8080'
 const TEST_MSG = {
   msg: [
     {
@@ -67,7 +68,7 @@ const TEST_WRONG_SEQUENCE_MSG = {
 const mockTxHash =
   'E204AAD58ACA8F00942B1BB66D9F745F5E2C21E04C5DF6A0CB73DF02B6B51121'
 
-let client = new Client(TEST_RPC)
+let client = new Client(TEST_GRPC, TEST_RPC)
 
 describe('sendTxSyncMode', () => {
   it('success', async () => {

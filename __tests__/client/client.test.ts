@@ -3,13 +3,27 @@ import { Client } from '../../src'
 import { Coin } from '../../src/data'
 import { EmptyRequestMsgError } from '../../src/error'
 import { Address } from '../../src/wallet'
+import { mocked } from 'ts-jest/utils'
+import {QueryClient, ServiceError, UnaryResponse} from '../../proto/oracle/v1/query_pb_service'
+import { QueryDataSourceRequest, QueryDataSourceResponse } from '../../proto/oracle/v1/query_pb'
+import { DataSource } from '../../proto/oracle/v1/oracle_pb'
+import { grpc } from '@improbable-eng/grpc-web'
 
 jest.mock('axios')
+jest.mock('../../proto/oracle/v1/query_pb_service')
 const mockedAxios = axios as jest.Mocked<typeof axios>
+const MockedQueryClient = mocked(QueryClient, true)
 
+// TODO: TEST_RPC should be removed once the GRPC have completely replaced
 const TEST_RPC = 'https://api-mock.bandprotocol.com/rest'
+const TEST_GRPC = 'http://localhost:8080'
 
-const client = new Client(TEST_RPC)
+const client = new Client(TEST_GRPC, TEST_RPC)
+
+
+beforeEach(() => {
+  MockedQueryClient.mockClear()
+})
 
 describe('Client get data', () => {
   it('get chain ID', () => {
@@ -20,34 +34,45 @@ describe('Client get data', () => {
     response.then((e) => expect(e).toEqual('bandchain'))
   })
 
-  it('get data source by ID', () => {
-    const resp = {
-      data: {
-        height: '651093',
-        result: {
-          owner: 'band1m5lq9u533qaya4q3nfyl6ulzqkpkhge9q8tpzs',
-          name: 'CoinGecko Cryptocurrency Price',
-          description:
-            'Retrieves current price of a cryptocurrency from https://www.coingecko.com',
-          filename:
-            'c56de9061a78ac96748c83e8a22330accf6ee8ebb499c8525613149a70ec49d0',
-        },
-      },
-    }
-    mockedAxios.get.mockResolvedValue(resp)
+  it('get data source by ID', async () => {
+    expect(MockedQueryClient).not.toHaveBeenCalled()
+    const client = new Client(TEST_GRPC, TEST_RPC)
+    expect(MockedQueryClient).toHaveBeenCalledTimes(1)
+
+    const mockedGRPCClient = mocked(MockedQueryClient.mock.instances[0], true)
+    type ExpectedDataSourceSignature = (
+      requestMessage: QueryDataSourceRequest,
+      metadata: grpc.Metadata,
+      callback: (error: ServiceError|null, responseMessage: QueryDataSourceResponse|null) => void
+    ) => UnaryResponse;
+    const mockedDataSource = mocked(mockedGRPCClient.dataSource as ExpectedDataSourceSignature)
+
+    mockedDataSource.mockImplementationOnce((_req, _metadata, callback): UnaryResponse => {
+      console.log('wow')
+      const dataSource = new DataSource()
+      dataSource.setName('CoinGecko Cryptocurrency Price')
+      dataSource.setDescription('Retrieves current price of a cryptocurrency from https://www.coingecko.com')
+      dataSource.setOwner('band1m5lq9u533qaya4q3nfyl6ulzqkpkhge9q8tpzs')
+      dataSource.setFilename('c56de9061a78ac96748c83e8a22330accf6ee8ebb499c8525613149a70ec49d0')
+
+      const response = new QueryDataSourceResponse()
+      response.setDataSource(dataSource)
+
+      callback(null, response)
+      return { cancel: function() {} }
+    })
 
     const expected = {
-      owner: Address.fromAccBech32(
-        'band1m5lq9u533qaya4q3nfyl6ulzqkpkhge9q8tpzs',
-      ),
+      owner: 'band1m5lq9u533qaya4q3nfyl6ulzqkpkhge9q8tpzs',
       name: 'CoinGecko Cryptocurrency Price',
-      description:
-        'Retrieves current price of a cryptocurrency from https://www.coingecko.com',
-      fileName:
-        'c56de9061a78ac96748c83e8a22330accf6ee8ebb499c8525613149a70ec49d0',
+      description: 'Retrieves current price of a cryptocurrency from https://www.coingecko.com',
+      filename: 'c56de9061a78ac96748c83e8a22330accf6ee8ebb499c8525613149a70ec49d0',
+      feeList: [],
+      treasury: '',
     }
-    const response = client.getDataSource(1)
-    response.then((e) => expect(e).toEqual(expected))
+    const response = await client.getDataSource(1)
+    expect(mockedDataSource).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(expected)
   })
 })
 
@@ -931,8 +956,7 @@ describe('Get reference data', () => {
   it('success', () => {
     const resp = {
       data: {
-        height: '2953006',
-        result: [
+        price_results: [
           {
             symbol: 'BTC',
             multiplier: '1000000000',
@@ -957,7 +981,7 @@ describe('Get reference data', () => {
         ],
       },
     }
-    mockedAxios.post.mockResolvedValue(resp)
+    mockedAxios.get.mockResolvedValue(resp)
 
     const response = client.getReferenceData(['BTC/USD', 'TRX/ETH'])
     const expected = [
@@ -1174,13 +1198,7 @@ describe('Client get account', () => {
         height: '650788',
         result: {
           type: 'cosmos-sdk/Account',
-          value: {
-            address: '',
-            coins: [],
-            public_key: null,
-            account_number: '0',
-            sequence: '0',
-          },
+          value: {},
         },
       },
     }

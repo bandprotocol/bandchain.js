@@ -101,7 +101,7 @@ export default class Client {
    * @returns A Promise of DataSoruce.
    */
 
-  async getDataSource(id: number): Promise<DataSource> {
+  async getDataSource(id: number): Promise<DataSource.AsObject> {
     const request = new QueryDataSourceRequest()
     request.setDataSourceId(id)
     return new Promise((resolve, reject) => {
@@ -112,7 +112,7 @@ export default class Client {
         }
 
         if (response !== null && response.hasDataSource()) {
-          resolve(response.getDataSource() as DataSource)
+          resolve(response.getDataSource().toObject())
         }
       })
     })
