@@ -11,6 +11,7 @@ import {
   HexBytes,
   EVMProof,
 } from './data'
+import axios from 'axios'
 import { NotIntegerError, EmptyRequestMsgError } from './error'
 import { Address } from './wallet'
 
@@ -25,9 +26,43 @@ interface Params { [key: string]: string | number | string[] };
 
 export default class Client {
   queryClient: QueryClient
-  constructor(grpcUrl: string) {
-    this.queryClient = new QueryClient(grpcUrl)
-    grpc.setDefaultTransport(NodeHttpTransport());
+  // TODO: rpcUrl and axios should be removed when gRPC completely replaced
+  rpcUrl: string
+  constructor(grpcUrl: string, rpcUrl: string) {
+    this.queryClient = new QueryClient(grpcUrl, {
+      transport: NodeHttpTransport()
+    })
+    this.rpcUrl = rpcUrl
+  }
+
+  private async get(path: string, params?: Params) {
+    let options
+    if (params !== undefined) {
+      const paramBuilder = new URLSearchParams();
+      Object.entries(params).forEach(([key, values]) => {
+        if (Array.isArray(values)) {
+          values.forEach((value) => {
+            paramBuilder.append(key, value)
+          })
+        } else {
+          paramBuilder.append(key, String(values))
+        }
+      });
+      options = { params: paramBuilder }
+    }
+
+    const response = await axios.get(`${this.rpcUrl}${path}`, options)
+    return response.data
+  }
+
+  private async post(path: string, data: object) {
+    const response = await axios.post(`${this.rpcUrl}${path}`, data)
+    return response.data
+  }
+
+  private async getResult(path: string, params?: Params) {
+    const response = await this.get(`${path}`, params)
+    return response.result
   }
 
   async getChainID(): Promise<string> {
