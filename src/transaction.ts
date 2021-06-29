@@ -1,40 +1,33 @@
-import { Client } from 'index'
-import { Msg } from './message'
-import { PublicKey } from './wallet'
 import { MAX_MEMO_CHARACTERS } from './constant'
 import {
   EmptyMsgError,
   NotIntegerError,
   UndefinedError,
   NotFoundError,
-  ValueTooLargeError
+  ValueTooLargeError,
 } from './error'
 
+import {
+  TxBody,
+  ModeInfo,
+  SignerInfo,
+  AuthInfo,
+  SignDoc,
+  TxRaw,
+} from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { Any } from 'google-protobuf/google/protobuf/any_pb'
+import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
 export default class Transaction {
-  msgs: Msg[] = []
+  msgs: Array<Any> = []
   accountNum?: number
   sequence?: number
   chainID?: string
-  fee: number = 0
+  fee: Fee = new Fee()
   gas: number = 200000
   memo: string = ''
 
-  withMessages(...msg: Msg[]): Transaction {
+  withMessages(...msg: Array<Any>): Transaction {
     this.msgs.push(...msg)
-    return this
-  }
-
-  async withAuto(client: Client): Promise<Transaction> {
-    if (this.msgs.length == 0)
-      throw new EmptyMsgError(
-        'Message is empty, please use withMessages at least 1 message.',
-      )
-
-    let addr = this.msgs[0].getSender()
-    let account = await client.getAccount(addr)
-    if (!account) throw new NotFoundError(`Account doesn't exist.`)
-    this.accountNum = account.accountNumber
-    this.sequence = account.sequence
     return this
   }
 
@@ -59,10 +52,10 @@ export default class Transaction {
     return this
   }
 
-  withFee(fee: number): Transaction {
-    if (!Number.isInteger(fee)) {
-      throw new NotIntegerError('fee is not an integer')
-    }
+  withFee(fee: Fee): Transaction {
+    // if (!Number.isInteger(fee)) {
+    //   throw new NotIntegerError('fee is not an integer')
+    // }
     this.fee = fee
     return this
   }
@@ -83,7 +76,7 @@ export default class Transaction {
     return this
   }
 
-  getSignData(): Buffer {
+  getTxData(privateKey) {
     if (this.msgs.length == 0) {
       throw new EmptyMsgError('message is empty')
     }
@@ -100,59 +93,44 @@ export default class Transaction {
       throw new UndefinedError('chainID should be defined')
     }
 
-    this.msgs.forEach((msg) => msg.validate())
+    let txBody = new TxBody()
+    txBody.setMessagesList(this.msgs)
+    txBody.setMemo(this.memo)
+    let txBodyBytes = txBody.serializeBinary()
 
-    let messageJson: { [key: string]: any } = {
-      chain_id: this.chainID,
-      account_number: this.accountNum.toString(),
-      fee: {
-        amount: [
-          {
-            amount: this.fee.toString(),
-            denom: 'uband',
-          },
-        ],
-        gas: this.gas.toString(),
-      },
-      memo: this.memo,
-      sequence: this.sequence.toString(),
-      msgs: this.msgs.map((msg) => msg.asJson()),
-    }
+    let modeInfo = new ModeInfo()
+    modeInfo.setSingle()
 
-    const sortedKey = Object.keys(messageJson).sort()
-    const result: { [key: string]: any } = {}
-    sortedKey.forEach((key) => (result[key] = messageJson[key]))
+    let pubkey = privateKey.toPubkey()
 
-    return Buffer.from(JSON.stringify(result))
-  }
+    let publicKeyAny = new Any()
+    publicKeyAny.pack(
+      pubkey.toPubkeyProto().serializeBinary(),
+      'cosmos.crypto.secp256k1.PubKey',
+      '/',
+    )
+    let signerInfo = new SignerInfo()
+    signerInfo.setModeInfo(modeInfo)
+    signerInfo.setSequence(this.sequence)
+    signerInfo.setPublicKey(publicKeyAny)
 
-  getTxData(signature: Buffer, pubkey: PublicKey): Object {
-    if (this.accountNum == null) {
-      throw new UndefinedError('accountNum should be defined')
-    }
+    let authInfo = new AuthInfo()
+    authInfo.addSignerInfos(signerInfo)
+    let authInfoBytes = authInfo.serializeBinary()
 
-    if (this.sequence == null) {
-      throw new UndefinedError('sequence should be defined')
-    }
+    let signDoc = new SignDoc()
+    signDoc.setBodyBytes(txBodyBytes)
+    signDoc.setAuthInfoBytes(authInfoBytes)
+    signDoc.setChainId(this.chainID)
+    signDoc.setAccountNumber(this.accountNum)
+    let signDocBytes = signDoc.serializeBinary()
 
-    return {
-      fee: {
-        amount: [{ amount: this.fee.toString(), denom: 'uband' }],
-        gas: this.gas.toString(),
-      },
-      memo: this.memo,
-      msg: this.msgs.map((msg) => msg.asJson()),
-      signatures: [
-        {
-          signature: signature.toString('base64'),
-          pub_key: {
-            type: 'tendermint/PubKeySecp256k1',
-            value: Buffer.from(pubkey.toHex(), 'hex').toString('base64'),
-          },
-          account_number: this.accountNum.toString(),
-          sequence: this.sequence.toString(),
-        },
-      ],
-    }
+    let signature = privateKey.sign(signDocBytes)
+
+    let txRaw = new TxRaw()
+    txRaw.setBodyBytes(txBodyBytes)
+    txRaw.setAuthInfoBytes(authInfoBytes)
+    txRaw.addSignatures(signature)
+    return txRaw.serializeBinary()
   }
 }

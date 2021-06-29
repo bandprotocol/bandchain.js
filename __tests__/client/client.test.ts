@@ -5,8 +5,8 @@ import { EmptyRequestMsgError } from '../../src/error'
 import { Address } from '../../src/wallet'
 import { mocked } from 'ts-jest/utils'
 import {QueryClient, ServiceError, UnaryResponse} from '../../proto/oracle/v1/query_pb_service'
-import { QueryDataSourceRequest, QueryDataSourceResponse } from '../../proto/oracle/v1/query_pb'
-import { DataSource } from '../../proto/oracle/v1/oracle_pb'
+import { QueryDataSourceRequest, QueryDataSourceResponse, QueryOracleScriptRequest, QueryOracleScriptResponse } from '../../proto/oracle/v1/query_pb'
+import { DataSource, OracleScript } from '../../proto/oracle/v1/oracle_pb'
 import { grpc } from '@improbable-eng/grpc-web'
 
 jest.mock('axios')
@@ -78,28 +78,36 @@ describe('Client get data', () => {
 
 describe('Get oracle script by ID', () => {
   it('success', () => {
-    const resp = {
-      data: {
-        height: '2985172',
-        result: {
-          owner: 'band17f6n25na5kume99j4qdfzlf7jnpu9u2neqqvt8',
-          name: 'OS 03',
-          description: 'TBD',
-          filename:
-            '2bf80fa07dc9585305818939853833f140fdb7e7bab824a628dc2ebc2094f482',
-          schema:
-            '{base_symbol:string,quote_symbol:string,multiplier:u64}/{px:u64}',
-          source_code_url:
-            'https://ipfs.io/ipfs/QmcXZKevdv2QCAkzKF69YzSK6w7KziEugaVyyjuLF1RM6u',
-        },
-      },
-    }
-    mockedAxios.get.mockResolvedValue(resp)
+    expect(MockedQueryClient).not.toHaveBeenCalled()
+    const client = new Client(TEST_GRPC, TEST_RPC)
+    expect(MockedQueryClient).toHaveBeenCalledTimes(1)
+    
+    const mockedGRPCClient = mocked(MockedQueryClient.mock.instances[0], true)
+    type ExpectedOracleScriptSignature = (
+      requestMessage: QueryOracleScriptRequest,
+      metadata: grpc.Metadata,
+      callback: (error: ServiceError|null, responseMessage: QueryOracleScriptResponse|null) => void
+    ) => UnaryResponse;
+    const mockedOracleScript = mocked(mockedGRPCClient.oracleScript as ExpectedOracleScriptSignature)
+
+    mockedOracleScript.mockImplementationOnce((_req, _metadata, callback): UnaryResponse => {
+      const oracleScript = new OracleScript()
+      oracleScript.setOwner('band17f6n25na5kume99j4qdfzlf7jnpu9u2neqqvt8')
+      oracleScript.setName('OS 03')
+      oracleScript.setDescription('TBD')
+      oracleScript.setFilename('2bf80fa07dc9585305818939853833f140fdb7e7bab824a628dc2ebc2094f482')
+      oracleScript.setSchema('{base_symbol:string,quote_symbol:string,multiplier:u64}/{px:u64}')
+      oracleScript.setSourceCodeUrl('https://ipfs.io/ipfs/QmcXZKevdv2QCAkzKF69YzSK6w7KziEugaVyyjuLF1RM6u')
+
+      const response = new QueryOracleScriptResponse()
+      response.setOracleScript(oracleScript)
+
+      callback(null, response)
+      return { cancel: function() {} }
+    })
 
     const expected = {
-      owner: Address.fromAccBech32(
-        'band17f6n25na5kume99j4qdfzlf7jnpu9u2neqqvt8',
-      ),
+      owner: 'band17f6n25na5kume99j4qdfzlf7jnpu9u2neqqvt8',
       name: 'OS 03',
       description: 'TBD',
       fileName:
@@ -109,13 +117,15 @@ describe('Get oracle script by ID', () => {
       sourceCodeUrl:
         'https://ipfs.io/ipfs/QmcXZKevdv2QCAkzKF69YzSK6w7KziEugaVyyjuLF1RM6u',
     }
-    const response = client.getOracleScript(3)
-    response.then((e) => expect(e).toEqual(expected))
-  })
+
+    const response = await client.getOracleScript(1)
+    expect(mockedOracleScript).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(expected)
 })
 
 describe('get latest request', () => {
   it('success', () => {
+    
     const resp = {
       data: {
         height: '3006088',

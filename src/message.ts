@@ -1,5 +1,3 @@
-import { Coin } from './data'
-import { Address } from './wallet'
 import { MAX_DATA_SIZE } from './constant'
 import {
   NegativeIntegerError,
@@ -8,144 +6,117 @@ import {
   InsufficientCoinError,
   ValueError,
 } from './error'
+import { MsgRequestData } from '../proto/oracle/v1/tx_pb'
+import {MsgSend} from '../proto/cosmos/bank/v1beta1/tx_pb'
+import {MsgDelegate} from '../proto/cosmos/staking/v1beta1/tx_pb'
+import {Coin} from '../proto/cosmos/base/v1beta1/coin_pb'
+import {Any} from 'google-protobuf/google/protobuf/any_pb'
 
-export abstract class Msg {
-  abstract asJson(): { type: string; value: any }
-  abstract getSender(): Address
-  abstract validate(): boolean
-}
-export class MsgRequest extends Msg {
-  oracleScriptID: number
-  calldata: Buffer
-  askCount: number
-  minCount: number
-  clientID: string
-  sender: Address
-
+export class CreateMsgRequest extends MsgRequestData {
   constructor(
     oracleScriptID: number,
     calldata: Buffer,
     askCount: number,
     minCount: number,
-    clientID: string,
-    sender: Address,
+    clientId: string,
+    fee: Coin[],
+    prepareGas: number,
+    executeGas: number,  
+    sender: string,
   ) {
     super()
-
-    this.oracleScriptID = oracleScriptID
-    this.calldata = calldata
-    this.askCount = askCount
-    this.minCount = minCount
-    this.clientID = clientID
-    this.sender = sender
+    this.setOracleScriptId(oracleScriptID)
+    this.setCalldata(calldata)
+    this.setAskCount(askCount)
+    this.setMinCount(minCount)
+    this.setClientId(clientId)
+    this.setFeeLimitList(fee)
+    this.setPrepareGas(prepareGas)
+    this.setExecuteGas(executeGas)
+    this.setSender(sender)
   }
 
-  asJson() {
-    return {
-      type: 'oracle/Request',
-      value: {
-        ask_count: this.askCount.toString(),
-        calldata: this.calldata.toString('base64'),
-        client_id: this.clientID,
-        min_count: this.minCount.toString(),
-        oracle_script_id: String(this.oracleScriptID),
-        sender: this.sender.toAccBech32(),
-      },
+
+  toAny() {
+    if (this.validate()) {
+      let anyMsg = new Any()
+      let name = 'oracle.v1.MsgRequestData'
+      anyMsg.pack(this.serializeBinary(), name, '/')
+      return anyMsg  
     }
-  }
-
-  getSender() {
-    return this.sender
+    return undefined
   }
 
   validate() {
-    if (this.oracleScriptID <= 0)
+    if (this.getOracleScriptId() <= 0)
       throw new NegativeIntegerError('oracleScriptID cannot less than zero')
-    if (!Number.isInteger(this.oracleScriptID))
+    if (!Number.isInteger(this.getOracleScriptId()))
       throw new NotIntegerError('oracleScriptID is not an integer')
-    if (this.calldata.length > MAX_DATA_SIZE)
+    if (this.getCalldata().length > MAX_DATA_SIZE)
       throw new ValueTooLargeError('too large calldata')
-    if (!Number.isInteger(this.askCount))
+    if (!Number.isInteger(this.getAskCount()))
       throw new NotIntegerError('askCount is not an integer')
-    if (!Number.isInteger(this.minCount))
+    if (!Number.isInteger(this.getMinCount()))
       throw new NotIntegerError('minCount is not an integer')
-    if (this.minCount <= 0)
-      throw new ValueError(`invalid minCount, got: minCount: ${this.minCount}`)
-    if (this.askCount < this.minCount)
+    if (this.getMinCount() <= 0)
+      throw new ValueError(`invalid minCount, got: minCount: ${this.getMinCount()}`)
+    if (this.getAskCount() < this.getMinCount())
       throw new ValueError(
-        `invalid askCount got: minCount: ${this.minCount}, askCount: ${this.askCount}`,
+        `invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
       )
-
     return true
   }
 }
 
-export class MsgSend extends Msg {
-  fromAddress: Address
-  toAddress: Address
-  amount: Coin[]
-
-  constructor(from: Address, to: Address, amount: Coin[]) {
+export class CreateMsgSend extends MsgSend {
+  constructor(from: string, to: string, amount: Coin[]) {
     super()
-    this.fromAddress = from
-    this.toAddress = to
-    this.amount = amount
+    this.setFromAddress(from)
+    this.setToAddress(to)
+    this.setAmountList(amount)
   }
 
-  asJson() {
-    return {
-      type: 'cosmos-sdk/MsgSend',
-      value: {
-        amount: this.amount.map((each) => each.asJson()),
-        from_address: this.fromAddress.toAccBech32(),
-        to_address: this.toAddress.toAccBech32(),
-      },
+  toAny() {
+    if (this.validate()) {
+      let anyMsg = new Any()
+      let name = 'cosmos.bank.v1beta1.MsgSend'
+      anyMsg.pack(this.serializeBinary(), name, '/')
+      return anyMsg  
     }
+    return undefined
   }
 
-  getSender() {
-    return this.fromAddress
-  }
 
   validate() {
-    if (this.amount.length == 0) {
+    if (this.getAmountList.length == 0) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
-    this.amount.forEach((coin) => coin.validate())
     return true
   }
 }
 
-export class MsgDelegate extends Msg {
-  delegatorAddress: Address
-  validatorAddress: Address
-  amount: Coin
-
-  constructor(delegator: Address, validator: Address, amount: Coin) {
+export class CreateMsgDelegate extends MsgDelegate {
+  constructor(delegator: string, validator: string, amount: Coin) {
     super()
-
-    this.delegatorAddress = delegator
-    this.validatorAddress = validator
-    this.amount = amount
+    this.setDelegatorAddress(delegator)
+    this.setValidatorAddress(validator)
+    this.setAmount(amount)
   }
+ 
 
-  asJson() {
-    return {
-      type: 'cosmos-sdk/MsgDelegate',
-      value: {
-        amount: this.amount.asJson(),
-        delegator_address: this.delegatorAddress.toAccBech32(),
-        validator_address: this.validatorAddress.toValBech32(),
-      },
+  toAny() {
+    if (this.validate()) {
+      let anyMsg = new Any()
+      let name = 'cosmos.staking.v1beta1.MsgDelegate'
+      anyMsg.pack(this.serializeBinary(), name, '/')
+      return anyMsg  
     }
+    return undefined
   }
 
-  getSender() {
-    return this.delegatorAddress
-  }
 
   validate() {
-    this.amount.validate()
+    // this.amount.validate()
 
     return true
   }
