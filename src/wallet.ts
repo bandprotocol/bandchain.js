@@ -64,7 +64,7 @@ export class PrivateKey {
     return PublicKey.fromHex(Buffer.from(pubKeyByte).toString('hex'))
   }
 
-  sign(msg: Buffer): Buffer {
+  sign(msg: Uint8Array): Buffer {
     const hash = crypto.createHash('sha256').update(msg).digest('hex')
     const buf = Buffer.from(hash, 'hex')
     const { signature } = secp256k1.ecdsaSign(buf, this.signingKey)

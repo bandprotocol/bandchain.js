@@ -15,8 +15,10 @@ import {
   SignDoc,
   TxRaw,
 } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { PrivateKey } from 'wallet'
 export default class Transaction {
   msgs: Array<Any> = []
   accountNum?: number
@@ -76,7 +78,7 @@ export default class Transaction {
     return this
   }
 
-  getTxData(privateKey) {
+  getTxData(privateKey: PrivateKey) {
     if (this.msgs.length == 0) {
       throw new EmptyMsgError('message is empty')
     }
@@ -99,7 +101,9 @@ export default class Transaction {
     let txBodyBytes = txBody.serializeBinary()
 
     let modeInfo = new ModeInfo()
-    modeInfo.setSingle()
+    let modeSingle = new ModeInfo.Single()
+    modeSingle.setMode(SignMode.SIGN_MODE_DIRECT)
+    modeInfo.setSingle(modeSingle)
 
     let pubkey = privateKey.toPubkey()
 
@@ -116,6 +120,7 @@ export default class Transaction {
 
     let authInfo = new AuthInfo()
     authInfo.addSignerInfos(signerInfo)
+    authInfo.setFee(this.fee)
     let authInfoBytes = authInfo.serializeBinary()
 
     let signDoc = new SignDoc()

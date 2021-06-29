@@ -20,12 +20,12 @@ function App() {
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
 
   const { PrivateKey } = Wallet
-  const mnemonic = 'bubu'
+  const mnemonic = 'lock nasty suffer dirt dream fine fall deal curtain plate husband sound tower mom crew crawl guard rack snake before fragile course bacon range'
   const privateKey = PrivateKey.fromMnemonic(mnemonic)
   const pubkey = privateKey.toPubkey()
   const sender = pubkey.toAddress().toAccBech32()
-  const obi = new Obi('{symbols:[string],multiplier:u64}/{rates:[u64]}')
-  const calldata = obi.encodeInput({ symbols: ['ETH'], multiplier: 100 })
+  const obi = new Obi('{multiplier:u64}/{rates:[u64]}')
+  const calldata = obi.encodeInput({ multiplier: 100 })
 
   React.useEffect(() => {
     // Test all get method
@@ -57,12 +57,12 @@ function App() {
     async function sendTransaction() {
       let coin = new Coin()
       coin.setDenom('uband')
-      coin.setAmount('100')
+      coin.setAmount('10')
       const msg = new Message.CreateMsgRequest(
-        37,
+        1,
         calldata,
-        16,
-        10,
+        1,
+        1,
         'Blue',
         [coin],
         30000,
@@ -75,7 +75,7 @@ function App() {
       let sequence = acc.sequence
       let fee = new Fee()
       fee.addAmount(coin)
-      fee.setGasLimit(200000)
+      fee.setGasLimit(2000000)
 
       const txn = new Transaction()
       txn.withMessages(msgAny)
@@ -88,12 +88,12 @@ function App() {
 
       let tx_raw_bytes = txn.getTxData(privateKey)
 
-      const syncTx = await client.sendTxSyncMode(tx_raw_bytes)
+      const syncTx = await client.sendTxBlockMode(tx_raw_bytes)
       console.log('sync tx ', syncTx)
     }
 
     getData()
-    // sendTransaction()
+    sendTransaction()
   }, [])
   return (
     <div className="App">
