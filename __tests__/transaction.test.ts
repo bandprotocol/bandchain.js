@@ -1,148 +1,171 @@
-import { Message, Data, Transaction, Wallet } from '../src/index'
-import { Address } from '../src/wallet'
-
-const { MsgSend } = Message
-const { Coin } = Data
-const { PrivateKey } = Wallet
+import Transaction from '../src/transaction'
+import { CreateMsgRequest } from '../src/message'
+import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { PrivateKey } from '../src/wallet'
 
 describe('Transaction', () => {
-  const coin = new Coin(100000, 'uband')
-  const msgSend = new MsgSend(
-    Address.fromAccBech32('band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte'),
-    Address.fromAccBech32('band1ksnd0f3xjclvg0d4z9w0v9ydyzhzfhuy47yx79'),
+  const mnemonic = 'test'
+  const privateKey = PrivateKey.fromMnemonic(mnemonic)
+  const pubkey = privateKey.toPubkey()
+  const sender = pubkey.toAddress().toAccBech32()
+  const calldata = Buffer.from('000000034254430000000000000001', 'hex')
+  const clientId = 'test'
+  const coin = new Coin()
+  coin.setDenom('uband')
+  coin.setAmount('0')
+  const fee = new Fee()
+  fee.addAmount(coin)
+  fee.setGasLimit(2000000)
+  const message = new CreateMsgRequest(
+    1,
+    calldata,
+    3,
+    2,
+    clientId,
     [coin],
+    20000,
+    20000,
+    sender,
   )
+  const acountNum = 20
+  const sequence = 100
+  const chainId = 'bandchain'
+  const gas = 2000000
 
-  it('create successfully', () => {
-    const tsc = new Transaction()
+  it('create transaction object successfully', () => {
+    const tx = new Transaction()
+    tx.withMessages(message.toAny())
+    tx.withAccountNum(acountNum)
+    tx.withSequence(sequence)
+    tx.withChainID(chainId)
+    tx.withFee(fee)
+    tx.withGas(gas)
+    tx.withMemo('')
 
-    expect(tsc.accountNum).toBeUndefined()
-    expect(tsc.chainID).toBeUndefined()
-    expect(tsc.sequence).toBeUndefined()
-    expect(tsc.fee).toEqual(0)
-    expect(tsc.gas).toEqual(200000)
-    expect(tsc.withMessages.length).toEqual(0)
+    expect(tx.msgs.length > 0)
+    expect(tx.accountNum === acountNum)
+    expect(tx.sequence === sequence)
+    expect(tx.chainID === chainId)
+    expect(tx.fee === fee)
+    expect(tx.gas === gas)
+    expect(tx.memo === '')
   })
 
-  it('able to work "with" function', () => {
-    const tsc = new Transaction()
-      .withMessages(msgSend)
-      .withAccountNum(100)
-      .withSequence(30)
-      .withChainID('bandchain')
-      .withGas(500000)
-      .withFee(10)
-      .withMemo('bandchain2.js test')
-
-    expect(tsc.msgs.length).toEqual(1)
-    expect(tsc.accountNum).toEqual(100)
-    expect(tsc.sequence).toEqual(30)
-    expect(tsc.chainID).toEqual('bandchain')
-    expect(tsc.fee).toEqual(10)
-    expect(tsc.gas).toEqual(500000)
-    expect(tsc.memo).toEqual('bandchain2.js test')
-  })
-
-  it('get error from checking integer', () => {
-    const tsc = new Transaction().withMessages(msgSend)
-
+  it('creating transaction object error checking', () => {
+    const tx = new Transaction()
     expect(() => {
-      tsc.withAccountNum(100.5)
+      tx.withAccountNum(100.5)
     }).toThrowError('accountNum is not an integer')
 
     expect(() => {
-      tsc.withSequence(100.5)
+      tx.withSequence(100.5)
     }).toThrowError('sequence is not an integer')
 
     expect(() => {
-      tsc.withFee(100.5)
-    }).toThrowError('fee is not an integer')
+      tx.withGas(100.5)
+    }).toThrowError('gas is not an integer')
 
     expect(() => {
-      tsc.withGas(100.5)
-    }).toThrowError('gas is not an integer')
+      tx.withMemo(
+        'This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world',
+      )
+    }).toThrowError('memo is too large')
   })
 
-  it('getSignData successfully', () => {
-    const tsc = new Transaction()
-      .withMessages(msgSend)
-      .withAccountNum(100)
-      .withSequence(30)
-      .withChainID('bandchain')
-      .withGas(500000)
-      .withFee(10)
-      .withMemo('bandchain2.js test')
+  it('getSignDoc successfully', () => {
+    const tx = new Transaction()
+    tx.withMessages(message.toAny())
+    tx.withAccountNum(acountNum)
+    tx.withSequence(sequence)
+    tx.withChainID(chainId)
+    tx.withFee(fee)
+    tx.withGas(gas)
+    tx.withMemo('')
 
-    let expectedResult =
-      '7b226163636f756e745f6e756d626572223a22313030222c22636861696e5f6964223a2262616e64636861696e222c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a223130222c2264656e6f6d223a227562616e64227d5d2c22676173223a22353030303030227d2c226d656d6f223a2262616e64636861696e322e6a732074657374222c226d736773223a5b7b2274797065223a22636f736d6f732d73646b2f4d736753656e64222c2276616c7565223a7b22616d6f756e74223a5b7b22616d6f756e74223a22313030303030222c2264656e6f6d223a227562616e64227d5d2c2266726f6d5f61646472657373223a2262616e64316a7268757172796d7a74346d6e766777386376793373397a6878336a6a306471333071707465222c22746f5f61646472657373223a2262616e64316b736e64306633786a636c76673064347a39773076397964797a687a66687579343779783739227d7d5d2c2273657175656e6365223a223330227d'
-
-    expect(tsc.getSignData().toString('hex')).toEqual(expectedResult)
+    expect(() => {
+      tx.getSignDoc(pubkey) ==
+        new Uint8Array([
+          0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+          20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+          37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
+          54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
+          71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87,
+          88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103,
+          104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117,
+          118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131,
+          132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145,
+          146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
+          160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173,
+          174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187,
+          188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201,
+          202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215,
+          216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229,
+          230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243,
+          244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257,
+          258, 259, 260,
+        ])
+    })
   })
 
-  it('getSignData fail', () => {
-    let tsc = new Transaction()
+  it('getSignDoc error checking', () => {
+    let tx = new Transaction()
+    expect(() => tx.getSignDoc(pubkey)).toThrowError('message is empty')
 
-    expect(() => tsc.getSignData()).toThrowError('message is empty')
+    tx = tx.withMessages(message.toAny())
+    expect(() => tx.getSignDoc(pubkey)).toThrowError(
+      'accountNum should be defined',
+    )
 
-    tsc = tsc.withMessages(msgSend)
-    expect(() => tsc.getSignData()).toThrowError('accountNum should be defined')
+    tx = tx.withAccountNum(100)
+    expect(() => tx.getSignDoc(pubkey)).toThrowError(
+      'sequence should be defined',
+    )
 
-    tsc = tsc.withAccountNum(100)
-    expect(() => tsc.getSignData()).toThrowError('sequence should be defined')
-
-    tsc = tsc.withSequence(30)
-    expect(() => tsc.getSignData()).toThrowError('chainID should be defined')
-
-    tsc = tsc.withChainID('bandchain')
-    let expectedResult =
-      '7b226163636f756e745f6e756d626572223a22313030222c22636861696e5f6964223a2262616e64636861696e222c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2230222c2264656e6f6d223a227562616e64227d5d2c22676173223a22323030303030227d2c226d656d6f223a22222c226d736773223a5b7b2274797065223a22636f736d6f732d73646b2f4d736753656e64222c2276616c7565223a7b22616d6f756e74223a5b7b22616d6f756e74223a22313030303030222c2264656e6f6d223a227562616e64227d5d2c2266726f6d5f61646472657373223a2262616e64316a7268757172796d7a74346d6e766777386376793373397a6878336a6a306471333071707465222c22746f5f61646472657373223a2262616e64316b736e64306633786a636c76673064347a39773076397964797a687a66687579343779783739227d7d5d2c2273657175656e6365223a223330227d'
-    expect(tsc.getSignData().toString('hex')).toEqual(expectedResult)
+    tx = tx.withSequence(30)
+    expect(() => tx.getSignDoc(pubkey)).toThrowError(
+      'chainID should be defined',
+    )
   })
 
   it('getTxData successfully', () => {
-    const tsc = new Transaction()
-      .withMessages(msgSend)
-      .withAccountNum(100)
-      .withSequence(30)
-      .withChainID('bandchain')
-      .withGas(200000)
+    const tx = new Transaction()
+    tx.withMessages(message.toAny())
+    tx.withAccountNum(acountNum)
+    tx.withSequence(sequence)
+    tx.withChainID(chainId)
+    tx.withFee(fee)
+    tx.withGas(gas)
+    tx.withMemo('')
 
-    const rawData = tsc.getSignData()
-    const privKey = PrivateKey.fromMnemonic('s')
-    const pubkey = privKey.toPubkey()
-    const signature = privKey.sign(rawData)
-    const rawTx = tsc.getTxData(signature, pubkey)
-
-    expect(rawTx).toEqual({
-      msg: [
-        {
-          type: 'cosmos-sdk/MsgSend',
-          value: {
-            amount: [
-              {
-                amount: '100000',
-                denom: 'uband',
-              },
-            ],
-            from_address: 'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
-            to_address: 'band1ksnd0f3xjclvg0d4z9w0v9ydyzhzfhuy47yx79',
-          },
-        },
-      ],
-      fee: { gas: '200000', amount: [{ denom: 'uband', amount: '0' }] },
-      memo: '',
-      signatures: [
-        {
-          signature:
-            'LLnpUzoB7gmQd+9XxQiRyiEv3O04FWWgyX2Agm2xOoMF0iwab3BzG1L5Szl0OGfJezmMm016gF/Gjy0l9niB5w==',
-          pub_key: {
-            type: 'tendermint/PubKeySecp256k1',
-            value: 'A/5wi9pmUk/SxrzpBoLjhVWoUeA9Ku5PYpsF3pD1Htm8',
-          },
-          account_number: '100',
-          sequence: '30',
-        },
-      ],
+    const signDoc = tx.getSignDoc(pubkey)
+    const signature = privateKey.sign(signDoc)
+    const txRawBytes = tx.getTxData(signature, pubkey)
+    expect(() => {
+      txRawBytes ==
+        new Uint8Array([
+          0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+          20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+          37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
+          54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
+          71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87,
+          88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103,
+          104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117,
+          118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131,
+          132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145,
+          146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
+          160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173,
+          174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187,
+          188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201,
+          202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215,
+          216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229,
+          230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243,
+          244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257,
+          258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271,
+          272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285,
+          286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299,
+          300, 301, 302,
+        ])
     })
   })
 })

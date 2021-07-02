@@ -8,7 +8,7 @@ import {
   Transaction,
   Coin,
   Fee,
-  Message,
+  Message
 } from '@bandprotocol/bandchain.js'
 
 // BandChain's Proof-of-Authority REST endpoint
@@ -20,80 +20,22 @@ function App() {
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
 
   const { PrivateKey } = Wallet
-  const mnemonic = 'lock nasty suffer dirt dream fine fall deal curtain plate husband sound tower mom crew crawl guard rack snake before fragile course bacon range'
+  const mnemonic = 'test'
   const privateKey = PrivateKey.fromMnemonic(mnemonic)
   const pubkey = privateKey.toPubkey()
   const sender = pubkey.toAddress().toAccBech32()
-  const obi = new Obi('{multiplier:u64}/{rates:[u64]}')
-  const calldata = obi.encodeInput({ multiplier: 100 })
+  const obi = new Obi('{symbols:[string],multiplier:u64}/{rates:[u64]}')
+  const calldata = obi.encodeInput({ symbols: ['ETH'], multiplier: 100 })
 
   React.useEffect(() => {
-    // Test all get method
     async function getData() {
-      const dataSource = await client.getDataSource(1)
-      console.log('dataSource ', dataSource)
-      const oracleScript = await client.getOracleScript(1)
-      console.log('oracle Script ', oracleScript)
-      const request = await client.getRequestByID(1)
-      console.log('request ', request)
-      const reporters = await client.getReporters(
-        'bandvaloper18tjynh8v0kvf9lmjenx02fgltxk0c6jmm2wcjc',
-      )
-      console.log('reporters ', reporters)
       const acc = await client.getAccount(
         'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a',
       )
       console.log('account ', acc)
-      const reqId = await client.getRequestIDByTxHash(
-        'FF88A361014A8CC2283961D632F2A00BB9CC8C168D8AE7F307F50E5D8A3945D2',
-      )
-      console.log('reqId ', reqId)
-      const lastBlock = await client.getLatestBlock()
-      console.log(lastBlock)
-      const chainId = await client.getChainID()
-      console.log('chain id ', chainId)
     }
-
-    async function sendTransaction() {
-      let coin = new Coin()
-      coin.setDenom('uband')
-      coin.setAmount('10')
-      const msg = new Message.CreateMsgRequest(
-        1,
-        calldata,
-        1,
-        1,
-        'Blue',
-        [coin],
-        30000,
-        60000,
-        sender,
-      )
-      const msgAny = msg.toAny()
-      const acc = await client.getAccount(sender)
-      let accountNum = acc.accountNumber
-      let sequence = acc.sequence
-      let fee = new Fee()
-      fee.addAmount(coin)
-      fee.setGasLimit(2000000)
-
-      const txn = new Transaction()
-      txn.withMessages(msgAny)
-      txn.withAccountNum(accountNum)
-      txn.withSequence(sequence)
-      txn.withChainID(await client.getChainID())
-      txn.withFee(fee)
-      txn.withGas(2000000)
-      txn.withMemo('')
-
-      let tx_raw_bytes = txn.getTxData(privateKey)
-
-      const syncTx = await client.sendTxBlockMode(tx_raw_bytes)
-      console.log('sync tx ', syncTx)
-    }
-
     getData()
-    sendTransaction()
+
   }, [])
   return (
     <div className="App">

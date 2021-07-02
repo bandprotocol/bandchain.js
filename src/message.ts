@@ -39,8 +39,8 @@ export class CreateMsgRequest extends MsgRequestData {
 
   toAny() {
     if (this.validate()) {
-      let anyMsg = new Any()
-      let name = 'oracle.v1.MsgRequestData'
+      const anyMsg = new Any()
+      const name = 'oracle.v1.MsgRequestData'
       anyMsg.pack(this.serializeBinary(), name, '/')
       return anyMsg  
     }
@@ -78,8 +78,8 @@ export class CreateMsgSend extends MsgSend {
 
   toAny() {
     if (this.validate()) {
-      let anyMsg = new Any()
-      let name = 'cosmos.bank.v1beta1.MsgSend'
+      const anyMsg = new Any()
+      const name = 'cosmos.bank.v1beta1.MsgSend'
       anyMsg.pack(this.serializeBinary(), name, '/')
       return anyMsg  
     }
@@ -88,7 +88,7 @@ export class CreateMsgSend extends MsgSend {
 
 
   validate() {
-    if (this.getAmountList.length == 0) {
+    if (this.getAmountList().length == 0) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
     return true
@@ -106,8 +106,8 @@ export class CreateMsgDelegate extends MsgDelegate {
 
   toAny() {
     if (this.validate()) {
-      let anyMsg = new Any()
-      let name = 'cosmos.staking.v1beta1.MsgDelegate'
+      const anyMsg = new Any()
+      const name = 'cosmos.staking.v1beta1.MsgDelegate'
       anyMsg.pack(this.serializeBinary(), name, '/')
       return anyMsg  
     }
@@ -116,8 +116,9 @@ export class CreateMsgDelegate extends MsgDelegate {
 
 
   validate() {
-    // this.amount.validate()
-
+    if (this.getAmount() === undefined) {
+      throw new InsufficientCoinError('Expect at least 1 coin')
+    }
     return true
   }
 }

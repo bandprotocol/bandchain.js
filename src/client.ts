@@ -1,8 +1,4 @@
-import {
-  NotIntegerError,
-  EmptyRequestMsgError,
-  UnsuccessfulCallError,
-} from './error'
+import { NotIntegerError, NotFoundError } from './error'
 
 import { grpc } from '@improbable-eng/grpc-web'
 import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport'
@@ -24,20 +20,14 @@ import {
 } from '../proto/cosmos/base/tendermint/v1beta1/query_pb'
 
 import { QueryClient as AuthQueryClient } from '../proto/cosmos/auth/v1beta1/query_pb_service'
-import {
-  QueryAccountRequest,
-} from '../proto/cosmos/auth/v1beta1/query_pb'
+import { QueryAccountRequest } from '../proto/cosmos/auth/v1beta1/query_pb'
 
 import { ServiceClient as TxServiceClient } from '../proto/cosmos/tx/v1beta1/service_pb_service'
-import {
-  GetTxRequest,
-} from '../proto/cosmos/tx/v1beta1/service_pb'
+import { GetTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
 
-import {
-  BroadcastTxRequest,
-} from '../proto/cosmos/tx/v1beta1/service_pb'
+import { BroadcastTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
 
-import {TxResponse} from '../proto/cosmos/base/abci/v1beta1/abci_pb'
+import { TxResponse } from '../proto/cosmos/base/abci/v1beta1/abci_pb'
 import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
 
 export default class Client {
@@ -45,9 +35,7 @@ export default class Client {
   serviceClient: ServiceClient
   authQueryClient: AuthQueryClient
   txServiceClient: TxServiceClient
-  // TODO: rpcUrl and axios should be removed when gRPC completely replaced
-  rpcUrl: string
-  constructor(grpcUrl: string, rpcUrl: string) {
+  constructor(grpcUrl: string) {
     this.queryClient = new QueryClient(grpcUrl, {
       transport: NodeHttpTransport(),
     })
@@ -63,14 +51,7 @@ export default class Client {
     this.txServiceClient = new TxServiceClient(grpcUrl, {
       transport: NodeHttpTransport(),
     })
-    this.rpcUrl = rpcUrl
   }
-
-  /**
-   * Get the data source by ID
-   * @param id Data source ID
-   * @returns A Promise of DataSoruce.
-   */
 
   async getDataSource(id: number): Promise<DataSource.AsObject> {
     if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
@@ -95,12 +76,6 @@ export default class Client {
     })
   }
 
-  /**
-   * Get the oracle script by ID
-   * @param id Oracle script ID
-   * @returns A Promise of Oracle.
-   */
-
   async getOracleScript(id: number): Promise<OracleScript.AsObject> {
     if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
 
@@ -124,13 +99,7 @@ export default class Client {
     })
   }
 
-  /**
-   * Get the latest request
-   * @param id Request ID
-   * @returns  A Promise of RequestInfo.
-   */
-
-  async getRequestByID(id: number): Promise<QueryRequestResponse.AsObject> {
+  async getRequestById(id: number): Promise<QueryRequestResponse.AsObject> {
     if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
 
     const request = new QueryRequestRequest()
@@ -141,7 +110,6 @@ export default class Client {
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
@@ -163,7 +131,6 @@ export default class Client {
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
@@ -184,7 +151,6 @@ export default class Client {
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
@@ -205,62 +171,67 @@ export default class Client {
         request,
         {} as grpc.Metadata,
         (err, response) => {
-          console.log(response)
           if (err !== null || response === null) {
             reject(err)
             return
             // throw new UnsuccessfulCallError('Address does not exist')
           }
-
           if (response.hasAccount()) {
-            let accAny = response
+            let accBaseAccount = response
               .getAccount()
               .unpack(
                 BaseAccount.deserializeBinary,
                 'cosmos.auth.v1beta1.BaseAccount',
               )
-            resolve(accAny.toObject())
+            resolve(accBaseAccount.toObject())
           }
         },
       )
     })
   }
 
-  async getRequestIDByTxHash(txHash: string): Promise<any> {
+  async getRequestIdByTxHash(txHash: string): Promise<any> {
     const request = new GetTxRequest()
     request.setHash(txHash)
-    console.log(request.getHash())
     return new Promise((resolve, reject) => {
       this.txServiceClient.getTx(
         request,
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
-          if (response !== null && response.hasTxResponse()) {
-            resolve(
-              response.toObject().txResponse.logsList[0].eventsList[1].attributesList[0].value
-                
-            )
+          if (
+            response !== null &&
+            response.hasTxResponse() &&
+            response.toObject().txResponse.logsList
+          ) {
+            const tx = response.toObject().txResponse.logsList[0]
+            for (let x = 0; x < tx.eventsList.length; x++) {
+              if (tx.eventsList[x].type == 'report') {
+                const eventList = tx.eventsList[x]
+                for (let y = 0; y < eventList.attributesList.length; y++) {
+                  if (eventList.attributesList[y].key == 'id')
+                    resolve(eventList.attributesList[y].value)
+                }
+              }
+            }
+            reject(new NotFoundError('Request Id is not found'))
           }
         },
       )
     })
   }
 
-  async getChainID(): Promise<string> {
+  async getChainId(): Promise<string> {
     const latestBlock = await this.getLatestBlock()
     return latestBlock.block.header.chainId
   }
 
-  /**
-   * sendTxSyncMode
-   * @param data
-   */
-  async sendTxSyncMode(txBytes: Uint8Array | string): Promise<TxResponse.AsObject> {
+  async sendTxSyncMode(
+    txBytes: Uint8Array | string,
+  ): Promise<TxResponse.AsObject> {
     const request = new BroadcastTxRequest()
     request.setTxBytes(txBytes)
     request.setMode(2)
@@ -270,7 +241,6 @@ export default class Client {
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
@@ -282,11 +252,9 @@ export default class Client {
     })
   }
 
-  /**
-   * sendTxAsyncMode
-   * @param data
-   */
-  async sendTxAsyncMode(txBytes: Uint8Array | string): Promise<TxResponse.AsObject> {
+  async sendTxAsyncMode(
+    txBytes: Uint8Array | string,
+  ): Promise<TxResponse.AsObject> {
     const request = new BroadcastTxRequest()
     request.setTxBytes(txBytes)
     request.setMode(3)
@@ -296,7 +264,6 @@ export default class Client {
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
@@ -308,12 +275,9 @@ export default class Client {
     })
   }
 
-  /**
-   * sendTxBlockMode
-   * @param data
-   */
-
-  async sendTxBlockMode(txBytes: Uint8Array | string): Promise<TxResponse.AsObject> {
+  async sendTxBlockMode(
+    txBytes: Uint8Array | string,
+  ): Promise<TxResponse.AsObject> {
     const request = new BroadcastTxRequest()
     request.setTxBytes(txBytes)
     request.setMode(1)
@@ -323,7 +287,6 @@ export default class Client {
         {} as grpc.Metadata,
         (err, response) => {
           if (err !== null) {
-            console.log(err)
             reject(err)
             return
           }
