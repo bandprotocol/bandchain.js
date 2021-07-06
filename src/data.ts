@@ -15,7 +15,7 @@ export interface ReferenceData {
   pair: string
   rate: number
   updatedAt: ReferenceDataUpdated
-  requestID: ReferenceDataRequestID
+  requestId: ReferenceDataRequestID
 }
 
 export interface EVMProof {

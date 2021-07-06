@@ -375,7 +375,7 @@ export default class Client {
                   base: Number(symbolMap[baseSymbol].resolveTime),
                   quote: Number(symbolMap[quoteSymbol].resolveTime),
                 },
-                requestID: {
+                requestId: {
                   base: Number(symbolMap[baseSymbol].requestId),
                   quote: Number(symbolMap[quoteSymbol].requestId),
                 },
