@@ -829,7 +829,7 @@ describe('get reference data', () => {
           base: 1625537833,
           quote: STATIC_DATE / 1000,
         },
-        requestID: {
+        requestId: {
           base: 60536,
           quote: 0,
         }
@@ -841,7 +841,7 @@ describe('get reference data', () => {
           base: 1625537833,
           quote: 1625537834,
         },
-        requestID: {
+        requestId: {
           base: 60536,
           quote: 60537,
         }
