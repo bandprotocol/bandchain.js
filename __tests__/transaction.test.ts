@@ -23,10 +23,10 @@ describe('Transaction', () => {
     3,
     2,
     clientId,
+    sender,
     [coin],
     20000,
     20000,
-    sender,
   )
   const acountNum = 20
   const sequence = 100

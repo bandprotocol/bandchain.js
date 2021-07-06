@@ -19,10 +19,10 @@ export class MsgRequestData extends MsgRequestDataProto {
     askCount: number,
     minCount: number,
     clientId: string,
-    fee: Coin[],
-    prepareGas: number,
-    executeGas: number,  
     sender: string,
+    fee: Coin[] = [],
+    prepareGas: number = 50000,
+    executeGas: number = 300000,  
   ) {
     super()
     this.setOracleScriptId(oracleScriptID)

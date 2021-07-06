@@ -17,6 +17,7 @@ import {
 import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { PublicKey } from 'wallet'
 // import { PrivateKey } from 'wallet'
 export default class Transaction {
   msgs: Array<Any> = []
@@ -74,7 +75,7 @@ export default class Transaction {
     return this
   }
 
-  private getInfo(publicKey) {
+  private getInfo(publicKey: PublicKey) {
     let txBody = new TxBody()
     txBody.setMessagesList(this.msgs)
     txBody.setMemo(this.memo)
@@ -104,7 +105,7 @@ export default class Transaction {
     return [txBodyBytes, authInfoBytes]
   }
 
-  getSignDoc(publicKey): Uint8Array {
+  getSignDoc(publicKey: PublicKey): Uint8Array {
     if (this.msgs.length == 0) {
       throw new EmptyMsgError('message is empty')
     }
@@ -131,7 +132,7 @@ export default class Transaction {
     return signDoc.serializeBinary()
   }
 
-  getTxData(signature, publicKey) {
+  getTxData(signature: Uint8Array, publicKey: PublicKey) {
     const infoBytes = this.getInfo(publicKey)
 
     let txRaw = new TxRaw()

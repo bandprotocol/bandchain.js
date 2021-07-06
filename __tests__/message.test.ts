@@ -23,10 +23,10 @@ describe('MsgRequest', () => {
       2,
       2,
       clientId,
+      senderAddr,
       [coin],
       20000,
       20000,
-      senderAddr,
     )
 
     const anyMsg = new Any()
@@ -48,10 +48,10 @@ describe('MsgRequest', () => {
         2,
         2,
         clientId,
+        senderAddr,
         [coin],
         20000,
         20000,
-        senderAddr,
       ),
     )
     msgs.push(
@@ -61,10 +61,10 @@ describe('MsgRequest', () => {
         2,
         2,
         clientId,
+        senderAddr,
         [coin],
         20000,
         20000,
-        senderAddr,
       ),
     )
     msgs.push(
@@ -74,10 +74,10 @@ describe('MsgRequest', () => {
         2.1,
         2,
         clientId,
+        senderAddr,
         [coin],
         20000,
         20000,
-        senderAddr,
       ),
     )
     msgs.push(
@@ -87,10 +87,10 @@ describe('MsgRequest', () => {
         2,
         2.1,
         clientId,
+        senderAddr,
         [coin],
         20000,
         20000,
-        senderAddr,
       ),
     )
     msgs.push(
@@ -100,10 +100,10 @@ describe('MsgRequest', () => {
         2,
         0,
         clientId,
+        senderAddr,
         [coin],
         20000,
         20000,
-        senderAddr,
       ),
     )
     errorText.push('oracleScriptID cannot less than zero')
