@@ -35,6 +35,7 @@ import { BroadcastTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
 
 import { TxResponse } from '../proto/cosmos/base/abci/v1beta1/abci_pb'
 import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
+import { ReferenceData } from 'data'
 
 export default class Client {
   queryClient: QueryClient
@@ -324,9 +325,17 @@ export default class Client {
     pairs: string[],
     minCount: number,
     askCount: number,
-  ): Promise<PriceResult.AsObject[]> {
+  ): Promise<ReferenceData[]> {
     const request = new QueryRequestPriceRequest()
-    request.setSymbolsList(pairs)
+    let symbolSet: Set<string> = new Set()
+    pairs.forEach((pair) => {
+      let symbols = pair.split('/')
+      symbols.forEach((symbol) => {
+        if (symbol === 'USD') return
+        symbolSet.add(symbol)
+      })
+    })
+    request.setSymbolsList(Array.from(symbolSet))
     request.setAskCount(askCount)
     request.setMinCount(minCount)
     return new Promise((resolve, reject) => {
@@ -339,7 +348,40 @@ export default class Client {
             return
           }
           if (response !== null) {
-            resolve(response.toObject().priceResultsList)
+            const finalResult: ReferenceData[] = []
+            const symbolMap: { [k: string]: PriceResult.AsObject } = {}
+            symbolMap['USD'] = {
+              symbol: 'USD',
+              multiplier: 1000000000,
+              px: 1000000000,
+              requestId: 0,
+              resolveTime: Math.floor(Date.now() / 1000),
+            }
+            response.toObject().priceResultsList.forEach((priceResult) => {
+              symbolMap[priceResult.symbol] = priceResult
+            })
+
+            pairs.forEach((pair) => {
+              let [baseSymbol, quoteSymbol] = pair.split('/')
+
+              finalResult.push({
+                pair,
+                rate:
+                  (Number(symbolMap[baseSymbol].px) *
+                    Number(symbolMap[quoteSymbol].multiplier)) /
+                  (Number(symbolMap[quoteSymbol].px) *
+                    Number(symbolMap[baseSymbol].multiplier)),
+                updatedAt: {
+                  base: Number(symbolMap[baseSymbol].resolveTime),
+                  quote: Number(symbolMap[quoteSymbol].resolveTime),
+                },
+                requestID: {
+                  base: Number(symbolMap[baseSymbol].requestId),
+                  quote: Number(symbolMap[quoteSymbol].requestId),
+                },
+              })
+            })
+            resolve(finalResult)
           }
         },
       )

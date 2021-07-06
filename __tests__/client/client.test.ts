@@ -71,6 +71,9 @@ jest.mock('../../proto/cosmos/base/tendermint/v1beta1/query_pb_service')
 jest.mock('../../proto/cosmos/auth/v1beta1/query_pb_service')
 jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
 
+const STATIC_DATE = 1625578450000
+Date.now = jest.fn(() => STATIC_DATE)
+
 const MockedQueryClient = mocked(QueryClient, true)
 const MockedAuthQueryClient = mocked(AuthQueryClient, true)
 const MockedServiceClient = mocked(ServiceClient, true)
@@ -800,16 +803,16 @@ describe('get reference data', () => {
         const priceData1 = new PriceResult()
         priceData1.setSymbol('ETH')
         priceData1.setMultiplier(1000000)
-        priceData1.setPx(2216912500)
+        priceData1.setPx(3000000)
         priceData1.setRequestId(60536)
         priceData1.setResolveTime(1625537833)
 
         const priceData2 = new PriceResult()
         priceData2.setSymbol('BTC')
         priceData2.setMultiplier(1000000)
-        priceData2.setPx(33764936500)
-        priceData2.setRequestId(60536)
-        priceData2.setResolveTime(1625537833)
+        priceData2.setPx(2000000)
+        priceData2.setRequestId(60537)
+        priceData2.setResolveTime(1625537834)
 
         const response = new QueryRequestPriceResponse()
         response.setPriceResultsList([priceData1, priceData2])
@@ -820,21 +823,31 @@ describe('get reference data', () => {
     )
     const expected = [
       {
-        symbol: 'ETH',
-        multiplier: 1000000,
-        px: 2216912500,
-        requestId: 60536,
-        resolveTime: 1625537833,
+        pair: 'ETH/USD',
+        rate: 3,
+        updatedAt: {
+          base: 1625537833,
+          quote: STATIC_DATE / 1000,
+        },
+        requestID: {
+          base: 60536,
+          quote: 0,
+        }
       },
       {
-        symbol: 'BTC',
-        multiplier: 1000000,
-        px: 33764936500,
-        requestId: 60536,
-        resolveTime: 1625537833,
+        pair: 'ETH/BTC',
+        rate: 1.5,
+        updatedAt: {
+          base: 1625537833,
+          quote: 1625537834,
+        },
+        requestID: {
+          base: 60536,
+          quote: 60537,
+        }
       },
     ]
-    const response = await client.getReferenceData(['ETH', 'BTC'], 3, 4)
+    const response = await client.getReferenceData(['ETH/USD', 'ETH/BTC'], 3, 4)
     expect(mockGetReferenceData).toHaveBeenCalledTimes(1)
     expect(response).toEqual(expected)
   })
