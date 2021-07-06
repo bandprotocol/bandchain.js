@@ -17,7 +17,7 @@ import {
 import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
-import { PublicKey } from 'wallet'
+import { PublicKey } from './wallet'
 // import { PrivateKey } from 'wallet'
 export default class Transaction {
   msgs: Array<Any> = []
@@ -100,7 +100,9 @@ export default class Transaction {
 
     let authInfo = new AuthInfo()
     authInfo.addSignerInfos(signerInfo)
-    authInfo.setFee(this.fee)
+    const newFeeWithGas = this.fee.clone()
+    newFeeWithGas.setGasLimit(this.gas)
+    authInfo.setFee(newFeeWithGas)
     let authInfoBytes = authInfo.serializeBinary()
     return [txBodyBytes, authInfoBytes]
   }
