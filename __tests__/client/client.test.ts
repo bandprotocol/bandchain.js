@@ -15,11 +15,22 @@ import {
   QueryOracleScriptResponse,
   QueryReportersRequest,
   QueryReportersResponse,
+  QueryRequestPriceRequest,
+  QueryRequestPriceResponse,
+  QueryRequestSearchRequest,
+  QueryRequestSearchResponse,
+  QueryRequestResponse,
 } from '../../proto/oracle/v1/query_pb'
 import {
   DataSource,
   OracleScript,
   ReportersPerValidator,
+  PriceResult,
+  Request,
+  RawRequest,
+  Report,
+  RawReport,
+  Result,
 } from '../../proto/oracle/v1/oracle_pb'
 import { ServiceClient } from '../../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
 
@@ -348,7 +359,7 @@ describe('get reporters', () => {
 })
 
 describe('get request id by transaction hash', () => {
-  it('success, with request tx', async () => {
+  it('success, with report tx', async () => {
     expect(MockedTxService).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
@@ -411,9 +422,9 @@ describe('get request id by transaction hash', () => {
         txResponse.setRawLog(
           '[{"events":[{"type":"message","attributes":[{"key":"action","value":"report"}]},{"type":"report","attributes":[{"key":"id","value":"17320"},{"key":"validator","value":"bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839"}]}]}]',
         )
-        const abciMessageLog = new ABCIMessageLog()
-        abciMessageLog.setMsgIndex(0)
-        abciMessageLog.setLog('')
+        const abciMessageLog1 = new ABCIMessageLog()
+        abciMessageLog1.setMsgIndex(0)
+        abciMessageLog1.setLog('')
         const stringEvent1 = new StringEvent()
         stringEvent1.setType('message')
         const attribute1 = new Attribute()
@@ -431,8 +442,8 @@ describe('get request id by transaction hash', () => {
           'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
         )
         stringEvent2.setAttributesList([attribute2, attribute3])
-        abciMessageLog.setEventsList([stringEvent1, stringEvent2])
-        txResponse.setLogsList([abciMessageLog])
+        abciMessageLog1.setEventsList([stringEvent1, stringEvent2])
+        txResponse.setLogsList([abciMessageLog1])
         txResponse.setInfo('')
         txResponse.setGasWanted(76153)
         txResponse.setGasUsed(66833)
@@ -449,107 +460,15 @@ describe('get request id by transaction hash', () => {
         return { cancel: function () {} }
       },
     )
-    const expected = {
-      tx: {
-        body: {
-          messagesList: [
-            {
-              typeUrl: '/oracle.v1.MsgReportData',
-              value:
-                'CKiHARKGAQgBGoEBMDQzYTYxNzkzNjBiZjhhZDljMTJlMmM0YzQ0YjU0NzM1MDE1OTQzZTMxMWIwMGFhN2U3ODc5YmJmZjI5ZjY2NGVkOTIwNDVhYjQ3NDYzNDI4YTI1OWFmZjEzNGRjMDU1YjlkOTc5MGRhN2UyMWJmZTg0NzY0NjYyNGNhNWRiMjMKGjJiYW5kdmFsb3BlcjFkOTZ1MHFsdmRwNnZ4M2o2cjMzbHVqcjkzZjdnZHl5NmVyYzgzOSIrYmFuZDFnMmh5N3FwNXJ0OGc0cjhwMzh3M3E1bWFtZ3VnZ2wycGp1d3Zrdw==',
-            },
-          ],
-          memo: 'yoda:2.0.3/exec:lambda:2.0.0',
-          timeoutHeight: 0,
-          extensionOptionsList: [],
-          nonCriticalExtensionOptionsList: [],
-        },
-        authInfo: {
-          signerInfosList: [
-            {
-              publicKey: {
-                typeUrl: '/cosmos.crypto.secp256k1.PubKey',
-                value: 'CiEDMjXNir3uQ0slLlvp19D16YMl6myAW26009DGAh4dLiw=',
-              },
-              modeInfo: {
-                single: {
-                  mode: 1,
-                },
-              },
-              sequence: 3363,
-            },
-          ],
-          fee: {
-            amountList: [],
-            gasLimit: 76153,
-            payer: '',
-            granter: '',
-          },
-        },
-        signaturesList: [
-          'nAWQjUQ8B9PjfGhkW0OoUGzwIcFat7ODpJfCkmrpPGEjJAoAfo4FMe7p2+EeL4azogppzU0jc37hGKm8rMSqg==',
-        ],
-      },
-      txResponse: {
-        height: 206077,
-        txhash:
-          'FF88A361014A8CC2283961D632F2A00BB9CC8C168D8AE7F307F50E5D8A3945D2',
-        codespace: '',
-        code: 0,
-        data: '0A080A067265706F7274',
-        rawLog:
-          '[{"events":[{"type":"message","attributes":[{"key":"action","value":"report"}]},{"type":"report","attributes":[{"key":"id","value":"17320"},{"key":"validator","value":"bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839"}]}]}]',
-        logsList: [
-          {
-            msgIndex: 0,
-            log: '',
-            eventsList: [
-              {
-                type: 'message',
-                attributesList: [
-                  {
-                    key: 'action',
-                    value: 'report',
-                  },
-                ],
-              },
-              {
-                type: 'report',
-                attributesList: [
-                  {
-                    key: 'id',
-                    value: '17320',
-                  },
-                  {
-                    key: 'validator',
-                    value: 'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-        info: '',
-        gasWanted: 76153,
-        gasUsed: 66833,
-        tx: {
-          typeUrl: '/cosmos.tx.v1beta1.Tx',
-          value:
-            'CqwCCosCChgvb3JhY2xlLnYxLk1zZ1JlcG9ydERhdGES7gEIqIcBEoYBCAEagQEwNDNhNjE3OTM2MGJmOGFkOWMxMmUyYzRjNDRiNTQ3MzUwMTU5NDNlMzExYjAwYWE3ZTc4NzliYmZmMjlmNjY0ZWQ5MjA0NWFiNDc0NjM0MjhhMjU5YWZmMTM0ZGMwNTViOWQ5NzkwZGE3ZTIxYmZlODQ3NjQ2NjI0Y2E1ZGIyMwoaMmJhbmR2YWxvcGVyMWQ5NnUwcWx2ZHA2dngzajZyMzNsdWpyOTNmN2dkeXk2ZXJjODM5IitiYW5kMWcyaHk3cXA1cnQ4ZzRyOHAzOHczcTVtYW1ndWdnbDJwanV3dmt3Ehx5b2RhOjIuMC4zL2V4ZWM6bGFtYmRhOjIuMC4wElkKUQpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQMyNc2Kve5DSyUuW+nX0PXpgyXqbIBbbrTT0MYCHh0uLBIECgIIARijGhIEEPnSBBpAnAWQjUQ8B9PjfGhkW0OoUGzwIcFat7ODpJfCkmrpPGEjJAoAfo+4FMe7p2+EeL4azogppzU0jc37hGKm8rMSqg==',
-        },
-        timestamp: '2021-06-29T05:01:48Z',
-      },
-    }
+
     const response = await client.getRequestIdByTxHash(
       '90ED70061C1A24B1141F81BADEDAB19570D0B9B255412BF5D680A9BC93539115',
     )
+    // const value = [expected.txResponse.logsList[0].eventsList[1].attributesList[0].value]
     expect(mockedTxRequest).toHaveBeenCalledTimes(1)
-    expect(response).toEqual(
-      expected.txResponse.logsList[0].eventsList[1].attributesList[0].value,
-    )
+    expect(response).toEqual(['17320'])
   })
-  // ! Not sure about the response whether it is in the correct format
-  it('test with no request msgs tx', async () => {
+  it('success, with request tx (multiple id)', async () => {
     expect(MockedTxService).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
@@ -601,6 +520,7 @@ describe('get request id by transaction hash', () => {
         tx.setSignaturesList([
           'nAWQjUQ8B9PjfGhkW0OoUGzwIcFat7ODpJfCkmrpPGEjJAoAfo4FMe7p2+EeL4azogppzU0jc37hGKm8rMSqg==',
         ])
+
         const txResponse = new TxResponse()
         txResponse.setHeight(206077)
         txResponse.setTxhash(
@@ -610,20 +530,38 @@ describe('get request id by transaction hash', () => {
         txResponse.setCode(0)
         txResponse.setData('0A080A067265706F7274')
         txResponse.setRawLog(
-          '[{"events":[{"type":"message","attributes":[{"key":"action","value":"report"}]},{"type":"report","attributes":[{"key":"id","value":"17320"},{"key":"validator","value":"bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839"}]}]}]',
+          "[{'events':[{'type':'message','attributes':[{'key':'action','value':'request'}]},{'type':'raw_request','attributes':[{'key':'data_source_id','value':'82'},{'key':'data_source_hash','value':'2252604858d2f0b67b8c5745d555e7a27b10a11fa32332c7da3a61d873f76d98'},{'key':'external_id','value':'1'},{'key':'calldata','value':'BDE15735EDFA21E8C4484866C865177D13E88C5BD0B016CB3F5835613189B263 631805938'},{'key':'fee'}]},{'type':'request','attributes':[{'key':'id','value':'37625'},{'key':'client_id','value':'from_pyband_mumu_0'},{'key':'oracle_script_id','value':'47'},{'key':'calldata','value':'00000040424445313537333545444641323145384334343834383636433836353137374431334538384335424430423031364342334635383335363133313839423236330000000025a897f2'},{'key':'ask_count','value':'12'},{'key':'min_count','value':'11'},{'key':'gas_used','value':'33112'},{'key':'total_fees'},{'key':'validator','value':'bandvaloper1p46uhvdk8vr829v747v85hst3mur2dzlhfemmz'},{'key':'validator','value':'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe'},{'key':'validator','value':'bandvaloper1t9vedyzsxewe6lhpf9vm47em2hly23xm6uqtec'},{'key':'validator','value':'bandvaloper19eu9g3gka6rxlevkjlvjq7s6c498tejnwxjwxx'},{'key':'validator','value':'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839'},{'key':'validator','value':'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj'},{'key':'validator','value':'bandvaloper1ldtwjzsplhxzhrg3k5hhr8v0qterv05vpdxp9f'},{'key':'validator','value':'bandvaloper1274qgg28xkz6f3upx05ftr9zepgmtfgts392dy'},{'key':'validator','value':'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j'},{'key':'validator','value':'bandvaloper1qa4k43m4avza36kkal0vmsvccnpyyp6ltyp2l5'},{'key':'validator','value':'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g'},{'key':'validator','value':'bandvaloper1t659auvvukjtfn2h3hfp7usw0dqg6auhkwa9fs'}]}]},{'msg_index':1,'events':[{'type':'message','attributes':[{'key':'action','value':'request'}]},{'type':'raw_request','attributes':[{'key':'data_source_id','value':'82'},{'key':'data_source_hash','value':'2252604858d2f0b67b8c5745d555e7a27b10a11fa32332c7da3a61d873f76d98'},{'key':'external_id','value':'1'},{'key':'calldata','value':'BDE15735EDFA21E8C4484866C865177D13E88C5BD0B016CB3F5835613189B263 625726585'},{'key':'fee'}]},{'type':'request','attributes':[{'key':'id','value':'37626'},{'key':'client_id','value':'from_pyband_mumu_1'},{'key':'oracle_script_id','value':'47'},{'key':'calldata','value':'000000404244453135373335454446413231453843343438343836364338363531373744313345383843354244304230313643423346353833353631333138394232363300000000254bd479'},{'key':'ask_count','value':'12'},{'key':'min_count','value':'11'},{'key':'gas_used','value':'33112'},{'key':'total_fees'},{'key':'validator','value':'bandvaloper19eu9g3gka6rxlevkjlvjq7s6c498tejnwxjwxx'},{'key':'validator','value':'bandvaloper1p46uhvdk8vr829v747v85hst3mur2dzlhfemmz'},{'key':'validator','value':'bandvaloper1t9vedyzsxewe6lhpf9vm47em2hly23xm6uqtec'},{'key':'validator','value':'bandvaloper1274qgg28xkz6f3upx05ftr9zepgmtfgts392dy'},{'key':'validator','value':'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j'},{'key':'validator','value':'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g'},{'key':'validator','value':'bandvaloper1qa4k43m4avza36kkal0vmsvccnpyyp6ltyp2l5'},{'key':'validator','value':'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj'},{'key':'validator','value':'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839'},{'key':'validator','value':'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe'},{'key':'validator','value':'bandvaloper1ldtwjzsplhxzhrg3k5hhr8v0qterv05vpdxp9f'},{'key':'validator','value':'bandvaloper1t659auvvukjtfn2h3hfp7usw0dqg6auhkwa9fs'}]}]},{'msg_index':2,'events':[{'type':'message','attributes':[{'key':'action','value':'request'}]},{'type':'raw_request','attributes':[{'key':'data_source_id','value':'82'},{'key':'data_source_hash','value':'2252604858d2f0b67b8c5745d555e7a27b10a11fa32332c7da3a61d873f76d98'},{'key':'external_id','value':'1'},{'key':'calldata','value':'BDE15735EDFA21E8C4484866C865177D13E88C5BD0B016CB3F5835613189B263 410494784'},{'key':'fee'}]},{'type':'request','attributes':[{'key':'id','value':'37627'},{'key':'client_id','value':'from_pyband_mumu_2'},{'key':'oracle_script_id','value':'47'},{'key':'calldata','value':'0000004042444531353733354544464132314538433434383438363643383635313737443133453838433542443042303136434233463538333536313331383942323633000000001877a740'},{'key':'ask_count','value':'12'},{'key':'min_count','value':'11'},{'key':'gas_used','value':'33112'},{'key':'total_fees'},{'key':'validator','value':'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g'},{'key':'validator','value':'bandvaloper1p46uhvdk8vr829v747v85hst3mur2dzlhfemmz'},{'key':'validator','value':'bandvaloper1qa4k43m4avza36kkal0vmsvccnpyyp6ltyp2l5'},{'key':'validator','value':'bandvaloper19eu9g3gka6rxlevkjlvjq7s6c498tejnwxjwxx'},{'key':'validator','value':'bandvaloper1274qgg28xkz6f3upx05ftr9zepgmtfgts392dy'},{'key':'validator','value':'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j'},{'key':'validator','value':'bandvaloper1ldtwjzsplhxzhrg3k5hhr8v0qterv05vpdxp9f'},{'key':'validator','value':'bandvaloper1t9vedyzsxewe6lhpf9vm47em2hly23xm6uqtec'},{'key':'validator','value':'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj'},{'key':'validator','value':'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839'},{'key':'validator','value':'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe'},{'key':'validator','value':'bandvaloper1t659auvvukjtfn2h3hfp7usw0dqg6auhkwa9fs'}]}]},{'msg_index':3,'events':[{'type':'message','attributes':[{'key':'action','value':'request'}]},{'type':'raw_request','attributes':[{'key':'data_source_id','value':'82'},{'key':'data_source_hash','value':'2252604858d2f0b67b8c5745d555e7a27b10a11fa32332c7da3a61d873f76d98'},{'key':'external_id','value':'1'},{'key':'calldata','value':'BDE15735EDFA21E8C4484866C865177D13E88C5BD0B016CB3F5835613189B263 97304188'},{'key':'fee'}]},{'type':'request','attributes':[{'key':'id','value':'37628'},{'key':'client_id','value':'from_pyband_mumu_3'},{'key':'oracle_script_id','value':'47'},{'key':'calldata','value':'00000040424445313537333545444641323145384334343834383636433836353137374431334538384335424430423031364342334635383335363133313839423236330000000005ccbe7c'},{'key':'ask_count','value':'12'},{'key':'min_count','value':'11'},{'key':'gas_used','value':'33063'},{'key':'total_fees'},{'key':'validator','value':'bandvaloper1p46uhvdk8vr829v747v85hst3mur2dzlhfemmz'},{'key':'validator','value':'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj'},{'key':'validator','value':'bandvaloper1qa4k43m4avza36kkal0vmsvccnpyyp6ltyp2l5'},{'key':'validator','value':'bandvaloper1274qgg28xkz6f3upx05ftr9zepgmtfgts392dy'},{'key':'validator','value':'bandvaloper1t9vedyzsxewe6lhpf9vm47em2hly23xm6uqtec'},{'key':'validator','value':'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g'},{'key':'validator','value':'bandvaloper1ldtwjzsplhxzhrg3k5hhr8v0qterv05vpdxp9f'},{'key':'validator','value':'bandvaloper19eu9g3gka6rxlevkjlvjq7s6c498tejnwxjwxx'},{'key':'validator','value':'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe'},{'key':'validator','value':'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839'},{'key':'validator','value':'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j'},{'key':'validator','value':'bandvaloper1t659auvvukjtfn2h3hfp7usw0dqg6auhkwa9fs'}]}]},{'msg_index':4,'events':[{'type':'message','attributes':[{'key':'action','value':'request'}]},{'type':'raw_request','attributes':[{'key':'data_source_id','value':'82'},{'key':'data_source_hash','value':'2252604858d2f0b67b8c5745d555e7a27b10a11fa32332c7da3a61d873f76d98'},{'key':'external_id','value':'1'},{'key':'calldata','value':'BDE15735EDFA21E8C4484866C865177D13E88C5BD0B016CB3F5835613189B263 539917272'},{'key':'fee'}]},{'type':'request','attributes':[{'key':'id','value':'37629'},{'key':'client_id','value':'from_pyband_mumu_4'},{'key':'oracle_script_id','value':'47'},{'key':'calldata','value':'000000404244453135373335454446413231453843343438343836364338363531373744313345383843354244304230313643423346353833353631333138394232363300000000202e7bd8'},{'key':'ask_count','value':'12'},{'key':'min_count','value':'11'},{'key':'gas_used','value':'33112'},{'key':'total_fees'},{'key':'validator','value':'bandvaloper19eu9g3gka6rxlevkjlvjq7s6c498tejnwxjwxx'},{'key':'validator','value':'bandvaloper1274qgg28xkz6f3upx05ftr9zepgmtfgts392dy'},{'key':'validator','value':'bandvaloper1ldtwjzsplhxzhrg3k5hhr8v0qterv05vpdxp9f'},{'key':'validator','value':'bandvaloper1p46uhvdk8vr829v747v85hst3mur2dzlhfemmz'},{'key':'validator','value':'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe'},{'key':'validator','value':'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j'},{'key':'validator','value':'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g'},{'key':'validator','value':'bandvaloper1t659auvvukjtfn2h3hfp7usw0dqg6auhkwa9fs'},{'key':'validator','value':'bandvaloper1t9vedyzsxewe6lhpf9vm47em2hly23xm6uqtec'},{'key':'validator','value':'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj'},{'key':'validator','value':'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839'},{'key':'validator','value':'bandvaloper1qa4k43m4avza36kkal0vmsvccnpyyp6ltyp2l5'}]}]}]",
         )
-        const abciMessageLog = new ABCIMessageLog()
-        abciMessageLog.setMsgIndex(0)
-        abciMessageLog.setLog('')
+
+        const abciMessageLog1 = new ABCIMessageLog()
+        abciMessageLog1.setMsgIndex(0)
+        abciMessageLog1.setLog('')
         const stringEvent1 = new StringEvent()
         stringEvent1.setType('message')
         const attribute1 = new Attribute()
         attribute1.setKey('action')
-        attribute1.setValue('report')
+        attribute1.setValue('request')
         stringEvent1.setAttributesList([attribute1])
+        const stringEvent2 = new StringEvent()
+        stringEvent2.setType('request')
+        const attribute2 = new Attribute()
+        attribute2.setKey('id')
+        attribute2.setValue('17320')
+        const attribute3 = new Attribute()
+        attribute3.setKey('validator')
+        attribute3.setValue(
+          'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
+        )
+        stringEvent1.setAttributesList([attribute1])
+        stringEvent2.setAttributesList([attribute2, attribute3])
+        abciMessageLog1.setEventsList([stringEvent1, stringEvent2])
 
-        abciMessageLog.setEventsList([stringEvent1])
-        txResponse.setLogsList([abciMessageLog])
+        const abciMessageLog2 = new ABCIMessageLog()
+        abciMessageLog2.setMsgIndex(0)
+        abciMessageLog2.setLog('')
+        abciMessageLog2.setEventsList([stringEvent1, stringEvent2])
+
+        txResponse.setLogsList([abciMessageLog1, abciMessageLog2])
         txResponse.setInfo('')
         txResponse.setGasWanted(76153)
         txResponse.setGasUsed(66833)
@@ -641,13 +579,11 @@ describe('get request id by transaction hash', () => {
       },
     )
 
-    const action = async () => {
-      await client.getRequestIdByTxHash(
-        '90ED70061C1A24B1141F81BADEDAB19570D0B9B255412BF5D680A9BC93539115',
-      )
-    }
-
-    expect(action()).rejects.toThrow()
+    const response = await client.getRequestIdByTxHash(
+      '90ED70061C1A24B1141F81BADEDAB19570D0B9B255412BF5D680A9BC93539115',
+    )
+    expect(mockedTxRequest).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(['17320', '17320'])
   })
 })
 
@@ -804,7 +740,7 @@ describe('get account', () => {
     expect(response).toEqual(expected)
   })
 
-  it('account none', () => {
+  it('account none', async () => {
     expect(MockedAuthQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedAuthQueryClient).toHaveBeenCalledTimes(1)
@@ -833,10 +769,265 @@ describe('get account', () => {
       },
     )
 
-    const action = async () => {
-      await client.getAccount('band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte')
-    }
+    const response = await client.getAccount(
+      'band1jrhuqrymzt4mnvy3s9zhx3jj0dq30qpte',
+    )
+    expect(mockedAccount).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(undefined)
+  })
+})
 
-    expect(action()).rejects.toThrow()
+describe('get reference data', () => {
+  it('reference data success', async () => {
+    expect(MockedQueryClient).not.toHaveBeenCalled()
+    const client = new Client(TEST_GRPC)
+    expect(MockedQueryClient).toHaveBeenCalledTimes(1)
+    const mockedQueryClient = mocked(MockedQueryClient.mock.instances[0], true)
+
+    type ExpectedGetReferenceData = (
+      requestMessage: QueryRequestPriceRequest,
+      metadata: grpc.Metadata,
+      callback: (
+        error: ServiceError | null,
+        responseMessage: QueryRequestPriceResponse | null,
+      ) => void,
+    ) => UnaryResponse
+    const mockGetReferenceData = mocked(
+      mockedQueryClient.requestPrice as ExpectedGetReferenceData,
+    )
+    mockGetReferenceData.mockImplementationOnce(
+      (_req, _metadata, callback): UnaryResponse => {
+        const priceData1 = new PriceResult()
+        priceData1.setSymbol('ETH')
+        priceData1.setMultiplier(1000000)
+        priceData1.setPx(2216912500)
+        priceData1.setRequestId(60536)
+        priceData1.setResolveTime(1625537833)
+
+        const priceData2 = new PriceResult()
+        priceData2.setSymbol('BTC')
+        priceData2.setMultiplier(1000000)
+        priceData2.setPx(33764936500)
+        priceData2.setRequestId(60536)
+        priceData2.setResolveTime(1625537833)
+
+        const response = new QueryRequestPriceResponse()
+        response.setPriceResultsList([priceData1, priceData2])
+
+        callback(null, response)
+        return { cancel: function () {} }
+      },
+    )
+    const expected = [
+      {
+        symbol: 'ETH',
+        multiplier: 1000000,
+        px: 2216912500,
+        requestId: 60536,
+        resolveTime: 1625537833,
+      },
+      {
+        symbol: 'BTC',
+        multiplier: 1000000,
+        px: 33764936500,
+        requestId: 60536,
+        resolveTime: 1625537833,
+      },
+    ]
+    const response = await client.getReferenceData(['ETH', 'BTC'], 3, 4)
+    expect(mockGetReferenceData).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(expected)
+  })
+})
+
+describe('get latest request', () => {
+  it('latest request success', async () => {
+    expect(MockedQueryClient).not.toHaveBeenCalled()
+    const client = new Client(TEST_GRPC)
+    expect(MockedQueryClient).toHaveBeenCalledTimes(1)
+    const mockedQueryClient = mocked(MockedQueryClient.mock.instances[0], true)
+
+    type ExpectedLatestRequest = (
+      requestMessage: QueryRequestSearchRequest,
+      metadata: grpc.Metadata,
+      callback: (
+        error: ServiceError | null,
+        responseMessage: QueryRequestSearchResponse | null,
+      ) => void,
+    ) => UnaryResponse
+    const mockGetLatestRequest = mocked(
+      mockedQueryClient.requestSearch as ExpectedLatestRequest,
+    )
+    mockGetLatestRequest.mockImplementationOnce(
+      (_req, _metadata, callback): UnaryResponse => {
+        const request = new Request()
+        request.setOracleScriptId(43)
+        request.setCalldata('AAAAAgAAAARCVENCAAAABEJFVEgAAAAAO5rKAA==')
+        request.setRequestedValidatorsList([
+          'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
+          'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj',
+          'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g',
+          'bandvaloper17n5rmujk78nkgss7tjecg4nfzn6geg4cqtyg3u',
+          'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j',
+          'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe',
+        ])
+        request.setMinCount(3)
+        request.setRequestHeight(431790)
+        request.setRequestTime(1625547173)
+        request.setClientId('linear')
+
+        const rawReq1 = new RawRequest()
+        rawReq1.setExternalId(0)
+        rawReq1.setDataSourceId(74)
+        rawReq1.setCalldata(
+          'aHR0cHM6Ly91cy1ycGMuYmFuZGNoYWluLm9yZy9vcmFjbGUvcmVxdWVzdF9wcmljZXMgQlRDIEVUSA==',
+        )
+        const rawReq2 = new RawRequest()
+        rawReq2.setExternalId(0)
+        rawReq2.setDataSourceId(74)
+        rawReq2.setCalldata(
+          'aHR0cHM6Ly91cy1ycGMuYmFuZGNoYWluLm9yZy9vcmFjbGUvcmVxdWVzdF9wcmljZXMgQlRDIEVUSA==',
+        )
+
+        request.setRawRequestsList([rawReq1, rawReq2])
+        request.setExecuteGas(1000000)
+
+        const report1 = new Report()
+        report1.setValidator(
+          'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g',
+        )
+        report1.setInBeforeResolve(true)
+        const rawRep1 = new RawReport()
+        rawReq1.setExternalId(0)
+        rawRep1.setExitCode(0)
+        rawRep1.setData('MzQ2NzQuNTQgMjMxMy45OQo=')
+        const rawRep2 = new RawReport()
+        rawReq2.setExternalId(0)
+        rawRep2.setExitCode(0)
+        rawRep2.setData('MzQ2NzQuNTQgMjMxMy45OQo=')
+        report1.setRawReportsList([rawRep1, rawRep2])
+
+        const report2 = new Report()
+        report2.setValidator(
+          'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
+        )
+        report2.setInBeforeResolve(true)
+        report2.setRawReportsList([rawRep1, rawRep2])
+
+        const result = new Result()
+        result.setClientId('linear')
+        result.setOracleScriptId(43)
+        result.setCalldata('AAAAAgAAAARCVENCAAAABEJFVEgAAAAAO5rKAA==')
+        result.setAskCount(6)
+        result.setMinCount(3)
+        result.setRequestId(64783)
+        result.setAnsCount(6)
+        result.setRequestTime(1625547173)
+        result.setResolveTime(1625547179)
+        result.setResolveStatus(1)
+        result.setResult('AAAAAgAAH4lLo7MAAAACGsSNTYA==')
+
+        const reqResponse = new QueryRequestResponse()
+        reqResponse.setRequest(request)
+        reqResponse.setReportsList([report1, report2])
+        reqResponse.setResult(result)
+
+        const response = new QueryRequestSearchResponse()
+        response.setRequest(reqResponse)
+
+        callback(null, response)
+        return { cancel: function () {} }
+      },
+    )
+
+    const expected = {
+      request: {
+        oracleScriptId: 43,
+        calldata: 'AAAAAgAAAARCVENCAAAABEJFVEgAAAAAO5rKAA==',
+        requestedValidatorsList: [
+          'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
+          'bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj',
+          'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g',
+          'bandvaloper17n5rmujk78nkgss7tjecg4nfzn6geg4cqtyg3u',
+          'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j',
+          'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe',
+        ],
+        minCount: 3,
+        requestHeight: 431790,
+        requestTime: 1625547173,
+        clientId: 'linear',
+        rawRequestsList: [
+          {
+            externalId: 0,
+            dataSourceId: 74,
+            calldata:
+              'aHR0cHM6Ly91cy1ycGMuYmFuZGNoYWluLm9yZy9vcmFjbGUvcmVxdWVzdF9wcmljZXMgQlRDIEVUSA==',
+          },
+          {
+            externalId: 0,
+            dataSourceId: 74,
+            calldata:
+              'aHR0cHM6Ly91cy1ycGMuYmFuZGNoYWluLm9yZy9vcmFjbGUvcmVxdWVzdF9wcmljZXMgQlRDIEVUSA==',
+          },
+        ],
+        executeGas: 1000000,
+        ibcChannel: undefined,
+      },
+      reportsList: [
+        {
+          validator: 'bandvaloper1zl5925n5u24njn9axpygz8lhjl5a8v4cpkzx5g',
+          inBeforeResolve: true,
+          rawReportsList: [
+            {
+              externalId: 0,
+              exitCode: 0,
+              data: 'MzQ2NzQuNTQgMjMxMy45OQo=',
+            },
+            {
+              externalId: 0,
+              exitCode: 0,
+              data: 'MzQ2NzQuNTQgMjMxMy45OQo=',
+            },
+          ],
+        },
+        {
+          validator: 'bandvaloper1d96u0qlvdp6vx3j6r33lujr93f7gdyy6erc839',
+          inBeforeResolve: true,
+          rawReportsList: [
+            {
+              externalId: 0,
+              exitCode: 0,
+              data: 'MzQ2NzQuNTQgMjMxMy45OQo=',
+            },
+            {
+              externalId: 0,
+              exitCode: 0,
+              data: 'MzQ2NzQuNTQgMjMxMy45OQo=',
+            },
+          ],
+        },
+      ],
+      result: {
+        clientId: 'linear',
+        oracleScriptId: 43,
+        calldata: 'AAAAAgAAAARCVENCAAAABEJFVEgAAAAAO5rKAA==',
+        askCount: 6,
+        minCount: 3,
+        requestId: 64783,
+        ansCount: 6,
+        requestTime: 1625547173,
+        resolveTime: 1625547179,
+        resolveStatus: 1,
+        result: 'AAAAAgAAH4lLo7MAAAACGsSNTYA==',
+      },
+    }
+    const response = await client.getLatestRequest(
+      43,
+      '0000000200000004425443420000000442455448000000003b9aca00',
+      3,
+      6,
+    )
+    expect(mockGetLatestRequest).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(expected)
   })
 })

@@ -28,13 +28,13 @@ function App() {
   const calldata = obi.encodeInput({ symbols: ['ETH'], multiplier: 100 })
 
   React.useEffect(() => {
-    async function getData() {
+    async function getReferenceData() {
       const acc = await client.getAccount(
         'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a',
       )
       console.log('account ', acc)
     }
-    getData()
+    getReferenceData()
 
   }, [])
   return (

@@ -1,4 +1,4 @@
-import { NotIntegerError, NotFoundError } from './error'
+import { NotIntegerError } from './error'
 
 import { grpc } from '@improbable-eng/grpc-web'
 import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport'
@@ -10,8 +10,14 @@ import {
   QueryRequestRequest,
   QueryRequestResponse,
   QueryReportersRequest,
+  QueryRequestPriceRequest,
+  QueryRequestSearchRequest,
 } from '../proto/oracle/v1/query_pb'
-import { DataSource, OracleScript } from '../proto/oracle/v1/oracle_pb'
+import {
+  DataSource,
+  OracleScript,
+  PriceResult,
+} from '../proto/oracle/v1/oracle_pb'
 import { ServiceClient } from '../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
 
 import {
@@ -183,8 +189,11 @@ export default class Client {
                 BaseAccount.deserializeBinary,
                 'cosmos.auth.v1beta1.BaseAccount',
               )
-            resolve(accBaseAccount.toObject())
+            if (accBaseAccount.getAddress) {
+              resolve(accBaseAccount.toObject())
+            }
           }
+          resolve(undefined)
         },
       )
     })
@@ -207,17 +216,30 @@ export default class Client {
             response.hasTxResponse() &&
             response.toObject().txResponse.logsList
           ) {
-            const tx = response.toObject().txResponse.logsList[0]
-            for (let x = 0; x < tx.eventsList.length; x++) {
-              if (tx.eventsList[x].type == 'report') {
-                const eventList = tx.eventsList[x]
-                for (let y = 0; y < eventList.attributesList.length; y++) {
-                  if (eventList.attributesList[y].key == 'id')
-                    resolve(eventList.attributesList[y].value)
+            // const tx = response.toObject().txResponse.logsList[0]
+            console.log(JSON.stringify(response.toObject()))
+            let reqIdList = []
+            for (
+              let z = 0;
+              z < response.toObject().txResponse.logsList.length;
+              z++
+            ) {
+              let tx = response.toObject().txResponse.logsList[z]
+              console.log(tx)
+              for (let x = 0; x < tx.eventsList.length; x++) {
+                if (
+                  tx.eventsList[x].type == 'report' ||
+                  tx.eventsList[x].type == 'request'
+                ) {
+                  const eventList = tx.eventsList[x]
+                  for (let y = 0; y < eventList.attributesList.length; y++) {
+                    if (eventList.attributesList[y].key == 'id')
+                      reqIdList.push(eventList.attributesList[y].value)
+                  }
                 }
               }
             }
-            reject(new NotFoundError('Request Id is not found'))
+            resolve(reqIdList)
           }
         },
       )
@@ -298,201 +320,67 @@ export default class Client {
     })
   }
 
-  // ! Functions below need to change to GRPC
-
-  /*
-  
-  async getReferenceData(pairs: string[]): Promise<ReferenceData[]> {
-    let symbolSet: Set<string> = new Set()
-    pairs.forEach((pair: string) => {
-      let symbols = pair.split('/')
-      symbols.forEach((symbol: string) => {
-        if (symbol === 'USD') return
-        symbolSet.add(symbol)
-      })
-    })
-    let symbolList: string[] = Array.from(symbolSet)
-    let pricerParams: Params = {
-      symbols: symbolList,
-      min_count: 3,
-      ask_count: 4,
-    }
-    let {price_results: priceData} = await this.get('/oracle/v1/request_prices', pricerParams)
-
-    let symbolMap: any = {}
-    symbolMap['USD'] = {
-      symbol: 'USD',
-      multiplier: '1000000000',
-      px: '1000000000',
-      request_id: 0,
-      resolve_time: Math.floor(Date.now() / 1000).toString(),
-    }
-    priceData.map((price: any) => {
-      symbolMap[price.symbol] = price
-    })
-    let data: ReferenceData[] = []
-    pairs.forEach((pair) => {
-      let [baseSymbol, quoteSymbol] = pair.split('/')
-
-      data.push({
-        pair,
-        rate:
-          (Number(symbolMap[baseSymbol].px) *
-            Number(symbolMap[quoteSymbol].multiplier)) /
-          (Number(symbolMap[quoteSymbol].px) *
-            Number(symbolMap[baseSymbol].multiplier)),
-        updatedAt: {
-          base: Number(symbolMap[baseSymbol].resolve_time),
-          quote: Number(symbolMap[quoteSymbol].resolve_time),
-        },
-        requestID: {
-          base: Number(symbolMap[baseSymbol].request_id),
-          quote: Number(symbolMap[quoteSymbol].request_id),
-        },
-      })
-    })
-    return data
-  }
-
-  */
-
-  /*
-  async getPriceSymbols(minCount: number, askCount: number): Promise<string[]> {
-    if (!Number.isInteger(minCount))
-      throw new NotIntegerError('minCount is not an integer')
-    if (!Number.isInteger(askCount))
-      throw new NotIntegerError('askCount is not an integer')
-    let response = await this.getResult('/oracle/price_symbols', {
-      min_count: minCount,
-      ask_count: askCount,
-    })
-    return response
-  }
-  */
-
-  /**
-   * Get the latest request
-   * @param oid Oracle script ID
-   * @param calldata The input parameters associated with the request
-   * @param minCount The minimum number of validators necessary for the request to proceed to the execution phase
-   * @param askCount The number of validators that are requested to respond to this request
-   * @returns  A Promise of RequestInfo.
-   */
-  /*
-  async getLatestRequest(
-    oid: number,
-    calldata: Buffer,
+  async getReferenceData(
+    pairs: string[],
     minCount: number,
     askCount: number,
-  ): Promise<RequestInfo> {
+  ): Promise<PriceResult.AsObject[]> {
+    const request = new QueryRequestPriceRequest()
+    request.setSymbolsList(pairs)
+    request.setAskCount(askCount)
+    request.setMinCount(minCount)
+    return new Promise((resolve, reject) => {
+      this.queryClient.requestPrice(
+        request,
+        {} as grpc.Metadata,
+        (err, response) => {
+          if (err !== null) {
+            reject(err)
+            return
+          }
+          if (response !== null) {
+            resolve(response.toObject().priceResultsList)
+          }
+        },
+      )
+    })
+  }
+
+  async getLatestRequest(
+    oid: number,
+    calldata: string,
+    minCount: number,
+    askCount: number,
+  ): Promise<QueryRequestResponse.AsObject> {
     if (!Number.isInteger(oid))
       throw new NotIntegerError('oid is not an integer')
     if (!Number.isInteger(minCount))
       throw new NotIntegerError('minCount is not an integer')
     if (!Number.isInteger(askCount))
       throw new NotIntegerError('askCount is not an integer')
-
-    const response = await this.getResult(`/oracle/request_search`, {
-      oid: oid,
-      calldata: calldata.toString('base64'),
-      min_count: minCount,
-      ask_count: askCount,
+    const request = new QueryRequestSearchRequest()
+    request.setOracleScriptId(oid)
+    request.setCalldata(calldata)
+    request.setAskCount(askCount)
+    request.setMinCount(minCount)
+    return new Promise((resolve, reject) => {
+      this.queryClient.requestSearch(
+        request,
+        {} as grpc.Metadata,
+        (err, response) => {
+          if (err !== null) {
+            reject(err)
+            return
+          }
+          if (response !== null && response.hasRequest()) {
+            resolve(response.getRequest().toObject())
+          }
+        },
+      )
     })
-    return {
-      request: {
-        oracleScriptID: parseInt(response.request.oracle_script_id),
-        requestedValidators: response.request.requested_validators,
-        minCount: parseInt(response.request.min_count),
-        requestHeight: parseInt(response.request.request_height),
-        clientID: response.request.client_id ? response.request.client_id : '',
-        calldata: response.request.calldata
-          ? Buffer.from(response.request.calldata, 'base64')
-          : Buffer.from(''),
-        rawRequests: response.request.raw_requests.map(
-          (request: { [key: string]: any }) => {
-            return {
-              externalID: request.external_id
-                ? parseInt(request.external_id)
-                : 0,
-              dataSourceID: parseInt(request.data_source_id),
-              calldata: request.calldata
-                ? Buffer.from(request.calldata, 'base64')
-                : Buffer.from(''),
-            }
-          },
-        ),
-      },
-      reports: response.reports?.map((report: { [key: string]: any }) => {
-        return {
-          validator: report.validator,
-          inBeforeResolve: !!report.in_before_resolve,
-          rawReports: report.raw_reports.map(
-            (rawReport: { [key: string]: any }) => {
-              return {
-                externalID: rawReport.external_id
-                  ? parseInt(rawReport.external_id)
-                  : 0,
-                data: rawReport.data
-                  ? Buffer.from(rawReport.data, 'base64')
-                  : Buffer.from(''),
-              }
-            },
-          ),
-        }
-      }),
-      result: response.result && {
-        requestPacketData: {
-          clientID: response.result.request_packet_data.client_id
-            ? response.result.request_packet_data.client_id
-            : '',
-          askCount: parseInt(response.result.request_packet_data.ask_count),
-          minCount: parseInt(response.result.request_packet_data.min_count),
-          oracleScriptID: parseInt(
-            response.result.request_packet_data.oracle_script_id,
-          ),
-          calldata: response.result.request_packet_data.calldata
-            ? Buffer.from(
-                response.result.request_packet_data.calldata,
-                'base64',
-              )
-            : Buffer.from(''),
-        },
-        responsePacketData: {
-          requestID: parseInt(response.result.response_packet_data.request_id),
-          requestTime: parseInt(
-            response.result.response_packet_data.request_time,
-          ),
-          resolveTime: parseInt(
-            response.result.response_packet_data.resolve_time,
-          ),
-          resolveStatus: response.result.response_packet_data.resolve_status,
-          ansCount: response.result.response_packet_data.ans_count
-            ? parseInt(response.result.response_packet_data.ans_count)
-            : 0,
-          clientID: response.result.response_packet_data.client_id
-            ? response.result.response_packet_data.client_id
-            : '',
-          result: response.result.response_packet_data.result
-            ? Buffer.from(response.result.response_packet_data.result, 'base64')
-            : Buffer.from(''),
-        },
-      },
-    }
   }
 
-  */
-
-  /*
-  async getRequestEVMProofByRequestID(requestID: number): Promise<EVMProof> {
-    if (!Number.isInteger(requestID))
-      throw new NotIntegerError('requestID is not an integer')
-    const response = await this.getResult(`/oracle/proof/${requestID}`)
-    return {
-      jsonProof: response.jsonProof,
-      evmProofBytes: Buffer.from(response.evmProofBytes, 'hex'),
-    }
-  }
-
-
-  */
+  // ! Functions below need to change to GRPC
+  // async getPriceSymbols(minCount: number, askCount: number): Promise<string[]> {}
+  // async getRequestEVMProofByRequestID(requestID: number): Promise<EVMProof> {}
 }

@@ -3,7 +3,6 @@ import {
   EmptyMsgError,
   NotIntegerError,
   UndefinedError,
-  // NotFoundError,
   ValueTooLargeError,
 } from './error'
 
@@ -75,6 +74,36 @@ export default class Transaction {
     return this
   }
 
+  private getInfo(publicKey) {
+    let txBody = new TxBody()
+    txBody.setMessagesList(this.msgs)
+    txBody.setMemo(this.memo)
+    let txBodyBytes = txBody.serializeBinary()
+
+    let modeInfo = new ModeInfo()
+    let modeSingle = new ModeInfo.Single()
+    modeSingle.setMode(SignMode.SIGN_MODE_DIRECT)
+    modeInfo.setSingle(modeSingle)
+
+    let publicKeyAny = new Any()
+    publicKeyAny.pack(
+      publicKey.toPubkeyProto().serializeBinary(),
+      'cosmos.crypto.secp256k1.PubKey',
+      '/',
+    )
+
+    let signerInfo = new SignerInfo()
+    signerInfo.setModeInfo(modeInfo)
+    signerInfo.setSequence(this.sequence)
+    signerInfo.setPublicKey(publicKeyAny)
+
+    let authInfo = new AuthInfo()
+    authInfo.addSignerInfos(signerInfo)
+    authInfo.setFee(this.fee)
+    let authInfoBytes = authInfo.serializeBinary()
+    return [txBodyBytes, authInfoBytes]
+  }
+
   getSignDoc(publicKey): Uint8Array {
     if (this.msgs.length == 0) {
       throw new EmptyMsgError('message is empty')
@@ -92,71 +121,22 @@ export default class Transaction {
       throw new UndefinedError('chainID should be defined')
     }
 
-    let txBody = new TxBody()
-    txBody.setMessagesList(this.msgs)
-    txBody.setMemo(this.memo)
-    let txBodyBytes = txBody.serializeBinary()
-
-    let modeInfo = new ModeInfo()
-    let modeSingle = new ModeInfo.Single()
-    modeSingle.setMode(SignMode.SIGN_MODE_DIRECT)
-    modeInfo.setSingle(modeSingle)
-
-    let publicKeyAny = new Any()
-    publicKeyAny.pack(
-      publicKey.toPubkeyProto().serializeBinary(),
-      'cosmos.crypto.secp256k1.PubKey',
-      '/',
-    )
-
-    let signerInfo = new SignerInfo()
-    signerInfo.setModeInfo(modeInfo)
-    signerInfo.setSequence(this.sequence)
-    signerInfo.setPublicKey(publicKeyAny)
-
-    let authInfo = new AuthInfo()
-    authInfo.addSignerInfos(signerInfo)
-    authInfo.setFee(this.fee)
-    let authInfoBytes = authInfo.serializeBinary()
+    const infoBytes = this.getInfo(publicKey)
 
     let signDoc = new SignDoc()
-    signDoc.setBodyBytes(txBodyBytes)
-    signDoc.setAuthInfoBytes(authInfoBytes)
+    signDoc.setBodyBytes(infoBytes[0])
+    signDoc.setAuthInfoBytes(infoBytes[1])
     signDoc.setChainId(this.chainID)
     signDoc.setAccountNumber(this.accountNum)
     return signDoc.serializeBinary()
   }
 
   getTxData(signature, publicKey) {
-    let txBody = new TxBody()
-    txBody.setMessagesList(this.msgs)
-    txBody.setMemo(this.memo)
-    let txBodyBytes = txBody.serializeBinary()
-
-    let modeInfo = new ModeInfo()
-    let modeSingle = new ModeInfo.Single()
-    modeSingle.setMode(SignMode.SIGN_MODE_DIRECT)
-    modeInfo.setSingle(modeSingle)
-
-    let publicKeyAny = new Any()
-    publicKeyAny.pack(
-      publicKey.toPubkeyProto().serializeBinary(),
-      'cosmos.crypto.secp256k1.PubKey',
-      '/',
-    )
-    let signerInfo = new SignerInfo()
-    signerInfo.setModeInfo(modeInfo)
-    signerInfo.setSequence(this.sequence)
-    signerInfo.setPublicKey(publicKeyAny)
-
-    let authInfo = new AuthInfo()
-    authInfo.addSignerInfos(signerInfo)
-    authInfo.setFee(this.fee)
-    let authInfoBytes = authInfo.serializeBinary()
+    const infoBytes = this.getInfo(publicKey)
 
     let txRaw = new TxRaw()
-    txRaw.setBodyBytes(txBodyBytes)
-    txRaw.setAuthInfoBytes(authInfoBytes)
+    txRaw.setBodyBytes(infoBytes[0])
+    txRaw.setAuthInfoBytes(infoBytes[1])
     txRaw.addSignatures(signature)
     return txRaw.serializeBinary()
   }
