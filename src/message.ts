@@ -6,13 +6,13 @@ import {
   InsufficientCoinError,
   ValueError,
 } from './error'
-import { MsgRequestData } from '../proto/oracle/v1/tx_pb'
-import {MsgSend} from '../proto/cosmos/bank/v1beta1/tx_pb'
-import {MsgDelegate} from '../proto/cosmos/staking/v1beta1/tx_pb'
-import {Coin} from '../proto/cosmos/base/v1beta1/coin_pb'
-import {Any} from 'google-protobuf/google/protobuf/any_pb'
+import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
+import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
+import { MsgDelegate as MsgDelegateProto } from '../proto/cosmos/staking/v1beta1/tx_pb'
+import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+import { Any } from 'google-protobuf/google/protobuf/any_pb'
 
-export class CreateMsgRequest extends MsgRequestData {
+export class MsgRequestData extends MsgRequestDataProto {
   constructor(
     oracleScriptID: number,
     calldata: Buffer,
@@ -68,7 +68,7 @@ export class CreateMsgRequest extends MsgRequestData {
   }
 }
 
-export class CreateMsgSend extends MsgSend {
+export class MsgSend extends MsgSendProto {
   constructor(from: string, to: string, amount: Coin[]) {
     super()
     this.setFromAddress(from)
@@ -95,7 +95,7 @@ export class CreateMsgSend extends MsgSend {
   }
 }
 
-export class CreateMsgDelegate extends MsgDelegate {
+export class MsgDelegate extends MsgDelegateProto {
   constructor(delegator: string, validator: string, amount: Coin) {
     super()
     this.setDelegatorAddress(delegator)

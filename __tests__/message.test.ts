@@ -2,9 +2,9 @@ import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 
 import {
-  CreateMsgRequest,
-  CreateMsgSend,
-  CreateMsgDelegate,
+  MsgRequestData,
+  MsgSend,
+  MsgDelegate,
 } from '../src/message'
 
 let coin = new Coin()
@@ -17,7 +17,7 @@ describe('MsgRequest', () => {
   const clientId = 'test'
 
   it('create successfully', () => {
-    const msgRequest = new CreateMsgRequest(
+    const msgRequest = new MsgRequestData(
       1,
       calldata,
       2,
@@ -42,7 +42,7 @@ describe('MsgRequest', () => {
     let msgs = []
     let errorText: string[] = []
     msgs.push(
-      new CreateMsgRequest(
+      new MsgRequestData(
         -1,
         calldata,
         2,
@@ -55,7 +55,7 @@ describe('MsgRequest', () => {
       ),
     )
     msgs.push(
-      new CreateMsgRequest(
+      new MsgRequestData(
         1.1,
         calldata,
         2,
@@ -68,7 +68,7 @@ describe('MsgRequest', () => {
       ),
     )
     msgs.push(
-      new CreateMsgRequest(
+      new MsgRequestData(
         1,
         calldata,
         2.1,
@@ -81,7 +81,7 @@ describe('MsgRequest', () => {
       ),
     )
     msgs.push(
-      new CreateMsgRequest(
+      new MsgRequestData(
         1,
         calldata,
         2,
@@ -94,7 +94,7 @@ describe('MsgRequest', () => {
       ),
     )
     msgs.push(
-      new CreateMsgRequest(
+      new MsgRequestData(
         1,
         calldata,
         2,
@@ -122,7 +122,7 @@ describe('MsgRequest', () => {
 
 describe('MsgSend', () => {
   it('create successfully', () => {
-    const msgSend = new CreateMsgSend(
+    const msgSend = new MsgSend(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       [coin],
@@ -137,7 +137,7 @@ describe('MsgSend', () => {
   })
 
   it('error no coin', () => {
-    const msgSend = new CreateMsgSend(
+    const msgSend = new MsgSend(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       [],
@@ -150,7 +150,7 @@ describe('MsgSend', () => {
 
 describe('MsgDelegate', () => {
   it('create successfully', () => {
-    const msgDelegate = new CreateMsgDelegate(
+    const msgDelegate = new MsgDelegate(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
       coin,

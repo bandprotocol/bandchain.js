@@ -1,5 +1,5 @@
 import Transaction from '../src/transaction'
-import { CreateMsgRequest } from '../src/message'
+import { MsgRequestData } from '../src/message'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
 import { PrivateKey } from '../src/wallet'
@@ -17,7 +17,7 @@ describe('Transaction', () => {
   const fee = new Fee()
   fee.addAmount(coin)
   fee.setGasLimit(2000000)
-  const message = new CreateMsgRequest(
+  const message = new MsgRequestData(
     1,
     calldata,
     3,
