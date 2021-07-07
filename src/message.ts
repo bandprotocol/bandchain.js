@@ -14,7 +14,7 @@ import { Any } from 'google-protobuf/google/protobuf/any_pb'
 
 export class MsgRequestData extends MsgRequestDataProto {
   constructor(
-    oracleScriptID: number,
+    oracleScriptId: number,
     calldata: Buffer,
     askCount: number,
     minCount: number,
@@ -25,7 +25,7 @@ export class MsgRequestData extends MsgRequestDataProto {
     executeGas: number = 300000,  
   ) {
     super()
-    this.setOracleScriptId(oracleScriptID)
+    this.setOracleScriptId(oracleScriptId)
     this.setCalldata(calldata)
     this.setAskCount(askCount)
     this.setMinCount(minCount)
@@ -49,9 +49,9 @@ export class MsgRequestData extends MsgRequestDataProto {
 
   validate() {
     if (this.getOracleScriptId() <= 0)
-      throw new NegativeIntegerError('oracleScriptID cannot less than zero')
+      throw new NegativeIntegerError('oracleScriptId cannot be less than zero')
     if (!Number.isInteger(this.getOracleScriptId()))
-      throw new NotIntegerError('oracleScriptID is not an integer')
+      throw new NotIntegerError('oracleScriptId is not an integer')
     if (this.getCalldata().length > MAX_DATA_SIZE)
       throw new ValueTooLargeError('too large calldata')
     if (!Number.isInteger(this.getAskCount()))

@@ -23,7 +23,7 @@ export default class Transaction {
   msgs: Array<Any> = []
   accountNum?: number
   sequence?: number
-  chainID?: string
+  chainId?: string
   fee: Fee = new Fee()
   gas: number = 200000
   memo: string = ''
@@ -49,8 +49,8 @@ export default class Transaction {
     return this
   }
 
-  withChainID(chainID: string): Transaction {
-    this.chainID = chainID
+  withChainId(chainId: string): Transaction {
+    this.chainId = chainId
     return this
   }
 
@@ -120,8 +120,8 @@ export default class Transaction {
       throw new UndefinedError('sequence should be defined')
     }
 
-    if (this.chainID == null) {
-      throw new UndefinedError('chainID should be defined')
+    if (this.chainId == null) {
+      throw new UndefinedError('chainId should be defined')
     }
 
     const infoBytes = this.getInfo(publicKey)
@@ -129,7 +129,7 @@ export default class Transaction {
     let signDoc = new SignDoc()
     signDoc.setBodyBytes(infoBytes[0])
     signDoc.setAuthInfoBytes(infoBytes[1])
-    signDoc.setChainId(this.chainID)
+    signDoc.setChainId(this.chainId)
     signDoc.setAccountNumber(this.accountNum)
     return signDoc.serializeBinary()
   }

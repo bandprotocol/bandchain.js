@@ -106,8 +106,8 @@ describe('MsgRequest', () => {
         20000,
       ),
     )
-    errorText.push('oracleScriptID cannot less than zero')
-    errorText.push('oracleScriptID is not an integer')
+    errorText.push('oracleScriptId cannot be less than zero')
+    errorText.push('oracleScriptId is not an integer')
     errorText.push('askCount is not an integer')
     errorText.push('minCount is not an integer')
     errorText.push('invalid minCount, got: minCount: 0')

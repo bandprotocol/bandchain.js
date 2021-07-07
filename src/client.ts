@@ -181,7 +181,6 @@ export default class Client {
           if (err !== null || response === null) {
             reject(err)
             return
-            // throw new UnsuccessfulCallError('Address does not exist')
           }
           if (response.hasAccount()) {
             let accBaseAccount = response
@@ -217,8 +216,6 @@ export default class Client {
             response.hasTxResponse() &&
             response.toObject().txResponse.logsList
           ) {
-            // const tx = response.toObject().txResponse.logsList[0]
-            console.log(JSON.stringify(response.toObject()))
             let reqIdList = []
             for (
               let z = 0;
@@ -226,7 +223,6 @@ export default class Client {
               z++
             ) {
               let tx = response.toObject().txResponse.logsList[z]
-              console.log(tx)
               for (let x = 0; x < tx.eventsList.length; x++) {
                 if (
                   tx.eventsList[x].type == 'report' ||

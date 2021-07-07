@@ -10,8 +10,8 @@ import {
   DecodeError,
   ValueError,
 } from './error'
-// import { PublicKey as PublicKeyProto} from '../proto/tendermint/crypto/keys_pb'
 import { PubKey as PublicKeyProto } from '../proto/cosmos/crypto/secp256k1/keys_pb'
+
 const BECH32_PUBKEY_ACC_PREFIX = 'bandpub'
 const BECH32_PUBKEY_VAL_PREFIX = 'bandvaloperpub'
 const BECH32_PUBKEY_CONS_PREFIX = 'bandvalconspub'

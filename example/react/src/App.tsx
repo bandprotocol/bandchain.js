@@ -4,17 +4,11 @@ import {
   Client,
   Data,
   Wallet,
-  Obi,
-  Transaction,
-  Coin,
-  Fee,
-  Message
+  Obi
 } from '@bandprotocol/bandchain.js'
 
-// BandChain's Proof-of-Authority REST endpoint
-const endpoint = 'https://api-gm-lb.bandchain.org'
 const grpcEndpoint = 'http://localhost:8080'
-const client = new Client(grpcEndpoint, endpoint)
+const client = new Client(grpcEndpoint)
 
 function App() {
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()

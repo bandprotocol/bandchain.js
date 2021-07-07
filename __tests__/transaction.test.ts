@@ -38,7 +38,7 @@ describe('Transaction', () => {
     tx.withMessages(message.toAny())
     tx.withAccountNum(acountNum)
     tx.withSequence(sequence)
-    tx.withChainID(chainId)
+    tx.withChainId(chainId)
     tx.withFee(fee)
     tx.withGas(gas)
     tx.withMemo('')
@@ -46,7 +46,7 @@ describe('Transaction', () => {
     expect(tx.msgs.length > 0)
     expect(tx.accountNum === acountNum)
     expect(tx.sequence === sequence)
-    expect(tx.chainID === chainId)
+    expect(tx.chainId === chainId)
     expect(tx.fee === fee)
     expect(tx.gas === gas)
     expect(tx.memo === '')
@@ -78,7 +78,7 @@ describe('Transaction', () => {
     tx.withMessages(message.toAny())
     tx.withAccountNum(acountNum)
     tx.withSequence(sequence)
-    tx.withChainID(chainId)
+    tx.withChainId(chainId)
     tx.withFee(fee)
     tx.withGas(gas)
     tx.withMemo('')
@@ -124,7 +124,7 @@ describe('Transaction', () => {
 
     tx = tx.withSequence(30)
     expect(() => tx.getSignDoc(pubkey)).toThrowError(
-      'chainID should be defined',
+      'chainId should be defined',
     )
   })
 
@@ -133,7 +133,7 @@ describe('Transaction', () => {
     tx.withMessages(message.toAny())
     tx.withAccountNum(acountNum)
     tx.withSequence(sequence)
-    tx.withChainID(chainId)
+    tx.withChainId(chainId)
     tx.withFee(fee)
     tx.withGas(gas)
     tx.withMemo('')
