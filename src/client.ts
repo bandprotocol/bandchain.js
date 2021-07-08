@@ -198,7 +198,7 @@ export default class Client {
     })
   }
 
-  async getRequestIdByTxHash(txHash: string): Promise<string[]> {
+  async getRequestIdByTxHash(txHash: string): Promise<Number[]> {
     const request = new GetTxRequest()
     request.setHash(txHash)
     return new Promise((resolve, reject) => {
@@ -230,7 +230,7 @@ export default class Client {
                   const eventList = tx.eventsList[x]
                   for (let y = 0; y < eventList.attributesList.length; y++) {
                     if (eventList.attributesList[y].key == 'id')
-                      reqIdList.push(eventList.attributesList[y].value)
+                      reqIdList.push(Number(eventList.attributesList[y].value))
                   }
                 }
               }

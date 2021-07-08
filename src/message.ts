@@ -58,16 +58,15 @@ export class MsgRequestData extends MsgRequestDataProto {
       throw new ValueError(
         `Invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
       )
+    console.log(this.getFeeLimitList())
     this.getFeeLimitList().forEach((coin)=> {
-      let coinList = coin.toArray()
-      for(let i = 1; i < coinList.length; i+=2) {
-        if (!Number(coinList[i])) {
-          throw new NotIntegerError('Invalid fee limit, fee limit should be a number')
-        } else if (Number(coinList[i]) && Number(coinList[i] < 0)) {
-          throw new NegativeIntegerError('Fee limit cannot be less than zero')
-        }
-      }
-        
+      console.log(coin)
+      console.log(coin.getAmount())
+      if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {        
+        throw new NegativeIntegerError('Fee limit cannot be less than zero')
+      } else if (!Number(coin.getAmount())) {
+        throw new NotIntegerError('Invalid fee limit, fee limit should be a number')
+      } 
     })
     return true
   }
