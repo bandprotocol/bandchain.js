@@ -9,7 +9,7 @@ import {
 
 let coin = new Coin()
 coin.setDenom('uband')
-coin.setAmount('0')
+coin.setAmount('10')
 
 describe('MsgRequest', () => {
   const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
@@ -23,8 +23,8 @@ describe('MsgRequest', () => {
       2,
       2,
       clientId,
-      senderAddr,
       [coin],
+      senderAddr,
       20000,
       20000,
     )
@@ -41,6 +41,14 @@ describe('MsgRequest', () => {
   it('create with error from validate()', () => {
     let msgs = []
     let errorText: string[] = []
+    let coin1 = new Coin()
+    coin1.setDenom('uband')
+    coin1.setAmount('-10')
+
+    let coin2 = new Coin()
+    coin2.setDenom('uband')
+    coin2.setAmount('string')
+
     msgs.push(
       new MsgRequestData(
         -1,
@@ -48,8 +56,8 @@ describe('MsgRequest', () => {
         2,
         2,
         clientId,
-        senderAddr,
         [coin],
+        senderAddr,
         20000,
         20000,
       ),
@@ -61,8 +69,8 @@ describe('MsgRequest', () => {
         2,
         2,
         clientId,
-        senderAddr,
         [coin],
+        senderAddr,
         20000,
         20000,
       ),
@@ -74,8 +82,8 @@ describe('MsgRequest', () => {
         2.1,
         2,
         clientId,
-        senderAddr,
         [coin],
+        senderAddr,
         20000,
         20000,
       ),
@@ -87,8 +95,8 @@ describe('MsgRequest', () => {
         2,
         2.1,
         clientId,
-        senderAddr,
         [coin],
+        senderAddr,
         20000,
         20000,
       ),
@@ -100,8 +108,34 @@ describe('MsgRequest', () => {
         2,
         0,
         clientId,
-        senderAddr,
         [coin],
+        senderAddr,
+        20000,
+        20000,
+      ),
+    )
+    msgs.push(
+      new MsgRequestData(
+        1,
+        calldata,
+        3,
+        2,
+        clientId,
+        [coin1],
+        senderAddr,
+        20000,
+        20000,
+      ),
+    )
+    msgs.push(
+      new MsgRequestData(
+        1,
+        calldata,
+        3,
+        2,
+        clientId,
+        [coin2],
+        senderAddr,
         20000,
         20000,
       ),
@@ -110,7 +144,9 @@ describe('MsgRequest', () => {
     errorText.push('oracleScriptId is not an integer')
     errorText.push('askCount is not an integer')
     errorText.push('minCount is not an integer')
-    errorText.push('invalid minCount, got: minCount: 0')
+    errorText.push('Invalid minCount, got: minCount: 0')
+    errorText.push('Fee limit cannot be less than zero')
+    errorText.push('Invalid fee limit, fee limit should be a number')
 
     msgs.forEach((msg, index) => {
       expect(() => {
@@ -136,15 +172,35 @@ describe('MsgSend', () => {
     expect(msgSend.validate()).toBeTruthy()
   })
 
-  it('error no coin', () => {
-    const msgSend = new MsgSend(
+  it('error MsgSend', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(new MsgSend(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       [],
-    )
-    expect(() => {
-      msgSend.validate()
-    }).toThrowError('Expect at least 1 coin')
+    ))
+    msgs.push(new MsgSend(
+      '',
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      [coin],
+    ))
+    msgs.push(new MsgSend(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      '',
+      [coin],
+    ))
+    
+    errorText.push('Expect at least 1 coin')
+    errorText.push('Address should not be an empty string')
+    errorText.push('Address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
   })
 })
 
@@ -163,5 +219,36 @@ describe('MsgDelegate', () => {
     expect(msgDelegate.toAny()).toEqual(anyMsg)
 
     expect(msgDelegate.validate()).toBeTruthy()
+  })
+  
+  it('error MsgDelegate', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(new MsgDelegate(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+      undefined,
+    ))
+    msgs.push(new MsgDelegate(
+      '',
+      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+      coin,
+    ))
+    msgs.push(new MsgDelegate(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      '',
+      coin,
+    ))
+
+    errorText.push('Expect at least 1 coin')
+    errorText.push('Address should not be an empty string')
+    errorText.push('Address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
   })
 })

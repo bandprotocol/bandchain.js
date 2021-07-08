@@ -89,7 +89,7 @@ beforeEach(() => {
 })
 
 describe('Client get data', () => {
-  it('get data source by ID', async () => {
+  it('get data source by ID success', async () => {
     expect(MockedQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
@@ -144,7 +144,7 @@ describe('Client get data', () => {
 })
 
 describe('get oracle script by ID', () => {
-  it('success', async () => {
+  it('get oracle script by ID success', async () => {
     expect(MockedQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
@@ -205,7 +205,7 @@ describe('get oracle script by ID', () => {
 })
 
 describe('get latest block', () => {
-  it('success', async () => {
+  it('get latest block success', async () => {
     expect(MockedServiceClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedServiceClient).toHaveBeenCalledTimes(1)
@@ -305,7 +305,7 @@ describe('get latest block', () => {
 })
 
 describe('get reporters', () => {
-  it('success', async () => {
+  it('get reporters success', async () => {
     expect(MockedQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
@@ -327,15 +327,15 @@ describe('get reporters', () => {
       (_req, _metadata, callback): UnaryResponse => {
         const reporters = new ReportersPerValidator()
         reporters.setValidator(
-          'bandvaloper1trx2cm6vm9v63grg9uhmk7sy233zve4q25rgre',
+          'bandvaloper17n5rmujk78nkgss7tjecg4nfzn6geg4cqtyg3u',
         )
         reporters.setReportersList([
-          'band1yyv5jkqaukq0ajqn7vhkyhpff7h6e99ja7gvwg',
-          'band19nf0sqnjycnvpexlxs6hjz9qrhhlhsu9pdty0r',
-          'band1fndxcmg0h5vhr8cph7gryryqfn9yqp90lysjtm',
-          'band10ec0p96j60duce5qagju5axuja0rj8luqrzl0k',
-          'band15pm9scujgkpwpy2xa2j53tvs9ylunjn0g73a9s',
-          'band1cehe3sxk7f4rmvwdf6lxh3zexen7fn02zyltwy',
+          'band17n5rmujk78nkgss7tjecg4nfzn6geg4cvaqt5h',
+          'band1wc6r20m8qg7p3lze55kzen5uwssdvwr7wl5w4q',
+          'band1wm0lw8wzt094xdyxx4ukx432q9vcwdl9zmwa4x',
+          'band10ptt5622ezszsvrcum07ehng3merea9x5jetv2',
+          'band10lyra24wxsme03pe47du6xfurtsqzs99mn5r94',
+          'band1ek7hfydf3xgz3k6nnsy2zrg0xxuzkvhzrykrn5',
         ])
         const response = new QueryReportersResponse()
         response.setReporterList(reporters.getReportersList())
@@ -346,15 +346,15 @@ describe('get reporters', () => {
     )
 
     const expected = [
-      'band1yyv5jkqaukq0ajqn7vhkyhpff7h6e99ja7gvwg',
-      'band19nf0sqnjycnvpexlxs6hjz9qrhhlhsu9pdty0r',
-      'band1fndxcmg0h5vhr8cph7gryryqfn9yqp90lysjtm',
-      'band10ec0p96j60duce5qagju5axuja0rj8luqrzl0k',
-      'band15pm9scujgkpwpy2xa2j53tvs9ylunjn0g73a9s',
-      'band1cehe3sxk7f4rmvwdf6lxh3zexen7fn02zyltwy',
+      'band17n5rmujk78nkgss7tjecg4nfzn6geg4cvaqt5h',
+      'band1wc6r20m8qg7p3lze55kzen5uwssdvwr7wl5w4q',
+      'band1wm0lw8wzt094xdyxx4ukx432q9vcwdl9zmwa4x',
+      'band10ptt5622ezszsvrcum07ehng3merea9x5jetv2',
+      'band10lyra24wxsme03pe47du6xfurtsqzs99mn5r94',
+      'band1ek7hfydf3xgz3k6nnsy2zrg0xxuzkvhzrykrn5',
     ]
     const response = await client.getReporters(
-      'bandvaloper1trx2cm6vm9v63grg9uhmk7sy233zve4q25rgre',
+      'bandvaloper17n5rmujk78nkgss7tjecg4nfzn6geg4cqtyg3u',
     )
     expect(mockedReporters).toHaveBeenCalledTimes(1)
     expect(response).toEqual(expected)
@@ -469,7 +469,7 @@ describe('get request id by transaction hash', () => {
     )
     // const value = [expected.txResponse.logsList[0].eventsList[1].attributesList[0].value]
     expect(mockedTxRequest).toHaveBeenCalledTimes(1)
-    expect(response).toEqual(['17320'])
+    expect(response).toEqual([17320])
   })
   it('success, with request tx (multiple id)', async () => {
     expect(MockedTxService).not.toHaveBeenCalled()
@@ -586,12 +586,12 @@ describe('get request id by transaction hash', () => {
       '90ED70061C1A24B1141F81BADEDAB19570D0B9B255412BF5D680A9BC93539115',
     )
     expect(mockedTxRequest).toHaveBeenCalledTimes(1)
-    expect(response).toEqual(['17320', '17320'])
+    expect(response).toEqual([17320, 17320])
   })
 })
 
 describe('get chain ID', () => {
-  it('success', async () => {
+  it('get chain ID success', async () => {
     expect(MockedServiceClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedServiceClient).toHaveBeenCalledTimes(1)
@@ -691,7 +691,7 @@ describe('get chain ID', () => {
 })
 
 describe('get account', () => {
-  it('success', async () => {
+  it('get account success', async () => {
     expect(MockedAuthQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedAuthQueryClient).toHaveBeenCalledTimes(1)
@@ -741,42 +741,6 @@ describe('get account', () => {
     )
     expect(mockedAccount).toHaveBeenCalledTimes(1)
     expect(response).toEqual(expected)
-  })
-
-  it('account none', async () => {
-    expect(MockedAuthQueryClient).not.toHaveBeenCalled()
-    const client = new Client(TEST_GRPC)
-    expect(MockedAuthQueryClient).toHaveBeenCalledTimes(1)
-
-    const mockedAuthQueryClient = mocked(
-      MockedAuthQueryClient.mock.instances[0],
-      true,
-    )
-    type ExpectedAccountSignature = (
-      requestMessage: QueryAccountRequest,
-      metadata: grpc.Metadata,
-      callback: (
-        error: ServiceError | null,
-        responseMessage: QueryAccountResponse | null,
-      ) => void,
-    ) => UnaryResponse
-    const mockedAccount = mocked(
-      mockedAuthQueryClient.account as ExpectedAccountSignature,
-    )
-    mockedAccount.mockImplementationOnce(
-      (_req, _metadata, callback): UnaryResponse => {
-        const response = new QueryAccountResponse()
-
-        callback(null, response)
-        return { cancel: function () {} }
-      },
-    )
-
-    const response = await client.getAccount(
-      'band1jrhuqrymzt4mnvy3s9zhx3jj0dq30qpte',
-    )
-    expect(mockedAccount).toHaveBeenCalledTimes(1)
-    expect(response).toEqual(undefined)
   })
 })
 
@@ -832,7 +796,7 @@ describe('get reference data', () => {
         requestId: {
           base: 60536,
           quote: 0,
-        }
+        },
       },
       {
         pair: 'ETH/BTC',
@@ -844,7 +808,7 @@ describe('get reference data', () => {
         requestId: {
           base: 60536,
           quote: 60537,
-        }
+        },
       },
     ]
     const response = await client.getReferenceData(['ETH/USD', 'ETH/BTC'], 3, 4)

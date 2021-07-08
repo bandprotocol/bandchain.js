@@ -13,18 +13,17 @@ describe('Transaction', () => {
   const clientId = 'test'
   const coin = new Coin()
   coin.setDenom('uband')
-  coin.setAmount('0')
+  coin.setAmount('100')
   const fee = new Fee()
   fee.addAmount(coin)
-  fee.setGasLimit(2000000)
   const message = new MsgRequestData(
     1,
     calldata,
     3,
     2,
     clientId,
-    sender,
     [coin],
+    sender,
     20000,
     20000,
   )
