@@ -18,7 +18,6 @@ import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
 import { PublicKey } from './wallet'
-// import { PrivateKey } from 'wallet'
 export default class Transaction {
   msgs: Array<Any> = []
   accountNum?: number
@@ -75,7 +74,7 @@ export default class Transaction {
     return this
   }
 
-  private getInfo(publicKey: PublicKey) {
+  private getInfo(publicKey: PublicKey): [Uint8Array, Uint8Array] {
     let txBody = new TxBody()
     txBody.setMessagesList(this.msgs)
     txBody.setMemo(this.memo)
@@ -124,22 +123,22 @@ export default class Transaction {
       throw new UndefinedError('chainId should be defined')
     }
 
-    const infoBytes = this.getInfo(publicKey)
+    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey)
 
     let signDoc = new SignDoc()
-    signDoc.setBodyBytes(infoBytes[0])
-    signDoc.setAuthInfoBytes(infoBytes[1])
+    signDoc.setBodyBytes(txBodyBytes)
+    signDoc.setAuthInfoBytes(authInfoBytes)
     signDoc.setChainId(this.chainId)
     signDoc.setAccountNumber(this.accountNum)
     return signDoc.serializeBinary()
   }
 
-  getTxData(signature: Uint8Array, publicKey: PublicKey) {
-    const infoBytes = this.getInfo(publicKey)
+  getTxData(signature: Uint8Array, publicKey: PublicKey): Uint8Array {
+    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey)
 
     let txRaw = new TxRaw()
-    txRaw.setBodyBytes(infoBytes[0])
-    txRaw.setAuthInfoBytes(infoBytes[1])
+    txRaw.setBodyBytes(txBodyBytes)
+    txRaw.setAuthInfoBytes(authInfoBytes)
     txRaw.addSignatures(signature)
     return txRaw.serializeBinary()
   }

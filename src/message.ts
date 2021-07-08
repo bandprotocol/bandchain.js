@@ -1,8 +1,8 @@
 import { MAX_DATA_SIZE } from './constant'
 import {
   NegativeIntegerError,
-  NotIntegerError,
   ValueTooLargeError,
+  NotIntegerError,
   InsufficientCoinError,
   ValueError,
 } from './error'
@@ -19,8 +19,8 @@ export class MsgRequestData extends MsgRequestDataProto {
     askCount: number,
     minCount: number,
     clientId: string,
+    feeLimit: Coin[] = [],
     sender: string,
-    fee: Coin[] = [],
     prepareGas: number = 50000,
     executeGas: number = 300000,  
   ) {
@@ -30,14 +30,14 @@ export class MsgRequestData extends MsgRequestDataProto {
     this.setAskCount(askCount)
     this.setMinCount(minCount)
     this.setClientId(clientId)
-    this.setFeeLimitList(fee)
+    this.setFeeLimitList(feeLimit)
     this.setPrepareGas(prepareGas)
     this.setExecuteGas(executeGas)
     this.setSender(sender)
   }
 
 
-  toAny() {
+  toAny(): Any | undefined {
     if (this.validate()) {
       const anyMsg = new Any()
       const name = 'oracle.v1.MsgRequestData'
@@ -47,23 +47,28 @@ export class MsgRequestData extends MsgRequestDataProto {
     return undefined
   }
 
-  validate() {
-    if (this.getOracleScriptId() <= 0)
+  validate(): boolean{
+    if (this.getOracleScriptId() <= 0 )
       throw new NegativeIntegerError('oracleScriptId cannot be less than zero')
-    if (!Number.isInteger(this.getOracleScriptId()))
-      throw new NotIntegerError('oracleScriptId is not an integer')
     if (this.getCalldata().length > MAX_DATA_SIZE)
-      throw new ValueTooLargeError('too large calldata')
-    if (!Number.isInteger(this.getAskCount()))
-      throw new NotIntegerError('askCount is not an integer')
-    if (!Number.isInteger(this.getMinCount()))
-      throw new NotIntegerError('minCount is not an integer')
+      throw new ValueTooLargeError('Too large calldata')
     if (this.getMinCount() <= 0)
-      throw new ValueError(`invalid minCount, got: minCount: ${this.getMinCount()}`)
+      throw new ValueError(`Invalid minCount, got: minCount: ${this.getMinCount()}`)
     if (this.getAskCount() < this.getMinCount())
       throw new ValueError(
-        `invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
+        `Invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
       )
+    this.getFeeLimitList().forEach((coin)=> {
+      let coinList = coin.toArray()
+      for(let i = 1; i < coinList.length; i+=2) {
+        if (!Number(coinList[i])) {
+          throw new NotIntegerError('Invalid fee limit, fee limit should be a number')
+        } else if (Number(coinList[i]) && Number(coinList[i] < 0)) {
+          throw new NegativeIntegerError('Fee limit cannot be less than zero')
+        }
+      }
+        
+    })
     return true
   }
 }
@@ -76,7 +81,7 @@ export class MsgSend extends MsgSendProto {
     this.setAmountList(amount)
   }
 
-  toAny() {
+  toAny(): Any | undefined {
     if (this.validate()) {
       const anyMsg = new Any()
       const name = 'cosmos.bank.v1beta1.MsgSend'
@@ -87,9 +92,12 @@ export class MsgSend extends MsgSendProto {
   }
 
 
-  validate() {
+  validate(): boolean{
     if (this.getAmountList().length == 0) {
       throw new InsufficientCoinError('Expect at least 1 coin')
+    }
+    if (this.getToAddress() !== '' || this.getFromAddress() !== '') {
+      throw new ValueError('Address should not be an empty string')
     }
     return true
   }
@@ -104,7 +112,7 @@ export class MsgDelegate extends MsgDelegateProto {
   }
  
 
-  toAny() {
+  toAny(): Any | undefined {
     if (this.validate()) {
       const anyMsg = new Any()
       const name = 'cosmos.staking.v1beta1.MsgDelegate'
@@ -115,9 +123,12 @@ export class MsgDelegate extends MsgDelegateProto {
   }
 
 
-  validate() {
+  validate(): boolean{
     if (this.getAmount() === undefined) {
       throw new InsufficientCoinError('Expect at least 1 coin')
+    }
+    if (this.getDelegatorAddress() !== '' || this.getValidatorAddress() !== '') {
+      throw new ValueError('Address should not be an empty string')
     }
     return true
   }

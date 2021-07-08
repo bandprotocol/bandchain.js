@@ -142,7 +142,7 @@ export default class Client {
             return
           }
 
-          if (response !== null && response) {
+          if (response !== null) {
             resolve(response.getReporterList())
           }
         },
@@ -162,7 +162,7 @@ export default class Client {
             return
           }
 
-          if (response !== null && response) {
+          if (response !== null) {
             resolve(response.toObject())
           }
         },
@@ -193,13 +193,12 @@ export default class Client {
               resolve(accBaseAccount.toObject())
             }
           }
-          resolve(undefined)
         },
       )
     })
   }
 
-  async getRequestIdByTxHash(txHash: string): Promise<any> {
+  async getRequestIdByTxHash(txHash: string): Promise<string[]> {
     const request = new GetTxRequest()
     request.setHash(txHash)
     return new Promise((resolve, reject) => {
@@ -420,5 +419,5 @@ export default class Client {
 
   // ! Functions below need to change to GRPC
   // async getPriceSymbols(minCount: number, askCount: number): Promise<string[]> {}
-  // async getRequestEVMProofByRequestID(requestID: number): Promise<EVMProof> {}
+  // async getRequestEVMProofByRequestId(requestID: number): Promise<EVMProof> {}
 }
