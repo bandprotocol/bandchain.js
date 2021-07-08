@@ -95,7 +95,7 @@ export class MsgSend extends MsgSendProto {
     if (this.getAmountList().length == 0) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
-    if (this.getToAddress() !== '' || this.getFromAddress() !== '') {
+    if (this.getToAddress() === '' || this.getFromAddress() === '') {
       throw new ValueError('Address should not be an empty string')
     }
     return true
