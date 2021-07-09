@@ -1,6 +1,3 @@
-export type HexBytes = Buffer
-export type EpochTime = number
-
 export interface ReferenceDataUpdated {
   base: number
   quote: number
@@ -16,9 +13,4 @@ export interface ReferenceData {
   rate: number
   updatedAt: ReferenceDataUpdated
   requestId: ReferenceDataRequestID
-}
-
-export interface EVMProof {
-  jsonProof: object
-  evmProofBytes: Buffer
 }

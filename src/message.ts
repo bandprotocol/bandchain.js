@@ -19,7 +19,7 @@ export class MsgRequestData extends MsgRequestDataProto {
     askCount: number,
     minCount: number,
     clientId: string,
-    feeLimit: Coin[] = [],
+    feeLimitList: Coin[] = [],
     sender: string,
     prepareGas: number = 50000,
     executeGas: number = 300000,
@@ -30,7 +30,7 @@ export class MsgRequestData extends MsgRequestDataProto {
     this.setAskCount(askCount)
     this.setMinCount(minCount)
     this.setClientId(clientId)
-    this.setFeeLimitList(feeLimit)
+    this.setFeeLimitList(feeLimitList)
     this.setPrepareGas(prepareGas)
     this.setExecuteGas(executeGas)
     this.setSender(sender)
@@ -65,7 +65,6 @@ export class MsgRequestData extends MsgRequestDataProto {
       throw new ValueError(
         `Invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
       )
-    console.log(this.getFeeLimitList())
     this.getFeeLimitList().forEach((coin) => {
       if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
         throw new NegativeIntegerError('Fee limit cannot be less than zero')
@@ -80,11 +79,11 @@ export class MsgRequestData extends MsgRequestDataProto {
 }
 
 export class MsgSend extends MsgSendProto {
-  constructor(from: string, to: string, amount: Coin[]) {
+  constructor(from: string, to: string, amountList: Coin[]) {
     super()
     this.setFromAddress(from)
     this.setToAddress(to)
-    this.setAmountList(amount)
+    this.setAmountList(amountList)
   }
 
   toAny(): Any | undefined {

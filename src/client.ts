@@ -74,7 +74,6 @@ export default class Client {
             reject(err)
             return
           }
-
           if (response !== null && response.hasDataSource()) {
             resolve(response.getDataSource().toObject())
           }
@@ -97,7 +96,6 @@ export default class Client {
             reject(err)
             return
           }
-
           if (response !== null && response.hasOracleScript()) {
             resolve(response.getOracleScript().toObject())
           }
@@ -120,7 +118,6 @@ export default class Client {
             reject(err)
             return
           }
-
           if (response !== null) {
             resolve(response.toObject())
           }
@@ -141,7 +138,6 @@ export default class Client {
             reject(err)
             return
           }
-
           if (response !== null) {
             resolve(response.getReporterList())
           }
@@ -161,7 +157,6 @@ export default class Client {
             reject(err)
             return
           }
-
           if (response !== null) {
             resolve(response.toObject())
           }
@@ -416,8 +411,4 @@ export default class Client {
       )
     })
   }
-
-  // ! Functions below need to change to GRPC
-  // async getPriceSymbols(minCount: number, askCount: number): Promise<string[]> {}
-  // async getRequestEVMProofByRequestId(requestID: number): Promise<EVMProof> {}
 }

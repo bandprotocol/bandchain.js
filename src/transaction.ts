@@ -4,6 +4,7 @@ import {
   NotIntegerError,
   UndefinedError,
   ValueTooLargeError,
+  NotFoundError,
 } from './error'
 
 import {
@@ -18,6 +19,8 @@ import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
 import { PublicKey } from './wallet'
+import Client from './client'
+
 export default class Transaction {
   msgs: Array<Any> = []
   accountNum?: number
@@ -29,6 +32,17 @@ export default class Transaction {
 
   withMessages(...msg: Array<Any>): Transaction {
     this.msgs.push(...msg)
+    return this
+  }
+  async withSender(client: Client, sender: string): Promise<Transaction> {
+    if (this.msgs.length == 0)
+      throw new EmptyMsgError(
+        'Message is empty, please use withMessages at least 1 message.',
+      )
+    let account = await client.getAccount(sender)
+    if (!account) throw new NotFoundError(`Account doesn't exist.`)
+    this.accountNum = await account.accountNumber
+    this.sequence = await account.sequence
     return this
   }
 
