@@ -23,8 +23,8 @@ describe('MsgRequest', () => {
       2,
       2,
       clientId,
-      [coin],
       senderAddr,
+      [coin],
       20000,
       20000,
     )
@@ -50,18 +50,20 @@ describe('MsgRequest', () => {
     coin2.setAmount('string')
 
     msgs.push(
+      // Negative oracle script ID
       new MsgRequestData(
         -1,
         calldata,
         2,
         2,
         clientId,
-        [coin],
         senderAddr,
+        [coin],
         20000,
         20000,
       ),
     )
+    // oracleScriptId is not an integer
     msgs.push(
       new MsgRequestData(
         1.1,
@@ -69,12 +71,13 @@ describe('MsgRequest', () => {
         2,
         2,
         clientId,
-        [coin],
         senderAddr,
+        [coin],
         20000,
         20000,
       ),
     )
+    // askCount is not an integer
     msgs.push(
       new MsgRequestData(
         1,
@@ -82,12 +85,13 @@ describe('MsgRequest', () => {
         2.1,
         2,
         clientId,
-        [coin],
         senderAddr,
+        [coin],
         20000,
         20000,
       ),
     )
+    // minCount is not an integer
     msgs.push(
       new MsgRequestData(
         1,
@@ -95,12 +99,13 @@ describe('MsgRequest', () => {
         2,
         2.1,
         clientId,
-        [coin],
         senderAddr,
+        [coin],
         20000,
         20000,
       ),
     )
+    // Invalid minCount, got: minCount: 0
     msgs.push(
       new MsgRequestData(
         1,
@@ -108,12 +113,13 @@ describe('MsgRequest', () => {
         2,
         0,
         clientId,
+        senderAddr,
         [coin],
-        senderAddr,
         20000,
         20000,
       ),
     )
+    // Fee limit cannot be less than zero
     msgs.push(
       new MsgRequestData(
         1,
@@ -121,12 +127,13 @@ describe('MsgRequest', () => {
         3,
         2,
         clientId,
+        senderAddr,
         [coin1],
-        senderAddr,
         20000,
         20000,
       ),
     )
+    // Invalid fee limit, fee limit should be a number
     msgs.push(
       new MsgRequestData(
         1,
@@ -134,8 +141,8 @@ describe('MsgRequest', () => {
         3,
         2,
         clientId,
-        [coin2],
         senderAddr,
+        [coin2],
         20000,
         20000,
       ),

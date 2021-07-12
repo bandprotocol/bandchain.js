@@ -1,4 +1,4 @@
-const { Client, Wallet, Obi, Message, Coin, Transaction, Fee } = require('../../src')
+import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../src'
 
 const grpcEndpoint = 'http://rpc-laozi-testnet2.bandchain.org:8080'
 const client = new Client(grpcEndpoint)
@@ -6,7 +6,10 @@ const client = new Client(grpcEndpoint)
 // This example demonstrates how to query price data from
 // Band's standard dataset
 async function exampleGetReferenceData() {
-  const rate = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 6)
+  const rate = await client.getReferenceData([
+    'BTC/USD',
+    'ETH/BTC',
+  ], 3, 6)
   return rate
 }
 
@@ -28,8 +31,8 @@ async function exampleSendBlockTransaction() {
     4,
     3,
     'BandProtocol',
-    [coin],
     sender,
+    [coin],
     50000,
     200000, 
   )
@@ -55,6 +58,8 @@ async function exampleSendBlockTransaction() {
 }
 
 ;(async () => {
+  console.log('Test getting reference data...')
   console.log(await exampleGetReferenceData())
+  console.log('Test sending an oracle request...')
   console.log(await exampleSendBlockTransaction())
 })()

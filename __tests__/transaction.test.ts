@@ -22,8 +22,8 @@ describe('Transaction', () => {
     3,
     2,
     clientId,
-    [coin],
     sender,
+    [coin],
     20000,
     20000,
   )

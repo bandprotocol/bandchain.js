@@ -65,6 +65,7 @@ export default class Client {
 
     const request = new QueryDataSourceRequest()
     request.setDataSourceId(id)
+
     return new Promise((resolve, reject) => {
       this.queryClient.dataSource(
         request,
@@ -87,6 +88,7 @@ export default class Client {
 
     const request = new QueryOracleScriptRequest()
     request.setOracleScriptId(id)
+
     return new Promise((resolve, reject) => {
       this.queryClient.oracleScript(
         request,
@@ -109,6 +111,7 @@ export default class Client {
 
     const request = new QueryRequestRequest()
     request.setRequestId(id)
+
     return new Promise((resolve, reject) => {
       this.queryClient.request(
         request,
@@ -129,6 +132,7 @@ export default class Client {
   async getReporters(validator: string): Promise<string[]> {
     const request = new QueryReportersRequest()
     request.setValidatorAddress(validator)
+
     return new Promise((resolve, reject) => {
       this.queryClient.reporters(
         request,
@@ -148,6 +152,7 @@ export default class Client {
 
   async getLatestBlock(): Promise<GetLatestBlockResponse.AsObject> {
     const request = new GetLatestBlockRequest()
+
     return new Promise((resolve, reject) => {
       this.serviceClient.getLatestBlock(
         request,
@@ -168,6 +173,7 @@ export default class Client {
   async getAccount(address: string): Promise<BaseAccount.AsObject> {
     const request = new QueryAccountRequest()
     request.setAddress(address)
+
     return new Promise((resolve, reject) => {
       this.authQueryClient.account(
         request,
@@ -196,6 +202,7 @@ export default class Client {
   async getRequestIdByTxHash(txHash: string): Promise<Number[]> {
     const request = new GetTxRequest()
     request.setHash(txHash)
+
     return new Promise((resolve, reject) => {
       this.txServiceClient.getTx(
         request,
@@ -239,6 +246,7 @@ export default class Client {
 
   async getChainId(): Promise<string> {
     const latestBlock = await this.getLatestBlock()
+
     return latestBlock.block.header.chainId
   }
 
@@ -248,6 +256,7 @@ export default class Client {
     const request = new BroadcastTxRequest()
     request.setTxBytes(txBytes)
     request.setMode(2)
+
     return new Promise((resolve, reject) => {
       this.txServiceClient.broadcastTx(
         request,
@@ -271,6 +280,7 @@ export default class Client {
     const request = new BroadcastTxRequest()
     request.setTxBytes(txBytes)
     request.setMode(3)
+
     return new Promise((resolve, reject) => {
       this.txServiceClient.broadcastTx(
         request,
@@ -294,6 +304,7 @@ export default class Client {
     const request = new BroadcastTxRequest()
     request.setTxBytes(txBytes)
     request.setMode(1)
+
     return new Promise((resolve, reject) => {
       this.txServiceClient.broadcastTx(
         request,
@@ -328,6 +339,7 @@ export default class Client {
     request.setSymbolsList(Array.from(symbolSet))
     request.setAskCount(askCount)
     request.setMinCount(minCount)
+
     return new Promise((resolve, reject) => {
       this.queryClient.requestPrice(
         request,
@@ -395,6 +407,7 @@ export default class Client {
     request.setCalldata(calldata)
     request.setAskCount(askCount)
     request.setMinCount(minCount)
+
     return new Promise((resolve, reject) => {
       this.queryClient.requestSearch(
         request,

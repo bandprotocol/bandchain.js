@@ -19,8 +19,8 @@ export class MsgRequestData extends MsgRequestDataProto {
     askCount: number,
     minCount: number,
     clientId: string,
-    feeLimitList: Coin[] = [],
     sender: string,
+    feeLimitList: Coin[] = [],
     prepareGas: number = 50000,
     executeGas: number = 300000,
   ) {
