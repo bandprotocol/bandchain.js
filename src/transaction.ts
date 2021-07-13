@@ -1,40 +1,56 @@
-import { Client } from 'index'
-import { Msg } from './message'
-import { PublicKey } from './wallet'
 import { MAX_MEMO_CHARACTERS } from './constant'
 import {
   EmptyMsgError,
   NotIntegerError,
   UndefinedError,
+  ValueTooLargeError,
   NotFoundError,
-  ValueTooLargeError
 } from './error'
+import { PublicKey } from './wallet'
+import Client from './client'
+
+import {
+  TxBody,
+  ModeInfo,
+  SignerInfo,
+  AuthInfo,
+  SignDoc,
+  TxRaw,
+} from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
+import { Any } from 'google-protobuf/google/protobuf/any_pb'
+import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
 
 export default class Transaction {
-  msgs: Msg[] = []
+  msgs: Array<Any> = []
   accountNum?: number
   sequence?: number
-  chainID?: string
-  fee: number = 0
+  chainId?: string
+  fee: Fee = new Fee()
   gas: number = 200000
   memo: string = ''
 
-  withMessages(...msg: Msg[]): Transaction {
+  withMessages(...msg: Array<Any>): Transaction {
     this.msgs.push(...msg)
+
     return this
   }
 
-  async withAuto(client: Client): Promise<Transaction> {
-    if (this.msgs.length == 0)
+  async withSender(client: Client, sender: string): Promise<Transaction> {
+    if (this.msgs.length === 0) {
       throw new EmptyMsgError(
         'Message is empty, please use withMessages at least 1 message.',
       )
+    }
 
-    let addr = this.msgs[0].getSender()
-    let account = await client.getAccount(addr)
-    if (!account) throw new NotFoundError(`Account doesn't exist.`)
+    let account = await client.getAccount(sender)
+    if (!account) {
+      throw new NotFoundError(`Account doesn't exist.`)
+    }
+
     this.accountNum = account.accountNumber
     this.sequence = account.sequence
+
     return this
   }
 
@@ -43,6 +59,7 @@ export default class Transaction {
       throw new NotIntegerError('accountNum is not an integer')
     }
     this.accountNum = accountNum
+
     return this
   }
 
@@ -51,19 +68,19 @@ export default class Transaction {
       throw new NotIntegerError('sequence is not an integer')
     }
     this.sequence = sequence
+
     return this
   }
 
-  withChainID(chainID: string): Transaction {
-    this.chainID = chainID
+  withChainId(chainId: string): Transaction {
+    this.chainId = chainId
+
     return this
   }
 
-  withFee(fee: number): Transaction {
-    if (!Number.isInteger(fee)) {
-      throw new NotIntegerError('fee is not an integer')
-    }
+  withFee(fee: Fee): Transaction {
     this.fee = fee
+
     return this
   }
 
@@ -72,6 +89,7 @@ export default class Transaction {
       throw new NotIntegerError('gas is not an integer')
     }
     this.gas = gas
+
     return this
   }
 
@@ -80,79 +98,76 @@ export default class Transaction {
       throw new ValueTooLargeError('memo is too large.')
     }
     this.memo = memo
+
     return this
   }
 
-  getSignData(): Buffer {
-    if (this.msgs.length == 0) {
-      throw new EmptyMsgError('message is empty')
-    }
+  private getInfo(publicKey: PublicKey): [Uint8Array, Uint8Array] {
+    let txBody = new TxBody()
+    txBody.setMessagesList(this.msgs)
+    txBody.setMemo(this.memo)
+    let txBodyBytes = txBody.serializeBinary()
 
-    if (this.accountNum == null) {
-      throw new UndefinedError('accountNum should be defined')
-    }
+    let modeInfo = new ModeInfo()
+    let modeSingle = new ModeInfo.Single()
+    modeSingle.setMode(SignMode.SIGN_MODE_DIRECT)
+    modeInfo.setSingle(modeSingle)
 
-    if (this.sequence == null) {
-      throw new UndefinedError('sequence should be defined')
-    }
+    let publicKeyAny = new Any()
+    publicKeyAny.pack(
+      publicKey.toPubkeyProto().serializeBinary(),
+      'cosmos.crypto.secp256k1.PubKey',
+      '/',
+    )
 
-    if (this.chainID == null) {
-      throw new UndefinedError('chainID should be defined')
-    }
+    let signerInfo = new SignerInfo()
+    signerInfo.setModeInfo(modeInfo)
+    signerInfo.setSequence(this.sequence)
+    signerInfo.setPublicKey(publicKeyAny)
 
-    this.msgs.forEach((msg) => msg.validate())
+    let authInfo = new AuthInfo()
+    authInfo.addSignerInfos(signerInfo)
+    const newFeeWithGas = this.fee.clone()
+    newFeeWithGas.setGasLimit(this.gas)
+    authInfo.setFee(newFeeWithGas)
+    let authInfoBytes = authInfo.serializeBinary()
 
-    let messageJson: { [key: string]: any } = {
-      chain_id: this.chainID,
-      account_number: this.accountNum.toString(),
-      fee: {
-        amount: [
-          {
-            amount: this.fee.toString(),
-            denom: 'uband',
-          },
-        ],
-        gas: this.gas.toString(),
-      },
-      memo: this.memo,
-      sequence: this.sequence.toString(),
-      msgs: this.msgs.map((msg) => msg.asJson()),
-    }
-
-    const sortedKey = Object.keys(messageJson).sort()
-    const result: { [key: string]: any } = {}
-    sortedKey.forEach((key) => (result[key] = messageJson[key]))
-
-    return Buffer.from(JSON.stringify(result))
+    return [txBodyBytes, authInfoBytes]
   }
 
-  getTxData(signature: Buffer, pubkey: PublicKey): Object {
-    if (this.accountNum == null) {
+  getSignDoc(publicKey: PublicKey): Uint8Array {
+    if (this.msgs.length === 0) {
+      throw new EmptyMsgError('message is empty')
+    }
+    if (this.accountNum === undefined) {
       throw new UndefinedError('accountNum should be defined')
     }
-
-    if (this.sequence == null) {
+    if (this.sequence === undefined) {
       throw new UndefinedError('sequence should be defined')
     }
-
-    return {
-      fee: {
-        amount: [{ amount: this.fee.toString(), denom: 'uband' }],
-        gas: this.gas.toString(),
-      },
-      memo: this.memo,
-      msg: this.msgs.map((msg) => msg.asJson()),
-      signatures: [
-        {
-          signature: signature.toString('base64'),
-          pub_key: {
-            type: 'tendermint/PubKeySecp256k1',
-            value: Buffer.from(pubkey.toHex(), 'hex').toString('base64'),
-          },
-          account_number: this.accountNum.toString(),
-          sequence: this.sequence.toString(),
-        },
-      ],
+    if (this.chainId === undefined) {
+      throw new UndefinedError('chainId should be defined')
     }
+
+    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey)
+
+    let signDoc = new SignDoc()
+    signDoc.setBodyBytes(txBodyBytes)
+    signDoc.setAuthInfoBytes(authInfoBytes)
+    signDoc.setChainId(this.chainId)
+    signDoc.setAccountNumber(this.accountNum)
+
+    return signDoc.serializeBinary()
+  }
+
+  getTxData(signature: Uint8Array, publicKey: PublicKey): Uint8Array {
+    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey)
+
+    let txRaw = new TxRaw()
+    txRaw.setBodyBytes(txBodyBytes)
+    txRaw.setAuthInfoBytes(authInfoBytes)
+    txRaw.addSignatures(signature)
+
+    return txRaw.serializeBinary()
   }
 }

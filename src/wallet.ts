@@ -10,6 +10,7 @@ import {
   DecodeError,
   ValueError,
 } from './error'
+import { PubKey as PublicKeyProto } from '../proto/cosmos/crypto/secp256k1/keys_pb'
 
 const BECH32_PUBKEY_ACC_PREFIX = 'bandpub'
 const BECH32_PUBKEY_VAL_PREFIX = 'bandvaloperpub'
@@ -30,6 +31,7 @@ export class PrivateKey {
 
   static generate(path = DEFAULT_DERIVATION_PATH): [string, PrivateKey] {
     const phrase = bip39.generateMnemonic(256)
+
     return [phrase, this.fromMnemonic(phrase, path)]
   }
 
@@ -47,6 +49,7 @@ export class PrivateKey {
     })
 
     if (!ecpair.privateKey) throw new CreateError('Cannot create private key')
+
     return new PrivateKey(ecpair.privateKey)
   }
 
@@ -59,14 +62,17 @@ export class PrivateKey {
   }
 
   toPubkey(): PublicKey {
+    // Create a public key in compressed format
     const pubKeyByte = secp256k1.publicKeyCreate(this.signingKey)
+
     return PublicKey.fromHex(Buffer.from(pubKeyByte).toString('hex'))
   }
 
-  sign(msg: Buffer): Buffer {
+  sign(msg: Uint8Array): Buffer {
     const hash = crypto.createHash('sha256').update(msg).digest('hex')
     const buf = Buffer.from(hash, 'hex')
     const { signature } = secp256k1.ecdsaSign(buf, this.signingKey)
+
     return Buffer.from(signature)
   }
 }
@@ -81,7 +87,7 @@ export class PublicKey {
   private static fromBech32(bech: string, _prefix: string): PublicKey {
     const { prefix, words } = bech32.decode(bech)
     if (prefix != _prefix) throw new ValueError('Invalid bech32 prefix')
-    if (words.length == 0) throw new DecodeError('Cannot decode bech32')
+    if (words.length === 0) throw new DecodeError('Cannot decode bech32')
 
     return new PublicKey(Buffer.from(bech32.fromWords(words).slice(5)))
   }
@@ -108,10 +114,17 @@ export class PublicKey {
       this.verifyKey,
     ])
     const words = bech32.toWords(Buffer.from(hex))
-    if (words.length == 0)
+    if (words.length === 0)
       throw new UnsuccessfulCallError('Unsuccessful bech32.toWords call')
 
     return bech32.encode(prefix, words)
+  }
+
+  toPubkeyProto(): PublicKeyProto {
+    const publicKeyProto = new PublicKeyProto()
+    publicKeyProto.setKey(this.verifyKey)
+
+    return publicKeyProto
   }
 
   toAccBech32(): string {
@@ -141,6 +154,7 @@ export class PublicKey {
   verify(msg: Buffer, sig: Buffer): boolean {
     const hash = crypto.createHash('sha256').update(msg).digest('hex')
     const buf = Buffer.from(hash, 'hex')
+
     return secp256k1.ecdsaVerify(sig, buf, this.verifyKey)
   }
 }
@@ -155,7 +169,7 @@ export class Address {
   private static fromBech32(bech: string, _prefix: string): Address {
     const { prefix, words } = bech32.decode(bech)
     if (prefix != _prefix) throw new ValueError('Invalid bech32 prefix')
-    if (words.length == 0) throw new DecodeError('Cannot decode bech32')
+    if (words.length === 0) throw new DecodeError('Cannot decode bech32')
 
     return new Address(Buffer.from(bech32.fromWords(words)))
   }
@@ -178,7 +192,7 @@ export class Address {
 
   private toBech32(prefix: string): string {
     const words = bech32.toWords(this.addr)
-    if (words.length == 0)
+    if (words.length === 0)
       throw new UnsuccessfulCallError('Unsuccessful bech32.toWords call')
 
     return bech32.encode(prefix, words)

@@ -2,26 +2,24 @@ import React from 'react'
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
 
-// BandChain's Proof-of-Authority REST endpoint
-const endpoint = 'https://api-gm-lb.bandchain.org'
-const client = new Client(endpoint)
+const grpcEndpoint = 'http://rpc-laozi-testnet2.bandchain.org:8080'
+const client = new Client(grpcEndpoint)
 
 function App() {
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
 
   React.useEffect(() => {
-    // This example demonstrates how to query price data from
-    // Band's standard dataset
-    async function exampleGetReferenceData() {
-      const data = await client.getReferenceData([
-        'BTC/USD',
-        'BTC/ETH',
-        'EUR/USD',
-      ])
+    // Get standard price reference
+    async function getReferenceData() {
+      const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 6)
+      console.log('account ', data)
+
       setPairs(data)
     }
-    exampleGetReferenceData()
+
+    getReferenceData()
   }, [])
+
   return (
     <div className="App">
       <span style={{ fontSize: '24px', marginBottom: '10px' }}>Prices</span>

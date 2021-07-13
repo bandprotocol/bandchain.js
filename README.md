@@ -1,6 +1,6 @@
 # BandChain.js
 
-BandChain.js is a library for interacting with BandChain in browser and Node.js environments.
+BandChain.js is a library for interacting with BandChain in browser and Node.js environments. It uses `gRPC-web` as protocol.
 
 ## ⭐️ Features
 
@@ -30,7 +30,7 @@ yarn add @bandprotocol/bandchain.js
 const { Client } = require('@bandprotocol/bandchain.js')
 
 // BandChain's Proof-of-Authority REST endpoint
-const endpoint = 'https://api-gm-lb.bandchain.org'
+const endpoint = 'http://rpc-laozi-testnet2.bandchain.org:8080'
 const client = new Client(endpoint)
 
 // This example demonstrates how to query price data from
@@ -41,7 +41,7 @@ async function exampleGetReferenceData() {
     'BTC/ETH',
     'EUR/USD',
     'EUR/ETH',
-  ])
+  ], 3, 6)
   return rate
 }
 
@@ -50,4 +50,4 @@ async function exampleGetReferenceData() {
 })()
 ```
 
-For more examples, please see [`example/index.js`](example/index.js)
+For more examples, please see [`example`](example/) folder.
