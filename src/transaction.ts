@@ -6,6 +6,8 @@ import {
   ValueTooLargeError,
   NotFoundError,
 } from './error'
+import { PublicKey } from './wallet'
+import Client from './client'
 
 import {
   TxBody,
@@ -18,8 +20,6 @@ import {
 import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
-import { PublicKey } from './wallet'
-import Client from './client'
 
 export default class Transaction {
   msgs: Array<Any> = []

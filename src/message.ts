@@ -1,3 +1,5 @@
+import { Any } from 'google-protobuf/google/protobuf/any_pb'
+
 import { MAX_DATA_SIZE } from './constant'
 import {
   NegativeIntegerError,
@@ -6,11 +8,11 @@ import {
   InsufficientCoinError,
   ValueError,
 } from './error'
+
 import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import { MsgDelegate as MsgDelegateProto } from '../proto/cosmos/staking/v1beta1/tx_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
-import { Any } from 'google-protobuf/google/protobuf/any_pb'
 
 export class MsgRequestData extends MsgRequestDataProto {
   constructor(

@@ -1,9 +1,14 @@
-import { NotFoundError, NotIntegerError, ValueError } from './error'
-
 import { grpc } from '@improbable-eng/grpc-web'
 import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport'
 
+import { NotFoundError, NotIntegerError, ValueError } from './error'
+import { ReferenceData } from './data'
+
 import { QueryClient } from '../proto/oracle/v1/query_pb_service'
+import { ServiceClient } from '../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
+import { QueryClient as AuthQueryClient } from '../proto/cosmos/auth/v1beta1/query_pb_service'
+import { ServiceClient as TxServiceClient } from '../proto/cosmos/tx/v1beta1/service_pb_service'
+
 import {
   QueryDataSourceRequest,
   QueryOracleScriptRequest,
@@ -14,28 +19,20 @@ import {
   QueryRequestSearchRequest,
 } from '../proto/oracle/v1/query_pb'
 import {
+  GetLatestBlockRequest,
+  GetLatestBlockResponse,
+} from '../proto/cosmos/base/tendermint/v1beta1/query_pb'
+import { QueryAccountRequest } from '../proto/cosmos/auth/v1beta1/query_pb'
+import { GetTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
+import { BroadcastTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
+import { TxResponse } from '../proto/cosmos/base/abci/v1beta1/abci_pb'
+
+import {
   DataSource,
   OracleScript,
   PriceResult,
 } from '../proto/oracle/v1/oracle_pb'
-import { ServiceClient } from '../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
-
-import {
-  GetLatestBlockRequest,
-  GetLatestBlockResponse,
-} from '../proto/cosmos/base/tendermint/v1beta1/query_pb'
-
-import { QueryClient as AuthQueryClient } from '../proto/cosmos/auth/v1beta1/query_pb_service'
-import { QueryAccountRequest } from '../proto/cosmos/auth/v1beta1/query_pb'
-
-import { ServiceClient as TxServiceClient } from '../proto/cosmos/tx/v1beta1/service_pb_service'
-import { GetTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
-
-import { BroadcastTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
-
-import { TxResponse } from '../proto/cosmos/base/abci/v1beta1/abci_pb'
 import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
-import { ReferenceData } from './data'
 
 export default class Client {
   queryClient: QueryClient
