@@ -36,17 +36,16 @@ export class MsgRequestData extends MsgRequestDataProto {
     this.setSender(sender)
   }
 
-  toAny(): Any | undefined {
-    if (this.validate()) {
-      const anyMsg = new Any()
-      const name = 'oracle.v1.MsgRequestData'
-      anyMsg.pack(this.serializeBinary(), name, '/')
-      return anyMsg
-    }
-    return undefined
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgRequestData'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
   }
 
-  validate(): boolean {
+  validate() {
     if (this.getOracleScriptId() <= 0)
       throw new NegativeIntegerError('oracleScriptId cannot be less than zero')
     if (!Number.isInteger(this.getOracleScriptId()))
@@ -74,7 +73,6 @@ export class MsgRequestData extends MsgRequestDataProto {
         )
       }
     })
-    return true
   }
 }
 
@@ -86,24 +84,22 @@ export class MsgSend extends MsgSendProto {
     this.setAmountList(amountList)
   }
 
-  toAny(): Any | undefined {
-    if (this.validate()) {
-      const anyMsg = new Any()
-      const name = 'cosmos.bank.v1beta1.MsgSend'
-      anyMsg.pack(this.serializeBinary(), name, '/')
-      return anyMsg
-    }
-    return undefined
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.bank.v1beta1.MsgSend'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
   }
 
-  validate(): boolean {
-    if (this.getAmountList().length == 0) {
+  validate() {
+    if (this.getAmountList().length === 0) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
     if (this.getToAddress() === '' || this.getFromAddress() === '') {
       throw new ValueError('Address should not be an empty string')
     }
-    return true
   }
 }
 
@@ -115,23 +111,21 @@ export class MsgDelegate extends MsgDelegateProto {
     this.setAmount(amount)
   }
 
-  toAny(): Any | undefined {
-    if (this.validate()) {
-      const anyMsg = new Any()
-      const name = 'cosmos.staking.v1beta1.MsgDelegate'
-      anyMsg.pack(this.serializeBinary(), name, '/')
-      return anyMsg
-    }
-    return undefined
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.staking.v1beta1.MsgDelegate'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
   }
 
-  validate(): boolean {
+  validate() {
     if (this.getAmount() === undefined) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
-    if (this.getDelegatorAddress() == '' || this.getValidatorAddress() == '') {
+    if (this.getDelegatorAddress() === '' || this.getValidatorAddress() === '') {
       throw new ValueError('Address should not be an empty string')
     }
-    return true
   }
 }

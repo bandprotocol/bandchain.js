@@ -9,12 +9,14 @@ function App() {
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
 
   React.useEffect(() => {
+    // Get standard price reference
     async function getReferenceData() {
       const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 6)
       console.log('account ', data)
 
       setPairs(data)
     }
+
     getReferenceData()
   }, [])
 

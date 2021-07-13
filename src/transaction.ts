@@ -32,17 +32,25 @@ export default class Transaction {
 
   withMessages(...msg: Array<Any>): Transaction {
     this.msgs.push(...msg)
+
     return this
   }
+
   async withSender(client: Client, sender: string): Promise<Transaction> {
-    if (this.msgs.length == 0)
+    if (this.msgs.length === 0) {
       throw new EmptyMsgError(
         'Message is empty, please use withMessages at least 1 message.',
       )
+    }
+
     let account = await client.getAccount(sender)
-    if (!account) throw new NotFoundError(`Account doesn't exist.`)
-    this.accountNum = await account.accountNumber
-    this.sequence = await account.sequence
+    if (!account) {
+      throw new NotFoundError(`Account doesn't exist.`)
+    }
+
+    this.accountNum = account.accountNumber
+    this.sequence = account.sequence
+
     return this
   }
 
@@ -51,6 +59,7 @@ export default class Transaction {
       throw new NotIntegerError('accountNum is not an integer')
     }
     this.accountNum = accountNum
+
     return this
   }
 
@@ -59,16 +68,19 @@ export default class Transaction {
       throw new NotIntegerError('sequence is not an integer')
     }
     this.sequence = sequence
+
     return this
   }
 
   withChainId(chainId: string): Transaction {
     this.chainId = chainId
+
     return this
   }
 
   withFee(fee: Fee): Transaction {
     this.fee = fee
+
     return this
   }
 
@@ -77,6 +89,7 @@ export default class Transaction {
       throw new NotIntegerError('gas is not an integer')
     }
     this.gas = gas
+
     return this
   }
 
@@ -85,6 +98,7 @@ export default class Transaction {
       throw new ValueTooLargeError('memo is too large.')
     }
     this.memo = memo
+
     return this
   }
 
@@ -117,23 +131,21 @@ export default class Transaction {
     newFeeWithGas.setGasLimit(this.gas)
     authInfo.setFee(newFeeWithGas)
     let authInfoBytes = authInfo.serializeBinary()
+
     return [txBodyBytes, authInfoBytes]
   }
 
   getSignDoc(publicKey: PublicKey): Uint8Array {
-    if (this.msgs.length == 0) {
+    if (this.msgs.length === 0) {
       throw new EmptyMsgError('message is empty')
     }
-
-    if (this.accountNum == null) {
+    if (this.accountNum === undefined) {
       throw new UndefinedError('accountNum should be defined')
     }
-
-    if (this.sequence == null) {
+    if (this.sequence === undefined) {
       throw new UndefinedError('sequence should be defined')
     }
-
-    if (this.chainId == null) {
+    if (this.chainId === undefined) {
       throw new UndefinedError('chainId should be defined')
     }
 
@@ -144,6 +156,7 @@ export default class Transaction {
     signDoc.setAuthInfoBytes(authInfoBytes)
     signDoc.setChainId(this.chainId)
     signDoc.setAccountNumber(this.accountNum)
+
     return signDoc.serializeBinary()
   }
 
@@ -154,6 +167,7 @@ export default class Transaction {
     txRaw.setBodyBytes(txBodyBytes)
     txRaw.setAuthInfoBytes(authInfoBytes)
     txRaw.addSignatures(signature)
+
     return txRaw.serializeBinary()
   }
 }

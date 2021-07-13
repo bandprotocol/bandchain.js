@@ -35,7 +35,7 @@ describe('MsgRequest', () => {
 
     expect(msgRequest.toAny()).toEqual(anyMsg)
 
-    expect(msgRequest.validate()).toBeTruthy()
+    expect(() => msgRequest.validate()).not.toThrow()
   })
 
   it('create with error from validate()', () => {
@@ -176,7 +176,7 @@ describe('MsgSend', () => {
 
     expect(msgSend.toAny()).toEqual(anyMsg)
 
-    expect(msgSend.validate()).toBeTruthy()
+    expect(() => msgSend.validate()).not.toThrow()
   })
 
   it('error MsgSend', () => {
@@ -225,7 +225,7 @@ describe('MsgDelegate', () => {
 
     expect(msgDelegate.toAny()).toEqual(anyMsg)
 
-    expect(msgDelegate.validate()).toBeTruthy()
+    expect(() => msgDelegate.validate()).not.toThrow()
   })
   
   it('error MsgDelegate', () => {

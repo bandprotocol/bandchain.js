@@ -1,4 +1,4 @@
-import { NotIntegerError } from './error'
+import { NotFoundError, NotIntegerError, ValueError } from './error'
 
 import { grpc } from '@improbable-eng/grpc-web'
 import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport'
@@ -75,9 +75,13 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null && response.hasDataSource()) {
             resolve(response.getDataSource().toObject())
+            return
           }
+
+          reject(new NotFoundError(`data source with ID ${id} does not exist`))
         },
       )
     })
@@ -98,9 +102,13 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null && response.hasOracleScript()) {
             resolve(response.getOracleScript().toObject())
+            return
           }
+
+          reject(new NotFoundError(`oracle script with ID ${id} does not exist`))
         },
       )
     })
@@ -121,6 +129,7 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null) {
             resolve(response.toObject())
           }
@@ -142,6 +151,7 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null) {
             resolve(response.getReporterList())
           }
@@ -162,6 +172,7 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null) {
             resolve(response.toObject())
           }
@@ -179,20 +190,31 @@ export default class Client {
         request,
         {} as grpc.Metadata,
         (err, response) => {
-          if (err !== null || response === null) {
+          if (err !== null) {
             reject(err)
             return
           }
-          if (response.hasAccount()) {
+
+          if (response !== null && response.hasAccount()) {
             let accBaseAccount = response
               .getAccount()
               .unpack(
                 BaseAccount.deserializeBinary,
                 'cosmos.auth.v1beta1.BaseAccount',
               )
-            if (accBaseAccount.getAddress) {
+
+            if (accBaseAccount !== null) {
               resolve(accBaseAccount.toObject())
+              return
             }
+
+            reject(
+              new ValueError(
+                `only base account allowed, expected BaseAccount, got ${response
+                  .getAccount()
+                  .getTypeName()
+                }`)
+            )
           }
         },
       )
@@ -212,33 +234,29 @@ export default class Client {
             reject(err)
             return
           }
-          if (
-            response !== null &&
-            response.hasTxResponse() &&
-            response.toObject().txResponse.logsList
-          ) {
-            let reqIdList = []
-            for (
-              let z = 0;
-              z < response.toObject().txResponse.logsList.length;
-              z++
-            ) {
-              let tx = response.toObject().txResponse.logsList[z]
-              for (let x = 0; x < tx.eventsList.length; x++) {
-                if (
-                  tx.eventsList[x].type == 'report' ||
-                  tx.eventsList[x].type == 'request'
-                ) {
-                  const eventList = tx.eventsList[x]
-                  for (let y = 0; y < eventList.attributesList.length; y++) {
-                    if (eventList.attributesList[y].key == 'id')
-                      reqIdList.push(Number(eventList.attributesList[y].value))
-                  }
-                }
-              }
-            }
-            resolve(reqIdList)
+          if (response === null || !response.hasTxResponse()) {
+            reject(new NotFoundError('the given tx hash does not exists'))
           }
+
+          let reqIdList = []
+          response.toObject().txResponse.logsList.forEach((txLog) => {
+            txLog.eventsList.forEach((event) => {
+              if (event.type === 'report' || event.type === 'request') {
+                event.attributesList.forEach((attribute) => {
+                  if (attribute.key === 'id') {
+                    reqIdList.push(Number(attribute.value))
+                  }
+                })
+              }
+            })
+          })
+
+          if (reqIdList.length === 0) {
+            reject(new NotFoundError('request ID is not found in given transaction hash'))
+            return
+          }
+
+          resolve(reqIdList)
         },
       )
     })
@@ -266,6 +284,7 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null && response.hasTxResponse()) {
             resolve(response.getTxResponse().toObject())
           }
@@ -290,6 +309,7 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null && response.hasTxResponse()) {
             resolve(response.getTxResponse().toObject())
           }
@@ -314,6 +334,7 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null && response.hasTxResponse()) {
             resolve(response.getTxResponse().toObject())
           }
@@ -329,6 +350,7 @@ export default class Client {
   ): Promise<ReferenceData[]> {
     const request = new QueryRequestPriceRequest()
     let symbolSet: Set<string> = new Set()
+
     pairs.forEach((pair) => {
       let symbols = pair.split('/')
       symbols.forEach((symbol) => {
@@ -336,6 +358,7 @@ export default class Client {
         symbolSet.add(symbol)
       })
     })
+
     request.setSymbolsList(Array.from(symbolSet))
     request.setAskCount(askCount)
     request.setMinCount(minCount)
@@ -349,42 +372,43 @@ export default class Client {
             reject(err)
             return
           }
-          if (response !== null) {
-            const finalResult: ReferenceData[] = []
-            const symbolMap: { [k: string]: PriceResult.AsObject } = {}
-            symbolMap['USD'] = {
-              symbol: 'USD',
-              multiplier: 1000000000,
-              px: 1000000000,
-              requestId: 0,
-              resolveTime: Math.floor(Date.now() / 1000),
-            }
-            response.toObject().priceResultsList.forEach((priceResult) => {
-              symbolMap[priceResult.symbol] = priceResult
-            })
 
-            pairs.forEach((pair) => {
-              let [baseSymbol, quoteSymbol] = pair.split('/')
-
-              finalResult.push({
-                pair,
-                rate:
-                  (Number(symbolMap[baseSymbol].px) *
-                    Number(symbolMap[quoteSymbol].multiplier)) /
-                  (Number(symbolMap[quoteSymbol].px) *
-                    Number(symbolMap[baseSymbol].multiplier)),
-                updatedAt: {
-                  base: Number(symbolMap[baseSymbol].resolveTime),
-                  quote: Number(symbolMap[quoteSymbol].resolveTime),
-                },
-                requestId: {
-                  base: Number(symbolMap[baseSymbol].requestId),
-                  quote: Number(symbolMap[quoteSymbol].requestId),
-                },
-              })
-            })
-            resolve(finalResult)
+          const finalResult: ReferenceData[] = []
+          const symbolMap: { [k: string]: PriceResult.AsObject } = {}
+          symbolMap['USD'] = {
+            symbol: 'USD',
+            multiplier: 1000000000,
+            px: 1000000000,
+            requestId: 0,
+            resolveTime: Math.floor(Date.now() / 1000),
           }
+
+          response.toObject().priceResultsList.forEach((priceResult) => {
+            symbolMap[priceResult.symbol] = priceResult
+          })
+
+          pairs.forEach((pair) => {
+            let [baseSymbol, quoteSymbol] = pair.split('/')
+
+            finalResult.push({
+              pair,
+              rate:
+                (Number(symbolMap[baseSymbol].px) *
+                  Number(symbolMap[quoteSymbol].multiplier)) /
+                (Number(symbolMap[quoteSymbol].px) *
+                  Number(symbolMap[baseSymbol].multiplier)),
+              updatedAt: {
+                base: Number(symbolMap[baseSymbol].resolveTime),
+                quote: Number(symbolMap[quoteSymbol].resolveTime),
+              },
+              requestId: {
+                base: Number(symbolMap[baseSymbol].requestId),
+                quote: Number(symbolMap[quoteSymbol].requestId),
+              },
+            })
+          })
+
+          resolve(finalResult)
         },
       )
     })
@@ -402,6 +426,7 @@ export default class Client {
       throw new NotIntegerError('minCount is not an integer')
     if (!Number.isInteger(askCount))
       throw new NotIntegerError('askCount is not an integer')
+
     const request = new QueryRequestSearchRequest()
     request.setOracleScriptId(oid)
     request.setCalldata(calldata)
@@ -417,9 +442,13 @@ export default class Client {
             reject(err)
             return
           }
+
           if (response !== null && response.hasRequest()) {
             resolve(response.getRequest().toObject())
+            return
           }
+
+          reject(new NotFoundError('request not found'))
         },
       )
     })
