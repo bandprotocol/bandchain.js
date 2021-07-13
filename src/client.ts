@@ -35,7 +35,7 @@ import { BroadcastTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
 
 import { TxResponse } from '../proto/cosmos/base/abci/v1beta1/abci_pb'
 import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
-import { ReferenceData } from 'data'
+import { ReferenceData } from './data'
 
 export default class Client {
   queryClient: QueryClient
