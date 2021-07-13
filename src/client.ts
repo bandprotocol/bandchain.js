@@ -1,6 +1,4 @@
-import axios from 'axios'
 import {
-  DataSource,
   TransactionSyncMode,
   TransactionAsyncMode,
   TransactionBlockMode,
@@ -16,42 +14,20 @@ import {
 import { NotIntegerError, EmptyRequestMsgError } from './error'
 import { Address } from './wallet'
 
+import {grpc} from "@improbable-eng/grpc-web";
+import { NodeHttpTransport } from "@improbable-eng/grpc-web-node-http-transport";
+
+import {QueryClient} from '../proto/oracle/v1/query_pb_service'
+import {QueryDataSourceRequest} from '../proto/oracle/v1/query_pb'
+import {DataSource} from '../proto/oracle/v1/oracle_pb'
+
 interface Params { [key: string]: string | number | string[] };
 
 export default class Client {
-  rpcUrl: string
-  constructor(rpcUrl: string) {
-    this.rpcUrl = rpcUrl
-  }
-
-  private async get(path: string, params?: Params) {
-    let options
-    if (params !== undefined) {
-      const paramBuilder = new URLSearchParams();
-      Object.entries(params).forEach(([key, values]) => {
-        if (Array.isArray(values)) {
-          values.forEach((value) => {
-            paramBuilder.append(key, value)
-          })
-        } else {
-          paramBuilder.append(key, String(values))
-        }
-      });
-      options = { params: paramBuilder }
-    }
-
-    const response = await axios.get(`${this.rpcUrl}${path}`, options)
-    return response.data
-  }
-
-  private async post(path: string, data: object) {
-    const response = await axios.post(`${this.rpcUrl}${path}`, data)
-    return response.data
-  }
-
-  private async getResult(path: string, params?: Params) {
-    const response = await this.get(`${path}`, params)
-    return response.result
+  queryClient: QueryClient
+  constructor(grpcUrl: string) {
+    this.queryClient = new QueryClient(grpcUrl)
+    grpc.setDefaultTransport(NodeHttpTransport());
   }
 
   async getChainID(): Promise<string> {
@@ -91,15 +67,20 @@ export default class Client {
    */
 
   async getDataSource(id: number): Promise<DataSource> {
-    if (!Number.isInteger(id)) throw new NotIntegerError('id is not an integer')
+    const request = new QueryDataSourceRequest()
+    request.setDataSourceId(id)
+    return new Promise((resolve, reject) => {
+      this.queryClient.dataSource(request, {} as grpc.Metadata, (err, response) => {
+        if (err !== null) {
+          reject(err)
+          return
+        }
 
-    const response = await this.getResult(`/oracle/data_sources/${id}`)
-    return {
-      owner: Address.fromAccBech32(response.owner),
-      name: response.name,
-      description: response.description,
-      fileName: response.filename,
-    }
+        if (response !== null && response.hasDataSource()) {
+          resolve(response.getDataSource() as DataSource)
+        }
+      })
+    })
   }
 
   async getAccount(address: Address): Promise<Account | undefined> {
@@ -107,7 +88,7 @@ export default class Client {
       `/auth/accounts/${address.toAccBech32()}`,
     )
     const value = response.value
-    if (!value.address) return
+    if (value.address === undefined) return undefined
     return {
       address: Address.fromAccBech32(value.address),
       coins: value.coins.map(
