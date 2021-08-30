@@ -15,7 +15,7 @@ export class ObiInteger extends ObiBase {
     this.sizeInBytes = parseInt(schema.slice(1)) / 8
   }
 
-  encode(value: BigInt): Buffer {
+  encode(value: bigint): Buffer {
     let newValue = BigInt(value)
     return Buffer.from(
       [...Array(this.sizeInBytes)]
