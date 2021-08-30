@@ -40,6 +40,15 @@ type QueryConsensusStates = {
   readonly responseType: typeof ibc_core_client_v1_query_pb.QueryConsensusStatesResponse;
 };
 
+type QueryClientStatus = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof ibc_core_client_v1_query_pb.QueryClientStatusRequest;
+  readonly responseType: typeof ibc_core_client_v1_query_pb.QueryClientStatusResponse;
+};
+
 type QueryClientParams = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -49,13 +58,34 @@ type QueryClientParams = {
   readonly responseType: typeof ibc_core_client_v1_query_pb.QueryClientParamsResponse;
 };
 
+type QueryUpgradedClientState = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof ibc_core_client_v1_query_pb.QueryUpgradedClientStateRequest;
+  readonly responseType: typeof ibc_core_client_v1_query_pb.QueryUpgradedClientStateResponse;
+};
+
+type QueryUpgradedConsensusState = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateRequest;
+  readonly responseType: typeof ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateResponse;
+};
+
 export class Query {
   static readonly serviceName: string;
   static readonly ClientState: QueryClientState;
   static readonly ClientStates: QueryClientStates;
   static readonly ConsensusState: QueryConsensusState;
   static readonly ConsensusStates: QueryConsensusStates;
+  static readonly ClientStatus: QueryClientStatus;
   static readonly ClientParams: QueryClientParams;
+  static readonly UpgradedClientState: QueryUpgradedClientState;
+  static readonly UpgradedConsensusState: QueryUpgradedConsensusState;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -126,6 +156,15 @@ export class QueryClient {
     requestMessage: ibc_core_client_v1_query_pb.QueryConsensusStatesRequest,
     callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryConsensusStatesResponse|null) => void
   ): UnaryResponse;
+  clientStatus(
+    requestMessage: ibc_core_client_v1_query_pb.QueryClientStatusRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryClientStatusResponse|null) => void
+  ): UnaryResponse;
+  clientStatus(
+    requestMessage: ibc_core_client_v1_query_pb.QueryClientStatusRequest,
+    callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryClientStatusResponse|null) => void
+  ): UnaryResponse;
   clientParams(
     requestMessage: ibc_core_client_v1_query_pb.QueryClientParamsRequest,
     metadata: grpc.Metadata,
@@ -134,6 +173,24 @@ export class QueryClient {
   clientParams(
     requestMessage: ibc_core_client_v1_query_pb.QueryClientParamsRequest,
     callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryClientParamsResponse|null) => void
+  ): UnaryResponse;
+  upgradedClientState(
+    requestMessage: ibc_core_client_v1_query_pb.QueryUpgradedClientStateRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryUpgradedClientStateResponse|null) => void
+  ): UnaryResponse;
+  upgradedClientState(
+    requestMessage: ibc_core_client_v1_query_pb.QueryUpgradedClientStateRequest,
+    callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryUpgradedClientStateResponse|null) => void
+  ): UnaryResponse;
+  upgradedConsensusState(
+    requestMessage: ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateResponse|null) => void
+  ): UnaryResponse;
+  upgradedConsensusState(
+    requestMessage: ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateRequest,
+    callback: (error: ServiceError|null, responseMessage: ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateResponse|null) => void
   ): UnaryResponse;
 }
 

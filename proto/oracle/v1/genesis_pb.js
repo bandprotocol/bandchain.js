@@ -47,7 +47,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.oracle.v1.GenesisState.repeatedFields_ = [2,3,4];
+proto.oracle.v1.GenesisState.repeatedFields_ = [2,3];
 
 
 
@@ -84,9 +84,7 @@ proto.oracle.v1.GenesisState.toObject = function(includeInstance, msg) {
     dataSourcesList: jspb.Message.toObjectList(msg.getDataSourcesList(),
     oracle_v1_oracle_pb.DataSource.toObject, includeInstance),
     oracleScriptsList: jspb.Message.toObjectList(msg.getOracleScriptsList(),
-    oracle_v1_oracle_pb.OracleScript.toObject, includeInstance),
-    reportersList: jspb.Message.toObjectList(msg.getReportersList(),
-    oracle_v1_oracle_pb.ReportersPerValidator.toObject, includeInstance)
+    oracle_v1_oracle_pb.OracleScript.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -137,11 +135,6 @@ proto.oracle.v1.GenesisState.deserializeBinaryFromReader = function(msg, reader)
       var value = new oracle_v1_oracle_pb.OracleScript;
       reader.readMessage(value,oracle_v1_oracle_pb.OracleScript.deserializeBinaryFromReader);
       msg.addOracleScripts(value);
-      break;
-    case 4:
-      var value = new oracle_v1_oracle_pb.ReportersPerValidator;
-      reader.readMessage(value,oracle_v1_oracle_pb.ReportersPerValidator.deserializeBinaryFromReader);
-      msg.addReporters(value);
       break;
     default:
       reader.skipField();
@@ -194,14 +187,6 @@ proto.oracle.v1.GenesisState.serializeBinaryToWriter = function(message, writer)
       3,
       f,
       oracle_v1_oracle_pb.OracleScript.serializeBinaryToWriter
-    );
-  }
-  f = message.getReportersList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      4,
-      f,
-      oracle_v1_oracle_pb.ReportersPerValidator.serializeBinaryToWriter
     );
   }
 };
@@ -317,44 +302,6 @@ proto.oracle.v1.GenesisState.prototype.addOracleScripts = function(opt_value, op
  */
 proto.oracle.v1.GenesisState.prototype.clearOracleScriptsList = function() {
   return this.setOracleScriptsList([]);
-};
-
-
-/**
- * repeated ReportersPerValidator reporters = 4;
- * @return {!Array<!proto.oracle.v1.ReportersPerValidator>}
- */
-proto.oracle.v1.GenesisState.prototype.getReportersList = function() {
-  return /** @type{!Array<!proto.oracle.v1.ReportersPerValidator>} */ (
-    jspb.Message.getRepeatedWrapperField(this, oracle_v1_oracle_pb.ReportersPerValidator, 4));
-};
-
-
-/**
- * @param {!Array<!proto.oracle.v1.ReportersPerValidator>} value
- * @return {!proto.oracle.v1.GenesisState} returns this
-*/
-proto.oracle.v1.GenesisState.prototype.setReportersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 4, value);
-};
-
-
-/**
- * @param {!proto.oracle.v1.ReportersPerValidator=} opt_value
- * @param {number=} opt_index
- * @return {!proto.oracle.v1.ReportersPerValidator}
- */
-proto.oracle.v1.GenesisState.prototype.addReporters = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.oracle.v1.ReportersPerValidator, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.oracle.v1.GenesisState} returns this
- */
-proto.oracle.v1.GenesisState.prototype.clearReportersList = function() {
-  return this.setReportersList([]);
 };
 
 

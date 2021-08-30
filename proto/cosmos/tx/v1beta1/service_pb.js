@@ -32,7 +32,6 @@ goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxResponse', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.OrderBy', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateResponse', null, global);
 /**
@@ -243,8 +242,7 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.toObject = function(opt_inc
 proto.cosmos.tx.v1beta1.GetTxsEventRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     eventsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f),
-    orderBy: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -290,10 +288,6 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinaryFromReader = functio
       reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
       msg.setPagination(value);
       break;
-    case 3:
-      var value = /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (reader.readEnum());
-      msg.setOrderBy(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -336,13 +330,6 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.serializeBinaryToWriter = function(me
       2,
       f,
       cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-  f = message.getOrderBy();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      3,
-      f
     );
   }
 };
@@ -419,24 +406,6 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.clearPagination = function(
  */
 proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.hasPagination = function() {
   return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional OrderBy order_by = 3;
- * @return {!proto.cosmos.tx.v1beta1.OrderBy}
- */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getOrderBy = function() {
-  return /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/**
- * @param {!proto.cosmos.tx.v1beta1.OrderBy} value
- * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
- */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setOrderBy = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 
@@ -1723,15 +1692,6 @@ proto.cosmos.tx.v1beta1.GetTxResponse.prototype.hasTxResponse = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
-
-/**
- * @enum {number}
- */
-proto.cosmos.tx.v1beta1.OrderBy = {
-  ORDER_BY_UNSPECIFIED: 0,
-  ORDER_BY_ASC: 1,
-  ORDER_BY_DESC: 2
-};
 
 /**
  * @enum {number}

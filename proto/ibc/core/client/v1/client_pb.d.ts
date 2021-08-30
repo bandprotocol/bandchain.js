@@ -4,6 +4,7 @@
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../../gogoproto/gogo_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
+import * as cosmos_upgrade_v1beta1_upgrade_pb from "../../../../cosmos/upgrade/v1beta1/upgrade_pb";
 
 export class IdentifiedClientState extends jspb.Message {
   getClientId(): string;
@@ -92,13 +93,11 @@ export class ClientUpdateProposal extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): void;
 
-  getClientId(): string;
-  setClientId(value: string): void;
+  getSubjectClientId(): string;
+  setSubjectClientId(value: string): void;
 
-  hasHeader(): boolean;
-  clearHeader(): void;
-  getHeader(): google_protobuf_any_pb.Any | undefined;
-  setHeader(value?: google_protobuf_any_pb.Any): void;
+  getSubstituteClientId(): string;
+  setSubstituteClientId(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ClientUpdateProposal.AsObject;
@@ -114,8 +113,44 @@ export namespace ClientUpdateProposal {
   export type AsObject = {
     title: string,
     description: string,
-    clientId: string,
-    header?: google_protobuf_any_pb.Any.AsObject,
+    subjectClientId: string,
+    substituteClientId: string,
+  }
+}
+
+export class UpgradeProposal extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): void;
+
+  getDescription(): string;
+  setDescription(value: string): void;
+
+  hasPlan(): boolean;
+  clearPlan(): void;
+  getPlan(): cosmos_upgrade_v1beta1_upgrade_pb.Plan | undefined;
+  setPlan(value?: cosmos_upgrade_v1beta1_upgrade_pb.Plan): void;
+
+  hasUpgradedClientState(): boolean;
+  clearUpgradedClientState(): void;
+  getUpgradedClientState(): google_protobuf_any_pb.Any | undefined;
+  setUpgradedClientState(value?: google_protobuf_any_pb.Any): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpgradeProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: UpgradeProposal): UpgradeProposal.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UpgradeProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpgradeProposal;
+  static deserializeBinaryFromReader(message: UpgradeProposal, reader: jspb.BinaryReader): UpgradeProposal;
+}
+
+export namespace UpgradeProposal {
+  export type AsObject = {
+    title: string,
+    description: string,
+    plan?: cosmos_upgrade_v1beta1_upgrade_pb.Plan.AsObject,
+    upgradedClientState?: google_protobuf_any_pb.Any.AsObject,
   }
 }
 

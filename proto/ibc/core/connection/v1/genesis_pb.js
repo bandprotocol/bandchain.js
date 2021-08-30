@@ -84,7 +84,8 @@ proto.ibc.core.connection.v1.GenesisState.toObject = function(includeInstance, m
     ibc_core_connection_v1_connection_pb.IdentifiedConnection.toObject, includeInstance),
     clientConnectionPathsList: jspb.Message.toObjectList(msg.getClientConnectionPathsList(),
     ibc_core_connection_v1_connection_pb.ConnectionPaths.toObject, includeInstance),
-    nextConnectionSequence: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    nextConnectionSequence: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    params: (f = msg.getParams()) && ibc_core_connection_v1_connection_pb.Params.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -134,6 +135,11 @@ proto.ibc.core.connection.v1.GenesisState.deserializeBinaryFromReader = function
     case 3:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setNextConnectionSequence(value);
+      break;
+    case 4:
+      var value = new ibc_core_connection_v1_connection_pb.Params;
+      reader.readMessage(value,ibc_core_connection_v1_connection_pb.Params.deserializeBinaryFromReader);
+      msg.setParams(value);
       break;
     default:
       reader.skipField();
@@ -185,6 +191,14 @@ proto.ibc.core.connection.v1.GenesisState.serializeBinaryToWriter = function(mes
     writer.writeUint64(
       3,
       f
+    );
+  }
+  f = message.getParams();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      ibc_core_connection_v1_connection_pb.Params.serializeBinaryToWriter
     );
   }
 };
@@ -281,6 +295,43 @@ proto.ibc.core.connection.v1.GenesisState.prototype.getNextConnectionSequence = 
  */
 proto.ibc.core.connection.v1.GenesisState.prototype.setNextConnectionSequence = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional Params params = 4;
+ * @return {?proto.ibc.core.connection.v1.Params}
+ */
+proto.ibc.core.connection.v1.GenesisState.prototype.getParams = function() {
+  return /** @type{?proto.ibc.core.connection.v1.Params} */ (
+    jspb.Message.getWrapperField(this, ibc_core_connection_v1_connection_pb.Params, 4));
+};
+
+
+/**
+ * @param {?proto.ibc.core.connection.v1.Params|undefined} value
+ * @return {!proto.ibc.core.connection.v1.GenesisState} returns this
+*/
+proto.ibc.core.connection.v1.GenesisState.prototype.setParams = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ibc.core.connection.v1.GenesisState} returns this
+ */
+proto.ibc.core.connection.v1.GenesisState.prototype.clearParams = function() {
+  return this.setParams(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ibc.core.connection.v1.GenesisState.prototype.hasParams = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 

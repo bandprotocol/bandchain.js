@@ -21,11 +21,6 @@ export class Plan extends jspb.Message {
   getInfo(): string;
   setInfo(value: string): void;
 
-  hasUpgradedClientState(): boolean;
-  clearUpgradedClientState(): void;
-  getUpgradedClientState(): google_protobuf_any_pb.Any | undefined;
-  setUpgradedClientState(value?: google_protobuf_any_pb.Any): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Plan.AsObject;
   static toObject(includeInstance: boolean, msg: Plan): Plan.AsObject;
@@ -42,7 +37,6 @@ export namespace Plan {
     time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     height: number,
     info: string,
-    upgradedClientState?: google_protobuf_any_pb.Any.AsObject,
   }
 }
 

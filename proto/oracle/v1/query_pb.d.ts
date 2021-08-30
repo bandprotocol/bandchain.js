@@ -3,9 +3,11 @@
 
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../gogoproto/gogo_pb";
+import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as google_api_annotations_pb from "../../google/api/annotations_pb";
 import * as oracle_v1_oracle_pb from "../../oracle/v1/oracle_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../cosmos/base/v1beta1/coin_pb";
+import * as cosmos_proto_cosmos_pb from "../../cosmos_proto/cosmos_pb";
 
 export class QueryCountsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
@@ -353,6 +355,50 @@ export namespace QueryValidatorResponse {
   }
 }
 
+export class QueryIsReporterRequest extends jspb.Message {
+  getValidatorAddress(): string;
+  setValidatorAddress(value: string): void;
+
+  getReporterAddress(): string;
+  setReporterAddress(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryIsReporterRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryIsReporterRequest): QueryIsReporterRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryIsReporterRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryIsReporterRequest;
+  static deserializeBinaryFromReader(message: QueryIsReporterRequest, reader: jspb.BinaryReader): QueryIsReporterRequest;
+}
+
+export namespace QueryIsReporterRequest {
+  export type AsObject = {
+    validatorAddress: string,
+    reporterAddress: string,
+  }
+}
+
+export class QueryIsReporterResponse extends jspb.Message {
+  getIsReporter(): boolean;
+  setIsReporter(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryIsReporterResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryIsReporterResponse): QueryIsReporterResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryIsReporterResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryIsReporterResponse;
+  static deserializeBinaryFromReader(message: QueryIsReporterResponse, reader: jspb.BinaryReader): QueryIsReporterResponse;
+}
+
+export namespace QueryIsReporterResponse {
+  export type AsObject = {
+    isReporter: boolean,
+  }
+}
+
 export class QueryReportersRequest extends jspb.Message {
   getValidatorAddress(): string;
   setValidatorAddress(value: string): void;
@@ -614,60 +660,6 @@ export namespace QueryRequestVerificationResponse {
     requestId: number,
     externalId: number,
     dataSourceId: number,
-  }
-}
-
-export class QueryRequestPoolRequest extends jspb.Message {
-  getRequestKey(): string;
-  setRequestKey(value: string): void;
-
-  getPortId(): string;
-  setPortId(value: string): void;
-
-  getChannelId(): string;
-  setChannelId(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryRequestPoolRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryRequestPoolRequest): QueryRequestPoolRequest.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryRequestPoolRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryRequestPoolRequest;
-  static deserializeBinaryFromReader(message: QueryRequestPoolRequest, reader: jspb.BinaryReader): QueryRequestPoolRequest;
-}
-
-export namespace QueryRequestPoolRequest {
-  export type AsObject = {
-    requestKey: string,
-    portId: string,
-    channelId: string,
-  }
-}
-
-export class QueryRequestPoolResponse extends jspb.Message {
-  getRequestPoolAddress(): string;
-  setRequestPoolAddress(value: string): void;
-
-  clearBalanceList(): void;
-  getBalanceList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
-  setBalanceList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
-  addBalance(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryRequestPoolResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryRequestPoolResponse): QueryRequestPoolResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryRequestPoolResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryRequestPoolResponse;
-  static deserializeBinaryFromReader(message: QueryRequestPoolResponse, reader: jspb.BinaryReader): QueryRequestPoolResponse;
-}
-
-export namespace QueryRequestPoolResponse {
-  export type AsObject = {
-    requestPoolAddress: string,
-    balanceList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
   }
 }
 

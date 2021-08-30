@@ -19,9 +19,6 @@ export class GetTxsEventRequest extends jspb.Message {
   getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageRequest | undefined;
   setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageRequest): void;
 
-  getOrderBy(): OrderByMap[keyof OrderByMap];
-  setOrderBy(value: OrderByMap[keyof OrderByMap]): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetTxsEventRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetTxsEventRequest): GetTxsEventRequest.AsObject;
@@ -36,7 +33,6 @@ export namespace GetTxsEventRequest {
   export type AsObject = {
     eventsList: Array<string>,
     pagination?: cosmos_base_query_v1beta1_pagination_pb.PageRequest.AsObject,
-    orderBy: OrderByMap[keyof OrderByMap],
   }
 }
 
@@ -219,14 +215,6 @@ export namespace GetTxResponse {
     txResponse?: cosmos_base_abci_v1beta1_abci_pb.TxResponse.AsObject,
   }
 }
-
-export interface OrderByMap {
-  ORDER_BY_UNSPECIFIED: 0;
-  ORDER_BY_ASC: 1;
-  ORDER_BY_DESC: 2;
-}
-
-export const OrderBy: OrderByMap;
 
 export interface BroadcastModeMap {
   BROADCAST_MODE_UNSPECIFIED: 0;

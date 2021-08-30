@@ -122,8 +122,7 @@ proto.cosmos.upgrade.v1beta1.Plan.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     height: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    info: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    upgradedClientState: (f = msg.getUpgradedClientState()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
+    info: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -176,11 +175,6 @@ proto.cosmos.upgrade.v1beta1.Plan.deserializeBinaryFromReader = function(msg, re
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setInfo(value);
-      break;
-    case 5:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setUpgradedClientState(value);
       break;
     default:
       reader.skipField();
@@ -238,14 +232,6 @@ proto.cosmos.upgrade.v1beta1.Plan.serializeBinaryToWriter = function(message, wr
     writer.writeString(
       4,
       f
-    );
-  }
-  f = message.getUpgradedClientState();
-  if (f != null) {
-    writer.writeMessage(
-      5,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
     );
   }
 };
@@ -339,43 +325,6 @@ proto.cosmos.upgrade.v1beta1.Plan.prototype.getInfo = function() {
  */
 proto.cosmos.upgrade.v1beta1.Plan.prototype.setInfo = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
-};
-
-
-/**
- * optional google.protobuf.Any upgraded_client_state = 5;
- * @return {?proto.google.protobuf.Any}
- */
-proto.cosmos.upgrade.v1beta1.Plan.prototype.getUpgradedClientState = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 5));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Any|undefined} value
- * @return {!proto.cosmos.upgrade.v1beta1.Plan} returns this
-*/
-proto.cosmos.upgrade.v1beta1.Plan.prototype.setUpgradedClientState = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.cosmos.upgrade.v1beta1.Plan} returns this
- */
-proto.cosmos.upgrade.v1beta1.Plan.prototype.clearUpgradedClientState = function() {
-  return this.setUpgradedClientState(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.cosmos.upgrade.v1beta1.Plan.prototype.hasUpgradedClientState = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 

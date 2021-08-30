@@ -73,6 +73,15 @@ Query.Validator = {
   responseType: oracle_v1_query_pb.QueryValidatorResponse
 };
 
+Query.IsReporter = {
+  methodName: "IsReporter",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: oracle_v1_query_pb.QueryIsReporterRequest,
+  responseType: oracle_v1_query_pb.QueryIsReporterResponse
+};
+
 Query.Reporters = {
   methodName: "Reporters",
   service: Query,
@@ -125,15 +134,6 @@ Query.RequestVerification = {
   responseStream: false,
   requestType: oracle_v1_query_pb.QueryRequestVerificationRequest,
   responseType: oracle_v1_query_pb.QueryRequestVerificationResponse
-};
-
-Query.RequestPool = {
-  methodName: "RequestPool",
-  service: Query,
-  requestStream: false,
-  responseStream: false,
-  requestType: oracle_v1_query_pb.QueryRequestPoolRequest,
-  responseType: oracle_v1_query_pb.QueryRequestPoolResponse
 };
 
 exports.Query = Query;
@@ -360,6 +360,37 @@ QueryClient.prototype.validator = function validator(requestMessage, metadata, c
   };
 };
 
+QueryClient.prototype.isReporter = function isReporter(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.IsReporter, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
 QueryClient.prototype.reporters = function reporters(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
@@ -520,37 +551,6 @@ QueryClient.prototype.requestVerification = function requestVerification(request
     callback = arguments[1];
   }
   var client = grpc.unary(Query.RequestVerification, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-QueryClient.prototype.requestPool = function requestPool(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Query.RequestPool, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
