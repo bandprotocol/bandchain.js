@@ -1068,7 +1068,7 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.toObject = function(
  */
 proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1105,6 +1105,11 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinaryFromReader = 
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
+      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
+      msg.setPagination(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1134,6 +1139,51 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.serializeBinary = fu
  */
 proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPagination();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional cosmos.base.query.v1beta1.PageRequest pagination = 1;
+ * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.getPagination = function() {
+  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 1));
+};
+
+
+/**
+ * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
+ * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest} returns this
+*/
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.setPagination = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest} returns this
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.clearPagination = function() {
+  return this.setPagination(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.hasPagination = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -1177,7 +1227,8 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.toObject = function
 proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     supplyList: jspb.Message.toObjectList(msg.getSupplyList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance)
+    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
+    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1219,6 +1270,11 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinaryFromReader =
       reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
       msg.addSupply(value);
       break;
+    case 2:
+      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
+      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
+      msg.setPagination(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1254,6 +1310,14 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.serializeBinaryToWriter = fun
       1,
       f,
       cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
+    );
+  }
+  f = message.getPagination();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
     );
   }
 };
@@ -1294,6 +1358,43 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.addSupply = functio
  */
 proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.clearSupplyList = function() {
   return this.setSupplyList([]);
+};
+
+
+/**
+ * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
+ * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.getPagination = function() {
+  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
+};
+
+
+/**
+ * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
+ * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} returns this
+*/
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.setPagination = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} returns this
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.clearPagination = function() {
+  return this.setPagination(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.hasPagination = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 

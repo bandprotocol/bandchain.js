@@ -94,7 +94,8 @@ proto.cosmos.base.query.v1beta1.PageRequest.toObject = function(includeInstance,
     key: msg.getKey_asB64(),
     offset: jspb.Message.getFieldWithDefault(msg, 2, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    countTotal: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+    countTotal: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+    reverse: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -146,6 +147,10 @@ proto.cosmos.base.query.v1beta1.PageRequest.deserializeBinaryFromReader = functi
     case 4:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setCountTotal(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setReverse(value);
       break;
     default:
       reader.skipField();
@@ -201,6 +206,13 @@ proto.cosmos.base.query.v1beta1.PageRequest.serializeBinaryToWriter = function(m
   if (f) {
     writer.writeBool(
       4,
+      f
+    );
+  }
+  f = message.getReverse();
+  if (f) {
+    writer.writeBool(
+      5,
       f
     );
   }
@@ -300,6 +312,24 @@ proto.cosmos.base.query.v1beta1.PageRequest.prototype.getCountTotal = function()
  */
 proto.cosmos.base.query.v1beta1.PageRequest.prototype.setCountTotal = function(value) {
   return jspb.Message.setProto3BooleanField(this, 4, value);
+};
+
+
+/**
+ * optional bool reverse = 5;
+ * @return {boolean}
+ */
+proto.cosmos.base.query.v1beta1.PageRequest.prototype.getReverse = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.cosmos.base.query.v1beta1.PageRequest} returns this
+ */
+proto.cosmos.base.query.v1beta1.PageRequest.prototype.setReverse = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 

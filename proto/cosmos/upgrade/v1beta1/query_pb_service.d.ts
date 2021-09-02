@@ -31,11 +31,21 @@ type QueryUpgradedConsensusState = {
   readonly responseType: typeof cosmos_upgrade_v1beta1_query_pb.QueryUpgradedConsensusStateResponse;
 };
 
+type QueryModuleVersions = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsRequest;
+  readonly responseType: typeof cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsResponse;
+};
+
 export class Query {
   static readonly serviceName: string;
   static readonly CurrentPlan: QueryCurrentPlan;
   static readonly AppliedPlan: QueryAppliedPlan;
   static readonly UpgradedConsensusState: QueryUpgradedConsensusState;
+  static readonly ModuleVersions: QueryModuleVersions;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -96,6 +106,15 @@ export class QueryClient {
   upgradedConsensusState(
     requestMessage: cosmos_upgrade_v1beta1_query_pb.QueryUpgradedConsensusStateRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_upgrade_v1beta1_query_pb.QueryUpgradedConsensusStateResponse|null) => void
+  ): UnaryResponse;
+  moduleVersions(
+    requestMessage: cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsResponse|null) => void
+  ): UnaryResponse;
+  moduleVersions(
+    requestMessage: cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsResponse|null) => void
   ): UnaryResponse;
 }
 

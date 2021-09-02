@@ -32,6 +32,7 @@ goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxResponse', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventResponse', null, global);
+goog.exportSymbol('proto.cosmos.tx.v1beta1.OrderBy', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateResponse', null, global);
 /**
@@ -242,7 +243,8 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.toObject = function(opt_inc
 proto.cosmos.tx.v1beta1.GetTxsEventRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     eventsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
+    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f),
+    orderBy: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -288,6 +290,10 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinaryFromReader = functio
       reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
       msg.setPagination(value);
       break;
+    case 3:
+      var value = /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (reader.readEnum());
+      msg.setOrderBy(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -330,6 +336,13 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.serializeBinaryToWriter = function(me
       2,
       f,
       cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
+    );
+  }
+  f = message.getOrderBy();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
     );
   }
 };
@@ -406,6 +419,24 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.clearPagination = function(
  */
 proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.hasPagination = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional OrderBy order_by = 3;
+ * @return {!proto.cosmos.tx.v1beta1.OrderBy}
+ */
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getOrderBy = function() {
+  return /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.cosmos.tx.v1beta1.OrderBy} value
+ * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
+ */
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setOrderBy = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 
@@ -1040,7 +1071,8 @@ proto.cosmos.tx.v1beta1.SimulateRequest.prototype.toObject = function(opt_includ
  */
 proto.cosmos.tx.v1beta1.SimulateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f)
+    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
+    txBytes: msg.getTxBytes_asB64()
   };
 
   if (includeInstance) {
@@ -1082,6 +1114,10 @@ proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinaryFromReader = function(m
       reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
       msg.setTx(value);
       break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setTxBytes(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1117,6 +1153,13 @@ proto.cosmos.tx.v1beta1.SimulateRequest.serializeBinaryToWriter = function(messa
       1,
       f,
       cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
+    );
+  }
+  f = message.getTxBytes_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      2,
+      f
     );
   }
 };
@@ -1156,6 +1199,48 @@ proto.cosmos.tx.v1beta1.SimulateRequest.prototype.clearTx = function() {
  */
 proto.cosmos.tx.v1beta1.SimulateRequest.prototype.hasTx = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bytes tx_bytes = 2;
+ * @return {!(string|Uint8Array)}
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * optional bytes tx_bytes = 2;
+ * This is a type-conversion wrapper around `getTxBytes()`
+ * @return {string}
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getTxBytes()));
+};
+
+
+/**
+ * optional bytes tx_bytes = 2;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getTxBytes()`
+ * @return {!Uint8Array}
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getTxBytes()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.cosmos.tx.v1beta1.SimulateRequest} returns this
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.setTxBytes = function(value) {
+  return jspb.Message.setProto3BytesField(this, 2, value);
 };
 
 
@@ -1692,6 +1777,15 @@ proto.cosmos.tx.v1beta1.GetTxResponse.prototype.hasTxResponse = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.cosmos.tx.v1beta1.OrderBy = {
+  ORDER_BY_UNSPECIFIED: 0,
+  ORDER_BY_ASC: 1,
+  ORDER_BY_DESC: 2
+};
 
 /**
  * @enum {number}

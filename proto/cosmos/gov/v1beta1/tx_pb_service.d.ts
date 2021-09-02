@@ -22,6 +22,15 @@ type MsgVote = {
   readonly responseType: typeof cosmos_gov_v1beta1_tx_pb.MsgVoteResponse;
 };
 
+type MsgVoteWeighted = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_gov_v1beta1_tx_pb.MsgVoteWeighted;
+  readonly responseType: typeof cosmos_gov_v1beta1_tx_pb.MsgVoteWeightedResponse;
+};
+
 type MsgDeposit = {
   readonly methodName: string;
   readonly service: typeof Msg;
@@ -35,6 +44,7 @@ export class Msg {
   static readonly serviceName: string;
   static readonly SubmitProposal: MsgSubmitProposal;
   static readonly Vote: MsgVote;
+  static readonly VoteWeighted: MsgVoteWeighted;
   static readonly Deposit: MsgDeposit;
 }
 
@@ -87,6 +97,15 @@ export class MsgClient {
   vote(
     requestMessage: cosmos_gov_v1beta1_tx_pb.MsgVote,
     callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1beta1_tx_pb.MsgVoteResponse|null) => void
+  ): UnaryResponse;
+  voteWeighted(
+    requestMessage: cosmos_gov_v1beta1_tx_pb.MsgVoteWeighted,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1beta1_tx_pb.MsgVoteWeightedResponse|null) => void
+  ): UnaryResponse;
+  voteWeighted(
+    requestMessage: cosmos_gov_v1beta1_tx_pb.MsgVoteWeighted,
+    callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1beta1_tx_pb.MsgVoteWeightedResponse|null) => void
   ): UnaryResponse;
   deposit(
     requestMessage: cosmos_gov_v1beta1_tx_pb.MsgDeposit,

@@ -21,6 +21,11 @@ export class Plan extends jspb.Message {
   getInfo(): string;
   setInfo(value: string): void;
 
+  hasUpgradedClientState(): boolean;
+  clearUpgradedClientState(): void;
+  getUpgradedClientState(): google_protobuf_any_pb.Any | undefined;
+  setUpgradedClientState(value?: google_protobuf_any_pb.Any): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Plan.AsObject;
   static toObject(includeInstance: boolean, msg: Plan): Plan.AsObject;
@@ -37,6 +42,7 @@ export namespace Plan {
     time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     height: number,
     info: string,
+    upgradedClientState?: google_protobuf_any_pb.Any.AsObject,
   }
 }
 
@@ -91,6 +97,30 @@ export namespace CancelSoftwareUpgradeProposal {
   export type AsObject = {
     title: string,
     description: string,
+  }
+}
+
+export class ModuleVersion extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  getVersion(): number;
+  setVersion(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ModuleVersion.AsObject;
+  static toObject(includeInstance: boolean, msg: ModuleVersion): ModuleVersion.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ModuleVersion, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ModuleVersion;
+  static deserializeBinaryFromReader(message: ModuleVersion, reader: jspb.BinaryReader): ModuleVersion;
+}
+
+export namespace ModuleVersion {
+  export type AsObject = {
+    name: string,
+    version: number,
   }
 }
 

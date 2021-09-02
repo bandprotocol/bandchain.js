@@ -352,6 +352,9 @@ export class VersionInfo extends jspb.Message {
   setBuildDepsList(value: Array<Module>): void;
   addBuildDeps(value?: Module, index?: number): Module;
 
+  getCosmosSdkVersion(): string;
+  setCosmosSdkVersion(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VersionInfo.AsObject;
   static toObject(includeInstance: boolean, msg: VersionInfo): VersionInfo.AsObject;
@@ -371,6 +374,7 @@ export namespace VersionInfo {
     buildTags: string,
     goVersion: string,
     buildDepsList: Array<Module.AsObject>,
+    cosmosSdkVersion: string,
   }
 }
 

@@ -1324,7 +1324,9 @@ proto.cosmos.bank.v1beta1.Metadata.toObject = function(includeInstance, msg) {
     denomUnitsList: jspb.Message.toObjectList(msg.getDenomUnitsList(),
     proto.cosmos.bank.v1beta1.DenomUnit.toObject, includeInstance),
     base: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    display: jspb.Message.getFieldWithDefault(msg, 4, "")
+    display: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    symbol: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -1377,6 +1379,14 @@ proto.cosmos.bank.v1beta1.Metadata.deserializeBinaryFromReader = function(msg, r
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setDisplay(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSymbol(value);
       break;
     default:
       reader.skipField();
@@ -1433,6 +1443,20 @@ proto.cosmos.bank.v1beta1.Metadata.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getSymbol();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -1528,6 +1552,42 @@ proto.cosmos.bank.v1beta1.Metadata.prototype.getDisplay = function() {
  */
 proto.cosmos.bank.v1beta1.Metadata.prototype.setDisplay = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string name = 5;
+ * @return {string}
+ */
+proto.cosmos.bank.v1beta1.Metadata.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cosmos.bank.v1beta1.Metadata} returns this
+ */
+proto.cosmos.bank.v1beta1.Metadata.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string symbol = 6;
+ * @return {string}
+ */
+proto.cosmos.bank.v1beta1.Metadata.prototype.getSymbol = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cosmos.bank.v1beta1.Metadata} returns this
+ */
+proto.cosmos.bank.v1beta1.Metadata.prototype.setSymbol = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 

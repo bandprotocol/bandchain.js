@@ -175,6 +175,12 @@ export class Metadata extends jspb.Message {
   getDisplay(): string;
   setDisplay(value: string): void;
 
+  getName(): string;
+  setName(value: string): void;
+
+  getSymbol(): string;
+  setSymbol(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Metadata.AsObject;
   static toObject(includeInstance: boolean, msg: Metadata): Metadata.AsObject;
@@ -191,6 +197,8 @@ export namespace Metadata {
     denomUnitsList: Array<DenomUnit.AsObject>,
     base: string,
     display: string,
+    name: string,
+    symbol: string,
   }
 }
 

@@ -105,10 +105,10 @@ export namespace QueryUpgradedConsensusStateRequest {
 }
 
 export class QueryUpgradedConsensusStateResponse extends jspb.Message {
-  hasUpgradedConsensusState(): boolean;
-  clearUpgradedConsensusState(): void;
-  getUpgradedConsensusState(): google_protobuf_any_pb.Any | undefined;
-  setUpgradedConsensusState(value?: google_protobuf_any_pb.Any): void;
+  getUpgradedConsensusState(): Uint8Array | string;
+  getUpgradedConsensusState_asU8(): Uint8Array;
+  getUpgradedConsensusState_asB64(): string;
+  setUpgradedConsensusState(value: Uint8Array | string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryUpgradedConsensusStateResponse.AsObject;
@@ -122,7 +122,49 @@ export class QueryUpgradedConsensusStateResponse extends jspb.Message {
 
 export namespace QueryUpgradedConsensusStateResponse {
   export type AsObject = {
-    upgradedConsensusState?: google_protobuf_any_pb.Any.AsObject,
+    upgradedConsensusState: Uint8Array | string,
+  }
+}
+
+export class QueryModuleVersionsRequest extends jspb.Message {
+  getModuleName(): string;
+  setModuleName(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryModuleVersionsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryModuleVersionsRequest): QueryModuleVersionsRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryModuleVersionsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryModuleVersionsRequest;
+  static deserializeBinaryFromReader(message: QueryModuleVersionsRequest, reader: jspb.BinaryReader): QueryModuleVersionsRequest;
+}
+
+export namespace QueryModuleVersionsRequest {
+  export type AsObject = {
+    moduleName: string,
+  }
+}
+
+export class QueryModuleVersionsResponse extends jspb.Message {
+  clearModuleVersionsList(): void;
+  getModuleVersionsList(): Array<cosmos_upgrade_v1beta1_upgrade_pb.ModuleVersion>;
+  setModuleVersionsList(value: Array<cosmos_upgrade_v1beta1_upgrade_pb.ModuleVersion>): void;
+  addModuleVersions(value?: cosmos_upgrade_v1beta1_upgrade_pb.ModuleVersion, index?: number): cosmos_upgrade_v1beta1_upgrade_pb.ModuleVersion;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryModuleVersionsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryModuleVersionsResponse): QueryModuleVersionsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryModuleVersionsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryModuleVersionsResponse;
+  static deserializeBinaryFromReader(message: QueryModuleVersionsResponse, reader: jspb.BinaryReader): QueryModuleVersionsResponse;
+}
+
+export namespace QueryModuleVersionsResponse {
+  export type AsObject = {
+    moduleVersionsList: Array<cosmos_upgrade_v1beta1_upgrade_pb.ModuleVersion.AsObject>,
   }
 }
 
