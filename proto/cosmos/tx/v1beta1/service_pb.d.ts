@@ -128,6 +128,11 @@ export class SimulateRequest extends jspb.Message {
   getTx(): cosmos_tx_v1beta1_tx_pb.Tx | undefined;
   setTx(value?: cosmos_tx_v1beta1_tx_pb.Tx): void;
 
+  getTxBytes(): Uint8Array | string;
+  getTxBytes_asU8(): Uint8Array;
+  getTxBytes_asB64(): string;
+  setTxBytes(value: Uint8Array | string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SimulateRequest.AsObject;
   static toObject(includeInstance: boolean, msg: SimulateRequest): SimulateRequest.AsObject;
@@ -141,6 +146,7 @@ export class SimulateRequest extends jspb.Message {
 export namespace SimulateRequest {
   export type AsObject = {
     tx?: cosmos_tx_v1beta1_tx_pb.Tx.AsObject,
+    txBytes: Uint8Array | string,
   }
 }
 

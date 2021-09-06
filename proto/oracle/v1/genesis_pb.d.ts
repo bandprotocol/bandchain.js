@@ -21,11 +21,6 @@ export class GenesisState extends jspb.Message {
   setOracleScriptsList(value: Array<oracle_v1_oracle_pb.OracleScript>): void;
   addOracleScripts(value?: oracle_v1_oracle_pb.OracleScript, index?: number): oracle_v1_oracle_pb.OracleScript;
 
-  clearReportersList(): void;
-  getReportersList(): Array<oracle_v1_oracle_pb.ReportersPerValidator>;
-  setReportersList(value: Array<oracle_v1_oracle_pb.ReportersPerValidator>): void;
-  addReporters(value?: oracle_v1_oracle_pb.ReportersPerValidator, index?: number): oracle_v1_oracle_pb.ReportersPerValidator;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
   static toObject(includeInstance: boolean, msg: GenesisState): GenesisState.AsObject;
@@ -41,7 +36,6 @@ export namespace GenesisState {
     params?: oracle_v1_oracle_pb.Params.AsObject,
     dataSourcesList: Array<oracle_v1_oracle_pb.DataSource.AsObject>,
     oracleScriptsList: Array<oracle_v1_oracle_pb.OracleScript.AsObject>,
-    reportersList: Array<oracle_v1_oracle_pb.ReportersPerValidator.AsObject>,
   }
 }
 

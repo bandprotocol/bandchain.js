@@ -19,6 +19,11 @@ export class GenesisState extends jspb.Message {
   getNextConnectionSequence(): number;
   setNextConnectionSequence(value: number): void;
 
+  hasParams(): boolean;
+  clearParams(): void;
+  getParams(): ibc_core_connection_v1_connection_pb.Params | undefined;
+  setParams(value?: ibc_core_connection_v1_connection_pb.Params): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
   static toObject(includeInstance: boolean, msg: GenesisState): GenesisState.AsObject;
@@ -34,6 +39,7 @@ export namespace GenesisState {
     connectionsList: Array<ibc_core_connection_v1_connection_pb.IdentifiedConnection.AsObject>,
     clientConnectionPathsList: Array<ibc_core_connection_v1_connection_pb.ConnectionPaths.AsObject>,
     nextConnectionSequence: number,
+    params?: ibc_core_connection_v1_connection_pb.Params.AsObject,
   }
 }
 

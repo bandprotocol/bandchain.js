@@ -67,24 +67,6 @@ type MsgActivate = {
   readonly responseType: typeof oracle_v1_tx_pb.MsgActivateResponse;
 };
 
-type MsgAddReporter = {
-  readonly methodName: string;
-  readonly service: typeof Msg;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof oracle_v1_tx_pb.MsgAddReporter;
-  readonly responseType: typeof oracle_v1_tx_pb.MsgAddReporterResponse;
-};
-
-type MsgRemoveReporter = {
-  readonly methodName: string;
-  readonly service: typeof Msg;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof oracle_v1_tx_pb.MsgRemoveReporter;
-  readonly responseType: typeof oracle_v1_tx_pb.MsgRemoveReporterResponse;
-};
-
 export class Msg {
   static readonly serviceName: string;
   static readonly RequestData: MsgRequestData;
@@ -94,8 +76,6 @@ export class Msg {
   static readonly CreateOracleScript: MsgCreateOracleScript;
   static readonly EditOracleScript: MsgEditOracleScript;
   static readonly Activate: MsgActivate;
-  static readonly AddReporter: MsgAddReporter;
-  static readonly RemoveReporter: MsgRemoveReporter;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -192,24 +172,6 @@ export class MsgClient {
   activate(
     requestMessage: oracle_v1_tx_pb.MsgActivate,
     callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgActivateResponse|null) => void
-  ): UnaryResponse;
-  addReporter(
-    requestMessage: oracle_v1_tx_pb.MsgAddReporter,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgAddReporterResponse|null) => void
-  ): UnaryResponse;
-  addReporter(
-    requestMessage: oracle_v1_tx_pb.MsgAddReporter,
-    callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgAddReporterResponse|null) => void
-  ): UnaryResponse;
-  removeReporter(
-    requestMessage: oracle_v1_tx_pb.MsgRemoveReporter,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgRemoveReporterResponse|null) => void
-  ): UnaryResponse;
-  removeReporter(
-    requestMessage: oracle_v1_tx_pb.MsgRemoveReporter,
-    callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgRemoveReporterResponse|null) => void
   ): UnaryResponse;
 }
 

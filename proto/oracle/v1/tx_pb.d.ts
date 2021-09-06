@@ -92,9 +92,6 @@ export class MsgReportData extends jspb.Message {
   getValidator(): string;
   setValidator(value: string): void;
 
-  getReporter(): string;
-  setReporter(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MsgReportData.AsObject;
   static toObject(includeInstance: boolean, msg: MsgReportData): MsgReportData.AsObject;
@@ -110,7 +107,6 @@ export namespace MsgReportData {
     requestId: number,
     rawReportsList: Array<oracle_v1_oracle_pb.RawReport.AsObject>,
     validator: string,
-    reporter: string,
   }
 }
 
@@ -422,86 +418,6 @@ export class MsgActivateResponse extends jspb.Message {
 }
 
 export namespace MsgActivateResponse {
-  export type AsObject = {
-  }
-}
-
-export class MsgAddReporter extends jspb.Message {
-  getValidator(): string;
-  setValidator(value: string): void;
-
-  getReporter(): string;
-  setReporter(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgAddReporter.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgAddReporter): MsgAddReporter.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgAddReporter, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgAddReporter;
-  static deserializeBinaryFromReader(message: MsgAddReporter, reader: jspb.BinaryReader): MsgAddReporter;
-}
-
-export namespace MsgAddReporter {
-  export type AsObject = {
-    validator: string,
-    reporter: string,
-  }
-}
-
-export class MsgAddReporterResponse extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgAddReporterResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgAddReporterResponse): MsgAddReporterResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgAddReporterResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgAddReporterResponse;
-  static deserializeBinaryFromReader(message: MsgAddReporterResponse, reader: jspb.BinaryReader): MsgAddReporterResponse;
-}
-
-export namespace MsgAddReporterResponse {
-  export type AsObject = {
-  }
-}
-
-export class MsgRemoveReporter extends jspb.Message {
-  getValidator(): string;
-  setValidator(value: string): void;
-
-  getReporter(): string;
-  setReporter(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgRemoveReporter.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgRemoveReporter): MsgRemoveReporter.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgRemoveReporter, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgRemoveReporter;
-  static deserializeBinaryFromReader(message: MsgRemoveReporter, reader: jspb.BinaryReader): MsgRemoveReporter;
-}
-
-export namespace MsgRemoveReporter {
-  export type AsObject = {
-    validator: string,
-    reporter: string,
-  }
-}
-
-export class MsgRemoveReporterResponse extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgRemoveReporterResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgRemoveReporterResponse): MsgRemoveReporterResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgRemoveReporterResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgRemoveReporterResponse;
-  static deserializeBinaryFromReader(message: MsgRemoveReporterResponse, reader: jspb.BinaryReader): MsgRemoveReporterResponse;
-}
-
-export namespace MsgRemoveReporterResponse {
   export type AsObject = {
   }
 }

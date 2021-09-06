@@ -2,8 +2,8 @@
 // file: ibc/applications/transfer/v1/genesis.proto
 
 import * as jspb from "google-protobuf";
-import * as gogoproto_gogo_pb from "../../../../gogoproto/gogo_pb";
 import * as ibc_applications_transfer_v1_transfer_pb from "../../../../ibc/applications/transfer/v1/transfer_pb";
+import * as gogoproto_gogo_pb from "../../../../gogoproto/gogo_pb";
 
 export class GenesisState extends jspb.Message {
   getPortId(): string;

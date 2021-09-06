@@ -104,6 +104,52 @@ export namespace MsgVoteResponse {
   }
 }
 
+export class MsgVoteWeighted extends jspb.Message {
+  getProposalId(): number;
+  setProposalId(value: number): void;
+
+  getVoter(): string;
+  setVoter(value: string): void;
+
+  clearOptionsList(): void;
+  getOptionsList(): Array<cosmos_gov_v1beta1_gov_pb.WeightedVoteOption>;
+  setOptionsList(value: Array<cosmos_gov_v1beta1_gov_pb.WeightedVoteOption>): void;
+  addOptions(value?: cosmos_gov_v1beta1_gov_pb.WeightedVoteOption, index?: number): cosmos_gov_v1beta1_gov_pb.WeightedVoteOption;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgVoteWeighted.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgVoteWeighted): MsgVoteWeighted.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgVoteWeighted, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgVoteWeighted;
+  static deserializeBinaryFromReader(message: MsgVoteWeighted, reader: jspb.BinaryReader): MsgVoteWeighted;
+}
+
+export namespace MsgVoteWeighted {
+  export type AsObject = {
+    proposalId: number,
+    voter: string,
+    optionsList: Array<cosmos_gov_v1beta1_gov_pb.WeightedVoteOption.AsObject>,
+  }
+}
+
+export class MsgVoteWeightedResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgVoteWeightedResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgVoteWeightedResponse): MsgVoteWeightedResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgVoteWeightedResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgVoteWeightedResponse;
+  static deserializeBinaryFromReader(message: MsgVoteWeightedResponse, reader: jspb.BinaryReader): MsgVoteWeightedResponse;
+}
+
+export namespace MsgVoteWeightedResponse {
+  export type AsObject = {
+  }
+}
+
 export class MsgDeposit extends jspb.Message {
   getProposalId(): number;
   setProposalId(value: number): void;

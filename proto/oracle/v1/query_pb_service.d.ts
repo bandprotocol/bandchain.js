@@ -67,6 +67,15 @@ type QueryValidator = {
   readonly responseType: typeof oracle_v1_query_pb.QueryValidatorResponse;
 };
 
+type QueryIsReporter = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof oracle_v1_query_pb.QueryIsReporterRequest;
+  readonly responseType: typeof oracle_v1_query_pb.QueryIsReporterResponse;
+};
+
 type QueryReporters = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -121,15 +130,6 @@ type QueryRequestVerification = {
   readonly responseType: typeof oracle_v1_query_pb.QueryRequestVerificationResponse;
 };
 
-type QueryRequestPool = {
-  readonly methodName: string;
-  readonly service: typeof Query;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof oracle_v1_query_pb.QueryRequestPoolRequest;
-  readonly responseType: typeof oracle_v1_query_pb.QueryRequestPoolResponse;
-};
-
 export class Query {
   static readonly serviceName: string;
   static readonly Counts: QueryCounts;
@@ -139,13 +139,13 @@ export class Query {
   static readonly Request: QueryRequest;
   static readonly PendingRequests: QueryPendingRequests;
   static readonly Validator: QueryValidator;
+  static readonly IsReporter: QueryIsReporter;
   static readonly Reporters: QueryReporters;
   static readonly ActiveValidators: QueryActiveValidators;
   static readonly Params: QueryParams;
   static readonly RequestSearch: QueryRequestSearch;
   static readonly RequestPrice: QueryRequestPrice;
   static readonly RequestVerification: QueryRequestVerification;
-  static readonly RequestPool: QueryRequestPool;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -243,6 +243,15 @@ export class QueryClient {
     requestMessage: oracle_v1_query_pb.QueryValidatorRequest,
     callback: (error: ServiceError|null, responseMessage: oracle_v1_query_pb.QueryValidatorResponse|null) => void
   ): UnaryResponse;
+  isReporter(
+    requestMessage: oracle_v1_query_pb.QueryIsReporterRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: oracle_v1_query_pb.QueryIsReporterResponse|null) => void
+  ): UnaryResponse;
+  isReporter(
+    requestMessage: oracle_v1_query_pb.QueryIsReporterRequest,
+    callback: (error: ServiceError|null, responseMessage: oracle_v1_query_pb.QueryIsReporterResponse|null) => void
+  ): UnaryResponse;
   reporters(
     requestMessage: oracle_v1_query_pb.QueryReportersRequest,
     metadata: grpc.Metadata,
@@ -296,15 +305,6 @@ export class QueryClient {
   requestVerification(
     requestMessage: oracle_v1_query_pb.QueryRequestVerificationRequest,
     callback: (error: ServiceError|null, responseMessage: oracle_v1_query_pb.QueryRequestVerificationResponse|null) => void
-  ): UnaryResponse;
-  requestPool(
-    requestMessage: oracle_v1_query_pb.QueryRequestPoolRequest,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: oracle_v1_query_pb.QueryRequestPoolResponse|null) => void
-  ): UnaryResponse;
-  requestPool(
-    requestMessage: oracle_v1_query_pb.QueryRequestPoolRequest,
-    callback: (error: ServiceError|null, responseMessage: oracle_v1_query_pb.QueryRequestPoolResponse|null) => void
   ): UnaryResponse;
 }
 

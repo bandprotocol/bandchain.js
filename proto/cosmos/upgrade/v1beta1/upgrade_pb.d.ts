@@ -100,3 +100,27 @@ export namespace CancelSoftwareUpgradeProposal {
   }
 }
 
+export class ModuleVersion extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  getVersion(): number;
+  setVersion(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ModuleVersion.AsObject;
+  static toObject(includeInstance: boolean, msg: ModuleVersion): ModuleVersion.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ModuleVersion, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ModuleVersion;
+  static deserializeBinaryFromReader(message: ModuleVersion, reader: jspb.BinaryReader): ModuleVersion;
+}
+
+export namespace ModuleVersion {
+  export type AsObject = {
+    name: string,
+    version: number,
+  }
+}
+

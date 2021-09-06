@@ -18,6 +18,9 @@ export class PageRequest extends jspb.Message {
   getCountTotal(): boolean;
   setCountTotal(value: boolean): void;
 
+  getReverse(): boolean;
+  setReverse(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PageRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PageRequest): PageRequest.AsObject;
@@ -34,6 +37,7 @@ export namespace PageRequest {
     offset: number,
     limit: number,
     countTotal: boolean,
+    reverse: boolean,
   }
 }
 

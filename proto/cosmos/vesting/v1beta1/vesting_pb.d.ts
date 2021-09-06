@@ -156,3 +156,25 @@ export namespace PeriodicVestingAccount {
   }
 }
 
+export class PermanentLockedAccount extends jspb.Message {
+  hasBaseVestingAccount(): boolean;
+  clearBaseVestingAccount(): void;
+  getBaseVestingAccount(): BaseVestingAccount | undefined;
+  setBaseVestingAccount(value?: BaseVestingAccount): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PermanentLockedAccount.AsObject;
+  static toObject(includeInstance: boolean, msg: PermanentLockedAccount): PermanentLockedAccount.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: PermanentLockedAccount, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PermanentLockedAccount;
+  static deserializeBinaryFromReader(message: PermanentLockedAccount, reader: jspb.BinaryReader): PermanentLockedAccount;
+}
+
+export namespace PermanentLockedAccount {
+  export type AsObject = {
+    baseVestingAccount?: BaseVestingAccount.AsObject,
+  }
+}
+

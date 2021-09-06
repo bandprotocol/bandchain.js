@@ -9,6 +9,30 @@ import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/t
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 
+export class WeightedVoteOption extends jspb.Message {
+  getOption(): VoteOptionMap[keyof VoteOptionMap];
+  setOption(value: VoteOptionMap[keyof VoteOptionMap]): void;
+
+  getWeight(): string;
+  setWeight(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WeightedVoteOption.AsObject;
+  static toObject(includeInstance: boolean, msg: WeightedVoteOption): WeightedVoteOption.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WeightedVoteOption, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WeightedVoteOption;
+  static deserializeBinaryFromReader(message: WeightedVoteOption, reader: jspb.BinaryReader): WeightedVoteOption;
+}
+
+export namespace WeightedVoteOption {
+  export type AsObject = {
+    option: VoteOptionMap[keyof VoteOptionMap],
+    weight: string,
+  }
+}
+
 export class TextProposal extends jspb.Message {
   getTitle(): string;
   setTitle(value: string): void;
@@ -171,6 +195,11 @@ export class Vote extends jspb.Message {
   getOption(): VoteOptionMap[keyof VoteOptionMap];
   setOption(value: VoteOptionMap[keyof VoteOptionMap]): void;
 
+  clearOptionsList(): void;
+  getOptionsList(): Array<WeightedVoteOption>;
+  setOptionsList(value: Array<WeightedVoteOption>): void;
+  addOptions(value?: WeightedVoteOption, index?: number): WeightedVoteOption;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Vote.AsObject;
   static toObject(includeInstance: boolean, msg: Vote): Vote.AsObject;
@@ -186,6 +215,7 @@ export namespace Vote {
     proposalId: number,
     voter: string,
     option: VoteOptionMap[keyof VoteOptionMap],
+    optionsList: Array<WeightedVoteOption.AsObject>,
   }
 }
 

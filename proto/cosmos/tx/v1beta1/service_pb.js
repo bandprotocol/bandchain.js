@@ -1071,7 +1071,8 @@ proto.cosmos.tx.v1beta1.SimulateRequest.prototype.toObject = function(opt_includ
  */
 proto.cosmos.tx.v1beta1.SimulateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f)
+    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
+    txBytes: msg.getTxBytes_asB64()
   };
 
   if (includeInstance) {
@@ -1113,6 +1114,10 @@ proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinaryFromReader = function(m
       reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
       msg.setTx(value);
       break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setTxBytes(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1148,6 +1153,13 @@ proto.cosmos.tx.v1beta1.SimulateRequest.serializeBinaryToWriter = function(messa
       1,
       f,
       cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
+    );
+  }
+  f = message.getTxBytes_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      2,
+      f
     );
   }
 };
@@ -1187,6 +1199,48 @@ proto.cosmos.tx.v1beta1.SimulateRequest.prototype.clearTx = function() {
  */
 proto.cosmos.tx.v1beta1.SimulateRequest.prototype.hasTx = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bytes tx_bytes = 2;
+ * @return {!(string|Uint8Array)}
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * optional bytes tx_bytes = 2;
+ * This is a type-conversion wrapper around `getTxBytes()`
+ * @return {string}
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getTxBytes()));
+};
+
+
+/**
+ * optional bytes tx_bytes = 2;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getTxBytes()`
+ * @return {!Uint8Array}
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getTxBytes()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.cosmos.tx.v1beta1.SimulateRequest} returns this
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.setTxBytes = function(value) {
+  return jspb.Message.setProto3BytesField(this, 2, value);
 };
 
 

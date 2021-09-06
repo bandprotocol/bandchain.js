@@ -109,6 +109,11 @@ export namespace QueryAllBalancesResponse {
 }
 
 export class QueryTotalSupplyRequest extends jspb.Message {
+  hasPagination(): boolean;
+  clearPagination(): void;
+  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageRequest | undefined;
+  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageRequest): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryTotalSupplyRequest.AsObject;
   static toObject(includeInstance: boolean, msg: QueryTotalSupplyRequest): QueryTotalSupplyRequest.AsObject;
@@ -121,6 +126,7 @@ export class QueryTotalSupplyRequest extends jspb.Message {
 
 export namespace QueryTotalSupplyRequest {
   export type AsObject = {
+    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageRequest.AsObject,
   }
 }
 
@@ -129,6 +135,11 @@ export class QueryTotalSupplyResponse extends jspb.Message {
   getSupplyList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
   setSupplyList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
   addSupply(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
+  hasPagination(): boolean;
+  clearPagination(): void;
+  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageResponse | undefined;
+  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageResponse): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryTotalSupplyResponse.AsObject;
@@ -143,6 +154,7 @@ export class QueryTotalSupplyResponse extends jspb.Message {
 export namespace QueryTotalSupplyResponse {
   export type AsObject = {
     supplyList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
+    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageResponse.AsObject,
   }
 }
 

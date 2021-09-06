@@ -4,6 +4,15 @@
 import * as cosmos_auth_v1beta1_query_pb from "../../../cosmos/auth/v1beta1/query_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
+type QueryAccounts = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_auth_v1beta1_query_pb.QueryAccountsRequest;
+  readonly responseType: typeof cosmos_auth_v1beta1_query_pb.QueryAccountsResponse;
+};
+
 type QueryAccount = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -24,6 +33,7 @@ type QueryParams = {
 
 export class Query {
   static readonly serviceName: string;
+  static readonly Accounts: QueryAccounts;
   static readonly Account: QueryAccount;
   static readonly Params: QueryParams;
 }
@@ -60,6 +70,15 @@ export class QueryClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
+  accounts(
+    requestMessage: cosmos_auth_v1beta1_query_pb.QueryAccountsRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_auth_v1beta1_query_pb.QueryAccountsResponse|null) => void
+  ): UnaryResponse;
+  accounts(
+    requestMessage: cosmos_auth_v1beta1_query_pb.QueryAccountsRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_auth_v1beta1_query_pb.QueryAccountsResponse|null) => void
+  ): UnaryResponse;
   account(
     requestMessage: cosmos_auth_v1beta1_query_pb.QueryAccountRequest,
     metadata: grpc.Metadata,

@@ -46,6 +46,15 @@ Query.ConsensusStates = {
   responseType: ibc_core_client_v1_query_pb.QueryConsensusStatesResponse
 };
 
+Query.ClientStatus = {
+  methodName: "ClientStatus",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: ibc_core_client_v1_query_pb.QueryClientStatusRequest,
+  responseType: ibc_core_client_v1_query_pb.QueryClientStatusResponse
+};
+
 Query.ClientParams = {
   methodName: "ClientParams",
   service: Query,
@@ -53,6 +62,24 @@ Query.ClientParams = {
   responseStream: false,
   requestType: ibc_core_client_v1_query_pb.QueryClientParamsRequest,
   responseType: ibc_core_client_v1_query_pb.QueryClientParamsResponse
+};
+
+Query.UpgradedClientState = {
+  methodName: "UpgradedClientState",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: ibc_core_client_v1_query_pb.QueryUpgradedClientStateRequest,
+  responseType: ibc_core_client_v1_query_pb.QueryUpgradedClientStateResponse
+};
+
+Query.UpgradedConsensusState = {
+  methodName: "UpgradedConsensusState",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateRequest,
+  responseType: ibc_core_client_v1_query_pb.QueryUpgradedConsensusStateResponse
 };
 
 exports.Query = Query;
@@ -186,11 +213,104 @@ QueryClient.prototype.consensusStates = function consensusStates(requestMessage,
   };
 };
 
+QueryClient.prototype.clientStatus = function clientStatus(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.ClientStatus, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
 QueryClient.prototype.clientParams = function clientParams(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
   var client = grpc.unary(Query.ClientParams, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.upgradedClientState = function upgradedClientState(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.UpgradedClientState, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.upgradedConsensusState = function upgradedConsensusState(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.UpgradedConsensusState, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

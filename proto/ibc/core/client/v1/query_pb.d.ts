@@ -232,6 +232,46 @@ export namespace QueryConsensusStatesResponse {
   }
 }
 
+export class QueryClientStatusRequest extends jspb.Message {
+  getClientId(): string;
+  setClientId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryClientStatusRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryClientStatusRequest): QueryClientStatusRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryClientStatusRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryClientStatusRequest;
+  static deserializeBinaryFromReader(message: QueryClientStatusRequest, reader: jspb.BinaryReader): QueryClientStatusRequest;
+}
+
+export namespace QueryClientStatusRequest {
+  export type AsObject = {
+    clientId: string,
+  }
+}
+
+export class QueryClientStatusResponse extends jspb.Message {
+  getStatus(): string;
+  setStatus(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryClientStatusResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryClientStatusResponse): QueryClientStatusResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryClientStatusResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryClientStatusResponse;
+  static deserializeBinaryFromReader(message: QueryClientStatusResponse, reader: jspb.BinaryReader): QueryClientStatusResponse;
+}
+
+export namespace QueryClientStatusResponse {
+  export type AsObject = {
+    status: string,
+  }
+}
+
 export class QueryClientParamsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryClientParamsRequest.AsObject;
@@ -267,6 +307,82 @@ export class QueryClientParamsResponse extends jspb.Message {
 export namespace QueryClientParamsResponse {
   export type AsObject = {
     params?: ibc_core_client_v1_client_pb.Params.AsObject,
+  }
+}
+
+export class QueryUpgradedClientStateRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryUpgradedClientStateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryUpgradedClientStateRequest): QueryUpgradedClientStateRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryUpgradedClientStateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryUpgradedClientStateRequest;
+  static deserializeBinaryFromReader(message: QueryUpgradedClientStateRequest, reader: jspb.BinaryReader): QueryUpgradedClientStateRequest;
+}
+
+export namespace QueryUpgradedClientStateRequest {
+  export type AsObject = {
+  }
+}
+
+export class QueryUpgradedClientStateResponse extends jspb.Message {
+  hasUpgradedClientState(): boolean;
+  clearUpgradedClientState(): void;
+  getUpgradedClientState(): google_protobuf_any_pb.Any | undefined;
+  setUpgradedClientState(value?: google_protobuf_any_pb.Any): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryUpgradedClientStateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryUpgradedClientStateResponse): QueryUpgradedClientStateResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryUpgradedClientStateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryUpgradedClientStateResponse;
+  static deserializeBinaryFromReader(message: QueryUpgradedClientStateResponse, reader: jspb.BinaryReader): QueryUpgradedClientStateResponse;
+}
+
+export namespace QueryUpgradedClientStateResponse {
+  export type AsObject = {
+    upgradedClientState?: google_protobuf_any_pb.Any.AsObject,
+  }
+}
+
+export class QueryUpgradedConsensusStateRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryUpgradedConsensusStateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryUpgradedConsensusStateRequest): QueryUpgradedConsensusStateRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryUpgradedConsensusStateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryUpgradedConsensusStateRequest;
+  static deserializeBinaryFromReader(message: QueryUpgradedConsensusStateRequest, reader: jspb.BinaryReader): QueryUpgradedConsensusStateRequest;
+}
+
+export namespace QueryUpgradedConsensusStateRequest {
+  export type AsObject = {
+  }
+}
+
+export class QueryUpgradedConsensusStateResponse extends jspb.Message {
+  hasUpgradedConsensusState(): boolean;
+  clearUpgradedConsensusState(): void;
+  getUpgradedConsensusState(): google_protobuf_any_pb.Any | undefined;
+  setUpgradedConsensusState(value?: google_protobuf_any_pb.Any): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryUpgradedConsensusStateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryUpgradedConsensusStateResponse): QueryUpgradedConsensusStateResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryUpgradedConsensusStateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryUpgradedConsensusStateResponse;
+  static deserializeBinaryFromReader(message: QueryUpgradedConsensusStateResponse, reader: jspb.BinaryReader): QueryUpgradedConsensusStateResponse;
+}
+
+export namespace QueryUpgradedConsensusStateResponse {
+  export type AsObject = {
+    upgradedConsensusState?: google_protobuf_any_pb.Any.AsObject,
   }
 }
 

@@ -28,6 +28,15 @@ Msg.Vote = {
   responseType: cosmos_gov_v1beta1_tx_pb.MsgVoteResponse
 };
 
+Msg.VoteWeighted = {
+  methodName: "VoteWeighted",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_gov_v1beta1_tx_pb.MsgVoteWeighted,
+  responseType: cosmos_gov_v1beta1_tx_pb.MsgVoteWeightedResponse
+};
+
 Msg.Deposit = {
   methodName: "Deposit",
   service: Msg,
@@ -80,6 +89,37 @@ MsgClient.prototype.vote = function vote(requestMessage, metadata, callback) {
     callback = arguments[1];
   }
   var client = grpc.unary(Msg.Vote, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.voteWeighted = function voteWeighted(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.VoteWeighted, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

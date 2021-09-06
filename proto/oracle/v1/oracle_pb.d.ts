@@ -266,9 +266,6 @@ export class OracleRequestPacketData extends jspb.Message {
   setFeeLimitList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
   addFeeLimit(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
 
-  getRequestKey(): string;
-  setRequestKey(value: string): void;
-
   getPrepareGas(): number;
   setPrepareGas(value: number): void;
 
@@ -293,7 +290,6 @@ export namespace OracleRequestPacketData {
     askCount: number,
     minCount: number,
     feeLimitList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
-    requestKey: string,
     prepareGas: number,
     executeGas: number,
   }
@@ -486,6 +482,12 @@ export class Params extends jspb.Message {
   getMaxAskCount(): number;
   setMaxAskCount(value: number): void;
 
+  getMaxCalldataSize(): number;
+  setMaxCalldataSize(value: number): void;
+
+  getMaxReportDataSize(): number;
+  setMaxReportDataSize(value: number): void;
+
   getExpirationBlockCount(): number;
   setExpirationBlockCount(value: number): void;
 
@@ -521,6 +523,8 @@ export namespace Params {
   export type AsObject = {
     maxRawRequestCount: number,
     maxAskCount: number,
+    maxCalldataSize: number,
+    maxReportDataSize: number,
     expirationBlockCount: number,
     baseOwasmGas: number,
     perValidatorRequestGas: number,
@@ -574,32 +578,6 @@ export namespace IBCChannel {
   export type AsObject = {
     portId: string,
     channelId: string,
-  }
-}
-
-export class ReportersPerValidator extends jspb.Message {
-  getValidator(): string;
-  setValidator(value: string): void;
-
-  clearReportersList(): void;
-  getReportersList(): Array<string>;
-  setReportersList(value: Array<string>): void;
-  addReporters(value: string, index?: number): string;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ReportersPerValidator.AsObject;
-  static toObject(includeInstance: boolean, msg: ReportersPerValidator): ReportersPerValidator.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ReportersPerValidator, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ReportersPerValidator;
-  static deserializeBinaryFromReader(message: ReportersPerValidator, reader: jspb.BinaryReader): ReportersPerValidator;
-}
-
-export namespace ReportersPerValidator {
-  export type AsObject = {
-    validator: string,
-    reportersList: Array<string>,
   }
 }
 

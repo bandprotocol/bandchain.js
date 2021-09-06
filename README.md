@@ -22,6 +22,11 @@ npm install --save @bandprotocol/bandchain.js
 yarn add @bandprotocol/bandchain.js
 ```
 
+## Compatible
+
+Band 2.2.0, Cosmos SDK 0.44.0, IBC-go 1.1.0
+
+
 ## Usage
 
 #### Retrieving Price Data
@@ -51,3 +56,5 @@ async function exampleGetReferenceData() {
 ```
 
 For more examples, please see [`example`](example/) folder.
+
+
