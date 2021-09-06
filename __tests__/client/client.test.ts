@@ -24,7 +24,6 @@ import {
 import {
   DataSource,
   OracleScript,
-  ReportersPerValidator,
   PriceResult,
   Request,
   RawRequest,
@@ -325,20 +324,16 @@ describe('get reporters', () => {
 
     mockedReporters.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
-        const reporters = new ReportersPerValidator()
-        reporters.setValidator(
-          'bandvaloper17n5rmujk78nkgss7tjecg4nfzn6geg4cqtyg3u',
-        )
-        reporters.setReportersList([
+        const reporters = [
           'band17n5rmujk78nkgss7tjecg4nfzn6geg4cvaqt5h',
           'band1wc6r20m8qg7p3lze55kzen5uwssdvwr7wl5w4q',
           'band1wm0lw8wzt094xdyxx4ukx432q9vcwdl9zmwa4x',
           'band10ptt5622ezszsvrcum07ehng3merea9x5jetv2',
           'band10lyra24wxsme03pe47du6xfurtsqzs99mn5r94',
           'band1ek7hfydf3xgz3k6nnsy2zrg0xxuzkvhzrykrn5',
-        ])
+        ]
         const response = new QueryReportersResponse()
-        response.setReporterList(reporters.getReportersList())
+        response.setReporterList(reporters)
 
         callback(null, response)
         return { cancel: function () {} }
