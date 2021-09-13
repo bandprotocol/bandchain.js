@@ -9,7 +9,7 @@ import {
 import { PublicKey } from './wallet'
 import Client from './client'
 import { BaseMsg } from './message'
-import { parseCoin } from './utils'
+import { parseCoin, sortAndStringify } from './utils'
 
 import {
   TxBody,
@@ -130,22 +130,6 @@ export default class Transaction {
     return [txBodyBytes, authInfoBytes]
   }
 
-  private sortAndStringify(obj) {
-    function sortObject(obj) {
-      if (obj === null) return null
-      if (typeof obj !== 'object') return obj
-      if (Array.isArray(obj)) return obj.map(sortObject)
-      const sortedKeys = Object.keys(obj).sort()
-      const result = {}
-      sortedKeys.forEach((key) => {
-        result[key] = sortObject(obj[key])
-      })
-      return result
-    }
-
-    return JSON.stringify(sortObject(obj))
-  }
-
   getSignDoc(publicKey: PublicKey): Uint8Array {
     if (this.msgs.length === 0) {
       throw new EmptyMsgError('message is empty')
@@ -191,7 +175,7 @@ export default class Transaction {
 
   getSignMessage(): Uint8Array {
     return Buffer.from(
-      this.sortAndStringify({
+      sortAndStringify({
         account_number: this.accountNum.toString(),
         chain_id: this.chainId,
         fee: {
