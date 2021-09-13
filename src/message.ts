@@ -9,12 +9,21 @@ import {
   ValueError,
 } from './error'
 
+import { parseCoin } from './utils'
+
 import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import { MsgDelegate as MsgDelegateProto } from '../proto/cosmos/staking/v1beta1/tx_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 
-export class MsgRequestData extends MsgRequestDataProto {
+import * as jspb from 'google-protobuf'
+
+export interface BaseMsg extends jspb.Message {
+  toJSON(): object
+  toAny(): Any
+}
+
+export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
   constructor(
     oracleScriptId: number,
     calldata: Buffer,
@@ -45,6 +54,23 @@ export class MsgRequestData extends MsgRequestDataProto {
     const name = 'oracle.v1.MsgRequestData'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'oracle/Request',
+      value: {
+        ask_count: this.getAskCount().toString(),
+        calldata: this.getCalldata_asB64(),
+        oracle_script_id: this.getOracleScriptId().toString(),
+        min_count: this.getMinCount().toString(),
+        client_id: this.getClientId(),
+        sender: this.getSender(),
+        fee_limit: this.getFeeLimitList().map(parseCoin),
+        prepare_gas: this.getPrepareGas().toString(),
+        execute_gas: this.getExecuteGas().toString(),
+      },
+    }
   }
 
   validate() {
@@ -78,7 +104,7 @@ export class MsgRequestData extends MsgRequestDataProto {
   }
 }
 
-export class MsgSend extends MsgSendProto {
+export class MsgSend extends MsgSendProto implements BaseMsg {
   constructor(from: string, to: string, amountList: Coin[]) {
     super()
     this.setFromAddress(from)
@@ -95,6 +121,17 @@ export class MsgSend extends MsgSendProto {
     return anyMsg
   }
 
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgSend',
+      value: {
+        from_address: this.getFromAddress(),
+        to_address: this.getToAddress(),
+        amount: this.getAmountList().map(parseCoin),
+      },
+    }
+  }
+
   validate() {
     if (this.getAmountList().length === 0) {
       throw new InsufficientCoinError('Expect at least 1 coin')
@@ -105,7 +142,7 @@ export class MsgSend extends MsgSendProto {
   }
 }
 
-export class MsgDelegate extends MsgDelegateProto {
+export class MsgDelegate extends MsgDelegateProto implements BaseMsg {
   constructor(delegator: string, validator: string, amount: Coin) {
     super()
     this.setDelegatorAddress(delegator)
@@ -120,6 +157,17 @@ export class MsgDelegate extends MsgDelegateProto {
     const name = 'cosmos.staking.v1beta1.MsgDelegate'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgDelegate',
+      value: {
+        delegator_address: this.getDelegatorAddress(),
+        validator_address: this.getValidatorAddress(),
+        amount: parseCoin(this.getAmount()),
+      },
+    }
   }
 
   validate() {

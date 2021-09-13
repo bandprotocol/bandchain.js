@@ -16,6 +16,7 @@ describe('Transaction', () => {
   coin.setAmount('100')
   const fee = new Fee()
   fee.addAmount(coin)
+  fee.setGasLimit(2000000)
   const message = new MsgRequestData(
     1,
     calldata,
@@ -34,12 +35,11 @@ describe('Transaction', () => {
 
   it('create transaction object successfully', () => {
     const tx = new Transaction()
-    tx.withMessages(message.toAny())
+    tx.withMessages(message)
     tx.withAccountNum(acountNum)
     tx.withSequence(sequence)
     tx.withChainId(chainId)
     tx.withFee(fee)
-    tx.withGas(gas)
     tx.withMemo('')
 
     expect(tx.msgs.length > 0)
@@ -47,7 +47,7 @@ describe('Transaction', () => {
     expect(tx.sequence === sequence)
     expect(tx.chainId === chainId)
     expect(tx.fee === fee)
-    expect(tx.gas === gas)
+    expect(tx.fee.getGasLimit() === gas)
     expect(tx.memo === '')
   })
 
@@ -62,10 +62,6 @@ describe('Transaction', () => {
     }).toThrowError('sequence is not an integer')
 
     expect(() => {
-      tx.withGas(100.5)
-    }).toThrowError('gas is not an integer')
-
-    expect(() => {
       tx.withMemo(
         'This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world This is the longest memo in the world',
       )
@@ -74,12 +70,11 @@ describe('Transaction', () => {
 
   it('getSignDoc successfully', () => {
     const tx = new Transaction()
-    tx.withMessages(message.toAny())
+    tx.withMessages(message)
     tx.withAccountNum(acountNum)
     tx.withSequence(sequence)
     tx.withChainId(chainId)
     tx.withFee(fee)
-    tx.withGas(gas)
     tx.withMemo('')
 
     expect(() => {
@@ -111,7 +106,7 @@ describe('Transaction', () => {
     let tx = new Transaction()
     expect(() => tx.getSignDoc(pubkey)).toThrowError('message is empty')
 
-    tx = tx.withMessages(message.toAny())
+    tx = tx.withMessages(message)
     expect(() => tx.getSignDoc(pubkey)).toThrowError(
       'accountNum should be defined',
     )
@@ -129,12 +124,11 @@ describe('Transaction', () => {
 
   it('getTxData successfully', () => {
     const tx = new Transaction()
-    tx.withMessages(message.toAny())
+    tx.withMessages(message)
     tx.withAccountNum(acountNum)
     tx.withSequence(sequence)
     tx.withChainId(chainId)
     tx.withFee(fee)
-    tx.withGas(gas)
     tx.withMemo('')
 
     const signDoc = tx.getSignDoc(pubkey)

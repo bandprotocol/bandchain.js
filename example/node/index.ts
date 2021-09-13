@@ -1,6 +1,7 @@
+import { SignMode } from '../../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../src'
 
-const grpcEndpoint = 'http://rpc-laozi-testnet2.bandchain.org:8080'
+const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 
 // This example demonstrates how to query price data from
@@ -9,7 +10,7 @@ async function exampleGetReferenceData() {
   const rate = await client.getReferenceData([
     'BTC/USD',
     'ETH/BTC',
-  ], 3, 6)
+  ], 3, 4)
   return rate
 }
 
@@ -26,7 +27,11 @@ async function exampleSendBlockTransaction() {
   const calldata = obi.encodeInput({ symbols: ['ETH'], multiplier: 100 })
   let coin = new Coin()
   coin.setDenom('uband')
-  coin.setAmount('10')
+  coin.setAmount('1000000')
+
+  let feeCoin = new Coin()
+  feeCoin.setDenom('uband')
+  feeCoin.setAmount('1000')
 
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgRequestData(
@@ -38,25 +43,26 @@ async function exampleSendBlockTransaction() {
     sender,
     [coin],
     50000,
-    200000, 
+    200000,
   )
 
   // Step 3.1: Construct a transaction
   const fee = new Fee()
-  fee.setAmountList([coin])
+  fee.setAmountList([feeCoin])
+  fee.setGasLimit(1000000)
   const chainId = await client.getChainId()
   const txn = new Transaction()
-  txn.withMessages(requestMessage.toAny())
+  txn.withMessages(requestMessage)
   await txn.withSender(client, sender)
   txn.withChainId(chainId)
-  txn.withGas(2000000)
   txn.withFee(fee)
   txn.withMemo('')
 
   // Step 3.2: Sign the transaction using the private key
-  const signDoc = await txn.getSignDoc(pubkey)
+  const signDoc = txn.getSignDoc(pubkey)
   const signature = privateKey.sign(signDoc)
-  const txRawBytes = txn.getTxData(signature, pubkey)
+
+  const txRawBytes = txn.getTxData(signature, pubkey, SignMode.SIGN_MODE_DIRECT)
 
   // Step 4: Broadcast the transaction
   const sendTx = await client.sendTxBlockMode(txRawBytes)
