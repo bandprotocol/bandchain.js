@@ -1,4 +1,3 @@
-import { SignMode } from '../../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../src'
 
 const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
@@ -7,10 +6,7 @@ const client = new Client(grpcEndpoint)
 // This example demonstrates how to query price data from
 // Band's standard dataset
 async function exampleGetReferenceData() {
-  const rate = await client.getReferenceData([
-    'BTC/USD',
-    'ETH/BTC',
-  ], 3, 4)
+  const rate = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
   return rate
 }
 
@@ -62,7 +58,7 @@ async function exampleSendBlockTransaction() {
   const signDoc = txn.getSignDoc(pubkey)
   const signature = privateKey.sign(signDoc)
 
-  const txRawBytes = txn.getTxData(signature, pubkey, SignMode.SIGN_MODE_DIRECT)
+  const txRawBytes = txn.getTxData(signature, pubkey)
 
   // Step 4: Broadcast the transaction
   const sendTx = await client.sendTxBlockMode(txRawBytes)
