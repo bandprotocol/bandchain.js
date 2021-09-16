@@ -11,7 +11,12 @@ import {
 
 import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
-import { MsgDelegate as MsgDelegateProto } from '../proto/cosmos/staking/v1beta1/tx_pb'
+import {
+  MsgDelegate as MsgDelegateProto,
+  MsgUndelegate as MsgUndelegateProto,
+  MsgBeginRedelegate as MsgBeginRedelegateProto,
+} from '../proto/cosmos/staking/v1beta1/tx_pb'
+import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../proto/cosmos/distribution/v1beta1/tx_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 
 import * as jspb from 'google-protobuf'
@@ -172,6 +177,138 @@ export class MsgDelegate extends MsgDelegateProto implements BaseMsg {
     if (this.getAmount() === undefined) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
+    if (
+      this.getDelegatorAddress() === '' ||
+      this.getValidatorAddress() === ''
+    ) {
+      throw new ValueError('Address should not be an empty string')
+    }
+  }
+}
+
+export class MsgUndelegate extends MsgUndelegateProto implements BaseMsg {
+  constructor(delegator: string, validator: string, amount: Coin) {
+    super()
+    this.setDelegatorAddress(delegator)
+    this.setValidatorAddress(validator)
+    this.setAmount(amount)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.staking.v1beta1.MsgUndelegate'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgUndelegate',
+      value: {
+        delegator_address: this.getDelegatorAddress(),
+        validator_address: this.getValidatorAddress(),
+        amount: this.getAmount().toObject(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getAmount() === undefined) {
+      throw new InsufficientCoinError('Expect at least 1 coin')
+    }
+    if (
+      this.getDelegatorAddress() === '' ||
+      this.getValidatorAddress() === ''
+    ) {
+      throw new ValueError('Address should not be an empty string')
+    }
+  }
+}
+
+export class MsgBeginRedelegate
+  extends MsgBeginRedelegateProto
+  implements BaseMsg
+{
+  constructor(
+    delegator: string,
+    srcValidator: string,
+    dstValidator: string,
+    amount: Coin,
+  ) {
+    super()
+    this.setDelegatorAddress(delegator)
+    this.setValidatorSrcAddress(srcValidator)
+    this.setValidatorDstAddress(dstValidator)
+    this.setAmount(amount)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.staking.v1beta1.MsgBeginRedelegate'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgBeginRedelegate',
+      value: {
+        delegator_address: this.getDelegatorAddress(),
+        validator_src_address: this.getValidatorSrcAddress(),
+        validator_dst_address: this.getValidatorDstAddress(),
+        amount: this.getAmount().toObject(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getAmount() === undefined) {
+      throw new InsufficientCoinError('Expect at least 1 coin')
+    }
+    if (
+      this.getDelegatorAddress() === '' ||
+      this.getValidatorSrcAddress() === '' ||
+      this.getValidatorDstAddress() === ''
+    ) {
+      throw new ValueError('Address should not be an empty string')
+    }
+  }
+}
+
+export class MsgWithdrawDelegatorReward
+  extends MsgWithdrawDelegatorRewardProto
+  implements BaseMsg
+{
+  constructor(delegator: string, validator: string) {
+    super()
+    this.setDelegatorAddress(delegator)
+    this.setValidatorAddress(validator)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgWithdrawDelegationReward',
+      value: {
+        delegator_address: this.getDelegatorAddress(),
+        validator_address: this.getValidatorAddress(),
+      },
+    }
+  }
+
+  validate() {
     if (
       this.getDelegatorAddress() === '' ||
       this.getValidatorAddress() === ''

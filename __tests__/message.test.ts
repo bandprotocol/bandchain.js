@@ -5,6 +5,9 @@ import {
   MsgRequestData,
   MsgSend,
   MsgDelegate,
+  MsgUndelegate,
+  MsgBeginRedelegate,
+  MsgWithdrawDelegatorReward,
 } from '../src/message'
 
 let coin = new Coin()
@@ -183,22 +186,20 @@ describe('MsgSend', () => {
     let msgs = []
     let errorText: string[] = []
 
-    msgs.push(new MsgSend(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      [],
-    ))
-    msgs.push(new MsgSend(
-      '',
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      [coin],
-    ))
-    msgs.push(new MsgSend(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      '',
-      [coin],
-    ))
-    
+    msgs.push(
+      new MsgSend(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        [],
+      ),
+    )
+    msgs.push(
+      new MsgSend('', 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c', [coin]),
+    )
+    msgs.push(
+      new MsgSend('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c', '', [coin]),
+    )
+
     errorText.push('Expect at least 1 coin')
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
@@ -227,28 +228,197 @@ describe('MsgDelegate', () => {
 
     expect(() => msgDelegate.validate()).not.toThrow()
   })
-  
+
   it('error MsgDelegate', () => {
     let msgs = []
     let errorText: string[] = []
 
-    msgs.push(new MsgDelegate(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-      undefined,
-    ))
-    msgs.push(new MsgDelegate(
-      '',
-      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-      coin,
-    ))
-    msgs.push(new MsgDelegate(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      '',
-      coin,
-    ))
+    msgs.push(
+      new MsgDelegate(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+        undefined,
+      ),
+    )
+    msgs.push(
+      new MsgDelegate(
+        '',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+        coin,
+      ),
+    )
+    msgs.push(
+      new MsgDelegate('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c', '', coin),
+    )
 
     errorText.push('Expect at least 1 coin')
+    errorText.push('Address should not be an empty string')
+    errorText.push('Address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgUndelegate', () => {
+  it('create successfully', () => {
+    const msgUndelegate = new MsgUndelegate(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+      coin,
+    )
+
+    const anyMsg = new Any()
+    const name = 'cosmos.staking.v1beta1.MsgUndelegate'
+    anyMsg.pack(msgUndelegate.serializeBinary(), name, '/')
+
+    expect(msgUndelegate.toAny()).toEqual(anyMsg)
+
+    expect(() => msgUndelegate.validate()).not.toThrow()
+  })
+
+  it('error MsgUndelegate', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(
+      new MsgUndelegate(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+        undefined,
+      ),
+    )
+    msgs.push(
+      new MsgUndelegate(
+        '',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+        coin,
+      ),
+    )
+    msgs.push(
+      new MsgUndelegate(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        '',
+        coin,
+      ),
+    )
+
+    errorText.push('Expect at least 1 coin')
+    errorText.push('Address should not be an empty string')
+    errorText.push('Address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgBeginRedelegate', () => {
+  it('create successfully', () => {
+    const msgBeginRedelegate = new MsgBeginRedelegate(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+      'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
+      coin,
+    )
+
+    const anyMsg = new Any()
+    const name = 'cosmos.staking.v1beta1.MsgBeginRedelegate'
+    anyMsg.pack(msgBeginRedelegate.serializeBinary(), name, '/')
+
+    expect(msgBeginRedelegate.toAny()).toEqual(anyMsg)
+
+    expect(() => msgBeginRedelegate.validate()).not.toThrow()
+  })
+
+  it('error MsgBeginRedelegate', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(
+      new MsgBeginRedelegate(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+        'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
+        undefined,
+      ),
+    )
+    msgs.push(
+      new MsgBeginRedelegate(
+        '',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+        'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
+        coin,
+      ),
+    )
+    msgs.push(
+      new MsgBeginRedelegate(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        '',
+        'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
+        coin,
+      ),
+    )
+    msgs.push(
+      new MsgBeginRedelegate(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
+        '',
+        coin,
+      ),
+    )
+
+    errorText.push('Expect at least 1 coin')
+    errorText.push('Address should not be an empty string')
+    errorText.push('Address should not be an empty string')
+    errorText.push('Address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgWithdrawDelegatorReward', () => {
+  it('create successfully', () => {
+    const msgWithdrawDelegatorReward = new MsgWithdrawDelegatorReward(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+    )
+
+    const anyMsg = new Any()
+    const name = 'cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward'
+    anyMsg.pack(msgWithdrawDelegatorReward.serializeBinary(), name, '/')
+
+    expect(msgWithdrawDelegatorReward.toAny()).toEqual(anyMsg)
+
+    expect(() => msgWithdrawDelegatorReward.validate()).not.toThrow()
+  })
+
+  it('error MsgWithdrawDelegatorReward', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(
+      new MsgWithdrawDelegatorReward(
+        '',
+        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
+      ),
+    )
+    msgs.push(
+      new MsgWithdrawDelegatorReward(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        '',
+      ),
+    )
+
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
 
