@@ -9,7 +9,7 @@ import {
 import { PublicKey } from './wallet'
 import Client from './client'
 import { BaseMsg } from './message'
-import { parseCoin, sortAndStringify } from './utils'
+import { sortAndStringify } from './utils'
 
 import {
   TxBody,
@@ -179,7 +179,7 @@ export default class Transaction {
         account_number: this.accountNum.toString(),
         chain_id: this.chainId,
         fee: {
-          amount: this.fee.getAmountList().map(parseCoin),
+          amount: this.fee.getAmountList().map(coin => coin.toObject()),
           gas: this.fee.getGasLimit().toString(),
         },
         memo: this.memo,

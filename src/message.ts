@@ -9,8 +9,6 @@ import {
   ValueError,
 } from './error'
 
-import { parseCoin } from './utils'
-
 import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import { MsgDelegate as MsgDelegateProto } from '../proto/cosmos/staking/v1beta1/tx_pb'
@@ -66,7 +64,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
         min_count: this.getMinCount().toString(),
         client_id: this.getClientId(),
         sender: this.getSender(),
-        fee_limit: this.getFeeLimitList().map(parseCoin),
+        fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
         prepare_gas: this.getPrepareGas().toString(),
         execute_gas: this.getExecuteGas().toString(),
       },
@@ -127,7 +125,7 @@ export class MsgSend extends MsgSendProto implements BaseMsg {
       value: {
         from_address: this.getFromAddress(),
         to_address: this.getToAddress(),
-        amount: this.getAmountList().map(parseCoin),
+        amount: this.getAmountList().map((coin) => coin.toObject()),
       },
     }
   }
@@ -165,7 +163,7 @@ export class MsgDelegate extends MsgDelegateProto implements BaseMsg {
       value: {
         delegator_address: this.getDelegatorAddress(),
         validator_address: this.getValidatorAddress(),
-        amount: parseCoin(this.getAmount()),
+        amount: this.getAmount().toObject(),
       },
     }
   }
@@ -174,7 +172,10 @@ export class MsgDelegate extends MsgDelegateProto implements BaseMsg {
     if (this.getAmount() === undefined) {
       throw new InsufficientCoinError('Expect at least 1 coin')
     }
-    if (this.getDelegatorAddress() === '' || this.getValidatorAddress() === '') {
+    if (
+      this.getDelegatorAddress() === '' ||
+      this.getValidatorAddress() === ''
+    ) {
       throw new ValueError('Address should not be an empty string')
     }
   }
