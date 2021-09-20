@@ -8,6 +8,8 @@ import {
 } from './error'
 import { PublicKey } from './wallet'
 import Client from './client'
+import { BaseMsg } from './message'
+import { sortAndStringify } from './utils'
 
 import {
   TxBody,
@@ -17,20 +19,22 @@ import {
   SignDoc,
   TxRaw,
 } from '../proto/cosmos/tx/v1beta1/tx_pb'
-import { SignMode } from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
+import {
+  SignMode,
+  SignModeMap,
+} from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
 
 export default class Transaction {
-  msgs: Array<Any> = []
+  msgs: Array<BaseMsg> = []
   accountNum?: number
   sequence?: number
   chainId?: string
   fee: Fee = new Fee()
-  gas: number = 200000
   memo: string = ''
 
-  withMessages(...msg: Array<Any>): Transaction {
+  withMessages(...msg: Array<BaseMsg>): Transaction {
     this.msgs.push(...msg)
 
     return this
@@ -80,16 +84,6 @@ export default class Transaction {
 
   withFee(fee: Fee): Transaction {
     this.fee = fee
-
-    return this
-  }
-
-  withGas(gas: number): Transaction {
-    if (!Number.isInteger(gas)) {
-      throw new NotIntegerError('gas is not an integer')
-    }
-    this.gas = gas
-
     return this
   }
 
@@ -102,15 +96,18 @@ export default class Transaction {
     return this
   }
 
-  private getInfo(publicKey: PublicKey): [Uint8Array, Uint8Array] {
+  private getInfo(
+    publicKey: PublicKey,
+    signMode: SignModeMap[keyof SignModeMap],
+  ): [Uint8Array, Uint8Array] {
     let txBody = new TxBody()
-    txBody.setMessagesList(this.msgs)
+    txBody.setMessagesList(this.msgs.map((msg) => msg.toAny()))
     txBody.setMemo(this.memo)
     let txBodyBytes = txBody.serializeBinary()
 
     let modeInfo = new ModeInfo()
     let modeSingle = new ModeInfo.Single()
-    modeSingle.setMode(SignMode.SIGN_MODE_DIRECT)
+    modeSingle.setMode(signMode)
     modeInfo.setSingle(modeSingle)
 
     let publicKeyAny = new Any()
@@ -127,9 +124,7 @@ export default class Transaction {
 
     let authInfo = new AuthInfo()
     authInfo.addSignerInfos(signerInfo)
-    const newFeeWithGas = this.fee.clone()
-    newFeeWithGas.setGasLimit(this.gas)
-    authInfo.setFee(newFeeWithGas)
+    authInfo.setFee(this.fee)
     let authInfoBytes = authInfo.serializeBinary()
 
     return [txBodyBytes, authInfoBytes]
@@ -149,7 +144,10 @@ export default class Transaction {
       throw new UndefinedError('chainId should be defined')
     }
 
-    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey)
+    const [txBodyBytes, authInfoBytes] = this.getInfo(
+      publicKey,
+      SignMode.SIGN_MODE_DIRECT,
+    )
 
     let signDoc = new SignDoc()
     signDoc.setBodyBytes(txBodyBytes)
@@ -160,8 +158,12 @@ export default class Transaction {
     return signDoc.serializeBinary()
   }
 
-  getTxData(signature: Uint8Array, publicKey: PublicKey): Uint8Array {
-    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey)
+  getTxData(
+    signature: Uint8Array,
+    publicKey: PublicKey,
+    signMode: SignModeMap[keyof SignModeMap] = SignMode.SIGN_MODE_DIRECT,
+  ): Uint8Array {
+    const [txBodyBytes, authInfoBytes] = this.getInfo(publicKey, signMode)
 
     let txRaw = new TxRaw()
     txRaw.setBodyBytes(txBodyBytes)
@@ -169,5 +171,21 @@ export default class Transaction {
     txRaw.addSignatures(signature)
 
     return txRaw.serializeBinary()
+  }
+
+  getSignMessage(): Uint8Array {
+    return Buffer.from(
+      sortAndStringify({
+        account_number: this.accountNum.toString(),
+        chain_id: this.chainId,
+        fee: {
+          amount: this.fee.getAmountList().map(coin => coin.toObject()),
+          gas: this.fee.getGasLimit().toString(),
+        },
+        memo: this.memo,
+        msgs: this.msgs.map((msg) => msg.toJSON()),
+        sequence: this.sequence.toString(),
+      }),
+    )
   }
 }

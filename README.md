@@ -26,7 +26,6 @@ yarn add @bandprotocol/bandchain.js
 
 Band 2.2.0, Cosmos SDK 0.44.0, IBC-go 1.1.0
 
-
 ## Usage
 
 #### Retrieving Price Data
@@ -35,18 +34,17 @@ Band 2.2.0, Cosmos SDK 0.44.0, IBC-go 1.1.0
 const { Client } = require('@bandprotocol/bandchain.js')
 
 // BandChain's Proof-of-Authority REST endpoint
-const endpoint = 'http://rpc-laozi-testnet2.bandchain.org:8080'
+const endpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
 const client = new Client(endpoint)
 
 // This example demonstrates how to query price data from
 // Band's standard dataset
 async function exampleGetReferenceData() {
-  const rate = await client.getReferenceData([
-    'BTC/USD',
-    'BTC/ETH',
-    'EUR/USD',
-    'EUR/ETH',
-  ], 3, 6)
+  const rate = await client.getReferenceData(
+    ['BTC/USD', 'BTC/ETH', 'EUR/USD', 'EUR/ETH'],
+    3,
+    4,
+  )
   return rate
 }
 
@@ -56,5 +54,3 @@ async function exampleGetReferenceData() {
 ```
 
 For more examples, please see [`example`](example/) folder.
-
-
