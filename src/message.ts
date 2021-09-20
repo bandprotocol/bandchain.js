@@ -19,9 +19,9 @@ import {
 import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../proto/cosmos/distribution/v1beta1/tx_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 
-import * as jspb from 'google-protobuf'
+import { Message as JSPBMesage } from 'google-protobuf'
 
-export interface BaseMsg extends jspb.Message {
+export interface BaseMsg extends JSPBMesage {
   toJSON(): object
   toAny(): Any
 }
