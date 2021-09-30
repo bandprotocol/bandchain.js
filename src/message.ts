@@ -348,7 +348,7 @@ export class MsgVote extends MsgVoteProto implements BaseMsg {
     return {
       type: 'cosmos-sdk/MsgVote',
       value: {
-        proposal_id: this.getProposalId(),
+        proposal_id: this.getProposalId().toString(),
         voter: this.getVoter(),
         option: this.getOption(),
       },
