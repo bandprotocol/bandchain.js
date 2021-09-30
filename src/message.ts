@@ -17,6 +17,11 @@ import {
   MsgBeginRedelegate as MsgBeginRedelegateProto,
 } from '../proto/cosmos/staking/v1beta1/tx_pb'
 import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../proto/cosmos/distribution/v1beta1/tx_pb'
+import {
+  Vote as MsgVoteProto,
+  VoteOption,
+  VoteOptionMap,
+} from '../proto/cosmos/gov/v1beta1/gov_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
@@ -314,6 +319,51 @@ export class MsgWithdrawDelegatorReward
       this.getValidatorAddress() === ''
     ) {
       throw new ValueError('Address should not be an empty string')
+    }
+  }
+}
+
+export class MsgVote extends MsgVoteProto implements BaseMsg {
+  constructor(
+    proposalId: number,
+    voter: string,
+    option: VoteOptionMap[keyof VoteOptionMap],
+  ) {
+    super()
+    this.setProposalId(proposalId)
+    this.setVoter(voter)
+    this.setOption(option)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgVote'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgVote',
+      value: {
+        proposal_id: this.getProposalId(),
+        voter: this.getVoter(),
+        option: this.getOption(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getProposalId() <= 0) {
+      throw new NegativeIntegerError('proposalId cannot be less than zero')
+    }
+    if (this.getVoter() === '') {
+      throw new ValueError('Address should not be an empty string')
+    }
+    if (this.getOption() === VoteOption.VOTE_OPTION_UNSPECIFIED) {
+      throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
     }
   }
 }
