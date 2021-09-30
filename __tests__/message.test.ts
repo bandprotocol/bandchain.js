@@ -8,7 +8,9 @@ import {
   MsgUndelegate,
   MsgBeginRedelegate,
   MsgWithdrawDelegatorReward,
+  MsgVote,
 } from '../src/message'
+import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
 
 let coin = new Coin()
 coin.setDenom('uband')
@@ -421,6 +423,61 @@ describe('MsgWithdrawDelegatorReward', () => {
 
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgVote', () => {
+  it('create successfully', () => {
+    const msgVote = new MsgVote(
+      1,
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      VoteOption.VOTE_OPTION_YES
+    )
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgVote'
+    anyMsg.pack(msgVote.serializeBinary(), name, '/')
+
+    expect(msgVote.toAny()).toEqual(anyMsg)
+
+    expect(() => msgVote.validate()).not.toThrow()
+  })
+
+  it('error MsgVote', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(
+      new MsgVote(
+        0,
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        VoteOption.VOTE_OPTION_YES
+      ),
+    )
+    msgs.push(
+      new MsgVote(
+        1,
+        '',
+        VoteOption.VOTE_OPTION_YES
+      ),
+    )
+    msgs.push(
+      new MsgVote(
+        1,
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        VoteOption.VOTE_OPTION_UNSPECIFIED
+      ),
+    )
+
+    errorText.push('proposalId cannot be less than zero')
+    errorText.push('Address should not be an empty string')
+    errorText.push('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
 
     msgs.forEach((msg, index) => {
       expect(() => {
