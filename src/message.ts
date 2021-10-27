@@ -405,7 +405,7 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
         sender: this.getSender(),
         receiver: this.getReceiver(),
         token: this.getToken().toObject(),
-        timeout_height: {},
+        timeout_height: {}, // TODO: make it adjustable later
         timeout_timestamp: this.getTimeoutTimestamp().toString(),
       },
     }
