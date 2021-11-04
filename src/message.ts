@@ -22,6 +22,7 @@ import {
   VoteOption,
   VoteOptionMap,
 } from '../proto/cosmos/gov/v1beta1/gov_pb'
+import { MsgTransfer as MsgTransferProto } from '../proto/ibc/applications/transfer/v1/tx_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
@@ -364,6 +365,64 @@ export class MsgVote extends MsgVoteProto implements BaseMsg {
     }
     if (this.getOption() === VoteOption.VOTE_OPTION_UNSPECIFIED) {
       throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
+    }
+  }
+}
+
+export class MsgTransfer extends MsgTransferProto implements BaseMsg {
+  constructor(
+    sourcePort: string,
+    sourceChannel: string,
+    sender: string,
+    receiver: string,
+    token: Coin,
+    timeoutTimestamp: number,
+  ) {
+    super()
+    this.setSourcePort(sourcePort)
+    this.setSourceChannel(sourceChannel)
+    this.setSender(sender)
+    this.setReceiver(receiver)
+    this.setToken(token)
+    this.setTimeoutTimestamp(timeoutTimestamp)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'ibc.applications.transfer.v1.MsgTransfer'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgTransfer',
+      value: {
+        source_port: this.getSourcePort(),
+        source_channel: this.getSourceChannel(),
+        sender: this.getSender(),
+        receiver: this.getReceiver(),
+        token: this.getToken().toObject(),
+        timeout_height: {}, // TODO: make it adjustable later
+        timeout_timestamp: this.getTimeoutTimestamp().toString(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getSourcePort() === '') {
+      throw new ValueError('sourcePort should not be an empty string')
+    }
+    if (this.getSourceChannel() === '') {
+      throw new ValueError('sourceChannel should not be an empty string')
+    }
+    if (this.getSender() === '') {
+      throw new ValueError('sender should not be an empty string')
+    }
+    if (this.getReceiver() === '') {
+      throw new ValueError('receiver should not be an empty string')
     }
   }
 }

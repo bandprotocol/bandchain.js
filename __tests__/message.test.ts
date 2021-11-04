@@ -9,6 +9,7 @@ import {
   MsgBeginRedelegate,
   MsgWithdrawDelegatorReward,
   MsgVote,
+  MsgTransfer,
 } from '../src/message'
 import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
 
@@ -437,7 +438,7 @@ describe('MsgVote', () => {
     const msgVote = new MsgVote(
       1,
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      VoteOption.VOTE_OPTION_YES
+      VoteOption.VOTE_OPTION_YES,
     )
 
     const anyMsg = new Any()
@@ -457,27 +458,93 @@ describe('MsgVote', () => {
       new MsgVote(
         0,
         'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        VoteOption.VOTE_OPTION_YES
+        VoteOption.VOTE_OPTION_YES,
       ),
     )
-    msgs.push(
-      new MsgVote(
-        1,
-        '',
-        VoteOption.VOTE_OPTION_YES
-      ),
-    )
+    msgs.push(new MsgVote(1, '', VoteOption.VOTE_OPTION_YES))
     msgs.push(
       new MsgVote(
         1,
         'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        VoteOption.VOTE_OPTION_UNSPECIFIED
+        VoteOption.VOTE_OPTION_UNSPECIFIED,
       ),
     )
 
     errorText.push('proposalId cannot be less than zero')
     errorText.push('Address should not be an empty string')
     errorText.push('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgTransfer', () => {
+  it('create successfully', () => {
+    const msgTransfer = new MsgTransfer(
+      'transfer',
+      'channel-25',
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      'cosmos15d4apf20449ajvwycq8ruaypt7v6d34522frnd',
+      coin,
+      (Date.now() + 86400000) * 1e6,
+    )
+
+    const anyMsg = new Any()
+    const name = 'ibc.applications.transfer.v1.MsgTransfer'
+    anyMsg.pack(msgTransfer.serializeBinary(), name, '/')
+
+    expect(msgTransfer.toAny()).toEqual(anyMsg)
+
+    expect(() => msgTransfer.validate()).not.toThrow()
+  })
+
+  it('error MsgTransfer', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(
+      new MsgTransfer(
+        '',
+        'channel-25',
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'cosmos15d4apf20449ajvwycq8ruaypt7v6d34522frnd',
+        coin,
+        (Date.now() + 86400000) * 1e6,
+      ),
+      new MsgTransfer(
+        'transfer',
+        '',
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        'cosmos15d4apf20449ajvwycq8ruaypt7v6d34522frnd',
+        coin,
+        (Date.now() + 86400000) * 1e6,
+      ),
+      new MsgTransfer(
+        'transfer',
+        'channel-25',
+        '',
+        'cosmos15d4apf20449ajvwycq8ruaypt7v6d34522frnd',
+        coin,
+        (Date.now() + 86400000) * 1e6,
+      ),
+      new MsgTransfer(
+        'transfer',
+        'channel-25',
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        '',
+        coin,
+        (Date.now() + 86400000) * 1e6,
+      ),
+    )
+
+    errorText.push('sourcePort should not be an empty string')
+    errorText.push('sourceChannel should not be an empty string')
+    errorText.push('sender should not be an empty string')
+    errorText.push('receiver should not be an empty string')
 
     msgs.forEach((msg, index) => {
       expect(() => {
