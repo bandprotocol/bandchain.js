@@ -9,7 +9,10 @@ import {
   ValueError,
 } from './error'
 
-import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
+import { 
+  MsgRequestData as MsgRequestDataProto,
+  MsgCreateDataSource as MsgCreateDataSourceProto
+} from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
   MsgDelegate as MsgDelegateProto,
@@ -424,5 +427,91 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
     if (this.getReceiver() === '') {
       throw new ValueError('receiver should not be an empty string')
     }
+  }
+}
+
+export class MsgCreateDataSource extends MsgCreateDataSourceProto implements BaseMsg {
+  constructor(
+    name: string,
+    description: string,
+    executable: Buffer,
+    feeList: Coin[] = [],
+    treasury: string,
+    owner: string,
+    sender: string,
+  ) {
+    super()
+    this.setName(name)
+    this.setDescription(description)
+    this.setExecutable(executable)
+    this.setTreasury(treasury)
+    this.setOwner(owner)
+    this.setFeeList(feeList)
+    this.setSender(sender)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgCreateDataSource'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'oracle/Request',
+      value: {
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        executable: this.getExecutable(),
+        // feeList: Coin[] = [],
+        // treasury: string,
+        // owner: string,
+        // sender: string,
+      }
+      // value: {
+      //   ask_count: this.getAskCount().toString(),
+      //   calldata: this.getCalldata_asB64(),
+      //   oracle_script_id: this.getOracleScriptId().toString(),
+      //   min_count: this.getMinCount().toString(),
+      //   client_id: this.getClientId(),
+      //   sender: this.getSender(),
+      //   fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
+      //   prepare_gas: this.getPrepareGas().toString(),
+      //   execute_gas: this.getExecuteGas().toString(),
+      // },
+    }
+  }
+
+  validate() {
+    // if (this.getOracleScriptId() <= 0)
+    //   throw new NegativeIntegerError('oracleScriptId cannot be less than zero')
+    // if (!Number.isInteger(this.getOracleScriptId()))
+    //   throw new ValueError('oracleScriptId is not an integer')
+    // if (!Number.isInteger(this.getAskCount()))
+    //   throw new ValueError('askCount is not an integer')
+    // if (!Number.isInteger(this.getMinCount()))
+    //   throw new ValueError('minCount is not an integer')
+    // if (this.getCalldata().length > MAX_DATA_SIZE)
+    //   throw new ValueTooLargeError('Too large calldata')
+    // if (this.getMinCount() <= 0)
+    //   throw new ValueError(
+    //     `Invalid minCount, got: minCount: ${this.getMinCount()}`,
+    //   )
+    // if (this.getAskCount() < this.getMinCount())
+    //   throw new ValueError(
+    //     `Invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
+    //   )
+    // this.getFeeLimitList().forEach((coin) => {
+    //   if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
+    //     throw new NegativeIntegerError('Fee limit cannot be less than zero')
+    //   } else if (!Number(coin.getAmount())) {
+    //     throw new NotIntegerError(
+    //       'Invalid fee limit, fee limit should be a number',
+    //     )
+    //   }
+    // })
   }
 }
