@@ -10,6 +10,7 @@ import {
   MsgWithdrawDelegatorReward,
   MsgVote,
   MsgTransfer,
+  MsgCreateDataSource,
 } from '../src/message'
 import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
 
@@ -545,6 +546,85 @@ describe('MsgTransfer', () => {
     errorText.push('sourceChannel should not be an empty string')
     errorText.push('sender should not be an empty string')
     errorText.push('receiver should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+
+describe('MsgCreateDataSource', () => {
+  const dsName = 'CoinGecko'
+  const description = ''
+  const ownerAddr = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
+  const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
+  const executable = Buffer.from('000000034254430000000000000001', 'hex').toString('base64')
+  const treasury = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
+
+
+  it('create successfully', () => {
+    const msgCreateDs = new MsgCreateDataSource(
+      dsName,
+      description,
+      executable,
+      [coin],
+      treasury,
+      ownerAddr,
+      senderAddr,
+    )
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgCreateDataSource'
+    anyMsg.pack(msgCreateDs.serializeBinary(), name, '/')
+
+    expect(msgCreateDs.toAny()).toEqual(anyMsg)
+
+    expect(() => msgCreateDs.validate()).not.toThrow()
+  })
+
+  it('create with error from validate()', () => {
+    let msgs = []
+    let errorText: string[] = []
+    let coin1 = new Coin()
+    coin1.setDenom('uband')
+    coin1.setAmount('-10')
+
+    let coin2 = new Coin()
+    coin2.setDenom('uband')
+    coin2.setAmount('string')
+
+    // Fee list cannot be less than zero
+    msgs.push(
+      new MsgCreateDataSource(
+        dsName,
+        description,
+        executable,
+        [coin1],
+        treasury,
+        ownerAddr,
+        senderAddr,
+      ),
+    )
+    // Invalid fee limit, fee limit should be a number
+    msgs.push(
+      new MsgCreateDataSource(
+        dsName,
+        description,
+        executable,
+        [coin2],
+        treasury,
+        ownerAddr,
+        senderAddr,
+      ),
+    )
+    errorText.push('Fee cannot be less than zero')
+    errorText.push('Invalid fee, fee list should be a number')
+    errorText.push('Owner should not be an empty string')
+    errorText.push('Sender should not be an empty string')
+    errorText.push('Treasury should not be an empty string')
 
     msgs.forEach((msg, index) => {
       expect(() => {

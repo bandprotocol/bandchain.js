@@ -434,7 +434,7 @@ export class MsgCreateDataSource extends MsgCreateDataSourceProto implements Bas
   constructor(
     name: string,
     description: string,
-    executable: Buffer,
+    executable: string,
     feeList: Coin[] = [],
     treasury: string,
     owner: string,
@@ -461,57 +461,38 @@ export class MsgCreateDataSource extends MsgCreateDataSourceProto implements Bas
 
   toJSON(): object {
     return {
-      type: 'oracle/Request',
+      type: 'oracle/CreateDataSource',
       value: {
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        executable: this.getExecutable(),
-        // feeList: Coin[] = [],
-        // treasury: string,
-        // owner: string,
-        // sender: string,
+        executable: this.getExecutable_asB64(),
+        feeList: this.getFeeList().map((coin) => coin.toObject()),
+        treasury: this.getTreasury().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
       }
-      // value: {
-      //   ask_count: this.getAskCount().toString(),
-      //   calldata: this.getCalldata_asB64(),
-      //   oracle_script_id: this.getOracleScriptId().toString(),
-      //   min_count: this.getMinCount().toString(),
-      //   client_id: this.getClientId(),
-      //   sender: this.getSender(),
-      //   fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
-      //   prepare_gas: this.getPrepareGas().toString(),
-      //   execute_gas: this.getExecuteGas().toString(),
-      // },
     }
   }
 
   validate() {
-    // if (this.getOracleScriptId() <= 0)
-    //   throw new NegativeIntegerError('oracleScriptId cannot be less than zero')
-    // if (!Number.isInteger(this.getOracleScriptId()))
-    //   throw new ValueError('oracleScriptId is not an integer')
-    // if (!Number.isInteger(this.getAskCount()))
-    //   throw new ValueError('askCount is not an integer')
-    // if (!Number.isInteger(this.getMinCount()))
-    //   throw new ValueError('minCount is not an integer')
-    // if (this.getCalldata().length > MAX_DATA_SIZE)
-    //   throw new ValueTooLargeError('Too large calldata')
-    // if (this.getMinCount() <= 0)
-    //   throw new ValueError(
-    //     `Invalid minCount, got: minCount: ${this.getMinCount()}`,
-    //   )
-    // if (this.getAskCount() < this.getMinCount())
-    //   throw new ValueError(
-    //     `Invalid askCount got: minCount: ${this.getMinCount()}, askCount: ${this.getAskCount()}`,
-    //   )
-    // this.getFeeLimitList().forEach((coin) => {
-    //   if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
-    //     throw new NegativeIntegerError('Fee limit cannot be less than zero')
-    //   } else if (!Number(coin.getAmount())) {
-    //     throw new NotIntegerError(
-    //       'Invalid fee limit, fee limit should be a number',
-    //     )
-    //   }
-    // })
+    if ( this.getName() === '' )
+      throw new ValueError('name should not be an empty string')
+    if ( this.getSender() === '' )
+      throw new ValueError('sender should not be an empty string')
+    if ( this.getOwner() === '' )
+      throw new ValueError('owner should not be an empty string')
+    if ( this.getTreasury() === '' )
+      throw new ValueError('treasury should not be an empty string')
+    if (this.getExecutable().length > MAX_DATA_SIZE)
+      throw new ValueTooLargeError('Too large executable')
+    this.getFeeList().map((coin) => {
+      if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
+        throw new NegativeIntegerError('Fee cannot be less than zero')
+      } else if (!Number(coin.getAmount())) {
+        throw new NotIntegerError(
+          'Invalid fee, fee list should be a number',
+        )
+      }
+    })
   }
 }
