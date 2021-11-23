@@ -14,46 +14,8 @@ const createDsMsg = async () => {
   const sender = pubkey.toAddress().toAccBech32()
 
 const executableCode = btoa(`#!/usr/bin/env python3
-  import sys
-  import requests
-  
-  HEADERS = {"Content-Type": "application/json"}
-  URL = "https://australia-southeast1-band-playground.cloudfunctions.net/pang-test"
-  
-  
-  def main(request_path, keys):
-      result = requests.request(
-          "POST", URL, headers=HEADERS, json={"query_string": request_path}
-      ).json()
-  
-      if "fantasy_content" in result:
-          final_value = result["fantasy_content"]
-          for key in keys.split(","):
-              # list
-              if isinstance(final_value, list):
-                  if not key.isdigit():
-                      raise ValueError('index must be positive integer but got "' + key + '"')
-  
-                  final_value = final_value[int(key)]
-                  continue
-  
-              # dict
-              if key in final_value:
-                  final_value = final_value[key]
-                  continue
-  
-              raise ValueError('key "' + key + '" not found')
-  
-          return final_value
-  
-      raise ValueError('key "fantasy_content" not found')
-  
-  if __name__ == "__main__":
-      try:
-          print(main(*sys.argv[1:]))
-      except Exception as e:
-          print(str(e), file=sys.stderr)
-          sys.exit(1)
+import requests
+import sys
   `)
 
 // Here we use different message type, which is MsgSend
@@ -68,10 +30,10 @@ const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
     "Test DS",
     "Test DS Description",
     executableCode,
-    feeCoin,
-    sender,
-    owner,
+    [feeCoin],
     treasury,
+    owner,
+    sender,
   )
 
   const fee = new Fee()
@@ -84,6 +46,7 @@ const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
     .withMessages(msg)
     .withAccountNum(account.accountNumber)
     .withSequence(account.sequence)
+    .withChainId('band-laozi-testnet4')
     .withFee(fee)
 
   // Step 4 sign the transaction
@@ -93,8 +56,9 @@ const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 
   // Step 5 send the transaction
   const response = await client.sendTxBlockMode(signedTx)
+  console.log(response)
 
-  return response
+  // return response
 }
 
 function App() {
@@ -106,7 +70,7 @@ function App() {
       const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
       setPairs(data)
     }
-
+    createDsMsg()
     getReferenceData()
   }, [])
 
