@@ -558,7 +558,7 @@ export class MsgEditDataSource
       throw new ValueError('owner should not be an empty string')
     if (this.getTreasury() === '')
       throw new ValueError('treasury should not be an empty string')
-    if (this.getExecutable().length == 0)
+    if (this.getExecutable().length === 0)
       throw new ValueError('got an empty source file')
     this.getFeeList().map((coin) => {
       if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
