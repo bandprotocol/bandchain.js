@@ -548,7 +548,7 @@ export class MsgEditDataSource extends MsgEditDataSourceProto implements BaseMsg
 
   validate() {
     if ( !this.getDataSourceId() )
-      throw new ValueError('data source ID cannot be undefined')
+      throw new ValueError('dataSourceId cannot be null')
     if ( this.getSender() === '' )
       throw new ValueError('sender should not be an empty string')
     if ( this.getOwner() === '' )
