@@ -28,12 +28,12 @@ const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 
   const msg = new Message.MsgCreateDataSource(
     "Test DS",
-    "Test DS Description",
     executableCode,
     [feeCoin],
     treasury,
     owner,
     sender,
+    "Test DS Description",
   )
 
   const fee = new Fee()

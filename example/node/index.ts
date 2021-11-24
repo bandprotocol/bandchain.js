@@ -93,12 +93,12 @@ async function exampleCreateDataSource() {
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgCreateDataSource(
     "Test DS NodeJs",
-    "Test DS NodeJs Description",
     executableCode,
     [feeCoin],
     treasury,
     owner,
     sender,
+    "Test DS NodeJs Description",
   )
 
   // Step 3.1: Construct a transaction

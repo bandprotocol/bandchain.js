@@ -433,12 +433,12 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
 export class MsgCreateDataSource extends MsgCreateDataSourceProto implements BaseMsg {
   constructor(
     name: string,
-    description: string,
     executable: string,
     feeList: Coin[] = [],
     treasury: string,
     owner: string,
     sender: string,
+    description?: string,
   ) {
     super()
     this.setName(name)

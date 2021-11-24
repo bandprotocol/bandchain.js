@@ -568,12 +568,12 @@ describe('MsgCreateDataSource', () => {
   it('create successfully', () => {
     const msgCreateDs = new MsgCreateDataSource(
       dsName,
-      description,
       executable,
       [coin],
       treasury,
       ownerAddr,
       senderAddr,
+      description,
     )
 
     const anyMsg = new Any()
@@ -600,24 +600,24 @@ describe('MsgCreateDataSource', () => {
     msgs.push(
       new MsgCreateDataSource(
         dsName,
-        description,
         executable,
         [coin1],
         treasury,
         ownerAddr,
         senderAddr,
+        description,
       ),
     )
     // Invalid fee limit, fee limit should be a number
     msgs.push(
       new MsgCreateDataSource(
         dsName,
-        description,
         executable,
         [coin2],
         treasury,
         ownerAddr,
         senderAddr,
+        description,
       ),
     )
     errorText.push('Fee cannot be less than zero')
