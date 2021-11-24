@@ -6,12 +6,13 @@ import {
   ValueTooLargeError,
   NotIntegerError,
   InsufficientCoinError,
-  ValueError,
+  ValueError
 } from './error'
 
 import { 
   MsgRequestData as MsgRequestDataProto,
-  MsgCreateDataSource as MsgCreateDataSourceProto
+  MsgCreateDataSource as MsgCreateDataSourceProto,
+  MsgEditDataSource as MsgEditDataSourceProto
 } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
@@ -477,6 +478,77 @@ export class MsgCreateDataSource extends MsgCreateDataSourceProto implements Bas
   validate() {
     if ( this.getName() === '' )
       throw new ValueError('name should not be an empty string')
+    if ( this.getSender() === '' )
+      throw new ValueError('sender should not be an empty string')
+    if ( this.getOwner() === '' )
+      throw new ValueError('owner should not be an empty string')
+    if ( this.getTreasury() === '' )
+      throw new ValueError('treasury should not be an empty string')
+    if (this.getExecutable().length > MAX_DATA_SIZE)
+      throw new ValueTooLargeError('Too large executable')
+    this.getFeeList().map((coin) => {
+      if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
+        throw new NegativeIntegerError('Fee cannot be less than zero')
+      } else if (!Number(coin.getAmount())) {
+        throw new NotIntegerError(
+          'Invalid fee, fee list should be a number',
+        )
+      }
+    })
+  }
+}
+
+
+export class MsgEditDataSource extends MsgEditDataSourceProto implements BaseMsg {
+  constructor(
+    dataSourceId: number,
+    executable: string,
+    feeList: Coin[] = [],
+    treasury: string,
+    owner: string,
+    sender: string,
+    name?: string,
+    description?: string,
+  ) {
+    super()
+    this.setDataSourceId(dataSourceId)
+    this.setName(name)
+    this.setDescription(description)
+    this.setExecutable(executable)
+    this.setTreasury(treasury)
+    this.setOwner(owner)
+    this.setFeeList(feeList)
+    this.setSender(sender)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgEditDataSource'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'oracle/EditDataSource',
+      value: {
+        dataSourceId: this.getDataSourceId(),
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        executable: this.getExecutable_asB64(),
+        feeList: this.getFeeList().map((coin) => coin.toObject()),
+        treasury: this.getTreasury().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+      }
+    }
+  }
+
+  validate() {
+    if ( !this.getDataSourceId() )
+      throw new ValueError('data source ID cannot be undefined')
     if ( this.getSender() === '' )
       throw new ValueError('sender should not be an empty string')
     if ( this.getOwner() === '' )
