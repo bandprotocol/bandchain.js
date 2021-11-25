@@ -1,68 +1,25 @@
 import React from 'react'
 import './App.css'
-import { Client, Data, Wallet, Message, Coin, Transaction, Fee } from '@bandprotocol/bandchain.js'
-
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
-const client = new Client(grpcEndpoint)
-
-const createDsMsg = async () => {
-
-  const { PrivateKey } = Wallet
-  const mnemonic = "subject economy equal whisper turn boil guard giraffe stick retreat wealth card only buddy joy leave genuine resemble submit ghost top polar adjust avoid"
-  const privateKey = PrivateKey.fromMnemonic(mnemonic)
-  const pubkey = privateKey.toPubkey()
-  const sender = pubkey.toAddress().toAccBech32()
-
-const executableCode = btoa(`#!/usr/bin/env python3
-import requests
-import sys
-  `)
-
-// Here we use different message type, which is MsgSend
-const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
-const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
-
-  let feeCoin = new Coin()
-  feeCoin.setDenom("uband")
-  feeCoin.setAmount("1000")
-
-  const msg = new Message.MsgCreateDataSource(
-    "Test DS",
-    executableCode,
-    [feeCoin],
-    treasury,
-    owner,
-    sender,
-    "Test DS Description",
-  )
-
-  const fee = new Fee()
-  fee.setAmountList([feeCoin])
-  fee.setGasLimit(1000000)
-
-  const account = await client.getAccount(sender)
-
-  const tx = new Transaction()
-    .withMessages(msg)
-    .withAccountNum(account.accountNumber)
-    .withSequence(account.sequence)
-    .withChainId('band-laozi-testnet4')
-    .withFee(fee)
-
-  // Step 4 sign the transaction
-  const txSignData = tx.getSignDoc(pubkey)
-  const signature = privateKey.sign(txSignData)
-  const signedTx = tx.getTxData(signature, pubkey)
-
-  // Step 5 send the transaction
-  const response = await client.sendTxBlockMode(signedTx)
-  console.log(response)
-
-  // return response
-}
+import { Client, Data } from '@bandprotocol/bandchain.js'
+import { createMsgCreateDataSource } from './band'
 
 function App() {
+  const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+  const client = new Client(grpcEndpoint)
+
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
+  const [loadingDs, setLoadingDs] = React.useState<boolean>(false)
+  const [txDs, setTxDs] = React.useState('')
+
+  const sendMsgCreateDataSource = async () => {
+    setTxDs('')
+    setLoadingDs(true)
+    const requestDs = await createMsgCreateDataSource()
+    if (requestDs.txhash) {
+      setTxDs(requestDs.txhash)
+    }
+    setLoadingDs(false)
+  }
 
   React.useEffect(() => {
     // Get standard price reference
@@ -70,21 +27,87 @@ function App() {
       const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
       setPairs(data)
     }
-    createDsMsg()
     getReferenceData()
   }, [])
 
   return (
     <div className="App">
-      <span style={{ fontSize: '24px', marginBottom: '10px' }}>Prices</span>
-      {pairs &&
-        pairs.map(({ pair, rate }) => (
-          <div key={pair}>
-            <span style={{ marginBottom: '5px' }}>
-              {pair}: {rate.toString()}
-            </span>
+      <div className="container">
+        <div className="row">
+          <div className="col" style={{ maxWidth: '25%', flex: '0 0 25%' }}>
+            <div className="sidebar">
+              <h3>Examples</h3>
+              <ul className="sidebar-list">
+                <li>
+                  <a href="#section-getReferenceData">getReferenceData</a>
+                </li>
+                <li>
+                  <a href="#section-MsgCreateDataSource">MsgCreateDataSource</a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/bandprotocol/bandchain.js/tree/master/example/react"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Full Source Code
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        ))}
+          <div className="col" style={{ maxWidth: '75%', flex: '0 0 75%' }}>
+            <div className="card">
+              <h2>
+                <a
+                  className="ref-sec"
+                  id="section-getReferenceData"
+                  href="#section-getReferenceData"
+                >
+                  #
+                </a>{' '}
+                getReferenceData
+              </h2>
+              <div className="preview" style={{ textAlign: 'center' }}>
+                <h3 style={{ marginBottom: '20px', marginTop: '0' }}>Prices</h3>
+                {pairs &&
+                  pairs.map(({ pair, rate }) => (
+                    <div key={pair}>
+                      <span style={{ marginBottom: '5px' }}>
+                        {pair}: {rate.toString()}
+                      </span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+            <div className="card">
+              <h2>
+                <a
+                  className="ref-sec"
+                  id="section-MsgCreateDataSource"
+                  href="#section-MsgCreateDataSource"
+                >
+                  #
+                </a>{' '}
+                MsgCreateDataSource
+              </h2>
+              <div className="preview" style={{ textAlign: 'center' }}>
+                {txDs ? (
+                  <div style={{ marginBottom: '20px' }}>txhash: {txDs}</div>
+                ) : (
+                  ''
+                )}
+                <button
+                  className="btn btn-primary"
+                  onClick={sendMsgCreateDataSource}
+                >
+                  {loadingDs ? 'Creating...' : 'Create Data Source'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

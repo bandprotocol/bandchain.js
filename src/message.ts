@@ -9,9 +9,9 @@ import {
   ValueError,
 } from './error'
 
-import { 
+import {
   MsgRequestData as MsgRequestDataProto,
-  MsgCreateDataSource as MsgCreateDataSourceProto
+  MsgCreateDataSource as MsgCreateDataSourceProto,
 } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
@@ -430,7 +430,10 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
   }
 }
 
-export class MsgCreateDataSource extends MsgCreateDataSourceProto implements BaseMsg {
+export class MsgCreateDataSource
+  extends MsgCreateDataSourceProto
+  implements BaseMsg
+{
   constructor(
     name: string,
     executable: string,
@@ -459,6 +462,7 @@ export class MsgCreateDataSource extends MsgCreateDataSourceProto implements Bas
     return anyMsg
   }
 
+  // TODO: check with ledger
   toJSON(): object {
     return {
       type: 'oracle/CreateDataSource',
@@ -470,28 +474,26 @@ export class MsgCreateDataSource extends MsgCreateDataSourceProto implements Bas
         treasury: this.getTreasury().toString(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
-      }
+      },
     }
   }
 
   validate() {
-    if ( this.getName() === '' )
+    if (this.getName() === '')
       throw new ValueError('name should not be an empty string')
-    if ( this.getSender() === '' )
+    if (this.getSender() === '')
       throw new ValueError('sender should not be an empty string')
-    if ( this.getOwner() === '' )
+    if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if ( this.getTreasury() === '' )
+    if (this.getTreasury() === '')
       throw new ValueError('treasury should not be an empty string')
-    if (this.getExecutable().length > MAX_DATA_SIZE)
-      throw new ValueTooLargeError('Too large executable')
+    if (this.getExecutable().length == 0)
+      throw new ValueError('got an empty source file')
     this.getFeeList().map((coin) => {
       if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
         throw new NegativeIntegerError('Fee cannot be less than zero')
       } else if (!Number(coin.getAmount())) {
-        throw new NotIntegerError(
-          'Invalid fee, fee list should be a number',
-        )
+        throw new NotIntegerError('Invalid fee, fee list should be a number')
       }
     })
   }
