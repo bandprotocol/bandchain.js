@@ -14,6 +14,9 @@ import {
 } from '../src/message'
 import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
 
+import fs from 'fs'
+import path from 'path'
+
 let coin = new Coin()
 coin.setDenom('uband')
 coin.setAmount('10')
@@ -555,15 +558,18 @@ describe('MsgTransfer', () => {
   })
 })
 
-
 describe('MsgCreateDataSource', () => {
+  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
+
   const dsName = 'CoinGecko'
   const description = ''
   const ownerAddr = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
-  const executable = Buffer.from('000000034254430000000000000001', 'hex').toString('base64')
-  const treasury = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
 
+  const file = fs.readFileSync(execPath, 'utf8')
+  const executable = Buffer.from(file).toString('base64')
+
+  const treasury = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
 
   it('create successfully', () => {
     const msgCreateDs = new MsgCreateDataSource(
@@ -586,6 +592,10 @@ describe('MsgCreateDataSource', () => {
   })
 
   it('create with error from validate()', () => {
+    const execEmptyPath = path.resolve(__dirname, './mock/empty_data_source.py')
+    const fileEmpty = fs.readFileSync(execEmptyPath, 'utf8')
+    const executableEmpty = Buffer.from(fileEmpty).toString('base64')
+
     let msgs = []
     let errorText: string[] = []
     let coin1 = new Coin()
@@ -595,6 +605,19 @@ describe('MsgCreateDataSource', () => {
     let coin2 = new Coin()
     coin2.setDenom('uband')
     coin2.setAmount('string')
+
+    // got an empty source file
+    msgs.push(
+      new MsgCreateDataSource(
+        dsName,
+        executableEmpty,
+        [coin1],
+        treasury,
+        ownerAddr,
+        senderAddr,
+        description,
+      ),
+    )
 
     // Fee list cannot be less than zero
     msgs.push(
@@ -620,6 +643,8 @@ describe('MsgCreateDataSource', () => {
         description,
       ),
     )
+
+    errorText.push('got an empty source file')
     errorText.push('Fee cannot be less than zero')
     errorText.push('Invalid fee, fee list should be a number')
     errorText.push('Owner should not be an empty string')
