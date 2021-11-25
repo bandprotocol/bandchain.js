@@ -551,15 +551,15 @@ export class MsgEditDataSource
 
   validate() {
     if (!this.getDataSourceId())
-      throw new ValueError('data source ID cannot be undefined')
+      throw new ValueError('dataSourceId cannot be null')
     if (this.getSender() === '')
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
     if (this.getTreasury() === '')
       throw new ValueError('treasury should not be an empty string')
-    if (this.getExecutable().length > MAX_DATA_SIZE)
-      throw new ValueTooLargeError('Too large executable')
+    if (this.getExecutable().length == 0)
+      throw new ValueError('got an empty source file')
     this.getFeeList().map((coin) => {
       if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
         throw new NegativeIntegerError('Fee cannot be less than zero')
