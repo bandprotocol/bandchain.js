@@ -8,7 +8,7 @@
     "clean": "rimraf coverage lib",
     "tsc": "tsc -p tsconfig.json",
     "prepublish": "yarn clean && yarn tsc",
-    "dev": "ts-node example/node/index.ts",
+    "dev": "ts-node example/node/example_data_source.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
