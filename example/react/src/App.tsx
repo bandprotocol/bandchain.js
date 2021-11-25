@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
-import { createMsgCreateDataSource } from './band'
+import { createMsgCreateDataSource, createMsgEditDataSource } from './band'
 
 function App() {
   const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
@@ -9,8 +9,11 @@ function App() {
 
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
   const [loadingDs, setLoadingDs] = React.useState<boolean>(false)
+  const [loadingDsEdit, setLoadingDsEdit] = React.useState<boolean>(false)
   const [txDs, setTxDs] = React.useState('')
+  const [txDsEdit, setTxDsEdit] = React.useState('')
 
+  // MsgCreateDataSource
   const sendMsgCreateDataSource = async () => {
     setTxDs('')
     setLoadingDs(true)
@@ -19,6 +22,17 @@ function App() {
       setTxDs(requestDs.txhash)
     }
     setLoadingDs(false)
+  }
+
+  // MsgEditDataSource
+  const sendMsgEditDataSource = async () => {
+    setTxDsEdit('')
+    setLoadingDsEdit(true)
+    const requestDs = await createMsgEditDataSource()
+    if (requestDs.txhash) {
+      setTxDsEdit(requestDs.txhash)
+    }
+    setLoadingDsEdit(false)
   }
 
   React.useEffect(() => {
@@ -43,6 +57,9 @@ function App() {
                 </li>
                 <li>
                   <a href="#section-MsgCreateDataSource">MsgCreateDataSource</a>
+                </li>
+                <li>
+                  <a href="#section-MsgEditDataSource">MsgEditDataSource</a>
                 </li>
                 <li>
                   <a
@@ -102,6 +119,31 @@ function App() {
                   onClick={sendMsgCreateDataSource}
                 >
                   {loadingDs ? 'Creating...' : 'Create Data Source'}
+                </button>
+              </div>
+            </div>
+            <div className="card">
+              <h2>
+                <a
+                  className="ref-sec"
+                  id="section-MsgEditDataSource"
+                  href="#section-MsgEditDataSource"
+                >
+                  #
+                </a>{' '}
+                MsgEditDataSource
+              </h2>
+              <div className="preview" style={{ textAlign: 'center' }}>
+                {txDsEdit ? (
+                  <div style={{ marginBottom: '20px' }}>txhash: {txDsEdit}</div>
+                ) : (
+                  ''
+                )}
+                <button
+                  className="btn btn-primary"
+                  onClick={sendMsgEditDataSource}
+                >
+                  {loadingDsEdit ? 'Editing...' : 'Edit Data Source'}
                 </button>
               </div>
             </div>
