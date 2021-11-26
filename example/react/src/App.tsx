@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
-import { createMsgCreateDataSource, createMsgEditDataSource } from './band'
+import { createMsgCreateDataSource, createMsgEditDataSource, createOracleScript } from './band'
 
 function App() {
   const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
@@ -10,8 +10,10 @@ function App() {
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
   const [loadingDs, setLoadingDs] = React.useState<boolean>(false)
   const [loadingDsEdit, setLoadingDsEdit] = React.useState<boolean>(false)
+  const [loadingOs, setLoadingOs] = React.useState<boolean>(false)
   const [txDs, setTxDs] = React.useState('')
   const [txDsEdit, setTxDsEdit] = React.useState('')
+  const [txOs, setTxOs] = React.useState('')
 
   // MsgCreateDataSource
   const sendMsgCreateDataSource = async () => {
@@ -33,6 +35,17 @@ function App() {
       setTxDsEdit(requestDs.txhash)
     }
     setLoadingDsEdit(false)
+  }
+
+  // MsgCreateOracleScript
+  const sendMsgCreateOracleScript = async () => {
+    setTxOs('')
+    setLoadingOs(true)
+    const requestDs = await createOracleScript()
+    if (requestDs.txhash) {
+      setTxOs(requestDs.txhash)
+    }
+    setLoadingOs(false)
   }
 
   React.useEffect(() => {
@@ -60,6 +73,9 @@ function App() {
                 </li>
                 <li>
                   <a href="#section-MsgEditDataSource">MsgEditDataSource</a>
+                </li>
+                <li>
+                  <a href="#section-MsgCreateOracleScript">MsgCreateOracleScript</a>
                 </li>
                 <li>
                   <a
@@ -144,6 +160,32 @@ function App() {
                   onClick={sendMsgEditDataSource}
                 >
                   {loadingDsEdit ? 'Editing...' : 'Edit Data Source'}
+                </button>
+              </div>
+            </div>
+
+            <div className="card">
+              <h2>
+                <a
+                  className="ref-sec"
+                  id="section-MsgCreateOracleScript"
+                  href="#section-MsgCreateOracleScript"
+                >
+                  #
+                </a>{' '}
+                MsgCreateOracleScript
+              </h2>
+              <div className="preview" style={{ textAlign: 'center' }}>
+                {txOs ? (
+                  <div style={{ marginBottom: '20px' }}>txhash: {txOs}</div>
+                ) : (
+                  ''
+                )}
+                <button
+                  className="btn btn-primary"
+                  onClick={sendMsgCreateOracleScript}
+                >
+                  {loadingOs ? 'Creating...' : 'Create Oracle Script'}
                 </button>
               </div>
             </div>
