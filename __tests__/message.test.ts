@@ -12,8 +12,12 @@ import {
   MsgTransfer,
   MsgCreateDataSource,
   MsgEditDataSource,
+  MsgCreateOracleScript,
 } from '../src/message'
 import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
+
+import fs from 'fs'
+import path from 'path'
 
 let coin = new Coin()
 coin.setDenom('uband')
@@ -556,15 +560,16 @@ describe('MsgTransfer', () => {
   })
 })
 
-
 describe('MsgCreateDataSource', () => {
   const dsName = 'CoinGecko'
   const description = ''
   const ownerAddr = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
-  const executable = Buffer.from('000000034254430000000000000001', 'hex').toString('base64')
+  const executable = Buffer.from(
+    '000000034254430000000000000001',
+    'hex',
+  ).toString('base64')
   const treasury = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
-
 
   it('create successfully', () => {
     const msgCreateDs = new MsgCreateDataSource(
@@ -635,17 +640,20 @@ describe('MsgCreateDataSource', () => {
   })
 })
 
-
-
 describe('MsgEditDataSource', () => {
   const dataSourceId = 1
   const dataSourceId2 = null
   const description = ''
   const ownerAddr = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
-  const executable = Buffer.from('000000034254430000000000000001', 'hex').toString('base64')
   const treasury = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
+  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
+  const file = fs.readFileSync(execPath, 'utf8')
+  const executable = Buffer.from(file).toString('base64')
 
+  const execPath2 = path.resolve(__dirname, './mock/empty_data_source.py')
+  const file2 = fs.readFileSync(execPath2, 'utf8')
+  const executable2 = Buffer.from(file2).toString('base64')
 
   it('create successfully', () => {
     const msgCreateDs = new MsgEditDataSource(
@@ -690,6 +698,19 @@ describe('MsgEditDataSource', () => {
         description,
       ),
     )
+
+    // got an empty source file
+    msgs.push(
+      new MsgEditDataSource(
+        dataSourceId,
+        executable2,
+        [coin2],
+        treasury,
+        ownerAddr,
+        senderAddr,
+        description,
+      ),
+    )
     // Fee list cannot be less than zero
     msgs.push(
       new MsgEditDataSource(
@@ -715,6 +736,7 @@ describe('MsgEditDataSource', () => {
       ),
     )
     errorText.push('dataSourceId cannot be null')
+    errorText.push('got an empty source file')
     errorText.push('Fee cannot be less than zero')
     errorText.push('Invalid fee, fee list should be a number')
     errorText.push('Owner should not be an empty string')
@@ -727,4 +749,109 @@ describe('MsgEditDataSource', () => {
       }).toThrowError(errorText[index])
     })
   })
+})
+
+describe('MsgCreateOracleScript', () => {
+  const sender = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
+  const execPath = path.resolve(
+    __dirname,
+    './mock/example_oracle_script.wasm',
+  )
+  const file = fs.readFileSync(execPath, 'utf8')
+  const code = Buffer.from(file).toString('base64')
+
+  it('create successfully', () => {
+    const msgCreateOs = new MsgCreateOracleScript(
+      'Oracle Script Name',
+      code,
+      sender,
+      sender,
+      'Oracle Script Description',
+      '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+      'https://mockurl.com',
+    )
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgCreateOracleScript'
+    anyMsg.pack(msgCreateOs.serializeBinary(), name, '/')
+    expect(msgCreateOs.toAny()).toEqual(anyMsg)
+    expect(() => msgCreateOs.validate()).not.toThrow()
+  })
+
+  it('create with error from validate()', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    const execPathEmpty = path.resolve(
+      __dirname,
+      './mock/empty_oracle_script.wasm',
+    )
+    const fileEmpty = fs.readFileSync(execPathEmpty, 'utf8')
+    const codeEmpty = Buffer.from(fileEmpty).toString('base64')
+
+    // name should not be an empty string
+    msgs.push(
+      new MsgCreateOracleScript(
+        '',
+        code,
+        sender,
+        sender,
+        'Oracle Script Description',
+        '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+        'https://mockurl.com',
+      ),
+    )
+
+    // code should not be an empty string
+    msgs.push(
+      new MsgCreateOracleScript(
+        'Oracle Script Name',
+        codeEmpty,
+        sender,
+        sender,
+        'Oracle Script Description',
+        '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+        'https://mockurl.com',
+      ),
+    )
+
+    // owner should not be an empty string
+    msgs.push(
+      new MsgCreateOracleScript(
+        'Oracle Script Name',
+        codeEmpty,
+        '',
+        sender,
+        'Oracle Script Description',
+        '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+        'https://mockurl.com',
+      ),
+    )
+
+    // sender should not be an empty string
+    msgs.push(
+      new MsgCreateOracleScript(
+        'Oracle Script Name',
+        codeEmpty,
+        sender,
+        '',
+        'Oracle Script Description',
+        '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+        'https://mockurl.com',
+      ),
+    )
+
+    errorText.push('name should not be an empty string')
+    errorText.push('code should not be an empty string')
+    errorText.push('owner should not be an empty string')
+    errorText.push('sender should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+
+  })
+
 })

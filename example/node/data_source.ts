@@ -14,7 +14,6 @@ async function exampleCreateDataSource() {
   const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
-  console.log(executable.length)
 
   // const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
   // const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
@@ -66,7 +65,6 @@ async function exampleEditDataSource() {
   const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
-  console.log(executable.length)
 
   let coin = new Coin()
   coin.setDenom('uband')

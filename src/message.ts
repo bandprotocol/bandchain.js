@@ -13,6 +13,7 @@ import {
   MsgRequestData as MsgRequestDataProto,
   MsgCreateDataSource as MsgCreateDataSourceProto,
   MsgEditDataSource as MsgEditDataSourceProto,
+  MsgCreateOracleScript as MsgCreateOracleScriptProto
 } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
@@ -567,5 +568,66 @@ export class MsgEditDataSource
         throw new NotIntegerError('Invalid fee, fee list should be a number')
       }
     })
+  }
+}
+
+
+export class MsgCreateOracleScript
+  extends MsgCreateOracleScriptProto
+  implements BaseMsg
+{
+  constructor(
+    name: string,
+    code: Uint8Array | string,
+    owner: string,
+    sender: string,
+    description?: string,
+    schema?: string,
+    sourceCodeUrl?: string,
+  ) {
+    super()
+    this.setName(name)
+    this.setDescription(description)
+    this.setSchema(schema)
+    this.setSourceCodeUrl(sourceCodeUrl)
+    this.setCode(code)
+    this.setOwner(owner)
+    this.setSender(sender)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgCreateOracleScript'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  // TODO: check with ledger
+  toJSON(): object {
+    return {
+      type: 'oracle/CreateOracleScript',
+      value: {
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        schema: this.getSchema().toString,
+        sourceCodeUrl: this.getSourceCodeUrl().toString(),
+        code: this.getCode().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getName() === '')
+      throw new ValueError('name should not be an empty string')
+    if (this.getSender() === '')
+      throw new ValueError('sender should not be an empty string')
+    if (this.getOwner() === '')
+      throw new ValueError('owner should not be an empty string')
+    if (this.getCode() === '')
+      throw new ValueError('code should not be an empty string')
   }
 }
