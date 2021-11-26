@@ -6,6 +6,7 @@ import {
   Transaction,
   Fee,
 } from '@bandprotocol/bandchain.js'
+import path from 'path'
 
 const grpcUrl = 'https://laozi-testnet4.bandchain.org/grpc-web'
 const client = new Client(grpcUrl)
@@ -101,11 +102,16 @@ export const createMsgEditDataSource = async () => {
 
 
 export async function createOracleScript() {
-  const execPath = require("./mock/example_oracle_script.wasm");
-  // const execPath = path.resolve(__dirname, '../mock/example_oracle_script.wasm')
+  // const execPath = require("./mock/example_oracle_script.wasm");
+  const execPath = path.resolve(__dirname, './mock/example_oracle_script.wasm')
   // const file = fs.readFileSync(execPath, 'utf8')
+  // const reader = new FileReader();
+  // reader.onloadend = () => {
+  //   console.log(reader.result)
+  // };
+  // reader.readAsDataURL(execPath);
+
   const code = Buffer.from(execPath).toString('base64')
-  console.log(code)
 
   const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 

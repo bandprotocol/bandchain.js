@@ -13,7 +13,8 @@ import {
   MsgRequestData as MsgRequestDataProto,
   MsgCreateDataSource as MsgCreateDataSourceProto,
   MsgEditDataSource as MsgEditDataSourceProto,
-  MsgCreateOracleScript as MsgCreateOracleScriptProto
+  MsgCreateOracleScript as MsgCreateOracleScriptProto,
+  MsgEditOracleScript as MsgEditOracleScriptProto
 } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
@@ -571,7 +572,6 @@ export class MsgEditDataSource
   }
 }
 
-
 export class MsgCreateOracleScript
   extends MsgCreateOracleScriptProto
   implements BaseMsg
@@ -623,6 +623,66 @@ export class MsgCreateOracleScript
   validate() {
     if (this.getName() === '')
       throw new ValueError('name should not be an empty string')
+    if (this.getSender() === '')
+      throw new ValueError('sender should not be an empty string')
+    if (this.getOwner() === '')
+      throw new ValueError('owner should not be an empty string')
+    if (this.getCode() === '')
+      throw new ValueError('code should not be an empty string')
+  }
+}
+export class MsgEditOracleScript
+  extends MsgEditOracleScriptProto
+  implements BaseMsg
+{
+  constructor(
+    oracleScriptId: number,
+    code: string,
+    owner: string,
+    sender: string,
+    name?: string,
+    description?: string,
+    schema?: string,
+    sourceCodeUrl?: string,
+  ) {
+    super()
+    this.setOracleScriptId(oracleScriptId)
+    this.setCode(code)
+    this.setOwner(owner)
+    this.setSender(sender)
+    this.setName(name)
+    this.setDescription(description)
+    this.setSchema(schema)
+    this.setSourceCodeUrl(sourceCodeUrl)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgEditOracleScript'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  // TODO: check with ledger
+  toJSON(): object {
+    return {
+      type: 'oracle/EditOracleScript',
+      value: {
+        oracleScriptId: this.getOracleScriptId(),
+        code: this.getCode().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        schema: this.getSchema().toString,
+        sourceCodeUrl: this.getSourceCodeUrl().toString(),
+      },
+    }
+  }
+
+  validate() {
     if (this.getSender() === '')
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
