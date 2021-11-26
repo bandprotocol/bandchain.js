@@ -7,6 +7,7 @@ import {
   Fee,
 } from '@bandprotocol/bandchain.js'
 import path from 'path'
+import fs from 'fs'
 
 const grpcUrl = 'https://laozi-testnet4.bandchain.org/grpc-web'
 const client = new Client(grpcUrl)
@@ -100,20 +101,7 @@ export const createMsgEditDataSource = async () => {
   return response
 }
 
-
-export async function createOracleScript() {
-  // const execPath = require("./mock/example_oracle_script.wasm");
-  const execPath = path.resolve(__dirname, './mock/example_oracle_script.wasm')
-  // const file = fs.readFileSync(execPath, 'utf8')
-  // const reader = new FileReader();
-  // reader.onloadend = () => {
-  //   console.log(reader.result)
-  // };
-  // reader.readAsDataURL(execPath);
-
-  const code = Buffer.from(execPath).toString('base64')
-
-  const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
+export async function createOracleScript(code: any) {
 
   let coin = new Coin()
   coin.setDenom('uband')
@@ -126,9 +114,51 @@ export async function createOracleScript() {
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgCreateOracleScript(
     'Oracle Script Name',
-    code,
-    owner,
+    Buffer.from(code),
     sender,
+    sender,
+    'Oracle Script Description',
+    '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+    'https://mockurl.com',
+  )
+
+  const fee = new Fee()
+  fee.setAmountList([feeCoin])
+  fee.setGasLimit(1000000)
+  const chainId = await client.getChainId()
+  const txn = new Transaction()
+  txn.withMessages(requestMessage)
+  await txn.withSender(client, sender)
+  txn.withChainId(chainId)
+  txn.withFee(fee)
+  txn.withMemo('')
+
+  const signDoc = txn.getSignDoc(pubkey)
+  const signature = privateKey.sign(signDoc)
+
+  const txRawBytes = txn.getTxData(signature, pubkey)
+  const sendTx = await client.sendTxBlockMode(txRawBytes)
+
+  return sendTx
+}
+
+
+export async function editOracleScript(code: any) {
+  let coin = new Coin()
+  coin.setDenom('uband')
+  coin.setAmount('1000000')
+
+  let feeCoin = new Coin()
+  feeCoin.setDenom('uband')
+  feeCoin.setAmount('1000')
+
+  // Step 2.2: Create an oracle request message
+  const requestMessage = new Message.MsgEditOracleScript(
+    84,
+    Buffer.from(code),
+    sender,
+    sender,
+    'Edit Oracle Script Name',
     'Oracle Script Description',
     '{symbols:[string],multiplier:u64}/{rates:[u64]}',
     'https://mockurl.com',

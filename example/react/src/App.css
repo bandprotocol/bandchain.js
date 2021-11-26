@@ -42,6 +42,14 @@ a {
   padding: 30px;
 }
 
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.btn.disabled, .btn:disabled {
+  opacity: .65;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -68,9 +76,38 @@ a {
   border-color: #007bff;
 }
 
+.btn-light:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.btn-light {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn-small {
+  padding: 5px 8px;
+  font-size: 14px;
+}
+
 .preview-code-block {
   display: flex;
 }
+
+.uploadfile {
+  border: 1px solid #d9d2fa;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 30px;
+  background-color: #f1eeff;
+  border-radius: 6px;
+  padding: 30px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
