@@ -758,8 +758,7 @@ describe('MsgCreateOracleScript', () => {
     __dirname,
     './mock/example_oracle_script.wasm',
   )
-  const file = fs.readFileSync(execPath, 'utf8')
-  const code = Buffer.from(file).toString('base64')
+  const code = fs.readFileSync(execPath)
 
   it('create successfully', () => {
     const msgCreateOs = new MsgCreateOracleScript(
@@ -787,8 +786,7 @@ describe('MsgCreateOracleScript', () => {
       __dirname,
       './mock/empty_oracle_script.wasm',
     )
-    const fileEmpty = fs.readFileSync(execPathEmpty, 'utf8')
-    const codeEmpty = Buffer.from(fileEmpty).toString('base64')
+    const codeEmpty = fs.readFileSync(execPathEmpty)
 
     // name should not be an empty string
     msgs.push(
@@ -862,8 +860,7 @@ describe('MsgEditOracleScript', () => {
     __dirname,
     './mock/example_oracle_script.wasm',
   )
-  const file = fs.readFileSync(execPath, 'utf8')
-  const code = Buffer.from(file).toString('base64')
+  const code = fs.readFileSync(execPath)
 
   it('create successfully', () => {
     const msgEditOs = new MsgEditOracleScript(
@@ -892,8 +889,7 @@ describe('MsgEditOracleScript', () => {
       __dirname,
       './mock/empty_oracle_script.wasm',
     )
-    const fileEmpty = fs.readFileSync(execPathEmpty, 'utf8')
-    const codeEmpty = Buffer.from(fileEmpty).toString('base64')
+    const codeEmpty = fs.readFileSync(execPathEmpty)
 
     // code should not be an empty string
     msgs.push(

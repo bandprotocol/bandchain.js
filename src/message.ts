@@ -578,7 +578,7 @@ export class MsgCreateOracleScript
 {
   constructor(
     name: string,
-    code: Uint8Array | string,
+    code: Buffer,
     owner: string,
     sender: string,
     description?: string,
@@ -627,7 +627,7 @@ export class MsgCreateOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode() === '')
+    if (this.getCode().length === 0 )
       throw new ValueError('code should not be an empty string')
   }
 }
@@ -637,7 +637,7 @@ export class MsgEditOracleScript
 {
   constructor(
     oracleScriptId: number,
-    code: string,
+    code: Buffer,
     owner: string,
     sender: string,
     name?: string,
@@ -671,7 +671,7 @@ export class MsgEditOracleScript
       type: 'oracle/EditOracleScript',
       value: {
         oracleScriptId: this.getOracleScriptId(),
-        code: this.getCode().toString(),
+        code: this.getCode(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
         name: this.getName().toString(),
@@ -687,7 +687,7 @@ export class MsgEditOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode() === '')
+    if (this.getCode().length === 0 )
       throw new ValueError('code should not be an empty string')
   }
 }
