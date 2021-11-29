@@ -6,8 +6,6 @@ import {
   Transaction,
   Fee,
 } from '@bandprotocol/bandchain.js'
-import path from 'path'
-import fs from 'fs'
 
 const grpcUrl = 'https://laozi-testnet4.bandchain.org/grpc-web'
 const client = new Client(grpcUrl)
@@ -18,8 +16,7 @@ const privateKey = PrivateKey.fromMnemonic(mnemonic)
 const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 
-export const createMsgCreateDataSource = async () => {
-  const executableCode = 'test add ds'
+export const createMsgCreateDataSource = async (code: any) => {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
@@ -27,7 +24,7 @@ export const createMsgCreateDataSource = async () => {
 
   const msg = new Message.MsgCreateDataSource(
     'Test DS',
-    executableCode,
+    Buffer.from(code).toString('base64'),
     [],
     sender,
     sender,
@@ -59,16 +56,15 @@ export const createMsgCreateDataSource = async () => {
   return response
 }
 
-export const createMsgEditDataSource = async () => {
-  const executableCode = '`test edit ds`'
+export const createMsgEditDataSource = async (code: any, dsId: string) => {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
   feeCoin.setAmount('1000')
 
   const msg = new Message.MsgEditDataSource(
-    183,
-    executableCode,
+    parseInt(dsId),
+    Buffer.from(code).toString('base64'),
     [],
     sender,
     sender,
@@ -143,7 +139,7 @@ export async function createOracleScript(code: any) {
 }
 
 
-export async function editOracleScript(code: any) {
+export async function editOracleScript(code: any, osId: string) {
   let coin = new Coin()
   coin.setDenom('uband')
   coin.setAmount('1000000')
@@ -154,12 +150,12 @@ export async function editOracleScript(code: any) {
 
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgEditOracleScript(
-    84,
+    parseInt(osId),
     Buffer.from(code),
     sender,
     sender,
     'Edit Oracle Script Name',
-    'Oracle Script Description',
+    'Edit Oracle Script Description',
     '{symbols:[string],multiplier:u64}/{rates:[u64]}',
     'https://mockurl.com',
   )
