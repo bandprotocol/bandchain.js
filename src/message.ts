@@ -241,8 +241,7 @@ export class MsgUndelegate extends MsgUndelegateProto implements BaseMsg {
 
 export class MsgBeginRedelegate
   extends MsgBeginRedelegateProto
-  implements BaseMsg
-{
+  implements BaseMsg {
   constructor(
     delegator: string,
     srcValidator: string,
@@ -293,8 +292,7 @@ export class MsgBeginRedelegate
 
 export class MsgWithdrawDelegatorReward
   extends MsgWithdrawDelegatorRewardProto
-  implements BaseMsg
-{
+  implements BaseMsg {
   constructor(delegator: string, validator: string) {
     super()
     this.setDelegatorAddress(delegator)
@@ -435,8 +433,7 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
 
 export class MsgCreateDataSource
   extends MsgCreateDataSourceProto
-  implements BaseMsg
-{
+  implements BaseMsg {
   constructor(
     name: string,
     executable: string,
@@ -501,10 +498,10 @@ export class MsgCreateDataSource
     })
   }
 }
+
 export class MsgEditDataSource
   extends MsgEditDataSourceProto
-  implements BaseMsg
-{
+  implements BaseMsg {
   constructor(
     dataSourceId: number,
     executable: string,
@@ -574,8 +571,7 @@ export class MsgEditDataSource
 
 export class MsgCreateOracleScript
   extends MsgCreateOracleScriptProto
-  implements BaseMsg
-{
+  implements BaseMsg {
   constructor(
     name: string,
     code: Buffer,
@@ -627,14 +623,14 @@ export class MsgCreateOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode().length === 0 )
+    if (this.getCode().length === 0)
       throw new ValueError('code should not be an empty string')
   }
 }
+
 export class MsgEditOracleScript
   extends MsgEditOracleScriptProto
-  implements BaseMsg
-{
+  implements BaseMsg {
   constructor(
     oracleScriptId: number,
     code: Buffer,
@@ -687,7 +683,7 @@ export class MsgEditOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode().length === 0 )
+    if (this.getCode().length === 0)
       throw new ValueError('code should not be an empty string')
   }
 }

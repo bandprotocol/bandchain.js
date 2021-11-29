@@ -603,7 +603,7 @@ describe('MsgCreateDataSource', () => {
     coin2.setDenom('uband')
     coin2.setAmount('string')
 
-    // Fee list cannot be less than zero
+    // Fee cannot be less than zero
     msgs.push(
       new MsgCreateDataSource(
         dsName,
@@ -615,7 +615,7 @@ describe('MsgCreateDataSource', () => {
         description,
       ),
     )
-    // Invalid fee limit, fee limit should be a number
+    // Invalid fee, fee list should be a number
     msgs.push(
       new MsgCreateDataSource(
         dsName,
@@ -627,11 +627,50 @@ describe('MsgCreateDataSource', () => {
         description,
       ),
     )
+
+    // Owner should not be an empty string
+    msgs.push(
+      new MsgCreateDataSource(
+        dsName,
+        executable,
+        [coin],
+        treasury,
+        '',
+        senderAddr,
+        description,
+      ),
+    )
+
+    // Sender should not be an empty string
+    msgs.push(
+      new MsgCreateDataSource(
+        dsName,
+        executable,
+        [coin],
+        treasury,
+        ownerAddr,
+        '',
+        description,
+      ),
+    )
+
+    // Treasury should not be an empty string
+    msgs.push(
+      new MsgCreateDataSource(
+        dsName,
+        executable,
+        [coin],
+        '',
+        ownerAddr,
+        senderAddr,
+        description,
+      ),
+    )
     errorText.push('Fee cannot be less than zero')
     errorText.push('Invalid fee, fee list should be a number')
-    errorText.push('Owner should not be an empty string')
-    errorText.push('Sender should not be an empty string')
-    errorText.push('Treasury should not be an empty string')
+    errorText.push('owner should not be an empty string')
+    errorText.push('sender should not be an empty string')
+    errorText.push('treasury should not be an empty string')
 
     msgs.forEach((msg, index) => {
       expect(() => {
@@ -740,9 +779,9 @@ describe('MsgEditDataSource', () => {
     errorText.push('got an empty source file')
     errorText.push('Fee cannot be less than zero')
     errorText.push('Invalid fee, fee list should be a number')
-    errorText.push('Owner should not be an empty string')
-    errorText.push('Sender should not be an empty string')
-    errorText.push('Treasury should not be an empty string')
+    errorText.push('owner should not be an empty string')
+    errorText.push('sender should not be an empty string')
+    errorText.push('treasury should not be an empty string')
 
     msgs.forEach((msg, index) => {
       expect(() => {
