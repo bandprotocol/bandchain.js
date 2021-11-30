@@ -687,11 +687,11 @@ describe('MsgEditDataSource', () => {
   const ownerAddr = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
   const treasury = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
-  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
+  const execPath = path.resolve(__dirname, '../mock_files/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 
-  const execPath2 = path.resolve(__dirname, './mock/empty_data_source.py')
+  const execPath2 = path.resolve(__dirname, '../mock_files/empty_data_source.py')
   const file2 = fs.readFileSync(execPath2, 'utf8')
   const executable2 = Buffer.from(file2).toString('base64')
 
@@ -795,7 +795,7 @@ describe('MsgCreateOracleScript', () => {
   const sender = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const execPath = path.resolve(
     __dirname,
-    './mock/example_oracle_script.wasm',
+    '../mock_files/example_oracle_script.wasm',
   )
   const code = fs.readFileSync(execPath)
 
@@ -823,7 +823,7 @@ describe('MsgCreateOracleScript', () => {
 
     const execPathEmpty = path.resolve(
       __dirname,
-      './mock/empty_oracle_script.wasm',
+      '../mock_files/empty_oracle_script.wasm',
     )
     const codeEmpty = fs.readFileSync(execPathEmpty)
 
@@ -897,7 +897,7 @@ describe('MsgEditOracleScript', () => {
   const sender = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const execPath = path.resolve(
     __dirname,
-    './mock/example_oracle_script.wasm',
+    '../mock_files/example_oracle_script.wasm',
   )
   const code = fs.readFileSync(execPath)
 
@@ -926,7 +926,7 @@ describe('MsgEditOracleScript', () => {
 
     const execPathEmpty = path.resolve(
       __dirname,
-      './mock/empty_oracle_script.wasm',
+      '../mock_files/empty_oracle_script.wasm',
     )
     const codeEmpty = fs.readFileSync(execPathEmpty)
 
