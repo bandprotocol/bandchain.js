@@ -39,6 +39,22 @@ export class ObiInteger extends ObiBase {
   }
 }
 
+export class ObiBool extends ObiBase {
+  static REGEX = /^bool$/
+
+  encode(value: boolean): Buffer {
+    return new ObiInteger('u8').encode(value ? BigInt(1) : BigInt(0))
+  }
+
+  decode(buff: Buffer): any {
+    let [u8, remaining] = new ObiInteger('u8').decode(buff)
+
+    if (u8 === BigInt(1)) return [true, remaining]
+    else if (u8 === BigInt(0)) return [false, remaining]
+    else throw new DecodeError(`Boolean value must be 1 or 0 but got ${u8}`)
+  }
+}
+
 export class ObiVector extends ObiBase {
   static REGEX = /^\[.*\]$/
   internalObi: any
@@ -187,7 +203,14 @@ export class Obi {
 }
 
 export class ObiSpec {
-  static impls = [ObiInteger, ObiVector, ObiStruct, ObiString, ObiBytes]
+  static impls = [
+    ObiInteger,
+    ObiBool,
+    ObiVector,
+    ObiStruct,
+    ObiString,
+    ObiBytes,
+  ]
 
   static fromSpec(schema: string): ObiBase {
     for (let impl of ObiSpec.impls) {
