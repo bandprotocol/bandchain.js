@@ -12,7 +12,10 @@ const sender = pubkey.toAddress().toAccBech32()
 const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 
 async function exampleCreateOracleScript() {
-  const execPath = path.resolve(__dirname, '../mock/standard_dataset_crypto_mainnet.wasm')
+  const execPath = path.resolve(
+    __dirname,
+    '../mock/standard_dataset_crypto_mainnet.wasm',
+  )
   const code = fs.readFileSync(execPath)
 
   let coin = new Coin()
@@ -99,7 +102,7 @@ async function exampleEditOracleScript() {
 
 ;(async () => {
   console.log('Creating an oracle script...')
-  // console.log(await exampleCreateOracleScript())
-  // console.log('Editing an oracle script...')
+  console.log(await exampleCreateOracleScript())
+  console.log('Editing an oracle script...')
   console.log(await exampleEditOracleScript())
 })()

@@ -17,7 +17,6 @@ const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 
 export const createMsgCreateDataSource = async (code: any) => {
-
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
   feeCoin.setAmount('1000')
@@ -57,7 +56,6 @@ export const createMsgCreateDataSource = async (code: any) => {
 }
 
 export const createMsgEditDataSource = async (code: any, dsId: string) => {
-
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
   feeCoin.setAmount('1000')
@@ -98,7 +96,6 @@ export const createMsgEditDataSource = async (code: any, dsId: string) => {
 }
 
 export async function createOracleScript(code: any) {
-
   let coin = new Coin()
   coin.setDenom('uband')
   coin.setAmount('1000000')
@@ -137,7 +134,6 @@ export async function createOracleScript(code: any) {
 
   return sendTx
 }
-
 
 export async function editOracleScript(code: any, osId: string) {
   let coin = new Coin()

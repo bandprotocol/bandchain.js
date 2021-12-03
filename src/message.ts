@@ -14,7 +14,7 @@ import {
   MsgCreateDataSource as MsgCreateDataSourceProto,
   MsgEditDataSource as MsgEditDataSourceProto,
   MsgCreateOracleScript as MsgCreateOracleScriptProto,
-  MsgEditOracleScript as MsgEditOracleScriptProto
+  MsgEditOracleScript as MsgEditOracleScriptProto,
 } from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
@@ -241,7 +241,8 @@ export class MsgUndelegate extends MsgUndelegateProto implements BaseMsg {
 
 export class MsgBeginRedelegate
   extends MsgBeginRedelegateProto
-  implements BaseMsg {
+  implements BaseMsg
+{
   constructor(
     delegator: string,
     srcValidator: string,
@@ -292,7 +293,8 @@ export class MsgBeginRedelegate
 
 export class MsgWithdrawDelegatorReward
   extends MsgWithdrawDelegatorRewardProto
-  implements BaseMsg {
+  implements BaseMsg
+{
   constructor(delegator: string, validator: string) {
     super()
     this.setDelegatorAddress(delegator)
@@ -433,7 +435,8 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
 
 export class MsgCreateDataSource
   extends MsgCreateDataSourceProto
-  implements BaseMsg {
+  implements BaseMsg
+{
   constructor(
     name: string,
     executable: string,
@@ -501,7 +504,8 @@ export class MsgCreateDataSource
 
 export class MsgEditDataSource
   extends MsgEditDataSourceProto
-  implements BaseMsg {
+  implements BaseMsg
+{
   constructor(
     dataSourceId: number,
     executable: string,
@@ -532,6 +536,7 @@ export class MsgEditDataSource
     return anyMsg
   }
 
+  // TODO: check with ledger
   toJSON(): object {
     return {
       type: 'oracle/EditDataSource',
@@ -571,7 +576,8 @@ export class MsgEditDataSource
 
 export class MsgCreateOracleScript
   extends MsgCreateOracleScriptProto
-  implements BaseMsg {
+  implements BaseMsg
+{
   constructor(
     name: string,
     code: Buffer,
@@ -630,7 +636,8 @@ export class MsgCreateOracleScript
 
 export class MsgEditOracleScript
   extends MsgEditOracleScriptProto
-  implements BaseMsg {
+  implements BaseMsg
+{
   constructor(
     oracleScriptId: number,
     code: Buffer,

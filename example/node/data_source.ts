@@ -15,9 +15,6 @@ async function exampleCreateDataSource() {
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 
-  // const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
-  // const treasury = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
-
   let coin = new Coin()
   coin.setDenom('uband')
   coin.setAmount('1000000')
