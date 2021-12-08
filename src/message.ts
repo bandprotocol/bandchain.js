@@ -9,7 +9,13 @@ import {
   ValueError,
 } from './error'
 
-import { MsgRequestData as MsgRequestDataProto } from '../proto/oracle/v1/tx_pb'
+import {
+  MsgRequestData as MsgRequestDataProto,
+  MsgCreateDataSource as MsgCreateDataSourceProto,
+  MsgEditDataSource as MsgEditDataSourceProto,
+  MsgCreateOracleScript as MsgCreateOracleScriptProto,
+  MsgEditOracleScript as MsgEditOracleScriptProto,
+} from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
 import {
   MsgDelegate as MsgDelegateProto,
@@ -424,5 +430,267 @@ export class MsgTransfer extends MsgTransferProto implements BaseMsg {
     if (this.getReceiver() === '') {
       throw new ValueError('receiver should not be an empty string')
     }
+  }
+}
+
+export class MsgCreateDataSource
+  extends MsgCreateDataSourceProto
+  implements BaseMsg
+{
+  constructor(
+    name: string,
+    executable: string,
+    feeList: Coin[] = [],
+    treasury: string,
+    owner: string,
+    sender: string,
+    description?: string,
+  ) {
+    super()
+    this.setName(name)
+    this.setDescription(description)
+    this.setExecutable(executable)
+    this.setTreasury(treasury)
+    this.setOwner(owner)
+    this.setFeeList(feeList)
+    this.setSender(sender)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgCreateDataSource'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  // TODO: check with ledger
+  toJSON(): object {
+    return {
+      type: 'oracle/CreateDataSource',
+      value: {
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        executable: this.getExecutable_asB64(),
+        feeList: this.getFeeList().map((coin) => coin.toObject()),
+        treasury: this.getTreasury().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getName() === '')
+      throw new ValueError('name should not be an empty string')
+    if (this.getSender() === '')
+      throw new ValueError('sender should not be an empty string')
+    if (this.getOwner() === '')
+      throw new ValueError('owner should not be an empty string')
+    if (this.getTreasury() === '')
+      throw new ValueError('treasury should not be an empty string')
+    if (this.getExecutable().length == 0)
+      throw new ValueError('got an empty source file')
+    this.getFeeList().map((coin) => {
+      if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
+        throw new NegativeIntegerError('Fee cannot be less than zero')
+      } else if (!Number(coin.getAmount())) {
+        throw new NotIntegerError('Invalid fee, fee list should be a number')
+      }
+    })
+  }
+}
+
+export class MsgEditDataSource
+  extends MsgEditDataSourceProto
+  implements BaseMsg
+{
+  constructor(
+    dataSourceId: number,
+    executable: string,
+    feeList: Coin[] = [],
+    treasury: string,
+    owner: string,
+    sender: string,
+    name?: string,
+    description?: string,
+  ) {
+    super()
+    this.setDataSourceId(dataSourceId)
+    this.setName(name)
+    this.setDescription(description)
+    this.setExecutable(executable)
+    this.setTreasury(treasury)
+    this.setOwner(owner)
+    this.setFeeList(feeList)
+    this.setSender(sender)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgEditDataSource'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  // TODO: check with ledger
+  toJSON(): object {
+    return {
+      type: 'oracle/EditDataSource',
+      value: {
+        dataSourceId: this.getDataSourceId(),
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        executable: this.getExecutable_asB64(),
+        feeList: this.getFeeList().map((coin) => coin.toObject()),
+        treasury: this.getTreasury().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+      },
+    }
+  }
+
+  validate() {
+    if (!this.getDataSourceId())
+      throw new ValueError('dataSourceId cannot be null')
+    if (this.getSender() === '')
+      throw new ValueError('sender should not be an empty string')
+    if (this.getOwner() === '')
+      throw new ValueError('owner should not be an empty string')
+    if (this.getTreasury() === '')
+      throw new ValueError('treasury should not be an empty string')
+    if (this.getExecutable().length === 0)
+      throw new ValueError('got an empty source file')
+    this.getFeeList().map((coin) => {
+      if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
+        throw new NegativeIntegerError('Fee cannot be less than zero')
+      } else if (!Number(coin.getAmount())) {
+        throw new NotIntegerError('Invalid fee, fee list should be a number')
+      }
+    })
+  }
+}
+
+export class MsgCreateOracleScript
+  extends MsgCreateOracleScriptProto
+  implements BaseMsg
+{
+  constructor(
+    name: string,
+    code: Buffer,
+    owner: string,
+    sender: string,
+    description?: string,
+    schema?: string,
+    sourceCodeUrl?: string,
+  ) {
+    super()
+    this.setName(name)
+    this.setDescription(description)
+    this.setSchema(schema)
+    this.setSourceCodeUrl(sourceCodeUrl)
+    this.setCode(code)
+    this.setOwner(owner)
+    this.setSender(sender)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgCreateOracleScript'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  // TODO: check with ledger
+  toJSON(): object {
+    return {
+      type: 'oracle/CreateOracleScript',
+      value: {
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        schema: this.getSchema().toString,
+        sourceCodeUrl: this.getSourceCodeUrl().toString(),
+        code: this.getCode().toString(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getName() === '')
+      throw new ValueError('name should not be an empty string')
+    if (this.getSender() === '')
+      throw new ValueError('sender should not be an empty string')
+    if (this.getOwner() === '')
+      throw new ValueError('owner should not be an empty string')
+    if (this.getCode().length === 0)
+      throw new ValueError('code should not be an empty string')
+  }
+}
+
+export class MsgEditOracleScript
+  extends MsgEditOracleScriptProto
+  implements BaseMsg
+{
+  constructor(
+    oracleScriptId: number,
+    code: Buffer,
+    owner: string,
+    sender: string,
+    name?: string,
+    description?: string,
+    schema?: string,
+    sourceCodeUrl?: string,
+  ) {
+    super()
+    this.setOracleScriptId(oracleScriptId)
+    this.setCode(code)
+    this.setOwner(owner)
+    this.setSender(sender)
+    this.setName(name)
+    this.setDescription(description)
+    this.setSchema(schema)
+    this.setSourceCodeUrl(sourceCodeUrl)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'oracle.v1.MsgEditOracleScript'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  // TODO: check with ledger
+  toJSON(): object {
+    return {
+      type: 'oracle/EditOracleScript',
+      value: {
+        oracleScriptId: this.getOracleScriptId(),
+        code: this.getCode(),
+        owner: this.getOwner().toString(),
+        sender: this.getSender().toString(),
+        name: this.getName().toString(),
+        description: this.getDescription().toString(),
+        schema: this.getSchema().toString,
+        sourceCodeUrl: this.getSourceCodeUrl().toString(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getSender() === '')
+      throw new ValueError('sender should not be an empty string')
+    if (this.getOwner() === '')
+      throw new ValueError('owner should not be an empty string')
+    if (this.getCode().length === 0)
+      throw new ValueError('code should not be an empty string')
   }
 }
