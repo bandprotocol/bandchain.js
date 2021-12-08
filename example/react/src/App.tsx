@@ -6,6 +6,7 @@ import FormEditDataSource from './components/FormEditDataSource'
 
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
+import { makeRequest } from './band'
 
 function App() {
   const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
@@ -20,6 +21,7 @@ function App() {
       setPairs(data)
     }
     getReferenceData()
+    // makeRequest()
   }, [])
 
   return (
@@ -40,7 +42,9 @@ function App() {
                   <a href="#section-MsgEditDataSource">MsgEditDataSource</a>
                 </li>
                 <li>
-                  <a href="#section-MsgCreateOracleScript">MsgCreateOracleScript</a>
+                  <a href="#section-MsgCreateOracleScript">
+                    MsgCreateOracleScript
+                  </a>
                 </li>
                 <li>
                   <a href="#section-MsgEditOracleScript">MsgEditOracleScript</a>
