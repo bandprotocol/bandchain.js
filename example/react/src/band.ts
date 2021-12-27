@@ -17,6 +17,13 @@ const privateKey = PrivateKey.fromMnemonic(mnemonic)
 const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 
+export const getAccBalance = async () => {
+  const response = await client.getAllBalances(
+    'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
+  )
+  console.log(response)
+}
+
 export const createMsgCreateDataSource = async (code: any) => {
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')

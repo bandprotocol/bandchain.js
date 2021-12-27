@@ -6,7 +6,7 @@ import FormEditDataSource from './components/FormEditDataSource'
 
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
-import { makeRequest } from './band'
+import { makeRequest, getAccBalance } from './band'
 
 function App() {
   const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
@@ -21,6 +21,7 @@ function App() {
       setPairs(data)
     }
     getReferenceData()
+    getAccBalance()
     // makeRequest()
   }, [])
 

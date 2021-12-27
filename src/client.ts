@@ -8,6 +8,7 @@ import { QueryClient } from '../proto/oracle/v1/query_pb_service'
 import { ServiceClient } from '../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
 import { QueryClient as AuthQueryClient } from '../proto/cosmos/auth/v1beta1/query_pb_service'
 import { ServiceClient as TxServiceClient } from '../proto/cosmos/tx/v1beta1/service_pb_service'
+import { QueryClient as QueryAllBalances } from '../proto/cosmos/bank/v1beta1/query_pb_service'
 
 import {
   QueryDataSourceRequest,
@@ -18,6 +19,7 @@ import {
   QueryRequestPriceRequest,
   QueryRequestSearchRequest,
 } from '../proto/oracle/v1/query_pb'
+
 import {
   GetLatestBlockRequest,
   GetLatestBlockResponse,
@@ -34,11 +36,15 @@ import {
 } from '../proto/oracle/v1/oracle_pb'
 import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
 
+import { QueryAllBalancesRequest } from '../proto/cosmos/bank/v1beta1/query_pb'
+
 export default class Client {
   queryClient: QueryClient
   serviceClient: ServiceClient
   authQueryClient: AuthQueryClient
   txServiceClient: TxServiceClient
+  queryAllBalances: QueryAllBalances
+
   constructor(grpcUrl: string) {
     this.queryClient = new QueryClient(grpcUrl, {
       transport: NodeHttpTransport(),
@@ -53,6 +59,10 @@ export default class Client {
     })
 
     this.txServiceClient = new TxServiceClient(grpcUrl, {
+      transport: NodeHttpTransport(),
+    })
+
+    this.queryAllBalances = new QueryAllBalances(grpcUrl, {
       transport: NodeHttpTransport(),
     })
   }
@@ -105,7 +115,9 @@ export default class Client {
             return
           }
 
-          reject(new NotFoundError(`oracle script with ID ${id} does not exist`))
+          reject(
+            new NotFoundError(`oracle script with ID ${id} does not exist`),
+          )
         },
       )
     })
@@ -209,8 +221,8 @@ export default class Client {
               new ValueError(
                 `only base account allowed, expected BaseAccount, got ${response
                   .getAccount()
-                  .getTypeName()
-                }`)
+                  .getTypeName()}`,
+              ),
             )
           }
         },
@@ -249,7 +261,11 @@ export default class Client {
           })
 
           if (reqIdList.length === 0) {
-            reject(new NotFoundError('request ID is not found in given transaction hash'))
+            reject(
+              new NotFoundError(
+                'request ID is not found in given transaction hash',
+              ),
+            )
             return
           }
 
@@ -442,6 +458,31 @@ export default class Client {
 
           if (response !== null && response.hasRequest()) {
             resolve(response.getRequest().toObject())
+            return
+          }
+
+          reject(new NotFoundError('request not found'))
+        },
+      )
+    })
+  }
+
+  async getAllBalances(address: string): Promise<object> {
+    const request = new QueryAllBalancesRequest()
+    request.setAddress(address)
+
+    return new Promise((resolve, reject) => {
+      this.queryAllBalances.allBalances(
+        request,
+        {} as grpc.Metadata,
+        (err, response) => {
+          if (err !== null) {
+            reject(err)
+            return
+          }
+
+          if (response !== null) {
+            resolve(response.getBalancesList().map((coin) => coin.toObject()))
             return
           }
 
