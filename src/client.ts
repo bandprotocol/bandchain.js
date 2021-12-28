@@ -486,7 +486,7 @@ export default class Client {
             return
           }
 
-          reject(new NotFoundError('request not found'))
+          reject(new NotFoundError(`Address ${address} does not exist`))
         },
       )
     })
