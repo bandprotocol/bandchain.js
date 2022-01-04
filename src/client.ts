@@ -468,7 +468,7 @@ export default class Client {
     })
   }
 
-  async getAllBalances(address: string): Promise<Coin.AsObject> {
+  async getAllBalances(address: string): Promise<Array<Coin.AsObject>> {
     const request = new QueryAllBalancesRequest()
     request.setAddress(address)
 
@@ -483,7 +483,7 @@ export default class Client {
           }
 
           if (response !== null) {
-            response.getBalancesList().map((coin) => resolve(coin.toObject()))
+            resolve(response.getBalancesList().map((coin) => coin.toObject()))
             return
           }
 

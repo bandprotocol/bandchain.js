@@ -1048,10 +1048,12 @@ describe('get all balances', () => {
       },
     )
 
-    const expected = {
-      denom: 'uband',
-      amount: '401150982',
-    }
+    const expected = [
+      {
+        denom: 'uband',
+        amount: '401150982',
+      },
+    ]
 
     const response = await client.getAllBalances(
       'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
