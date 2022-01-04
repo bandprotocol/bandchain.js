@@ -37,6 +37,7 @@ import {
 import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
 
 import { QueryAllBalancesRequest } from '../proto/cosmos/bank/v1beta1/query_pb'
+import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 
 export default class Client {
   queryClient: QueryClient
@@ -467,7 +468,7 @@ export default class Client {
     })
   }
 
-  async getAllBalances(address: string): Promise<object> {
+  async getAllBalances(address: string): Promise<Coin.AsObject> {
     const request = new QueryAllBalancesRequest()
     request.setAddress(address)
 
@@ -482,7 +483,7 @@ export default class Client {
           }
 
           if (response !== null) {
-            resolve(response.getBalancesList().map((coin) => coin.toObject()))
+            response.getBalancesList().map((coin) => resolve(coin.toObject()))
             return
           }
 
