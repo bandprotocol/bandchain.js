@@ -1,4 +1,4 @@
-import { Client } from '../../src'
+import { Client, Coin } from '../../src'
 import { mocked } from 'ts-jest/utils'
 import { grpc } from '@improbable-eng/grpc-web'
 
@@ -41,6 +41,13 @@ import { BlockID, Header } from '../../proto/tendermint/types/types_pb'
 import { Block } from '../../proto/tendermint/types/block_pb'
 
 import { QueryClient as AuthQueryClient } from '../../proto/cosmos/auth/v1beta1/query_pb_service'
+import { QueryClient as QueryAllBalances } from '../../proto/cosmos/bank/v1beta1/query_pb_service'
+
+import {
+  QueryAllBalancesRequest,
+  QueryAllBalancesResponse,
+} from '../../proto/cosmos/bank/v1beta1/query_pb'
+
 import {
   QueryAccountRequest,
   QueryAccountResponse,
@@ -69,6 +76,7 @@ jest.mock('../../proto/oracle/v1/query_pb_service')
 jest.mock('../../proto/cosmos/base/tendermint/v1beta1/query_pb_service')
 jest.mock('../../proto/cosmos/auth/v1beta1/query_pb_service')
 jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
+jest.mock('../../proto/cosmos/bank/v1beta1/query_pb_service')
 
 const STATIC_DATE = 1625578450000
 Date.now = jest.fn(() => STATIC_DATE)
@@ -77,6 +85,7 @@ const MockedQueryClient = mocked(QueryClient, true)
 const MockedAuthQueryClient = mocked(AuthQueryClient, true)
 const MockedServiceClient = mocked(ServiceClient, true)
 const MockedTxService = mocked(TxServiceClient, true)
+const MockedQueryAllBalances = mocked(QueryAllBalances, true)
 
 const TEST_GRPC = 'http://localhost:8080'
 
@@ -85,6 +94,7 @@ beforeEach(() => {
   MockedServiceClient.mockClear()
   MockedAuthQueryClient.mockClear()
   MockedTxService.mockClear()
+  MockedQueryAllBalances.mockClear()
 })
 
 describe('Client get data', () => {
@@ -1000,6 +1010,55 @@ describe('get latest request', () => {
       6,
     )
     expect(mockGetLatestRequest).toHaveBeenCalledTimes(1)
+    expect(response).toEqual(expected)
+  })
+})
+
+describe('get all balances', () => {
+  it('get all balances success', async () => {
+    expect(MockedQueryAllBalances).not.toHaveBeenCalled()
+    const client = new Client(TEST_GRPC)
+    expect(MockedQueryAllBalances).toHaveBeenCalledTimes(1)
+
+    const mockedQueyAllBalances = mocked(
+      MockedQueryAllBalances.mock.instances[0],
+      true,
+    )
+    type ExpectedAddressSignature = (
+      requestMessage: QueryAllBalancesRequest,
+      metadata: grpc.Metadata,
+      callback: (
+        error: ServiceError | null,
+        responseMessage: QueryAllBalancesResponse | null,
+      ) => void,
+    ) => UnaryResponse
+    const mockedAddress = mocked(
+      mockedQueyAllBalances.allBalances as ExpectedAddressSignature,
+    )
+    mockedAddress.mockImplementationOnce(
+      (_req, _metadata, callback): UnaryResponse => {
+        const response = new QueryAllBalancesResponse()
+        const responseCoin = new Coin()
+        responseCoin.setDenom('uband')
+        responseCoin.setAmount('401150982')
+        response.setBalancesList([responseCoin])
+
+        callback(null, response)
+        return { cancel: function () {} }
+      },
+    )
+
+    const expected = [
+      {
+        denom: 'uband',
+        amount: '401150982',
+      },
+    ]
+
+    const response = await client.getAllBalances(
+      'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
+    )
+    expect(mockedAddress).toHaveBeenCalledTimes(1)
     expect(response).toEqual(expected)
   })
 })
