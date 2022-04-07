@@ -1,9 +1,30 @@
 import React from 'react'
 import { Wallet } from '@bandprotocol/bandchain.js'
+import { PublicKey } from '../../../lib/wallet'
+interface Address {
+  bech32_address: string
+  pubKey: PublicKey
+}
+
+const defaultAddress = {
+  bech32_address: '',
+  pubKey: PublicKey.fromHex(''),
+}
 
 const LedgerExample = () => {
   const { Ledger } = Wallet
   const [ledger, setLedger] = React.useState<Wallet.Ledger | undefined>()
+  const [address, setAddress] = React.useState<Address>(defaultAddress)
+
+  React.useEffect(() => {
+    ;(async () => {
+      if (ledger) {
+        const { bech32_address, pubKey } =
+          await ledger.getPubKeyAndBech32Address()
+        setAddress({ bech32_address, pubKey })
+      }
+    })()
+  }, [ledger])
 
   return (
     <>
@@ -57,6 +78,7 @@ const LedgerExample = () => {
             onClick={async () => {
               await ledger.disconnect()
               setLedger(undefined)
+              setAddress(defaultAddress)
             }}
           >
             Disconnect
