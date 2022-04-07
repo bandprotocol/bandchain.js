@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
+import LedgerExample from './LedgerExample'
 
 // BandChain's Proof-of-Authority REST endpoint
 const endpoint = 'https://api-gm-lb.bandchain.org'
@@ -24,7 +25,9 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <span style={{ fontSize: '24px', marginBottom: '10px' }}>Prices</span>
+      <span style={{ fontSize: '22px', marginBottom: '16px', fontWeight: 600 }}>
+        Prices
+      </span>
       {pairs &&
         pairs.map(({ pair, rate }) => (
           <>
@@ -33,6 +36,7 @@ function App() {
             </span>
           </>
         ))}
+      <LedgerExample />
     </div>
   )
 }
