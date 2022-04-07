@@ -7,6 +7,9 @@ import { ECPair } from 'bitcoinjs-lib'
 import CosmosApp, { LedgerResponse, AppInfo } from 'ledger-cosmos-js'
 import Transaction from './transaction'
 import { isBip44, bip44ToArray, promiseTimeout } from './helpers'
+import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
+import TransportNodeHid from '@ledgerhq/hw-transport-node-hid'
+import TransportWebHid from '@ledgerhq/hw-transport-webhid'
 
 const BECH32_PUBKEY_ACC_PREFIX = 'bandpub'
 const BECH32_PUBKEY_VAL_PREFIX = 'bandvaloperpub'
@@ -27,6 +30,8 @@ enum ConnectType {
 export class Ledger {
   private cosmosApp?: CosmosApp
   public hidPath: string = DEFAULT_DERIVATION_PATH_LEDGER
+  public disconnect: () => Promise<void> = () =>
+    new Promise((resolve) => resolve())
 
   private constructor() {}
 
@@ -58,7 +63,7 @@ export class Ledger {
   private async _connect(connectType: ConnectType): Promise<void> {
     if (this.cosmosApp) return
 
-    let transport
+    let transport: TransportNodeHid | TransportWebUSB | TransportWebHid
     switch (connectType) {
       case ConnectType.Node:
         const {
@@ -76,7 +81,7 @@ export class Ledger {
         } else {
           const {
             default: TransportWebHid,
-          } = require('@ledgerhq/hw-transport-u2f')
+          } = require('@ledgerhq/hw-transport-webhid')
           transport = await TransportWebHid.create(3)
         }
 
@@ -85,6 +90,7 @@ export class Ledger {
 
     const ledgerCosmosApp = new CosmosApp(transport)
     this.cosmosApp = ledgerCosmosApp
+    this.disconnect = () => transport.close()
 
     await this.isCosmosAppOpen()
   }
