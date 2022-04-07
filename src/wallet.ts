@@ -143,13 +143,19 @@ export class Ledger {
     return Buffer.from(signatureImport(response.signature))
   }
 
-  async toPubKey(): Promise<PublicKey> {
+  async getPubKeyAndBech32Address(): Promise<{
+    bech32_address: string
+    pubKey: PublicKey
+  }> {
     const response = await promiseTimeout(
       this.cosmosApp!.getAddressAndPubKey(bip44ToArray(this.hidPath), 'band'),
       5000,
     )
     this.checkLedgerError(response, `Can't connect with CosmosApp`)
-    return PublicKey.fromHex(response!.compressed_pk.toString('hex'))
+    return {
+      bech32_address: response!.bech32_address,
+      pubKey: PublicKey.fromHex(response!.compressed_pk.toString('hex')),
+    }
   }
 }
 
