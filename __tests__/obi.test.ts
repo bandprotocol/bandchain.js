@@ -1,5 +1,6 @@
 import {
   Obi,
+  ObiBool,
   ObiBytes,
   ObiInteger,
   ObiString,
@@ -12,6 +13,16 @@ describe('ObiInteger', () => {
     const data = BigInt(12345678)
     const encode = new ObiInteger('u256').encode(data)
     const decode = new ObiInteger('u256').decode(encode)[0]
+
+    expect(decode).toEqual(data)
+  })
+})
+
+describe('ObiBool', () => {
+  it('encode / decode successfully', () => {
+    const data = true
+    const encode = new ObiBool().encode(data)
+    const decode = new ObiBool().decode(encode)[0]
 
     expect(decode).toEqual(data)
   })
@@ -60,6 +71,7 @@ describe('Obi', () => {
     multiplier: u64
   } / {
     price: u64,
+    isNone: bool,
     sources: [{ name: string, time: u64 }]
   }
 `)
@@ -86,6 +98,7 @@ describe('Obi', () => {
       obi
         .encodeOutput({
           price: 9268300000000,
+          isNone: false,
           sources: [
             { name: 'CoinGecko', time: 1590305341 },
             { name: 'CryptoCompare', time: 1590305362 },
@@ -93,7 +106,7 @@ describe('Obi', () => {
         })
         .toString('hex'),
     ).toEqual(
-      '0000086df1baab000000000200000009436f696e4765636b6f000000005eca223d0000000d43727970746f436f6d70617265000000005eca2252',
+      '0000086df1baab00000000000200000009436f696e4765636b6f000000005eca223d0000000d43727970746f436f6d70617265000000005eca2252',
     )
   })
 
@@ -101,12 +114,13 @@ describe('Obi', () => {
     expect(
       obi.decodeOutput(
         Buffer.from(
-          '0000086df1baab000000000200000009436f696e4765636b6f000000005eca223d0000000d43727970746f436f6d70617265000000005eca2252',
+          '0000086df1baab00000000000200000009436f696e4765636b6f000000005eca223d0000000d43727970746f436f6d70617265000000005eca2252',
           'hex',
         ),
       ),
     ).toEqual({
       price: BigInt(9268300000000),
+      isNone: false,
       sources: [
         { name: 'CoinGecko', time: BigInt(1590305341) },
         { name: 'CryptoCompare', time: BigInt(1590305362) },

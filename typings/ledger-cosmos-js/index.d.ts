@@ -45,7 +45,7 @@ declare module 'ledger-cosmos-js' {
       prefix: string,
     ): Promise<AddressAndPublicKey>
     getVersion(): Promise<Version>
-    sign(hdPath: number[], signData: Buffer): Promise<Sign>
+    sign(hdPath: number[], signData: string): Promise<Sign>
   }
 
   export default CosmosApp

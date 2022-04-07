@@ -1,3 +1,4 @@
+import { DecodeError, SchemaError } from './error'
 abstract class ObiBase {
   abstract encode(value: any): Buffer
   abstract decode(buff: Buffer): any[]
@@ -14,7 +15,7 @@ export class ObiInteger extends ObiBase {
     this.sizeInBytes = parseInt(schema.slice(1)) / 8
   }
 
-  encode(value: BigInt): Buffer {
+  encode(value: bigint): Buffer {
     let newValue = BigInt(value)
     return Buffer.from(
       [...Array(this.sizeInBytes)]
@@ -38,11 +39,28 @@ export class ObiInteger extends ObiBase {
   }
 }
 
-export class ObiVector {
+export class ObiBool extends ObiBase {
+  static REGEX = /^bool$/
+
+  encode(value: boolean): Buffer {
+    return new ObiInteger('u8').encode(value ? BigInt(1) : BigInt(0))
+  }
+
+  decode(buff: Buffer): any {
+    let [u8, remaining] = new ObiInteger('u8').decode(buff)
+
+    if (u8 === BigInt(1)) return [true, remaining]
+    else if (u8 === BigInt(0)) return [false, remaining]
+    else throw new DecodeError(`Boolean value must be 1 or 0 but got ${u8}`)
+  }
+}
+
+export class ObiVector extends ObiBase {
   static REGEX = /^\[.*\]$/
   internalObi: any
 
   constructor(schema: string) {
+    super()
     this.internalObi = ObiSpec.fromSpec(schema.slice(1, -1))
   }
 
@@ -65,11 +83,12 @@ export class ObiVector {
   }
 }
 
-export class ObiStruct {
+export class ObiStruct extends ObiBase {
   static REGEX = /^{.*}$/
   internalObiKvs: any
 
   constructor(schema: string) {
+    super()
     this.internalObiKvs = []
 
     let curlyCount = 0
@@ -111,7 +130,7 @@ export class ObiStruct {
   }
 }
 
-export class ObiString {
+export class ObiString extends ObiBase {
   static REGEX = /^string$/
 
   encode(value: string): Buffer {
@@ -167,7 +186,7 @@ export class Obi {
   decodeInput(buff: Buffer): any {
     const [value, remaining] = this.inputObi.decode(buff)
     if (remaining.length != 0)
-      throw new Error('Not all data is consumed after decoding output')
+      throw new DecodeError('Not all data is consumed after decoding output')
     return value
   }
 
@@ -178,13 +197,20 @@ export class Obi {
   decodeOutput(buff: Buffer): any {
     const [value, remaining] = this.outputObi.decode(buff)
     if (remaining.length != 0)
-      throw new Error('Not all data is consumed after decoding output')
+      throw new DecodeError('Not all data is consumed after decoding output')
     return value
   }
 }
 
 export class ObiSpec {
-  static impls = [ObiInteger, ObiVector, ObiStruct, ObiString, ObiBytes]
+  static impls = [
+    ObiInteger,
+    ObiBool,
+    ObiVector,
+    ObiStruct,
+    ObiString,
+    ObiBytes,
+  ]
 
   static fromSpec(schema: string): ObiBase {
     for (let impl of ObiSpec.impls) {
@@ -193,6 +219,6 @@ export class ObiSpec {
       }
     }
 
-    throw new Error(`No schema matched: <${schema}>`)
+    throw new SchemaError(`No schema matched: <${schema}>`)
   }
 }
