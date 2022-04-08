@@ -248,3 +248,49 @@ export async function makeRequest() {
   console.log(sendTx)
   return sendTx
 }
+
+interface SendCoinProps {
+  amount: string
+  receiver: string
+}
+interface Address {
+  bech32_address: string
+  pubKey: Wallet.PublicKey
+}
+export const sendCoinWithLedger = async (
+  { amount, receiver }: SendCoinProps,
+  ledger: Wallet.Ledger,
+  address: Address,
+) => {
+  const { bech32_address, pubKey } = address
+  const sendAmount = new Coin()
+  sendAmount.setDenom('uband')
+  sendAmount.setAmount(amount)
+
+  const msg = new Message.MsgSend(bech32_address, receiver, [sendAmount])
+  const chainId = await client.getChainId()
+
+  let feeCoin = new Coin()
+  feeCoin.setDenom('uband')
+  feeCoin.setAmount('1000')
+
+  const fee = new Fee()
+  fee.setAmountList([feeCoin])
+  fee.setGasLimit(1000000)
+
+  const tx = new Transaction()
+    .withMessages(msg)
+    .withChainId(chainId)
+    .withFee(fee)
+    .withMemo('')
+
+  await tx.withSender(client, bech32_address)
+
+  const signature = await ledger.sign(tx)
+
+  const signedTx = tx.getTxData(signature, pubKey, 127)
+
+  const response = await client.sendTxBlockMode(signedTx)
+
+  return response
+}
