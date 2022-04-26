@@ -10,6 +10,8 @@ BandChain.js is a library for interacting with BandChain in browser and Node.js 
 
 ## 📦 Installation
 
+BandChain.js is currently supported on NodeJS 10.x, 12.x, and 14.x.
+
 ### NPM
 
 ```bash
@@ -22,7 +24,7 @@ npm install --save @bandprotocol/bandchain.js
 yarn add @bandprotocol/bandchain.js
 ```
 
-## Compatible
+## Compatibility
 
 Band 2.2.0, Cosmos SDK 0.44.0, IBC-go 1.1.0
 
