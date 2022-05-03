@@ -909,12 +909,6 @@ describe('MsgEditOracleScript', () => {
     let msgs = []
     let errorText: string[] = []
 
-    const execPathEmpty = path.resolve(
-      __dirname,
-      '../mock_files/empty_oracle_script.wasm',
-    )
-    const codeEmpty = fs.readFileSync(execPathEmpty)
-
     // owner should not be an empty string
     msgs.push(
       new MsgEditOracleScript(
@@ -925,7 +919,6 @@ describe('MsgEditOracleScript', () => {
         'Edit Oracle Script Description',
         '{symbols:[string],multiplier:u64}/{rates:[u64]}',
         'https://mockurl.com',
-        codeEmpty,
       ),
     )
 
@@ -939,7 +932,6 @@ describe('MsgEditOracleScript', () => {
         'Edit Oracle Script Description',
         '{symbols:[string],multiplier:u64}/{rates:[u64]}',
         'https://mockurl.com',
-        codeEmpty,
       ),
     )
 
