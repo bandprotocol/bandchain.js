@@ -508,23 +508,23 @@ export class MsgEditDataSource
 {
   constructor(
     dataSourceId: number,
-    executable: string,
     feeList: Coin[] = [],
     treasury: string,
     owner: string,
     sender: string,
     name?: string,
     description?: string,
+    executable?: string,
   ) {
     super()
     this.setDataSourceId(dataSourceId)
     this.setName(name)
     this.setDescription(description)
-    this.setExecutable(executable)
     this.setTreasury(treasury)
     this.setOwner(owner)
     this.setFeeList(feeList)
     this.setSender(sender)
+    this.setExecutable(executable)
   }
 
   toAny(): Any {
@@ -544,11 +544,11 @@ export class MsgEditDataSource
         dataSourceId: this.getDataSourceId(),
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        executable: this.getExecutable_asB64(),
         feeList: this.getFeeList().map((coin) => coin.toObject()),
         treasury: this.getTreasury().toString(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
+        executable: this.getExecutable_asB64(),
       },
     }
   }
@@ -562,8 +562,6 @@ export class MsgEditDataSource
       throw new ValueError('owner should not be an empty string')
     if (this.getTreasury() === '')
       throw new ValueError('treasury should not be an empty string')
-    if (this.getExecutable().length === 0)
-      throw new ValueError('got an empty source file')
     this.getFeeList().map((coin) => {
       if (Number(coin.getAmount()) && Number(coin.getAmount()) < 0) {
         throw new NegativeIntegerError('Fee cannot be less than zero')
@@ -640,23 +638,23 @@ export class MsgEditOracleScript
 {
   constructor(
     oracleScriptId: number,
-    code: Buffer,
     owner: string,
     sender: string,
     name?: string,
     description?: string,
     schema?: string,
     sourceCodeUrl?: string,
+    code?: Buffer,
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
-    this.setCode(code)
     this.setOwner(owner)
     this.setSender(sender)
     this.setName(name)
     this.setDescription(description)
     this.setSchema(schema)
     this.setSourceCodeUrl(sourceCodeUrl)
+    this.setCode(code)
   }
 
   toAny(): Any {
@@ -674,13 +672,13 @@ export class MsgEditOracleScript
       type: 'oracle/EditOracleScript',
       value: {
         oracleScriptId: this.getOracleScriptId(),
-        code: this.getCode(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
         name: this.getName().toString(),
         description: this.getDescription().toString(),
         schema: this.getSchema().toString,
         sourceCodeUrl: this.getSourceCodeUrl().toString(),
+        code: this.getCode(),
       },
     }
   }
@@ -690,7 +688,5 @@ export class MsgEditOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode().length === 0)
-      throw new ValueError('code should not be an empty string')
   }
 }
