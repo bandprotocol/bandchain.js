@@ -694,22 +694,15 @@ describe('MsgEditDataSource', () => {
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 
-  const execPath2 = path.resolve(
-    __dirname,
-    '../mock_files/empty_data_source.py',
-  )
-  const file2 = fs.readFileSync(execPath2, 'utf8')
-  const executable2 = Buffer.from(file2).toString('base64')
-
   it('create successfully', () => {
     const msgCreateDs = new MsgEditDataSource(
       dataSourceId,
-      executable,
       [coin],
       treasury,
       ownerAddr,
       senderAddr,
       description,
+      executable,
     )
 
     const anyMsg = new Any()
@@ -736,53 +729,40 @@ describe('MsgEditDataSource', () => {
     msgs.push(
       new MsgEditDataSource(
         dataSourceId2,
-        executable,
         [coin2],
         treasury,
         ownerAddr,
         senderAddr,
         description,
+        executable,
       ),
     )
 
-    // got an empty source file
-    msgs.push(
-      new MsgEditDataSource(
-        dataSourceId,
-        executable2,
-        [coin2],
-        treasury,
-        ownerAddr,
-        senderAddr,
-        description,
-      ),
-    )
     // Fee list cannot be less than zero
     msgs.push(
       new MsgEditDataSource(
         dataSourceId,
-        executable,
         [coin1],
         treasury,
         ownerAddr,
         senderAddr,
         description,
+        executable,
       ),
     )
     // Invalid fee limit, fee limit should be a number
     msgs.push(
       new MsgEditDataSource(
         dataSourceId,
-        executable,
         [coin2],
         treasury,
         ownerAddr,
         senderAddr,
         description,
+        executable,
       ),
     )
     errorText.push('dataSourceId cannot be null')
-    errorText.push('got an empty source file')
     errorText.push('Fee cannot be less than zero')
     errorText.push('Invalid fee, fee list should be a number')
     errorText.push('owner should not be an empty string')
@@ -909,13 +889,13 @@ describe('MsgEditOracleScript', () => {
   it('create successfully', () => {
     const msgEditOs = new MsgEditOracleScript(
       1,
-      code,
       sender,
       sender,
       'Oracle Script Name',
       'Edit Oracle Script Description',
       '{symbols:[string],multiplier:u64}/{rates:[u64]}',
       'https://mockurl.com',
+      code,
     )
 
     const anyMsg = new Any()
@@ -929,31 +909,10 @@ describe('MsgEditOracleScript', () => {
     let msgs = []
     let errorText: string[] = []
 
-    const execPathEmpty = path.resolve(
-      __dirname,
-      '../mock_files/empty_oracle_script.wasm',
-    )
-    const codeEmpty = fs.readFileSync(execPathEmpty)
-
-    // code should not be an empty string
-    msgs.push(
-      new MsgEditOracleScript(
-        1,
-        codeEmpty,
-        sender,
-        sender,
-        'Oracle Script Name',
-        'Edit Oracle Script Description',
-        '{symbols:[string],multiplier:u64}/{rates:[u64]}',
-        'https://mockurl.com',
-      ),
-    )
-
     // owner should not be an empty string
     msgs.push(
       new MsgEditOracleScript(
         1,
-        codeEmpty,
         '',
         sender,
         'Oracle Script Name',
@@ -967,7 +926,6 @@ describe('MsgEditOracleScript', () => {
     msgs.push(
       new MsgEditOracleScript(
         1,
-        codeEmpty,
         sender,
         '',
         'Oracle Script Name',
@@ -977,7 +935,6 @@ describe('MsgEditOracleScript', () => {
       ),
     )
 
-    errorText.push('code should not be an empty string')
     errorText.push('owner should not be an empty string')
     errorText.push('sender should not be an empty string')
 
