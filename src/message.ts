@@ -678,7 +678,7 @@ export class MsgEditOracleScript
         description: this.getDescription().toString(),
         schema: this.getSchema().toString,
         sourceCodeUrl: this.getSourceCodeUrl().toString(),
-        code: this.getCode(),
+        code: this.getCode().toString(),
       },
     }
   }
