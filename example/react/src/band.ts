@@ -11,17 +11,78 @@ import {
 const grpcUrl = 'https://laozi-testnet4.bandchain.org/grpc-web'
 const client = new Client(grpcUrl)
 
-const { PrivateKey } = Wallet
-const mnemonic = 'test'
+const { PrivateKey, Ledger } = Wallet
+const mnemonic = 's'
 const privateKey = PrivateKey.fromMnemonic(mnemonic)
-const pubkey = privateKey.toPubkey()
-const sender = pubkey.toAddress().toAccBech32()
+const pubketWallet = privateKey.toPubkey()
+const sender = pubketWallet.toAddress().toAccBech32()
 
 export const getAccBalance = async () => {
   const response = await client.getAllBalances(
     'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
   )
   console.log(response)
+}
+
+export async function exampleEditOracleScriptWithLedger() {
+  console.log('editing message')
+  const requestMessage = new Message.MsgEditOracleScript(
+    176,
+    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
+    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
+    'Test Change Ownership',
+    '[do-not-modify]',
+    '[do-not-modify]',
+    '[do-not-modify]',
+    Buffer.from('[do-not-modify]', 'utf8'),
+  )
+
+  // console.log(requestMessage)
+
+  const ledger = await Ledger.connectLedgerWeb()
+  const { bech32_address, pubKey } = await ledger.getPubKeyAndBech32Address()
+
+  let feeCoin = new Coin()
+  feeCoin.setDenom('uband')
+  feeCoin.setAmount('0')
+
+  const fee = new Fee()
+  fee.setAmountList([feeCoin])
+  fee.setGasLimit(700000)
+
+  const chainId = await client.getChainId()
+  const account = await client.getAccount(bech32_address)
+
+  const tx = new Transaction()
+    .withMessages(requestMessage)
+    .withChainId(chainId)
+    .withSequence(account.sequence)
+    .withFee(fee)
+    .withMemo('From React Example App')
+
+  const a = await tx.withSender(client, bech32_address)
+
+  // console.log(tx)
+
+  // const signDoc = tx.getSignDoc(pubketWallet)
+  // const signature = privateKey.sign(signDoc)
+
+  // const txRawBytes = tx.getTxData(signature, pubketWallet)
+  // const sendTx = await client.sendTxBlockMode(txRawBytes)
+
+  // console.log(sendTx)
+
+  // return sendTx
+
+  const signature = await ledger.sign(a)
+
+  const signedTx = a.getTxData(signature, pubKey, 127)
+
+  const response = await client.sendTxBlockMode(signedTx)
+
+  console.log(response)
+
+  return response
 }
 
 export const createMsgCreateDataSource = async (code: any) => {
@@ -53,9 +114,9 @@ export const createMsgCreateDataSource = async (code: any) => {
     .withFee(fee)
 
   // Step 4 sign the transaction
-  const txSignData = tx.getSignDoc(pubkey)
+  const txSignData = tx.getSignDoc(pubketWallet)
   const signature = privateKey.sign(txSignData)
-  const signedTx = tx.getTxData(signature, pubkey)
+  const signedTx = tx.getTxData(signature, pubketWallet)
 
   // Step 5 send the transaction
   const response = await client.sendTxBlockMode(signedTx)
@@ -70,13 +131,13 @@ export const createMsgEditDataSource = async (code: any, dsId: string) => {
 
   const msg = new Message.MsgEditDataSource(
     parseInt(dsId),
-    Buffer.from(code).toString('base64'),
     [],
     sender,
     sender,
     sender,
     'Test Edit DS',
     'Test Edit DS Description',
+    Buffer.from(code).toString('base64'),
   )
 
   const fee = new Fee()
@@ -93,9 +154,9 @@ export const createMsgEditDataSource = async (code: any, dsId: string) => {
     .withFee(fee)
 
   // Step 4 sign the transaction
-  const txSignData = tx.getSignDoc(pubkey)
+  const txSignData = tx.getSignDoc(pubketWallet)
   const signature = privateKey.sign(txSignData)
-  const signedTx = tx.getTxData(signature, pubkey)
+  const signedTx = tx.getTxData(signature, pubketWallet)
 
   // Step 5 send the transaction
   const response = await client.sendTxBlockMode(signedTx)
@@ -134,16 +195,23 @@ export async function createOracleScript(code: any) {
   txn.withFee(fee)
   txn.withMemo('')
 
-  const signDoc = txn.getSignDoc(pubkey)
+  const signDoc = txn.getSignDoc(pubketWallet)
   const signature = privateKey.sign(signDoc)
 
-  const txRawBytes = txn.getTxData(signature, pubkey)
+  const txRawBytes = txn.getTxData(signature, pubketWallet)
   const sendTx = await client.sendTxBlockMode(txRawBytes)
 
   return sendTx
 }
 
-export async function editOracleScript(code: any, osId: string) {
+export async function editOracleScript(
+  code: string | ArrayBuffer | null | undefined,
+  osId: string,
+) {
+  const ledger = await Ledger.connectLedgerWeb()
+  const { bech32_address, pubKey } = await ledger.getPubKeyAndBech32Address()
+  console.log(ledger)
+
   let coin = new Coin()
   coin.setDenom('uband')
   coin.setAmount('1000000')
@@ -155,33 +223,54 @@ export async function editOracleScript(code: any, osId: string) {
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgEditOracleScript(
     parseInt(osId),
-    Buffer.from(code),
-    sender,
-    sender,
-    'Edit Oracle Script Name',
-    'Edit Oracle Script Description',
-    '{symbols:[string],multiplier:u64}/{rates:[u64]}',
-    'https://mockurl.com',
+    bech32_address,
+    bech32_address,
+    '[do-not-modify]',
+    'Add Description',
+    '[do-not-modify]',
+    '[do-not-modify]',
+    Buffer.from(code ? code : '[do-not-modify]'),
   )
+
+  console.log(osId)
+  console.log(bech32_address)
 
   const fee = new Fee()
   fee.setAmountList([feeCoin])
-  fee.setGasLimit(1000000)
+  fee.setGasLimit(700000)
   const chainId = await client.getChainId()
+  const account = await client.getAccount(bech32_address)
+
   const txn = new Transaction()
   txn.withMessages(requestMessage)
-  await txn.withSender(client, sender)
   txn.withChainId(chainId)
   txn.withFee(fee)
   txn.withMemo('')
+  txn.withSequence(account.sequence)
+  txn.withAccountNum(account.accountNumber)
+  txn.withSender(client, bech32_address)
 
-  const signDoc = txn.getSignDoc(pubkey)
-  const signature = privateKey.sign(signDoc)
+  // const a = await txn.withSender(client, bech32_address)
+  console.log(txn)
 
-  const txRawBytes = txn.getTxData(signature, pubkey)
-  const sendTx = await client.sendTxBlockMode(txRawBytes)
+  // const signDoc = a.getSignDoc(pubketWallet)
+  // const signature = privateKey.sign(signDoc)
 
-  return sendTx
+  // const txRawBytes = txn.getTxData(signature, pubketWallet)
+  // const sendTx = await client.sendTxBlockMode(txRawBytes)
+  // console.log(sendTx)
+
+  // return sendTx
+
+  const signature = await ledger.sign(txn)
+
+  const signedTx = await txn.getTxData(signature, pubKey, 127)
+
+  const response = await client.sendTxBlockMode(signedTx)
+
+  console.log(response)
+
+  return response
 }
 
 export async function makeRequest() {
@@ -191,8 +280,8 @@ export async function makeRequest() {
   const { PrivateKey } = Wallet
   const mnemonic = 's'
   const privateKey = PrivateKey.fromMnemonic(mnemonic)
-  const pubkey = privateKey.toPubkey()
-  const sender = pubkey.toAddress().toAccBech32()
+  const pubketWallet = privateKey.toPubkey()
+  const sender = pubketWallet.toAddress().toAccBech32()
 
   // Step 2.1: Prepare oracle request's properties
   const obi = new Obi('{symbols:[string],multiplier:u64}/{rates:[u64]}')
@@ -238,10 +327,10 @@ export async function makeRequest() {
   txn.withMemo('Test Send Oracle Request from Babybun')
 
   // Step 3.2: Sign the transaction using the private key
-  const signDoc = txn.getSignDoc(pubkey)
+  const signDoc = txn.getSignDoc(pubketWallet)
   const signature = privateKey.sign(signDoc)
 
-  const txRawBytes = txn.getTxData(signature, pubkey)
+  const txRawBytes = txn.getTxData(signature, pubketWallet)
 
   // Step 4: Broadcast the transaction
   const sendTx = await client.sendTxBlockMode(txRawBytes)

@@ -8,6 +8,7 @@ import LedgerExample from 'components/LedgerExample'
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
 import { makeRequest, getAccBalance } from './band'
+import { EditOracleScriptWithLedger } from 'components/EditOracleScriptWithLedger'
 
 // BandChain's Proof-of-Authority REST endpoint
 // const endpoint = 'https://api-gm-lb.bandchain.org'
@@ -97,6 +98,8 @@ function App() {
             <FormCreateOracleScript />
             <FormEditOracleScript />
             <LedgerExample />
+
+            <EditOracleScriptWithLedger />
           </div>
         </div>
       </div>

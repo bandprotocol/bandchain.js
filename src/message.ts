@@ -611,9 +611,9 @@ export class MsgCreateOracleScript
       value: {
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        schema: this.getSchema().toString,
+        schema: this.getSchema().toString(),
         sourceCodeUrl: this.getSourceCodeUrl().toString(),
-        code: this.getCode().toString(),
+        code: this.getCode_asU8(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
       },
@@ -627,7 +627,7 @@ export class MsgCreateOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode().length === 0)
+    if (this.getCode().toString().length === 0)
       throw new ValueError('code should not be an empty string')
   }
 }
@@ -644,7 +644,7 @@ export class MsgEditOracleScript
     description?: string,
     schema?: string,
     sourceCodeUrl?: string,
-    code?: Buffer,
+    code?: Buffer | string,
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
@@ -676,9 +676,9 @@ export class MsgEditOracleScript
         sender: this.getSender().toString(),
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        schema: this.getSchema().toString,
+        schema: this.getSchema().toString(),
         sourceCodeUrl: this.getSourceCodeUrl().toString(),
-        code: this.getCode().toString(),
+        code: this.getCode_asB64(),
       },
     }
   }
