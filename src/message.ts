@@ -465,7 +465,6 @@ export class MsgCreateDataSource
     return anyMsg
   }
 
-  // TODO: check with ledger
   toJSON(): object {
     return {
       type: 'oracle/CreateDataSource',
@@ -473,7 +472,7 @@ export class MsgCreateDataSource
         name: this.getName().toString(),
         description: this.getDescription().toString(),
         executable: this.getExecutable_asB64(),
-        feeList: this.getFeeList().map((coin) => coin.toObject()),
+        fee_list: this.getFeeList().map((coin) => coin.toObject()),
         treasury: this.getTreasury().toString(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
@@ -536,15 +535,14 @@ export class MsgEditDataSource
     return anyMsg
   }
 
-  // TODO: check with ledger
   toJSON(): object {
     return {
       type: 'oracle/EditDataSource',
       value: {
-        dataSourceId: this.getDataSourceId(),
+        data_source_id: this.getDataSourceId().toString(),
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        feeList: this.getFeeList().map((coin) => coin.toObject()),
+        fee_list: this.getFeeList().map((coin) => coin.toObject()),
         treasury: this.getTreasury().toString(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
@@ -604,16 +602,15 @@ export class MsgCreateOracleScript
     return anyMsg
   }
 
-  // TODO: check with ledger
   toJSON(): object {
     return {
       type: 'oracle/CreateOracleScript',
       value: {
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        schema: this.getSchema().toString,
-        sourceCodeUrl: this.getSourceCodeUrl().toString(),
-        code: this.getCode().toString(),
+        schema: this.getSchema().toString(),
+        source_code_url: this.getSourceCodeUrl().toString(),
+        code: this.getCode_asB64(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
       },
@@ -627,7 +624,7 @@ export class MsgCreateOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
-    if (this.getCode().length === 0)
+    if (this.getCode().toString().length === 0)
       throw new ValueError('code should not be an empty string')
   }
 }
@@ -644,7 +641,7 @@ export class MsgEditOracleScript
     description?: string,
     schema?: string,
     sourceCodeUrl?: string,
-    code?: Buffer,
+    code?: Buffer | string,
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
@@ -666,19 +663,18 @@ export class MsgEditOracleScript
     return anyMsg
   }
 
-  // TODO: check with ledger
   toJSON(): object {
     return {
       type: 'oracle/EditOracleScript',
       value: {
-        oracleScriptId: this.getOracleScriptId(),
+        oracle_script_id: this.getOracleScriptId().toString(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        schema: this.getSchema().toString,
-        sourceCodeUrl: this.getSourceCodeUrl().toString(),
-        code: this.getCode().toString(),
+        schema: this.getSchema().toString(),
+        source_code_url: this.getSourceCodeUrl().toString(),
+        code: this.getCode_asB64(),
       },
     }
   }

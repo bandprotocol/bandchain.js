@@ -7,11 +7,6 @@ import LedgerExample from 'components/LedgerExample'
 
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
-import { makeRequest, getAccBalance } from './band'
-
-// BandChain's Proof-of-Authority REST endpoint
-// const endpoint = 'https://api-gm-lb.bandchain.org'
-// const client = new Client(endpoint)
 
 function App() {
   const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
@@ -25,9 +20,7 @@ function App() {
       const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
       setPairs(data)
     }
-    // getReferenceData()
-    getAccBalance()
-    // makeRequest()
+    getReferenceData()
   }, [])
 
   return (
@@ -91,7 +84,6 @@ function App() {
                   ))}
               </div>
             </div>
-
             <FormCreateDataSource />
             <FormEditDataSource />
             <FormCreateOracleScript />
