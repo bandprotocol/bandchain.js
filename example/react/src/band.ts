@@ -62,7 +62,9 @@ export async function exampleEditOracleScriptWithLedger() {
 
   const a = await tx.withSender(client, bech32_address)
 
-  // console.log(tx)
+  console.log(tx)
+  console.log('test tx')
+  console.log(Buffer.from(a.getSignMessage().buffer).toString())
 
   // const signDoc = tx.getSignDoc(pubketWallet)
   // const signature = privateKey.sign(signDoc)
@@ -274,68 +276,73 @@ export async function editOracleScript(
 }
 
 export async function makeRequest() {
-  // symbols = symbols.toUpperCase().replace(/\s/g, "").split(",");
+  const { Ledger } = Wallet
 
-  // Step 1: Import a private key for signing transaction
-  const { PrivateKey } = Wallet
-  const mnemonic = 's'
-  const privateKey = PrivateKey.fromMnemonic(mnemonic)
-  const pubketWallet = privateKey.toPubkey()
-  const sender = pubketWallet.toAddress().toAccBech32()
+  try {
+    const ledger = await Ledger.connectLedgerWeb()
+    const { bech32_address, pubKey } = await ledger.getPubKeyAndBech32Address()
 
-  // Step 2.1: Prepare oracle request's properties
-  const obi = new Obi('{symbols:[string],multiplier:u64}/{rates:[u64]}')
-  const calldata = obi.encodeInput({ symbols: ['BTC'], multiplier: 1000 })
+    // Step 2.1: Prepare oracle request's properties
+    const obi = new Obi('{symbols:[string],multiplier:u64}/{rates:[u64]}')
+    const calldata = obi.encodeInput({ symbols: ['BTC'], multiplier: 1000 })
 
-  const oracleScriptId = 37
-  const askCount = 2
-  const minCount = 1
-  const clientId = 'from_bandchain.js'
+    const oracleScriptId = 37
+    const askCount = 2
+    const minCount = 1
+    const clientId = 'from_bandchain.js'
 
-  let feeLimit = new Coin()
-  feeLimit.setDenom('uband')
-  feeLimit.setAmount('1000')
+    let feeLimit = new Coin()
+    feeLimit.setDenom('uband')
+    feeLimit.setAmount('1000')
 
-  // Step 2.2: Create an oracle request message
-  const requestMessage = new Message.MsgRequestData(
-    oracleScriptId,
-    calldata,
-    askCount,
-    minCount,
-    clientId,
-    sender,
-    [feeLimit],
-    30000,
-    50000,
-  )
+    // Step 2.2: Create an oracle request message
+    const requestMessage = new Message.MsgRequestData(
+      oracleScriptId,
+      calldata,
+      askCount,
+      minCount,
+      clientId,
+      bech32_address,
+      [feeLimit],
+      30000,
+      50000,
+    )
 
-  let feeCoin = new Coin()
-  feeCoin.setDenom('uband')
-  feeCoin.setAmount('50000')
+    let feeCoin = new Coin()
+    feeCoin.setDenom('uband')
+    feeCoin.setAmount('0')
 
-  // Step 3.1: Construct a transaction
-  const fee = new Fee()
-  fee.setAmountList([feeCoin])
-  fee.setGasLimit(10000000)
+    // Step 3.1: Construct a transaction
+    const fee = new Fee()
+    fee.setAmountList([feeCoin])
+    fee.setGasLimit(300000)
 
-  const chainId = await client.getChainId()
-  const txn = new Transaction()
-  txn.withMessages(requestMessage)
-  await txn.withSender(client, sender)
-  txn.withChainId(chainId)
-  txn.withFee(fee)
-  txn.withMemo('Test Send Oracle Request from Babybun')
+    const chainId = await client.getChainId()
+    const txn = new Transaction()
+      .withMessages(requestMessage)
+      .withChainId(chainId)
+      .withFee(fee)
+      .withMemo('Test Send Oracle Request from Babybun')
+    await txn.withSender(client, bech32_address)
 
-  // Step 3.2: Sign the transaction using the private key
-  const signDoc = txn.getSignDoc(pubketWallet)
-  const signature = privateKey.sign(signDoc)
+    console.log(txn)
+    // console.log(Buffer.from(txn.getSignMessage().buffer).toString())
 
-  const txRawBytes = txn.getTxData(signature, pubketWallet)
+    const signature = await ledger.sign(txn)
 
-  // Step 4: Broadcast the transaction
-  const sendTx = await client.sendTxBlockMode(txRawBytes)
-  console.log(sendTx)
-  return sendTx
+    console.log(signature)
+
+    const signedTx = await txn.getTxData(signature, pubKey, 127)
+
+    const response = await client.sendTxBlockMode(signedTx)
+
+    console.log(response)
+
+    return response
+  } catch (error) {
+    console.log(error)
+    return
+  }
 }
 
 interface SendCoinProps {

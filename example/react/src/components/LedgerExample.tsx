@@ -56,9 +56,7 @@ export const LedgerExample = () => {
               marginRight: 16,
             }}
             onClick={async () => {
-              const ledgerRes = await Ledger.connectLedgerWeb(
-                "m/44'/118'/0'/0/1",
-              )
+              const ledgerRes = await Ledger.connectLedgerWeb()
               setLedger(ledgerRes)
             }}
             disabled={ledger ? true : false}

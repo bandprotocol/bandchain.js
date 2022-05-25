@@ -77,7 +77,7 @@ function FormEditOracleScript() {
           {owasmFileName ? (
             owasmFileName
           ) : (
-            <div className="btn btn-light btn-small">Select an .wasm file</div>
+            <div className="btn btn-light btn-small">Upload .wasm file</div>
           )}
         </div>
         <button

@@ -26,8 +26,8 @@ function App() {
       const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
       setPairs(data)
     }
-    // getReferenceData()
-    getAccBalance()
+    getReferenceData()
+    // getAccBalance()
     // makeRequest()
   }, [])
 
@@ -93,6 +93,9 @@ function App() {
               </div>
             </div>
 
+            <button className="btn btn-primary" onClick={makeRequest}>
+              Request Data Via Ledger
+            </button>
             <FormCreateDataSource />
             <FormEditDataSource />
             <FormCreateOracleScript />
