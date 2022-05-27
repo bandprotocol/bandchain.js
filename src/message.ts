@@ -439,11 +439,11 @@ export class MsgCreateDataSource
 {
   constructor(
     name: string,
-    executable: string,
-    feeList: Coin[] = [],
+    executable: Buffer | string,
     treasury: string,
     owner: string,
     sender: string,
+    feeList: Coin[] = [],
     description?: string,
   ) {
     super()
@@ -472,7 +472,7 @@ export class MsgCreateDataSource
         name: this.getName().toString(),
         description: this.getDescription().toString(),
         executable: this.getExecutable_asB64(),
-        fee_list: this.getFeeList().map((coin) => coin.toObject()),
+        fee: this.getFeeList().map((coin) => coin.toObject()),
         treasury: this.getTreasury().toString(),
         owner: this.getOwner().toString(),
         sender: this.getSender().toString(),
@@ -507,13 +507,13 @@ export class MsgEditDataSource
 {
   constructor(
     dataSourceId: number,
-    feeList: Coin[] = [],
     treasury: string,
     owner: string,
     sender: string,
-    name?: string,
-    description?: string,
-    executable?: string,
+    feeList: Coin[] = [],
+    name: string = '[do-not-modify]',
+    description: string = '[do-not-modify]',
+    executable: Buffer | string = Buffer.from('[do-not-modify]'),
   ) {
     super()
     this.setDataSourceId(dataSourceId)
@@ -542,10 +542,10 @@ export class MsgEditDataSource
         data_source_id: this.getDataSourceId().toString(),
         name: this.getName().toString(),
         description: this.getDescription().toString(),
-        fee_list: this.getFeeList().map((coin) => coin.toObject()),
-        treasury: this.getTreasury().toString(),
-        owner: this.getOwner().toString(),
-        sender: this.getSender().toString(),
+        fee: this.getFeeList().map((coin) => coin.toObject()),
+        treasury: this.getTreasury(),
+        owner: this.getOwner(),
+        sender: this.getSender(),
         executable: this.getExecutable_asB64(),
       },
     }
@@ -637,11 +637,11 @@ export class MsgEditOracleScript
     oracleScriptId: number,
     owner: string,
     sender: string,
-    name?: string,
-    description?: string,
-    schema?: string,
-    sourceCodeUrl?: string,
-    code?: Buffer | string,
+    name: string = '[do-not-modify]',
+    description: string = '[do-not-modify]',
+    schema: string = '[do-not-modify]',
+    sourceCodeUrl: string = '[do-not-modify]',
+    code: Buffer | string = Buffer.from('[do-not-modify]'),
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)

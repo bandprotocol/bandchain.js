@@ -63,39 +63,45 @@ export const createMsgCreateDataSource = async (code: any) => {
   return response
 }
 
-export const createMsgEditDataSource = async (code: any, dsId: string) => {
-  let feeCoin = new Coin()
+export const createMsgEditDataSource = async (
+  code: string | ArrayBuffer | null | undefined,
+  id: string,
+) => {
+  const feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('100')
 
   const msg = new Message.MsgEditDataSource(
-    parseInt(dsId),
-    [],
-    sender,
-    sender,
-    sender,
-    'Test Edit DS',
-    'Test Edit DS Description',
-    Buffer.from(code).toString('base64'),
+    parseInt(id),
+    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
+    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
+    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
+    [feeCoin],
+    undefined,
+    undefined,
+    Buffer.from(code ? code : '[do-not-modify]'),
   )
 
   const fee = new Fee()
   fee.setAmountList([feeCoin])
-  fee.setGasLimit(1000000)
+  fee.setGasLimit(80000)
 
   const account = await client.getAccount(sender)
 
   const tx = new Transaction()
     .withMessages(msg)
-    .withAccountNum(account.accountNumber)
-    .withSequence(account.sequence)
     .withChainId('band-laozi-testnet4')
     .withFee(fee)
 
+  const txn = await tx
+    .withSequence(account.sequence)
+    .withAccountNum(account.accountNumber)
+    .withSender(client, sender)
+
   // Step 4 sign the transaction
-  const txSignData = tx.getSignDoc(pubketWallet)
+  const txSignData = txn.getSignDoc(pubketWallet)
   const signature = privateKey.sign(txSignData)
-  const signedTx = tx.getTxData(signature, pubketWallet)
+  const signedTx = txn.getTxData(signature, pubketWallet)
 
   // Step 5 send the transaction
   const response = await client.sendTxBlockMode(signedTx)
@@ -150,10 +156,6 @@ export async function editOracleScript(
   const ledger = await Ledger.connectLedgerWeb()
   const { bech32_address, pubKey } = await ledger.getPubKeyAndBech32Address()
 
-  let coin = new Coin()
-  coin.setDenom('uband')
-  coin.setAmount('1000000')
-
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
   feeCoin.setAmount('1000')
@@ -161,9 +163,9 @@ export async function editOracleScript(
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgEditOracleScript(
     parseInt(osId),
+    'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
     bech32_address,
-    bech32_address,
-    '[do-not-modify]',
+    'Change From Example',
     'Add Description',
     '[do-not-modify]',
     '[do-not-modify]',
@@ -215,7 +217,7 @@ export async function makeRequest() {
     const minCount = 1
     const clientId = 'from_bandchain.js'
 
-    let feeLimit = new Coin()
+    const feeLimit = new Coin()
     feeLimit.setDenom('uband')
     feeLimit.setAmount('1000')
 
@@ -248,6 +250,8 @@ export async function makeRequest() {
       .withFee(fee)
       .withMemo('Test Send Oracle Request from Babybun')
     await txn.withSender(client, bech32_address)
+
+    console.log(Buffer.from(txn.getSignMessage().buffer).toString())
 
     const signature = await ledger.sign(txn)
 
