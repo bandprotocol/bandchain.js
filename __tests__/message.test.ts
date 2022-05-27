@@ -576,10 +576,10 @@ describe('MsgCreateDataSource', () => {
     const msgCreateDs = new MsgCreateDataSource(
       dsName,
       executable,
-      [coin],
       treasury,
       ownerAddr,
       senderAddr,
+      [coin],
       description,
     )
 
@@ -608,10 +608,10 @@ describe('MsgCreateDataSource', () => {
       new MsgCreateDataSource(
         dsName,
         executable,
-        [coin1],
         treasury,
         ownerAddr,
         senderAddr,
+        [coin1],
         description,
       ),
     )
@@ -620,10 +620,10 @@ describe('MsgCreateDataSource', () => {
       new MsgCreateDataSource(
         dsName,
         executable,
-        [coin2],
         treasury,
         ownerAddr,
         senderAddr,
+        [coin2],
         description,
       ),
     )
@@ -633,10 +633,10 @@ describe('MsgCreateDataSource', () => {
       new MsgCreateDataSource(
         dsName,
         executable,
-        [coin],
         treasury,
         '',
         senderAddr,
+        [coin],
         description,
       ),
     )
@@ -646,10 +646,10 @@ describe('MsgCreateDataSource', () => {
       new MsgCreateDataSource(
         dsName,
         executable,
-        [coin],
         treasury,
         ownerAddr,
         '',
+        [coin],
         description,
       ),
     )
@@ -659,10 +659,10 @@ describe('MsgCreateDataSource', () => {
       new MsgCreateDataSource(
         dsName,
         executable,
-        [coin],
         '',
         ownerAddr,
         senderAddr,
+        [coin],
         description,
       ),
     )
@@ -697,10 +697,10 @@ describe('MsgEditDataSource', () => {
   it('create successfully', () => {
     const msgCreateDs = new MsgEditDataSource(
       dataSourceId,
-      [coin],
       treasury,
       ownerAddr,
       senderAddr,
+      [coin],
       description,
       executable,
     )
@@ -729,10 +729,10 @@ describe('MsgEditDataSource', () => {
     msgs.push(
       new MsgEditDataSource(
         dataSourceId2,
-        [coin2],
         treasury,
         ownerAddr,
         senderAddr,
+        [coin2],
         description,
         executable,
       ),
@@ -742,10 +742,10 @@ describe('MsgEditDataSource', () => {
     msgs.push(
       new MsgEditDataSource(
         dataSourceId,
-        [coin1],
         treasury,
         ownerAddr,
         senderAddr,
+        [coin1],
         description,
         executable,
       ),
@@ -754,10 +754,10 @@ describe('MsgEditDataSource', () => {
     msgs.push(
       new MsgEditDataSource(
         dataSourceId,
-        [coin2],
         treasury,
         ownerAddr,
         senderAddr,
+        [coin2],
         description,
         executable,
       ),
