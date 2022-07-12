@@ -18,9 +18,7 @@ const pubketWallet = privateKey.toPubkey()
 const sender = pubketWallet.toAddress().toAccBech32()
 
 export const getAccBalance = async () => {
-  const response = await client.getAllBalances(
-    'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
-  )
+  const response = await client.getAllBalances(sender)
   return response
 }
 
@@ -32,10 +30,10 @@ export const createMsgCreateDataSource = async (code: any) => {
   const msg = new Message.MsgCreateDataSource(
     'Test DS',
     Buffer.from(code).toString('base64'),
+    sender,
+    sender,
+    sender,
     [],
-    sender,
-    sender,
-    sender,
     'Test DS Description',
   )
 
@@ -73,9 +71,9 @@ export const createMsgEditDataSource = async (
 
   const msg = new Message.MsgEditDataSource(
     parseInt(id),
-    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
-    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
-    'band1lhw5l38wmk2wqtuh3d7wa7pa6qajstmrdwzj4m',
+    sender,
+    sender,
+    sender,
     [feeCoin],
     undefined,
     undefined,
@@ -110,10 +108,6 @@ export const createMsgEditDataSource = async (
 }
 
 export async function createOracleScript(code: any) {
-  let coin = new Coin()
-  coin.setDenom('uband')
-  coin.setAmount('1000000')
-
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
   feeCoin.setAmount('1000')
@@ -153,18 +147,16 @@ export async function editOracleScript(
   code: string | ArrayBuffer | null | undefined,
   osId: string,
 ) {
-  const ledger = await Ledger.connectLedgerWeb()
-  const { bech32_address, pubKey } = await ledger.getPubKeyAndBech32Address()
-
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
   feeCoin.setAmount('1000')
 
   // Step 2.2: Create an oracle request message
+  // Change Owner
   const requestMessage = new Message.MsgEditOracleScript(
     parseInt(osId),
-    'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte',
-    bech32_address,
+    'band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte', // owner
+    sender,
     'Change From Example',
     'Add Description',
     '[do-not-modify]',
@@ -172,14 +164,11 @@ export async function editOracleScript(
     Buffer.from(code ? code : '[do-not-modify]'),
   )
 
-  console.log(osId)
-  console.log(bech32_address)
-
   const fee = new Fee()
   fee.setAmountList([feeCoin])
   fee.setGasLimit(700000)
   const chainId = await client.getChainId()
-  const account = await client.getAccount(bech32_address)
+  const account = await client.getAccount(sender)
 
   const txn = new Transaction()
   txn.withMessages(requestMessage)
@@ -188,17 +177,15 @@ export async function editOracleScript(
   txn.withMemo('')
   txn.withSequence(account.sequence)
   txn.withAccountNum(account.accountNumber)
-  txn.withSender(client, bech32_address)
+  txn.withSender(client, sender)
 
-  const signature = await ledger.sign(txn)
+  const signDoc = txn.getSignDoc(pubketWallet)
+  const signature = privateKey.sign(signDoc)
 
-  const signedTx = await txn.getTxData(signature, pubKey, 127)
+  const txRawBytes = txn.getTxData(signature, pubketWallet)
+  const sendTx = await client.sendTxBlockMode(txRawBytes)
 
-  const response = await client.sendTxBlockMode(signedTx)
-
-  console.log(response)
-
-  return response
+  return sendTx
 }
 
 export async function makeRequest() {

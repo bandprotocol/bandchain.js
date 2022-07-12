@@ -83,7 +83,7 @@ function FormEditOracleScript() {
         <button
           className="btn btn-primary"
           onClick={sendMsgEditOracleScript}
-          disabled={owasmFileName && osId ? false : true}
+          disabled={osId === ''}
         >
           {loadingOsEdit ? 'Editing...' : 'Edit Oracle Script'}
         </button>
