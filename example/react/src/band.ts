@@ -8,7 +8,7 @@ import {
   Obi,
 } from '@bandprotocol/bandchain.js'
 
-const grpcUrl = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcUrl = 'https://laozi-testnet5.bandchain.org/grpc-web'
 const client = new Client(grpcUrl)
 
 const { PrivateKey, Ledger } = Wallet
@@ -47,7 +47,7 @@ export const createMsgCreateDataSource = async (code: any) => {
     .withMessages(msg)
     .withAccountNum(account.accountNumber)
     .withSequence(account.sequence)
-    .withChainId('band-laozi-testnet4')
+    .withChainId('band-laozi-testnet5')
     .withFee(fee)
 
   // Step 4 sign the transaction
@@ -88,7 +88,7 @@ export const createMsgEditDataSource = async (
 
   const tx = new Transaction()
     .withMessages(msg)
-    .withChainId('band-laozi-testnet4')
+    .withChainId('band-laozi-testnet5')
     .withFee(fee)
 
   const txn = await tx
@@ -301,4 +301,25 @@ export const sendCoinWithLedger = async (
   const response = await client.sendTxBlockMode(signedTx)
 
   return response
+}
+
+export async function getFaucet() {
+  const BAND_FAUCET_ENDPOINT = 'https://laozi-testnet5.bandchain.org/faucet'
+  const body = {
+    address: 'band1p46uhvdk8vr829v747v85hst3mur2dzlmlac7f',
+    amount: '10',
+  }
+
+  let options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(body),
+  }
+
+  // See https://docs.bandchain.org/technical-specifications/band-endpoints.html#laozi-testnet-5
+  let response = await fetch(`${BAND_FAUCET_ENDPOINT}`, options)
+
+  console.log(response)
 }

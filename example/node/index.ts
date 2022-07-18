@@ -1,6 +1,6 @@
 import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../src'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet5.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 
 // This example demonstrates how to query price data from
@@ -65,7 +65,6 @@ async function exampleSendBlockTransaction() {
 
   return sendTx
 }
-
 ;(async () => {
   console.log('Test getting reference data...')
   console.log(await exampleGetReferenceData())

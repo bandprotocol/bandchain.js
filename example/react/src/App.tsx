@@ -7,12 +7,15 @@ import LedgerExample from 'components/LedgerExample'
 
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
+// import { getFaucet } from 'band'
 
 function App() {
-  const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+  const grpcEndpoint = 'https://laozi-testnet5.bandchain.org/grpc-web'
   const client = new Client(grpcEndpoint)
 
   const [pairs, setPairs] = React.useState<Data.ReferenceData[]>()
+
+  // getFaucet()
 
   React.useEffect(() => {
     // Get standard price reference

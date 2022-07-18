@@ -2,7 +2,7 @@ import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
 import fs from 'fs'
 import path from 'path'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet5.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 const { PrivateKey } = Wallet
 const mnemonic = 'test'
