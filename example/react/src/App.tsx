@@ -7,7 +7,7 @@ import LedgerExample from 'components/LedgerExample'
 
 import './App.css'
 import { Client, Data } from '@bandprotocol/bandchain.js'
-// import { getFaucet } from 'band'
+import { getFaucet, getAccBalance } from 'band'
 
 function App() {
   const grpcEndpoint = 'https://laozi-testnet5.bandchain.org/grpc-web'
@@ -21,6 +21,7 @@ function App() {
     // Get standard price reference
     async function getReferenceData() {
       const data = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 10, 16)
+      console.log(await getAccBalance())
       setPairs(data)
     }
     getReferenceData()

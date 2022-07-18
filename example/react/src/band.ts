@@ -18,7 +18,9 @@ const pubketWallet = privateKey.toPubkey()
 const sender = pubketWallet.toAddress().toAccBech32()
 
 export const getAccBalance = async () => {
-  const response = await client.getAllBalances(sender)
+  const response = await client.getAllBalances(
+    'band1mrdmxkhtr3rgfzfgrkxy5pvjtvnm5qq0my5m0x',
+  )
   return response
 }
 
