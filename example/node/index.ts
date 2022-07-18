@@ -6,7 +6,7 @@ const client = new Client(grpcEndpoint)
 // This example demonstrates how to query price data from
 // Band's standard dataset
 async function exampleGetReferenceData() {
-  const rate = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
+  const rate = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 10, 16)
   return rate
 }
 
@@ -33,8 +33,8 @@ async function exampleSendBlockTransaction() {
   const requestMessage = new Message.MsgRequestData(
     37,
     calldata,
-    4,
-    3,
+    16,
+    10,
     'BandProtocol',
     sender,
     [coin],

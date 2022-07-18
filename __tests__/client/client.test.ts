@@ -816,7 +816,11 @@ describe('get reference data', () => {
         },
       },
     ]
-    const response = await client.getReferenceData(['ETH/USD', 'ETH/BTC'], 3, 4)
+    const response = await client.getReferenceData(
+      ['ETH/USD', 'ETH/BTC'],
+      10,
+      16,
+    )
     expect(mockGetReferenceData).toHaveBeenCalledTimes(1)
     expect(response).toEqual(expected)
   })
