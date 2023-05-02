@@ -1,9 +1,10 @@
 import * as bip39 from 'bip39'
-import * as bip32 from 'bip32'
-import * as bech32 from 'bech32'
+import { BIP32Factory } from 'bip32'
+import { bech32 } from 'bech32'
 import secp256k1, { signatureImport } from 'secp256k1'
 import crypto from 'crypto'
-import { ECPair } from 'bitcoinjs-lib'
+import ECPairFactory from 'ecpair'
+import * as ecc from 'tiny-secp256k1'
 import CosmosApp, { LedgerResponse, AppInfo } from 'ledger-cosmos-js'
 import Transaction from './transaction'
 import { isBip44, bip44ToArray, promiseTimeout } from './helpers'
@@ -17,6 +18,9 @@ import {
   ValueError,
 } from './error'
 import { PubKey as PublicKeyProto } from '../proto/cosmos/crypto/secp256k1/keys_pb'
+
+const ECPair = ECPairFactory(ecc)
+const bip32 = BIP32Factory(ecc)
 
 const BECH32_PUBKEY_ACC_PREFIX = 'bandpub'
 const BECH32_PUBKEY_VAL_PREFIX = 'bandvaloperpub'
