@@ -36,7 +36,7 @@ Band 2.2.0, Cosmos SDK 0.44.0, IBC-go 1.1.0
 const { Client } = require('@bandprotocol/bandchain.js')
 
 // BandChain's Proof-of-Authority REST endpoint
-const endpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const endpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(endpoint)
 
 // This example demonstrates how to query price data from

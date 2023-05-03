@@ -2,7 +2,7 @@ import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
 import fs from 'fs'
 import path from 'path'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 const { PrivateKey } = Wallet
 const mnemonic = 'test'
@@ -24,13 +24,21 @@ async function exampleCreateDataSource() {
   feeCoin.setAmount('1000')
 
   // Step 2.2: Create an oracle request message
+
+  // name: string
+  // executable: Buffer | string
+  // treasury: string
+  // owner: string
+  // sender: string
+  // feeList: Coin[]
+  // description?: string
   const requestMessage = new Message.MsgCreateDataSource(
     'Test DS NodeJs',
     executable,
+    sender,
+    sender,
+    sender,
     [feeCoin],
-    sender,
-    sender,
-    sender,
     'Test DS NodeJs Description',
   )
 
@@ -72,15 +80,24 @@ async function exampleEditDataSource() {
   feeCoin.setAmount('1000')
 
   // Step 2.2: Create an oracle request message
+
+  // dataSourceId: number
+  // treasury: string
+  // owner: string
+  // sender: string
+  // feeList: Coin[]
+  // name: string
+  // description: string
+  // executable: Buffer | string
   const requestMessage = new Message.MsgEditDataSource(
     184,
-    executable,
+    sender,
+    sender,
+    sender,
     [feeCoin],
-    sender,
-    sender,
-    sender,
     'Test Edit DS NodeJs',
     'Test Edit DS NodeJs Description',
+    executable,
   )
 
   // Step 3.1: Construct a transaction

@@ -2,7 +2,7 @@ import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
 import fs from 'fs'
 import path from 'path'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 const { PrivateKey } = Wallet
 const mnemonic = 'test'
@@ -27,6 +27,14 @@ async function exampleCreateOracleScript() {
   feeCoin.setAmount('1000')
 
   // Step 2.2: Create an oracle request message
+
+  // name: string
+  // code: Buffer
+  // owner: string
+  // sender: string
+  // description?: string
+  // schema?: string
+  // sourceCodeUrl?: string
   const requestMessage = new Message.MsgCreateOracleScript(
     'Oracle Script Name',
     code,
@@ -69,15 +77,24 @@ async function exampleEditOracleScript() {
   feeCoin.setAmount('1000')
 
   // Step 2.2: Create an oracle request message
+
+  // oracleScriptId: number
+  // owner: string
+  // sender: string
+  // name: string
+  // description: string
+  // schema: string
+  // sourceCodeUrl: string
+  // code: Buffer | string
   const requestMessage = new Message.MsgEditOracleScript(
     81,
-    code,
     owner,
     sender,
     'Edit Oracle Script Name',
     'Edit Oracle Script Description',
     '{symbols:[string],multiplier:u64}/{rates:[u64]}',
     'https://mockurl.com',
+    code,
   )
 
   const fee = new Fee()

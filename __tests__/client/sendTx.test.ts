@@ -20,7 +20,6 @@ import {
 
 jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
 
-// const mockedClass = <SomeClass>>SomeClass;
 const MockedTxService = jest.mocked(TxServiceClient)
 
 const TEST_GRPC = 'http://localhost:8080'
@@ -32,7 +31,7 @@ const expectedSignatureFailed = {
   code: 4,
   data: '',
   rawLog:
-    'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet2): unauthorized',
+    'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
   logsList: [],
   info: '',
   gasWanted: 2000000,
@@ -129,7 +128,7 @@ describe('send transaction sync mode', () => {
           'C6FCF7AB773EFE9D616DBD0C2B09CAF552C8998CABBF17A394B5243CAA9381E0',
         )
         txResponse.setRawLog(
-          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet2): unauthorized',
+          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
         ),
           txResponse.setGasWanted(2000000)
         txResponse.setGasUsed(39362)
@@ -489,7 +488,7 @@ describe('send transaction block mode', () => {
           'C6FCF7AB773EFE9D616DBD0C2B09CAF552C8998CABBF17A394B5243CAA9381E0',
         )
         txResponse.setRawLog(
-          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet2): unauthorized',
+          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
         ),
           txResponse.setGasWanted(2000000)
         txResponse.setGasUsed(39362)
