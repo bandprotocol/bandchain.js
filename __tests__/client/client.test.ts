@@ -1,5 +1,4 @@
 import { Client, Coin } from '../../src'
-import { mocked } from 'ts-jest/utils'
 import { grpc } from '@improbable-eng/grpc-web'
 
 import {
@@ -81,11 +80,11 @@ jest.mock('../../proto/cosmos/bank/v1beta1/query_pb_service')
 const STATIC_DATE = 1625578450000
 Date.now = jest.fn(() => STATIC_DATE)
 
-const MockedQueryClient = mocked(QueryClient, true)
-const MockedAuthQueryClient = mocked(AuthQueryClient, true)
-const MockedServiceClient = mocked(ServiceClient, true)
-const MockedTxService = mocked(TxServiceClient, true)
-const MockedQueryAllBalances = mocked(QueryAllBalances, true)
+const MockedQueryClient = jest.mocked(QueryClient)
+const MockedAuthQueryClient = jest.mocked(AuthQueryClient)
+const MockedServiceClient = jest.mocked(ServiceClient)
+const MockedTxService = jest.mocked(TxServiceClient)
+const MockedQueryAllBalances = jest.mocked(QueryAllBalances)
 
 const TEST_GRPC = 'http://localhost:8080'
 
@@ -103,7 +102,7 @@ describe('Client get data', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
 
-    const mockedGRPCClient = mocked(MockedQueryClient.mock.instances[0], true)
+    const mockedGRPCClient = jest.mocked(MockedQueryClient.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: QueryDataSourceRequest,
       metadata: grpc.Metadata,
@@ -112,7 +111,7 @@ describe('Client get data', () => {
         responseMessage: QueryDataSourceResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedDataSource = mocked(
+    const mockedDataSource = jest.mocked(
       mockedGRPCClient.dataSource as ExpectedDataSourceSignature,
     )
 
@@ -158,7 +157,7 @@ describe('get oracle script by ID', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
 
-    const mockedGRPCClient = mocked(MockedQueryClient.mock.instances[0], true)
+    const mockedGRPCClient = jest.mocked(MockedQueryClient.mock.instances[0])
     type ExpectedOracleScriptSignature = (
       requestMessage: QueryOracleScriptRequest,
       metadata: grpc.Metadata,
@@ -167,7 +166,7 @@ describe('get oracle script by ID', () => {
         responseMessage: QueryOracleScriptResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedOracleScript = mocked(
+    const mockedOracleScript = jest.mocked(
       mockedGRPCClient.oracleScript as ExpectedOracleScriptSignature,
     )
 
@@ -219,9 +218,8 @@ describe('get latest block', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedServiceClient).toHaveBeenCalledTimes(1)
 
-    const mockedServiceClient = mocked(
+    const mockedServiceClient = jest.mocked(
       MockedServiceClient.mock.instances[0],
-      true,
     )
     type ExpectedLatestBlockSignature = (
       requestMessage: GetLatestBlockRequest,
@@ -231,7 +229,7 @@ describe('get latest block', () => {
         responseMessage: GetLatestBlockResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedLatestBlock = mocked(
+    const mockedLatestBlock = jest.mocked(
       mockedServiceClient.getLatestBlock as ExpectedLatestBlockSignature,
     )
 
@@ -319,7 +317,7 @@ describe('get reporters', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
 
-    const mockedGRPCClient = mocked(MockedQueryClient.mock.instances[0], true)
+    const mockedGRPCClient = jest.mocked(MockedQueryClient.mock.instances[0])
     type ExpectedReportersSignature = (
       requestMessage: QueryReportersRequest,
       metadata: grpc.Metadata,
@@ -328,7 +326,7 @@ describe('get reporters', () => {
         responseMessage: QueryReportersResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedReporters = mocked(
+    const mockedReporters = jest.mocked(
       mockedGRPCClient.reporters as ExpectedReportersSignature,
     )
 
@@ -371,7 +369,7 @@ describe('get request id by transaction hash', () => {
     expect(MockedTxService).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
 
     type ExpectedGetTxSignature = (
       requestMessage: GetTxRequest,
@@ -381,7 +379,7 @@ describe('get request id by transaction hash', () => {
         responseMessage: GetTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedTxRequest = mocked(
+    const mockedTxRequest = jest.mocked(
       mockedTxServices.getTx as ExpectedGetTxSignature,
     )
     mockedTxRequest.mockImplementationOnce(
@@ -480,7 +478,7 @@ describe('get request id by transaction hash', () => {
     expect(MockedTxService).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
 
     type ExpectedGetTxSignature = (
       requestMessage: GetTxRequest,
@@ -490,7 +488,7 @@ describe('get request id by transaction hash', () => {
         responseMessage: GetTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedTxRequest = mocked(
+    const mockedTxRequest = jest.mocked(
       mockedTxServices.getTx as ExpectedGetTxSignature,
     )
     mockedTxRequest.mockImplementationOnce(
@@ -601,9 +599,8 @@ describe('get chain ID', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedServiceClient).toHaveBeenCalledTimes(1)
 
-    const mockedServiceClient = mocked(
+    const mockedServiceClient = jest.mocked(
       MockedServiceClient.mock.instances[0],
-      true,
     )
     type ExpectedLatestBlockSignature = (
       requestMessage: GetLatestBlockRequest,
@@ -613,7 +610,7 @@ describe('get chain ID', () => {
         responseMessage: GetLatestBlockResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedLatestBlock = mocked(
+    const mockedLatestBlock = jest.mocked(
       mockedServiceClient.getLatestBlock as ExpectedLatestBlockSignature,
     )
 
@@ -701,9 +698,8 @@ describe('get account', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedAuthQueryClient).toHaveBeenCalledTimes(1)
 
-    const mockedAuthQueryClient = mocked(
+    const mockedAuthQueryClient = jest.mocked(
       MockedAuthQueryClient.mock.instances[0],
-      true,
     )
     type ExpectedAccountSignature = (
       requestMessage: QueryAccountRequest,
@@ -713,7 +709,7 @@ describe('get account', () => {
         responseMessage: QueryAccountResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedAccount = mocked(
+    const mockedAccount = jest.mocked(
       mockedAuthQueryClient.account as ExpectedAccountSignature,
     )
     mockedAccount.mockImplementationOnce(
@@ -754,7 +750,7 @@ describe('get reference data', () => {
     expect(MockedQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
-    const mockedQueryClient = mocked(MockedQueryClient.mock.instances[0], true)
+    const mockedQueryClient = jest.mocked(MockedQueryClient.mock.instances[0])
 
     type ExpectedGetReferenceData = (
       requestMessage: QueryRequestPriceRequest,
@@ -764,7 +760,7 @@ describe('get reference data', () => {
         responseMessage: QueryRequestPriceResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockGetReferenceData = mocked(
+    const mockGetReferenceData = jest.mocked(
       mockedQueryClient.requestPrice as ExpectedGetReferenceData,
     )
     mockGetReferenceData.mockImplementationOnce(
@@ -827,7 +823,7 @@ describe('get latest request', () => {
     expect(MockedQueryClient).not.toHaveBeenCalled()
     const client = new Client(TEST_GRPC)
     expect(MockedQueryClient).toHaveBeenCalledTimes(1)
-    const mockedQueryClient = mocked(MockedQueryClient.mock.instances[0], true)
+    const mockedQueryClient = jest.mocked(MockedQueryClient.mock.instances[0])
 
     type ExpectedLatestRequest = (
       requestMessage: QueryRequestSearchRequest,
@@ -837,7 +833,7 @@ describe('get latest request', () => {
         responseMessage: QueryRequestSearchResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockGetLatestRequest = mocked(
+    const mockGetLatestRequest = jest.mocked(
       mockedQueryClient.requestSearch as ExpectedLatestRequest,
     )
     mockGetLatestRequest.mockImplementationOnce(
@@ -1020,9 +1016,8 @@ describe('get all balances', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedQueryAllBalances).toHaveBeenCalledTimes(1)
 
-    const mockedQueyAllBalances = mocked(
+    const mockedQueyAllBalances = jest.mocked(
       MockedQueryAllBalances.mock.instances[0],
-      true,
     )
     type ExpectedAddressSignature = (
       requestMessage: QueryAllBalancesRequest,
@@ -1032,7 +1027,7 @@ describe('get all balances', () => {
         responseMessage: QueryAllBalancesResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedAddress = mocked(
+    const mockedAddress = jest.mocked(
       mockedQueyAllBalances.allBalances as ExpectedAddressSignature,
     )
     mockedAddress.mockImplementationOnce(

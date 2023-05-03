@@ -1,5 +1,4 @@
 import { Client } from '../../src'
-import { mocked } from 'ts-jest/utils'
 import { grpc } from '@improbable-eng/grpc-web'
 
 import { ServiceClient as TxServiceClient } from '../../proto/cosmos/tx/v1beta1/service_pb_service'
@@ -20,7 +19,9 @@ import {
 } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
 
 jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
-const MockedTxService = mocked(TxServiceClient, true)
+
+// const mockedClass = <SomeClass>>SomeClass;
+const MockedTxService = jest.mocked(TxServiceClient)
 
 const TEST_GRPC = 'http://localhost:8080'
 
@@ -49,7 +50,7 @@ describe('send transaction sync mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -58,8 +59,11 @@ describe('send transaction sync mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -99,7 +103,7 @@ describe('send transaction sync mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -108,8 +112,11 @@ describe('send transaction sync mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -145,7 +152,7 @@ describe('send transaction async mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -154,8 +161,11 @@ describe('send transaction async mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -197,7 +207,7 @@ describe('send transaction block mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -206,8 +216,11 @@ describe('send transaction block mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -450,7 +463,7 @@ describe('send transaction block mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -459,8 +472,11 @@ describe('send transaction block mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
