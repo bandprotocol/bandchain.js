@@ -1,4 +1,11 @@
-import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
+import {
+  Client,
+  Wallet,
+  Message,
+  Coin,
+  Transaction,
+  Fee,
+} from '@bandprotocol/bandchain.js'
 import fs from 'fs'
 import path from 'path'
 
@@ -9,11 +16,14 @@ const mnemonic = 'test'
 const privateKey = PrivateKey.fromMnemonic(mnemonic)
 const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
+const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 
-async function exampleCreateDataSource() {
-  const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
-  const file = fs.readFileSync(execPath, 'utf8')
-  const executable = Buffer.from(file).toString('base64')
+async function exampleCreateOracleScript() {
+  const execPath = path.resolve(
+    __dirname,
+    '../mock/standard_dataset_crypto_mainnet.wasm',
+  )
+  const code = fs.readFileSync(execPath)
 
   let coin = new Coin()
   coin.setDenom('uband')
@@ -26,23 +36,22 @@ async function exampleCreateDataSource() {
   // Step 2.2: Create an oracle request message
 
   // name: string
-  // executable: Buffer | string
-  // treasury: string
+  // code: Buffer
   // owner: string
   // sender: string
-  // feeList: Coin[]
   // description?: string
-  const requestMessage = new Message.MsgCreateDataSource(
-    'Test DS NodeJs',
-    executable,
+  // schema?: string
+  // sourceCodeUrl?: string
+  const requestMessage = new Message.MsgCreateOracleScript(
+    'Oracle Script Name',
+    code,
     sender,
     sender,
-    sender,
-    [feeCoin],
-    'Test DS NodeJs Description',
+    'Oracle Script Description',
+    '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+    'https://mockurl.com',
   )
 
-  // Step 3.1: Construct a transaction
   const fee = new Fee()
   fee.setAmountList([feeCoin])
   fee.setGasLimit(1000000)
@@ -54,22 +63,17 @@ async function exampleCreateDataSource() {
   txn.withFee(fee)
   txn.withMemo('')
 
-  // Step 3.2: Sign the transaction using the private key
   const signDoc = txn.getSignDoc(pubkey)
   const signature = privateKey.sign(signDoc)
 
   const txRawBytes = txn.getTxData(signature, pubkey)
-
-  // Step 4: Broadcast the transaction
   const sendTx = await client.sendTxBlockMode(txRawBytes)
-
   return sendTx
 }
 
-async function exampleEditDataSource() {
-  const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
-  const file = fs.readFileSync(execPath, 'utf8')
-  const executable = Buffer.from(file).toString('base64')
+async function exampleEditOracleScript() {
+  const execPath = path.resolve(__dirname, '../mock/example_oracle_script.wasm')
+  const code = fs.readFileSync(execPath)
 
   let coin = new Coin()
   coin.setDenom('uband')
@@ -81,26 +85,25 @@ async function exampleEditDataSource() {
 
   // Step 2.2: Create an oracle request message
 
-  // dataSourceId: number
-  // treasury: string
+  // oracleScriptId: number
   // owner: string
   // sender: string
-  // feeList: Coin[]
   // name: string
   // description: string
-  // executable: Buffer | string
-  const requestMessage = new Message.MsgEditDataSource(
-    184,
+  // schema: string
+  // sourceCodeUrl: string
+  // code: Buffer | string
+  const requestMessage = new Message.MsgEditOracleScript(
+    81,
+    owner,
     sender,
-    sender,
-    sender,
-    [feeCoin],
-    'Test Edit DS NodeJs',
-    'Test Edit DS NodeJs Description',
-    executable,
+    'Edit Oracle Script Name',
+    'Edit Oracle Script Description',
+    '{symbols:[string],multiplier:u64}/{rates:[u64]}',
+    'https://mockurl.com',
+    code,
   )
 
-  // Step 3.1: Construct a transaction
   const fee = new Fee()
   fee.setAmountList([feeCoin])
   fee.setGasLimit(1000000)
@@ -112,21 +115,18 @@ async function exampleEditDataSource() {
   txn.withFee(fee)
   txn.withMemo('')
 
-  // Step 3.2: Sign the transaction using the private key
   const signDoc = txn.getSignDoc(pubkey)
   const signature = privateKey.sign(signDoc)
 
   const txRawBytes = txn.getTxData(signature, pubkey)
-
-  // Step 4: Broadcast the transaction
   const sendTx = await client.sendTxBlockMode(txRawBytes)
 
   return sendTx
 }
 
 ;(async () => {
-  console.log('Creating a new data source...')
-  console.log(await exampleCreateDataSource())
-  console.log('Editing a new data source...')
-  console.log(await exampleEditDataSource())
+  console.log('Creating an oracle script...')
+  console.log(await exampleCreateOracleScript())
+  console.log('Editing an oracle script...')
+  console.log(await exampleEditOracleScript())
 })()
