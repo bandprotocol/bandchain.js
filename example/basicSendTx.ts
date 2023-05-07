@@ -11,13 +11,6 @@ import {
 const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 
-// This example demonstrates how to query price data from
-// Band's standard dataset
-async function exampleGetReferenceData() {
-  const rate = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
-  return rate
-}
-
 async function exampleSendBlockTransaction() {
   // Step 1: Import a private key for signing transaction
   const { PrivateKey } = Wallet
@@ -75,8 +68,6 @@ async function exampleSendBlockTransaction() {
 }
 
 ;(async () => {
-  console.log('Test getting reference data...')
-  console.log(await exampleGetReferenceData())
   console.log('Test sending an oracle request...')
   console.log(await exampleSendBlockTransaction())
 })()

@@ -4,7 +4,7 @@
   "description": "bandchain.js-example written in typescript",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node"
   },
   "keywords": [],
   "author": "",

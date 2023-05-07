@@ -18,7 +18,8 @@ const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 
 async function exampleCreateDataSource() {
-  const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
+  // don't forget to copy this file when you copy the code
+  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 
@@ -74,7 +75,8 @@ async function exampleCreateDataSource() {
 }
 
 async function exampleEditDataSource() {
-  const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
+  // don't forget to copy this file when you copy the code
+  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 

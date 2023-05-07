@@ -1,7 +1,18 @@
 # Example
 
-There are 2 examples, which are node.js-based and browser-based (React).
+this folder contain examples for using bandchain.js
 
-For node.js, run `yarn dev` at the root of bandchain.js project.
+how to use it
 
-For React, go to `example/react` folder, then run `yarn` and `yarn start`.
+```bash
+# copy the folder to your directory
+
+# install dependencies
+yarn install
+
+# run the specific example file
+# ex. run dataSource.ts file
+yarn start dataSource.ts
+
+
+```
