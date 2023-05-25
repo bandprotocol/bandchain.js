@@ -1,5 +1,4 @@
 import { Client } from '../../src'
-import { mocked } from 'ts-jest/utils'
 import { grpc } from '@improbable-eng/grpc-web'
 
 import { ServiceClient as TxServiceClient } from '../../proto/cosmos/tx/v1beta1/service_pb_service'
@@ -20,7 +19,8 @@ import {
 } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
 
 jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
-const MockedTxService = mocked(TxServiceClient, true)
+
+const MockedTxService = jest.mocked(TxServiceClient)
 
 const TEST_GRPC = 'http://localhost:8080'
 
@@ -31,7 +31,7 @@ const expectedSignatureFailed = {
   code: 4,
   data: '',
   rawLog:
-    'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet2): unauthorized',
+    'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
   logsList: [],
   info: '',
   gasWanted: 2000000,
@@ -49,7 +49,7 @@ describe('send transaction sync mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -58,8 +58,11 @@ describe('send transaction sync mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -99,7 +102,7 @@ describe('send transaction sync mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -108,8 +111,11 @@ describe('send transaction sync mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -122,7 +128,7 @@ describe('send transaction sync mode', () => {
           'C6FCF7AB773EFE9D616DBD0C2B09CAF552C8998CABBF17A394B5243CAA9381E0',
         )
         txResponse.setRawLog(
-          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet2): unauthorized',
+          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
         ),
           txResponse.setGasWanted(2000000)
         txResponse.setGasUsed(39362)
@@ -145,7 +151,7 @@ describe('send transaction async mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -154,8 +160,11 @@ describe('send transaction async mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -197,7 +206,7 @@ describe('send transaction block mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -206,8 +215,11 @@ describe('send transaction block mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -450,7 +462,7 @@ describe('send transaction block mode', () => {
     const client = new Client(TEST_GRPC)
     expect(MockedTxService).toHaveBeenCalledTimes(1)
 
-    const mockedTxServices = mocked(MockedTxService.mock.instances[0], true)
+    const mockedTxServices = jest.mocked(MockedTxService.mock.instances[0])
     type ExpectedDataSourceSignature = (
       requestMessage: BroadcastTxRequest,
       metadata: grpc.Metadata,
@@ -459,8 +471,11 @@ describe('send transaction block mode', () => {
         responseMessage: BroadcastTxResponse | null,
       ) => void,
     ) => UnaryResponse
-    const mockedBroadcasting = mocked(
+    const mockedBroadcasting = jest.mocked(
       mockedTxServices.broadcastTx as ExpectedDataSourceSignature,
+      {
+        shallow: true,
+      },
     )
     mockedBroadcasting.mockImplementationOnce(
       (_req, _metadata, callback): UnaryResponse => {
@@ -473,7 +488,7 @@ describe('send transaction block mode', () => {
           'C6FCF7AB773EFE9D616DBD0C2B09CAF552C8998CABBF17A394B5243CAA9381E0',
         )
         txResponse.setRawLog(
-          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet2): unauthorized',
+          'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
         ),
           txResponse.setGasWanted(2000000)
         txResponse.setGasUsed(39362)

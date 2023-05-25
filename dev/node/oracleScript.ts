@@ -1,8 +1,8 @@
-import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
+import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../lib'
 import fs from 'fs'
 import path from 'path'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 const { PrivateKey } = Wallet
 const mnemonic = 'test'
@@ -11,22 +11,27 @@ const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 
-async function exampleCreateOracleScript() {
+export async function exampleCreateOracleScript() {
+  // don't forget to copy this file when you copy the code
   const execPath = path.resolve(
     __dirname,
-    '../mock/standard_dataset_crypto_mainnet.wasm',
+    './mock/standard_dataset_crypto_mainnet.wasm',
   )
   const code = fs.readFileSync(execPath)
 
-  let coin = new Coin()
-  coin.setDenom('uband')
-  coin.setAmount('1000000')
-
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
+
+  // name: string
+  // code: Buffer
+  // owner: string
+  // sender: string
+  // description?: string
+  // schema?: string
+  // sourceCodeUrl?: string
   const requestMessage = new Message.MsgCreateOracleScript(
     'Oracle Script Name',
     code,
@@ -39,7 +44,7 @@ async function exampleCreateOracleScript() {
 
   const fee = new Fee()
   fee.setAmountList([feeCoin])
-  fee.setGasLimit(1000000)
+  fee.setGasLimit(1500000)
   const chainId = await client.getChainId()
   const txn = new Transaction()
   txn.withMessages(requestMessage)
@@ -56,33 +61,39 @@ async function exampleCreateOracleScript() {
   return sendTx
 }
 
-async function exampleEditOracleScript() {
-  const execPath = path.resolve(__dirname, '../mock/example_oracle_script.wasm')
+export async function exampleEditOracleScript(id: number) {
+  // don't forget to copy this file when you copy the code
+  const execPath = path.resolve(__dirname, './mock/example_oracle_script.wasm')
   const code = fs.readFileSync(execPath)
-
-  let coin = new Coin()
-  coin.setDenom('uband')
-  coin.setAmount('1000000')
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
+
+  // oracleScriptId: number
+  // owner: string
+  // sender: string
+  // name: string
+  // description: string
+  // schema: string
+  // sourceCodeUrl: string
+  // code: Buffer | string
   const requestMessage = new Message.MsgEditOracleScript(
-    81,
-    code,
+    id,
     owner,
     sender,
     'Edit Oracle Script Name',
     'Edit Oracle Script Description',
     '{symbols:[string],multiplier:u64}/{rates:[u64]}',
     'https://mockurl.com',
+    code,
   )
 
   const fee = new Fee()
   fee.setAmountList([feeCoin])
-  fee.setGasLimit(1000000)
+  fee.setGasLimit(1500000)
   const chainId = await client.getChainId()
   const txn = new Transaction()
   txn.withMessages(requestMessage)
@@ -99,10 +110,3 @@ async function exampleEditOracleScript() {
 
   return sendTx
 }
-
-;(async () => {
-  console.log('Creating an oracle script...')
-  console.log(await exampleCreateOracleScript())
-  console.log('Editing an oracle script...')
-  console.log(await exampleEditOracleScript())
-})()

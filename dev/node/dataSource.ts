@@ -1,8 +1,8 @@
-import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
+import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../lib'
 import fs from 'fs'
 import path from 'path'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 const { PrivateKey } = Wallet
 const mnemonic = 'test'
@@ -10,8 +10,9 @@ const privateKey = PrivateKey.fromMnemonic(mnemonic)
 const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 
-async function exampleCreateDataSource() {
-  const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
+export async function exampleCreateDataSource() {
+  // don't forget to copy this file when you copy the code
+  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 
@@ -21,16 +22,24 @@ async function exampleCreateDataSource() {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
+
+  // name: string
+  // executable: Buffer | string
+  // treasury: string
+  // owner: string
+  // sender: string
+  // feeList: Coin[]
+  // description?: string
   const requestMessage = new Message.MsgCreateDataSource(
     'Test DS NodeJs',
     executable,
+    sender,
+    sender,
+    sender,
     [feeCoin],
-    sender,
-    sender,
-    sender,
     'Test DS NodeJs Description',
   )
 
@@ -58,8 +67,9 @@ async function exampleCreateDataSource() {
   return sendTx
 }
 
-async function exampleEditDataSource() {
-  const execPath = path.resolve(__dirname, '../mock/example_data_source.py')
+export async function exampleEditDataSource(id: number) {
+  // don't forget to copy this file when you copy the code
+  const execPath = path.resolve(__dirname, './mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
   const executable = Buffer.from(file).toString('base64')
 
@@ -69,18 +79,27 @@ async function exampleEditDataSource() {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
+
+  // dataSourceId: number
+  // treasury: string
+  // owner: string
+  // sender: string
+  // feeList: Coin[]
+  // name: string
+  // description: string
+  // executable: Buffer | string
   const requestMessage = new Message.MsgEditDataSource(
-    184,
-    executable,
+    id,
+    sender,
+    sender,
+    sender,
     [feeCoin],
-    sender,
-    sender,
-    sender,
     'Test Edit DS NodeJs',
     'Test Edit DS NodeJs Description',
+    executable,
   )
 
   // Step 3.1: Construct a transaction
@@ -106,10 +125,3 @@ async function exampleEditDataSource() {
 
   return sendTx
 }
-
-;(async () => {
-  console.log('Creating a new data source...')
-  console.log(await exampleCreateDataSource())
-  console.log('Editing a new data source...')
-  console.log(await exampleEditDataSource())
-})()

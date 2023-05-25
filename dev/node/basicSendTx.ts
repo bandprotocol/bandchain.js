@@ -1,16 +1,9 @@
-import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../src'
+import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../lib'
 
-const grpcEndpoint = 'https://laozi-testnet4.bandchain.org/grpc-web'
+const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 
-// This example demonstrates how to query price data from
-// Band's standard dataset
-async function exampleGetReferenceData() {
-  const rate = await client.getReferenceData(['BTC/USD', 'ETH/BTC'], 3, 4)
-  return rate
-}
-
-async function exampleSendBlockTransaction() {
+export async function exampleSendBlockTransaction() {
   // Step 1: Import a private key for signing transaction
   const { PrivateKey } = Wallet
   const mnemonic = 'test'
@@ -27,7 +20,7 @@ async function exampleSendBlockTransaction() {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
   const requestMessage = new Message.MsgRequestData(
@@ -65,10 +58,3 @@ async function exampleSendBlockTransaction() {
 
   return sendTx
 }
-
-;(async () => {
-  console.log('Test getting reference data...')
-  console.log(await exampleGetReferenceData())
-  console.log('Test sending an oracle request...')
-  console.log(await exampleSendBlockTransaction())
-})()
