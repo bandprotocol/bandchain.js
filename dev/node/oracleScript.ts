@@ -1,11 +1,4 @@
-import {
-  Client,
-  Wallet,
-  Message,
-  Coin,
-  Transaction,
-  Fee,
-} from '@bandprotocol/bandchain.js'
+import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../lib'
 import fs from 'fs'
 import path from 'path'
 
@@ -18,7 +11,7 @@ const pubkey = privateKey.toPubkey()
 const sender = pubkey.toAddress().toAccBech32()
 const owner = 'band18e55d9xyrgyg3tk72zmg7s92uu8sd95jzgj73a'
 
-async function exampleCreateOracleScript() {
+export async function exampleCreateOracleScript() {
   // don't forget to copy this file when you copy the code
   const execPath = path.resolve(
     __dirname,
@@ -68,14 +61,10 @@ async function exampleCreateOracleScript() {
   return sendTx
 }
 
-async function exampleEditOracleScript(id: number) {
+export async function exampleEditOracleScript(id: number) {
   // don't forget to copy this file when you copy the code
   const execPath = path.resolve(__dirname, './mock/example_oracle_script.wasm')
   const code = fs.readFileSync(execPath)
-
-  let coin = new Coin()
-  coin.setDenom('uband')
-  coin.setAmount('1000000')
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
@@ -121,13 +110,3 @@ async function exampleEditOracleScript(id: number) {
 
   return sendTx
 }
-
-;(async () => {
-  console.log('Creating an oracle script...')
-  const response = await exampleCreateOracleScript()
-  const rawLog = JSON.parse(response.rawLog)
-  const datasourceID = rawLog[0].events[0].attributes[0].value
-  console.log(response)
-  console.log('Editing an oracle script...')
-  console.log(await exampleEditOracleScript(datasourceID))
-})()

@@ -8,8 +8,8 @@
     "clean": "rimraf coverage lib",
     "tsc": "tsc -p tsconfig.json",
     "prepublish": "yarn clean && yarn tsc",
-    "dev": "ts-node example/node/index.ts",
-    "dev:watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' example/node/index.ts",
+    "dev": "ts-node dev/node/index.ts",
+    "dev:watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' dev/node/index.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },

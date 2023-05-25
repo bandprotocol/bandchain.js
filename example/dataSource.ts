@@ -29,7 +29,7 @@ async function exampleCreateDataSource() {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
 
@@ -74,7 +74,7 @@ async function exampleCreateDataSource() {
   return sendTx
 }
 
-async function exampleEditDataSource() {
+async function exampleEditDataSource(id: number) {
   // don't forget to copy this file when you copy the code
   const execPath = path.resolve(__dirname, './mock/example_data_source.py')
   const file = fs.readFileSync(execPath, 'utf8')
@@ -86,7 +86,7 @@ async function exampleEditDataSource() {
 
   let feeCoin = new Coin()
   feeCoin.setDenom('uband')
-  feeCoin.setAmount('1000')
+  feeCoin.setAmount('5000')
 
   // Step 2.2: Create an oracle request message
 
@@ -99,7 +99,7 @@ async function exampleEditDataSource() {
   // description: string
   // executable: Buffer | string
   const requestMessage = new Message.MsgEditDataSource(
-    184,
+    id,
     sender,
     sender,
     sender,
@@ -135,7 +135,10 @@ async function exampleEditDataSource() {
 
 ;(async () => {
   console.log('Creating a new data source...')
-  console.log(await exampleCreateDataSource())
+  const response = await exampleCreateDataSource()
+  const rawLog = JSON.parse(response.rawLog)
+  const datasourceID = rawLog[0].events[0].attributes[0].value
+  console.log(response)
   console.log('Editing a new data source...')
-  console.log(await exampleEditDataSource())
+  console.log(await exampleEditDataSource(datasourceID))
 })()

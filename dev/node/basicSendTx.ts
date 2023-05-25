@@ -1,17 +1,9 @@
-import {
-  Client,
-  Wallet,
-  Obi,
-  Message,
-  Coin,
-  Transaction,
-  Fee,
-} from '@bandprotocol/bandchain.js'
+import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../lib'
 
 const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
 
-async function exampleSendBlockTransaction() {
+export async function exampleSendBlockTransaction() {
   // Step 1: Import a private key for signing transaction
   const { PrivateKey } = Wallet
   const mnemonic = 'test'
@@ -66,8 +58,3 @@ async function exampleSendBlockTransaction() {
 
   return sendTx
 }
-
-;(async () => {
-  console.log('Test sending an oracle request...')
-  console.log(await exampleSendBlockTransaction())
-})()
