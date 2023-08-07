@@ -30,6 +30,8 @@ import {
 } from '../proto/cosmos/gov/v1beta1/gov_pb'
 import { MsgTransfer as MsgTransferProto } from '../proto/ibc/applications/transfer/v1/tx_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+import { MsgVote as MsgVoteCouncilProto } from '../proto/council/v1beta1/tx_pb'
+import { VoteOption as VoteOptionCouncilProto } from '../proto/council/v1beta1/types_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
 
@@ -684,5 +686,50 @@ export class MsgEditOracleScript
       throw new ValueError('sender should not be an empty string')
     if (this.getOwner() === '')
       throw new ValueError('owner should not be an empty string')
+  }
+}
+
+export class MsgVoteCouncil extends MsgVoteCouncilProto implements BaseMsg {
+  constructor(
+    proposalId: number,
+    voter: string,
+    option: VoteOptionCouncilProto,
+  ) {
+    super()
+    this.setProposalId(proposalId)
+    this.setVoter(voter)
+    this.setOption(option)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'council.v1beta1.MsgVote'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'council/MsgVote',
+      value: {
+        proposal_id: this.getProposalId().toString(),
+        voter: this.getVoter(),
+        option: this.getOption(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getProposalId() <= 0) {
+      throw new NegativeIntegerError('proposalId cannot be less than zero')
+    }
+    if (this.getVoter() === '') {
+      throw new ValueError('Address should not be an empty string')
+    }
+    if (this.getOption() === VoteOptionCouncilProto.VOTE_OPTION_UNSPECIFIED) {
+      throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
+    }
   }
 }
