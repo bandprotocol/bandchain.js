@@ -5,6 +5,8 @@ import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
 import * as cosmos_bank_v1beta1_bank_pb from "../../../cosmos/bank/v1beta1/bank_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class GenesisState extends jspb.Message {
   hasParams(): boolean;
@@ -27,6 +29,11 @@ export class GenesisState extends jspb.Message {
   setDenomMetadataList(value: Array<cosmos_bank_v1beta1_bank_pb.Metadata>): void;
   addDenomMetadata(value?: cosmos_bank_v1beta1_bank_pb.Metadata, index?: number): cosmos_bank_v1beta1_bank_pb.Metadata;
 
+  clearSendEnabledList(): void;
+  getSendEnabledList(): Array<cosmos_bank_v1beta1_bank_pb.SendEnabled>;
+  setSendEnabledList(value: Array<cosmos_bank_v1beta1_bank_pb.SendEnabled>): void;
+  addSendEnabled(value?: cosmos_bank_v1beta1_bank_pb.SendEnabled, index?: number): cosmos_bank_v1beta1_bank_pb.SendEnabled;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
   static toObject(includeInstance: boolean, msg: GenesisState): GenesisState.AsObject;
@@ -43,6 +50,7 @@ export namespace GenesisState {
     balancesList: Array<Balance.AsObject>,
     supplyList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     denomMetadataList: Array<cosmos_bank_v1beta1_bank_pb.Metadata.AsObject>,
+    sendEnabledList: Array<cosmos_bank_v1beta1_bank_pb.SendEnabled.AsObject>,
   }
 }
 

@@ -8,6 +8,8 @@ import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
 import * as cosmos_staking_v1beta1_staking_pb from "../../../cosmos/staking/v1beta1/staking_pb";
+import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class MsgCreateValidator extends jspb.Message {
   hasDescription(): boolean;
@@ -278,6 +280,98 @@ export class MsgUndelegateResponse extends jspb.Message {
 export namespace MsgUndelegateResponse {
   export type AsObject = {
     completionTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
+export class MsgCancelUnbondingDelegation extends jspb.Message {
+  getDelegatorAddress(): string;
+  setDelegatorAddress(value: string): void;
+
+  getValidatorAddress(): string;
+  setValidatorAddress(value: string): void;
+
+  hasAmount(): boolean;
+  clearAmount(): void;
+  getAmount(): cosmos_base_v1beta1_coin_pb.Coin | undefined;
+  setAmount(value?: cosmos_base_v1beta1_coin_pb.Coin): void;
+
+  getCreationHeight(): number;
+  setCreationHeight(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgCancelUnbondingDelegation.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgCancelUnbondingDelegation): MsgCancelUnbondingDelegation.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgCancelUnbondingDelegation, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgCancelUnbondingDelegation;
+  static deserializeBinaryFromReader(message: MsgCancelUnbondingDelegation, reader: jspb.BinaryReader): MsgCancelUnbondingDelegation;
+}
+
+export namespace MsgCancelUnbondingDelegation {
+  export type AsObject = {
+    delegatorAddress: string,
+    validatorAddress: string,
+    amount?: cosmos_base_v1beta1_coin_pb.Coin.AsObject,
+    creationHeight: number,
+  }
+}
+
+export class MsgCancelUnbondingDelegationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgCancelUnbondingDelegationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgCancelUnbondingDelegationResponse): MsgCancelUnbondingDelegationResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgCancelUnbondingDelegationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgCancelUnbondingDelegationResponse;
+  static deserializeBinaryFromReader(message: MsgCancelUnbondingDelegationResponse, reader: jspb.BinaryReader): MsgCancelUnbondingDelegationResponse;
+}
+
+export namespace MsgCancelUnbondingDelegationResponse {
+  export type AsObject = {
+  }
+}
+
+export class MsgUpdateParams extends jspb.Message {
+  getAuthority(): string;
+  setAuthority(value: string): void;
+
+  hasParams(): boolean;
+  clearParams(): void;
+  getParams(): cosmos_staking_v1beta1_staking_pb.Params | undefined;
+  setParams(value?: cosmos_staking_v1beta1_staking_pb.Params): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateParams.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateParams): MsgUpdateParams.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgUpdateParams, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateParams;
+  static deserializeBinaryFromReader(message: MsgUpdateParams, reader: jspb.BinaryReader): MsgUpdateParams;
+}
+
+export namespace MsgUpdateParams {
+  export type AsObject = {
+    authority: string,
+    params?: cosmos_staking_v1beta1_staking_pb.Params.AsObject,
+  }
+}
+
+export class MsgUpdateParamsResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateParamsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateParamsResponse): MsgUpdateParamsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgUpdateParamsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateParamsResponse;
+  static deserializeBinaryFromReader(message: MsgUpdateParamsResponse, reader: jspb.BinaryReader): MsgUpdateParamsResponse;
+}
+
+export namespace MsgUpdateParamsResponse {
+  export type AsObject = {
   }
 }
 

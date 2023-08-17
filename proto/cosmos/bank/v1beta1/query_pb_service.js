@@ -28,6 +28,24 @@ Query.AllBalances = {
   responseType: cosmos_bank_v1beta1_query_pb.QueryAllBalancesResponse
 };
 
+Query.SpendableBalances = {
+  methodName: "SpendableBalances",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesRequest,
+  responseType: cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesResponse
+};
+
+Query.SpendableBalanceByDenom = {
+  methodName: "SpendableBalanceByDenom",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomRequest,
+  responseType: cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomResponse
+};
+
 Query.TotalSupply = {
   methodName: "TotalSupply",
   service: Query,
@@ -73,6 +91,24 @@ Query.DenomsMetadata = {
   responseType: cosmos_bank_v1beta1_query_pb.QueryDenomsMetadataResponse
 };
 
+Query.DenomOwners = {
+  methodName: "DenomOwners",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersRequest,
+  responseType: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersResponse
+};
+
+Query.SendEnabled = {
+  methodName: "SendEnabled",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_bank_v1beta1_query_pb.QuerySendEnabledRequest,
+  responseType: cosmos_bank_v1beta1_query_pb.QuerySendEnabledResponse
+};
+
 exports.Query = Query;
 
 function QueryClient(serviceHost, options) {
@@ -116,6 +152,68 @@ QueryClient.prototype.allBalances = function allBalances(requestMessage, metadat
     callback = arguments[1];
   }
   var client = grpc.unary(Query.AllBalances, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.spendableBalances = function spendableBalances(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.SpendableBalances, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.spendableBalanceByDenom = function spendableBalanceByDenom(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.SpendableBalanceByDenom, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -271,6 +369,68 @@ QueryClient.prototype.denomsMetadata = function denomsMetadata(requestMessage, m
     callback = arguments[1];
   }
   var client = grpc.unary(Query.DenomsMetadata, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.denomOwners = function denomOwners(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.DenomOwners, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.sendEnabled = function sendEnabled(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.SendEnabled, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

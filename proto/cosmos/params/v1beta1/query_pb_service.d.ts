@@ -13,9 +13,19 @@ type QueryParams = {
   readonly responseType: typeof cosmos_params_v1beta1_query_pb.QueryParamsResponse;
 };
 
+type QuerySubspaces = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_params_v1beta1_query_pb.QuerySubspacesRequest;
+  readonly responseType: typeof cosmos_params_v1beta1_query_pb.QuerySubspacesResponse;
+};
+
 export class Query {
   static readonly serviceName: string;
   static readonly Params: QueryParams;
+  static readonly Subspaces: QuerySubspaces;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -58,6 +68,15 @@ export class QueryClient {
   params(
     requestMessage: cosmos_params_v1beta1_query_pb.QueryParamsRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_params_v1beta1_query_pb.QueryParamsResponse|null) => void
+  ): UnaryResponse;
+  subspaces(
+    requestMessage: cosmos_params_v1beta1_query_pb.QuerySubspacesRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_params_v1beta1_query_pb.QuerySubspacesResponse|null) => void
+  ): UnaryResponse;
+  subspaces(
+    requestMessage: cosmos_params_v1beta1_query_pb.QuerySubspacesRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_params_v1beta1_query_pb.QuerySubspacesResponse|null) => void
   ): UnaryResponse;
 }
 

@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
 goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
@@ -23,6 +23,10 @@ var google_api_annotations_pb = require('../../../google/api/annotations_pb.js')
 goog.object.extend(proto, google_api_annotations_pb);
 var cosmos_gov_v1beta1_gov_pb = require('../../../cosmos/gov/v1beta1/gov_pb.js');
 goog.object.extend(proto, cosmos_gov_v1beta1_gov_pb);
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
+goog.object.extend(proto, cosmos_proto_cosmos_pb);
+var amino_amino_pb = require('../../../amino/amino_pb.js');
+goog.object.extend(proto, amino_amino_pb);
 goog.exportSymbol('proto.cosmos.gov.v1beta1.QueryDepositRequest', null, global);
 goog.exportSymbol('proto.cosmos.gov.v1beta1.QueryDepositResponse', null, global);
 goog.exportSymbol('proto.cosmos.gov.v1beta1.QueryDepositsRequest', null, global);

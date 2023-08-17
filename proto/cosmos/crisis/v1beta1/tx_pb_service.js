@@ -19,6 +19,15 @@ Msg.VerifyInvariant = {
   responseType: cosmos_crisis_v1beta1_tx_pb.MsgVerifyInvariantResponse
 };
 
+Msg.UpdateParams = {
+  methodName: "UpdateParams",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_crisis_v1beta1_tx_pb.MsgUpdateParams,
+  responseType: cosmos_crisis_v1beta1_tx_pb.MsgUpdateParamsResponse
+};
+
 exports.Msg = Msg;
 
 function MsgClient(serviceHost, options) {
@@ -31,6 +40,37 @@ MsgClient.prototype.verifyInvariant = function verifyInvariant(requestMessage, m
     callback = arguments[1];
   }
   var client = grpc.unary(Msg.VerifyInvariant, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.updateParams = function updateParams(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.UpdateParams, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

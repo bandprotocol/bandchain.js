@@ -28,6 +28,24 @@ Msg.MultiSend = {
   responseType: cosmos_bank_v1beta1_tx_pb.MsgMultiSendResponse
 };
 
+Msg.UpdateParams = {
+  methodName: "UpdateParams",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_bank_v1beta1_tx_pb.MsgUpdateParams,
+  responseType: cosmos_bank_v1beta1_tx_pb.MsgUpdateParamsResponse
+};
+
+Msg.SetSendEnabled = {
+  methodName: "SetSendEnabled",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabled,
+  responseType: cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabledResponse
+};
+
 exports.Msg = Msg;
 
 function MsgClient(serviceHost, options) {
@@ -71,6 +89,68 @@ MsgClient.prototype.multiSend = function multiSend(requestMessage, metadata, cal
     callback = arguments[1];
   }
   var client = grpc.unary(Msg.MultiSend, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.updateParams = function updateParams(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.UpdateParams, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.setSendEnabled = function setSendEnabled(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.SetSendEnabled, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

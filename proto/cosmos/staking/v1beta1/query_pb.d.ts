@@ -6,6 +6,9 @@ import * as cosmos_base_query_v1beta1_pagination_pb from "../../../cosmos/base/q
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
 import * as cosmos_staking_v1beta1_staking_pb from "../../../cosmos/staking/v1beta1/staking_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
+import * as cosmos_query_v1_query_pb from "../../../cosmos/query/v1/query_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class QueryValidatorsRequest extends jspb.Message {
   getStatus(): string;

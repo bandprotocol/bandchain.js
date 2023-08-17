@@ -3,6 +3,7 @@
 
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../../gogoproto/gogo_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 export class CommitInfo extends jspb.Message {
   getVersion(): number;
@@ -12,6 +13,11 @@ export class CommitInfo extends jspb.Message {
   getStoreInfosList(): Array<StoreInfo>;
   setStoreInfosList(value: Array<StoreInfo>): void;
   addStoreInfos(value?: StoreInfo, index?: number): StoreInfo;
+
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CommitInfo.AsObject;
@@ -27,6 +33,7 @@ export namespace CommitInfo {
   export type AsObject = {
     version: number,
     storeInfosList: Array<StoreInfo.AsObject>,
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 

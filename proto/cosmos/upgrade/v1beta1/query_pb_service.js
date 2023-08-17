@@ -46,6 +46,15 @@ Query.ModuleVersions = {
   responseType: cosmos_upgrade_v1beta1_query_pb.QueryModuleVersionsResponse
 };
 
+Query.Authority = {
+  methodName: "Authority",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_upgrade_v1beta1_query_pb.QueryAuthorityRequest,
+  responseType: cosmos_upgrade_v1beta1_query_pb.QueryAuthorityResponse
+};
+
 exports.Query = Query;
 
 function QueryClient(serviceHost, options) {
@@ -151,6 +160,37 @@ QueryClient.prototype.moduleVersions = function moduleVersions(requestMessage, m
     callback = arguments[1];
   }
   var client = grpc.unary(Query.ModuleVersions, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.authority = function authority(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.Authority, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

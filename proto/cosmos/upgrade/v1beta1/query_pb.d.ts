@@ -2,7 +2,6 @@
 // file: cosmos/upgrade/v1beta1/query.proto
 
 import * as jspb from "google-protobuf";
-import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
 import * as cosmos_upgrade_v1beta1_upgrade_pb from "../../../cosmos/upgrade/v1beta1/upgrade_pb";
 
@@ -165,6 +164,42 @@ export class QueryModuleVersionsResponse extends jspb.Message {
 export namespace QueryModuleVersionsResponse {
   export type AsObject = {
     moduleVersionsList: Array<cosmos_upgrade_v1beta1_upgrade_pb.ModuleVersion.AsObject>,
+  }
+}
+
+export class QueryAuthorityRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryAuthorityRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryAuthorityRequest): QueryAuthorityRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryAuthorityRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryAuthorityRequest;
+  static deserializeBinaryFromReader(message: QueryAuthorityRequest, reader: jspb.BinaryReader): QueryAuthorityRequest;
+}
+
+export namespace QueryAuthorityRequest {
+  export type AsObject = {
+  }
+}
+
+export class QueryAuthorityResponse extends jspb.Message {
+  getAddress(): string;
+  setAddress(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryAuthorityResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryAuthorityResponse): QueryAuthorityResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryAuthorityResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryAuthorityResponse;
+  static deserializeBinaryFromReader(message: QueryAuthorityResponse, reader: jspb.BinaryReader): QueryAuthorityResponse;
+}
+
+export namespace QueryAuthorityResponse {
+  export type AsObject = {
+    address: string,
   }
 }
 

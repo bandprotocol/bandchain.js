@@ -7,6 +7,7 @@ import * as cosmos_crypto_multisig_v1beta1_multisig_pb from "../../../cosmos/cry
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
 import * as cosmos_tx_signing_v1beta1_signing_pb from "../../../cosmos/tx/signing/v1beta1/signing_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 
 export class Tx extends jspb.Message {
   hasBody(): boolean;
@@ -116,6 +117,52 @@ export namespace SignDoc {
   }
 }
 
+export class SignDocDirectAux extends jspb.Message {
+  getBodyBytes(): Uint8Array | string;
+  getBodyBytes_asU8(): Uint8Array;
+  getBodyBytes_asB64(): string;
+  setBodyBytes(value: Uint8Array | string): void;
+
+  hasPublicKey(): boolean;
+  clearPublicKey(): void;
+  getPublicKey(): google_protobuf_any_pb.Any | undefined;
+  setPublicKey(value?: google_protobuf_any_pb.Any): void;
+
+  getChainId(): string;
+  setChainId(value: string): void;
+
+  getAccountNumber(): number;
+  setAccountNumber(value: number): void;
+
+  getSequence(): number;
+  setSequence(value: number): void;
+
+  hasTip(): boolean;
+  clearTip(): void;
+  getTip(): Tip | undefined;
+  setTip(value?: Tip): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignDocDirectAux.AsObject;
+  static toObject(includeInstance: boolean, msg: SignDocDirectAux): SignDocDirectAux.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SignDocDirectAux, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignDocDirectAux;
+  static deserializeBinaryFromReader(message: SignDocDirectAux, reader: jspb.BinaryReader): SignDocDirectAux;
+}
+
+export namespace SignDocDirectAux {
+  export type AsObject = {
+    bodyBytes: Uint8Array | string,
+    publicKey?: google_protobuf_any_pb.Any.AsObject,
+    chainId: string,
+    accountNumber: number,
+    sequence: number,
+    tip?: Tip.AsObject,
+  }
+}
+
 export class TxBody extends jspb.Message {
   clearMessagesList(): void;
   getMessagesList(): Array<google_protobuf_any_pb.Any>;
@@ -169,6 +216,11 @@ export class AuthInfo extends jspb.Message {
   getFee(): Fee | undefined;
   setFee(value?: Fee): void;
 
+  hasTip(): boolean;
+  clearTip(): void;
+  getTip(): Tip | undefined;
+  setTip(value?: Tip): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AuthInfo.AsObject;
   static toObject(includeInstance: boolean, msg: AuthInfo): AuthInfo.AsObject;
@@ -183,6 +235,7 @@ export namespace AuthInfo {
   export type AsObject = {
     signerInfosList: Array<SignerInfo.AsObject>,
     fee?: Fee.AsObject,
+    tip?: Tip.AsObject,
   }
 }
 
@@ -332,6 +385,68 @@ export namespace Fee {
     gasLimit: number,
     payer: string,
     granter: string,
+  }
+}
+
+export class Tip extends jspb.Message {
+  clearAmountList(): void;
+  getAmountList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setAmountList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addAmount(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
+  getTipper(): string;
+  setTipper(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Tip.AsObject;
+  static toObject(includeInstance: boolean, msg: Tip): Tip.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Tip, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Tip;
+  static deserializeBinaryFromReader(message: Tip, reader: jspb.BinaryReader): Tip;
+}
+
+export namespace Tip {
+  export type AsObject = {
+    amountList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
+    tipper: string,
+  }
+}
+
+export class AuxSignerData extends jspb.Message {
+  getAddress(): string;
+  setAddress(value: string): void;
+
+  hasSignDoc(): boolean;
+  clearSignDoc(): void;
+  getSignDoc(): SignDocDirectAux | undefined;
+  setSignDoc(value?: SignDocDirectAux): void;
+
+  getMode(): cosmos_tx_signing_v1beta1_signing_pb.SignModeMap[keyof cosmos_tx_signing_v1beta1_signing_pb.SignModeMap];
+  setMode(value: cosmos_tx_signing_v1beta1_signing_pb.SignModeMap[keyof cosmos_tx_signing_v1beta1_signing_pb.SignModeMap]): void;
+
+  getSig(): Uint8Array | string;
+  getSig_asU8(): Uint8Array;
+  getSig_asB64(): string;
+  setSig(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AuxSignerData.AsObject;
+  static toObject(includeInstance: boolean, msg: AuxSignerData): AuxSignerData.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: AuxSignerData, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AuxSignerData;
+  static deserializeBinaryFromReader(message: AuxSignerData, reader: jspb.BinaryReader): AuxSignerData;
+}
+
+export namespace AuxSignerData {
+  export type AsObject = {
+    address: string,
+    signDoc?: SignDocDirectAux.AsObject,
+    mode: cosmos_tx_signing_v1beta1_signing_pb.SignModeMap[keyof cosmos_tx_signing_v1beta1_signing_pb.SignModeMap],
+    sig: Uint8Array | string,
   }
 }
 

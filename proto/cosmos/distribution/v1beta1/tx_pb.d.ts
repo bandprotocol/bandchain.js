@@ -4,6 +4,10 @@
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
+import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
+import * as cosmos_distribution_v1beta1_distribution_pb from "../../../cosmos/distribution/v1beta1/distribution_pb";
 
 export class MsgSetWithdrawAddress extends jspb.Message {
   getDelegatorAddress(): string;
@@ -70,6 +74,11 @@ export namespace MsgWithdrawDelegatorReward {
 }
 
 export class MsgWithdrawDelegatorRewardResponse extends jspb.Message {
+  clearAmountList(): void;
+  getAmountList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setAmountList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addAmount(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MsgWithdrawDelegatorRewardResponse.AsObject;
   static toObject(includeInstance: boolean, msg: MsgWithdrawDelegatorRewardResponse): MsgWithdrawDelegatorRewardResponse.AsObject;
@@ -82,6 +91,7 @@ export class MsgWithdrawDelegatorRewardResponse extends jspb.Message {
 
 export namespace MsgWithdrawDelegatorRewardResponse {
   export type AsObject = {
+    amountList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
   }
 }
 
@@ -106,6 +116,11 @@ export namespace MsgWithdrawValidatorCommission {
 }
 
 export class MsgWithdrawValidatorCommissionResponse extends jspb.Message {
+  clearAmountList(): void;
+  getAmountList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setAmountList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addAmount(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MsgWithdrawValidatorCommissionResponse.AsObject;
   static toObject(includeInstance: boolean, msg: MsgWithdrawValidatorCommissionResponse): MsgWithdrawValidatorCommissionResponse.AsObject;
@@ -118,6 +133,7 @@ export class MsgWithdrawValidatorCommissionResponse extends jspb.Message {
 
 export namespace MsgWithdrawValidatorCommissionResponse {
   export type AsObject = {
+    amountList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
   }
 }
 
@@ -159,6 +175,94 @@ export class MsgFundCommunityPoolResponse extends jspb.Message {
 }
 
 export namespace MsgFundCommunityPoolResponse {
+  export type AsObject = {
+  }
+}
+
+export class MsgUpdateParams extends jspb.Message {
+  getAuthority(): string;
+  setAuthority(value: string): void;
+
+  hasParams(): boolean;
+  clearParams(): void;
+  getParams(): cosmos_distribution_v1beta1_distribution_pb.Params | undefined;
+  setParams(value?: cosmos_distribution_v1beta1_distribution_pb.Params): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateParams.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateParams): MsgUpdateParams.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgUpdateParams, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateParams;
+  static deserializeBinaryFromReader(message: MsgUpdateParams, reader: jspb.BinaryReader): MsgUpdateParams;
+}
+
+export namespace MsgUpdateParams {
+  export type AsObject = {
+    authority: string,
+    params?: cosmos_distribution_v1beta1_distribution_pb.Params.AsObject,
+  }
+}
+
+export class MsgUpdateParamsResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateParamsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateParamsResponse): MsgUpdateParamsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgUpdateParamsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateParamsResponse;
+  static deserializeBinaryFromReader(message: MsgUpdateParamsResponse, reader: jspb.BinaryReader): MsgUpdateParamsResponse;
+}
+
+export namespace MsgUpdateParamsResponse {
+  export type AsObject = {
+  }
+}
+
+export class MsgCommunityPoolSpend extends jspb.Message {
+  getAuthority(): string;
+  setAuthority(value: string): void;
+
+  getRecipient(): string;
+  setRecipient(value: string): void;
+
+  clearAmountList(): void;
+  getAmountList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setAmountList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addAmount(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgCommunityPoolSpend.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgCommunityPoolSpend): MsgCommunityPoolSpend.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgCommunityPoolSpend, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgCommunityPoolSpend;
+  static deserializeBinaryFromReader(message: MsgCommunityPoolSpend, reader: jspb.BinaryReader): MsgCommunityPoolSpend;
+}
+
+export namespace MsgCommunityPoolSpend {
+  export type AsObject = {
+    authority: string,
+    recipient: string,
+    amountList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
+  }
+}
+
+export class MsgCommunityPoolSpendResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgCommunityPoolSpendResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgCommunityPoolSpendResponse): MsgCommunityPoolSpendResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgCommunityPoolSpendResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgCommunityPoolSpendResponse;
+  static deserializeBinaryFromReader(message: MsgCommunityPoolSpendResponse, reader: jspb.BinaryReader): MsgCommunityPoolSpendResponse;
+}
+
+export namespace MsgCommunityPoolSpendResponse {
   export type AsObject = {
   }
 }

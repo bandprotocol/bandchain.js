@@ -58,6 +58,15 @@ type ServiceGetValidatorSetByHeight = {
   readonly responseType: typeof cosmos_base_tendermint_v1beta1_query_pb.GetValidatorSetByHeightResponse;
 };
 
+type ServiceABCIQuery = {
+  readonly methodName: string;
+  readonly service: typeof Service;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryRequest;
+  readonly responseType: typeof cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryResponse;
+};
+
 export class Service {
   static readonly serviceName: string;
   static readonly GetNodeInfo: ServiceGetNodeInfo;
@@ -66,6 +75,7 @@ export class Service {
   static readonly GetBlockByHeight: ServiceGetBlockByHeight;
   static readonly GetLatestValidatorSet: ServiceGetLatestValidatorSet;
   static readonly GetValidatorSetByHeight: ServiceGetValidatorSetByHeight;
+  static readonly ABCIQuery: ServiceABCIQuery;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -153,6 +163,15 @@ export class ServiceClient {
   getValidatorSetByHeight(
     requestMessage: cosmos_base_tendermint_v1beta1_query_pb.GetValidatorSetByHeightRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_base_tendermint_v1beta1_query_pb.GetValidatorSetByHeightResponse|null) => void
+  ): UnaryResponse;
+  aBCIQuery(
+    requestMessage: cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryResponse|null) => void
+  ): UnaryResponse;
+  aBCIQuery(
+    requestMessage: cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryResponse|null) => void
   ): UnaryResponse;
 }
 

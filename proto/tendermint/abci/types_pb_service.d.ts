@@ -31,15 +31,6 @@ type ABCIApplicationInfo = {
   readonly responseType: typeof tendermint_abci_types_pb.ResponseInfo;
 };
 
-type ABCIApplicationSetOption = {
-  readonly methodName: string;
-  readonly service: typeof ABCIApplication;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof tendermint_abci_types_pb.RequestSetOption;
-  readonly responseType: typeof tendermint_abci_types_pb.ResponseSetOption;
-};
-
 type ABCIApplicationDeliverTx = {
   readonly methodName: string;
   readonly service: typeof ABCIApplication;
@@ -139,12 +130,29 @@ type ABCIApplicationApplySnapshotChunk = {
   readonly responseType: typeof tendermint_abci_types_pb.ResponseApplySnapshotChunk;
 };
 
+type ABCIApplicationPrepareProposal = {
+  readonly methodName: string;
+  readonly service: typeof ABCIApplication;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof tendermint_abci_types_pb.RequestPrepareProposal;
+  readonly responseType: typeof tendermint_abci_types_pb.ResponsePrepareProposal;
+};
+
+type ABCIApplicationProcessProposal = {
+  readonly methodName: string;
+  readonly service: typeof ABCIApplication;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof tendermint_abci_types_pb.RequestProcessProposal;
+  readonly responseType: typeof tendermint_abci_types_pb.ResponseProcessProposal;
+};
+
 export class ABCIApplication {
   static readonly serviceName: string;
   static readonly Echo: ABCIApplicationEcho;
   static readonly Flush: ABCIApplicationFlush;
   static readonly Info: ABCIApplicationInfo;
-  static readonly SetOption: ABCIApplicationSetOption;
   static readonly DeliverTx: ABCIApplicationDeliverTx;
   static readonly CheckTx: ABCIApplicationCheckTx;
   static readonly Query: ABCIApplicationQuery;
@@ -156,6 +164,8 @@ export class ABCIApplication {
   static readonly OfferSnapshot: ABCIApplicationOfferSnapshot;
   static readonly LoadSnapshotChunk: ABCIApplicationLoadSnapshotChunk;
   static readonly ApplySnapshotChunk: ABCIApplicationApplySnapshotChunk;
+  static readonly PrepareProposal: ABCIApplicationPrepareProposal;
+  static readonly ProcessProposal: ABCIApplicationProcessProposal;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -217,15 +227,6 @@ export class ABCIApplicationClient {
     requestMessage: tendermint_abci_types_pb.RequestInfo,
     callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponseInfo|null) => void
   ): UnaryResponse;
-  setOption(
-    requestMessage: tendermint_abci_types_pb.RequestSetOption,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponseSetOption|null) => void
-  ): UnaryResponse;
-  setOption(
-    requestMessage: tendermint_abci_types_pb.RequestSetOption,
-    callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponseSetOption|null) => void
-  ): UnaryResponse;
   deliverTx(
     requestMessage: tendermint_abci_types_pb.RequestDeliverTx,
     metadata: grpc.Metadata,
@@ -324,6 +325,24 @@ export class ABCIApplicationClient {
   applySnapshotChunk(
     requestMessage: tendermint_abci_types_pb.RequestApplySnapshotChunk,
     callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponseApplySnapshotChunk|null) => void
+  ): UnaryResponse;
+  prepareProposal(
+    requestMessage: tendermint_abci_types_pb.RequestPrepareProposal,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponsePrepareProposal|null) => void
+  ): UnaryResponse;
+  prepareProposal(
+    requestMessage: tendermint_abci_types_pb.RequestPrepareProposal,
+    callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponsePrepareProposal|null) => void
+  ): UnaryResponse;
+  processProposal(
+    requestMessage: tendermint_abci_types_pb.RequestProcessProposal,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponseProcessProposal|null) => void
+  ): UnaryResponse;
+  processProposal(
+    requestMessage: tendermint_abci_types_pb.RequestProcessProposal,
+    callback: (error: ServiceError|null, responseMessage: tendermint_abci_types_pb.ResponseProcessProposal|null) => void
   ): UnaryResponse;
 }
 

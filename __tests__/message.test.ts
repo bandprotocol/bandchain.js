@@ -15,12 +15,19 @@ import {
   MsgCreateOracleScript,
   MsgEditOracleScript,
   MsgVoteCouncil,
+  MsgDeposit,
+  MsgSubmitProposal,
+  MsgSubmitCouncilProposal,
 } from '../src/message'
 import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
-import { VoteOption as VoteOptionCouncil } from '../proto/council/v1beta1/types_pb'
+import {
+  CouncilType,
+  VoteOption as VoteOptionCouncil,
+} from '../proto/council/v1beta1/types_pb'
 
 import fs from 'fs'
 import path from 'path'
+import { VetoProposal } from '../src/proposal'
 
 let coin = new Coin()
 coin.setDenom('uband')
@@ -54,7 +61,7 @@ describe('MsgRequest', () => {
   })
 
   it('create with error from validate()', () => {
-    let msgs = []
+    let msgs: MsgRequestData[] = []
     let errorText: string[] = []
     let coin1 = new Coin()
     coin1.setDenom('uband')
@@ -195,7 +202,7 @@ describe('MsgSend', () => {
   })
 
   it('error MsgSend', () => {
-    let msgs = []
+    let msgs: MsgSend[] = []
     let errorText: string[] = []
 
     msgs.push(
@@ -242,16 +249,9 @@ describe('MsgDelegate', () => {
   })
 
   it('error MsgDelegate', () => {
-    let msgs = []
+    let msgs: MsgDelegate[] = []
     let errorText: string[] = []
 
-    msgs.push(
-      new MsgDelegate(
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-        undefined,
-      ),
-    )
     msgs.push(
       new MsgDelegate(
         '',
@@ -263,7 +263,6 @@ describe('MsgDelegate', () => {
       new MsgDelegate('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c', '', coin),
     )
 
-    errorText.push('Expect at least 1 coin')
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
 
@@ -293,18 +292,11 @@ describe('MsgUndelegate', () => {
   })
 
   it('error MsgUndelegate', () => {
-    let msgs = []
+    let msgs: MsgUndelegate[] = []
     let errorText: string[] = []
 
     msgs.push(
       new MsgUndelegate(
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-        undefined,
-      ),
-    )
-    msgs.push(
-      new MsgUndelegate(
         '',
         'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
         coin,
@@ -318,7 +310,6 @@ describe('MsgUndelegate', () => {
       ),
     )
 
-    errorText.push('Expect at least 1 coin')
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
 
@@ -349,19 +340,11 @@ describe('MsgBeginRedelegate', () => {
   })
 
   it('error MsgBeginRedelegate', () => {
-    let msgs = []
+    let msgs: MsgBeginRedelegate[] = []
     let errorText: string[] = []
 
     msgs.push(
       new MsgBeginRedelegate(
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
-        'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
-        undefined,
-      ),
-    )
-    msgs.push(
-      new MsgBeginRedelegate(
         '',
         'bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst',
         'bandvaloper1kfj48adjsnrgu83lau6wc646q2uf65rf84tzus',
@@ -385,7 +368,6 @@ describe('MsgBeginRedelegate', () => {
       ),
     )
 
-    errorText.push('Expect at least 1 coin')
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
     errorText.push('Address should not be an empty string')
@@ -415,7 +397,7 @@ describe('MsgWithdrawDelegatorReward', () => {
   })
 
   it('error MsgWithdrawDelegatorReward', () => {
-    let msgs = []
+    let msgs: MsgWithdrawDelegatorReward[] = []
     let errorText: string[] = []
 
     msgs.push(
@@ -460,7 +442,7 @@ describe('MsgVote', () => {
   })
 
   it('error MsgVote', () => {
-    let msgs = []
+    let msgs: MsgVote[] = []
     let errorText: string[] = []
 
     msgs.push(
@@ -512,7 +494,7 @@ describe('MsgTransfer', () => {
   })
 
   it('error MsgTransfer', () => {
-    let msgs = []
+    let msgs: MsgTransfer[] = []
     let errorText: string[] = []
 
     msgs.push(
@@ -595,7 +577,7 @@ describe('MsgCreateDataSource', () => {
   })
 
   it('create with error from validate()', () => {
-    let msgs = []
+    let msgs: MsgCreateDataSource[] = []
     let errorText: string[] = []
     let coin1 = new Coin()
     coin1.setDenom('uband')
@@ -684,7 +666,6 @@ describe('MsgCreateDataSource', () => {
 
 describe('MsgEditDataSource', () => {
   const dataSourceId = 1
-  const dataSourceId2 = null
   const description = ''
   const ownerAddr = 'band1nm9ux8rmdpm20v90znav3hjrvxrvfachu7ym3d'
   const senderAddr = 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'
@@ -717,7 +698,7 @@ describe('MsgEditDataSource', () => {
   })
 
   it('create with error from validate()', () => {
-    let msgs = []
+    let msgs: MsgEditDataSource[] = []
     let errorText: string[] = []
     let coin1 = new Coin()
     coin1.setDenom('uband')
@@ -726,19 +707,6 @@ describe('MsgEditDataSource', () => {
     let coin2 = new Coin()
     coin2.setDenom('uband')
     coin2.setAmount('string')
-
-    // Data Source ID cannot be null
-    msgs.push(
-      new MsgEditDataSource(
-        dataSourceId2,
-        treasury,
-        ownerAddr,
-        senderAddr,
-        [coin2],
-        description,
-        executable,
-      ),
-    )
 
     // Fee list cannot be less than zero
     msgs.push(
@@ -764,7 +732,6 @@ describe('MsgEditDataSource', () => {
         executable,
       ),
     )
-    errorText.push('dataSourceId cannot be null')
     errorText.push('Fee cannot be less than zero')
     errorText.push('Invalid fee, fee list should be a number')
     errorText.push('owner should not be an empty string')
@@ -806,7 +773,7 @@ describe('MsgCreateOracleScript', () => {
   })
 
   it('create with error from validate()', () => {
-    let msgs = []
+    let msgs: MsgCreateOracleScript[] = []
     let errorText: string[] = []
 
     const execPathEmpty = path.resolve(
@@ -908,7 +875,7 @@ describe('MsgEditOracleScript', () => {
   })
 
   it('create with error from validate()', () => {
-    let msgs = []
+    let msgs: MsgEditOracleScript[] = []
     let errorText: string[] = []
 
     // owner should not be an empty string
@@ -949,7 +916,7 @@ describe('MsgEditOracleScript', () => {
 })
 
 describe('MsgVoteCouncil', () => {
-  it('create successfully', () => {
+  it('vote successfully', () => {
     const msgVote = new MsgVoteCouncil(
       1,
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -966,7 +933,7 @@ describe('MsgVoteCouncil', () => {
   })
 
   it('error MsgVote', () => {
-    let msgs = []
+    let msgs: MsgVoteCouncil[] = []
     let errorText: string[] = []
 
     msgs.push(
@@ -991,6 +958,188 @@ describe('MsgVoteCouncil', () => {
 
     msgs.forEach((msg, index) => {
       expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgDeposit', () => {
+  it('deposit successfully', () => {
+    const msgDeposit = new MsgDeposit(
+      1,
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      [coin],
+    )
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgDeposit'
+    anyMsg.pack(msgDeposit.serializeBinary(), name, '/')
+
+    expect(msgDeposit.toAny()).toEqual(anyMsg)
+
+    expect(() => msgDeposit.validate()).not.toThrow()
+  })
+
+  it('error MsgDeposit', () => {
+    let msgs = []
+    let errorText: string[] = []
+
+    msgs.push(
+      // @ts-ignore
+      new MsgDeposit(0, 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c', [coin]),
+    )
+    msgs.push(
+      // @ts-ignore
+      new MsgDeposit(1, '', [coin]),
+    )
+    msgs.push(
+      // @ts-ignore
+      new MsgDeposit(1, 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c', []),
+    )
+
+    errorText.push('proposalId cannot be less than zero')
+    errorText.push('depositor should not be an empty string')
+    errorText.push('Expect at least 1 coin')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        // @ts-ignore
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgSubmitProposal', () => {
+  it('submit proposal successfully', () => {
+    const msgSubmitProposal = new MsgSubmitProposal(
+      [coin],
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      new VetoProposal(1, 'title'),
+    )
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgSubmitProposal'
+    anyMsg.pack(msgSubmitProposal.serializeBinary(), name, '/')
+
+    expect(msgSubmitProposal.toAny()).toEqual(anyMsg)
+
+    expect(() => msgSubmitProposal.validate()).not.toThrow()
+  })
+
+  it('error MsgSubmitProposal', () => {
+    let msgs: MsgSubmitProposal[] = []
+    let errorText: string[] = []
+
+    msgs.push(
+      new MsgSubmitProposal([], 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
+    )
+    msgs.push(new MsgSubmitProposal([coin], ''))
+
+    errorText.push('Expect at least 1 coin')
+    errorText.push('proposer should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgSubmitCouncilProposal', () => {
+  it('submit council proposal successfully', () => {
+    const msgSubmitProposal = new MsgSubmitCouncilProposal(
+      'council proposal',
+      CouncilType.COUNCIL_TYPE_BAND_DAO,
+      [
+        new MsgSend(
+          'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+          'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+          [coin],
+        ),
+      ],
+      'test metadata',
+    )
+
+    const anyMsg = new Any()
+    const name = 'council.v1beta1.MsgSubmitProposal'
+    anyMsg.pack(msgSubmitProposal.serializeBinary(), name, '/')
+
+    expect(msgSubmitProposal.toAny()).toEqual(anyMsg)
+
+    expect(() => msgSubmitProposal.validate()).not.toThrow()
+  })
+
+  it('error MsgSubmitCouncilProposal', () => {
+    let msgs: MsgSubmitCouncilProposal[] = []
+    let errorText: string[] = []
+
+    // title should not be an empty string
+    msgs.push(
+      new MsgSubmitCouncilProposal(
+        '',
+        CouncilType.COUNCIL_TYPE_BAND_DAO,
+        [
+          new MsgSend(
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            [coin],
+          ),
+        ],
+        'test metadata',
+      ),
+    )
+
+    // council should not be COUNCIL_TYPE_UNSPECIFIED
+    msgs.push(
+      new MsgSubmitCouncilProposal(
+        'council proposal',
+        CouncilType.COUNCIL_TYPE_UNSPECIFIED,
+        [
+          new MsgSend(
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            [coin],
+          ),
+        ],
+        'test metadata',
+      ),
+    )
+
+    msgs.push(
+      new MsgSubmitCouncilProposal(
+        'council proposal',
+        CouncilType.COUNCIL_TYPE_BAND_DAO,
+        [],
+        'test metadata',
+      ),
+    )
+
+    msgs.push(
+      new MsgSubmitCouncilProposal(
+        'council proposal',
+        CouncilType.COUNCIL_TYPE_BAND_DAO,
+        [
+          new MsgSend(
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            [coin],
+          ),
+        ],
+        '',
+      ),
+    )
+
+    errorText.push('title should not be an empty string')
+    errorText.push('council should not be COUNCIL_TYPE_UNSPECIFIED')
+    errorText.push('messages should not be an empty string')
+    errorText.push('metadata should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        // @ts-ignore
         msg.validate()
       }).toThrowError(errorText[index])
     })

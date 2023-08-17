@@ -28,6 +28,15 @@ Query.Allowances = {
   responseType: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesResponse
 };
 
+Query.AllowancesByGranter = {
+  methodName: "AllowancesByGranter",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterRequest,
+  responseType: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterResponse
+};
+
 exports.Query = Query;
 
 function QueryClient(serviceHost, options) {
@@ -71,6 +80,37 @@ QueryClient.prototype.allowances = function allowances(requestMessage, metadata,
     callback = arguments[1];
   }
   var client = grpc.unary(Query.Allowances, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.allowancesByGranter = function allowancesByGranter(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.AllowancesByGranter, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

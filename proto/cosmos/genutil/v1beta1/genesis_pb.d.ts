@@ -3,6 +3,7 @@
 
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class GenesisState extends jspb.Message {
   clearGenTxsList(): void;

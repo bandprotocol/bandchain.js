@@ -64,6 +64,15 @@ Service.GetValidatorSetByHeight = {
   responseType: cosmos_base_tendermint_v1beta1_query_pb.GetValidatorSetByHeightResponse
 };
 
+Service.ABCIQuery = {
+  methodName: "ABCIQuery",
+  service: Service,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryRequest,
+  responseType: cosmos_base_tendermint_v1beta1_query_pb.ABCIQueryResponse
+};
+
 exports.Service = Service;
 
 function ServiceClient(serviceHost, options) {
@@ -231,6 +240,37 @@ ServiceClient.prototype.getValidatorSetByHeight = function getValidatorSetByHeig
     callback = arguments[1];
   }
   var client = grpc.unary(Service.GetValidatorSetByHeight, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+ServiceClient.prototype.aBCIQuery = function aBCIQuery(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Service.ABCIQuery, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

@@ -47,6 +47,11 @@ export class TxResponse extends jspb.Message {
   getTimestamp(): string;
   setTimestamp(value: string): void;
 
+  clearEventsList(): void;
+  getEventsList(): Array<tendermint_abci_types_pb.Event>;
+  setEventsList(value: Array<tendermint_abci_types_pb.Event>): void;
+  addEvents(value?: tendermint_abci_types_pb.Event, index?: number): tendermint_abci_types_pb.Event;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TxResponse.AsObject;
   static toObject(includeInstance: boolean, msg: TxResponse): TxResponse.AsObject;
@@ -71,6 +76,7 @@ export namespace TxResponse {
     gasUsed: number,
     tx?: google_protobuf_any_pb.Any.AsObject,
     timestamp: string,
+    eventsList: Array<tendermint_abci_types_pb.Event.AsObject>,
   }
 }
 
@@ -192,6 +198,11 @@ export class Result extends jspb.Message {
   setEventsList(value: Array<tendermint_abci_types_pb.Event>): void;
   addEvents(value?: tendermint_abci_types_pb.Event, index?: number): tendermint_abci_types_pb.Event;
 
+  clearMsgResponsesList(): void;
+  getMsgResponsesList(): Array<google_protobuf_any_pb.Any>;
+  setMsgResponsesList(value: Array<google_protobuf_any_pb.Any>): void;
+  addMsgResponses(value?: google_protobuf_any_pb.Any, index?: number): google_protobuf_any_pb.Any;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Result.AsObject;
   static toObject(includeInstance: boolean, msg: Result): Result.AsObject;
@@ -207,6 +218,7 @@ export namespace Result {
     data: Uint8Array | string,
     log: string,
     eventsList: Array<tendermint_abci_types_pb.Event.AsObject>,
+    msgResponsesList: Array<google_protobuf_any_pb.Any.AsObject>,
   }
 }
 
@@ -270,6 +282,11 @@ export class TxMsgData extends jspb.Message {
   setDataList(value: Array<MsgData>): void;
   addData(value?: MsgData, index?: number): MsgData;
 
+  clearMsgResponsesList(): void;
+  getMsgResponsesList(): Array<google_protobuf_any_pb.Any>;
+  setMsgResponsesList(value: Array<google_protobuf_any_pb.Any>): void;
+  addMsgResponses(value?: google_protobuf_any_pb.Any, index?: number): google_protobuf_any_pb.Any;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TxMsgData.AsObject;
   static toObject(includeInstance: boolean, msg: TxMsgData): TxMsgData.AsObject;
@@ -283,6 +300,7 @@ export class TxMsgData extends jspb.Message {
 export namespace TxMsgData {
   export type AsObject = {
     dataList: Array<MsgData.AsObject>,
+    msgResponsesList: Array<google_protobuf_any_pb.Any.AsObject>,
   }
 }
 

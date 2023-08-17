@@ -7,6 +7,8 @@ import * as cosmos_gov_v1beta1_gov_pb from "../../../cosmos/gov/v1beta1/gov_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
+import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class MsgSubmitProposal extends jspb.Message {
   hasContent(): boolean;

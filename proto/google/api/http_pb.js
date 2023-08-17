@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 goog.exportSymbol('proto.google.api.CustomHttpPattern', null, global);
 goog.exportSymbol('proto.google.api.Http', null, global);

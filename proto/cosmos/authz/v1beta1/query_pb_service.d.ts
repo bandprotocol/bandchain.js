@@ -13,9 +13,29 @@ type QueryGrants = {
   readonly responseType: typeof cosmos_authz_v1beta1_query_pb.QueryGrantsResponse;
 };
 
+type QueryGranterGrants = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_authz_v1beta1_query_pb.QueryGranterGrantsRequest;
+  readonly responseType: typeof cosmos_authz_v1beta1_query_pb.QueryGranterGrantsResponse;
+};
+
+type QueryGranteeGrants = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsRequest;
+  readonly responseType: typeof cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsResponse;
+};
+
 export class Query {
   static readonly serviceName: string;
   static readonly Grants: QueryGrants;
+  static readonly GranterGrants: QueryGranterGrants;
+  static readonly GranteeGrants: QueryGranteeGrants;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -58,6 +78,24 @@ export class QueryClient {
   grants(
     requestMessage: cosmos_authz_v1beta1_query_pb.QueryGrantsRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_authz_v1beta1_query_pb.QueryGrantsResponse|null) => void
+  ): UnaryResponse;
+  granterGrants(
+    requestMessage: cosmos_authz_v1beta1_query_pb.QueryGranterGrantsRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_authz_v1beta1_query_pb.QueryGranterGrantsResponse|null) => void
+  ): UnaryResponse;
+  granterGrants(
+    requestMessage: cosmos_authz_v1beta1_query_pb.QueryGranterGrantsRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_authz_v1beta1_query_pb.QueryGranterGrantsResponse|null) => void
+  ): UnaryResponse;
+  granteeGrants(
+    requestMessage: cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsResponse|null) => void
+  ): UnaryResponse;
+  granteeGrants(
+    requestMessage: cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsResponse|null) => void
   ): UnaryResponse;
 }
 

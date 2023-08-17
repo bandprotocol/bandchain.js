@@ -5,6 +5,7 @@ import * as jspb from "google-protobuf";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as cosmos_auth_v1beta1_auth_pb from "../../../cosmos/auth/v1beta1/auth_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class GenesisState extends jspb.Message {
   hasParams(): boolean;

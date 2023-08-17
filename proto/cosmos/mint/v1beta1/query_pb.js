@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
@@ -21,6 +21,8 @@ var google_api_annotations_pb = require('../../../google/api/annotations_pb.js')
 goog.object.extend(proto, google_api_annotations_pb);
 var cosmos_mint_v1beta1_mint_pb = require('../../../cosmos/mint/v1beta1/mint_pb.js');
 goog.object.extend(proto, cosmos_mint_v1beta1_mint_pb);
+var amino_amino_pb = require('../../../amino/amino_pb.js');
+goog.object.extend(proto, amino_amino_pb);
 goog.exportSymbol('proto.cosmos.mint.v1beta1.QueryAnnualProvisionsRequest', null, global);
 goog.exportSymbol('proto.cosmos.mint.v1beta1.QueryAnnualProvisionsResponse', null, global);
 goog.exportSymbol('proto.cosmos.mint.v1beta1.QueryInflationRequest', null, global);

@@ -13,6 +13,9 @@ export class QueryEvidenceRequest extends jspb.Message {
   getEvidenceHash_asB64(): string;
   setEvidenceHash(value: Uint8Array | string): void;
 
+  getHash(): string;
+  setHash(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryEvidenceRequest.AsObject;
   static toObject(includeInstance: boolean, msg: QueryEvidenceRequest): QueryEvidenceRequest.AsObject;
@@ -26,6 +29,7 @@ export class QueryEvidenceRequest extends jspb.Message {
 export namespace QueryEvidenceRequest {
   export type AsObject = {
     evidenceHash: Uint8Array | string,
+    hash: string,
   }
 }
 

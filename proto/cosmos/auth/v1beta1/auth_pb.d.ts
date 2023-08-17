@@ -2,6 +2,7 @@
 // file: cosmos/auth/v1beta1/auth.proto
 
 import * as jspb from "google-protobuf";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
@@ -69,6 +70,34 @@ export namespace ModuleAccount {
     baseAccount?: BaseAccount.AsObject,
     name: string,
     permissionsList: Array<string>,
+  }
+}
+
+export class ModuleCredential extends jspb.Message {
+  getModuleName(): string;
+  setModuleName(value: string): void;
+
+  clearDerivationKeysList(): void;
+  getDerivationKeysList(): Array<Uint8Array | string>;
+  getDerivationKeysList_asU8(): Array<Uint8Array>;
+  getDerivationKeysList_asB64(): Array<string>;
+  setDerivationKeysList(value: Array<Uint8Array | string>): void;
+  addDerivationKeys(value: Uint8Array | string, index?: number): Uint8Array | string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ModuleCredential.AsObject;
+  static toObject(includeInstance: boolean, msg: ModuleCredential): ModuleCredential.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ModuleCredential, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ModuleCredential;
+  static deserializeBinaryFromReader(message: ModuleCredential, reader: jspb.BinaryReader): ModuleCredential;
+}
+
+export namespace ModuleCredential {
+  export type AsObject = {
+    moduleName: string,
+    derivationKeysList: Array<Uint8Array | string>,
   }
 }
 

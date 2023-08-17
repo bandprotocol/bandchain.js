@@ -2,6 +2,7 @@
 // file: cosmos/crypto/ed25519/keys.proto
 
 import * as jspb from "google-protobuf";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 
 export class PubKey extends jspb.Message {

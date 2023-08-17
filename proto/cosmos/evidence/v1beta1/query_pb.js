@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
 goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
@@ -143,7 +143,8 @@ proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.prototype.toObject = function
  */
 proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    evidenceHash: msg.getEvidenceHash_asB64()
+    evidenceHash: msg.getEvidenceHash_asB64(),
+    hash: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -184,6 +185,10 @@ proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.deserializeBinaryFromReader =
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setEvidenceHash(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHash(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -217,6 +222,13 @@ proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.serializeBinaryToWriter = fun
   if (f.length > 0) {
     writer.writeBytes(
       1,
+      f
+    );
+  }
+  f = message.getHash();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
       f
     );
   }
@@ -262,6 +274,24 @@ proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.prototype.getEvidenceHash_asU
  */
 proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.prototype.setEvidenceHash = function(value) {
   return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional string hash = 2;
+ * @return {string}
+ */
+proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.prototype.getHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cosmos.evidence.v1beta1.QueryEvidenceRequest} returns this
+ */
+proto.cosmos.evidence.v1beta1.QueryEvidenceRequest.prototype.setHash = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

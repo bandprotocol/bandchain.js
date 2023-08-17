@@ -40,12 +40,62 @@ type ServiceGetTxsEvent = {
   readonly responseType: typeof cosmos_tx_v1beta1_service_pb.GetTxsEventResponse;
 };
 
+type ServiceGetBlockWithTxs = {
+  readonly methodName: string;
+  readonly service: typeof Service;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_tx_v1beta1_service_pb.GetBlockWithTxsRequest;
+  readonly responseType: typeof cosmos_tx_v1beta1_service_pb.GetBlockWithTxsResponse;
+};
+
+type ServiceTxDecode = {
+  readonly methodName: string;
+  readonly service: typeof Service;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_tx_v1beta1_service_pb.TxDecodeRequest;
+  readonly responseType: typeof cosmos_tx_v1beta1_service_pb.TxDecodeResponse;
+};
+
+type ServiceTxEncode = {
+  readonly methodName: string;
+  readonly service: typeof Service;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_tx_v1beta1_service_pb.TxEncodeRequest;
+  readonly responseType: typeof cosmos_tx_v1beta1_service_pb.TxEncodeResponse;
+};
+
+type ServiceTxEncodeAmino = {
+  readonly methodName: string;
+  readonly service: typeof Service;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_tx_v1beta1_service_pb.TxEncodeAminoRequest;
+  readonly responseType: typeof cosmos_tx_v1beta1_service_pb.TxEncodeAminoResponse;
+};
+
+type ServiceTxDecodeAmino = {
+  readonly methodName: string;
+  readonly service: typeof Service;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_tx_v1beta1_service_pb.TxDecodeAminoRequest;
+  readonly responseType: typeof cosmos_tx_v1beta1_service_pb.TxDecodeAminoResponse;
+};
+
 export class Service {
   static readonly serviceName: string;
   static readonly Simulate: ServiceSimulate;
   static readonly GetTx: ServiceGetTx;
   static readonly BroadcastTx: ServiceBroadcastTx;
   static readonly GetTxsEvent: ServiceGetTxsEvent;
+  static readonly GetBlockWithTxs: ServiceGetBlockWithTxs;
+  static readonly TxDecode: ServiceTxDecode;
+  static readonly TxEncode: ServiceTxEncode;
+  static readonly TxEncodeAmino: ServiceTxEncodeAmino;
+  static readonly TxDecodeAmino: ServiceTxDecodeAmino;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -115,6 +165,51 @@ export class ServiceClient {
   getTxsEvent(
     requestMessage: cosmos_tx_v1beta1_service_pb.GetTxsEventRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.GetTxsEventResponse|null) => void
+  ): UnaryResponse;
+  getBlockWithTxs(
+    requestMessage: cosmos_tx_v1beta1_service_pb.GetBlockWithTxsRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.GetBlockWithTxsResponse|null) => void
+  ): UnaryResponse;
+  getBlockWithTxs(
+    requestMessage: cosmos_tx_v1beta1_service_pb.GetBlockWithTxsRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.GetBlockWithTxsResponse|null) => void
+  ): UnaryResponse;
+  txDecode(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxDecodeRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxDecodeResponse|null) => void
+  ): UnaryResponse;
+  txDecode(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxDecodeRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxDecodeResponse|null) => void
+  ): UnaryResponse;
+  txEncode(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxEncodeRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxEncodeResponse|null) => void
+  ): UnaryResponse;
+  txEncode(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxEncodeRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxEncodeResponse|null) => void
+  ): UnaryResponse;
+  txEncodeAmino(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxEncodeAminoRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxEncodeAminoResponse|null) => void
+  ): UnaryResponse;
+  txEncodeAmino(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxEncodeAminoRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxEncodeAminoResponse|null) => void
+  ): UnaryResponse;
+  txDecodeAmino(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxDecodeAminoRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxDecodeAminoResponse|null) => void
+  ): UnaryResponse;
+  txDecodeAmino(
+    requestMessage: cosmos_tx_v1beta1_service_pb.TxDecodeAminoRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_tx_v1beta1_service_pb.TxDecodeAminoResponse|null) => void
   ): UnaryResponse;
 }
 

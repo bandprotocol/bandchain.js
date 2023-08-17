@@ -2,6 +2,7 @@
 // file: cosmos/authz/v1beta1/event.proto
 
 import * as jspb from "google-protobuf";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 
 export class EventGrant extends jspb.Message {
   getMsgTypeUrl(): string;

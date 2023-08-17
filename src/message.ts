@@ -2,44 +2,51 @@ import { Any } from 'google-protobuf/google/protobuf/any_pb'
 
 import { MAX_DATA_SIZE } from './constant'
 import {
-  NegativeIntegerError,
-  ValueTooLargeError,
-  NotIntegerError,
   InsufficientCoinError,
+  NegativeIntegerError,
+  NotIntegerError,
   ValueError,
+  ValueTooLargeError,
 } from './error'
 
-import {
-  MsgRequestData as MsgRequestDataProto,
-  MsgCreateDataSource as MsgCreateDataSourceProto,
-  MsgEditDataSource as MsgEditDataSourceProto,
-  MsgCreateOracleScript as MsgCreateOracleScriptProto,
-  MsgEditOracleScript as MsgEditOracleScriptProto,
-} from '../proto/oracle/v1/tx_pb'
 import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
-import {
-  MsgDelegate as MsgDelegateProto,
-  MsgUndelegate as MsgUndelegateProto,
-  MsgBeginRedelegate as MsgBeginRedelegateProto,
-} from '../proto/cosmos/staking/v1beta1/tx_pb'
+import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../proto/cosmos/distribution/v1beta1/tx_pb'
 import {
+  Deposit as MsgDepositProto,
   Vote as MsgVoteProto,
   VoteOption,
   VoteOptionMap,
 } from '../proto/cosmos/gov/v1beta1/gov_pb'
-import { MsgTransfer as MsgTransferProto } from '../proto/ibc/applications/transfer/v1/tx_pb'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+import {
+  MsgBeginRedelegate as MsgBeginRedelegateProto,
+  MsgDelegate as MsgDelegateProto,
+  MsgUndelegate as MsgUndelegateProto,
+} from '../proto/cosmos/staking/v1beta1/tx_pb'
 import { MsgVote as MsgVoteCouncilProto } from '../proto/council/v1beta1/tx_pb'
-import { VoteOption as VoteOptionCouncilProto } from '../proto/council/v1beta1/types_pb'
+import {
+  VoteOption as VoteOptionCouncil,
+  VoteOptionMap as VoteOptionMapCouncil,
+} from '../proto/council/v1beta1/types_pb'
+import { MsgTransfer as MsgTransferProto } from '../proto/ibc/applications/transfer/v1/tx_pb'
+import {
+  MsgCreateDataSource as MsgCreateDataSourceProto,
+  MsgCreateOracleScript as MsgCreateOracleScriptProto,
+  MsgEditDataSource as MsgEditDataSourceProto,
+  MsgEditOracleScript as MsgEditOracleScriptProto,
+  MsgRequestData as MsgRequestDataProto,
+} from '../proto/oracle/v1/tx_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
+import { MsgSubmitProposal as MsgSubmitProposalProto } from '../proto/cosmos/gov/v1beta1/tx_pb'
+import { MsgSubmitProposal as MsgSubmitCouncilProposalProto } from '../proto/council/v1beta1/tx_pb'
+import { CouncilType, CouncilTypeMap } from '../proto/council/v1beta1/types_pb'
+import { Proposal } from 'proposal'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
   toAny(): Any
 }
-
 export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
   constructor(
     oracleScriptId: number,
@@ -689,11 +696,127 @@ export class MsgEditOracleScript
   }
 }
 
+export class MsgSubmitProposal
+  extends MsgSubmitProposalProto
+  implements BaseMsg
+{
+  constructor(
+    initialDepositList: Coin[],
+    proposer: string,
+    content?: Proposal.Content,
+  ) {
+    super()
+    this.setInitialDepositList(initialDepositList)
+    this.setProposer(proposer)
+
+    if (content) {
+      this.setContent(content.toAny())
+    }
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgSubmitProposal'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgSubmitProposal',
+      value: {
+        proposer: this.getProposer(),
+        initial_deposit: this.getInitialDepositList().map((coin) =>
+          coin.toObject(),
+        ),
+        content: this.getContent()?.toObject(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getInitialDepositList().length === 0) {
+      throw new InsufficientCoinError('Expect at least 1 coin')
+    }
+    if (this.getProposer() === '') {
+      throw new ValueError('proposer should not be an empty string')
+    }
+    if (this.hasContent()) {
+      if (this.getContent().getTypeUrl() === '') {
+        throw new ValueError('typeUrl should not be an empty string')
+      }
+      if (this.getContent().getValue_asU8().length === 0) {
+        throw new ValueError('value should not be an empty string')
+      }
+    }
+  }
+}
+
+export class MsgSubmitCouncilProposal
+  extends MsgSubmitCouncilProposalProto
+  implements BaseMsg
+{
+  constructor(
+    title: string,
+    council: CouncilTypeMap[keyof CouncilTypeMap],
+    messagesList: Array<BaseMsg>,
+    metadata: string,
+  ) {
+    super()
+    this.setTitle(title)
+    this.setCouncil(council)
+    this.setMessagesList(
+      messagesList.map((msg) => {
+        return msg.toAny()
+      }),
+    )
+    this.setMetadata(metadata)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'council.v1beta1.MsgSubmitProposal'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'council/MsgSubmitProposal',
+      value: {
+        title: this.getTitle(),
+        council: this.getCouncil(),
+        messages: this.getMessagesList().map((msg) => msg.toObject()),
+        metadata: this.getMetadata(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getCouncil() == CouncilType.COUNCIL_TYPE_UNSPECIFIED) {
+      throw new ValueError('council should not be COUNCIL_TYPE_UNSPECIFIED')
+    }
+    if (this.getTitle() === '') {
+      throw new ValueError('title should not be an empty string')
+    }
+    if (this.getMessagesList().length === 0) {
+      throw new ValueError('messages should not be an empty string')
+    }
+    if (this.getMetadata() === '') {
+      throw new ValueError('metadata should not be an empty string')
+    }
+  }
+}
+
 export class MsgVoteCouncil extends MsgVoteCouncilProto implements BaseMsg {
   constructor(
     proposalId: number,
     voter: string,
-    option: VoteOptionCouncilProto,
+    option: VoteOptionMapCouncil[keyof VoteOptionMapCouncil],
   ) {
     super()
     this.setProposalId(proposalId)
@@ -728,8 +851,49 @@ export class MsgVoteCouncil extends MsgVoteCouncilProto implements BaseMsg {
     if (this.getVoter() === '') {
       throw new ValueError('Address should not be an empty string')
     }
-    if (this.getOption() === VoteOptionCouncilProto.VOTE_OPTION_UNSPECIFIED) {
+    if (this.getOption() === VoteOptionCouncil.VOTE_OPTION_UNSPECIFIED) {
       throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
+    }
+  }
+}
+
+export class MsgDeposit extends MsgDepositProto implements BaseMsg {
+  constructor(proposalId: number, depositor: string, amountList: Coin[]) {
+    super()
+    this.setProposalId(proposalId)
+    this.setDepositor(depositor)
+    this.setAmountList(amountList)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgDeposit'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/MsgDeposit',
+      value: {
+        proposal_id: this.getProposalId().toString(),
+        depositor: this.getDepositor(),
+        amount: this.getAmountList().map((coin) => coin.toObject()),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getProposalId() <= 0) {
+      throw new NegativeIntegerError('proposalId cannot be less than zero')
+    }
+    if (this.getAmountList().length === 0) {
+      throw new InsufficientCoinError('Expect at least 1 coin')
+    }
+    if (this.getDepositor() === '') {
+      throw new ValueError('depositor should not be an empty string')
     }
   }
 }

@@ -6,9 +6,12 @@ import * as gogoproto_gogo_pb from "../../../../gogoproto/gogo_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as google_api_annotations_pb from "../../../../google/api/annotations_pb";
 import * as tendermint_p2p_types_pb from "../../../../tendermint/p2p/types_pb";
-import * as tendermint_types_block_pb from "../../../../tendermint/types/block_pb";
 import * as tendermint_types_types_pb from "../../../../tendermint/types/types_pb";
 import * as cosmos_base_query_v1beta1_pagination_pb from "../../../../cosmos/base/query/v1beta1/pagination_pb";
+import * as cosmos_base_tendermint_v1beta1_types_pb from "../../../../cosmos/base/tendermint/v1beta1/types_pb";
+import * as cosmos_proto_cosmos_pb from "../../../../cosmos_proto/cosmos_pb";
+import * as tendermint_types_block_pb from "../../../../tendermint/types/block_pb";
+import * as amino_amino_pb from "../../../../amino/amino_pb";
 
 export class GetValidatorSetByHeightRequest extends jspb.Message {
   getHeight(): number;
@@ -187,6 +190,11 @@ export class GetBlockByHeightResponse extends jspb.Message {
   getBlock(): tendermint_types_block_pb.Block | undefined;
   setBlock(value?: tendermint_types_block_pb.Block): void;
 
+  hasSdkBlock(): boolean;
+  clearSdkBlock(): void;
+  getSdkBlock(): cosmos_base_tendermint_v1beta1_types_pb.Block | undefined;
+  setSdkBlock(value?: cosmos_base_tendermint_v1beta1_types_pb.Block): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetBlockByHeightResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetBlockByHeightResponse): GetBlockByHeightResponse.AsObject;
@@ -201,6 +209,7 @@ export namespace GetBlockByHeightResponse {
   export type AsObject = {
     blockId?: tendermint_types_types_pb.BlockID.AsObject,
     block?: tendermint_types_block_pb.Block.AsObject,
+    sdkBlock?: cosmos_base_tendermint_v1beta1_types_pb.Block.AsObject,
   }
 }
 
@@ -231,6 +240,11 @@ export class GetLatestBlockResponse extends jspb.Message {
   getBlock(): tendermint_types_block_pb.Block | undefined;
   setBlock(value?: tendermint_types_block_pb.Block): void;
 
+  hasSdkBlock(): boolean;
+  clearSdkBlock(): void;
+  getSdkBlock(): cosmos_base_tendermint_v1beta1_types_pb.Block | undefined;
+  setSdkBlock(value?: cosmos_base_tendermint_v1beta1_types_pb.Block): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetLatestBlockResponse.AsObject;
   static toObject(includeInstance: boolean, msg: GetLatestBlockResponse): GetLatestBlockResponse.AsObject;
@@ -245,6 +259,7 @@ export namespace GetLatestBlockResponse {
   export type AsObject = {
     blockId?: tendermint_types_types_pb.BlockID.AsObject,
     block?: tendermint_types_block_pb.Block.AsObject,
+    sdkBlock?: cosmos_base_tendermint_v1beta1_types_pb.Block.AsObject,
   }
 }
 
@@ -403,6 +418,152 @@ export namespace Module {
     path: string,
     version: string,
     sum: string,
+  }
+}
+
+export class ABCIQueryRequest extends jspb.Message {
+  getData(): Uint8Array | string;
+  getData_asU8(): Uint8Array;
+  getData_asB64(): string;
+  setData(value: Uint8Array | string): void;
+
+  getPath(): string;
+  setPath(value: string): void;
+
+  getHeight(): number;
+  setHeight(value: number): void;
+
+  getProve(): boolean;
+  setProve(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ABCIQueryRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ABCIQueryRequest): ABCIQueryRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ABCIQueryRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ABCIQueryRequest;
+  static deserializeBinaryFromReader(message: ABCIQueryRequest, reader: jspb.BinaryReader): ABCIQueryRequest;
+}
+
+export namespace ABCIQueryRequest {
+  export type AsObject = {
+    data: Uint8Array | string,
+    path: string,
+    height: number,
+    prove: boolean,
+  }
+}
+
+export class ABCIQueryResponse extends jspb.Message {
+  getCode(): number;
+  setCode(value: number): void;
+
+  getLog(): string;
+  setLog(value: string): void;
+
+  getInfo(): string;
+  setInfo(value: string): void;
+
+  getIndex(): number;
+  setIndex(value: number): void;
+
+  getKey(): Uint8Array | string;
+  getKey_asU8(): Uint8Array;
+  getKey_asB64(): string;
+  setKey(value: Uint8Array | string): void;
+
+  getValue(): Uint8Array | string;
+  getValue_asU8(): Uint8Array;
+  getValue_asB64(): string;
+  setValue(value: Uint8Array | string): void;
+
+  hasProofOps(): boolean;
+  clearProofOps(): void;
+  getProofOps(): ProofOps | undefined;
+  setProofOps(value?: ProofOps): void;
+
+  getHeight(): number;
+  setHeight(value: number): void;
+
+  getCodespace(): string;
+  setCodespace(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ABCIQueryResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ABCIQueryResponse): ABCIQueryResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ABCIQueryResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ABCIQueryResponse;
+  static deserializeBinaryFromReader(message: ABCIQueryResponse, reader: jspb.BinaryReader): ABCIQueryResponse;
+}
+
+export namespace ABCIQueryResponse {
+  export type AsObject = {
+    code: number,
+    log: string,
+    info: string,
+    index: number,
+    key: Uint8Array | string,
+    value: Uint8Array | string,
+    proofOps?: ProofOps.AsObject,
+    height: number,
+    codespace: string,
+  }
+}
+
+export class ProofOp extends jspb.Message {
+  getType(): string;
+  setType(value: string): void;
+
+  getKey(): Uint8Array | string;
+  getKey_asU8(): Uint8Array;
+  getKey_asB64(): string;
+  setKey(value: Uint8Array | string): void;
+
+  getData(): Uint8Array | string;
+  getData_asU8(): Uint8Array;
+  getData_asB64(): string;
+  setData(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProofOp.AsObject;
+  static toObject(includeInstance: boolean, msg: ProofOp): ProofOp.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ProofOp, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProofOp;
+  static deserializeBinaryFromReader(message: ProofOp, reader: jspb.BinaryReader): ProofOp;
+}
+
+export namespace ProofOp {
+  export type AsObject = {
+    type: string,
+    key: Uint8Array | string,
+    data: Uint8Array | string,
+  }
+}
+
+export class ProofOps extends jspb.Message {
+  clearOpsList(): void;
+  getOpsList(): Array<ProofOp>;
+  setOpsList(value: Array<ProofOp>): void;
+  addOps(value?: ProofOp, index?: number): ProofOp;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProofOps.AsObject;
+  static toObject(includeInstance: boolean, msg: ProofOps): ProofOps.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ProofOps, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProofOps;
+  static deserializeBinaryFromReader(message: ProofOps, reader: jspb.BinaryReader): ProofOps;
+}
+
+export namespace ProofOps {
+  export type AsObject = {
+    opsList: Array<ProofOp.AsObject>,
   }
 }
 
