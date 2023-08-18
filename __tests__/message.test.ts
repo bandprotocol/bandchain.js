@@ -1053,6 +1053,7 @@ describe('MsgSubmitCouncilProposal', () => {
     const msgSubmitProposal = new MsgSubmitCouncilProposal(
       'council proposal',
       CouncilType.COUNCIL_TYPE_BAND_DAO,
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       [
         new MsgSend(
           'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -1081,6 +1082,7 @@ describe('MsgSubmitCouncilProposal', () => {
       new MsgSubmitCouncilProposal(
         '',
         CouncilType.COUNCIL_TYPE_BAND_DAO,
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
         [
           new MsgSend(
             'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -1097,6 +1099,7 @@ describe('MsgSubmitCouncilProposal', () => {
       new MsgSubmitCouncilProposal(
         'council proposal',
         CouncilType.COUNCIL_TYPE_UNSPECIFIED,
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
         [
           new MsgSend(
             'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -1112,6 +1115,7 @@ describe('MsgSubmitCouncilProposal', () => {
       new MsgSubmitCouncilProposal(
         'council proposal',
         CouncilType.COUNCIL_TYPE_BAND_DAO,
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
         [],
         'test metadata',
       ),
@@ -1121,6 +1125,7 @@ describe('MsgSubmitCouncilProposal', () => {
       new MsgSubmitCouncilProposal(
         'council proposal',
         CouncilType.COUNCIL_TYPE_BAND_DAO,
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
         [
           new MsgSend(
             'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
@@ -1132,10 +1137,27 @@ describe('MsgSubmitCouncilProposal', () => {
       ),
     )
 
+    msgs.push(
+      new MsgSubmitCouncilProposal(
+        'council proposal',
+        CouncilType.COUNCIL_TYPE_BAND_DAO,
+        '',
+        [
+          new MsgSend(
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+            [coin],
+          ),
+        ],
+        'meta',
+      ),
+    )
+
     errorText.push('title should not be an empty string')
     errorText.push('council should not be COUNCIL_TYPE_UNSPECIFIED')
     errorText.push('messages should not be an empty string')
     errorText.push('metadata should not be an empty string')
+    errorText.push('proposer should not be an empty string')
 
     msgs.forEach((msg, index) => {
       expect(() => {

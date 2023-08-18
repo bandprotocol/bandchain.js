@@ -761,6 +761,7 @@ export class MsgSubmitCouncilProposal
   constructor(
     title: string,
     council: CouncilTypeMap[keyof CouncilTypeMap],
+    proposer: string,
     messagesList: Array<BaseMsg>,
     metadata: string,
   ) {
@@ -772,6 +773,7 @@ export class MsgSubmitCouncilProposal
         return msg.toAny()
       }),
     )
+    this.setProposer(proposer)
     this.setMetadata(metadata)
   }
 
@@ -808,6 +810,9 @@ export class MsgSubmitCouncilProposal
     }
     if (this.getMetadata() === '') {
       throw new ValueError('metadata should not be an empty string')
+    }
+    if (this.getProposer() === '') {
+      throw new ValueError('proposer should not be an empty string')
     }
   }
 }
