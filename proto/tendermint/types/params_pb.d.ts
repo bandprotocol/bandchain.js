@@ -52,9 +52,6 @@ export class BlockParams extends jspb.Message {
   getMaxGas(): number;
   setMaxGas(value: number): void;
 
-  getTimeIotaMs(): number;
-  setTimeIotaMs(value: number): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): BlockParams.AsObject;
   static toObject(includeInstance: boolean, msg: BlockParams): BlockParams.AsObject;
@@ -69,7 +66,6 @@ export namespace BlockParams {
   export type AsObject = {
     maxBytes: number,
     maxGas: number,
-    timeIotaMs: number,
   }
 }
 
@@ -126,8 +122,8 @@ export namespace ValidatorParams {
 }
 
 export class VersionParams extends jspb.Message {
-  getAppVersion(): number;
-  setAppVersion(value: number): void;
+  getApp(): number;
+  setApp(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VersionParams.AsObject;
@@ -141,7 +137,7 @@ export class VersionParams extends jspb.Message {
 
 export namespace VersionParams {
   export type AsObject = {
-    appVersion: number,
+    app: number,
   }
 }
 

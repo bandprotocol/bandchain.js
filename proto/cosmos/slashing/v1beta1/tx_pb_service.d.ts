@@ -13,9 +13,19 @@ type MsgUnjail = {
   readonly responseType: typeof cosmos_slashing_v1beta1_tx_pb.MsgUnjailResponse;
 };
 
+type MsgUpdateParams = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_slashing_v1beta1_tx_pb.MsgUpdateParams;
+  readonly responseType: typeof cosmos_slashing_v1beta1_tx_pb.MsgUpdateParamsResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly Unjail: MsgUnjail;
+  static readonly UpdateParams: MsgUpdateParams;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -58,6 +68,15 @@ export class MsgClient {
   unjail(
     requestMessage: cosmos_slashing_v1beta1_tx_pb.MsgUnjail,
     callback: (error: ServiceError|null, responseMessage: cosmos_slashing_v1beta1_tx_pb.MsgUnjailResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_slashing_v1beta1_tx_pb.MsgUpdateParams,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_slashing_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_slashing_v1beta1_tx_pb.MsgUpdateParams,
+    callback: (error: ServiceError|null, responseMessage: cosmos_slashing_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
   ): UnaryResponse;
 }
 

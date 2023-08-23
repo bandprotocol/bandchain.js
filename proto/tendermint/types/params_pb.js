@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
@@ -488,8 +488,7 @@ proto.tendermint.types.BlockParams.prototype.toObject = function(opt_includeInst
 proto.tendermint.types.BlockParams.toObject = function(includeInstance, msg) {
   var f, obj = {
     maxBytes: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    maxGas: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    timeIotaMs: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    maxGas: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -534,10 +533,6 @@ proto.tendermint.types.BlockParams.deserializeBinaryFromReader = function(msg, r
       var value = /** @type {number} */ (reader.readInt64());
       msg.setMaxGas(value);
       break;
-    case 3:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setTimeIotaMs(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -581,13 +576,6 @@ proto.tendermint.types.BlockParams.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getTimeIotaMs();
-  if (f !== 0) {
-    writer.writeInt64(
-      3,
-      f
-    );
-  }
 };
 
 
@@ -624,24 +612,6 @@ proto.tendermint.types.BlockParams.prototype.getMaxGas = function() {
  */
 proto.tendermint.types.BlockParams.prototype.setMaxGas = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
-};
-
-
-/**
- * optional int64 time_iota_ms = 3;
- * @return {number}
- */
-proto.tendermint.types.BlockParams.prototype.getTimeIotaMs = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.tendermint.types.BlockParams} returns this
- */
-proto.tendermint.types.BlockParams.prototype.setTimeIotaMs = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -1044,7 +1014,7 @@ proto.tendermint.types.VersionParams.prototype.toObject = function(opt_includeIn
  */
 proto.tendermint.types.VersionParams.toObject = function(includeInstance, msg) {
   var f, obj = {
-    appVersion: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    app: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -1083,7 +1053,7 @@ proto.tendermint.types.VersionParams.deserializeBinaryFromReader = function(msg,
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readUint64());
-      msg.setAppVersion(value);
+      msg.setApp(value);
       break;
     default:
       reader.skipField();
@@ -1114,7 +1084,7 @@ proto.tendermint.types.VersionParams.prototype.serializeBinary = function() {
  */
 proto.tendermint.types.VersionParams.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAppVersion();
+  f = message.getApp();
   if (f !== 0) {
     writer.writeUint64(
       1,
@@ -1125,10 +1095,10 @@ proto.tendermint.types.VersionParams.serializeBinaryToWriter = function(message,
 
 
 /**
- * optional uint64 app_version = 1;
+ * optional uint64 app = 1;
  * @return {number}
  */
-proto.tendermint.types.VersionParams.prototype.getAppVersion = function() {
+proto.tendermint.types.VersionParams.prototype.getApp = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -1137,7 +1107,7 @@ proto.tendermint.types.VersionParams.prototype.getAppVersion = function() {
  * @param {number} value
  * @return {!proto.tendermint.types.VersionParams} returns this
  */
-proto.tendermint.types.VersionParams.prototype.setAppVersion = function(value) {
+proto.tendermint.types.VersionParams.prototype.setApp = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 

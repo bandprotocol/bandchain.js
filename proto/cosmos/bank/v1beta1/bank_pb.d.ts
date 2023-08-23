@@ -5,6 +5,8 @@ import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
+import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class Params extends jspb.Message {
   clearSendEnabledList(): void;
@@ -181,6 +183,12 @@ export class Metadata extends jspb.Message {
   getSymbol(): string;
   setSymbol(value: string): void;
 
+  getUri(): string;
+  setUri(value: string): void;
+
+  getUriHash(): string;
+  setUriHash(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Metadata.AsObject;
   static toObject(includeInstance: boolean, msg: Metadata): Metadata.AsObject;
@@ -199,6 +207,8 @@ export namespace Metadata {
     display: string,
     name: string,
     symbol: string,
+    uri: string,
+    uriHash: string,
   }
 }
 

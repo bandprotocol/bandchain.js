@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var cosmos_crypto_multisig_v1beta1_multisig_pb = require('../../../../cosmos/crypto/multisig/v1beta1/multisig_pb.js');
 goog.object.extend(proto, cosmos_crypto_multisig_v1beta1_multisig_pb);
@@ -1153,7 +1153,9 @@ proto.cosmos.tx.signing.v1beta1.SignMode = {
   SIGN_MODE_UNSPECIFIED: 0,
   SIGN_MODE_DIRECT: 1,
   SIGN_MODE_TEXTUAL: 2,
-  SIGN_MODE_LEGACY_AMINO_JSON: 127
+  SIGN_MODE_DIRECT_AUX: 3,
+  SIGN_MODE_LEGACY_AMINO_JSON: 127,
+  SIGN_MODE_EIP_191: 191
 };
 
 goog.object.extend(exports, proto.cosmos.tx.signing.v1beta1);

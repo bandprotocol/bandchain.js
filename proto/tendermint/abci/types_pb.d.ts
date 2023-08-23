@@ -25,11 +25,6 @@ export class Request extends jspb.Message {
   getInfo(): RequestInfo | undefined;
   setInfo(value?: RequestInfo): void;
 
-  hasSetOption(): boolean;
-  clearSetOption(): void;
-  getSetOption(): RequestSetOption | undefined;
-  setSetOption(value?: RequestSetOption): void;
-
   hasInitChain(): boolean;
   clearInitChain(): void;
   getInitChain(): RequestInitChain | undefined;
@@ -85,6 +80,16 @@ export class Request extends jspb.Message {
   getApplySnapshotChunk(): RequestApplySnapshotChunk | undefined;
   setApplySnapshotChunk(value?: RequestApplySnapshotChunk): void;
 
+  hasPrepareProposal(): boolean;
+  clearPrepareProposal(): void;
+  getPrepareProposal(): RequestPrepareProposal | undefined;
+  setPrepareProposal(value?: RequestPrepareProposal): void;
+
+  hasProcessProposal(): boolean;
+  clearProcessProposal(): void;
+  getProcessProposal(): RequestProcessProposal | undefined;
+  setProcessProposal(value?: RequestProcessProposal): void;
+
   getValueCase(): Request.ValueCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Request.AsObject;
@@ -101,7 +106,6 @@ export namespace Request {
     echo?: RequestEcho.AsObject,
     flush?: RequestFlush.AsObject,
     info?: RequestInfo.AsObject,
-    setOption?: RequestSetOption.AsObject,
     initChain?: RequestInitChain.AsObject,
     query?: RequestQuery.AsObject,
     beginBlock?: RequestBeginBlock.AsObject,
@@ -113,6 +117,8 @@ export namespace Request {
     offerSnapshot?: RequestOfferSnapshot.AsObject,
     loadSnapshotChunk?: RequestLoadSnapshotChunk.AsObject,
     applySnapshotChunk?: RequestApplySnapshotChunk.AsObject,
+    prepareProposal?: RequestPrepareProposal.AsObject,
+    processProposal?: RequestProcessProposal.AsObject,
   }
 
   export enum ValueCase {
@@ -120,7 +126,6 @@ export namespace Request {
     ECHO = 1,
     FLUSH = 2,
     INFO = 3,
-    SET_OPTION = 4,
     INIT_CHAIN = 5,
     QUERY = 6,
     BEGIN_BLOCK = 7,
@@ -132,6 +137,8 @@ export namespace Request {
     OFFER_SNAPSHOT = 13,
     LOAD_SNAPSHOT_CHUNK = 14,
     APPLY_SNAPSHOT_CHUNK = 15,
+    PREPARE_PROPOSAL = 16,
+    PROCESS_PROPOSAL = 17,
   }
 }
 
@@ -181,6 +188,9 @@ export class RequestInfo extends jspb.Message {
   getP2pVersion(): number;
   setP2pVersion(value: number): void;
 
+  getAbciVersion(): string;
+  setAbciVersion(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RequestInfo.AsObject;
   static toObject(includeInstance: boolean, msg: RequestInfo): RequestInfo.AsObject;
@@ -196,30 +206,7 @@ export namespace RequestInfo {
     version: string,
     blockVersion: number,
     p2pVersion: number,
-  }
-}
-
-export class RequestSetOption extends jspb.Message {
-  getKey(): string;
-  setKey(value: string): void;
-
-  getValue(): string;
-  setValue(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RequestSetOption.AsObject;
-  static toObject(includeInstance: boolean, msg: RequestSetOption): RequestSetOption.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: RequestSetOption, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RequestSetOption;
-  static deserializeBinaryFromReader(message: RequestSetOption, reader: jspb.BinaryReader): RequestSetOption;
-}
-
-export namespace RequestSetOption {
-  export type AsObject = {
-    key: string,
-    value: string,
+    abciVersion: string,
   }
 }
 
@@ -234,8 +221,8 @@ export class RequestInitChain extends jspb.Message {
 
   hasConsensusParams(): boolean;
   clearConsensusParams(): void;
-  getConsensusParams(): ConsensusParams | undefined;
-  setConsensusParams(value?: ConsensusParams): void;
+  getConsensusParams(): tendermint_types_params_pb.ConsensusParams | undefined;
+  setConsensusParams(value?: tendermint_types_params_pb.ConsensusParams): void;
 
   clearValidatorsList(): void;
   getValidatorsList(): Array<ValidatorUpdate>;
@@ -264,7 +251,7 @@ export namespace RequestInitChain {
   export type AsObject = {
     time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     chainId: string,
-    consensusParams?: ConsensusParams.AsObject,
+    consensusParams?: tendermint_types_params_pb.ConsensusParams.AsObject,
     validatorsList: Array<ValidatorUpdate.AsObject>,
     appStateBytes: Uint8Array | string,
     initialHeight: number,
@@ -318,13 +305,13 @@ export class RequestBeginBlock extends jspb.Message {
 
   hasLastCommitInfo(): boolean;
   clearLastCommitInfo(): void;
-  getLastCommitInfo(): LastCommitInfo | undefined;
-  setLastCommitInfo(value?: LastCommitInfo): void;
+  getLastCommitInfo(): CommitInfo | undefined;
+  setLastCommitInfo(value?: CommitInfo): void;
 
   clearByzantineValidatorsList(): void;
-  getByzantineValidatorsList(): Array<Evidence>;
-  setByzantineValidatorsList(value: Array<Evidence>): void;
-  addByzantineValidators(value?: Evidence, index?: number): Evidence;
+  getByzantineValidatorsList(): Array<Misbehavior>;
+  setByzantineValidatorsList(value: Array<Misbehavior>): void;
+  addByzantineValidators(value?: Misbehavior, index?: number): Misbehavior;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RequestBeginBlock.AsObject;
@@ -340,8 +327,8 @@ export namespace RequestBeginBlock {
   export type AsObject = {
     hash: Uint8Array | string,
     header?: tendermint_types_types_pb.Header.AsObject,
-    lastCommitInfo?: LastCommitInfo.AsObject,
-    byzantineValidatorsList: Array<Evidence.AsObject>,
+    lastCommitInfo?: CommitInfo.AsObject,
+    byzantineValidatorsList: Array<Misbehavior.AsObject>,
   }
 }
 
@@ -531,6 +518,132 @@ export namespace RequestApplySnapshotChunk {
   }
 }
 
+export class RequestPrepareProposal extends jspb.Message {
+  getMaxTxBytes(): number;
+  setMaxTxBytes(value: number): void;
+
+  clearTxsList(): void;
+  getTxsList(): Array<Uint8Array | string>;
+  getTxsList_asU8(): Array<Uint8Array>;
+  getTxsList_asB64(): Array<string>;
+  setTxsList(value: Array<Uint8Array | string>): void;
+  addTxs(value: Uint8Array | string, index?: number): Uint8Array | string;
+
+  hasLocalLastCommit(): boolean;
+  clearLocalLastCommit(): void;
+  getLocalLastCommit(): ExtendedCommitInfo | undefined;
+  setLocalLastCommit(value?: ExtendedCommitInfo): void;
+
+  clearMisbehaviorList(): void;
+  getMisbehaviorList(): Array<Misbehavior>;
+  setMisbehaviorList(value: Array<Misbehavior>): void;
+  addMisbehavior(value?: Misbehavior, index?: number): Misbehavior;
+
+  getHeight(): number;
+  setHeight(value: number): void;
+
+  hasTime(): boolean;
+  clearTime(): void;
+  getTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getNextValidatorsHash(): Uint8Array | string;
+  getNextValidatorsHash_asU8(): Uint8Array;
+  getNextValidatorsHash_asB64(): string;
+  setNextValidatorsHash(value: Uint8Array | string): void;
+
+  getProposerAddress(): Uint8Array | string;
+  getProposerAddress_asU8(): Uint8Array;
+  getProposerAddress_asB64(): string;
+  setProposerAddress(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RequestPrepareProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: RequestPrepareProposal): RequestPrepareProposal.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RequestPrepareProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RequestPrepareProposal;
+  static deserializeBinaryFromReader(message: RequestPrepareProposal, reader: jspb.BinaryReader): RequestPrepareProposal;
+}
+
+export namespace RequestPrepareProposal {
+  export type AsObject = {
+    maxTxBytes: number,
+    txsList: Array<Uint8Array | string>,
+    localLastCommit?: ExtendedCommitInfo.AsObject,
+    misbehaviorList: Array<Misbehavior.AsObject>,
+    height: number,
+    time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    nextValidatorsHash: Uint8Array | string,
+    proposerAddress: Uint8Array | string,
+  }
+}
+
+export class RequestProcessProposal extends jspb.Message {
+  clearTxsList(): void;
+  getTxsList(): Array<Uint8Array | string>;
+  getTxsList_asU8(): Array<Uint8Array>;
+  getTxsList_asB64(): Array<string>;
+  setTxsList(value: Array<Uint8Array | string>): void;
+  addTxs(value: Uint8Array | string, index?: number): Uint8Array | string;
+
+  hasProposedLastCommit(): boolean;
+  clearProposedLastCommit(): void;
+  getProposedLastCommit(): CommitInfo | undefined;
+  setProposedLastCommit(value?: CommitInfo): void;
+
+  clearMisbehaviorList(): void;
+  getMisbehaviorList(): Array<Misbehavior>;
+  setMisbehaviorList(value: Array<Misbehavior>): void;
+  addMisbehavior(value?: Misbehavior, index?: number): Misbehavior;
+
+  getHash(): Uint8Array | string;
+  getHash_asU8(): Uint8Array;
+  getHash_asB64(): string;
+  setHash(value: Uint8Array | string): void;
+
+  getHeight(): number;
+  setHeight(value: number): void;
+
+  hasTime(): boolean;
+  clearTime(): void;
+  getTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getNextValidatorsHash(): Uint8Array | string;
+  getNextValidatorsHash_asU8(): Uint8Array;
+  getNextValidatorsHash_asB64(): string;
+  setNextValidatorsHash(value: Uint8Array | string): void;
+
+  getProposerAddress(): Uint8Array | string;
+  getProposerAddress_asU8(): Uint8Array;
+  getProposerAddress_asB64(): string;
+  setProposerAddress(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RequestProcessProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: RequestProcessProposal): RequestProcessProposal.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RequestProcessProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RequestProcessProposal;
+  static deserializeBinaryFromReader(message: RequestProcessProposal, reader: jspb.BinaryReader): RequestProcessProposal;
+}
+
+export namespace RequestProcessProposal {
+  export type AsObject = {
+    txsList: Array<Uint8Array | string>,
+    proposedLastCommit?: CommitInfo.AsObject,
+    misbehaviorList: Array<Misbehavior.AsObject>,
+    hash: Uint8Array | string,
+    height: number,
+    time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    nextValidatorsHash: Uint8Array | string,
+    proposerAddress: Uint8Array | string,
+  }
+}
+
 export class Response extends jspb.Message {
   hasException(): boolean;
   clearException(): void;
@@ -551,11 +664,6 @@ export class Response extends jspb.Message {
   clearInfo(): void;
   getInfo(): ResponseInfo | undefined;
   setInfo(value?: ResponseInfo): void;
-
-  hasSetOption(): boolean;
-  clearSetOption(): void;
-  getSetOption(): ResponseSetOption | undefined;
-  setSetOption(value?: ResponseSetOption): void;
 
   hasInitChain(): boolean;
   clearInitChain(): void;
@@ -612,6 +720,16 @@ export class Response extends jspb.Message {
   getApplySnapshotChunk(): ResponseApplySnapshotChunk | undefined;
   setApplySnapshotChunk(value?: ResponseApplySnapshotChunk): void;
 
+  hasPrepareProposal(): boolean;
+  clearPrepareProposal(): void;
+  getPrepareProposal(): ResponsePrepareProposal | undefined;
+  setPrepareProposal(value?: ResponsePrepareProposal): void;
+
+  hasProcessProposal(): boolean;
+  clearProcessProposal(): void;
+  getProcessProposal(): ResponseProcessProposal | undefined;
+  setProcessProposal(value?: ResponseProcessProposal): void;
+
   getValueCase(): Response.ValueCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Response.AsObject;
@@ -629,7 +747,6 @@ export namespace Response {
     echo?: ResponseEcho.AsObject,
     flush?: ResponseFlush.AsObject,
     info?: ResponseInfo.AsObject,
-    setOption?: ResponseSetOption.AsObject,
     initChain?: ResponseInitChain.AsObject,
     query?: ResponseQuery.AsObject,
     beginBlock?: ResponseBeginBlock.AsObject,
@@ -641,6 +758,8 @@ export namespace Response {
     offerSnapshot?: ResponseOfferSnapshot.AsObject,
     loadSnapshotChunk?: ResponseLoadSnapshotChunk.AsObject,
     applySnapshotChunk?: ResponseApplySnapshotChunk.AsObject,
+    prepareProposal?: ResponsePrepareProposal.AsObject,
+    processProposal?: ResponseProcessProposal.AsObject,
   }
 
   export enum ValueCase {
@@ -649,7 +768,6 @@ export namespace Response {
     ECHO = 2,
     FLUSH = 3,
     INFO = 4,
-    SET_OPTION = 5,
     INIT_CHAIN = 6,
     QUERY = 7,
     BEGIN_BLOCK = 8,
@@ -661,6 +779,8 @@ export namespace Response {
     OFFER_SNAPSHOT = 14,
     LOAD_SNAPSHOT_CHUNK = 15,
     APPLY_SNAPSHOT_CHUNK = 16,
+    PREPARE_PROPOSAL = 17,
+    PROCESS_PROPOSAL = 18,
   }
 }
 
@@ -758,39 +878,11 @@ export namespace ResponseInfo {
   }
 }
 
-export class ResponseSetOption extends jspb.Message {
-  getCode(): number;
-  setCode(value: number): void;
-
-  getLog(): string;
-  setLog(value: string): void;
-
-  getInfo(): string;
-  setInfo(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ResponseSetOption.AsObject;
-  static toObject(includeInstance: boolean, msg: ResponseSetOption): ResponseSetOption.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ResponseSetOption, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ResponseSetOption;
-  static deserializeBinaryFromReader(message: ResponseSetOption, reader: jspb.BinaryReader): ResponseSetOption;
-}
-
-export namespace ResponseSetOption {
-  export type AsObject = {
-    code: number,
-    log: string,
-    info: string,
-  }
-}
-
 export class ResponseInitChain extends jspb.Message {
   hasConsensusParams(): boolean;
   clearConsensusParams(): void;
-  getConsensusParams(): ConsensusParams | undefined;
-  setConsensusParams(value?: ConsensusParams): void;
+  getConsensusParams(): tendermint_types_params_pb.ConsensusParams | undefined;
+  setConsensusParams(value?: tendermint_types_params_pb.ConsensusParams): void;
 
   clearValidatorsList(): void;
   getValidatorsList(): Array<ValidatorUpdate>;
@@ -814,7 +906,7 @@ export class ResponseInitChain extends jspb.Message {
 
 export namespace ResponseInitChain {
   export type AsObject = {
-    consensusParams?: ConsensusParams.AsObject,
+    consensusParams?: tendermint_types_params_pb.ConsensusParams.AsObject,
     validatorsList: Array<ValidatorUpdate.AsObject>,
     appHash: Uint8Array | string,
   }
@@ -929,6 +1021,15 @@ export class ResponseCheckTx extends jspb.Message {
   getCodespace(): string;
   setCodespace(value: string): void;
 
+  getSender(): string;
+  setSender(value: string): void;
+
+  getPriority(): number;
+  setPriority(value: number): void;
+
+  getMempoolError(): string;
+  setMempoolError(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ResponseCheckTx.AsObject;
   static toObject(includeInstance: boolean, msg: ResponseCheckTx): ResponseCheckTx.AsObject;
@@ -949,6 +1050,9 @@ export namespace ResponseCheckTx {
     gasUsed: number,
     eventsList: Array<Event.AsObject>,
     codespace: string,
+    sender: string,
+    priority: number,
+    mempoolError: string,
   }
 }
 
@@ -1012,8 +1116,8 @@ export class ResponseEndBlock extends jspb.Message {
 
   hasConsensusParamUpdates(): boolean;
   clearConsensusParamUpdates(): void;
-  getConsensusParamUpdates(): ConsensusParams | undefined;
-  setConsensusParamUpdates(value?: ConsensusParams): void;
+  getConsensusParamUpdates(): tendermint_types_params_pb.ConsensusParams | undefined;
+  setConsensusParamUpdates(value?: tendermint_types_params_pb.ConsensusParams): void;
 
   clearEventsList(): void;
   getEventsList(): Array<Event>;
@@ -1033,7 +1137,7 @@ export class ResponseEndBlock extends jspb.Message {
 export namespace ResponseEndBlock {
   export type AsObject = {
     validatorUpdatesList: Array<ValidatorUpdate.AsObject>,
-    consensusParamUpdates?: ConsensusParams.AsObject,
+    consensusParamUpdates?: tendermint_types_params_pb.ConsensusParams.AsObject,
     eventsList: Array<Event.AsObject>,
   }
 }
@@ -1182,71 +1286,59 @@ export namespace ResponseApplySnapshotChunk {
   export const Result: ResultMap;
 }
 
-export class ConsensusParams extends jspb.Message {
-  hasBlock(): boolean;
-  clearBlock(): void;
-  getBlock(): BlockParams | undefined;
-  setBlock(value?: BlockParams): void;
-
-  hasEvidence(): boolean;
-  clearEvidence(): void;
-  getEvidence(): tendermint_types_params_pb.EvidenceParams | undefined;
-  setEvidence(value?: tendermint_types_params_pb.EvidenceParams): void;
-
-  hasValidator(): boolean;
-  clearValidator(): void;
-  getValidator(): tendermint_types_params_pb.ValidatorParams | undefined;
-  setValidator(value?: tendermint_types_params_pb.ValidatorParams): void;
-
-  hasVersion(): boolean;
-  clearVersion(): void;
-  getVersion(): tendermint_types_params_pb.VersionParams | undefined;
-  setVersion(value?: tendermint_types_params_pb.VersionParams): void;
+export class ResponsePrepareProposal extends jspb.Message {
+  clearTxsList(): void;
+  getTxsList(): Array<Uint8Array | string>;
+  getTxsList_asU8(): Array<Uint8Array>;
+  getTxsList_asB64(): Array<string>;
+  setTxsList(value: Array<Uint8Array | string>): void;
+  addTxs(value: Uint8Array | string, index?: number): Uint8Array | string;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ConsensusParams.AsObject;
-  static toObject(includeInstance: boolean, msg: ConsensusParams): ConsensusParams.AsObject;
+  toObject(includeInstance?: boolean): ResponsePrepareProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: ResponsePrepareProposal): ResponsePrepareProposal.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ConsensusParams, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ConsensusParams;
-  static deserializeBinaryFromReader(message: ConsensusParams, reader: jspb.BinaryReader): ConsensusParams;
+  static serializeBinaryToWriter(message: ResponsePrepareProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResponsePrepareProposal;
+  static deserializeBinaryFromReader(message: ResponsePrepareProposal, reader: jspb.BinaryReader): ResponsePrepareProposal;
 }
 
-export namespace ConsensusParams {
+export namespace ResponsePrepareProposal {
   export type AsObject = {
-    block?: BlockParams.AsObject,
-    evidence?: tendermint_types_params_pb.EvidenceParams.AsObject,
-    validator?: tendermint_types_params_pb.ValidatorParams.AsObject,
-    version?: tendermint_types_params_pb.VersionParams.AsObject,
+    txsList: Array<Uint8Array | string>,
   }
 }
 
-export class BlockParams extends jspb.Message {
-  getMaxBytes(): number;
-  setMaxBytes(value: number): void;
-
-  getMaxGas(): number;
-  setMaxGas(value: number): void;
+export class ResponseProcessProposal extends jspb.Message {
+  getStatus(): ResponseProcessProposal.ProposalStatusMap[keyof ResponseProcessProposal.ProposalStatusMap];
+  setStatus(value: ResponseProcessProposal.ProposalStatusMap[keyof ResponseProcessProposal.ProposalStatusMap]): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BlockParams.AsObject;
-  static toObject(includeInstance: boolean, msg: BlockParams): BlockParams.AsObject;
+  toObject(includeInstance?: boolean): ResponseProcessProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: ResponseProcessProposal): ResponseProcessProposal.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: BlockParams, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BlockParams;
-  static deserializeBinaryFromReader(message: BlockParams, reader: jspb.BinaryReader): BlockParams;
+  static serializeBinaryToWriter(message: ResponseProcessProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResponseProcessProposal;
+  static deserializeBinaryFromReader(message: ResponseProcessProposal, reader: jspb.BinaryReader): ResponseProcessProposal;
 }
 
-export namespace BlockParams {
+export namespace ResponseProcessProposal {
   export type AsObject = {
-    maxBytes: number,
-    maxGas: number,
+    status: ResponseProcessProposal.ProposalStatusMap[keyof ResponseProcessProposal.ProposalStatusMap],
   }
+
+  export interface ProposalStatusMap {
+    UNKNOWN: 0;
+    ACCEPT: 1;
+    REJECT: 2;
+  }
+
+  export const ProposalStatus: ProposalStatusMap;
 }
 
-export class LastCommitInfo extends jspb.Message {
+export class CommitInfo extends jspb.Message {
   getRound(): number;
   setRound(value: number): void;
 
@@ -1256,19 +1348,45 @@ export class LastCommitInfo extends jspb.Message {
   addVotes(value?: VoteInfo, index?: number): VoteInfo;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LastCommitInfo.AsObject;
-  static toObject(includeInstance: boolean, msg: LastCommitInfo): LastCommitInfo.AsObject;
+  toObject(includeInstance?: boolean): CommitInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: CommitInfo): CommitInfo.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: LastCommitInfo, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LastCommitInfo;
-  static deserializeBinaryFromReader(message: LastCommitInfo, reader: jspb.BinaryReader): LastCommitInfo;
+  static serializeBinaryToWriter(message: CommitInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CommitInfo;
+  static deserializeBinaryFromReader(message: CommitInfo, reader: jspb.BinaryReader): CommitInfo;
 }
 
-export namespace LastCommitInfo {
+export namespace CommitInfo {
   export type AsObject = {
     round: number,
     votesList: Array<VoteInfo.AsObject>,
+  }
+}
+
+export class ExtendedCommitInfo extends jspb.Message {
+  getRound(): number;
+  setRound(value: number): void;
+
+  clearVotesList(): void;
+  getVotesList(): Array<ExtendedVoteInfo>;
+  setVotesList(value: Array<ExtendedVoteInfo>): void;
+  addVotes(value?: ExtendedVoteInfo, index?: number): ExtendedVoteInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExtendedCommitInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtendedCommitInfo): ExtendedCommitInfo.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ExtendedCommitInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtendedCommitInfo;
+  static deserializeBinaryFromReader(message: ExtendedCommitInfo, reader: jspb.BinaryReader): ExtendedCommitInfo;
+}
+
+export namespace ExtendedCommitInfo {
+  export type AsObject = {
+    round: number,
+    votesList: Array<ExtendedVoteInfo.AsObject>,
   }
 }
 
@@ -1299,15 +1417,11 @@ export namespace Event {
 }
 
 export class EventAttribute extends jspb.Message {
-  getKey(): Uint8Array | string;
-  getKey_asU8(): Uint8Array;
-  getKey_asB64(): string;
-  setKey(value: Uint8Array | string): void;
+  getKey(): string;
+  setKey(value: string): void;
 
-  getValue(): Uint8Array | string;
-  getValue_asU8(): Uint8Array;
-  getValue_asB64(): string;
-  setValue(value: Uint8Array | string): void;
+  getValue(): string;
+  setValue(value: string): void;
 
   getIndex(): boolean;
   setIndex(value: boolean): void;
@@ -1324,8 +1438,8 @@ export class EventAttribute extends jspb.Message {
 
 export namespace EventAttribute {
   export type AsObject = {
-    key: Uint8Array | string,
-    value: Uint8Array | string,
+    key: string,
+    value: string,
     index: boolean,
   }
 }
@@ -1444,9 +1558,41 @@ export namespace VoteInfo {
   }
 }
 
-export class Evidence extends jspb.Message {
-  getType(): EvidenceTypeMap[keyof EvidenceTypeMap];
-  setType(value: EvidenceTypeMap[keyof EvidenceTypeMap]): void;
+export class ExtendedVoteInfo extends jspb.Message {
+  hasValidator(): boolean;
+  clearValidator(): void;
+  getValidator(): Validator | undefined;
+  setValidator(value?: Validator): void;
+
+  getSignedLastBlock(): boolean;
+  setSignedLastBlock(value: boolean): void;
+
+  getVoteExtension(): Uint8Array | string;
+  getVoteExtension_asU8(): Uint8Array;
+  getVoteExtension_asB64(): string;
+  setVoteExtension(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExtendedVoteInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtendedVoteInfo): ExtendedVoteInfo.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ExtendedVoteInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtendedVoteInfo;
+  static deserializeBinaryFromReader(message: ExtendedVoteInfo, reader: jspb.BinaryReader): ExtendedVoteInfo;
+}
+
+export namespace ExtendedVoteInfo {
+  export type AsObject = {
+    validator?: Validator.AsObject,
+    signedLastBlock: boolean,
+    voteExtension: Uint8Array | string,
+  }
+}
+
+export class Misbehavior extends jspb.Message {
+  getType(): MisbehaviorTypeMap[keyof MisbehaviorTypeMap];
+  setType(value: MisbehaviorTypeMap[keyof MisbehaviorTypeMap]): void;
 
   hasValidator(): boolean;
   clearValidator(): void;
@@ -1465,18 +1611,18 @@ export class Evidence extends jspb.Message {
   setTotalVotingPower(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Evidence.AsObject;
-  static toObject(includeInstance: boolean, msg: Evidence): Evidence.AsObject;
+  toObject(includeInstance?: boolean): Misbehavior.AsObject;
+  static toObject(includeInstance: boolean, msg: Misbehavior): Misbehavior.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: Evidence, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Evidence;
-  static deserializeBinaryFromReader(message: Evidence, reader: jspb.BinaryReader): Evidence;
+  static serializeBinaryToWriter(message: Misbehavior, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Misbehavior;
+  static deserializeBinaryFromReader(message: Misbehavior, reader: jspb.BinaryReader): Misbehavior;
 }
 
-export namespace Evidence {
+export namespace Misbehavior {
   export type AsObject = {
-    type: EvidenceTypeMap[keyof EvidenceTypeMap],
+    type: MisbehaviorTypeMap[keyof MisbehaviorTypeMap],
     validator?: Validator.AsObject,
     height: number,
     time?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -1531,11 +1677,11 @@ export interface CheckTxTypeMap {
 
 export const CheckTxType: CheckTxTypeMap;
 
-export interface EvidenceTypeMap {
+export interface MisbehaviorTypeMap {
   UNKNOWN: 0;
   DUPLICATE_VOTE: 1;
   LIGHT_CLIENT_ATTACK: 2;
 }
 
-export const EvidenceType: EvidenceTypeMap;
+export const MisbehaviorType: MisbehaviorTypeMap;
 

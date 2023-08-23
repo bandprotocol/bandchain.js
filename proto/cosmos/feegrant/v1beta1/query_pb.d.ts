@@ -5,6 +5,7 @@ import * as jspb from "google-protobuf";
 import * as cosmos_feegrant_v1beta1_feegrant_pb from "../../../cosmos/feegrant/v1beta1/feegrant_pb";
 import * as cosmos_base_query_v1beta1_pagination_pb from "../../../cosmos/base/query/v1beta1/pagination_pb";
 import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 
 export class QueryAllowanceRequest extends jspb.Message {
   getGranter(): string;
@@ -100,6 +101,60 @@ export class QueryAllowancesResponse extends jspb.Message {
 }
 
 export namespace QueryAllowancesResponse {
+  export type AsObject = {
+    allowancesList: Array<cosmos_feegrant_v1beta1_feegrant_pb.Grant.AsObject>,
+    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageResponse.AsObject,
+  }
+}
+
+export class QueryAllowancesByGranterRequest extends jspb.Message {
+  getGranter(): string;
+  setGranter(value: string): void;
+
+  hasPagination(): boolean;
+  clearPagination(): void;
+  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageRequest | undefined;
+  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageRequest): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryAllowancesByGranterRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryAllowancesByGranterRequest): QueryAllowancesByGranterRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryAllowancesByGranterRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryAllowancesByGranterRequest;
+  static deserializeBinaryFromReader(message: QueryAllowancesByGranterRequest, reader: jspb.BinaryReader): QueryAllowancesByGranterRequest;
+}
+
+export namespace QueryAllowancesByGranterRequest {
+  export type AsObject = {
+    granter: string,
+    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageRequest.AsObject,
+  }
+}
+
+export class QueryAllowancesByGranterResponse extends jspb.Message {
+  clearAllowancesList(): void;
+  getAllowancesList(): Array<cosmos_feegrant_v1beta1_feegrant_pb.Grant>;
+  setAllowancesList(value: Array<cosmos_feegrant_v1beta1_feegrant_pb.Grant>): void;
+  addAllowances(value?: cosmos_feegrant_v1beta1_feegrant_pb.Grant, index?: number): cosmos_feegrant_v1beta1_feegrant_pb.Grant;
+
+  hasPagination(): boolean;
+  clearPagination(): void;
+  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageResponse | undefined;
+  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageResponse): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryAllowancesByGranterResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryAllowancesByGranterResponse): QueryAllowancesByGranterResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryAllowancesByGranterResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryAllowancesByGranterResponse;
+  static deserializeBinaryFromReader(message: QueryAllowancesByGranterResponse, reader: jspb.BinaryReader): QueryAllowancesByGranterResponse;
+}
+
+export namespace QueryAllowancesByGranterResponse {
   export type AsObject = {
     allowancesList: Array<cosmos_feegrant_v1beta1_feegrant_pb.Grant.AsObject>,
     pagination?: cosmos_base_query_v1beta1_pagination_pb.PageResponse.AsObject,

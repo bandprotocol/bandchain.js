@@ -13,9 +13,19 @@ type MsgVerifyInvariant = {
   readonly responseType: typeof cosmos_crisis_v1beta1_tx_pb.MsgVerifyInvariantResponse;
 };
 
+type MsgUpdateParams = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_crisis_v1beta1_tx_pb.MsgUpdateParams;
+  readonly responseType: typeof cosmos_crisis_v1beta1_tx_pb.MsgUpdateParamsResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly VerifyInvariant: MsgVerifyInvariant;
+  static readonly UpdateParams: MsgUpdateParams;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -58,6 +68,15 @@ export class MsgClient {
   verifyInvariant(
     requestMessage: cosmos_crisis_v1beta1_tx_pb.MsgVerifyInvariant,
     callback: (error: ServiceError|null, responseMessage: cosmos_crisis_v1beta1_tx_pb.MsgVerifyInvariantResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_crisis_v1beta1_tx_pb.MsgUpdateParams,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_crisis_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_crisis_v1beta1_tx_pb.MsgUpdateParams,
+    callback: (error: ServiceError|null, responseMessage: cosmos_crisis_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
   ): UnaryResponse;
 }
 

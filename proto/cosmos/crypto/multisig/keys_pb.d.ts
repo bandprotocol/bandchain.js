@@ -4,6 +4,7 @@
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class LegacyAminoPubKey extends jspb.Message {
   getThreshold(): number;

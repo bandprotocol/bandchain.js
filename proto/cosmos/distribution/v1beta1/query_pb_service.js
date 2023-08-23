@@ -19,6 +19,15 @@ Query.Params = {
   responseType: cosmos_distribution_v1beta1_query_pb.QueryParamsResponse
 };
 
+Query.ValidatorDistributionInfo = {
+  methodName: "ValidatorDistributionInfo",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoRequest,
+  responseType: cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoResponse
+};
+
 Query.ValidatorOutstandingRewards = {
   methodName: "ValidatorOutstandingRewards",
   service: Query,
@@ -103,6 +112,37 @@ QueryClient.prototype.params = function params(requestMessage, metadata, callbac
     callback = arguments[1];
   }
   var client = grpc.unary(Query.Params, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.validatorDistributionInfo = function validatorDistributionInfo(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.ValidatorDistributionInfo, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

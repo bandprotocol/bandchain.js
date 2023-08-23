@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
@@ -247,7 +247,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.base.abci.v1beta1.TxResponse.repeatedFields_ = [7];
+proto.cosmos.base.abci.v1beta1.TxResponse.repeatedFields_ = [7,13];
 
 
 
@@ -292,7 +292,9 @@ proto.cosmos.base.abci.v1beta1.TxResponse.toObject = function(includeInstance, m
     gasWanted: jspb.Message.getFieldWithDefault(msg, 9, 0),
     gasUsed: jspb.Message.getFieldWithDefault(msg, 10, 0),
     tx: (f = msg.getTx()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
-    timestamp: jspb.Message.getFieldWithDefault(msg, 12, "")
+    timestamp: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    eventsList: jspb.Message.toObjectList(msg.getEventsList(),
+    tendermint_abci_types_pb.Event.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -378,6 +380,11 @@ proto.cosmos.base.abci.v1beta1.TxResponse.deserializeBinaryFromReader = function
     case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setTimestamp(value);
+      break;
+    case 13:
+      var value = new tendermint_abci_types_pb.Event;
+      reader.readMessage(value,tendermint_abci_types_pb.Event.deserializeBinaryFromReader);
+      msg.addEvents(value);
       break;
     default:
       reader.skipField();
@@ -492,6 +499,14 @@ proto.cosmos.base.abci.v1beta1.TxResponse.serializeBinaryToWriter = function(mes
     writer.writeString(
       12,
       f
+    );
+  }
+  f = message.getEventsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      13,
+      f,
+      tendermint_abci_types_pb.Event.serializeBinaryToWriter
     );
   }
 };
@@ -749,6 +764,44 @@ proto.cosmos.base.abci.v1beta1.TxResponse.prototype.getTimestamp = function() {
  */
 proto.cosmos.base.abci.v1beta1.TxResponse.prototype.setTimestamp = function(value) {
   return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+/**
+ * repeated tendermint.abci.Event events = 13;
+ * @return {!Array<!proto.tendermint.abci.Event>}
+ */
+proto.cosmos.base.abci.v1beta1.TxResponse.prototype.getEventsList = function() {
+  return /** @type{!Array<!proto.tendermint.abci.Event>} */ (
+    jspb.Message.getRepeatedWrapperField(this, tendermint_abci_types_pb.Event, 13));
+};
+
+
+/**
+ * @param {!Array<!proto.tendermint.abci.Event>} value
+ * @return {!proto.cosmos.base.abci.v1beta1.TxResponse} returns this
+*/
+proto.cosmos.base.abci.v1beta1.TxResponse.prototype.setEventsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 13, value);
+};
+
+
+/**
+ * @param {!proto.tendermint.abci.Event=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.tendermint.abci.Event}
+ */
+proto.cosmos.base.abci.v1beta1.TxResponse.prototype.addEvents = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 13, opt_value, proto.tendermint.abci.Event, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.cosmos.base.abci.v1beta1.TxResponse} returns this
+ */
+proto.cosmos.base.abci.v1beta1.TxResponse.prototype.clearEventsList = function() {
+  return this.setEventsList([]);
 };
 
 
@@ -1488,7 +1541,7 @@ proto.cosmos.base.abci.v1beta1.GasInfo.prototype.setGasUsed = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.base.abci.v1beta1.Result.repeatedFields_ = [3];
+proto.cosmos.base.abci.v1beta1.Result.repeatedFields_ = [3,4];
 
 
 
@@ -1524,7 +1577,9 @@ proto.cosmos.base.abci.v1beta1.Result.toObject = function(includeInstance, msg) 
     data: msg.getData_asB64(),
     log: jspb.Message.getFieldWithDefault(msg, 2, ""),
     eventsList: jspb.Message.toObjectList(msg.getEventsList(),
-    tendermint_abci_types_pb.Event.toObject, includeInstance)
+    tendermint_abci_types_pb.Event.toObject, includeInstance),
+    msgResponsesList: jspb.Message.toObjectList(msg.getMsgResponsesList(),
+    google_protobuf_any_pb.Any.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1573,6 +1628,11 @@ proto.cosmos.base.abci.v1beta1.Result.deserializeBinaryFromReader = function(msg
       var value = new tendermint_abci_types_pb.Event;
       reader.readMessage(value,tendermint_abci_types_pb.Event.deserializeBinaryFromReader);
       msg.addEvents(value);
+      break;
+    case 4:
+      var value = new google_protobuf_any_pb.Any;
+      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      msg.addMsgResponses(value);
       break;
     default:
       reader.skipField();
@@ -1623,6 +1683,14 @@ proto.cosmos.base.abci.v1beta1.Result.serializeBinaryToWriter = function(message
       3,
       f,
       tendermint_abci_types_pb.Event.serializeBinaryToWriter
+    );
+  }
+  f = message.getMsgResponsesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      google_protobuf_any_pb.Any.serializeBinaryToWriter
     );
   }
 };
@@ -1723,6 +1791,44 @@ proto.cosmos.base.abci.v1beta1.Result.prototype.addEvents = function(opt_value, 
  */
 proto.cosmos.base.abci.v1beta1.Result.prototype.clearEventsList = function() {
   return this.setEventsList([]);
+};
+
+
+/**
+ * repeated google.protobuf.Any msg_responses = 4;
+ * @return {!Array<!proto.google.protobuf.Any>}
+ */
+proto.cosmos.base.abci.v1beta1.Result.prototype.getMsgResponsesList = function() {
+  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
+    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 4));
+};
+
+
+/**
+ * @param {!Array<!proto.google.protobuf.Any>} value
+ * @return {!proto.cosmos.base.abci.v1beta1.Result} returns this
+*/
+proto.cosmos.base.abci.v1beta1.Result.prototype.setMsgResponsesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+};
+
+
+/**
+ * @param {!proto.google.protobuf.Any=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.google.protobuf.Any}
+ */
+proto.cosmos.base.abci.v1beta1.Result.prototype.addMsgResponses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.google.protobuf.Any, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.cosmos.base.abci.v1beta1.Result} returns this
+ */
+proto.cosmos.base.abci.v1beta1.Result.prototype.clearMsgResponsesList = function() {
+  return this.setMsgResponsesList([]);
 };
 
 
@@ -2118,7 +2224,7 @@ proto.cosmos.base.abci.v1beta1.MsgData.prototype.setData = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.base.abci.v1beta1.TxMsgData.repeatedFields_ = [1];
+proto.cosmos.base.abci.v1beta1.TxMsgData.repeatedFields_ = [1,2];
 
 
 
@@ -2152,7 +2258,9 @@ proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.toObject = function(opt_inclu
 proto.cosmos.base.abci.v1beta1.TxMsgData.toObject = function(includeInstance, msg) {
   var f, obj = {
     dataList: jspb.Message.toObjectList(msg.getDataList(),
-    proto.cosmos.base.abci.v1beta1.MsgData.toObject, includeInstance)
+    proto.cosmos.base.abci.v1beta1.MsgData.toObject, includeInstance),
+    msgResponsesList: jspb.Message.toObjectList(msg.getMsgResponsesList(),
+    google_protobuf_any_pb.Any.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2194,6 +2302,11 @@ proto.cosmos.base.abci.v1beta1.TxMsgData.deserializeBinaryFromReader = function(
       reader.readMessage(value,proto.cosmos.base.abci.v1beta1.MsgData.deserializeBinaryFromReader);
       msg.addData(value);
       break;
+    case 2:
+      var value = new google_protobuf_any_pb.Any;
+      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      msg.addMsgResponses(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2229,6 +2342,14 @@ proto.cosmos.base.abci.v1beta1.TxMsgData.serializeBinaryToWriter = function(mess
       1,
       f,
       proto.cosmos.base.abci.v1beta1.MsgData.serializeBinaryToWriter
+    );
+  }
+  f = message.getMsgResponsesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      google_protobuf_any_pb.Any.serializeBinaryToWriter
     );
   }
 };
@@ -2269,6 +2390,44 @@ proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.addData = function(opt_value,
  */
 proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.clearDataList = function() {
   return this.setDataList([]);
+};
+
+
+/**
+ * repeated google.protobuf.Any msg_responses = 2;
+ * @return {!Array<!proto.google.protobuf.Any>}
+ */
+proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.getMsgResponsesList = function() {
+  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
+    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.google.protobuf.Any>} value
+ * @return {!proto.cosmos.base.abci.v1beta1.TxMsgData} returns this
+*/
+proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.setMsgResponsesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.google.protobuf.Any=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.google.protobuf.Any}
+ */
+proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.addMsgResponses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.google.protobuf.Any, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.cosmos.base.abci.v1beta1.TxMsgData} returns this
+ */
+proto.cosmos.base.abci.v1beta1.TxMsgData.prototype.clearMsgResponsesList = function() {
+  return this.setMsgResponsesList([]);
 };
 
 

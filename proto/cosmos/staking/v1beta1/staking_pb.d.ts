@@ -8,7 +8,9 @@ import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/du
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 import * as tendermint_types_types_pb from "../../../tendermint/types/types_pb";
+import * as tendermint_abci_types_pb from "../../../tendermint/abci/types_pb";
 
 export class HistoricalInfo extends jspb.Message {
   hasHeader(): boolean;
@@ -172,6 +174,14 @@ export class Validator extends jspb.Message {
   getMinSelfDelegation(): string;
   setMinSelfDelegation(value: string): void;
 
+  getUnbondingOnHoldRefCount(): number;
+  setUnbondingOnHoldRefCount(value: number): void;
+
+  clearUnbondingIdsList(): void;
+  getUnbondingIdsList(): Array<number>;
+  setUnbondingIdsList(value: Array<number>): void;
+  addUnbondingIds(value: number, index?: number): number;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Validator.AsObject;
   static toObject(includeInstance: boolean, msg: Validator): Validator.AsObject;
@@ -195,6 +205,8 @@ export namespace Validator {
     unbondingTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     commission?: Commission.AsObject,
     minSelfDelegation: string,
+    unbondingOnHoldRefCount: number,
+    unbondingIdsList: Array<number>,
   }
 }
 
@@ -389,6 +401,12 @@ export class UnbondingDelegationEntry extends jspb.Message {
   getBalance(): string;
   setBalance(value: string): void;
 
+  getUnbondingId(): number;
+  setUnbondingId(value: number): void;
+
+  getUnbondingOnHoldRefCount(): number;
+  setUnbondingOnHoldRefCount(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UnbondingDelegationEntry.AsObject;
   static toObject(includeInstance: boolean, msg: UnbondingDelegationEntry): UnbondingDelegationEntry.AsObject;
@@ -405,6 +423,8 @@ export namespace UnbondingDelegationEntry {
     completionTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     initialBalance: string,
     balance: string,
+    unbondingId: number,
+    unbondingOnHoldRefCount: number,
   }
 }
 
@@ -423,6 +443,12 @@ export class RedelegationEntry extends jspb.Message {
   getSharesDst(): string;
   setSharesDst(value: string): void;
 
+  getUnbondingId(): number;
+  setUnbondingId(value: number): void;
+
+  getUnbondingOnHoldRefCount(): number;
+  setUnbondingOnHoldRefCount(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RedelegationEntry.AsObject;
   static toObject(includeInstance: boolean, msg: RedelegationEntry): RedelegationEntry.AsObject;
@@ -439,6 +465,8 @@ export namespace RedelegationEntry {
     completionTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     initialBalance: string,
     sharesDst: string,
+    unbondingId: number,
+    unbondingOnHoldRefCount: number,
   }
 }
 
@@ -494,6 +522,9 @@ export class Params extends jspb.Message {
   getBondDenom(): string;
   setBondDenom(value: string): void;
 
+  getMinCommissionRate(): string;
+  setMinCommissionRate(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Params.AsObject;
   static toObject(includeInstance: boolean, msg: Params): Params.AsObject;
@@ -511,6 +542,7 @@ export namespace Params {
     maxEntries: number,
     historicalEntries: number,
     bondDenom: string,
+    minCommissionRate: string,
   }
 }
 
@@ -620,6 +652,28 @@ export namespace Pool {
   }
 }
 
+export class ValidatorUpdates extends jspb.Message {
+  clearUpdatesList(): void;
+  getUpdatesList(): Array<tendermint_abci_types_pb.ValidatorUpdate>;
+  setUpdatesList(value: Array<tendermint_abci_types_pb.ValidatorUpdate>): void;
+  addUpdates(value?: tendermint_abci_types_pb.ValidatorUpdate, index?: number): tendermint_abci_types_pb.ValidatorUpdate;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ValidatorUpdates.AsObject;
+  static toObject(includeInstance: boolean, msg: ValidatorUpdates): ValidatorUpdates.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ValidatorUpdates, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ValidatorUpdates;
+  static deserializeBinaryFromReader(message: ValidatorUpdates, reader: jspb.BinaryReader): ValidatorUpdates;
+}
+
+export namespace ValidatorUpdates {
+  export type AsObject = {
+    updatesList: Array<tendermint_abci_types_pb.ValidatorUpdate.AsObject>,
+  }
+}
+
 export interface BondStatusMap {
   BOND_STATUS_UNSPECIFIED: 0;
   BOND_STATUS_UNBONDED: 1;
@@ -628,4 +682,12 @@ export interface BondStatusMap {
 }
 
 export const BondStatus: BondStatusMap;
+
+export interface InfractionMap {
+  INFRACTION_UNSPECIFIED: 0;
+  INFRACTION_DOUBLE_SIGN: 1;
+  INFRACTION_DOWNTIME: 2;
+}
+
+export const Infraction: InfractionMap;
 

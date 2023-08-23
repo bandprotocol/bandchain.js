@@ -22,6 +22,24 @@ type QueryAllBalances = {
   readonly responseType: typeof cosmos_bank_v1beta1_query_pb.QueryAllBalancesResponse;
 };
 
+type QuerySpendableBalances = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesRequest;
+  readonly responseType: typeof cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesResponse;
+};
+
+type QuerySpendableBalanceByDenom = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomRequest;
+  readonly responseType: typeof cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomResponse;
+};
+
 type QueryTotalSupply = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -67,15 +85,37 @@ type QueryDenomsMetadata = {
   readonly responseType: typeof cosmos_bank_v1beta1_query_pb.QueryDenomsMetadataResponse;
 };
 
+type QueryDenomOwners = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_bank_v1beta1_query_pb.QueryDenomOwnersRequest;
+  readonly responseType: typeof cosmos_bank_v1beta1_query_pb.QueryDenomOwnersResponse;
+};
+
+type QuerySendEnabled = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_bank_v1beta1_query_pb.QuerySendEnabledRequest;
+  readonly responseType: typeof cosmos_bank_v1beta1_query_pb.QuerySendEnabledResponse;
+};
+
 export class Query {
   static readonly serviceName: string;
   static readonly Balance: QueryBalance;
   static readonly AllBalances: QueryAllBalances;
+  static readonly SpendableBalances: QuerySpendableBalances;
+  static readonly SpendableBalanceByDenom: QuerySpendableBalanceByDenom;
   static readonly TotalSupply: QueryTotalSupply;
   static readonly SupplyOf: QuerySupplyOf;
   static readonly Params: QueryParams;
   static readonly DenomMetadata: QueryDenomMetadata;
   static readonly DenomsMetadata: QueryDenomsMetadata;
+  static readonly DenomOwners: QueryDenomOwners;
+  static readonly SendEnabled: QuerySendEnabled;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -128,6 +168,24 @@ export class QueryClient {
     requestMessage: cosmos_bank_v1beta1_query_pb.QueryAllBalancesRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QueryAllBalancesResponse|null) => void
   ): UnaryResponse;
+  spendableBalances(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesResponse|null) => void
+  ): UnaryResponse;
+  spendableBalances(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalancesResponse|null) => void
+  ): UnaryResponse;
+  spendableBalanceByDenom(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomResponse|null) => void
+  ): UnaryResponse;
+  spendableBalanceByDenom(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QuerySpendableBalanceByDenomResponse|null) => void
+  ): UnaryResponse;
   totalSupply(
     requestMessage: cosmos_bank_v1beta1_query_pb.QueryTotalSupplyRequest,
     metadata: grpc.Metadata,
@@ -172,6 +230,24 @@ export class QueryClient {
   denomsMetadata(
     requestMessage: cosmos_bank_v1beta1_query_pb.QueryDenomsMetadataRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QueryDenomsMetadataResponse|null) => void
+  ): UnaryResponse;
+  denomOwners(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersResponse|null) => void
+  ): UnaryResponse;
+  denomOwners(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersResponse|null) => void
+  ): UnaryResponse;
+  sendEnabled(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QuerySendEnabledRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QuerySendEnabledResponse|null) => void
+  ): UnaryResponse;
+  sendEnabled(
+    requestMessage: cosmos_bank_v1beta1_query_pb.QuerySendEnabledRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_query_pb.QuerySendEnabledResponse|null) => void
   ): UnaryResponse;
 }
 

@@ -13,8 +13,10 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
+goog.object.extend(proto, cosmos_proto_cosmos_pb);
 goog.exportSymbol('proto.cosmos.authz.v1beta1.EventGrant', null, global);
 goog.exportSymbol('proto.cosmos.authz.v1beta1.EventRevoke', null, global);
 /**

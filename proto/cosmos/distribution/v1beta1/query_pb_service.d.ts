@@ -13,6 +13,15 @@ type QueryParams = {
   readonly responseType: typeof cosmos_distribution_v1beta1_query_pb.QueryParamsResponse;
 };
 
+type QueryValidatorDistributionInfo = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoRequest;
+  readonly responseType: typeof cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoResponse;
+};
+
 type QueryValidatorOutstandingRewards = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -88,6 +97,7 @@ type QueryCommunityPool = {
 export class Query {
   static readonly serviceName: string;
   static readonly Params: QueryParams;
+  static readonly ValidatorDistributionInfo: QueryValidatorDistributionInfo;
   static readonly ValidatorOutstandingRewards: QueryValidatorOutstandingRewards;
   static readonly ValidatorCommission: QueryValidatorCommission;
   static readonly ValidatorSlashes: QueryValidatorSlashes;
@@ -138,6 +148,15 @@ export class QueryClient {
   params(
     requestMessage: cosmos_distribution_v1beta1_query_pb.QueryParamsRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_query_pb.QueryParamsResponse|null) => void
+  ): UnaryResponse;
+  validatorDistributionInfo(
+    requestMessage: cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoResponse|null) => void
+  ): UnaryResponse;
+  validatorDistributionInfo(
+    requestMessage: cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_query_pb.QueryValidatorDistributionInfoResponse|null) => void
   ): UnaryResponse;
   validatorOutstandingRewards(
     requestMessage: cosmos_distribution_v1beta1_query_pb.QueryValidatorOutstandingRewardsRequest,

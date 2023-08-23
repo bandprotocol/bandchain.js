@@ -30,12 +30,14 @@ const expectedSignatureFailed = {
   codespace: 'sdk',
   code: 4,
   data: '',
+  eventsList: [],
   rawLog:
     'signature verification failed; please verify account number (104) and chain-id (band-laozi-testnet6): unauthorized',
   logsList: [],
   info: '',
   gasWanted: 2000000,
   gasUsed: 39362,
+  tx: undefined,
   timestamp: '',
 }
 
@@ -85,6 +87,7 @@ describe('send transaction sync mode', () => {
       codespace: '',
       code: 0,
       data: '',
+      eventsList: [],
       rawLog: '',
       logsList: [],
       info: '',
@@ -187,6 +190,7 @@ describe('send transaction async mode', () => {
       codespace: '',
       code: 0,
       data: '',
+      eventsList: [],
       rawLog: '',
       logsList: [],
       info: '',
@@ -350,6 +354,7 @@ describe('send transaction block mode', () => {
       codespace: '',
       code: 0,
       data: '0A090A0772657175657374',
+      eventsList: [],
       rawLog:
         '[{"events":[{"type":"message","attributes":[{"key":"action","value":"request"}]},{"type":"raw_request","attributes":[{"key":"data_source_id","value":"61"},{"key":"data_source_hash","value":"07be7bd61667327aae10b7a13a542c7dfba31b8f4c52b0b60bf9c7b11b1a72ef"},{"key":"external_id","value":"6"},{"key":"calldata","value":"ETH"},{"key":"fee"},{"key":"data_source_id","value":"57"},{"key":"data_source_hash","value":"61b369daa5c0918020a52165f6c7662d5b9c1eee915025cb3d2b9947a26e48c7"},{"key":"external_id","value":"0"},{"key":"calldata","value":"ETH"},{"key":"fee"},{"key":"data_source_id","value":"62"},{"key":"data_source_hash","value":"107048da9dbf7960c79fb20e0585e080bb9be07d42a1ce09c5479bbada8d0289"},{"key":"external_id","value":"3"},{"key":"calldata","value":"ETH"},{"key":"fee"},{"key":"data_source_id","value":"60"},{"key":"data_source_hash","value":"2e588de76a58338125022bc42b460072300aebbcc4acaf55f91755c1c1799bac"},{"key":"external_id","value":"5"},{"key":"calldata","value":"huobipro ETH"},{"key":"fee"},{"key":"data_source_id","value":"59"},{"key":"data_source_hash","value":"5c011454981c473af3bf6ef93c76b36bfb6cc0ce5310a70a1ba569de3fc0c15d"},{"key":"external_id","value":"2"},{"key":"calldata","value":"ETH"},{"key":"fee"},{"key":"data_source_id","value":"60"},{"key":"data_source_hash","value":"2e588de76a58338125022bc42b460072300aebbcc4acaf55f91755c1c1799bac"},{"key":"external_id","value":"4"},{"key":"calldata","value":"binance ETH"},{"key":"fee"},{"key":"data_source_id","value":"60"},{"key":"data_source_hash","value":"2e588de76a58338125022bc42b460072300aebbcc4acaf55f91755c1c1799bac"},{"key":"external_id","value":"9"},{"key":"calldata","value":"bittrex ETH"},{"key":"fee"},{"key":"data_source_id","value":"60"},{"key":"data_source_hash","value":"2e588de76a58338125022bc42b460072300aebbcc4acaf55f91755c1c1799bac"},{"key":"external_id","value":"7"},{"key":"calldata","value":"kraken ETH"},{"key":"fee"},{"key":"data_source_id","value":"60"},{"key":"data_source_hash","value":"2e588de76a58338125022bc42b460072300aebbcc4acaf55f91755c1c1799bac"},{"key":"external_id","value":"8"},{"key":"calldata","value":"bitfinex ETH"},{"key":"fee"},{"key":"data_source_id","value":"58"},{"key":"data_source_hash","value":"7e6759fade717a06fb643392bfde837bfc3437da2ded54feed706e6cd35de461"},{"key":"external_id","value":"1"},{"key":"calldata","value":"ETH"},{"key":"fee"}]},{"type":"request","attributes":[{"key":"id","value":"37643"},{"key":"client_id","value":"Blue"},{"key":"oracle_script_id","value":"37"},{"key":"calldata","value":"00000001000000034554480000000000000064"},{"key":"ask_count","value":"4"},{"key":"min_count","value":"3"},{"key":"gas_used","value":"71512"},{"key":"total_fees"},{"key":"validator","value":"bandvaloper19eu9g3gka6rxlevkjlvjq7s6c498tejnwxjwxx"},{"key":"validator","value":"bandvaloper1p46uhvdk8vr829v747v85hst3mur2dzlhfemmz"},{"key":"validator","value":"bandvaloper1a570h9e3rtvfhm030ta5hvel7e7e4lh4pgv8wj"},{"key":"validator","value":"bandvaloper1274qgg28xkz6f3upx05ftr9zepgmtfgts392dy"}]}]}]',
       logsList: [
@@ -451,6 +456,7 @@ describe('send transaction block mode', () => {
       info: '',
       gasWanted: 2000000,
       gasUsed: 406535,
+      tx: undefined,
       timestamp: '',
     }
     const response = await client.sendTxBlockMode('txBytes')

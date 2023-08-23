@@ -19,6 +19,24 @@ Query.Grants = {
   responseType: cosmos_authz_v1beta1_query_pb.QueryGrantsResponse
 };
 
+Query.GranterGrants = {
+  methodName: "GranterGrants",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_authz_v1beta1_query_pb.QueryGranterGrantsRequest,
+  responseType: cosmos_authz_v1beta1_query_pb.QueryGranterGrantsResponse
+};
+
+Query.GranteeGrants = {
+  methodName: "GranteeGrants",
+  service: Query,
+  requestStream: false,
+  responseStream: false,
+  requestType: cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsRequest,
+  responseType: cosmos_authz_v1beta1_query_pb.QueryGranteeGrantsResponse
+};
+
 exports.Query = Query;
 
 function QueryClient(serviceHost, options) {
@@ -31,6 +49,68 @@ QueryClient.prototype.grants = function grants(requestMessage, metadata, callbac
     callback = arguments[1];
   }
   var client = grpc.unary(Query.Grants, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.granterGrants = function granterGrants(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.GranterGrants, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+QueryClient.prototype.granteeGrants = function granteeGrants(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Query.GranteeGrants, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

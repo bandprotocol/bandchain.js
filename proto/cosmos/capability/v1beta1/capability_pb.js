@@ -13,10 +13,12 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
+var amino_amino_pb = require('../../../amino/amino_pb.js');
+goog.object.extend(proto, amino_amino_pb);
 goog.exportSymbol('proto.cosmos.capability.v1beta1.Capability', null, global);
 goog.exportSymbol('proto.cosmos.capability.v1beta1.CapabilityOwners', null, global);
 goog.exportSymbol('proto.cosmos.capability.v1beta1.Owner', null, global);

@@ -37,15 +37,6 @@ ABCIApplication.Info = {
   responseType: tendermint_abci_types_pb.ResponseInfo
 };
 
-ABCIApplication.SetOption = {
-  methodName: "SetOption",
-  service: ABCIApplication,
-  requestStream: false,
-  responseStream: false,
-  requestType: tendermint_abci_types_pb.RequestSetOption,
-  responseType: tendermint_abci_types_pb.ResponseSetOption
-};
-
 ABCIApplication.DeliverTx = {
   methodName: "DeliverTx",
   service: ABCIApplication,
@@ -145,6 +136,24 @@ ABCIApplication.ApplySnapshotChunk = {
   responseType: tendermint_abci_types_pb.ResponseApplySnapshotChunk
 };
 
+ABCIApplication.PrepareProposal = {
+  methodName: "PrepareProposal",
+  service: ABCIApplication,
+  requestStream: false,
+  responseStream: false,
+  requestType: tendermint_abci_types_pb.RequestPrepareProposal,
+  responseType: tendermint_abci_types_pb.ResponsePrepareProposal
+};
+
+ABCIApplication.ProcessProposal = {
+  methodName: "ProcessProposal",
+  service: ABCIApplication,
+  requestStream: false,
+  responseStream: false,
+  requestType: tendermint_abci_types_pb.RequestProcessProposal,
+  responseType: tendermint_abci_types_pb.ResponseProcessProposal
+};
+
 exports.ABCIApplication = ABCIApplication;
 
 function ABCIApplicationClient(serviceHost, options) {
@@ -219,37 +228,6 @@ ABCIApplicationClient.prototype.info = function info(requestMessage, metadata, c
     callback = arguments[1];
   }
   var client = grpc.unary(ABCIApplication.Info, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-ABCIApplicationClient.prototype.setOption = function setOption(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(ABCIApplication.SetOption, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -591,6 +569,68 @@ ABCIApplicationClient.prototype.applySnapshotChunk = function applySnapshotChunk
     callback = arguments[1];
   }
   var client = grpc.unary(ABCIApplication.ApplySnapshotChunk, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+ABCIApplicationClient.prototype.prepareProposal = function prepareProposal(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(ABCIApplication.PrepareProposal, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+ABCIApplicationClient.prototype.processProposal = function processProposal(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(ABCIApplication.ProcessProposal, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

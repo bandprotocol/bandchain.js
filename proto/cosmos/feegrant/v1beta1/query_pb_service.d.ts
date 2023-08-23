@@ -22,10 +22,20 @@ type QueryAllowances = {
   readonly responseType: typeof cosmos_feegrant_v1beta1_query_pb.QueryAllowancesResponse;
 };
 
+type QueryAllowancesByGranter = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterRequest;
+  readonly responseType: typeof cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterResponse;
+};
+
 export class Query {
   static readonly serviceName: string;
   static readonly Allowance: QueryAllowance;
   static readonly Allowances: QueryAllowances;
+  static readonly AllowancesByGranter: QueryAllowancesByGranter;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -77,6 +87,15 @@ export class QueryClient {
   allowances(
     requestMessage: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesResponse|null) => void
+  ): UnaryResponse;
+  allowancesByGranter(
+    requestMessage: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterResponse|null) => void
+  ): UnaryResponse;
+  allowancesByGranter(
+    requestMessage: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterRequest,
+    callback: (error: ServiceError|null, responseMessage: cosmos_feegrant_v1beta1_query_pb.QueryAllowancesByGranterResponse|null) => void
   ): UnaryResponse;
 }
 

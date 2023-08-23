@@ -13,8 +13,10 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
+var amino_amino_pb = require('../../../amino/amino_pb.js');
+goog.object.extend(proto, amino_amino_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
 var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
@@ -49,7 +51,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.SendAuthorization.repeatedFields_ = [1];
+proto.cosmos.bank.v1beta1.SendAuthorization.repeatedFields_ = [1,2];
 
 
 
@@ -83,7 +85,8 @@ proto.cosmos.bank.v1beta1.SendAuthorization.prototype.toObject = function(opt_in
 proto.cosmos.bank.v1beta1.SendAuthorization.toObject = function(includeInstance, msg) {
   var f, obj = {
     spendLimitList: jspb.Message.toObjectList(msg.getSpendLimitList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance)
+    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
+    allowListList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -125,6 +128,10 @@ proto.cosmos.bank.v1beta1.SendAuthorization.deserializeBinaryFromReader = functi
       reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
       msg.addSpendLimit(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAllowList(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -160,6 +167,13 @@ proto.cosmos.bank.v1beta1.SendAuthorization.serializeBinaryToWriter = function(m
       1,
       f,
       cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
+    );
+  }
+  f = message.getAllowListList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
     );
   }
 };
@@ -200,6 +214,43 @@ proto.cosmos.bank.v1beta1.SendAuthorization.prototype.addSpendLimit = function(o
  */
 proto.cosmos.bank.v1beta1.SendAuthorization.prototype.clearSpendLimitList = function() {
   return this.setSpendLimitList([]);
+};
+
+
+/**
+ * repeated string allow_list = 2;
+ * @return {!Array<string>}
+ */
+proto.cosmos.bank.v1beta1.SendAuthorization.prototype.getAllowListList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.cosmos.bank.v1beta1.SendAuthorization} returns this
+ */
+proto.cosmos.bank.v1beta1.SendAuthorization.prototype.setAllowListList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.cosmos.bank.v1beta1.SendAuthorization} returns this
+ */
+proto.cosmos.bank.v1beta1.SendAuthorization.prototype.addAllowList = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.cosmos.bank.v1beta1.SendAuthorization} returns this
+ */
+proto.cosmos.bank.v1beta1.SendAuthorization.prototype.clearAllowListList = function() {
+  return this.setAllowListList([]);
 };
 
 

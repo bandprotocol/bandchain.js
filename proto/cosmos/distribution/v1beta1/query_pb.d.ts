@@ -7,6 +7,8 @@ import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
 import * as cosmos_distribution_v1beta1_distribution_pb from "../../../cosmos/distribution/v1beta1/distribution_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class QueryParamsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
@@ -43,6 +45,58 @@ export class QueryParamsResponse extends jspb.Message {
 export namespace QueryParamsResponse {
   export type AsObject = {
     params?: cosmos_distribution_v1beta1_distribution_pb.Params.AsObject,
+  }
+}
+
+export class QueryValidatorDistributionInfoRequest extends jspb.Message {
+  getValidatorAddress(): string;
+  setValidatorAddress(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryValidatorDistributionInfoRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryValidatorDistributionInfoRequest): QueryValidatorDistributionInfoRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryValidatorDistributionInfoRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryValidatorDistributionInfoRequest;
+  static deserializeBinaryFromReader(message: QueryValidatorDistributionInfoRequest, reader: jspb.BinaryReader): QueryValidatorDistributionInfoRequest;
+}
+
+export namespace QueryValidatorDistributionInfoRequest {
+  export type AsObject = {
+    validatorAddress: string,
+  }
+}
+
+export class QueryValidatorDistributionInfoResponse extends jspb.Message {
+  getOperatorAddress(): string;
+  setOperatorAddress(value: string): void;
+
+  clearSelfBondRewardsList(): void;
+  getSelfBondRewardsList(): Array<cosmos_base_v1beta1_coin_pb.DecCoin>;
+  setSelfBondRewardsList(value: Array<cosmos_base_v1beta1_coin_pb.DecCoin>): void;
+  addSelfBondRewards(value?: cosmos_base_v1beta1_coin_pb.DecCoin, index?: number): cosmos_base_v1beta1_coin_pb.DecCoin;
+
+  clearCommissionList(): void;
+  getCommissionList(): Array<cosmos_base_v1beta1_coin_pb.DecCoin>;
+  setCommissionList(value: Array<cosmos_base_v1beta1_coin_pb.DecCoin>): void;
+  addCommission(value?: cosmos_base_v1beta1_coin_pb.DecCoin, index?: number): cosmos_base_v1beta1_coin_pb.DecCoin;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryValidatorDistributionInfoResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryValidatorDistributionInfoResponse): QueryValidatorDistributionInfoResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryValidatorDistributionInfoResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryValidatorDistributionInfoResponse;
+  static deserializeBinaryFromReader(message: QueryValidatorDistributionInfoResponse, reader: jspb.BinaryReader): QueryValidatorDistributionInfoResponse;
+}
+
+export namespace QueryValidatorDistributionInfoResponse {
+  export type AsObject = {
+    operatorAddress: string,
+    selfBondRewardsList: Array<cosmos_base_v1beta1_coin_pb.DecCoin.AsObject>,
+    commissionList: Array<cosmos_base_v1beta1_coin_pb.DecCoin.AsObject>,
   }
 }
 

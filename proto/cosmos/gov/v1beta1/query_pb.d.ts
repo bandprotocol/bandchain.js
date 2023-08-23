@@ -6,6 +6,8 @@ import * as cosmos_base_query_v1beta1_pagination_pb from "../../../cosmos/base/q
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
 import * as cosmos_gov_v1beta1_gov_pb from "../../../cosmos/gov/v1beta1/gov_pb";
+import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class QueryProposalRequest extends jspb.Message {
   getProposalId(): number;

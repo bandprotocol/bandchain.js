@@ -49,6 +49,24 @@ type MsgUndelegate = {
   readonly responseType: typeof cosmos_staking_v1beta1_tx_pb.MsgUndelegateResponse;
 };
 
+type MsgCancelUnbondingDelegation = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_staking_v1beta1_tx_pb.MsgCancelUnbondingDelegation;
+  readonly responseType: typeof cosmos_staking_v1beta1_tx_pb.MsgCancelUnbondingDelegationResponse;
+};
+
+type MsgUpdateParams = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_staking_v1beta1_tx_pb.MsgUpdateParams;
+  readonly responseType: typeof cosmos_staking_v1beta1_tx_pb.MsgUpdateParamsResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly CreateValidator: MsgCreateValidator;
@@ -56,6 +74,8 @@ export class Msg {
   static readonly Delegate: MsgDelegate;
   static readonly BeginRedelegate: MsgBeginRedelegate;
   static readonly Undelegate: MsgUndelegate;
+  static readonly CancelUnbondingDelegation: MsgCancelUnbondingDelegation;
+  static readonly UpdateParams: MsgUpdateParams;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -134,6 +154,24 @@ export class MsgClient {
   undelegate(
     requestMessage: cosmos_staking_v1beta1_tx_pb.MsgUndelegate,
     callback: (error: ServiceError|null, responseMessage: cosmos_staking_v1beta1_tx_pb.MsgUndelegateResponse|null) => void
+  ): UnaryResponse;
+  cancelUnbondingDelegation(
+    requestMessage: cosmos_staking_v1beta1_tx_pb.MsgCancelUnbondingDelegation,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_staking_v1beta1_tx_pb.MsgCancelUnbondingDelegationResponse|null) => void
+  ): UnaryResponse;
+  cancelUnbondingDelegation(
+    requestMessage: cosmos_staking_v1beta1_tx_pb.MsgCancelUnbondingDelegation,
+    callback: (error: ServiceError|null, responseMessage: cosmos_staking_v1beta1_tx_pb.MsgCancelUnbondingDelegationResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_staking_v1beta1_tx_pb.MsgUpdateParams,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_staking_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_staking_v1beta1_tx_pb.MsgUpdateParams,
+    callback: (error: ServiceError|null, responseMessage: cosmos_staking_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
   ): UnaryResponse;
 }
 

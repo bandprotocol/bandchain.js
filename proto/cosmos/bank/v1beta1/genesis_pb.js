@@ -13,7 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
@@ -21,6 +21,10 @@ var cosmos_base_v1beta1_coin_pb = require('../../../cosmos/base/v1beta1/coin_pb.
 goog.object.extend(proto, cosmos_base_v1beta1_coin_pb);
 var cosmos_bank_v1beta1_bank_pb = require('../../../cosmos/bank/v1beta1/bank_pb.js');
 goog.object.extend(proto, cosmos_bank_v1beta1_bank_pb);
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
+goog.object.extend(proto, cosmos_proto_cosmos_pb);
+var amino_amino_pb = require('../../../amino/amino_pb.js');
+goog.object.extend(proto, amino_amino_pb);
 goog.exportSymbol('proto.cosmos.bank.v1beta1.Balance', null, global);
 goog.exportSymbol('proto.cosmos.bank.v1beta1.GenesisState', null, global);
 /**
@@ -71,7 +75,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.GenesisState.repeatedFields_ = [2,3,4];
+proto.cosmos.bank.v1beta1.GenesisState.repeatedFields_ = [2,3,4,5];
 
 
 
@@ -110,7 +114,9 @@ proto.cosmos.bank.v1beta1.GenesisState.toObject = function(includeInstance, msg)
     supplyList: jspb.Message.toObjectList(msg.getSupplyList(),
     cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
     denomMetadataList: jspb.Message.toObjectList(msg.getDenomMetadataList(),
-    cosmos_bank_v1beta1_bank_pb.Metadata.toObject, includeInstance)
+    cosmos_bank_v1beta1_bank_pb.Metadata.toObject, includeInstance),
+    sendEnabledList: jspb.Message.toObjectList(msg.getSendEnabledList(),
+    cosmos_bank_v1beta1_bank_pb.SendEnabled.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -166,6 +172,11 @@ proto.cosmos.bank.v1beta1.GenesisState.deserializeBinaryFromReader = function(ms
       var value = new cosmos_bank_v1beta1_bank_pb.Metadata;
       reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.Metadata.deserializeBinaryFromReader);
       msg.addDenomMetadata(value);
+      break;
+    case 5:
+      var value = new cosmos_bank_v1beta1_bank_pb.SendEnabled;
+      reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.SendEnabled.deserializeBinaryFromReader);
+      msg.addSendEnabled(value);
       break;
     default:
       reader.skipField();
@@ -226,6 +237,14 @@ proto.cosmos.bank.v1beta1.GenesisState.serializeBinaryToWriter = function(messag
       4,
       f,
       cosmos_bank_v1beta1_bank_pb.Metadata.serializeBinaryToWriter
+    );
+  }
+  f = message.getSendEnabledList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      5,
+      f,
+      cosmos_bank_v1beta1_bank_pb.SendEnabled.serializeBinaryToWriter
     );
   }
 };
@@ -379,6 +398,44 @@ proto.cosmos.bank.v1beta1.GenesisState.prototype.addDenomMetadata = function(opt
  */
 proto.cosmos.bank.v1beta1.GenesisState.prototype.clearDenomMetadataList = function() {
   return this.setDenomMetadataList([]);
+};
+
+
+/**
+ * repeated SendEnabled send_enabled = 5;
+ * @return {!Array<!proto.cosmos.bank.v1beta1.SendEnabled>}
+ */
+proto.cosmos.bank.v1beta1.GenesisState.prototype.getSendEnabledList = function() {
+  return /** @type{!Array<!proto.cosmos.bank.v1beta1.SendEnabled>} */ (
+    jspb.Message.getRepeatedWrapperField(this, cosmos_bank_v1beta1_bank_pb.SendEnabled, 5));
+};
+
+
+/**
+ * @param {!Array<!proto.cosmos.bank.v1beta1.SendEnabled>} value
+ * @return {!proto.cosmos.bank.v1beta1.GenesisState} returns this
+*/
+proto.cosmos.bank.v1beta1.GenesisState.prototype.setSendEnabledList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 5, value);
+};
+
+
+/**
+ * @param {!proto.cosmos.bank.v1beta1.SendEnabled=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.cosmos.bank.v1beta1.SendEnabled}
+ */
+proto.cosmos.bank.v1beta1.GenesisState.prototype.addSendEnabled = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.cosmos.bank.v1beta1.SendEnabled, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.cosmos.bank.v1beta1.GenesisState} returns this
+ */
+proto.cosmos.bank.v1beta1.GenesisState.prototype.clearSendEnabledList = function() {
+  return this.setSendEnabledList([]);
 };
 
 

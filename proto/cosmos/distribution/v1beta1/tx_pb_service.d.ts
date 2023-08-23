@@ -40,12 +40,32 @@ type MsgFundCommunityPool = {
   readonly responseType: typeof cosmos_distribution_v1beta1_tx_pb.MsgFundCommunityPoolResponse;
 };
 
+type MsgUpdateParams = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_distribution_v1beta1_tx_pb.MsgUpdateParams;
+  readonly responseType: typeof cosmos_distribution_v1beta1_tx_pb.MsgUpdateParamsResponse;
+};
+
+type MsgCommunityPoolSpend = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpend;
+  readonly responseType: typeof cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpendResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly SetWithdrawAddress: MsgSetWithdrawAddress;
   static readonly WithdrawDelegatorReward: MsgWithdrawDelegatorReward;
   static readonly WithdrawValidatorCommission: MsgWithdrawValidatorCommission;
   static readonly FundCommunityPool: MsgFundCommunityPool;
+  static readonly UpdateParams: MsgUpdateParams;
+  static readonly CommunityPoolSpend: MsgCommunityPoolSpend;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -115,6 +135,24 @@ export class MsgClient {
   fundCommunityPool(
     requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgFundCommunityPool,
     callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgFundCommunityPoolResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgUpdateParams,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgUpdateParams,
+    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  communityPoolSpend(
+    requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpend,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpendResponse|null) => void
+  ): UnaryResponse;
+  communityPoolSpend(
+    requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpend,
+    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpendResponse|null) => void
   ): UnaryResponse;
 }
 

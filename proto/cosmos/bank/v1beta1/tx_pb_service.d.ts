@@ -22,10 +22,30 @@ type MsgMultiSend = {
   readonly responseType: typeof cosmos_bank_v1beta1_tx_pb.MsgMultiSendResponse;
 };
 
+type MsgUpdateParams = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_bank_v1beta1_tx_pb.MsgUpdateParams;
+  readonly responseType: typeof cosmos_bank_v1beta1_tx_pb.MsgUpdateParamsResponse;
+};
+
+type MsgSetSendEnabled = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabled;
+  readonly responseType: typeof cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabledResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly Send: MsgSend;
   static readonly MultiSend: MsgMultiSend;
+  static readonly UpdateParams: MsgUpdateParams;
+  static readonly SetSendEnabled: MsgSetSendEnabled;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -77,6 +97,24 @@ export class MsgClient {
   multiSend(
     requestMessage: cosmos_bank_v1beta1_tx_pb.MsgMultiSend,
     callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_tx_pb.MsgMultiSendResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_bank_v1beta1_tx_pb.MsgUpdateParams,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: cosmos_bank_v1beta1_tx_pb.MsgUpdateParams,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  setSendEnabled(
+    requestMessage: cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabled,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabledResponse|null) => void
+  ): UnaryResponse;
+  setSendEnabled(
+    requestMessage: cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabled,
+    callback: (error: ServiceError|null, responseMessage: cosmos_bank_v1beta1_tx_pb.MsgSetSendEnabledResponse|null) => void
   ): UnaryResponse;
 }
 

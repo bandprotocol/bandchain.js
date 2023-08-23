@@ -4,6 +4,7 @@
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as cosmos_capability_v1beta1_capability_pb from "../../../cosmos/capability/v1beta1/capability_pb";
+import * as amino_amino_pb from "../../../amino/amino_pb";
 
 export class GenesisOwners extends jspb.Message {
   getIndex(): number;

@@ -13,10 +13,12 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.cosmos.base.store.v1beta1.CommitID', null, global);
 goog.exportSymbol('proto.cosmos.base.store.v1beta1.CommitInfo', null, global);
 goog.exportSymbol('proto.cosmos.base.store.v1beta1.StoreInfo', null, global);
@@ -124,7 +126,8 @@ proto.cosmos.base.store.v1beta1.CommitInfo.toObject = function(includeInstance, 
   var f, obj = {
     version: jspb.Message.getFieldWithDefault(msg, 1, 0),
     storeInfosList: jspb.Message.toObjectList(msg.getStoreInfosList(),
-    proto.cosmos.base.store.v1beta1.StoreInfo.toObject, includeInstance)
+    proto.cosmos.base.store.v1beta1.StoreInfo.toObject, includeInstance),
+    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -170,6 +173,11 @@ proto.cosmos.base.store.v1beta1.CommitInfo.deserializeBinaryFromReader = functio
       reader.readMessage(value,proto.cosmos.base.store.v1beta1.StoreInfo.deserializeBinaryFromReader);
       msg.addStoreInfos(value);
       break;
+    case 3:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTimestamp(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -212,6 +220,14 @@ proto.cosmos.base.store.v1beta1.CommitInfo.serializeBinaryToWriter = function(me
       2,
       f,
       proto.cosmos.base.store.v1beta1.StoreInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getTimestamp();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -270,6 +286,43 @@ proto.cosmos.base.store.v1beta1.CommitInfo.prototype.addStoreInfos = function(op
  */
 proto.cosmos.base.store.v1beta1.CommitInfo.prototype.clearStoreInfosList = function() {
   return this.setStoreInfosList([]);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 3;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.cosmos.base.store.v1beta1.CommitInfo.prototype.getTimestamp = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.cosmos.base.store.v1beta1.CommitInfo} returns this
+*/
+proto.cosmos.base.store.v1beta1.CommitInfo.prototype.setTimestamp = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.cosmos.base.store.v1beta1.CommitInfo} returns this
+ */
+proto.cosmos.base.store.v1beta1.CommitInfo.prototype.clearTimestamp = function() {
+  return this.setTimestamp(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.cosmos.base.store.v1beta1.CommitInfo.prototype.hasTimestamp = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

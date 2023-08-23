@@ -13,9 +13,29 @@ type MsgCreateVestingAccount = {
   readonly responseType: typeof cosmos_vesting_v1beta1_tx_pb.MsgCreateVestingAccountResponse;
 };
 
+type MsgCreatePermanentLockedAccount = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_vesting_v1beta1_tx_pb.MsgCreatePermanentLockedAccount;
+  readonly responseType: typeof cosmos_vesting_v1beta1_tx_pb.MsgCreatePermanentLockedAccountResponse;
+};
+
+type MsgCreatePeriodicVestingAccount = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof cosmos_vesting_v1beta1_tx_pb.MsgCreatePeriodicVestingAccount;
+  readonly responseType: typeof cosmos_vesting_v1beta1_tx_pb.MsgCreatePeriodicVestingAccountResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly CreateVestingAccount: MsgCreateVestingAccount;
+  static readonly CreatePermanentLockedAccount: MsgCreatePermanentLockedAccount;
+  static readonly CreatePeriodicVestingAccount: MsgCreatePeriodicVestingAccount;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -58,6 +78,24 @@ export class MsgClient {
   createVestingAccount(
     requestMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreateVestingAccount,
     callback: (error: ServiceError|null, responseMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreateVestingAccountResponse|null) => void
+  ): UnaryResponse;
+  createPermanentLockedAccount(
+    requestMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePermanentLockedAccount,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePermanentLockedAccountResponse|null) => void
+  ): UnaryResponse;
+  createPermanentLockedAccount(
+    requestMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePermanentLockedAccount,
+    callback: (error: ServiceError|null, responseMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePermanentLockedAccountResponse|null) => void
+  ): UnaryResponse;
+  createPeriodicVestingAccount(
+    requestMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePeriodicVestingAccount,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePeriodicVestingAccountResponse|null) => void
+  ): UnaryResponse;
+  createPeriodicVestingAccount(
+    requestMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePeriodicVestingAccount,
+    callback: (error: ServiceError|null, responseMessage: cosmos_vesting_v1beta1_tx_pb.MsgCreatePeriodicVestingAccountResponse|null) => void
   ): UnaryResponse;
 }
 
