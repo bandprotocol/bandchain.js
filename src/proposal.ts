@@ -7,15 +7,34 @@ import {
 } from '../proto/cosmos/params/v1beta1/params_pb'
 import {
   CancelSoftwareUpgradeProposal as CancelSoftwareUpgradeProposalPb,
-  Plan,
+  Plan as PlanPb,
   SoftwareUpgradeProposal as SoftwareUpgradeProposalPb,
 } from '../proto/cosmos/upgrade/v1beta1/upgrade_pb'
 import { VetoProposal as VetoProposalPb } from '../proto/council/v1beta1/types_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
-import { Message as JSPBMesage } from 'google-protobuf'
+import { BaseMsg } from 'message'
 
-export interface BaseMsg extends JSPBMesage {
-  toAny(): Any
+export class Plan extends PlanPb implements BaseMsg {
+  constructor(name: string, height: number, info: string) {
+    super()
+    this.setInfo(info)
+    this.setName(name)
+    this.setHeight(height)
+  }
+
+  toAny(): Any {
+    const any = new Any()
+    any.pack(this.serializeBinary(), 'cosmos.upgrade.v1beta1.Plan', '/')
+    return any
+  }
+
+  toJSON(): object {
+    return {
+      name: this.getName(),
+      info: this.getInfo(),
+      height: this.getHeight().toString(),
+    }
+  }
 }
 
 export class TextProposal extends TextProposalPb implements BaseMsg {
@@ -29,6 +48,16 @@ export class TextProposal extends TextProposalPb implements BaseMsg {
     const any = new Any()
     any.pack(this.serializeBinary(), 'cosmos.gov.v1beta1.TextProposal', '/')
     return any
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/TextProposal',
+      value: {
+        title: this.getTitle(),
+        description: this.getDescription(),
+      },
+    }
   }
 }
 
@@ -58,6 +87,20 @@ export class CommunityPoolSpendProposal
     )
     return any
   }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/CommunityPoolSpend',
+      value: {
+        title: this.getTitle(),
+        description: this.getDescription(),
+        recipient: this.getRecipient(),
+        amount: this.getAmountList().map((coin) =>
+          JSON.stringify(coin.toObject()),
+        ),
+      },
+    }
+  }
 }
 
 export class ParameterChangeProposal
@@ -80,13 +123,26 @@ export class ParameterChangeProposal
     )
     return any
   }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/ParameterChangeProposal',
+      value: {
+        title: this.getTitle(),
+        description: this.getDescription(),
+        changes: this.getChangesList().map((change) =>
+          JSON.stringify(change.toObject()),
+        ),
+      },
+    }
+  }
 }
 
 export class SoftwareUpgradeProposal
   extends SoftwareUpgradeProposalPb
   implements BaseMsg
 {
-  constructor(title: string, description: string, plan: Plan) {
+  constructor(title: string, description: string, public plan: Plan) {
     super()
     this.setTitle(title)
     this.setDescription(description)
@@ -101,6 +157,23 @@ export class SoftwareUpgradeProposal
       '/',
     )
     return any
+  }
+
+  toJSON(): object {
+    const plan = this.getPlan()
+
+    return {
+      type: 'cosmos-sdk/SoftwareUpgradeProposal',
+      value: {
+        title: this.getTitle(),
+        description: this.getDescription(),
+        plan: {
+          info: plan.getInfo(),
+          name: plan.getName(),
+          height: plan.getHeight().toString(),
+        },
+      },
+    }
   }
 }
 
@@ -123,6 +196,16 @@ export class CancelSoftwareUpgradeProposal
     )
     return any
   }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/CancelSoftwareUpgradeProposal',
+      value: {
+        title: this.getTitle(),
+        description: this.getDescription(),
+      },
+    }
+  }
 }
 
 export class VetoProposal extends VetoProposalPb implements BaseMsg {
@@ -136,6 +219,16 @@ export class VetoProposal extends VetoProposalPb implements BaseMsg {
     const any = new Any()
     any.pack(this.serializeBinary(), 'council.v1beta1.VetoProposal', '/')
     return any
+  }
+
+  toJSON(): object {
+    return {
+      type: 'council/VetoProposal',
+      value: {
+        proposal_id: this.getProposalId().toString(),
+        description: this.getDescription(),
+      },
+    }
   }
 }
 

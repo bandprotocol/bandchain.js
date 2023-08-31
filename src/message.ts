@@ -703,7 +703,7 @@ export class MsgSubmitProposal
   constructor(
     initialDepositList: Coin[],
     proposer: string,
-    content?: Proposal.Content,
+    public content?: Proposal.Content,
   ) {
     super()
     this.setInitialDepositList(initialDepositList)
@@ -724,6 +724,7 @@ export class MsgSubmitProposal
   }
 
   toJSON(): object {
+    const { content } = this
     return {
       type: 'cosmos-sdk/MsgSubmitProposal',
       value: {
@@ -731,7 +732,7 @@ export class MsgSubmitProposal
         initial_deposit: this.getInitialDepositList().map((coin) =>
           coin.toObject(),
         ),
-        content: this.getContent()?.toObject(),
+        content: content.toJSON(),
       },
     }
   }
