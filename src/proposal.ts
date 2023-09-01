@@ -7,35 +7,35 @@ import {
 } from '../proto/cosmos/params/v1beta1/params_pb'
 import {
   CancelSoftwareUpgradeProposal as CancelSoftwareUpgradeProposalPb,
-  Plan as PlanPb,
+  Plan,
   SoftwareUpgradeProposal as SoftwareUpgradeProposalPb,
 } from '../proto/cosmos/upgrade/v1beta1/upgrade_pb'
 import { VetoProposal as VetoProposalPb } from '../proto/council/v1beta1/types_pb'
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 import { BaseMsg } from 'message'
 
-export class Plan extends PlanPb implements BaseMsg {
-  constructor(name: string, height: number, info: string) {
-    super()
-    this.setInfo(info)
-    this.setName(name)
-    this.setHeight(height)
-  }
+// export class Plan extends PlanPb implements BaseMsg {
+//   constructor(name: string, height: number, info: string) {
+//     super()
+//     this.setInfo(info)
+//     this.setName(name)
+//     this.setHeight(height)
+//   }
 
-  toAny(): Any {
-    const any = new Any()
-    any.pack(this.serializeBinary(), 'cosmos.upgrade.v1beta1.Plan', '/')
-    return any
-  }
+//   toAny(): Any {
+//     const any = new Any()
+//     any.pack(this.serializeBinary(), 'cosmos.upgrade.v1beta1.Plan', '/')
+//     return any
+//   }
 
-  toJSON(): object {
-    return {
-      name: this.getName(),
-      info: this.getInfo(),
-      height: this.getHeight().toString(),
-    }
-  }
-}
+//   toJSON(): object {
+//     return {
+//       name: this.getName(),
+//       info: this.getInfo(),
+//       height: this.getHeight().toString(),
+//     }
+//   }
+// }
 
 export class TextProposal extends TextProposalPb implements BaseMsg {
   constructor(title: string, description: string) {
@@ -54,8 +54,8 @@ export class TextProposal extends TextProposalPb implements BaseMsg {
     return {
       type: 'cosmos-sdk/TextProposal',
       value: {
-        title: this.getTitle(),
-        description: this.getDescription(),
+        title: this.getTitle().toString(),
+        description: this.getDescription().toString(),
       },
     }
   }
@@ -92,12 +92,10 @@ export class CommunityPoolSpendProposal
     return {
       type: 'cosmos-sdk/CommunityPoolSpend',
       value: {
-        title: this.getTitle(),
-        description: this.getDescription(),
-        recipient: this.getRecipient(),
-        amount: this.getAmountList().map((coin) =>
-          JSON.stringify(coin.toObject()),
-        ),
+        title: this.getTitle().toString(),
+        description: this.getDescription().toString(),
+        recipient: this.getRecipient().toString(),
+        amount: this.getAmountList().map((coin) => coin.toObject()),
       },
     }
   }
@@ -128,11 +126,9 @@ export class ParameterChangeProposal
     return {
       type: 'cosmos-sdk/ParameterChangeProposal',
       value: {
-        title: this.getTitle(),
-        description: this.getDescription(),
-        changes: this.getChangesList().map((change) =>
-          JSON.stringify(change.toObject()),
-        ),
+        title: this.getTitle().toString(),
+        description: this.getDescription().toString(),
+        changes: this.getChangesList().map((change) => change.toObject()),
       },
     }
   }
@@ -165,11 +161,11 @@ export class SoftwareUpgradeProposal
     return {
       type: 'cosmos-sdk/SoftwareUpgradeProposal',
       value: {
-        title: this.getTitle(),
+        title: this.getTitle().toString(),
         description: this.getDescription(),
         plan: {
-          info: plan.getInfo(),
-          name: plan.getName(),
+          info: plan.getInfo().toString(),
+          name: plan.getName().toString(),
           height: plan.getHeight().toString(),
         },
       },
@@ -201,8 +197,8 @@ export class CancelSoftwareUpgradeProposal
     return {
       type: 'cosmos-sdk/CancelSoftwareUpgradeProposal',
       value: {
-        title: this.getTitle(),
-        description: this.getDescription(),
+        title: this.getTitle().toString(),
+        description: this.getDescription().toString(),
       },
     }
   }
@@ -226,7 +222,7 @@ export class VetoProposal extends VetoProposalPb implements BaseMsg {
       type: 'council/VetoProposal',
       value: {
         proposal_id: this.getProposalId().toString(),
-        description: this.getDescription(),
+        description: this.getDescription().toString(),
       },
     }
   }
