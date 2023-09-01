@@ -14,29 +14,6 @@ import { VetoProposal as VetoProposalPb } from '../proto/council/v1beta1/types_p
 import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
 import { BaseMsg } from 'message'
 
-// export class Plan extends PlanPb implements BaseMsg {
-//   constructor(name: string, height: number, info: string) {
-//     super()
-//     this.setInfo(info)
-//     this.setName(name)
-//     this.setHeight(height)
-//   }
-
-//   toAny(): Any {
-//     const any = new Any()
-//     any.pack(this.serializeBinary(), 'cosmos.upgrade.v1beta1.Plan', '/')
-//     return any
-//   }
-
-//   toJSON(): object {
-//     return {
-//       name: this.getName(),
-//       info: this.getInfo(),
-//       height: this.getHeight().toString(),
-//     }
-//   }
-// }
-
 export class TextProposal extends TextProposalPb implements BaseMsg {
   constructor(title: string, description: string) {
     super()
