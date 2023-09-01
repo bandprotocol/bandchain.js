@@ -703,7 +703,7 @@ export class MsgSubmitProposal
   constructor(
     initialDepositList: Coin[],
     proposer: string,
-    content?: Proposal.Content,
+    public content?: Proposal.Content,
   ) {
     super()
     this.setInitialDepositList(initialDepositList)
@@ -724,14 +724,15 @@ export class MsgSubmitProposal
   }
 
   toJSON(): object {
+    const { content } = this
     return {
       type: 'cosmos-sdk/MsgSubmitProposal',
       value: {
-        proposer: this.getProposer(),
+        proposer: this.getProposer().toString(),
         initial_deposit: this.getInitialDepositList().map((coin) =>
           coin.toObject(),
         ),
-        content: this.getContent()?.toObject(),
+        content: content.toJSON(),
       },
     }
   }
@@ -762,7 +763,7 @@ export class MsgSubmitCouncilProposal
     title: string,
     council: CouncilTypeMap[keyof CouncilTypeMap],
     proposer: string,
-    messagesList: Array<BaseMsg>,
+    public messagesList: Array<BaseMsg>,
     metadata: string,
   ) {
     super()
@@ -787,13 +788,14 @@ export class MsgSubmitCouncilProposal
   }
 
   toJSON(): object {
+    const { messagesList } = this
     return {
       type: 'council/MsgSubmitProposal',
       value: {
-        title: this.getTitle(),
-        council: this.getCouncil(),
-        messages: this.getMessagesList().map((msg) => msg.toObject()),
-        metadata: this.getMetadata(),
+        title: this.getTitle().toString(),
+        council: this.getCouncil().toString(),
+        messages: messagesList.map((msg: BaseMsg) => msg.toJSON()),
+        metadata: this.getMetadata().toString(),
       },
     }
   }
@@ -843,8 +845,8 @@ export class MsgVoteCouncil extends MsgVoteCouncilProto implements BaseMsg {
       type: 'council/MsgVote',
       value: {
         proposal_id: this.getProposalId().toString(),
-        voter: this.getVoter(),
-        option: this.getOption(),
+        voter: this.getVoter().toString(),
+        option: this.getOption().toString(),
       },
     }
   }
