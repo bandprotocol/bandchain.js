@@ -21,7 +21,6 @@ import {
 
 import {
   MsgVote as MsgVoteGroupProto,
-  Exec as GroupExec,
   ExecMap as GroupExecMap,
 } from '../proto/cosmos/group/v1/tx_pb'
 
