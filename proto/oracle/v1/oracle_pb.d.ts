@@ -4,7 +4,6 @@
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../gogoproto/gogo_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
-import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../cosmos/base/v1beta1/coin_pb";
 
 export class DataSource extends jspb.Message {
@@ -188,6 +187,17 @@ export class Request extends jspb.Message {
   getExecuteGas(): number;
   setExecuteGas(value: number): void;
 
+  getTssGroupId(): number;
+  setTssGroupId(value: number): void;
+
+  getRequester(): string;
+  setRequester(value: string): void;
+
+  clearFeeLimitList(): void;
+  getFeeLimitList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setFeeLimitList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addFeeLimit(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Request.AsObject;
   static toObject(includeInstance: boolean, msg: Request): Request.AsObject;
@@ -210,6 +220,9 @@ export namespace Request {
     rawRequestsList: Array<RawRequest.AsObject>,
     ibcChannel?: IBCChannel.AsObject,
     executeGas: number,
+    tssGroupId: number,
+    requester: string,
+    feeLimitList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
   }
 }
 
@@ -272,6 +285,9 @@ export class OracleRequestPacketData extends jspb.Message {
   getExecuteGas(): number;
   setExecuteGas(value: number): void;
 
+  getTssGroupId(): number;
+  setTssGroupId(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OracleRequestPacketData.AsObject;
   static toObject(includeInstance: boolean, msg: OracleRequestPacketData): OracleRequestPacketData.AsObject;
@@ -292,6 +308,7 @@ export namespace OracleRequestPacketData {
     feeLimitList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     prepareGas: number,
     executeGas: number,
+    tssGroupId: number,
   }
 }
 
@@ -422,6 +439,34 @@ export namespace Result {
     resolveTime: number,
     resolveStatus: ResolveStatusMap[keyof ResolveStatusMap],
     result: Uint8Array | string,
+  }
+}
+
+export class SigningResult extends jspb.Message {
+  getSigningId(): number;
+  setSigningId(value: number): void;
+
+  getErrorCodespace(): string;
+  setErrorCodespace(value: string): void;
+
+  getErrorCode(): number;
+  setErrorCode(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SigningResult.AsObject;
+  static toObject(includeInstance: boolean, msg: SigningResult): SigningResult.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SigningResult, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SigningResult;
+  static deserializeBinaryFromReader(message: SigningResult, reader: jspb.BinaryReader): SigningResult;
+}
+
+export namespace SigningResult {
+  export type AsObject = {
+    signingId: number,
+    errorCodespace: string,
+    errorCode: number,
   }
 }
 
@@ -594,6 +639,9 @@ export class RequestVerification extends jspb.Message {
   getExternalId(): number;
   setExternalId(value: number): void;
 
+  getDataSourceId(): number;
+  setDataSourceId(value: number): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RequestVerification.AsObject;
   static toObject(includeInstance: boolean, msg: RequestVerification): RequestVerification.AsObject;
@@ -610,6 +658,7 @@ export namespace RequestVerification {
     validator: string,
     requestId: number,
     externalId: number,
+    dataSourceId: number,
   }
 }
 
@@ -646,6 +695,26 @@ export namespace PriceResult {
     px: number,
     requestId: number,
     resolveTime: number,
+  }
+}
+
+export class OracleResultRequestingSignature extends jspb.Message {
+  getRequestId(): number;
+  setRequestId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): OracleResultRequestingSignature.AsObject;
+  static toObject(includeInstance: boolean, msg: OracleResultRequestingSignature): OracleResultRequestingSignature.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: OracleResultRequestingSignature, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): OracleResultRequestingSignature;
+  static deserializeBinaryFromReader(message: OracleResultRequestingSignature, reader: jspb.BinaryReader): OracleResultRequestingSignature;
+}
+
+export namespace OracleResultRequestingSignature {
+  export type AsObject = {
+    requestId: number,
   }
 }
 

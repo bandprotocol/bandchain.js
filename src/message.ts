@@ -58,6 +58,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     feeLimitList: Coin[] = [],
     prepareGas: number = 50000,
     executeGas: number = 300000,
+    tssGroupId: number = 0
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
@@ -69,6 +70,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     this.setPrepareGas(prepareGas)
     this.setExecuteGas(executeGas)
     this.setSender(sender)
+    this.setTssGroupId(tssGroupId)
   }
 
   toAny(): Any {
@@ -93,6 +95,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
         fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
         prepare_gas: this.getPrepareGas().toString(),
         execute_gas: this.getExecuteGas().toString(),
+        tss_group_id: this.getTssGroupId().toString()
       },
     }
   }
