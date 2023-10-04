@@ -67,6 +67,15 @@ type MsgActivate = {
   readonly responseType: typeof oracle_v1_tx_pb.MsgActivateResponse;
 };
 
+type MsgUpdateParams = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof oracle_v1_tx_pb.MsgUpdateParams;
+  readonly responseType: typeof oracle_v1_tx_pb.MsgUpdateParamsResponse;
+};
+
 export class Msg {
   static readonly serviceName: string;
   static readonly RequestData: MsgRequestData;
@@ -76,6 +85,7 @@ export class Msg {
   static readonly CreateOracleScript: MsgCreateOracleScript;
   static readonly EditOracleScript: MsgEditOracleScript;
   static readonly Activate: MsgActivate;
+  static readonly UpdateParams: MsgUpdateParams;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -172,6 +182,15 @@ export class MsgClient {
   activate(
     requestMessage: oracle_v1_tx_pb.MsgActivate,
     callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgActivateResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: oracle_v1_tx_pb.MsgUpdateParams,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgUpdateParamsResponse|null) => void
+  ): UnaryResponse;
+  updateParams(
+    requestMessage: oracle_v1_tx_pb.MsgUpdateParams,
+    callback: (error: ServiceError|null, responseMessage: oracle_v1_tx_pb.MsgUpdateParamsResponse|null) => void
   ): UnaryResponse;
 }
 

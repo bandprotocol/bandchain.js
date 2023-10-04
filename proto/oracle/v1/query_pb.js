@@ -13,20 +13,14 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
 var gogoproto_gogo_pb = require('../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 goog.object.extend(proto, google_api_annotations_pb);
 var oracle_v1_oracle_pb = require('../../oracle/v1/oracle_pb.js');
 goog.object.extend(proto, oracle_v1_oracle_pb);
-var cosmos_base_v1beta1_coin_pb = require('../../cosmos/base/v1beta1/coin_pb.js');
-goog.object.extend(proto, cosmos_base_v1beta1_coin_pb);
-var cosmos_proto_cosmos_pb = require('../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
 goog.exportSymbol('proto.oracle.v1.QueryActiveValidatorsRequest', null, global);
 goog.exportSymbol('proto.oracle.v1.QueryActiveValidatorsResponse', null, global);
 goog.exportSymbol('proto.oracle.v1.QueryCountsRequest', null, global);
@@ -1952,7 +1946,8 @@ proto.oracle.v1.QueryRequestResponse.toObject = function(includeInstance, msg) {
     request: (f = msg.getRequest()) && oracle_v1_oracle_pb.Request.toObject(includeInstance, f),
     reportsList: jspb.Message.toObjectList(msg.getReportsList(),
     oracle_v1_oracle_pb.Report.toObject, includeInstance),
-    result: (f = msg.getResult()) && oracle_v1_oracle_pb.Result.toObject(includeInstance, f)
+    result: (f = msg.getResult()) && oracle_v1_oracle_pb.Result.toObject(includeInstance, f),
+    signing: (f = msg.getSigning()) && oracle_v1_oracle_pb.SigningResult.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2003,6 +1998,11 @@ proto.oracle.v1.QueryRequestResponse.deserializeBinaryFromReader = function(msg,
       var value = new oracle_v1_oracle_pb.Result;
       reader.readMessage(value,oracle_v1_oracle_pb.Result.deserializeBinaryFromReader);
       msg.setResult(value);
+      break;
+    case 4:
+      var value = new oracle_v1_oracle_pb.SigningResult;
+      reader.readMessage(value,oracle_v1_oracle_pb.SigningResult.deserializeBinaryFromReader);
+      msg.setSigning(value);
       break;
     default:
       reader.skipField();
@@ -2055,6 +2055,14 @@ proto.oracle.v1.QueryRequestResponse.serializeBinaryToWriter = function(message,
       3,
       f,
       oracle_v1_oracle_pb.Result.serializeBinaryToWriter
+    );
+  }
+  f = message.getSigning();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      oracle_v1_oracle_pb.SigningResult.serializeBinaryToWriter
     );
   }
 };
@@ -2169,6 +2177,43 @@ proto.oracle.v1.QueryRequestResponse.prototype.clearResult = function() {
  */
 proto.oracle.v1.QueryRequestResponse.prototype.hasResult = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional SigningResult signing = 4;
+ * @return {?proto.oracle.v1.SigningResult}
+ */
+proto.oracle.v1.QueryRequestResponse.prototype.getSigning = function() {
+  return /** @type{?proto.oracle.v1.SigningResult} */ (
+    jspb.Message.getWrapperField(this, oracle_v1_oracle_pb.SigningResult, 4));
+};
+
+
+/**
+ * @param {?proto.oracle.v1.SigningResult|undefined} value
+ * @return {!proto.oracle.v1.QueryRequestResponse} returns this
+*/
+proto.oracle.v1.QueryRequestResponse.prototype.setSigning = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.oracle.v1.QueryRequestResponse} returns this
+ */
+proto.oracle.v1.QueryRequestResponse.prototype.clearSigning = function() {
+  return this.setSigning(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.oracle.v1.QueryRequestResponse.prototype.hasSigning = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -4613,8 +4658,10 @@ proto.oracle.v1.QueryRequestVerificationRequest.toObject = function(includeInsta
     validator: jspb.Message.getFieldWithDefault(msg, 2, ""),
     requestId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     externalId: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    reporter: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    signature: msg.getSignature_asB64()
+    dataSourceId: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    reporter: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    signature: msg.getSignature_asB64(),
+    maxDelay: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -4668,12 +4715,20 @@ proto.oracle.v1.QueryRequestVerificationRequest.deserializeBinaryFromReader = fu
       msg.setExternalId(value);
       break;
     case 5:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setDataSourceId(value);
+      break;
+    case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setReporter(value);
       break;
-    case 6:
+    case 7:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setSignature(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setMaxDelay(value);
       break;
     default:
       reader.skipField();
@@ -4732,17 +4787,31 @@ proto.oracle.v1.QueryRequestVerificationRequest.serializeBinaryToWriter = functi
       f
     );
   }
+  f = message.getDataSourceId();
+  if (f !== 0) {
+    writer.writeUint64(
+      5,
+      f
+    );
+  }
   f = message.getReporter();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      6,
       f
     );
   }
   f = message.getSignature_asU8();
   if (f.length > 0) {
     writer.writeBytes(
-      6,
+      7,
+      f
+    );
+  }
+  f = message.getMaxDelay();
+  if (f !== 0) {
+    writer.writeUint64(
+      8,
       f
     );
   }
@@ -4822,11 +4891,29 @@ proto.oracle.v1.QueryRequestVerificationRequest.prototype.setExternalId = functi
 
 
 /**
- * optional string reporter = 5;
+ * optional uint64 data_source_id = 5;
+ * @return {number}
+ */
+proto.oracle.v1.QueryRequestVerificationRequest.prototype.getDataSourceId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.oracle.v1.QueryRequestVerificationRequest} returns this
+ */
+proto.oracle.v1.QueryRequestVerificationRequest.prototype.setDataSourceId = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional string reporter = 6;
  * @return {string}
  */
 proto.oracle.v1.QueryRequestVerificationRequest.prototype.getReporter = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
@@ -4835,21 +4922,21 @@ proto.oracle.v1.QueryRequestVerificationRequest.prototype.getReporter = function
  * @return {!proto.oracle.v1.QueryRequestVerificationRequest} returns this
  */
 proto.oracle.v1.QueryRequestVerificationRequest.prototype.setReporter = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * optional bytes signature = 6;
+ * optional bytes signature = 7;
  * @return {!(string|Uint8Array)}
  */
 proto.oracle.v1.QueryRequestVerificationRequest.prototype.getSignature = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /**
- * optional bytes signature = 6;
+ * optional bytes signature = 7;
  * This is a type-conversion wrapper around `getSignature()`
  * @return {string}
  */
@@ -4860,7 +4947,7 @@ proto.oracle.v1.QueryRequestVerificationRequest.prototype.getSignature_asB64 = f
 
 
 /**
- * optional bytes signature = 6;
+ * optional bytes signature = 7;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getSignature()`
@@ -4877,7 +4964,25 @@ proto.oracle.v1.QueryRequestVerificationRequest.prototype.getSignature_asU8 = fu
  * @return {!proto.oracle.v1.QueryRequestVerificationRequest} returns this
  */
 proto.oracle.v1.QueryRequestVerificationRequest.prototype.setSignature = function(value) {
-  return jspb.Message.setProto3BytesField(this, 6, value);
+  return jspb.Message.setProto3BytesField(this, 7, value);
+};
+
+
+/**
+ * optional uint64 max_delay = 8;
+ * @return {number}
+ */
+proto.oracle.v1.QueryRequestVerificationRequest.prototype.getMaxDelay = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.oracle.v1.QueryRequestVerificationRequest} returns this
+ */
+proto.oracle.v1.QueryRequestVerificationRequest.prototype.setMaxDelay = function(value) {
+  return jspb.Message.setProto3IntField(this, 8, value);
 };
 
 
@@ -4917,7 +5022,8 @@ proto.oracle.v1.QueryRequestVerificationResponse.toObject = function(includeInst
     validator: jspb.Message.getFieldWithDefault(msg, 2, ""),
     requestId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     externalId: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    dataSourceId: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    dataSourceId: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    isDelay: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -4973,6 +5079,10 @@ proto.oracle.v1.QueryRequestVerificationResponse.deserializeBinaryFromReader = f
     case 5:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setDataSourceId(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsDelay(value);
       break;
     default:
       reader.skipField();
@@ -5035,6 +5145,13 @@ proto.oracle.v1.QueryRequestVerificationResponse.serializeBinaryToWriter = funct
   if (f !== 0) {
     writer.writeUint64(
       5,
+      f
+    );
+  }
+  f = message.getIsDelay();
+  if (f) {
+    writer.writeBool(
+      6,
       f
     );
   }
@@ -5128,6 +5245,24 @@ proto.oracle.v1.QueryRequestVerificationResponse.prototype.getDataSourceId = fun
  */
 proto.oracle.v1.QueryRequestVerificationResponse.prototype.setDataSourceId = function(value) {
   return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional bool is_delay = 6;
+ * @return {boolean}
+ */
+proto.oracle.v1.QueryRequestVerificationResponse.prototype.getIsDelay = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.oracle.v1.QueryRequestVerificationResponse} returns this
+ */
+proto.oracle.v1.QueryRequestVerificationResponse.prototype.setIsDelay = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
