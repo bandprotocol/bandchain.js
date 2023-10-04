@@ -18,6 +18,17 @@ import {
   VoteOption,
   VoteOptionMap,
 } from '../proto/cosmos/gov/v1beta1/gov_pb'
+
+import {
+  MsgVote as MsgVoteGroupProto,
+  ExecMap as GroupExecMap,
+} from '../proto/cosmos/group/v1/tx_pb'
+
+import {
+  VoteOption as VoteOptionGroup,
+  VoteOptionMap as VoteOptionGroupMap,
+} from '../proto/cosmos/group/v1/types_pb'
+
 import {
   MsgBeginRedelegate as MsgBeginRedelegateProto,
   MsgDelegate as MsgDelegateProto,
@@ -904,6 +915,60 @@ export class MsgDeposit extends MsgDepositProto implements BaseMsg {
     }
     if (this.getDepositor() === '') {
       throw new ValueError('depositor should not be an empty string')
+    }
+  }
+}
+
+export class MsgVoteGroup extends MsgVoteGroupProto implements BaseMsg {
+  constructor(
+    proposalId: number,
+    voter: string,
+    option: VoteOptionGroupMap[keyof VoteOptionGroupMap],
+    metadata: string,
+    exec: GroupExecMap[keyof GroupExecMap],
+  ) {
+    super()
+    this.setProposalId(proposalId)
+    this.setVoter(voter)
+    this.setOption(option)
+    this.setMetadata(metadata)
+    this.setExec(exec)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.group.v1.MsgVote'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'cosmos-sdk/group/MsgVote',
+      value: {
+        proposal_id: this.getProposalId().toString(),
+        voter: this.getVoter(),
+        option: this.getOption(),
+        metadata: this.getMetadata(),
+        exec: this.getExec(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getProposalId() <= 0) {
+      throw new NegativeIntegerError('proposalId cannot be less than zero')
+    }
+    if (this.getVoter() === '') {
+      throw new ValueError('Address should not be an empty string')
+    }
+    if (this.getOption() === VoteOptionGroup.VOTE_OPTION_UNSPECIFIED) {
+      throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
+    }
+    if (this.getMetadata() === '') {
+      throw new ValueError('metadata should not be an empty string')
     }
   }
 }
