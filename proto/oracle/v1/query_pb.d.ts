@@ -3,11 +3,8 @@
 
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../gogoproto/gogo_pb";
-import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as google_api_annotations_pb from "../../google/api/annotations_pb";
 import * as oracle_v1_oracle_pb from "../../oracle/v1/oracle_pb";
-import * as cosmos_base_v1beta1_coin_pb from "../../cosmos/base/v1beta1/coin_pb";
-import * as cosmos_proto_cosmos_pb from "../../cosmos_proto/cosmos_pb";
 
 export class QueryCountsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
@@ -215,6 +212,11 @@ export class QueryRequestResponse extends jspb.Message {
   getResult(): oracle_v1_oracle_pb.Result | undefined;
   setResult(value?: oracle_v1_oracle_pb.Result): void;
 
+  hasSigning(): boolean;
+  clearSigning(): void;
+  getSigning(): oracle_v1_oracle_pb.SigningResult | undefined;
+  setSigning(value?: oracle_v1_oracle_pb.SigningResult): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryRequestResponse.AsObject;
   static toObject(includeInstance: boolean, msg: QueryRequestResponse): QueryRequestResponse.AsObject;
@@ -230,6 +232,7 @@ export namespace QueryRequestResponse {
     request?: oracle_v1_oracle_pb.Request.AsObject,
     reportsList: Array<oracle_v1_oracle_pb.Report.AsObject>,
     result?: oracle_v1_oracle_pb.Result.AsObject,
+    signing?: oracle_v1_oracle_pb.SigningResult.AsObject,
   }
 }
 
@@ -598,6 +601,9 @@ export class QueryRequestVerificationRequest extends jspb.Message {
   getExternalId(): number;
   setExternalId(value: number): void;
 
+  getDataSourceId(): number;
+  setDataSourceId(value: number): void;
+
   getReporter(): string;
   setReporter(value: string): void;
 
@@ -605,6 +611,9 @@ export class QueryRequestVerificationRequest extends jspb.Message {
   getSignature_asU8(): Uint8Array;
   getSignature_asB64(): string;
   setSignature(value: Uint8Array | string): void;
+
+  getMaxDelay(): number;
+  setMaxDelay(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryRequestVerificationRequest.AsObject;
@@ -622,8 +631,10 @@ export namespace QueryRequestVerificationRequest {
     validator: string,
     requestId: number,
     externalId: number,
+    dataSourceId: number,
     reporter: string,
     signature: Uint8Array | string,
+    maxDelay: number,
   }
 }
 
@@ -643,6 +654,9 @@ export class QueryRequestVerificationResponse extends jspb.Message {
   getDataSourceId(): number;
   setDataSourceId(value: number): void;
 
+  getIsDelay(): boolean;
+  setIsDelay(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryRequestVerificationResponse.AsObject;
   static toObject(includeInstance: boolean, msg: QueryRequestVerificationResponse): QueryRequestVerificationResponse.AsObject;
@@ -660,6 +674,7 @@ export namespace QueryRequestVerificationResponse {
     requestId: number,
     externalId: number,
     dataSourceId: number,
+    isDelay: boolean,
   }
 }
 

@@ -849,6 +849,9 @@ describe('get latest request', () => {
           'bandvaloper1e9sa38742tzhmandc4gkqve9zy8zc0yremaa3j',
           'bandvaloper1l2hchtyawk9tk43zzjrzr2lcd0zyxngcjdsshe',
         ])
+        request.setTssGroupId(0)
+        request.setFeeLimitList([])
+        request.setRequester("")
         request.setMinCount(3)
         request.setRequestHeight(431790)
         request.setRequestTime(1625547173)
@@ -950,6 +953,10 @@ describe('get latest request', () => {
         ],
         executeGas: 1000000,
         ibcChannel: undefined,
+        tssGroupId: 0,
+        requester: "",
+        feeLimitList: [],
+        signing: undefined
       },
       reportsList: [
         {
