@@ -1,4 +1,4 @@
-import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../lib'
+import { Client, Wallet, Message, Coin, Transaction, Fee } from '../../src'
 import fs from 'fs'
 import path from 'path'
 

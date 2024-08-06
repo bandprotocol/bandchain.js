@@ -1,4 +1,4 @@
-import { Client } from '../../lib'
+import { Client } from '../../src'
 
 const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)

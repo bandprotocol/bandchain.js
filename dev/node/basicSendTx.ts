@@ -1,4 +1,4 @@
-import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../lib'
+import { Client, Wallet, Obi, Message, Coin, Transaction, Fee } from '../../src'
 
 const grpcEndpoint = 'https://laozi-testnet6.bandchain.org/grpc-web'
 const client = new Client(grpcEndpoint)
