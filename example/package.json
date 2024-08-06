@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@bandprotocol/bandchain.js": "^2.1.4"
+    "@bandprotocol/bandchain.js": "^2.2.1"
   },
   "devDependencies": {
     "ts-node": "^10.9.1"
