@@ -53,6 +53,8 @@ import { MsgSubmitProposal as MsgSubmitProposalProto } from '../proto/cosmos/gov
 import { MsgSubmitProposal as MsgSubmitCouncilProposalProto } from '../proto/council/v1beta1/tx_pb'
 import { CouncilType, CouncilTypeMap } from '../proto/council/v1beta1/types_pb'
 import { Proposal } from 'proposal'
+import { MsgSubmitSignals as MsgSubmitSignalsProto } from '../proto/feeds/v1beta1/tx_pb'
+import { Signal } from '../proto/feeds/v1beta1/feeds_pb'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
@@ -69,7 +71,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     feeLimitList: Coin[] = [],
     prepareGas: number = 50000,
     executeGas: number = 300000,
-    tssGroupId: number = 0
+    tssGroupId: number = 0,
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
@@ -106,7 +108,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
         fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
         prepare_gas: this.getPrepareGas().toString(),
         execute_gas: this.getExecuteGas().toString(),
-        tss_group_id: this.getTssGroupId().toString()
+        tss_group_id: this.getTssGroupId().toString(),
       },
     }
   }
@@ -969,6 +971,42 @@ export class MsgVoteGroup extends MsgVoteGroupProto implements BaseMsg {
     }
     if (this.getMetadata() === '') {
       throw new ValueError('metadata should not be an empty string')
+    }
+  }
+}
+
+export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
+  constructor(delegator: string, signals: Signal[]) {
+    super()
+    this.setDelegator(delegator)
+    this.setSignalsList(signals)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'cosmos.gov.v1beta1.MsgSubmitProposal'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'test/MsgSubmitSignals',
+      value: {
+        delegator_address: this.getDelegator(),
+        amount: this.getSignalsList(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getDelegator() === 'undefined') {
+      throw new ValueError('Delegator Address should not be an empty string')
+    }
+    if (this.getSignalsList().length === 0) {
+      throw new ValueError('Signal List should not be emtpy')
     }
   }
 }
