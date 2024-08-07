@@ -53,8 +53,18 @@ import { MsgSubmitProposal as MsgSubmitProposalProto } from '../proto/cosmos/gov
 import { MsgSubmitProposal as MsgSubmitCouncilProposalProto } from '../proto/council/v1beta1/tx_pb'
 import { CouncilType, CouncilTypeMap } from '../proto/council/v1beta1/types_pb'
 import { Proposal } from 'proposal'
-import { MsgSubmitSignals as MsgSubmitSignalsProto } from '../proto/feeds/v1beta1/tx_pb'
-import { Signal } from '../proto/feeds/v1beta1/feeds_pb'
+import {
+  MsgSubmitSignals as MsgSubmitSignalsProto,
+  MsgSubmitSignalPrices as MsgSubmitSignalPricesProto,
+  MsgUpdateReferenceSourceConfig as MsgUpdateReferenceSourceConfigProto,
+  MsgUpdateParams as MsgUpdateParamsProto,
+} from '../proto/feeds/v1beta1/tx_pb'
+import {
+  ReferenceSourceConfig,
+  Signal,
+  SignalPrice,
+} from '../proto/feeds/v1beta1/feeds_pb'
+import { Params } from '../proto/feeds/v1beta1/params_pb'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
@@ -986,14 +996,14 @@ export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'cosmos.gov.v1beta1.MsgSubmitProposal'
+    const name = 'feeds.v1beta1.MsgSubmitSignals'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
 
   toJSON(): object {
     return {
-      type: 'test/MsgSubmitSignals',
+      type: 'feeds.v1beta1.MsgSubmitSignals',
       value: {
         delegator_address: this.getDelegator(),
         amount: this.getSignalsList(),
@@ -1009,4 +1019,111 @@ export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
       throw new ValueError('Signal List should not be emtpy')
     }
   }
+}
+
+export class MsgSubmitSignalPrices
+  extends MsgSubmitSignalPricesProto
+  implements BaseMsg
+{
+  constructor(validator: string, timestamp: number, pricesList: SignalPrice[]) {
+    super()
+    this.setValidator(validator)
+    this.setTimestamp(timestamp)
+    this.setPricesList(pricesList)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgSubmitSignalPrices'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgSubmitSignalPrices',
+      value: {
+        validator: this.getValidator(),
+        timestamp: this.getTimestamp(),
+        pricesList: this.getPricesList(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getValidator() === 'undefined') {
+      throw new ValueError('getValidator Address should not be an empty string')
+    }
+    if (this.getValidator() === 'undefined') {
+      throw new ValueError('timestamp isnot defined')
+    }
+    if (this.getPricesList().length === 0) {
+      throw new ValueError('Signal List should not be emtpy')
+    }
+  }
+}
+
+export class MsgUpdateReferenceSourceConfig
+  extends MsgUpdateReferenceSourceConfigProto
+  implements BaseMsg
+{
+  constructor(admin: string, referenceSourceConfig: ReferenceSourceConfig) {
+    super()
+    this.setAdmin(admin)
+    this.setReferenceSourceConfig(referenceSourceConfig)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateReferenceSourceConfig'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgUpdateReferenceSourceConfig',
+      value: {
+        admin: this.getAdmin(),
+        referenceSourceConfig: this.getReferenceSourceConfig(),
+      },
+    }
+  }
+
+  // TODO
+  validate() {}
+}
+
+export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
+  constructor(authority: string, params: Params) {
+    super()
+    this.setAuthority(authority)
+    this.setParams(params)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateParams'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgUpdateParams',
+      value: {
+        authority: this.getAuthority(),
+        params: this.getParams(),
+      },
+    }
+  }
+
+  // TODO
+  validate() {}
 }
