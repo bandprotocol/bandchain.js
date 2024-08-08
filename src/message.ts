@@ -65,6 +65,7 @@ import {
   SignalPrice,
 } from '../proto/feeds/v1beta1/feeds_pb'
 import { Params } from '../proto/feeds/v1beta1/params_pb'
+import { bech32 } from 'bech32'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
@@ -1012,11 +1013,8 @@ export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
   }
 
   validate() {
-    if (this.getDelegator() === 'undefined') {
-      throw new ValueError('Delegator Address should not be an empty string')
-    }
-    if (this.getSignalsList().length === 0) {
-      throw new ValueError('Signal List should not be emtpy')
+    if (this.getDelegator() === '') {
+      throw new ValueError('Delegator address should not be an empty string')
     }
   }
 }
@@ -1053,14 +1051,16 @@ export class MsgSubmitSignalPrices
   }
 
   validate() {
-    if (this.getValidator() === 'undefined') {
-      throw new ValueError('getValidator Address should not be an empty string')
+    if (this.getValidator() === '') {
+      throw new ValueError('Validator address should not be an empty string')
     }
-    if (this.getValidator() === 'undefined') {
-      throw new ValueError('timestamp isnot defined')
-    }
-    if (this.getPricesList().length === 0) {
-      throw new ValueError('Signal List should not be emtpy')
+
+    const { prefix } = bech32.decode(this.getValidator())
+
+    if (prefix != 'bandvaloper') {
+      throw new ValueError(
+        `invalid Bech32 prefix; expected bandvaloper, got ${prefix}`,
+      )
     }
   }
 }
@@ -1094,8 +1094,11 @@ export class MsgUpdateReferenceSourceConfig
     }
   }
 
-  // TODO
-  validate() {}
+  validate() {
+    if (this.getAdmin() === '') {
+      throw new ValueError('Authority address should not be an empty string')
+    }
+  }
 }
 
 export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
@@ -1124,6 +1127,9 @@ export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
     }
   }
 
-  // TODO
-  validate() {}
+  validate() {
+    if (this.getAuthority() === '') {
+      throw new ValueError('Admin address should not be an empty string')
+    }
+  }
 }
