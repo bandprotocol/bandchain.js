@@ -1180,7 +1180,7 @@ describe('MsgSubmitCouncilProposal', () => {
 
 describe('MsgSubmitSignals', () => {
   let signal = new Signal()
-  signal.setId('crypto_price.btcbusd')
+  signal.setId('crypto_prices.btcbusd')
   signal.setPower(1)
 
   it('create successfully', () => {
