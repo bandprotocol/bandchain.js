@@ -18,6 +18,10 @@ import {
   MsgDeposit,
   MsgSubmitProposal,
   MsgSubmitCouncilProposal,
+  MsgSubmitSignals,
+  MsgSubmitSignalPrices,
+  MsgUpdateReferenceSourceConfig,
+  MsgUpdateParams,
 } from '../src/message'
 import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
 import {
@@ -28,6 +32,12 @@ import {
 import fs from 'fs'
 import path from 'path'
 import { VetoProposal } from '../src/proposal'
+import {
+  Signal,
+  SignalPrice,
+  ReferenceSourceConfig,
+} from '../proto/feeds/v1beta1/feeds_pb'
+import { Params } from '../proto/feeds/v1beta1/params_pb'
 
 let coin = new Coin()
 coin.setDenom('uband')
@@ -1162,6 +1172,168 @@ describe('MsgSubmitCouncilProposal', () => {
     msgs.forEach((msg, index) => {
       expect(() => {
         // @ts-ignore
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgSubmitSignals', () => {
+  let signal = new Signal()
+  signal.setId('crypto_prices.btcbusd')
+  signal.setPower(1)
+
+  it('create successfully', () => {
+    const msgSubmitSignals = new MsgSubmitSignals(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      [signal],
+    )
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgSubmitSignals'
+    anyMsg.pack(msgSubmitSignals.serializeBinary(), name, '/')
+
+    expect(msgSubmitSignals.toAny()).toEqual(anyMsg)
+
+    expect(() => msgSubmitSignals.validate()).not.toThrow()
+  })
+
+  it('error MsgSubmitSignals', () => {
+    let msgs: MsgSubmitSignals[] = []
+    let errorText: string[] = []
+
+    msgs.push(new MsgSubmitSignals('', [signal]))
+
+    errorText.push('Delegator address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgSubmitSignalPrice', () => {
+  const signalPrice = new SignalPrice()
+  signalPrice.setSignalId('crypto_price.btcbusd')
+  signalPrice.setPrice(1)
+  signalPrice.setPriceStatus(0)
+
+  it('create successfully', () => {
+    const msgSubmitSignalPrice = new MsgSubmitSignalPrices(
+      'bandvaloper1dqsqfh537nzdr3ue9whc9tk7zqre4322hkru33',
+      1723027871382,
+      [signalPrice],
+    )
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgSubmitSignalPrices'
+    anyMsg.pack(msgSubmitSignalPrice.serializeBinary(), name, '/')
+
+    expect(msgSubmitSignalPrice.toAny()).toEqual(anyMsg)
+
+    expect(() => msgSubmitSignalPrice.validate()).not.toThrow()
+  })
+
+  it('error MsgSubmitSignals', () => {
+    let msgs: MsgSubmitSignalPrices[] = []
+    let errorText: string[] = []
+
+    msgs.push(new MsgSubmitSignalPrices('', 1723027871382, [signalPrice]))
+    msgs.push(
+      new MsgSubmitSignalPrices(
+        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+        1723027871382,
+        [signalPrice],
+      ),
+    )
+
+    errorText.push('Validator address should not be an empty string')
+    errorText.push('invalid Bech32 prefix; expected bandvaloper, got band')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgUpdateReferenceSourceConfig', () => {
+  const referenceSource = new ReferenceSourceConfig()
+  referenceSource.setIpfsHash('QmTzQ1b4SijKVDe3XZPq3N5tHk3PvCjAosYtK6KDxDZXn6')
+  referenceSource.setVersion('1.1')
+
+  it('create successfully', () => {
+    const msgUpdateReferenceSourceConfig = new MsgUpdateReferenceSourceConfig(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      referenceSource,
+    )
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateReferenceSourceConfig'
+    anyMsg.pack(msgUpdateReferenceSourceConfig.serializeBinary(), name, '/')
+
+    expect(msgUpdateReferenceSourceConfig.toAny()).toEqual(anyMsg)
+
+    expect(() => msgUpdateReferenceSourceConfig.validate()).not.toThrow()
+  })
+
+  it('error MsgSubmitSignals', () => {
+    let msgs: MsgUpdateReferenceSourceConfig[] = []
+    let errorText: string[] = []
+
+    msgs.push(new MsgUpdateReferenceSourceConfig('', referenceSource))
+
+    errorText.push('Authority address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
+        msg.validate()
+      }).toThrowError(errorText[index])
+    })
+  })
+})
+
+describe('MsgUpdateParams', () => {
+  const param = new Params()
+  param.setAdmin('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c')
+  param.setAllowableBlockTimeDiscrepancy(1)
+  param.setGracePeriod(1)
+  param.setMinInterval(1)
+  param.setMaxInterval(1)
+  param.setPowerStepThreshold(1)
+  param.setMaxCurrentFeeds(1)
+  param.setCooldownTime(1)
+  param.setMinDeviationBasisPoint(1)
+  param.setMaxDeviationBasisPoint(1)
+  param.setCurrentFeedsUpdateInterval(1)
+
+  it('create successfully', () => {
+    const msgUpdateParams = new MsgUpdateParams(
+      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
+      param,
+    )
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateParams'
+    anyMsg.pack(msgUpdateParams.serializeBinary(), name, '/')
+
+    expect(msgUpdateParams.toAny()).toEqual(anyMsg)
+
+    expect(() => msgUpdateParams.validate()).not.toThrow()
+  })
+
+  it('error MsgSubmitSignals', () => {
+    let msgs: MsgUpdateParams[] = []
+    let errorText: string[] = []
+
+    msgs.push(new MsgUpdateParams('', param))
+
+    errorText.push('Admin address should not be an empty string')
+
+    msgs.forEach((msg, index) => {
+      expect(() => {
         msg.validate()
       }).toThrowError(errorText[index])
     })

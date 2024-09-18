@@ -53,6 +53,19 @@ import { MsgSubmitProposal as MsgSubmitProposalProto } from '../proto/cosmos/gov
 import { MsgSubmitProposal as MsgSubmitCouncilProposalProto } from '../proto/council/v1beta1/tx_pb'
 import { CouncilType, CouncilTypeMap } from '../proto/council/v1beta1/types_pb'
 import { Proposal } from 'proposal'
+import {
+  MsgSubmitSignals as MsgSubmitSignalsProto,
+  MsgSubmitSignalPrices as MsgSubmitSignalPricesProto,
+  MsgUpdateReferenceSourceConfig as MsgUpdateReferenceSourceConfigProto,
+  MsgUpdateParams as MsgUpdateParamsProto,
+} from '../proto/feeds/v1beta1/tx_pb'
+import {
+  ReferenceSourceConfig,
+  Signal,
+  SignalPrice,
+} from '../proto/feeds/v1beta1/feeds_pb'
+import { Params } from '../proto/feeds/v1beta1/params_pb'
+import { bech32 } from 'bech32'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
@@ -69,7 +82,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     feeLimitList: Coin[] = [],
     prepareGas: number = 50000,
     executeGas: number = 300000,
-    tssGroupId: number = 0
+    tssGroupId: number = 0,
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
@@ -106,7 +119,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
         fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
         prepare_gas: this.getPrepareGas().toString(),
         execute_gas: this.getExecuteGas().toString(),
-        tss_group_id: this.getTssGroupId().toString()
+        tss_group_id: this.getTssGroupId().toString(),
       },
     }
   }
@@ -969,6 +982,154 @@ export class MsgVoteGroup extends MsgVoteGroupProto implements BaseMsg {
     }
     if (this.getMetadata() === '') {
       throw new ValueError('metadata should not be an empty string')
+    }
+  }
+}
+
+export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
+  constructor(delegator: string, signals: Signal[]) {
+    super()
+    this.setDelegator(delegator)
+    this.setSignalsList(signals)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgSubmitSignals'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgSubmitSignals',
+      value: {
+        delegator_address: this.getDelegator(),
+        amount: this.getSignalsList(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getDelegator() === '') {
+      throw new ValueError('Delegator address should not be an empty string')
+    }
+  }
+}
+
+export class MsgSubmitSignalPrices
+  extends MsgSubmitSignalPricesProto
+  implements BaseMsg
+{
+  constructor(validator: string, timestamp: number, pricesList: SignalPrice[]) {
+    super()
+    this.setValidator(validator)
+    this.setTimestamp(timestamp)
+    this.setPricesList(pricesList)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgSubmitSignalPrices'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgSubmitSignalPrices',
+      value: {
+        validator: this.getValidator(),
+        timestamp: this.getTimestamp(),
+        pricesList: this.getPricesList(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getValidator() === '') {
+      throw new ValueError('Validator address should not be an empty string')
+    }
+
+    const { prefix } = bech32.decode(this.getValidator())
+
+    if (prefix != 'bandvaloper') {
+      throw new ValueError(
+        `invalid Bech32 prefix; expected bandvaloper, got ${prefix}`,
+      )
+    }
+  }
+}
+
+export class MsgUpdateReferenceSourceConfig
+  extends MsgUpdateReferenceSourceConfigProto
+  implements BaseMsg
+{
+  constructor(admin: string, referenceSourceConfig: ReferenceSourceConfig) {
+    super()
+    this.setAdmin(admin)
+    this.setReferenceSourceConfig(referenceSourceConfig)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateReferenceSourceConfig'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgUpdateReferenceSourceConfig',
+      value: {
+        admin: this.getAdmin(),
+        referenceSourceConfig: this.getReferenceSourceConfig(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getAdmin() === '') {
+      throw new ValueError('Authority address should not be an empty string')
+    }
+  }
+}
+
+export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
+  constructor(authority: string, params: Params) {
+    super()
+    this.setAuthority(authority)
+    this.setParams(params)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateParams'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgUpdateParams',
+      value: {
+        authority: this.getAuthority(),
+        params: this.getParams(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getAuthority() === '') {
+      throw new ValueError('Admin address should not be an empty string')
     }
   }
 }
