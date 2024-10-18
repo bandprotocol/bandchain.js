@@ -1,97 +1,101 @@
 // package: oracle.v1
 // file: oracle/v1/tx.proto
 
-var oracle_v1_tx_pb = require("../../oracle/v1/tx_pb");
-var grpc = require("@improbable-eng/grpc-web").grpc;
+var oracle_v1_tx_pb = require('../../oracle/v1/tx_pb')
+var grpc = require('@improbable-eng/grpc-web').grpc
 
 var Msg = (function () {
   function Msg() {}
-  Msg.serviceName = "oracle.v1.Msg";
-  return Msg;
-}());
+  Msg.serviceName = 'oracle.v1.Msg'
+  return Msg
+})()
 
 Msg.RequestData = {
-  methodName: "RequestData",
+  methodName: 'RequestData',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgRequestData,
-  responseType: oracle_v1_tx_pb.MsgRequestDataResponse
-};
+  responseType: oracle_v1_tx_pb.MsgRequestDataResponse,
+}
 
 Msg.ReportData = {
-  methodName: "ReportData",
+  methodName: 'ReportData',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgReportData,
-  responseType: oracle_v1_tx_pb.MsgReportDataResponse
-};
+  responseType: oracle_v1_tx_pb.MsgReportDataResponse,
+}
 
 Msg.CreateDataSource = {
-  methodName: "CreateDataSource",
+  methodName: 'CreateDataSource',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgCreateDataSource,
-  responseType: oracle_v1_tx_pb.MsgCreateDataSourceResponse
-};
+  responseType: oracle_v1_tx_pb.MsgCreateDataSourceResponse,
+}
 
 Msg.EditDataSource = {
-  methodName: "EditDataSource",
+  methodName: 'EditDataSource',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgEditDataSource,
-  responseType: oracle_v1_tx_pb.MsgEditDataSourceResponse
-};
+  responseType: oracle_v1_tx_pb.MsgEditDataSourceResponse,
+}
 
 Msg.CreateOracleScript = {
-  methodName: "CreateOracleScript",
+  methodName: 'CreateOracleScript',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgCreateOracleScript,
-  responseType: oracle_v1_tx_pb.MsgCreateOracleScriptResponse
-};
+  responseType: oracle_v1_tx_pb.MsgCreateOracleScriptResponse,
+}
 
 Msg.EditOracleScript = {
-  methodName: "EditOracleScript",
+  methodName: 'EditOracleScript',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgEditOracleScript,
-  responseType: oracle_v1_tx_pb.MsgEditOracleScriptResponse
-};
+  responseType: oracle_v1_tx_pb.MsgEditOracleScriptResponse,
+}
 
 Msg.Activate = {
-  methodName: "Activate",
+  methodName: 'Activate',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgActivate,
-  responseType: oracle_v1_tx_pb.MsgActivateResponse
-};
+  responseType: oracle_v1_tx_pb.MsgActivateResponse,
+}
 
 Msg.UpdateParams = {
-  methodName: "UpdateParams",
+  methodName: 'UpdateParams',
   service: Msg,
   requestStream: false,
   responseStream: false,
   requestType: oracle_v1_tx_pb.MsgUpdateParams,
-  responseType: oracle_v1_tx_pb.MsgUpdateParamsResponse
-};
-
-exports.Msg = Msg;
-
-function MsgClient(serviceHost, options) {
-  this.serviceHost = serviceHost;
-  this.options = options || {};
+  responseType: oracle_v1_tx_pb.MsgUpdateParamsResponse,
 }
 
-MsgClient.prototype.requestData = function requestData(requestMessage, metadata, callback) {
+exports.Msg = Msg
+
+function MsgClient(serviceHost, options) {
+  this.serviceHost = serviceHost
+  this.options = options || {}
+}
+
+MsgClient.prototype.requestData = function requestData(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.RequestData, {
     request: requestMessage,
@@ -102,27 +106,31 @@ MsgClient.prototype.requestData = function requestData(requestMessage, metadata,
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.reportData = function reportData(requestMessage, metadata, callback) {
+MsgClient.prototype.reportData = function reportData(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.ReportData, {
     request: requestMessage,
@@ -133,27 +141,31 @@ MsgClient.prototype.reportData = function reportData(requestMessage, metadata, c
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.createDataSource = function createDataSource(requestMessage, metadata, callback) {
+MsgClient.prototype.createDataSource = function createDataSource(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.CreateDataSource, {
     request: requestMessage,
@@ -164,27 +176,31 @@ MsgClient.prototype.createDataSource = function createDataSource(requestMessage,
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.editDataSource = function editDataSource(requestMessage, metadata, callback) {
+MsgClient.prototype.editDataSource = function editDataSource(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.EditDataSource, {
     request: requestMessage,
@@ -195,27 +211,31 @@ MsgClient.prototype.editDataSource = function editDataSource(requestMessage, met
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.createOracleScript = function createOracleScript(requestMessage, metadata, callback) {
+MsgClient.prototype.createOracleScript = function createOracleScript(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.CreateOracleScript, {
     request: requestMessage,
@@ -226,27 +246,31 @@ MsgClient.prototype.createOracleScript = function createOracleScript(requestMess
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.editOracleScript = function editOracleScript(requestMessage, metadata, callback) {
+MsgClient.prototype.editOracleScript = function editOracleScript(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.EditOracleScript, {
     request: requestMessage,
@@ -257,27 +281,31 @@ MsgClient.prototype.editOracleScript = function editOracleScript(requestMessage,
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.activate = function activate(requestMessage, metadata, callback) {
+MsgClient.prototype.activate = function activate(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.Activate, {
     request: requestMessage,
@@ -288,27 +316,31 @@ MsgClient.prototype.activate = function activate(requestMessage, metadata, callb
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-MsgClient.prototype.updateParams = function updateParams(requestMessage, metadata, callback) {
+MsgClient.prototype.updateParams = function updateParams(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Msg.UpdateParams, {
     request: requestMessage,
@@ -319,23 +351,22 @@ MsgClient.prototype.updateParams = function updateParams(requestMessage, metadat
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-exports.MsgClient = MsgClient;
-
+exports.MsgClient = MsgClient
