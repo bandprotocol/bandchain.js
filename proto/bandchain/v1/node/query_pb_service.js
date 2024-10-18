@@ -1,43 +1,47 @@
 // package: bandchain.v1.node
 // file: bandchain/v1/node/query.proto
 
-var bandchain_v1_node_query_pb = require("../../../bandchain/v1/node/query_pb");
-var grpc = require("@improbable-eng/grpc-web").grpc;
+var bandchain_v1_node_query_pb = require('../../../bandchain/v1/node/query_pb')
+var grpc = require('@improbable-eng/grpc-web').grpc
 
 var Service = (function () {
   function Service() {}
-  Service.serviceName = "bandchain.v1.node.Service";
-  return Service;
-}());
+  Service.serviceName = 'bandchain.v1.node.Service'
+  return Service
+})()
 
 Service.ChainID = {
-  methodName: "ChainID",
+  methodName: 'ChainID',
   service: Service,
   requestStream: false,
   responseStream: false,
-  requestType: bandchain_v1_node_query_pb.QueryChainIDRequest,
-  responseType: bandchain_v1_node_query_pb.QueryChainIDResponse
-};
-
-Service.EVMValidators = {
-  methodName: "EVMValidators",
-  service: Service,
-  requestStream: false,
-  responseStream: false,
-  requestType: bandchain_v1_node_query_pb.QueryEVMValidatorsRequest,
-  responseType: bandchain_v1_node_query_pb.QueryEVMValidatorsResponse
-};
-
-exports.Service = Service;
-
-function ServiceClient(serviceHost, options) {
-  this.serviceHost = serviceHost;
-  this.options = options || {};
+  requestType: bandchain_v1_node_query_pb.ChainIDRequest,
+  responseType: bandchain_v1_node_query_pb.ChainIDResponse,
 }
 
-ServiceClient.prototype.chainID = function chainID(requestMessage, metadata, callback) {
+Service.EVMValidators = {
+  methodName: 'EVMValidators',
+  service: Service,
+  requestStream: false,
+  responseStream: false,
+  requestType: bandchain_v1_node_query_pb.EVMValidatorsRequest,
+  responseType: bandchain_v1_node_query_pb.EVMValidatorsResponse,
+}
+
+exports.Service = Service
+
+function ServiceClient(serviceHost, options) {
+  this.serviceHost = serviceHost
+  this.options = options || {}
+}
+
+ServiceClient.prototype.chainID = function chainID(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Service.ChainID, {
     request: requestMessage,
@@ -48,27 +52,31 @@ ServiceClient.prototype.chainID = function chainID(requestMessage, metadata, cal
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-ServiceClient.prototype.eVMValidators = function eVMValidators(requestMessage, metadata, callback) {
+ServiceClient.prototype.eVMValidators = function eVMValidators(
+  requestMessage,
+  metadata,
+  callback,
+) {
   if (arguments.length === 2) {
-    callback = arguments[1];
+    callback = arguments[1]
   }
   var client = grpc.unary(Service.EVMValidators, {
     request: requestMessage,
@@ -79,23 +87,22 @@ ServiceClient.prototype.eVMValidators = function eVMValidators(requestMessage, m
     onEnd: function (response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
+          var err = new Error(response.statusMessage)
+          err.code = response.status
+          err.metadata = response.trailers
+          callback(err, null)
         } else {
-          callback(null, response.message);
+          callback(null, response.message)
         }
       }
-    }
-  });
+    },
+  })
   return {
     cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
+      callback = null
+      client.close()
+    },
+  }
+}
 
-exports.ServiceClient = ServiceClient;
-
+exports.ServiceClient = ServiceClient
