@@ -1,7 +1,41 @@
 //@ts-nocheck
-import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
+import { ProposalStatus, Proposal, ProposalAmino, ProposalSDKType, Vote, VoteAmino, VoteSDKType, VotingParams, VotingParamsAmino, VotingParamsSDKType, DepositParams, DepositParamsAmino, DepositParamsSDKType, TallyParams, TallyParamsAmino, TallyParamsSDKType, Params, ParamsAmino, ParamsSDKType, Deposit, DepositAmino, DepositSDKType, TallyResult, TallyResultAmino, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { BinaryReader, BinaryWriter } from "../../../binary";
+/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
+export interface QueryConstitutionRequest {}
+export interface QueryConstitutionRequestProtoMsg {
+  typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest";
+  value: Uint8Array;
+}
+/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
+export interface QueryConstitutionRequestAmino {}
+export interface QueryConstitutionRequestAminoMsg {
+  type: "cosmos-sdk/v1/QueryConstitutionRequest";
+  value: QueryConstitutionRequestAmino;
+}
+/** QueryConstitutionRequest is the request type for the Query/Constitution RPC method */
+export interface QueryConstitutionRequestSDKType {}
+/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
+export interface QueryConstitutionResponse {
+  constitution: string;
+}
+export interface QueryConstitutionResponseProtoMsg {
+  typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse";
+  value: Uint8Array;
+}
+/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
+export interface QueryConstitutionResponseAmino {
+  constitution?: string;
+}
+export interface QueryConstitutionResponseAminoMsg {
+  type: "cosmos-sdk/v1/QueryConstitutionResponse";
+  value: QueryConstitutionResponseAmino;
+}
+/** QueryConstitutionResponse is the response type for the Query/Constitution RPC method */
+export interface QueryConstitutionResponseSDKType {
+  constitution: string;
+}
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
   /** proposal_id defines the unique id of the proposal. */
@@ -26,6 +60,7 @@ export interface QueryProposalRequestSDKType {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
+  /** proposal is the requested governance proposal. */
   proposal?: Proposal;
 }
 export interface QueryProposalResponseProtoMsg {
@@ -34,6 +69,7 @@ export interface QueryProposalResponseProtoMsg {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponseAmino {
+  /** proposal is the requested governance proposal. */
   proposal?: ProposalAmino;
 }
 export interface QueryProposalResponseAminoMsg {
@@ -86,6 +122,7 @@ export interface QueryProposalsRequestSDKType {
  * method.
  */
 export interface QueryProposalsResponse {
+  /** proposals defines all the requested governance proposals. */
   proposals: Proposal[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -99,6 +136,7 @@ export interface QueryProposalsResponseProtoMsg {
  * method.
  */
 export interface QueryProposalsResponseAmino {
+  /** proposals defines all the requested governance proposals. */
   proposals?: ProposalAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -119,7 +157,7 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
   /** proposal_id defines the unique id of the proposal. */
   proposalId: bigint;
-  /** voter defines the oter address for the proposals. */
+  /** voter defines the voter address for the proposals. */
   voter: string;
 }
 export interface QueryVoteRequestProtoMsg {
@@ -130,7 +168,7 @@ export interface QueryVoteRequestProtoMsg {
 export interface QueryVoteRequestAmino {
   /** proposal_id defines the unique id of the proposal. */
   proposal_id?: string;
-  /** voter defines the oter address for the proposals. */
+  /** voter defines the voter address for the proposals. */
   voter?: string;
 }
 export interface QueryVoteRequestAminoMsg {
@@ -144,7 +182,7 @@ export interface QueryVoteRequestSDKType {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
-  /** vote defined the queried vote. */
+  /** vote defines the queried vote. */
   vote?: Vote;
 }
 export interface QueryVoteResponseProtoMsg {
@@ -153,7 +191,7 @@ export interface QueryVoteResponseProtoMsg {
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseAmino {
-  /** vote defined the queried vote. */
+  /** vote defines the queried vote. */
   vote?: VoteAmino;
 }
 export interface QueryVoteResponseAminoMsg {
@@ -193,7 +231,7 @@ export interface QueryVotesRequestSDKType {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponse {
-  /** votes defined the queried votes. */
+  /** votes defines the queried votes. */
   votes: Vote[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -204,7 +242,7 @@ export interface QueryVotesResponseProtoMsg {
 }
 /** QueryVotesResponse is the response type for the Query/Votes RPC method. */
 export interface QueryVotesResponseAmino {
-  /** votes defined the queried votes. */
+  /** votes defines the queried votes. */
   votes?: VoteAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -248,12 +286,30 @@ export interface QueryParamsRequestSDKType {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
-  /** voting_params defines the parameters related to voting. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * voting_params defines the parameters related to voting.
+   */
+  /** @deprecated */
   votingParams?: VotingParams;
-  /** deposit_params defines the parameters related to deposit. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * deposit_params defines the parameters related to deposit.
+   */
+  /** @deprecated */
   depositParams?: DepositParams;
-  /** tally_params defines the parameters related to tally. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * tally_params defines the parameters related to tally.
+   */
+  /** @deprecated */
   tallyParams?: TallyParams;
+  /**
+   * params defines all the paramaters of x/gov module.
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  params?: Params;
 }
 export interface QueryParamsResponseProtoMsg {
   typeUrl: "/cosmos.gov.v1.QueryParamsResponse";
@@ -261,12 +317,30 @@ export interface QueryParamsResponseProtoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseAmino {
-  /** voting_params defines the parameters related to voting. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * voting_params defines the parameters related to voting.
+   */
+  /** @deprecated */
   voting_params?: VotingParamsAmino;
-  /** deposit_params defines the parameters related to deposit. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * deposit_params defines the parameters related to deposit.
+   */
+  /** @deprecated */
   deposit_params?: DepositParamsAmino;
-  /** tally_params defines the parameters related to tally. */
+  /**
+   * Deprecated: Prefer to use `params` instead.
+   * tally_params defines the parameters related to tally.
+   */
+  /** @deprecated */
   tally_params?: TallyParamsAmino;
+  /**
+   * params defines all the paramaters of x/gov module.
+   * 
+   * Since: cosmos-sdk 0.47
+   */
+  params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
   type: "cosmos-sdk/v1/QueryParamsResponse";
@@ -274,9 +348,13 @@ export interface QueryParamsResponseAminoMsg {
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
+  /** @deprecated */
   voting_params?: VotingParamsSDKType;
+  /** @deprecated */
   deposit_params?: DepositParamsSDKType;
+  /** @deprecated */
   tally_params?: TallyParamsSDKType;
+  params?: ParamsSDKType;
 }
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
@@ -356,6 +434,7 @@ export interface QueryDepositsRequestSDKType {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponse {
+  /** deposits defines the requested deposits. */
   deposits: Deposit[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponse;
@@ -366,6 +445,7 @@ export interface QueryDepositsResponseProtoMsg {
 }
 /** QueryDepositsResponse is the response type for the Query/Deposits RPC method. */
 export interface QueryDepositsResponseAmino {
+  /** deposits defines the requested deposits. */
   deposits?: DepositAmino[];
   /** pagination defines the pagination in the response. */
   pagination?: PageResponseAmino;
@@ -423,6 +503,131 @@ export interface QueryTallyResultResponseAminoMsg {
 export interface QueryTallyResultResponseSDKType {
   tally?: TallyResultSDKType;
 }
+function createBaseQueryConstitutionRequest(): QueryConstitutionRequest {
+  return {};
+}
+export const QueryConstitutionRequest = {
+  typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+  encode(_: QueryConstitutionRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryConstitutionRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryConstitutionRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<QueryConstitutionRequest>): QueryConstitutionRequest {
+    const message = createBaseQueryConstitutionRequest();
+    return message;
+  },
+  fromAmino(_: QueryConstitutionRequestAmino): QueryConstitutionRequest {
+    const message = createBaseQueryConstitutionRequest();
+    return message;
+  },
+  toAmino(_: QueryConstitutionRequest): QueryConstitutionRequestAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: QueryConstitutionRequestAminoMsg): QueryConstitutionRequest {
+    return QueryConstitutionRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryConstitutionRequest): QueryConstitutionRequestAminoMsg {
+    return {
+      type: "cosmos-sdk/v1/QueryConstitutionRequest",
+      value: QueryConstitutionRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryConstitutionRequestProtoMsg): QueryConstitutionRequest {
+    return QueryConstitutionRequest.decode(message.value);
+  },
+  toProto(message: QueryConstitutionRequest): Uint8Array {
+    return QueryConstitutionRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryConstitutionRequest): QueryConstitutionRequestProtoMsg {
+    return {
+      typeUrl: "/cosmos.gov.v1.QueryConstitutionRequest",
+      value: QueryConstitutionRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryConstitutionResponse(): QueryConstitutionResponse {
+  return {
+    constitution: ""
+  };
+}
+export const QueryConstitutionResponse = {
+  typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+  encode(message: QueryConstitutionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.constitution !== "") {
+      writer.uint32(10).string(message.constitution);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryConstitutionResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryConstitutionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.constitution = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryConstitutionResponse>): QueryConstitutionResponse {
+    const message = createBaseQueryConstitutionResponse();
+    message.constitution = object.constitution ?? "";
+    return message;
+  },
+  fromAmino(object: QueryConstitutionResponseAmino): QueryConstitutionResponse {
+    const message = createBaseQueryConstitutionResponse();
+    if (object.constitution !== undefined && object.constitution !== null) {
+      message.constitution = object.constitution;
+    }
+    return message;
+  },
+  toAmino(message: QueryConstitutionResponse): QueryConstitutionResponseAmino {
+    const obj: any = {};
+    obj.constitution = message.constitution === "" ? undefined : message.constitution;
+    return obj;
+  },
+  fromAminoMsg(object: QueryConstitutionResponseAminoMsg): QueryConstitutionResponse {
+    return QueryConstitutionResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryConstitutionResponse): QueryConstitutionResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/v1/QueryConstitutionResponse",
+      value: QueryConstitutionResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryConstitutionResponseProtoMsg): QueryConstitutionResponse {
+    return QueryConstitutionResponse.decode(message.value);
+  },
+  toProto(message: QueryConstitutionResponse): Uint8Array {
+    return QueryConstitutionResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryConstitutionResponse): QueryConstitutionResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.gov.v1.QueryConstitutionResponse",
+      value: QueryConstitutionResponse.encode(message).finish()
+    };
+  }
+};
 function createBaseQueryProposalRequest(): QueryProposalRequest {
   return {
     proposalId: BigInt(0)
@@ -1136,7 +1341,8 @@ function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
     votingParams: undefined,
     depositParams: undefined,
-    tallyParams: undefined
+    tallyParams: undefined,
+    params: undefined
   };
 }
 export const QueryParamsResponse = {
@@ -1150,6 +1356,9 @@ export const QueryParamsResponse = {
     }
     if (message.tallyParams !== undefined) {
       TallyParams.encode(message.tallyParams, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.params !== undefined) {
+      Params.encode(message.params, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -1169,6 +1378,9 @@ export const QueryParamsResponse = {
         case 3:
           message.tallyParams = TallyParams.decode(reader, reader.uint32());
           break;
+        case 4:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1181,6 +1393,7 @@ export const QueryParamsResponse = {
     message.votingParams = object.votingParams !== undefined && object.votingParams !== null ? VotingParams.fromPartial(object.votingParams) : undefined;
     message.depositParams = object.depositParams !== undefined && object.depositParams !== null ? DepositParams.fromPartial(object.depositParams) : undefined;
     message.tallyParams = object.tallyParams !== undefined && object.tallyParams !== null ? TallyParams.fromPartial(object.tallyParams) : undefined;
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -1194,6 +1407,9 @@ export const QueryParamsResponse = {
     if (object.tally_params !== undefined && object.tally_params !== null) {
       message.tallyParams = TallyParams.fromAmino(object.tally_params);
     }
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
     return message;
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
@@ -1201,6 +1417,7 @@ export const QueryParamsResponse = {
     obj.voting_params = message.votingParams ? VotingParams.toAmino(message.votingParams) : undefined;
     obj.deposit_params = message.depositParams ? DepositParams.toAmino(message.depositParams) : undefined;
     obj.tally_params = message.tallyParams ? TallyParams.toAmino(message.tallyParams) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {

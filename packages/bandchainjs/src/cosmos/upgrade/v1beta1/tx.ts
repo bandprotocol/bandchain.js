@@ -7,7 +7,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgrade {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
   /** plan is the upgrade plan. */
   plan: Plan;
@@ -22,10 +22,10 @@ export interface MsgSoftwareUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeAmino {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority?: string;
   /** plan is the upgrade plan. */
-  plan?: PlanAmino;
+  plan: PlanAmino;
 }
 export interface MsgSoftwareUpgradeAminoMsg {
   type: "cosmos-sdk/MsgSoftwareUpgrade";
@@ -72,7 +72,7 @@ export interface MsgSoftwareUpgradeResponseSDKType {}
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgrade {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority: string;
 }
 export interface MsgCancelUpgradeProtoMsg {
@@ -85,7 +85,7 @@ export interface MsgCancelUpgradeProtoMsg {
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeAmino {
-  /** authority is the address of the governance account. */
+  /** authority is the address that controls the module (defaults to x/gov unless overwritten). */
   authority?: string;
 }
 export interface MsgCancelUpgradeAminoMsg {
@@ -182,7 +182,7 @@ export const MsgSoftwareUpgrade = {
   toAmino(message: MsgSoftwareUpgrade): MsgSoftwareUpgradeAmino {
     const obj: any = {};
     obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
+    obj.plan = message.plan ? Plan.toAmino(message.plan) : Plan.toAmino(Plan.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: MsgSoftwareUpgradeAminoMsg): MsgSoftwareUpgrade {

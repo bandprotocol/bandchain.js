@@ -12,7 +12,7 @@ export interface Msg {
   softwareUpgrade(request: MsgSoftwareUpgrade): Promise<MsgSoftwareUpgradeResponse>;
   /**
    * CancelUpgrade is a governance operation for cancelling a previously
-   * approvid software upgrade.
+   * approved software upgrade.
    * 
    * Since: cosmos-sdk 0.46
    */
