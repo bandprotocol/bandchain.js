@@ -103,15 +103,11 @@ function createBaseChainIDRequest(): ChainIDRequest {
 }
 export const ChainIDRequest = {
   typeUrl: "/bandchain.v1.node.ChainIDRequest",
-  encode(
-    _: ChainIDRequest,
-    writer: BinaryWriter = BinaryWriter.create()
-  ): BinaryWriter {
+  encode(_: ChainIDRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ChainIDRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseChainIDRequest();
     while (reader.pos < end) {
@@ -148,29 +144,25 @@ export const ChainIDRequest = {
   toProtoMsg(message: ChainIDRequest): ChainIDRequestProtoMsg {
     return {
       typeUrl: "/bandchain.v1.node.ChainIDRequest",
-      value: ChainIDRequest.encode(message).finish(),
+      value: ChainIDRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseChainIDResponse(): ChainIDResponse {
   return {
-    chainId: "",
+    chainId: ""
   };
 }
 export const ChainIDResponse = {
   typeUrl: "/bandchain.v1.node.ChainIDResponse",
-  encode(
-    message: ChainIDResponse,
-    writer: BinaryWriter = BinaryWriter.create()
-  ): BinaryWriter {
+  encode(message: ChainIDResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.chainId !== "") {
       writer.uint32(10).string(message.chainId);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ChainIDResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseChainIDResponse();
     while (reader.pos < end) {
@@ -215,27 +207,20 @@ export const ChainIDResponse = {
   toProtoMsg(message: ChainIDResponse): ChainIDResponseProtoMsg {
     return {
       typeUrl: "/bandchain.v1.node.ChainIDResponse",
-      value: ChainIDResponse.encode(message).finish(),
+      value: ChainIDResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseEVMValidatorsRequest(): EVMValidatorsRequest {
   return {};
 }
 export const EVMValidatorsRequest = {
   typeUrl: "/bandchain.v1.node.EVMValidatorsRequest",
-  encode(
-    _: EVMValidatorsRequest,
-    writer: BinaryWriter = BinaryWriter.create()
-  ): BinaryWriter {
+  encode(_: EVMValidatorsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number
-  ): EVMValidatorsRequest {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): EVMValidatorsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEVMValidatorsRequest();
     while (reader.pos < end) {
@@ -272,22 +257,19 @@ export const EVMValidatorsRequest = {
   toProtoMsg(message: EVMValidatorsRequest): EVMValidatorsRequestProtoMsg {
     return {
       typeUrl: "/bandchain.v1.node.EVMValidatorsRequest",
-      value: EVMValidatorsRequest.encode(message).finish(),
+      value: EVMValidatorsRequest.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseEVMValidatorsResponse(): EVMValidatorsResponse {
   return {
     blockHeight: BigInt(0),
-    validators: [],
+    validators: []
   };
 }
 export const EVMValidatorsResponse = {
   typeUrl: "/bandchain.v1.node.EVMValidatorsResponse",
-  encode(
-    message: EVMValidatorsResponse,
-    writer: BinaryWriter = BinaryWriter.create()
-  ): BinaryWriter {
+  encode(message: EVMValidatorsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.blockHeight !== BigInt(0)) {
       writer.uint32(8).int64(message.blockHeight);
     }
@@ -296,12 +278,8 @@ export const EVMValidatorsResponse = {
     }
     return writer;
   },
-  decode(
-    input: BinaryReader | Uint8Array,
-    length?: number
-  ): EVMValidatorsResponse {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(input: BinaryReader | Uint8Array, length?: number): EVMValidatorsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEVMValidatorsResponse();
     while (reader.pos < end) {
@@ -311,9 +289,7 @@ export const EVMValidatorsResponse = {
           message.blockHeight = reader.int64();
           break;
         case 2:
-          message.validators.push(
-            ValidatorMinimal.decode(reader, reader.uint32())
-          );
+          message.validators.push(ValidatorMinimal.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -324,12 +300,8 @@ export const EVMValidatorsResponse = {
   },
   fromPartial(object: Partial<EVMValidatorsResponse>): EVMValidatorsResponse {
     const message = createBaseEVMValidatorsResponse();
-    message.blockHeight =
-      object.blockHeight !== undefined && object.blockHeight !== null
-        ? BigInt(object.blockHeight.toString())
-        : BigInt(0);
-    message.validators =
-      object.validators?.map((e) => ValidatorMinimal.fromPartial(e)) || [];
+    message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? BigInt(object.blockHeight.toString()) : BigInt(0);
+    message.validators = object.validators?.map(e => ValidatorMinimal.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: EVMValidatorsResponseAmino): EVMValidatorsResponse {
@@ -337,20 +309,14 @@ export const EVMValidatorsResponse = {
     if (object.block_height !== undefined && object.block_height !== null) {
       message.blockHeight = BigInt(object.block_height);
     }
-    message.validators =
-      object.validators?.map((e) => ValidatorMinimal.fromAmino(e)) || [];
+    message.validators = object.validators?.map(e => ValidatorMinimal.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: EVMValidatorsResponse): EVMValidatorsResponseAmino {
     const obj: any = {};
-    obj.block_height =
-      message.blockHeight !== BigInt(0)
-        ? message.blockHeight?.toString()
-        : undefined;
+    obj.block_height = message.blockHeight !== BigInt(0) ? message.blockHeight?.toString() : undefined;
     if (message.validators) {
-      obj.validators = message.validators.map((e) =>
-        e ? ValidatorMinimal.toAmino(e) : undefined
-      );
+      obj.validators = message.validators.map(e => e ? ValidatorMinimal.toAmino(e) : undefined);
     } else {
       obj.validators = message.validators;
     }
@@ -368,22 +334,19 @@ export const EVMValidatorsResponse = {
   toProtoMsg(message: EVMValidatorsResponse): EVMValidatorsResponseProtoMsg {
     return {
       typeUrl: "/bandchain.v1.node.EVMValidatorsResponse",
-      value: EVMValidatorsResponse.encode(message).finish(),
+      value: EVMValidatorsResponse.encode(message).finish()
     };
-  },
+  }
 };
 function createBaseValidatorMinimal(): ValidatorMinimal {
   return {
     address: "",
-    votingPower: BigInt(0),
+    votingPower: BigInt(0)
   };
 }
 export const ValidatorMinimal = {
   typeUrl: "/bandchain.v1.node.ValidatorMinimal",
-  encode(
-    message: ValidatorMinimal,
-    writer: BinaryWriter = BinaryWriter.create()
-  ): BinaryWriter {
+  encode(message: ValidatorMinimal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.address !== "") {
       writer.uint32(10).string(message.address);
     }
@@ -393,8 +356,7 @@ export const ValidatorMinimal = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ValidatorMinimal {
-    const reader =
-      input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseValidatorMinimal();
     while (reader.pos < end) {
@@ -416,10 +378,7 @@ export const ValidatorMinimal = {
   fromPartial(object: Partial<ValidatorMinimal>): ValidatorMinimal {
     const message = createBaseValidatorMinimal();
     message.address = object.address ?? "";
-    message.votingPower =
-      object.votingPower !== undefined && object.votingPower !== null
-        ? BigInt(object.votingPower.toString())
-        : BigInt(0);
+    message.votingPower = object.votingPower !== undefined && object.votingPower !== null ? BigInt(object.votingPower.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: ValidatorMinimalAmino): ValidatorMinimal {
@@ -435,10 +394,7 @@ export const ValidatorMinimal = {
   toAmino(message: ValidatorMinimal): ValidatorMinimalAmino {
     const obj: any = {};
     obj.address = message.address === "" ? undefined : message.address;
-    obj.voting_power =
-      message.votingPower !== BigInt(0)
-        ? message.votingPower?.toString()
-        : undefined;
+    obj.voting_power = message.votingPower !== BigInt(0) ? message.votingPower?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ValidatorMinimalAminoMsg): ValidatorMinimal {
@@ -453,7 +409,7 @@ export const ValidatorMinimal = {
   toProtoMsg(message: ValidatorMinimal): ValidatorMinimalProtoMsg {
     return {
       typeUrl: "/bandchain.v1.node.ValidatorMinimal",
-      value: ValidatorMinimal.encode(message).finish(),
+      value: ValidatorMinimal.encode(message).finish()
     };
-  },
+  }
 };
