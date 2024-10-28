@@ -31,7 +31,8 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@cosmology/telescope": "^1.10.0"
+    "@cosmology/telescope": "^1.10.0",
+    "@protobufs/ibc": "^0.1.0"
   },
   "dependencies": {
     "@cosmjs/encoding": "0.32.3",
