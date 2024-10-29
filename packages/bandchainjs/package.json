@@ -2,7 +2,7 @@
   "name": "@bandprotocol/bandchainjs",
   "version": "0.0.1",
   "author": "Band Protocol <dev@bandprotocol.com>",
-  "description": "TypeScript library for BandChain",
+  "description": "TypeScript library for Cosmos SDK and BandChain",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",

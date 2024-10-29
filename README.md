@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://avatars.githubusercontent.com/u/39086992?s=200&v=4" width="80"><br />
-    TypeScript library for BandChain
+    TypeScript library for Cosmos SDK and BandChain
 </p>
 
 <p align="center" width="100%">
