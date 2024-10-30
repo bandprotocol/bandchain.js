@@ -6,21 +6,16 @@
   */
  
 export * from "./amino/bundle";
-export * from "./bandchain/bundle";
+export * from "./band/bundle";
+export * from "./band/client";
 export * from "./ics23/bundle";
 export * from "./cosmos_proto/bundle";
 export * from "./cosmos/bundle";
 export * from "./cosmos/client";
-export * from "./globalfee/bundle";
-export * from "./globalfee/client";
 export * from "./gogoproto/bundle";
 export * from "./google/bundle";
 export * from "./ibc/bundle";
 export * from "./ibc/client";
-export * from "./oracle/bundle";
-export * from "./oracle/client";
-export * from "./restake/bundle";
-export * from "./restake/client";
 export * from "./tendermint/bundle";
 export * from "./varint";
 export * from "./utf8";

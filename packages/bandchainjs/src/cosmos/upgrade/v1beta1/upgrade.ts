@@ -22,7 +22,10 @@ export interface Plan {
    */
   /** @deprecated */
   time: Date;
-  /** The height at which the upgrade must be performed. */
+  /**
+   * The height at which the upgrade must be performed.
+   * Only used if Time is not set.
+   */
   height: bigint;
   /**
    * Any application specific upgrade info to be included on-chain
@@ -59,8 +62,11 @@ export interface PlanAmino {
    * If this field is not empty, an error will be thrown.
    */
   /** @deprecated */
-  time: string;
-  /** The height at which the upgrade must be performed. */
+  time?: string;
+  /**
+   * The height at which the upgrade must be performed.
+   * Only used if Time is not set.
+   */
   height?: string;
   /**
    * Any application specific upgrade info to be included on-chain
@@ -98,11 +104,8 @@ export interface PlanSDKType {
 /** @deprecated */
 export interface SoftwareUpgradeProposal {
   $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
-  /** title of the proposal */
   title: string;
-  /** description of the proposal */
   description: string;
-  /** plan of the proposal */
   plan: Plan;
 }
 export interface SoftwareUpgradeProposalProtoMsg {
@@ -117,12 +120,9 @@ export interface SoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface SoftwareUpgradeProposalAmino {
-  /** title of the proposal */
   title?: string;
-  /** description of the proposal */
   description?: string;
-  /** plan of the proposal */
-  plan: PlanAmino;
+  plan?: PlanAmino;
 }
 export interface SoftwareUpgradeProposalAminoMsg {
   type: "cosmos-sdk/SoftwareUpgradeProposal";
@@ -150,9 +150,7 @@ export interface SoftwareUpgradeProposalSDKType {
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposal {
   $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
-  /** title of the proposal */
   title: string;
-  /** description of the proposal */
   description: string;
 }
 export interface CancelSoftwareUpgradeProposalProtoMsg {
@@ -167,9 +165,7 @@ export interface CancelSoftwareUpgradeProposalProtoMsg {
  */
 /** @deprecated */
 export interface CancelSoftwareUpgradeProposalAmino {
-  /** title of the proposal */
   title?: string;
-  /** description of the proposal */
   description?: string;
 }
 export interface CancelSoftwareUpgradeProposalAminoMsg {
@@ -316,7 +312,7 @@ export const Plan = {
   toAmino(message: Plan): PlanAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
-    obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : new Date();
+    obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
     obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
     obj.info = message.info === "" ? undefined : message.info;
     obj.upgraded_client_state = message.upgradedClientState ? Any.toAmino(message.upgradedClientState) : undefined;
@@ -413,7 +409,7 @@ export const SoftwareUpgradeProposal = {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
     obj.description = message.description === "" ? undefined : message.description;
-    obj.plan = message.plan ? Plan.toAmino(message.plan) : Plan.toAmino(Plan.fromPartial({}));
+    obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
     return obj;
   },
   fromAminoMsg(object: SoftwareUpgradeProposalAminoMsg): SoftwareUpgradeProposal {

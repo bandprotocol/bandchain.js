@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSend, MsgMultiSend, MsgUpdateParams, MsgSetSendEnabled } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.bank.v1beta1.MsgSend", MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", MsgMultiSend], ["/cosmos.bank.v1beta1.MsgUpdateParams", MsgUpdateParams], ["/cosmos.bank.v1beta1.MsgSetSendEnabled", MsgSetSendEnabled]];
+import { MsgSend, MsgMultiSend } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/cosmos.bank.v1beta1.MsgSend", MsgSend], ["/cosmos.bank.v1beta1.MsgMultiSend", MsgMultiSend]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -20,18 +20,6 @@ export const MessageComposer = {
         typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
         value: MsgMultiSend.encode(value).finish()
       };
-    },
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-        value: MsgUpdateParams.encode(value).finish()
-      };
-    },
-    setSendEnabled(value: MsgSetSendEnabled) {
-      return {
-        typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
-        value: MsgSetSendEnabled.encode(value).finish()
-      };
     }
   },
   withTypeUrl: {
@@ -44,18 +32,6 @@ export const MessageComposer = {
     multiSend(value: MsgMultiSend) {
       return {
         typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
-        value
-      };
-    },
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-        value
-      };
-    },
-    setSendEnabled(value: MsgSetSendEnabled) {
-      return {
-        typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
         value
       };
     }
@@ -71,18 +47,6 @@ export const MessageComposer = {
       return {
         typeUrl: "/cosmos.bank.v1beta1.MsgMultiSend",
         value: MsgMultiSend.fromPartial(value)
-      };
-    },
-    updateParams(value: MsgUpdateParams) {
-      return {
-        typeUrl: "/cosmos.bank.v1beta1.MsgUpdateParams",
-        value: MsgUpdateParams.fromPartial(value)
-      };
-    },
-    setSendEnabled(value: MsgSetSendEnabled) {
-      return {
-        typeUrl: "/cosmos.bank.v1beta1.MsgSetSendEnabled",
-        value: MsgSetSendEnabled.fromPartial(value)
       };
     }
   }

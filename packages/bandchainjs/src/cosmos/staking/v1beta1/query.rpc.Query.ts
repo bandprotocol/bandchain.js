@@ -5,28 +5,13 @@ import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryDelegationRequest, QueryDelegationResponse, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryPoolRequest, QueryPoolResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
-  /**
-   * Validators queries all validators that match the given status.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** Validators queries all validators that match the given status. */
   validators(request: QueryValidatorsRequest): Promise<QueryValidatorsResponse>;
   /** Validator queries validator info for given validator address. */
   validator(request: QueryValidatorRequest): Promise<QueryValidatorResponse>;
-  /**
-   * ValidatorDelegations queries delegate info for given validator.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** ValidatorDelegations queries delegate info for given validator. */
   validatorDelegations(request: QueryValidatorDelegationsRequest): Promise<QueryValidatorDelegationsResponse>;
-  /**
-   * ValidatorUnbondingDelegations queries unbonding delegations of a validator.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
   validatorUnbondingDelegations(request: QueryValidatorUnbondingDelegationsRequest): Promise<QueryValidatorUnbondingDelegationsResponse>;
   /** Delegation queries delegate info for given validator delegator pair. */
   delegation(request: QueryDelegationRequest): Promise<QueryDelegationResponse>;
@@ -35,34 +20,18 @@ export interface Query {
    * pair.
    */
   unbondingDelegation(request: QueryUnbondingDelegationRequest): Promise<QueryUnbondingDelegationResponse>;
-  /**
-   * DelegatorDelegations queries all delegations of a given delegator address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** DelegatorDelegations queries all delegations of a given delegator address. */
   delegatorDelegations(request: QueryDelegatorDelegationsRequest): Promise<QueryDelegatorDelegationsResponse>;
   /**
    * DelegatorUnbondingDelegations queries all unbonding delegations of a given
    * delegator address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
    */
   delegatorUnbondingDelegations(request: QueryDelegatorUnbondingDelegationsRequest): Promise<QueryDelegatorUnbondingDelegationsResponse>;
-  /**
-   * Redelegations queries redelegations of given address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
-   */
+  /** Redelegations queries redelegations of given address. */
   redelegations(request: QueryRedelegationsRequest): Promise<QueryRedelegationsResponse>;
   /**
    * DelegatorValidators queries all validators info for given delegator
    * address.
-   * 
-   * When called from another module, this query might consume a high amount of
-   * gas if the pagination field is incorrectly set.
    */
   delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponse>;
   /**

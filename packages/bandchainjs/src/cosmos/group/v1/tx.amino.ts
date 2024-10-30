@@ -37,7 +37,7 @@ export const AminoConverter = {
     fromAmino: MsgUpdateGroupPolicyAdmin.fromAmino
   },
   "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy": {
-    aminoType: "cosmos-sdk/MsgUpdateGroupDecisionPolicy",
+    aminoType: "cosmos-sdk/MsgUpdateGroupPolicyDecisionPolicy",
     toAmino: MsgUpdateGroupPolicyDecisionPolicy.toAmino,
     fromAmino: MsgUpdateGroupPolicyDecisionPolicy.fromAmino
   },
