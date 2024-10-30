@@ -48,9 +48,9 @@ npm install @bandprotocol/bandchainjs
 ### RPC Clients
 
 ```js
-import { bandchain } from "@bandprotocol/bandchainjs";
+import { band } from "@bandprotocol/bandchainjs";
 
-const { createRPCQueryClient } = bandchain.ClientFactory;
+const { createRPCQueryClient } = band.ClientFactory;
 const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
 
 // now you can query the cosmos modules
@@ -59,7 +59,7 @@ const balance = await client.cosmos.bank.v1beta1.allBalances({
 });
 
 // you can also query the bandchain modules
-const balances = await client.bandchain.exchange.v1beta1.exchangeBalances();
+const balances = await client.band.exchange.v1beta1.exchangeBalances();
 ```
 
 ### Composing Messages
@@ -70,7 +70,7 @@ Import the `bandchain` object from `@bandprotocol/bandchainjs`.
 import { bandchain } from "@bandprotocol/bandchainjs";
 
 const { createSpotLimitOrder, createSpotMarketOrder, deposit } =
-  bandchain.exchange.v1beta1.MessageComposer.withTypeUrl;
+  band.exchange.v1beta1.MessageComposer.withTypeUrl;
 ```
 
 #### CosmWasm Messages
