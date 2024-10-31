@@ -55,19 +55,19 @@ const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
 
 // now you can query the cosmos modules
 const balance = await client.cosmos.bank.v1beta1.allBalances({
-  address: "bandchain1addresshere",
+  address: "band1addresshere",
 });
 
-// you can also query the bandchain modules
+// you can also query the band modules
 const balances = await client.band.exchange.v1beta1.exchangeBalances();
 ```
 
 ### Composing Messages
 
-Import the `bandchain` object from `@bandprotocol/bandchainjs`.
+Import the `band` object from `@bandprotocol/bandchainjs`.
 
 ```js
-import { bandchain } from "@bandprotocol/bandchainjs";
+import { band } from "@bandprotocol/bandchainjs";
 
 const { createSpotLimitOrder, createSpotMarketOrder, deposit } =
   band.exchange.v1beta1.MessageComposer.withTypeUrl;
@@ -130,12 +130,12 @@ Here are the docs on [creating signers](https://docs.cosmology.zone/cosmos-kit) 
 
 ### Initializing the Stargate Client
 
-Use `getSigningBandChainClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
+Use `getSigningBandClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
 
 ```js
-import { getSigningBandChainClient } from "bandchainjs";
+import { getSigningBandClient } from "bandchainjs";
 
-const stargateClient = await getSigningBandChainClient({
+const stargateClient = await getSigningBandClient({
   rpcEndpoint,
   signer, // OfflineSigner
 });
@@ -170,7 +170,7 @@ import { chains } from "chain-registry";
 
 const mnemonic =
   "unfold client turtle either pilot stock floor glow toward bullet car science";
-const chain = chains.find(({ chain_name }) => chain_name === "bandchain");
+const chain = chains.find(({ chain_name }) => chain_name === "band");
 const signer = await getOfflineSigner({
   mnemonic,
   chain,
@@ -222,25 +222,25 @@ import {
     cosmwasmProtoRegistry,
     ibcProtoRegistry,
     ibcAminoConverters,
-    bandchainAminoConverters,
-    bandchainProtoRegistry
+    bandAminoConverters,
+    bandProtoRegistry
 } from 'bandchainjs';
 
 const signer: OfflineSigner = /* create your signer (see above)  */
-const rpcEndpint = 'https://rpc.cosmos.directory/bandchain'; // or another URL
+const rpcEndpint = 'https://rpc.cosmos.directory/band'; // or another URL
 
 const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
     ...cosmosProtoRegistry,
     ...cosmwasmProtoRegistry,
     ...ibcProtoRegistry,
-    ...bandchainProtoRegistry
+    ...bandProtoRegistry
 ];
 
 const aminoConverters = {
     ...cosmosAminoConverters,
     ...cosmwasmAminoConverters,
     ...ibcAminoConverters,
-    ...bandchainAminoConverters
+    ...bandAminoConverters
 };
 
 const registry = new Registry(protoRegistry);
