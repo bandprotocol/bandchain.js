@@ -1,0 +1,56 @@
+import { GeneratedType, OfflineSigner, Registry } from "@cosmjs/proto-signing";
+import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+
+import { bandAminoConverters, bandProtoRegistry } from "../band/client";
+import { cosmosAminoConverters, cosmosProtoRegistry } from "./../cosmos/client";
+import { ibcAminoConverters, ibcProtoRegistry } from "./../ibc/client";
+
+const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+  ...cosmosProtoRegistry,
+  ...ibcProtoRegistry,
+  ...bandProtoRegistry,
+];
+
+const aminoConverters = {
+  ...cosmosAminoConverters,
+  ...ibcAminoConverters,
+  ...bandAminoConverters,
+};
+
+export const getSigningClientOptions = ({
+  defaultTypes = [],
+}: {
+  defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
+} = {}) => {
+  const registry = new Registry([...defaultTypes, ...protoRegistry]);
+  const aminoTypes = new AminoTypes({
+    ...aminoConverters,
+  });
+  return {
+    registry,
+    aminoTypes,
+  };
+};
+
+export const getSigningClient = async ({
+  rpcEndpoint,
+  signer,
+  defaultTypes = [],
+}: {
+  rpcEndpoint: string;
+  signer: OfflineSigner;
+  defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
+}) => {
+  const { registry, aminoTypes } = getSigningClientOptions({
+    defaultTypes,
+  });
+  const client = await SigningStargateClient.connectWithSigner(
+    rpcEndpoint,
+    signer,
+    {
+      registry: registry as any,
+      aminoTypes,
+    }
+  );
+  return client;
+};
