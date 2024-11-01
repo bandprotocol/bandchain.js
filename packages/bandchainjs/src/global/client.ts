@@ -1,9 +1,14 @@
 import { GeneratedType, OfflineSigner, Registry } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 
-import { bandAminoConverters, bandProtoRegistry } from "../band/client";
-import { cosmosAminoConverters, cosmosProtoRegistry } from "./../cosmos/client";
-import { ibcAminoConverters, ibcProtoRegistry } from "./../ibc/client";
+import {
+  bandAminoConverters,
+  bandProtoRegistry,
+  cosmosAminoConverters,
+  cosmosProtoRegistry,
+  ibcAminoConverters,
+  ibcProtoRegistry,
+} from "../codegen";
 
 const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
   ...cosmosProtoRegistry,

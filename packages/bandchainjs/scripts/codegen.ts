@@ -7,7 +7,7 @@ import { AMINO_MAP } from "./aminos";
 
 const protoDirs: string[] = [join(__dirname, "/../proto")];
 
-const outPath: string = join(__dirname, "../src");
+const outPath: string = join(__dirname, "../src/codegen");
 rimraf(outPath);
 
 export const options: TelescopeInput = {
