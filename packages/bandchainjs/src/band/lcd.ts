@@ -10,6 +10,18 @@ export const createLCDClient = async ({
   });
   return {
     band: {
+      base: {
+        node: {
+          v1: new (await import("./base/node/v1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        },
+        oracle: {
+          v1: new (await import("./base/oracle/v1/proof.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
       globalfee: {
         v1beta1: new (await import("./globalfee/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -39,6 +51,23 @@ export const createLCDClient = async ({
       },
       bank: {
         v1beta1: new (await import("../cosmos/bank/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      base: {
+        node: {
+          v1beta1: new (await import("../cosmos/base/node/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
+      circuit: {
+        v1: new (await import("../cosmos/circuit/v1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      consensus: {
+        v1: new (await import("../cosmos/consensus/v1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

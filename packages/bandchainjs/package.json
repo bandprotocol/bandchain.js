@@ -33,7 +33,9 @@
   "devDependencies": {
     "@cosmology/telescope": "^1.10.0",
     "@protobufs/cosmos": "^0.1.0",
-    "@protobufs/ibc": "^0.1.0"
+    "@protobufs/ibc": "^0.1.0",
+    "@protobufs/osmosis": "^0.4.0",
+    "@protobufs/stargaze": "^0.1.0"
   },
   "dependencies": {
     "@cosmjs/encoding": "0.32.3",

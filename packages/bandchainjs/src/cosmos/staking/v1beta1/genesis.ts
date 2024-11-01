@@ -4,7 +4,7 @@ import { BinaryReader, BinaryWriter } from "../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisState {
-  /** params defines all the paramaters of related to deposit. */
+  /** params defines all the parameters of related to deposit. */
   params: Params;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
@@ -16,7 +16,7 @@ export interface GenesisState {
    * of the last-block's bonded validators.
    */
   lastValidatorPowers: LastValidatorPower[];
-  /** delegations defines the validator set at genesis. */
+  /** validators defines the validator set at genesis. */
   validators: Validator[];
   /** delegations defines the delegations active at genesis. */
   delegations: Delegation[];
@@ -24,6 +24,7 @@ export interface GenesisState {
   unbondingDelegations: UnbondingDelegation[];
   /** redelegations defines the redelegations active at genesis. */
   redelegations: Redelegation[];
+  /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported: boolean;
 }
 export interface GenesisStateProtoMsg {
@@ -32,26 +33,27 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the staking module's genesis state. */
 export interface GenesisStateAmino {
-  /** params defines all the paramaters of related to deposit. */
-  params?: ParamsAmino;
+  /** params defines all the parameters of related to deposit. */
+  params: ParamsAmino;
   /**
    * last_total_power tracks the total amounts of bonded tokens recorded during
    * the previous end block.
    */
-  last_total_power?: string;
+  last_total_power: string;
   /**
    * last_validator_powers is a special index that provides a historical list
    * of the last-block's bonded validators.
    */
-  last_validator_powers?: LastValidatorPowerAmino[];
-  /** delegations defines the validator set at genesis. */
-  validators?: ValidatorAmino[];
+  last_validator_powers: LastValidatorPowerAmino[];
+  /** validators defines the validator set at genesis. */
+  validators: ValidatorAmino[];
   /** delegations defines the delegations active at genesis. */
-  delegations?: DelegationAmino[];
+  delegations: DelegationAmino[];
   /** unbonding_delegations defines the unbonding delegations active at genesis. */
-  unbonding_delegations?: UnbondingDelegationAmino[];
+  unbonding_delegations: UnbondingDelegationAmino[];
   /** redelegations defines the redelegations active at genesis. */
-  redelegations?: RedelegationAmino[];
+  redelegations: RedelegationAmino[];
+  /** exported defines a bool to identify whether the chain dealing with exported or initialized genesis. */
   exported?: boolean;
 }
 export interface GenesisStateAminoMsg {
@@ -207,8 +209,8 @@ export const GenesisState = {
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : undefined;
-    obj.last_total_power = message.lastTotalPower ? base64FromBytes(message.lastTotalPower) : undefined;
+    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.last_total_power = message.lastTotalPower ? base64FromBytes(message.lastTotalPower) : "";
     if (message.lastValidatorPowers) {
       obj.last_validator_powers = message.lastValidatorPowers.map(e => e ? LastValidatorPower.toAmino(e) : undefined);
     } else {

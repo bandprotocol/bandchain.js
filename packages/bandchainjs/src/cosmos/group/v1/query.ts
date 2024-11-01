@@ -26,7 +26,7 @@ export interface QueryGroupInfoRequestSDKType {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponse {
-  /** info is the GroupInfo for the group. */
+  /** info is the GroupInfo of the group. */
   info?: GroupInfo;
 }
 export interface QueryGroupInfoResponseProtoMsg {
@@ -35,7 +35,7 @@ export interface QueryGroupInfoResponseProtoMsg {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponseAmino {
-  /** info is the GroupInfo for the group. */
+  /** info is the GroupInfo of the group. */
   info?: GroupInfoAmino;
 }
 export interface QueryGroupInfoResponseAminoMsg {
@@ -70,7 +70,7 @@ export interface QueryGroupPolicyInfoRequestSDKType {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponse {
-  /** info is the GroupPolicyInfo for the group policy. */
+  /** info is the GroupPolicyInfo of the group policy. */
   info?: GroupPolicyInfo;
 }
 export interface QueryGroupPolicyInfoResponseProtoMsg {
@@ -79,7 +79,7 @@ export interface QueryGroupPolicyInfoResponseProtoMsg {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponseAmino {
-  /** info is the GroupPolicyInfo for the group policy. */
+  /** info is the GroupPolicyInfo of the group policy. */
   info?: GroupPolicyInfoAmino;
 }
 export interface QueryGroupPolicyInfoResponseAminoMsg {
@@ -649,7 +649,7 @@ export interface QueryTallyResultResponseProtoMsg {
 /** QueryTallyResultResponse is the Query/TallyResult response type. */
 export interface QueryTallyResultResponseAmino {
   /** tally defines the requested tally. */
-  tally?: TallyResultAmino;
+  tally: TallyResultAmino;
 }
 export interface QueryTallyResultResponseAminoMsg {
   type: "cosmos-sdk/QueryTallyResultResponse";
@@ -658,6 +658,79 @@ export interface QueryTallyResultResponseAminoMsg {
 /** QueryTallyResultResponse is the Query/TallyResult response type. */
 export interface QueryTallyResultResponseSDKType {
   tally: TallyResultSDKType;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ * 
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequest {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequest;
+}
+export interface QueryGroupsRequestProtoMsg {
+  typeUrl: "/cosmos.group.v1.QueryGroupsRequest";
+  value: Uint8Array;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ * 
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequestAmino {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequestAmino;
+}
+export interface QueryGroupsRequestAminoMsg {
+  type: "cosmos-sdk/QueryGroupsRequest";
+  value: QueryGroupsRequestAmino;
+}
+/**
+ * QueryGroupsRequest is the Query/Groups request type.
+ * 
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ * 
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponse {
+  /** `groups` is all the groups present in state. */
+  groups: GroupInfo[];
+  /** pagination defines the pagination in the response. */
+  pagination?: PageResponse;
+}
+export interface QueryGroupsResponseProtoMsg {
+  typeUrl: "/cosmos.group.v1.QueryGroupsResponse";
+  value: Uint8Array;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ * 
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponseAmino {
+  /** `groups` is all the groups present in state. */
+  groups?: GroupInfoAmino[];
+  /** pagination defines the pagination in the response. */
+  pagination?: PageResponseAmino;
+}
+export interface QueryGroupsResponseAminoMsg {
+  type: "cosmos-sdk/QueryGroupsResponse";
+  value: QueryGroupsResponseAmino;
+}
+/**
+ * QueryGroupsResponse is the Query/Groups response type.
+ * 
+ * Since: cosmos-sdk 0.47.1
+ */
+export interface QueryGroupsResponseSDKType {
+  groups: GroupInfoSDKType[];
+  pagination?: PageResponseSDKType;
 }
 function createBaseQueryGroupInfoRequest(): QueryGroupInfoRequest {
   return {
@@ -2648,7 +2721,7 @@ export const QueryTallyResultResponse = {
   },
   toAmino(message: QueryTallyResultResponse): QueryTallyResultResponseAmino {
     const obj: any = {};
-    obj.tally = message.tally ? TallyResult.toAmino(message.tally) : undefined;
+    obj.tally = message.tally ? TallyResult.toAmino(message.tally) : TallyResult.toAmino(TallyResult.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: QueryTallyResultResponseAminoMsg): QueryTallyResultResponse {
@@ -2670,6 +2743,158 @@ export const QueryTallyResultResponse = {
     return {
       typeUrl: "/cosmos.group.v1.QueryTallyResultResponse",
       value: QueryTallyResultResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGroupsRequest(): QueryGroupsRequest {
+  return {
+    pagination: undefined
+  };
+}
+export const QueryGroupsRequest = {
+  typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+  encode(message: QueryGroupsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGroupsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryGroupsRequest>): QueryGroupsRequest {
+    const message = createBaseQueryGroupsRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryGroupsRequestAmino): QueryGroupsRequest {
+    const message = createBaseQueryGroupsRequest();
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryGroupsRequest): QueryGroupsRequestAmino {
+    const obj: any = {};
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryGroupsRequestAminoMsg): QueryGroupsRequest {
+    return QueryGroupsRequest.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryGroupsRequest): QueryGroupsRequestAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryGroupsRequest",
+      value: QueryGroupsRequest.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryGroupsRequestProtoMsg): QueryGroupsRequest {
+    return QueryGroupsRequest.decode(message.value);
+  },
+  toProto(message: QueryGroupsRequest): Uint8Array {
+    return QueryGroupsRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGroupsRequest): QueryGroupsRequestProtoMsg {
+    return {
+      typeUrl: "/cosmos.group.v1.QueryGroupsRequest",
+      value: QueryGroupsRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryGroupsResponse(): QueryGroupsResponse {
+  return {
+    groups: [],
+    pagination: undefined
+  };
+}
+export const QueryGroupsResponse = {
+  typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+  encode(message: QueryGroupsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.groups) {
+      GroupInfo.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryGroupsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryGroupsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.groups.push(GroupInfo.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryGroupsResponse>): QueryGroupsResponse {
+    const message = createBaseQueryGroupsResponse();
+    message.groups = object.groups?.map(e => GroupInfo.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryGroupsResponseAmino): QueryGroupsResponse {
+    const message = createBaseQueryGroupsResponse();
+    message.groups = object.groups?.map(e => GroupInfo.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryGroupsResponse): QueryGroupsResponseAmino {
+    const obj: any = {};
+    if (message.groups) {
+      obj.groups = message.groups.map(e => e ? GroupInfo.toAmino(e) : undefined);
+    } else {
+      obj.groups = message.groups;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryGroupsResponseAminoMsg): QueryGroupsResponse {
+    return QueryGroupsResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: QueryGroupsResponse): QueryGroupsResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/QueryGroupsResponse",
+      value: QueryGroupsResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: QueryGroupsResponseProtoMsg): QueryGroupsResponse {
+    return QueryGroupsResponse.decode(message.value);
+  },
+  toProto(message: QueryGroupsResponse): Uint8Array {
+    return QueryGroupsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryGroupsResponse): QueryGroupsResponseProtoMsg {
+    return {
+      typeUrl: "/cosmos.group.v1.QueryGroupsResponse",
+      value: QueryGroupsResponse.encode(message).finish()
     };
   }
 };

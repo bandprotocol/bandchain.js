@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventAmino, EventSDKType } from "../../../../tendermint/abci/types";
+import { Block, BlockAmino, BlockSDKType } from "../../../../tendermint/types/block";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
@@ -42,7 +43,7 @@ export interface TxResponse {
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
-   * emitted from the ante handler. Whereas Logs contains the events, with
+   * emitted from the ante. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -92,7 +93,7 @@ export interface TxResponseAmino {
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
-   * emitted from the ante handler. Whereas Logs contains the events, with
+   * emitted from the ante. Whereas Logs contains the events, with
    * additional metadata, emitted only by processing the messages.
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
@@ -471,6 +472,53 @@ export interface SearchTxsResultSDKType {
   page_total: bigint;
   limit: bigint;
   txs: TxResponseSDKType[];
+}
+/** SearchBlocksResult defines a structure for querying blocks pageable */
+export interface SearchBlocksResult {
+  /** Count of all blocks */
+  totalCount: bigint;
+  /** Count of blocks in current page */
+  count: bigint;
+  /** Index of current page, start from 1 */
+  pageNumber: bigint;
+  /** Count of total pages */
+  pageTotal: bigint;
+  /** Max count blocks per page */
+  limit: bigint;
+  /** List of blocks in current page */
+  blocks: Block[];
+}
+export interface SearchBlocksResultProtoMsg {
+  typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult";
+  value: Uint8Array;
+}
+/** SearchBlocksResult defines a structure for querying blocks pageable */
+export interface SearchBlocksResultAmino {
+  /** Count of all blocks */
+  total_count?: string;
+  /** Count of blocks in current page */
+  count?: string;
+  /** Index of current page, start from 1 */
+  page_number?: string;
+  /** Count of total pages */
+  page_total?: string;
+  /** Max count blocks per page */
+  limit?: string;
+  /** List of blocks in current page */
+  blocks?: BlockAmino[];
+}
+export interface SearchBlocksResultAminoMsg {
+  type: "cosmos-sdk/SearchBlocksResult";
+  value: SearchBlocksResultAmino;
+}
+/** SearchBlocksResult defines a structure for querying blocks pageable */
+export interface SearchBlocksResultSDKType {
+  total_count: bigint;
+  count: bigint;
+  page_number: bigint;
+  page_total: bigint;
+  limit: bigint;
+  blocks: BlockSDKType[];
 }
 function createBaseTxResponse(): TxResponse {
   return {
@@ -1513,6 +1561,137 @@ export const SearchTxsResult = {
     return {
       typeUrl: "/cosmos.base.abci.v1beta1.SearchTxsResult",
       value: SearchTxsResult.encode(message).finish()
+    };
+  }
+};
+function createBaseSearchBlocksResult(): SearchBlocksResult {
+  return {
+    totalCount: BigInt(0),
+    count: BigInt(0),
+    pageNumber: BigInt(0),
+    pageTotal: BigInt(0),
+    limit: BigInt(0),
+    blocks: []
+  };
+}
+export const SearchBlocksResult = {
+  typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+  encode(message: SearchBlocksResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.totalCount !== BigInt(0)) {
+      writer.uint32(8).int64(message.totalCount);
+    }
+    if (message.count !== BigInt(0)) {
+      writer.uint32(16).int64(message.count);
+    }
+    if (message.pageNumber !== BigInt(0)) {
+      writer.uint32(24).int64(message.pageNumber);
+    }
+    if (message.pageTotal !== BigInt(0)) {
+      writer.uint32(32).int64(message.pageTotal);
+    }
+    if (message.limit !== BigInt(0)) {
+      writer.uint32(40).int64(message.limit);
+    }
+    for (const v of message.blocks) {
+      Block.encode(v!, writer.uint32(50).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): SearchBlocksResult {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSearchBlocksResult();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.totalCount = reader.int64();
+          break;
+        case 2:
+          message.count = reader.int64();
+          break;
+        case 3:
+          message.pageNumber = reader.int64();
+          break;
+        case 4:
+          message.pageTotal = reader.int64();
+          break;
+        case 5:
+          message.limit = reader.int64();
+          break;
+        case 6:
+          message.blocks.push(Block.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<SearchBlocksResult>): SearchBlocksResult {
+    const message = createBaseSearchBlocksResult();
+    message.totalCount = object.totalCount !== undefined && object.totalCount !== null ? BigInt(object.totalCount.toString()) : BigInt(0);
+    message.count = object.count !== undefined && object.count !== null ? BigInt(object.count.toString()) : BigInt(0);
+    message.pageNumber = object.pageNumber !== undefined && object.pageNumber !== null ? BigInt(object.pageNumber.toString()) : BigInt(0);
+    message.pageTotal = object.pageTotal !== undefined && object.pageTotal !== null ? BigInt(object.pageTotal.toString()) : BigInt(0);
+    message.limit = object.limit !== undefined && object.limit !== null ? BigInt(object.limit.toString()) : BigInt(0);
+    message.blocks = object.blocks?.map(e => Block.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: SearchBlocksResultAmino): SearchBlocksResult {
+    const message = createBaseSearchBlocksResult();
+    if (object.total_count !== undefined && object.total_count !== null) {
+      message.totalCount = BigInt(object.total_count);
+    }
+    if (object.count !== undefined && object.count !== null) {
+      message.count = BigInt(object.count);
+    }
+    if (object.page_number !== undefined && object.page_number !== null) {
+      message.pageNumber = BigInt(object.page_number);
+    }
+    if (object.page_total !== undefined && object.page_total !== null) {
+      message.pageTotal = BigInt(object.page_total);
+    }
+    if (object.limit !== undefined && object.limit !== null) {
+      message.limit = BigInt(object.limit);
+    }
+    message.blocks = object.blocks?.map(e => Block.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: SearchBlocksResult): SearchBlocksResultAmino {
+    const obj: any = {};
+    obj.total_count = message.totalCount !== BigInt(0) ? message.totalCount?.toString() : undefined;
+    obj.count = message.count !== BigInt(0) ? message.count?.toString() : undefined;
+    obj.page_number = message.pageNumber !== BigInt(0) ? message.pageNumber?.toString() : undefined;
+    obj.page_total = message.pageTotal !== BigInt(0) ? message.pageTotal?.toString() : undefined;
+    obj.limit = message.limit !== BigInt(0) ? message.limit?.toString() : undefined;
+    if (message.blocks) {
+      obj.blocks = message.blocks.map(e => e ? Block.toAmino(e) : undefined);
+    } else {
+      obj.blocks = message.blocks;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: SearchBlocksResultAminoMsg): SearchBlocksResult {
+    return SearchBlocksResult.fromAmino(object.value);
+  },
+  toAminoMsg(message: SearchBlocksResult): SearchBlocksResultAminoMsg {
+    return {
+      type: "cosmos-sdk/SearchBlocksResult",
+      value: SearchBlocksResult.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: SearchBlocksResultProtoMsg): SearchBlocksResult {
+    return SearchBlocksResult.decode(message.value);
+  },
+  toProto(message: SearchBlocksResult): Uint8Array {
+    return SearchBlocksResult.encode(message).finish();
+  },
+  toProtoMsg(message: SearchBlocksResult): SearchBlocksResultProtoMsg {
+    return {
+      typeUrl: "/cosmos.base.abci.v1beta1.SearchBlocksResult",
+      value: SearchBlocksResult.encode(message).finish()
     };
   }
 };

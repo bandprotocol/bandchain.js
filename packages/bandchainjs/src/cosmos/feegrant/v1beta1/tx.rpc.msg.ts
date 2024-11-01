@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgGrantAllowance, MsgGrantAllowanceResponse, MsgRevokeAllowance, MsgRevokeAllowanceResponse } from "./tx";
+import { MsgGrantAllowance, MsgGrantAllowanceResponse, MsgRevokeAllowance, MsgRevokeAllowanceResponse, MsgPruneAllowances, MsgPruneAllowancesResponse } from "./tx";
 /** Msg defines the feegrant msg service. */
 export interface Msg {
   /**
@@ -14,6 +14,12 @@ export interface Msg {
    * has been granted to the grantee.
    */
   revokeAllowance(request: MsgRevokeAllowance): Promise<MsgRevokeAllowanceResponse>;
+  /**
+   * PruneAllowances prunes expired fee allowances, currently up to 75 at a time.
+   * 
+   * Since cosmos-sdk 0.50
+   */
+  pruneAllowances(request: MsgPruneAllowances): Promise<MsgPruneAllowancesResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -21,6 +27,7 @@ export class MsgClientImpl implements Msg {
     this.rpc = rpc;
     this.grantAllowance = this.grantAllowance.bind(this);
     this.revokeAllowance = this.revokeAllowance.bind(this);
+    this.pruneAllowances = this.pruneAllowances.bind(this);
   }
   grantAllowance(request: MsgGrantAllowance): Promise<MsgGrantAllowanceResponse> {
     const data = MsgGrantAllowance.encode(request).finish();
@@ -31,5 +38,10 @@ export class MsgClientImpl implements Msg {
     const data = MsgRevokeAllowance.encode(request).finish();
     const promise = this.rpc.request("cosmos.feegrant.v1beta1.Msg", "RevokeAllowance", data);
     return promise.then(data => MsgRevokeAllowanceResponse.decode(new BinaryReader(data)));
+  }
+  pruneAllowances(request: MsgPruneAllowances): Promise<MsgPruneAllowancesResponse> {
+    const data = MsgPruneAllowances.encode(request).finish();
+    const promise = this.rpc.request("cosmos.feegrant.v1beta1.Msg", "PruneAllowances", data);
+    return promise.then(data => MsgPruneAllowancesResponse.decode(new BinaryReader(data)));
   }
 }

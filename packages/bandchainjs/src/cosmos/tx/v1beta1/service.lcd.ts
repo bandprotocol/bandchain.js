@@ -33,6 +33,15 @@ export class LCDQueryClient {
     if (typeof params?.orderBy !== "undefined") {
       options.params.order_by = params.orderBy;
     }
+    if (typeof params?.page !== "undefined") {
+      options.params.page = params.page;
+    }
+    if (typeof params?.limit !== "undefined") {
+      options.params.limit = params.limit;
+    }
+    if (typeof params?.query !== "undefined") {
+      options.params.query = params.query;
+    }
     const endpoint = `cosmos/tx/v1beta1/txs`;
     return await this.req.get<GetTxsEventResponseSDKType>(endpoint, options);
   }

@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponseSDKType, QueryValidatorCommissionRequest, QueryValidatorCommissionResponseSDKType, QueryValidatorSlashesRequest, QueryValidatorSlashesResponseSDKType, QueryDelegationRewardsRequest, QueryDelegationRewardsResponseSDKType, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponseSDKType, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponseSDKType, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponseSDKType, QueryCommunityPoolRequest, QueryCommunityPoolResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryValidatorDistributionInfoRequest, QueryValidatorDistributionInfoResponseSDKType, QueryValidatorOutstandingRewardsRequest, QueryValidatorOutstandingRewardsResponseSDKType, QueryValidatorCommissionRequest, QueryValidatorCommissionResponseSDKType, QueryValidatorSlashesRequest, QueryValidatorSlashesResponseSDKType, QueryDelegationRewardsRequest, QueryDelegationRewardsResponseSDKType, QueryDelegationTotalRewardsRequest, QueryDelegationTotalRewardsResponseSDKType, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponseSDKType, QueryDelegatorWithdrawAddressRequest, QueryDelegatorWithdrawAddressResponseSDKType, QueryCommunityPoolRequest, QueryCommunityPoolResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -11,6 +11,7 @@ export class LCDQueryClient {
   }) {
     this.req = requestClient;
     this.params = this.params.bind(this);
+    this.validatorDistributionInfo = this.validatorDistributionInfo.bind(this);
     this.validatorOutstandingRewards = this.validatorOutstandingRewards.bind(this);
     this.validatorCommission = this.validatorCommission.bind(this);
     this.validatorSlashes = this.validatorSlashes.bind(this);
@@ -24,6 +25,11 @@ export class LCDQueryClient {
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `cosmos/distribution/v1beta1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
+  }
+  /* ValidatorDistributionInfo queries validator commission and self-delegation rewards for validator */
+  async validatorDistributionInfo(params: QueryValidatorDistributionInfoRequest): Promise<QueryValidatorDistributionInfoResponseSDKType> {
+    const endpoint = `cosmos/distribution/v1beta1/validators/${params.validatorAddress}`;
+    return await this.req.get<QueryValidatorDistributionInfoResponseSDKType>(endpoint);
   }
   /* ValidatorOutstandingRewards queries rewards of a validator address. */
   async validatorOutstandingRewards(params: QueryValidatorOutstandingRewardsRequest): Promise<QueryValidatorOutstandingRewardsResponseSDKType> {
@@ -57,7 +63,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/distribution/v1beta1/delegators/${params.delegatorAddress}/rewards/${params.validatorAddress}`;
     return await this.req.get<QueryDelegationRewardsResponseSDKType>(endpoint);
   }
-  /* DelegationTotalRewards queries the total rewards accrued by a each
+  /* DelegationTotalRewards queries the total rewards accrued by each
    validator. */
   async delegationTotalRewards(params: QueryDelegationTotalRewardsRequest): Promise<QueryDelegationTotalRewardsResponseSDKType> {
     const endpoint = `cosmos/distribution/v1beta1/delegators/${params.delegatorAddress}/rewards`;

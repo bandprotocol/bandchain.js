@@ -1,137 +1,137 @@
 //@ts-nocheck
-import * as _82 from "./applications/transfer/v1/genesis";
-import * as _83 from "./applications/transfer/v1/query";
-import * as _84 from "./applications/transfer/v1/transfer";
-import * as _85 from "./applications/transfer/v1/tx";
-import * as _86 from "./applications/transfer/v2/packet";
-import * as _87 from "./core/channel/v1/channel";
-import * as _88 from "./core/channel/v1/genesis";
-import * as _89 from "./core/channel/v1/query";
-import * as _90 from "./core/channel/v1/tx";
-import * as _91 from "./core/client/v1/client";
-import * as _92 from "./core/client/v1/genesis";
-import * as _93 from "./core/client/v1/query";
-import * as _94 from "./core/client/v1/tx";
-import * as _95 from "./core/commitment/v1/commitment";
-import * as _96 from "./core/connection/v1/connection";
-import * as _97 from "./core/connection/v1/genesis";
-import * as _98 from "./core/connection/v1/query";
-import * as _99 from "./core/connection/v1/tx";
-import * as _100 from "./lightclients/localhost/v1/localhost";
-import * as _101 from "./lightclients/solomachine/v1/solomachine";
-import * as _102 from "./lightclients/solomachine/v2/solomachine";
-import * as _103 from "./lightclients/tendermint/v1/tendermint";
-import * as _186 from "./applications/transfer/v1/tx.amino";
-import * as _187 from "./core/channel/v1/tx.amino";
-import * as _188 from "./core/client/v1/tx.amino";
-import * as _189 from "./core/connection/v1/tx.amino";
-import * as _190 from "./applications/transfer/v1/tx.registry";
-import * as _191 from "./core/channel/v1/tx.registry";
-import * as _192 from "./core/client/v1/tx.registry";
-import * as _193 from "./core/connection/v1/tx.registry";
-import * as _194 from "./applications/transfer/v1/query.lcd";
-import * as _195 from "./core/channel/v1/query.lcd";
-import * as _196 from "./core/client/v1/query.lcd";
-import * as _197 from "./core/connection/v1/query.lcd";
-import * as _198 from "./applications/transfer/v1/query.rpc.Query";
-import * as _199 from "./core/channel/v1/query.rpc.Query";
-import * as _200 from "./core/client/v1/query.rpc.Query";
-import * as _201 from "./core/connection/v1/query.rpc.Query";
-import * as _202 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _203 from "./core/channel/v1/tx.rpc.msg";
-import * as _204 from "./core/client/v1/tx.rpc.msg";
-import * as _205 from "./core/connection/v1/tx.rpc.msg";
-import * as _212 from "./lcd";
-import * as _213 from "./rpc.query";
-import * as _214 from "./rpc.tx";
+import * as _124 from "./applications/transfer/v1/genesis";
+import * as _125 from "./applications/transfer/v1/query";
+import * as _126 from "./applications/transfer/v1/transfer";
+import * as _127 from "./applications/transfer/v1/tx";
+import * as _128 from "./applications/transfer/v2/packet";
+import * as _129 from "./core/channel/v1/channel";
+import * as _130 from "./core/channel/v1/genesis";
+import * as _131 from "./core/channel/v1/query";
+import * as _132 from "./core/channel/v1/tx";
+import * as _133 from "./core/client/v1/client";
+import * as _134 from "./core/client/v1/genesis";
+import * as _135 from "./core/client/v1/query";
+import * as _136 from "./core/client/v1/tx";
+import * as _137 from "./core/commitment/v1/commitment";
+import * as _138 from "./core/connection/v1/connection";
+import * as _139 from "./core/connection/v1/genesis";
+import * as _140 from "./core/connection/v1/query";
+import * as _141 from "./core/connection/v1/tx";
+import * as _142 from "./lightclients/localhost/v1/localhost";
+import * as _143 from "./lightclients/solomachine/v1/solomachine";
+import * as _144 from "./lightclients/solomachine/v2/solomachine";
+import * as _145 from "./lightclients/tendermint/v1/tendermint";
+import * as _251 from "./applications/transfer/v1/tx.amino";
+import * as _252 from "./core/channel/v1/tx.amino";
+import * as _253 from "./core/client/v1/tx.amino";
+import * as _254 from "./core/connection/v1/tx.amino";
+import * as _255 from "./applications/transfer/v1/tx.registry";
+import * as _256 from "./core/channel/v1/tx.registry";
+import * as _257 from "./core/client/v1/tx.registry";
+import * as _258 from "./core/connection/v1/tx.registry";
+import * as _259 from "./applications/transfer/v1/query.lcd";
+import * as _260 from "./core/channel/v1/query.lcd";
+import * as _261 from "./core/client/v1/query.lcd";
+import * as _262 from "./core/connection/v1/query.lcd";
+import * as _263 from "./applications/transfer/v1/query.rpc.Query";
+import * as _264 from "./core/channel/v1/query.rpc.Query";
+import * as _265 from "./core/client/v1/query.rpc.Query";
+import * as _266 from "./core/connection/v1/query.rpc.Query";
+import * as _267 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _268 from "./core/channel/v1/tx.rpc.msg";
+import * as _269 from "./core/client/v1/tx.rpc.msg";
+import * as _270 from "./core/connection/v1/tx.rpc.msg";
+import * as _277 from "./lcd";
+import * as _278 from "./rpc.query";
+import * as _279 from "./rpc.tx";
 export namespace ibc {
   export namespace applications {
     export namespace transfer {
       export const v1 = {
-        ..._82,
-        ..._83,
-        ..._84,
-        ..._85,
-        ..._186,
-        ..._190,
-        ..._194,
-        ..._198,
-        ..._202
+        ..._124,
+        ..._125,
+        ..._126,
+        ..._127,
+        ..._251,
+        ..._255,
+        ..._259,
+        ..._263,
+        ..._267
       };
       export const v2 = {
-        ..._86
+        ..._128
       };
     }
   }
   export namespace core {
     export namespace channel {
       export const v1 = {
-        ..._87,
-        ..._88,
-        ..._89,
-        ..._90,
-        ..._187,
-        ..._191,
-        ..._195,
-        ..._199,
-        ..._203
+        ..._129,
+        ..._130,
+        ..._131,
+        ..._132,
+        ..._252,
+        ..._256,
+        ..._260,
+        ..._264,
+        ..._268
       };
     }
     export namespace client {
       export const v1 = {
-        ..._91,
-        ..._92,
-        ..._93,
-        ..._94,
-        ..._188,
-        ..._192,
-        ..._196,
-        ..._200,
-        ..._204
+        ..._133,
+        ..._134,
+        ..._135,
+        ..._136,
+        ..._253,
+        ..._257,
+        ..._261,
+        ..._265,
+        ..._269
       };
     }
     export namespace commitment {
       export const v1 = {
-        ..._95
+        ..._137
       };
     }
     export namespace connection {
       export const v1 = {
-        ..._96,
-        ..._97,
-        ..._98,
-        ..._99,
-        ..._189,
-        ..._193,
-        ..._197,
-        ..._201,
-        ..._205
+        ..._138,
+        ..._139,
+        ..._140,
+        ..._141,
+        ..._254,
+        ..._258,
+        ..._262,
+        ..._266,
+        ..._270
       };
     }
   }
   export namespace lightclients {
     export namespace localhost {
       export const v1 = {
-        ..._100
+        ..._142
       };
     }
     export namespace solomachine {
       export const v1 = {
-        ..._101
+        ..._143
       };
       export const v2 = {
-        ..._102
+        ..._144
       };
     }
     export namespace tendermint {
       export const v1 = {
-        ..._103
+        ..._145
       };
     }
   }
   export const ClientFactory = {
-    ..._212,
-    ..._213,
-    ..._214
+    ..._277,
+    ..._278,
+    ..._279
   };
 }

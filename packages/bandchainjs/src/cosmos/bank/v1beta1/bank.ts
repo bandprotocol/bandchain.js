@@ -3,6 +3,14 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params defines the parameters for the bank module. */
 export interface Params {
+  /**
+   * Deprecated: Use of SendEnabled in params is deprecated.
+   * For genesis, use the newly added send_enabled field in the genesis object.
+   * Storage, lookup, and manipulation of this information is now in the keeper.
+   * 
+   * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+   */
+  /** @deprecated */
   sendEnabled: SendEnabled[];
   defaultSendEnabled: boolean;
 }
@@ -12,15 +20,24 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsAmino {
+  /**
+   * Deprecated: Use of SendEnabled in params is deprecated.
+   * For genesis, use the newly added send_enabled field in the genesis object.
+   * Storage, lookup, and manipulation of this information is now in the keeper.
+   * 
+   * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+   */
+  /** @deprecated */
   send_enabled?: SendEnabledAmino[];
   default_send_enabled?: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/bank/Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsSDKType {
+  /** @deprecated */
   send_enabled: SendEnabledSDKType[];
   default_send_enabled: boolean;
 }
@@ -68,7 +85,7 @@ export interface InputProtoMsg {
 /** Input models transaction input. */
 export interface InputAmino {
   address?: string;
-  coins?: CoinAmino[];
+  coins: CoinAmino[];
 }
 export interface InputAminoMsg {
   type: "cosmos-sdk/Input";
@@ -91,7 +108,7 @@ export interface OutputProtoMsg {
 /** Output models transaction outputs. */
 export interface OutputAmino {
   address?: string;
-  coins?: CoinAmino[];
+  coins: CoinAmino[];
 }
 export interface OutputAminoMsg {
   type: "cosmos-sdk/Output";
@@ -123,7 +140,7 @@ export interface SupplyProtoMsg {
  */
 /** @deprecated */
 export interface SupplyAmino {
-  total?: CoinAmino[];
+  total: CoinAmino[];
 }
 export interface SupplyAminoMsg {
   type: "cosmos-sdk/Supply";
@@ -364,7 +381,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/bank/Params",
       value: Params.toAmino(message)
     };
   },

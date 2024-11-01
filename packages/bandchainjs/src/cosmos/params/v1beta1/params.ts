@@ -15,7 +15,7 @@ export interface ParameterChangeProposalProtoMsg {
 export interface ParameterChangeProposalAmino {
   title?: string;
   description?: string;
-  changes?: ParamChangeAmino[];
+  changes: ParamChangeAmino[];
 }
 export interface ParameterChangeProposalAminoMsg {
   type: "cosmos-sdk/ParameterChangeProposal";

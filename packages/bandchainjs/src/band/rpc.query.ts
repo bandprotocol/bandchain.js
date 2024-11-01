@@ -10,6 +10,14 @@ export const createRPCQueryClient = async ({
   const client = new QueryClient(tmClient);
   return {
     band: {
+      base: {
+        node: {
+          v1: (await import("./base/node/v1/query.rpc.Service")).createRpcQueryExtension(client)
+        },
+        oracle: {
+          v1: (await import("./base/oracle/v1/proof.rpc.Service")).createRpcQueryExtension(client)
+        }
+      },
       globalfee: {
         v1beta1: (await import("./globalfee/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
@@ -30,6 +38,17 @@ export const createRPCQueryClient = async ({
       bank: {
         v1beta1: (await import("../cosmos/bank/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
+      base: {
+        node: {
+          v1beta1: (await import("../cosmos/base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
+        }
+      },
+      circuit: {
+        v1: (await import("../cosmos/circuit/v1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      consensus: {
+        v1: (await import("../cosmos/consensus/v1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
       distribution: {
         v1beta1: (await import("../cosmos/distribution/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
@@ -45,6 +64,11 @@ export const createRPCQueryClient = async ({
       },
       mint: {
         v1beta1: (await import("../cosmos/mint/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      orm: {
+        query: {
+          v1alpha1: (await import("../cosmos/orm/query/v1alpha1/query.rpc.Query")).createRpcQueryExtension(client)
+        }
       },
       params: {
         v1beta1: (await import("../cosmos/params/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)

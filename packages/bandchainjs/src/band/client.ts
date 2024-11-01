@@ -1,10 +1,6 @@
 //@ts-nocheck
 import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import {
-  defaultRegistryTypes,
-  AminoTypes,
-  SigningStargateClient,
-} from "@cosmjs/stargate";
+import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 import * as bandGlobalfeeV1beta1TxRegistry from "./globalfee/v1beta1/tx.registry";
 import * as bandOracleV1TxRegistry from "./oracle/v1/tx.registry";
@@ -15,15 +11,11 @@ import * as bandRestakeV1beta1TxAmino from "./restake/v1beta1/tx.amino";
 export const bandAminoConverters = {
   ...bandGlobalfeeV1beta1TxAmino.AminoConverter,
   ...bandOracleV1TxAmino.AminoConverter,
-  ...bandRestakeV1beta1TxAmino.AminoConverter,
+  ...bandRestakeV1beta1TxAmino.AminoConverter
 };
-export const bandProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
-  ...bandGlobalfeeV1beta1TxRegistry.registry,
-  ...bandOracleV1TxRegistry.registry,
-  ...bandRestakeV1beta1TxRegistry.registry,
-];
+export const bandProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...bandGlobalfeeV1beta1TxRegistry.registry, ...bandOracleV1TxRegistry.registry, ...bandRestakeV1beta1TxRegistry.registry];
 export const getSigningBandClientOptions = ({
-  defaultTypes = defaultRegistryTypes,
+  defaultTypes = defaultRegistryTypes
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 } = {}): {
@@ -32,32 +24,31 @@ export const getSigningBandClientOptions = ({
 } => {
   const registry = new Registry([...defaultTypes, ...bandProtoRegistry]);
   const aminoTypes = new AminoTypes({
-    ...bandAminoConverters,
+    ...bandAminoConverters
   });
   return {
     registry,
-    aminoTypes,
+    aminoTypes
   };
 };
 export const getSigningBandClient = async ({
   rpcEndpoint,
   signer,
-  defaultTypes = defaultRegistryTypes,
+  defaultTypes = defaultRegistryTypes
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const { registry, aminoTypes } = getSigningBandClientOptions({
-    defaultTypes,
+  const {
+    registry,
+    aminoTypes
+  } = getSigningBandClientOptions({
+    defaultTypes
   });
-  const client = await SigningStargateClient.connectWithSigner(
-    rpcEndpoint,
-    signer,
-    {
-      registry: registry as any,
-      aminoTypes,
-    }
-  );
+  const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
+    registry: registry as any,
+    aminoTypes
+  });
   return client;
 };
