@@ -7,6 +7,7 @@ import { getDefaultSigner } from "@/utils";
 
 import CodeBlock from "./common/CodeBlock";
 import { ExampleTemplateLayout } from "./layouts/ExampleTemplateLayout";
+import CodeDefault from "./common/CodeDefault";
 
 const SendTokenButton = ({ handleOnClick }: { handleOnClick?: () => void }) => {
   return (
@@ -120,9 +121,7 @@ async function sendTokens() {
         <>
           <SendTokenButton handleOnClick={sendTokens} />
           {isSending && <p>Sending...</p>}
-          <pre className="bg-gray-100 p-5 rounded-lg overflow-auto text-sm text-gray-800 max-h-[400px]">
-            <code>{JSON.stringify(result, null, 2)}</code>
-          </pre>
+          <CodeDefault>{JSON.stringify(result, null, 2)}</CodeDefault>
         </>
       }
     />
