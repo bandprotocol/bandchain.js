@@ -3,11 +3,11 @@
 import { cosmos } from "@bandprotocol/bandchainjs";
 import { useState } from "react";
 
-import { getDefaultSigner } from "@/utils";
+import { getSignerClient } from "@/utils";
 
 import CodeBlock from "./common/CodeBlock";
-import { ExampleTemplateLayout } from "./layouts/ExampleTemplateLayout";
 import CodeDefault from "./common/CodeDefault";
+import { ExampleTemplateLayout } from "./layouts/ExampleTemplateLayout";
 
 const SendTokenButton = ({ handleOnClick }: { handleOnClick?: () => void }) => {
   return (
@@ -29,7 +29,7 @@ export const SendTokenExample = () => {
 
   const sendTokens = async () => {
     setIsSending(true);
-    const signer = await getDefaultSigner();
+    const signer = await getSignerClient();
     const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
 
     const msgSend = send({
@@ -72,7 +72,7 @@ export const SendTokenExample = () => {
 
   return (
     <ExampleTemplateLayout
-      id="cosmos.bank.v1beta1.MsgSend"
+      id="MsgSend"
       title="cosmos.bank.v1beta1.MsgSend"
       exampleChildren={
         <CodeBlock
@@ -83,6 +83,19 @@ async function sendTokens() {
     const fromAddress = ${fromAddress};
     const toAddress = ${toAddress};
     const amount = ${amount};
+
+    const offlineSigner = await getOfflineSigner({
+      mnemonic,
+      chain: {
+        bech32_prefix: "band",
+        slip44: 494,
+      },
+    });
+
+    const signer = await getSigningClient({
+      rpcEndpoint,
+      offlineSigner,
+    });
 
     const msgSend = send({
       fromAddress,

@@ -1,5 +1,5 @@
 {
-  "name": "@bandprotocol/bandchainjs",
+  "name": "@bandprotocol/bandchain.js",
   "version": "0.0.1",
   "author": "Band Protocol <dev@bandprotocol.com>",
   "description": "TypeScript library for Cosmos SDK and BandChain",
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bandprotocol/bandchainjs"
+    "url": "https://github.com/bandprotocol/bandchain.js"
   },
   "bugs": {
-    "url": "https://github.com/bandprotocol/bandchainjs/issues"
+    "url": "https://github.com/bandprotocol/bandchain.js/issues"
   },
   "scripts": {
     "copy": "copyfiles -f ../../LICENSE README.md package.json dist",

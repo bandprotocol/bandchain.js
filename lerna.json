@@ -2,17 +2,13 @@
   "lerna": "6",
   "conventionalCommits": true,
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--no-lockfile"
-  ],
-  "packages": [
-    "packages/*"
-  ],
+  "npmClientArgs": ["--no-lockfile"],
+  "packages": ["packages/*"],
   "version": "independent",
   "registry": "https://registry.npmjs.org",
   "command": {
     "create": {
-      "homepage": "https://github.com/bandprotocol/bandchainjs",
+      "homepage": "https://github.com/bandprotocol/bandchain.js",
       "license": "SEE LICENSE IN LICENSE",
       "access": "restricted"
     },

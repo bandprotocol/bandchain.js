@@ -10,7 +10,7 @@ export const Sidebar = () => {
             <Link href="#allBalances">{`client.cosmos.bank.v1beta1.allBalances`}</Link>
           </li>
           <li className="mb-2 cursor-pointer text-blue-500 hover:text-blue-700">
-            <Link href="#cosmos.bank.v1beta1.MsgSend">{`cosmos.bank.v1beta1.MsgSend`}</Link>
+            <Link href="#MsgSend">{`cosmos.bank.v1beta1.MsgSend`}</Link>
           </li>
         </ul>
       </div>

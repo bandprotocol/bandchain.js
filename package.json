@@ -1,11 +1,11 @@
 {
-  "name": "bandchainjs",
+  "name": "bandchainjs-workspace",
   "version": "0.0.1",
   "author": "Band Protocol <dev@bandprotocol.com>",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/bandprotocol/bandchainjs"
+    "url": "https://github.com/bandprotocol/bandchain.js"
   },
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
@@ -16,10 +16,9 @@
   ],
   "scripts": {
     "clean": "lerna run clean",
-    "build": "lerna run build --stream",
     "lint": "lerna run lint --parallel",
-    "test": "lerna run test --stream --scope @bandprotocol/bandchainjs",
-    "codegen": "lerna run codegen --stream --scope @bandprotocol/bandchainjs",
+    "build": "lerna run build --stream",
+    "codegen": "lerna run codegen --stream --scope @bandprotocol/bandchain.js",
     "symlink": "symlink-workspace --logLevel error",
     "postinstall": "yarn symlink"
   },

@@ -1,5 +1,5 @@
 import { AllBalance } from "@/components/AllBalance";
-import { RequestData } from "@/components/RequestData";
+import { RequestDataExample } from "@/components/RequestDataExample";
 import { SendTokenExample } from "@/components/SendTokenExample";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
       <main className="grid gap-4">
         <AllBalance />
         <SendTokenExample />
-        <RequestData />
+        <RequestDataExample />
       </main>
     </div>
   );

@@ -1,2 +1,2 @@
 export * from "./codegen";
-export * from "./global/client";
+export * from "./band-client/client";

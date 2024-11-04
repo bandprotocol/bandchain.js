@@ -15,12 +15,12 @@ export const ExampleTemplateLayout = ({
         <span className="text-indigo-600">#</span>
         {title}
       </h3>
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <div className="space-y-4">
+      <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
+        <div className="space-y-4 xl:col-span-3">
           <h4 className="font-medium text-gray-700 mb-2">Example Code:</h4>
           {exampleChildren}
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 xl:col-span-2">
           <h4 className="font-medium text-gray-700 mb-2">Results:</h4>
           {resultChildren}
         </div>
