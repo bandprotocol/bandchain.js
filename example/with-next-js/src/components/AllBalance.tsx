@@ -3,13 +3,12 @@ import { band } from "@bandprotocol/bandchainjs";
 import CodeBlock from "./common/CodeBlock";
 import CodeDefault from "./common/CodeDefault";
 import { ExampleTemplateLayout } from "./layouts/ExampleTemplateLayout";
+import { devnetRpc } from "@/constants/constants";
 
 const getAllBalances = async (address: string) => {
-  const rpcEndpoint = "https://rpc.laozi-testnet6.bandchain.org";
-
   const { createRPCQueryClient } = band.ClientFactory;
   const client = await createRPCQueryClient({
-    rpcEndpoint,
+    rpcEndpoint: devnetRpc,
   });
 
   const res = await client.cosmos.bank.v1beta1.allBalances({
@@ -25,7 +24,7 @@ const getAllBalances = async (address: string) => {
 };
 
 export const AllBalance = async () => {
-  const address = "band1jrhuqrymzt4mnvgw8cvy3s9zhx3jj0dq30qpte";
+  const address = "band1n6um6p7tvhfydw6xw70e2fpvsukssyrq3a5sqv";
   const res = await getAllBalances(address);
 
   return (

@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/bandprotocol/bandchain.js"
+    "url": "https://github.com/bandprotocol/bandchainjs"
   },
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
@@ -16,9 +16,10 @@
   ],
   "scripts": {
     "clean": "lerna run clean",
-    "lint": "lerna run lint --parallel",
     "build": "lerna run build --stream",
-    "codegen": "lerna run codegen --stream --scope @bandprotocol/bandchain.js",
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --stream --scope @bandprotocol/bandchainjs",
+    "codegen": "lerna run codegen --stream --scope @bandprotocol/bandchainjs",
     "symlink": "symlink-workspace --logLevel error",
     "postinstall": "yarn symlink"
   },

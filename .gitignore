@@ -3,5 +3,3 @@
 **/dist
 **/yarn-error.log
 lerna-debug.log
-
-obi-ts
