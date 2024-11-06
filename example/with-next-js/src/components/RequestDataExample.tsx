@@ -7,6 +7,8 @@ import CodeBlock from "@/components/common/CodeBlock";
 import { getSignerClient } from "@/utils";
 
 import { ExampleTemplateLayout } from "./layouts/ExampleTemplateLayout";
+import { useState } from "react";
+import CodeDefault from "./common/CodeDefault";
 
 const CodeExmaple = () => {
   return (
@@ -14,7 +16,7 @@ const CodeExmaple = () => {
       code={`import { band, cosmos } from "@bandprotocol/bandchainjs";
 async function requestDataOracle() {
   const fromAddress = "";
-  const oracleScriptSchema =band1qjte252y5wk3vj0tk2cmgw64pwkxsg0n22pa4k
+  const oracleScriptSchema =
     "{symbols:[string],minimum_source_count:u8}/{responses:[{symbol:string,response_code:u8,rate:u64}]}";
 
   const obi = new Obi(oracleScriptSchema);
@@ -67,6 +69,7 @@ async function requestDataOracle() {
 };
 
 const RequestDataButton = () => {
+  const [result, setResult] = useState("");
   const fromAddress = "band1qjte252y5wk3vj0tk2cmgw64pwkxsg0n22pa4k";
   const oracleScriptSchema =
     "{symbols:[string],minimum_source_count:u8}/{responses:[{symbol:string,response_code:u8,rate:u64}]}";
@@ -78,8 +81,8 @@ const RequestDataButton = () => {
   });
 
   const oracleScriptId = BigInt(401);
-  const minCount = BigInt(10);
-  const askCount = BigInt(16);
+  const minCount = BigInt(3);
+  const askCount = BigInt(4);
 
   const coin = cosmos.base.v1beta1.Coin.fromPartial({
     denom: "uband",
@@ -111,10 +114,9 @@ const RequestDataButton = () => {
   });
 
   const handleRequestDataButton = async () => {
-    console.log(msg);
     const signer = await getSignerClient();
     const response = await signer.signAndBroadcast(fromAddress, [msg], fee);
-    console.log(
+    setResult(
       JSON.parse(
         JSON.stringify(response, (key, value) =>
           typeof value === "bigint" ? value.toString() : value
@@ -125,12 +127,16 @@ const RequestDataButton = () => {
   };
 
   return (
-    <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      onClick={handleRequestDataButton}
-    >
-      Request Data
-    </button>
+    <>
+      {" "}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={handleRequestDataButton}
+      >
+        Request Data
+      </button>
+      <CodeDefault>{JSON.stringify(result, null, 2)}</CodeDefault>
+    </>
   );
 };
 
