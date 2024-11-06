@@ -81,8 +81,9 @@ export const options: TelescopeInput = {
       enabled: true,
     },
     rpcClients: {
-      type: "tendermint",
       enabled: true,
+      camelCase: true,
+      useConnectComet: true,
     },
 
     reactQuery: {
