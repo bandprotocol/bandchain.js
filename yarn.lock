@@ -1214,7 +1214,7 @@
   dependencies:
     xstream "^11.14.0"
 
-"@cosmjs/tendermint-rpc@^0.32.3":
+"@cosmjs/tendermint-rpc@^0.32.3", "@cosmjs/tendermint-rpc@^0.32.4":
   version "0.32.4"
   resolved "https://registry.yarnpkg.com/@cosmjs/tendermint-rpc/-/tendermint-rpc-0.32.4.tgz#b36f9ec657498e42c97e21bb7368798ef6279752"
   integrity sha512-MWvUUno+4bCb/LmlMIErLypXxy7ckUuzEmpufYYYd9wgbdCXaTaO08SZzyFM5PI8UJ/0S2AmUrgWhldlbxO8mw==
