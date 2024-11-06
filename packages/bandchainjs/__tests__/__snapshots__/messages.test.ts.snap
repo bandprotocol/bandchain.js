@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Band messages MsgRequestData 1`] = `
+{
+  "typeUrl": "/band.oracle.v1.MsgRequestData",
+  "value": {
+    "askCount": 1n,
+    "calldata": Uint8Array [
+      1,
+      2,
+      3,
+    ],
+    "clientId": "client",
+    "executeGas": 1n,
+    "feeLimit": [
+      {
+        "amount": "1",
+        "denom": "uband",
+      },
+    ],
+    "minCount": 1n,
+    "oracleScriptId": 1n,
+    "prepareGas": 1n,
+    "sender": "sender",
+  },
+}
+`;
+
+exports[`Cosmos messages send 1`] = `
+{
+  "typeUrl": "/cosmos.bank.v1beta1.MsgSend",
+  "value": {
+    "amount": [
+      {
+        "amount": "1",
+        "denom": "uatom",
+      },
+    ],
+    "fromAddress": "myaddress",
+    "toAddress": "youraddress",
+  },
+}
+`;
