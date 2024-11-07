@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Band messages MsgRequestData 1`] = `
+exports[`Band messages messages 1`] = `
 {
   "typeUrl": "/band.oracle.v1.MsgRequestData",
   "value": {
@@ -26,18 +26,28 @@ exports[`Band messages MsgRequestData 1`] = `
 }
 `;
 
-exports[`Cosmos messages send 1`] = `
+exports[`Band messages messages.scoped 1`] = `
 {
-  "typeUrl": "/cosmos.bank.v1beta1.MsgSend",
+  "typeUrl": "/band.oracle.v1.MsgRequestData",
   "value": {
-    "amount": [
+    "askCount": 1n,
+    "calldata": Uint8Array [
+      1,
+      2,
+      3,
+    ],
+    "clientId": "client",
+    "executeGas": 1n,
+    "feeLimit": [
       {
         "amount": "1",
-        "denom": "uatom",
+        "denom": "uband",
       },
     ],
-    "fromAddress": "myaddress",
-    "toAddress": "youraddress",
+    "minCount": 1n,
+    "oracleScriptId": 1n,
+    "prepareGas": 1n,
+    "sender": "sender",
   },
 }
 `;

@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AminoConverter 1`] = `
+{
+  "ask_count": "1",
+  "calldata": "AQID",
+  "client_id": "client",
+  "execute_gas": "1",
+  "fee_limit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "min_count": "1",
+  "oracle_script_id": "1",
+  "prepare_gas": "1",
+  "sender": "sender",
+}
+`;
+
+exports[`AminoConverter 2`] = `
+{
+  "askCount": 1n,
+  "calldata": Uint8Array [
+    1,
+    2,
+    3,
+  ],
+  "clientId": "client",
+  "executeGas": 1n,
+  "feeLimit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "minCount": 1n,
+  "oracleScriptId": 1n,
+  "prepareGas": 1n,
+  "sender": "sender",
+}
+`;
+
+exports[`AminoConverter 3`] = `
+{
+  "ask_count": "1",
+  "calldata": "AQID",
+  "client_id": "client",
+  "execute_gas": "1",
+  "fee_limit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "min_count": "1",
+  "oracle_script_id": "1",
+  "prepare_gas": "1",
+  "sender": "sender",
+}
+`;
+
+exports[`AminoConverter.scoped 1`] = `
+{
+  "ask_count": "1",
+  "calldata": "AQID",
+  "client_id": "client",
+  "execute_gas": "1",
+  "fee_limit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "min_count": "1",
+  "oracle_script_id": "1",
+  "prepare_gas": "1",
+  "sender": "sender",
+}
+`;
+
+exports[`AminoConverter.scoped 2`] = `
+{
+  "askCount": 1n,
+  "calldata": Uint8Array [
+    1,
+    2,
+    3,
+  ],
+  "clientId": "client",
+  "executeGas": 1n,
+  "feeLimit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "minCount": 1n,
+  "oracleScriptId": 1n,
+  "prepareGas": 1n,
+  "sender": "sender",
+}
+`;
+
+exports[`AminoConverter.scoped 3`] = `
+{
+  "ask_count": "1",
+  "calldata": "AQID",
+  "client_id": "client",
+  "execute_gas": "1",
+  "fee_limit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "min_count": "1",
+  "oracle_script_id": "1",
+  "prepare_gas": "1",
+  "sender": "sender",
+}
+`;

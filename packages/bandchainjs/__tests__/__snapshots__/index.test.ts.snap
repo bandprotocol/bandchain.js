@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`encode 1`] = `
+{
+  "askCount": 1n,
+  "calldata": Uint8Array [
+    1,
+    2,
+    3,
+  ],
+  "clientId": "client",
+  "executeGas": 0n,
+  "feeLimit": [],
+  "minCount": 1n,
+  "oracleScriptId": 1n,
+  "prepareGas": 0n,
+  "sender": "",
+}
+`;
+
+exports[`fromPartial 1`] = `
+{
+  "askCount": 1n,
+  "calldata": Uint8Array [
+    1,
+    2,
+    3,
+  ],
+  "clientId": "client",
+  "executeGas": 1n,
+  "feeLimit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "minCount": 1n,
+  "oracleScriptId": 1n,
+  "prepareGas": 1n,
+  "sender": "sender",
+}
+`;
+
+exports[`fromPartial.scoped 1`] = `
+{
+  "askCount": 1n,
+  "calldata": Uint8Array [
+    1,
+    2,
+    3,
+  ],
+  "clientId": "client",
+  "executeGas": 1n,
+  "feeLimit": [
+    {
+      "amount": "1",
+      "denom": "uband",
+    },
+  ],
+  "minCount": 1n,
+  "oracleScriptId": 1n,
+  "prepareGas": 1n,
+  "sender": "sender",
+}
+`;
