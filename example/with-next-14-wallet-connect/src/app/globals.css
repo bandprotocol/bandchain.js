@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS */
+button {
+  background-color: #ea4c89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+  background-color: #f082ac;
+}
+
+pre {
+  font-family:
+    SFMono-Regular,
+    Consolas,
+    Liberation Mono,
+    Menlo,
+    monospace;
+  clear: both;
+  color: #fff;
+  background: #1b1b1b;
+  padding: 0;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -ms-word-break: normal;
+  word-break: normal;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  position: relative;
+  line-height: 28px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+pre[rel]:not([rel=""]):before {
+  font-family:
+    MD Primer Bold,
+    Rubik,
+    Lato,
+    Lucida Grande,
+    Lucida Sans Unicode,
+    Tahoma,
+    Sans-Serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.5rem;
+  content: attr(rel);
+  color: #fff;
+  position: absolute;
+  top: -0.2rem;
+  right: 0.4rem;
+  padding: 0;
+  color: #ff7a18 !important;
+}
+
+pre code {
+  scrollbar-color: #666 #201c29;
+  background: none;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  display: block;
+  max-width: 100%;
+  min-width: 100px;
+  font-size: 16px;
+  padding: 15px 20px 12px 22px;
+  line-height: 1.75;
+}
+
+pre code::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+pre code::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 0.5em;
+  box-shadow:
+    inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+    inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+}
+
+pre code::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #434343, #434343 1px, none 0, none);
+}
+
+@media (max-width: 800px) {
+  pre code {
+    font-size: 11px;
+    padding: 15px 20px 10px 14px;
+  }
+}
+
+code {
+  font-size: inherit;
+  font-family:
+    SFMono-Regular,
+    Consolas,
+    Liberation Mono,
+    Menlo,
+    monospace;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
