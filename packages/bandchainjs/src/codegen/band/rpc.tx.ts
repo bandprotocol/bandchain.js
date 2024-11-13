@@ -6,6 +6,9 @@ export const createRPCMsgClient = async ({
   rpc: Rpc;
 }) => ({
   band: {
+    feeds: {
+      v1beta1: new (await import("./feeds/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     globalfee: {
       v1beta1: new (await import("./globalfee/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },

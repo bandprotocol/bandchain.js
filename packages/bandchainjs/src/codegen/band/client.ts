@@ -2,18 +2,21 @@
 import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
+import * as bandFeedsV1beta1TxRegistry from "./feeds/v1beta1/tx.registry";
 import * as bandGlobalfeeV1beta1TxRegistry from "./globalfee/v1beta1/tx.registry";
 import * as bandOracleV1TxRegistry from "./oracle/v1/tx.registry";
 import * as bandRestakeV1beta1TxRegistry from "./restake/v1beta1/tx.registry";
+import * as bandFeedsV1beta1TxAmino from "./feeds/v1beta1/tx.amino";
 import * as bandGlobalfeeV1beta1TxAmino from "./globalfee/v1beta1/tx.amino";
 import * as bandOracleV1TxAmino from "./oracle/v1/tx.amino";
 import * as bandRestakeV1beta1TxAmino from "./restake/v1beta1/tx.amino";
 export const bandAminoConverters = {
+  ...bandFeedsV1beta1TxAmino.AminoConverter,
   ...bandGlobalfeeV1beta1TxAmino.AminoConverter,
   ...bandOracleV1TxAmino.AminoConverter,
   ...bandRestakeV1beta1TxAmino.AminoConverter
 };
-export const bandProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...bandGlobalfeeV1beta1TxRegistry.registry, ...bandOracleV1TxRegistry.registry, ...bandRestakeV1beta1TxRegistry.registry];
+export const bandProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...bandFeedsV1beta1TxRegistry.registry, ...bandGlobalfeeV1beta1TxRegistry.registry, ...bandOracleV1TxRegistry.registry, ...bandRestakeV1beta1TxRegistry.registry];
 export const getSigningBandClientOptions = ({
   defaultTypes = defaultRegistryTypes
 }: {

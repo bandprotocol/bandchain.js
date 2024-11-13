@@ -18,6 +18,9 @@ export const createRPCQueryClient = async ({
           v1: (await import("./base/oracle/v1/proof.rpc.Service")).createRpcQueryExtension(client)
         }
       },
+      feeds: {
+        v1beta1: (await import("./feeds/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
       globalfee: {
         v1beta1: (await import("./globalfee/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },

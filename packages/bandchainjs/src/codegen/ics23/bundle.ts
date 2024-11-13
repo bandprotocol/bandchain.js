@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _14 from "../confio/proofs";
+import * as _19 from "../confio/proofs";
 export const ics23 = {
-  ..._14
+  ..._19
 };

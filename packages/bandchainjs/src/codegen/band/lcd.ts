@@ -22,6 +22,11 @@ export const createLCDClient = async ({
           })
         }
       },
+      feeds: {
+        v1beta1: new (await import("./feeds/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       globalfee: {
         v1beta1: new (await import("./globalfee/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
