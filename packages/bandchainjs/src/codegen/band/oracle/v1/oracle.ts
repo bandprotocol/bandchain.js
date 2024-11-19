@@ -55,6 +55,55 @@ export function resolveStatusToJSON(object: ResolveStatus): string {
       return "UNRECOGNIZED";
   }
 }
+/** Encoder is an enumerator that defines the mode of encoding message in tss module. */
+export enum Encoder {
+  /** ENCODER_UNSPECIFIED - ENCODER_UNSPECIFIED is for unspecified value */
+  ENCODER_UNSPECIFIED = 0,
+  /** ENCODER_PROTO - ENCODER_PROTO is for proto encoding */
+  ENCODER_PROTO = 1,
+  /** ENCODER_FULL_ABI - ENCODER_FULL_ABI is for ABI encoding for full data */
+  ENCODER_FULL_ABI = 2,
+  /** ENCODER_PARTIAL_ABI - ENCODER_PARTIAL_ABI is for ABI encoding for only important data */
+  ENCODER_PARTIAL_ABI = 3,
+  UNRECOGNIZED = -1,
+}
+export const EncoderSDKType = Encoder;
+export const EncoderAmino = Encoder;
+export function encoderFromJSON(object: any): Encoder {
+  switch (object) {
+    case 0:
+    case "ENCODER_UNSPECIFIED":
+      return Encoder.ENCODER_UNSPECIFIED;
+    case 1:
+    case "ENCODER_PROTO":
+      return Encoder.ENCODER_PROTO;
+    case 2:
+    case "ENCODER_FULL_ABI":
+      return Encoder.ENCODER_FULL_ABI;
+    case 3:
+    case "ENCODER_PARTIAL_ABI":
+      return Encoder.ENCODER_PARTIAL_ABI;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return Encoder.UNRECOGNIZED;
+  }
+}
+export function encoderToJSON(object: Encoder): string {
+  switch (object) {
+    case Encoder.ENCODER_UNSPECIFIED:
+      return "ENCODER_UNSPECIFIED";
+    case Encoder.ENCODER_PROTO:
+      return "ENCODER_PROTO";
+    case Encoder.ENCODER_FULL_ABI:
+      return "ENCODER_FULL_ABI";
+    case Encoder.ENCODER_PARTIAL_ABI:
+      return "ENCODER_PARTIAL_ABI";
+    case Encoder.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
 /** DataSource is the data structure for storing data sources in the storage. */
 export interface DataSource {
   /** Owner is an address of the account who own the data source */
@@ -307,6 +356,12 @@ export interface Request {
   ibcChannel?: IBCChannel;
   /** ExecuteGas is amount of gas to reserve for executing */
   executeGas: bigint;
+  /** TSSEncoder is the mode of encoding oracle result signature order. */
+  tssEncoder: Encoder;
+  /** Requester is the address of person who requests the data. */
+  requester: string;
+  /** FeeLimit is the maximum tokens that will be paid for this request. */
+  feeLimit: Coin[];
 }
 export interface RequestProtoMsg {
   typeUrl: "/band.oracle.v1.Request";
@@ -350,6 +405,12 @@ export interface RequestAmino {
   ibc_channel?: IBCChannelAmino;
   /** ExecuteGas is amount of gas to reserve for executing */
   execute_gas?: string;
+  /** TSSEncoder is the mode of encoding oracle result signature order. */
+  tss_encoder?: Encoder;
+  /** Requester is the address of person who requests the data. */
+  requester?: string;
+  /** FeeLimit is the maximum tokens that will be paid for this request. */
+  fee_limit?: CoinAmino[];
 }
 export interface RequestAminoMsg {
   type: "/band.oracle.v1.Request";
@@ -367,6 +428,9 @@ export interface RequestSDKType {
   raw_requests: RawRequestSDKType[];
   ibc_channel?: IBCChannelSDKType;
   execute_gas: bigint;
+  tss_encoder: Encoder;
+  requester: string;
+  fee_limit: CoinSDKType[];
 }
 /** Report is the data structure for storing reports in the storage. */
 export interface Report {
@@ -453,6 +517,8 @@ export interface OracleRequestPacketData {
   prepareGas: bigint;
   /** ExecuteGas is amount of gas to reserve for executing */
   executeGas: bigint;
+  /** TSSEncoder is the mode of encoding oracle result signature order. */
+  tssEncoder: Encoder;
 }
 export interface OracleRequestPacketDataProtoMsg {
   typeUrl: "/band.oracle.v1.OracleRequestPacketData";
@@ -499,6 +565,8 @@ export interface OracleRequestPacketDataAmino {
   prepare_gas?: string;
   /** ExecuteGas is amount of gas to reserve for executing */
   execute_gas?: string;
+  /** TSSEncoder is the mode of encoding oracle result signature order. */
+  tss_encoder?: Encoder;
 }
 export interface OracleRequestPacketDataAminoMsg {
   type: "/band.oracle.v1.OracleRequestPacketData";
@@ -517,6 +585,7 @@ export interface OracleRequestPacketDataSDKType {
   fee_limit: CoinSDKType[];
   prepare_gas: bigint;
   execute_gas: bigint;
+  tss_encoder: Encoder;
 }
 /**
  * OracleRequestPacketAcknowledgement encodes an oracle request acknowledgement
@@ -773,6 +842,38 @@ export interface ResultSDKType {
   resolve_time: bigint;
   resolve_status: ResolveStatus;
   result: Uint8Array;
+}
+/** SigningResult encodes a result of signing of request */
+export interface SigningResult {
+  /** signing_id is the id of the bandtss signing */
+  signingId: bigint;
+  /** error_codespace is the codespace of the error */
+  errorCodespace: string;
+  /** error_code is the code in the codespace of the error */
+  errorCode: bigint;
+}
+export interface SigningResultProtoMsg {
+  typeUrl: "/band.oracle.v1.SigningResult";
+  value: Uint8Array;
+}
+/** SigningResult encodes a result of signing of request */
+export interface SigningResultAmino {
+  /** signing_id is the id of the bandtss signing */
+  signing_id?: string;
+  /** error_codespace is the codespace of the error */
+  error_codespace?: string;
+  /** error_code is the code in the codespace of the error */
+  error_code?: string;
+}
+export interface SigningResultAminoMsg {
+  type: "/band.oracle.v1.SigningResult";
+  value: SigningResultAmino;
+}
+/** SigningResult encodes a result of signing of request */
+export interface SigningResultSDKType {
+  signing_id: bigint;
+  error_codespace: string;
+  error_code: bigint;
 }
 /** ValidatorStatus maintains whether a validator is an active oracle provider. */
 export interface ValidatorStatus {
@@ -1142,6 +1243,33 @@ export interface PriceResultSDKType {
   px: bigint;
   request_id: bigint;
   resolve_time: bigint;
+}
+/** OracleResultSignatureOrder defines a request id to request bandtss signature from the oracle result. */
+export interface OracleResultSignatureOrder {
+  /** RequestID is oracle's unique identifier for this oracle request. */
+  requestId: bigint;
+  /** encoder is the mode of encoding oracle result signature order. */
+  encoder: Encoder;
+}
+export interface OracleResultSignatureOrderProtoMsg {
+  typeUrl: "/band.oracle.v1.OracleResultSignatureOrder";
+  value: Uint8Array;
+}
+/** OracleResultSignatureOrder defines a request id to request bandtss signature from the oracle result. */
+export interface OracleResultSignatureOrderAmino {
+  /** RequestID is oracle's unique identifier for this oracle request. */
+  request_id?: string;
+  /** encoder is the mode of encoding oracle result signature order. */
+  encoder?: Encoder;
+}
+export interface OracleResultSignatureOrderAminoMsg {
+  type: "/band.oracle.v1.OracleResultSignatureOrder";
+  value: OracleResultSignatureOrderAmino;
+}
+/** OracleResultSignatureOrder defines a request id to request bandtss signature from the oracle result. */
+export interface OracleResultSignatureOrderSDKType {
+  request_id: bigint;
+  encoder: Encoder;
 }
 function createBaseDataSource(): DataSource {
   return {
@@ -1576,7 +1704,10 @@ function createBaseRequest(): Request {
     clientId: "",
     rawRequests: [],
     ibcChannel: undefined,
-    executeGas: BigInt(0)
+    executeGas: BigInt(0),
+    tssEncoder: 0,
+    requester: "",
+    feeLimit: []
   };
 }
 export const Request = {
@@ -1611,6 +1742,15 @@ export const Request = {
     }
     if (message.executeGas !== BigInt(0)) {
       writer.uint32(80).uint64(message.executeGas);
+    }
+    if (message.tssEncoder !== 0) {
+      writer.uint32(88).int32(message.tssEncoder);
+    }
+    if (message.requester !== "") {
+      writer.uint32(98).string(message.requester);
+    }
+    for (const v of message.feeLimit) {
+      Coin.encode(v!, writer.uint32(106).fork()).ldelim();
     }
     return writer;
   },
@@ -1651,6 +1791,15 @@ export const Request = {
         case 10:
           message.executeGas = reader.uint64();
           break;
+        case 11:
+          message.tssEncoder = reader.int32() as any;
+          break;
+        case 12:
+          message.requester = reader.string();
+          break;
+        case 13:
+          message.feeLimit.push(Coin.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1670,6 +1819,9 @@ export const Request = {
     message.rawRequests = object.rawRequests?.map(e => RawRequest.fromPartial(e)) || [];
     message.ibcChannel = object.ibcChannel !== undefined && object.ibcChannel !== null ? IBCChannel.fromPartial(object.ibcChannel) : undefined;
     message.executeGas = object.executeGas !== undefined && object.executeGas !== null ? BigInt(object.executeGas.toString()) : BigInt(0);
+    message.tssEncoder = object.tssEncoder ?? 0;
+    message.requester = object.requester ?? "";
+    message.feeLimit = object.feeLimit?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: RequestAmino): Request {
@@ -1700,6 +1852,13 @@ export const Request = {
     if (object.execute_gas !== undefined && object.execute_gas !== null) {
       message.executeGas = BigInt(object.execute_gas);
     }
+    if (object.tss_encoder !== undefined && object.tss_encoder !== null) {
+      message.tssEncoder = object.tss_encoder;
+    }
+    if (object.requester !== undefined && object.requester !== null) {
+      message.requester = object.requester;
+    }
+    message.feeLimit = object.fee_limit?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Request): RequestAmino {
@@ -1722,6 +1881,13 @@ export const Request = {
     }
     obj.ibc_channel = message.ibcChannel ? IBCChannel.toAmino(message.ibcChannel) : undefined;
     obj.execute_gas = message.executeGas !== BigInt(0) ? message.executeGas?.toString() : undefined;
+    obj.tss_encoder = message.tssEncoder === 0 ? undefined : message.tssEncoder;
+    obj.requester = message.requester === "" ? undefined : message.requester;
+    if (message.feeLimit) {
+      obj.fee_limit = message.feeLimit.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.fee_limit = message.feeLimit;
+    }
     return obj;
   },
   fromAminoMsg(object: RequestAminoMsg): Request {
@@ -1838,7 +2004,8 @@ function createBaseOracleRequestPacketData(): OracleRequestPacketData {
     minCount: BigInt(0),
     feeLimit: [],
     prepareGas: BigInt(0),
-    executeGas: BigInt(0)
+    executeGas: BigInt(0),
+    tssEncoder: 0
   };
 }
 export const OracleRequestPacketData = {
@@ -1867,6 +2034,9 @@ export const OracleRequestPacketData = {
     }
     if (message.executeGas !== BigInt(0)) {
       writer.uint32(64).uint64(message.executeGas);
+    }
+    if (message.tssEncoder !== 0) {
+      writer.uint32(72).int32(message.tssEncoder);
     }
     return writer;
   },
@@ -1901,6 +2071,9 @@ export const OracleRequestPacketData = {
         case 8:
           message.executeGas = reader.uint64();
           break;
+        case 9:
+          message.tssEncoder = reader.int32() as any;
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1918,6 +2091,7 @@ export const OracleRequestPacketData = {
     message.feeLimit = object.feeLimit?.map(e => Coin.fromPartial(e)) || [];
     message.prepareGas = object.prepareGas !== undefined && object.prepareGas !== null ? BigInt(object.prepareGas.toString()) : BigInt(0);
     message.executeGas = object.executeGas !== undefined && object.executeGas !== null ? BigInt(object.executeGas.toString()) : BigInt(0);
+    message.tssEncoder = object.tssEncoder ?? 0;
     return message;
   },
   fromAmino(object: OracleRequestPacketDataAmino): OracleRequestPacketData {
@@ -1944,6 +2118,9 @@ export const OracleRequestPacketData = {
     if (object.execute_gas !== undefined && object.execute_gas !== null) {
       message.executeGas = BigInt(object.execute_gas);
     }
+    if (object.tss_encoder !== undefined && object.tss_encoder !== null) {
+      message.tssEncoder = object.tss_encoder;
+    }
     return message;
   },
   toAmino(message: OracleRequestPacketData): OracleRequestPacketDataAmino {
@@ -1960,6 +2137,7 @@ export const OracleRequestPacketData = {
     }
     obj.prepare_gas = message.prepareGas !== BigInt(0) ? message.prepareGas?.toString() : undefined;
     obj.execute_gas = message.executeGas !== BigInt(0) ? message.executeGas?.toString() : undefined;
+    obj.tss_encoder = message.tssEncoder === 0 ? undefined : message.tssEncoder;
     return obj;
   },
   fromAminoMsg(object: OracleRequestPacketDataAminoMsg): OracleRequestPacketData {
@@ -2356,6 +2534,93 @@ export const Result = {
     return {
       typeUrl: "/band.oracle.v1.Result",
       value: Result.encode(message).finish()
+    };
+  }
+};
+function createBaseSigningResult(): SigningResult {
+  return {
+    signingId: BigInt(0),
+    errorCodespace: "",
+    errorCode: BigInt(0)
+  };
+}
+export const SigningResult = {
+  typeUrl: "/band.oracle.v1.SigningResult",
+  encode(message: SigningResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.signingId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.signingId);
+    }
+    if (message.errorCodespace !== "") {
+      writer.uint32(18).string(message.errorCodespace);
+    }
+    if (message.errorCode !== BigInt(0)) {
+      writer.uint32(24).uint64(message.errorCode);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): SigningResult {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSigningResult();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.signingId = reader.uint64();
+          break;
+        case 2:
+          message.errorCodespace = reader.string();
+          break;
+        case 3:
+          message.errorCode = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<SigningResult>): SigningResult {
+    const message = createBaseSigningResult();
+    message.signingId = object.signingId !== undefined && object.signingId !== null ? BigInt(object.signingId.toString()) : BigInt(0);
+    message.errorCodespace = object.errorCodespace ?? "";
+    message.errorCode = object.errorCode !== undefined && object.errorCode !== null ? BigInt(object.errorCode.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: SigningResultAmino): SigningResult {
+    const message = createBaseSigningResult();
+    if (object.signing_id !== undefined && object.signing_id !== null) {
+      message.signingId = BigInt(object.signing_id);
+    }
+    if (object.error_codespace !== undefined && object.error_codespace !== null) {
+      message.errorCodespace = object.error_codespace;
+    }
+    if (object.error_code !== undefined && object.error_code !== null) {
+      message.errorCode = BigInt(object.error_code);
+    }
+    return message;
+  },
+  toAmino(message: SigningResult): SigningResultAmino {
+    const obj: any = {};
+    obj.signing_id = message.signingId !== BigInt(0) ? message.signingId?.toString() : undefined;
+    obj.error_codespace = message.errorCodespace === "" ? undefined : message.errorCodespace;
+    obj.error_code = message.errorCode !== BigInt(0) ? message.errorCode?.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: SigningResultAminoMsg): SigningResult {
+    return SigningResult.fromAmino(object.value);
+  },
+  fromProtoMsg(message: SigningResultProtoMsg): SigningResult {
+    return SigningResult.decode(message.value);
+  },
+  toProto(message: SigningResult): Uint8Array {
+    return SigningResult.encode(message).finish();
+  },
+  toProtoMsg(message: SigningResult): SigningResultProtoMsg {
+    return {
+      typeUrl: "/band.oracle.v1.SigningResult",
+      value: SigningResult.encode(message).finish()
     };
   }
 };
@@ -3060,6 +3325,81 @@ export const PriceResult = {
     return {
       typeUrl: "/band.oracle.v1.PriceResult",
       value: PriceResult.encode(message).finish()
+    };
+  }
+};
+function createBaseOracleResultSignatureOrder(): OracleResultSignatureOrder {
+  return {
+    requestId: BigInt(0),
+    encoder: 0
+  };
+}
+export const OracleResultSignatureOrder = {
+  typeUrl: "/band.oracle.v1.OracleResultSignatureOrder",
+  encode(message: OracleResultSignatureOrder, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.requestId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.requestId);
+    }
+    if (message.encoder !== 0) {
+      writer.uint32(24).int32(message.encoder);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): OracleResultSignatureOrder {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseOracleResultSignatureOrder();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.requestId = reader.uint64();
+          break;
+        case 3:
+          message.encoder = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<OracleResultSignatureOrder>): OracleResultSignatureOrder {
+    const message = createBaseOracleResultSignatureOrder();
+    message.requestId = object.requestId !== undefined && object.requestId !== null ? BigInt(object.requestId.toString()) : BigInt(0);
+    message.encoder = object.encoder ?? 0;
+    return message;
+  },
+  fromAmino(object: OracleResultSignatureOrderAmino): OracleResultSignatureOrder {
+    const message = createBaseOracleResultSignatureOrder();
+    if (object.request_id !== undefined && object.request_id !== null) {
+      message.requestId = BigInt(object.request_id);
+    }
+    if (object.encoder !== undefined && object.encoder !== null) {
+      message.encoder = object.encoder;
+    }
+    return message;
+  },
+  toAmino(message: OracleResultSignatureOrder): OracleResultSignatureOrderAmino {
+    const obj: any = {};
+    obj.request_id = message.requestId !== BigInt(0) ? message.requestId?.toString() : undefined;
+    obj.encoder = message.encoder === 0 ? undefined : message.encoder;
+    return obj;
+  },
+  fromAminoMsg(object: OracleResultSignatureOrderAminoMsg): OracleResultSignatureOrder {
+    return OracleResultSignatureOrder.fromAmino(object.value);
+  },
+  fromProtoMsg(message: OracleResultSignatureOrderProtoMsg): OracleResultSignatureOrder {
+    return OracleResultSignatureOrder.decode(message.value);
+  },
+  toProto(message: OracleResultSignatureOrder): Uint8Array {
+    return OracleResultSignatureOrder.encode(message).finish();
+  },
+  toProtoMsg(message: OracleResultSignatureOrder): OracleResultSignatureOrderProtoMsg {
+    return {
+      typeUrl: "/band.oracle.v1.OracleResultSignatureOrder",
+      value: OracleResultSignatureOrder.encode(message).finish()
     };
   }
 };

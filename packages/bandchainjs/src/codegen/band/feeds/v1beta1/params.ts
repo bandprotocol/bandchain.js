@@ -35,6 +35,8 @@ export interface Params {
   currentFeedsUpdateInterval: bigint;
   /** price_quorum is the minimum percentage of power that needs to be reached for a price to be processed. */
   priceQuorum: string;
+  /** MaxSignalIDsPerSigning is the maximum number of signals allowed in a single tss signing request. */
+  maxSignalIdsPerSigning: bigint;
 }
 export interface ParamsProtoMsg {
   typeUrl: "/band.feeds.v1beta1.Params";
@@ -75,6 +77,8 @@ export interface ParamsAmino {
   current_feeds_update_interval?: string;
   /** price_quorum is the minimum percentage of power that needs to be reached for a price to be processed. */
   price_quorum?: string;
+  /** MaxSignalIDsPerSigning is the maximum number of signals allowed in a single tss signing request. */
+  max_signal_ids_per_signing?: string;
 }
 export interface ParamsAminoMsg {
   type: "/band.feeds.v1beta1.Params";
@@ -94,6 +98,7 @@ export interface ParamsSDKType {
   max_deviation_basis_point: bigint;
   current_feeds_update_interval: bigint;
   price_quorum: string;
+  max_signal_ids_per_signing: bigint;
 }
 function createBaseParams(): Params {
   return {
@@ -108,7 +113,8 @@ function createBaseParams(): Params {
     minDeviationBasisPoint: BigInt(0),
     maxDeviationBasisPoint: BigInt(0),
     currentFeedsUpdateInterval: BigInt(0),
-    priceQuorum: ""
+    priceQuorum: "",
+    maxSignalIdsPerSigning: BigInt(0)
   };
 }
 export const Params = {
@@ -149,6 +155,9 @@ export const Params = {
     }
     if (message.priceQuorum !== "") {
       writer.uint32(98).string(message.priceQuorum);
+    }
+    if (message.maxSignalIdsPerSigning !== BigInt(0)) {
+      writer.uint32(104).uint64(message.maxSignalIdsPerSigning);
     }
     return writer;
   },
@@ -195,6 +204,9 @@ export const Params = {
         case 12:
           message.priceQuorum = reader.string();
           break;
+        case 13:
+          message.maxSignalIdsPerSigning = reader.uint64();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -216,6 +228,7 @@ export const Params = {
     message.maxDeviationBasisPoint = object.maxDeviationBasisPoint !== undefined && object.maxDeviationBasisPoint !== null ? BigInt(object.maxDeviationBasisPoint.toString()) : BigInt(0);
     message.currentFeedsUpdateInterval = object.currentFeedsUpdateInterval !== undefined && object.currentFeedsUpdateInterval !== null ? BigInt(object.currentFeedsUpdateInterval.toString()) : BigInt(0);
     message.priceQuorum = object.priceQuorum ?? "";
+    message.maxSignalIdsPerSigning = object.maxSignalIdsPerSigning !== undefined && object.maxSignalIdsPerSigning !== null ? BigInt(object.maxSignalIdsPerSigning.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -256,6 +269,9 @@ export const Params = {
     if (object.price_quorum !== undefined && object.price_quorum !== null) {
       message.priceQuorum = object.price_quorum;
     }
+    if (object.max_signal_ids_per_signing !== undefined && object.max_signal_ids_per_signing !== null) {
+      message.maxSignalIdsPerSigning = BigInt(object.max_signal_ids_per_signing);
+    }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
@@ -272,6 +288,7 @@ export const Params = {
     obj.max_deviation_basis_point = message.maxDeviationBasisPoint !== BigInt(0) ? message.maxDeviationBasisPoint?.toString() : undefined;
     obj.current_feeds_update_interval = message.currentFeedsUpdateInterval !== BigInt(0) ? message.currentFeedsUpdateInterval?.toString() : undefined;
     obj.price_quorum = message.priceQuorum === "" ? undefined : message.priceQuorum;
+    obj.max_signal_ids_per_signing = message.maxSignalIdsPerSigning !== BigInt(0) ? message.maxSignalIdsPerSigning?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {

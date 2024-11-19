@@ -24,7 +24,7 @@ export class LCDQueryClient {
   }
   /* CurrentFeeds is an RPC method that returns a list of current supported feeds. */
   async currentFeeds(_params: QueryCurrentFeedsRequest = {}): Promise<QueryCurrentFeedsResponseSDKType> {
-    const endpoint = `feeds/v1beta1/current-feeds`;
+    const endpoint = `feeds/v1beta1/current_feeds`;
     return await this.req.get<QueryCurrentFeedsResponseSDKType>(endpoint);
   }
   /* IsFeeder is an RPC method that returns whether an account is a feeder for a specified validator. */
@@ -63,12 +63,12 @@ export class LCDQueryClient {
     if (typeof params?.pagination !== "undefined") {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `feeds/v1beta1/all-prices`;
+    const endpoint = `feeds/v1beta1/all_prices`;
     return await this.req.get<QueryAllPricesResponseSDKType>(endpoint, options);
   }
   /* ReferenceSourceConfig is an RPC method that returns information on the reference price source. */
   async referenceSourceConfig(_params: QueryReferenceSourceConfigRequest = {}): Promise<QueryReferenceSourceConfigResponseSDKType> {
-    const endpoint = `feeds/v1beta1/reference-source-config`;
+    const endpoint = `feeds/v1beta1/reference_source_config`;
     return await this.req.get<QueryReferenceSourceConfigResponseSDKType>(endpoint);
   }
   /* SignalTotalPowers is an RPC method that returns all signal-total-powers or specified signal-total-power by signal
@@ -83,7 +83,7 @@ export class LCDQueryClient {
     if (typeof params?.pagination !== "undefined") {
       setPaginationParams(options, params.pagination);
     }
-    const endpoint = `feeds/v1beta1/signal-total-powers`;
+    const endpoint = `feeds/v1beta1/signal_total_powers`;
     return await this.req.get<QuerySignalTotalPowersResponseSDKType>(endpoint, options);
   }
   /* ValidValidator is an RPC method that returns a flag to show if the validator is required to send prices. */

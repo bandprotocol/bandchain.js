@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
-import { RawReport, RawReportAmino, RawReportSDKType, Params, ParamsAmino, ParamsSDKType } from "./oracle";
+import { Encoder, RawReport, RawReportAmino, RawReportSDKType, Params, ParamsAmino, ParamsSDKType } from "./oracle";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** MsgRequestData is a message for sending a data oracle request. */
@@ -29,6 +29,8 @@ export interface MsgRequestData {
   executeGas: bigint;
   /** Sender is an account address of message sender. */
   sender: string;
+  /** TSSEncoder is the mode of encoding oracle result signature order. */
+  tssEncoder: Encoder;
 }
 export interface MsgRequestDataProtoMsg {
   typeUrl: "/band.oracle.v1.MsgRequestData";
@@ -60,6 +62,8 @@ export interface MsgRequestDataAmino {
   execute_gas?: string;
   /** Sender is an account address of message sender. */
   sender?: string;
+  /** TSSEncoder is the mode of encoding oracle result signature order. */
+  tss_encoder?: Encoder;
 }
 export interface MsgRequestDataAminoMsg {
   type: "oracle/Request";
@@ -76,6 +80,7 @@ export interface MsgRequestDataSDKType {
   prepare_gas: bigint;
   execute_gas: bigint;
   sender: string;
+  tss_encoder: Encoder;
 }
 /** MsgRequestDataResponse is response data for MsgRequestData message */
 export interface MsgRequestDataResponse {}
@@ -650,7 +655,8 @@ function createBaseMsgRequestData(): MsgRequestData {
     feeLimit: [],
     prepareGas: BigInt(0),
     executeGas: BigInt(0),
-    sender: ""
+    sender: "",
+    tssEncoder: 0
   };
 }
 export const MsgRequestData = {
@@ -682,6 +688,9 @@ export const MsgRequestData = {
     }
     if (message.sender !== "") {
       writer.uint32(74).string(message.sender);
+    }
+    if (message.tssEncoder !== 0) {
+      writer.uint32(80).int32(message.tssEncoder);
     }
     return writer;
   },
@@ -719,6 +728,9 @@ export const MsgRequestData = {
         case 9:
           message.sender = reader.string();
           break;
+        case 10:
+          message.tssEncoder = reader.int32() as any;
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -737,6 +749,7 @@ export const MsgRequestData = {
     message.prepareGas = object.prepareGas !== undefined && object.prepareGas !== null ? BigInt(object.prepareGas.toString()) : BigInt(0);
     message.executeGas = object.executeGas !== undefined && object.executeGas !== null ? BigInt(object.executeGas.toString()) : BigInt(0);
     message.sender = object.sender ?? "";
+    message.tssEncoder = object.tssEncoder ?? 0;
     return message;
   },
   fromAmino(object: MsgRequestDataAmino): MsgRequestData {
@@ -766,6 +779,9 @@ export const MsgRequestData = {
     if (object.sender !== undefined && object.sender !== null) {
       message.sender = object.sender;
     }
+    if (object.tss_encoder !== undefined && object.tss_encoder !== null) {
+      message.tssEncoder = object.tss_encoder;
+    }
     return message;
   },
   toAmino(message: MsgRequestData): MsgRequestDataAmino {
@@ -783,6 +799,7 @@ export const MsgRequestData = {
     obj.prepare_gas = message.prepareGas !== BigInt(0) ? message.prepareGas?.toString() : undefined;
     obj.execute_gas = message.executeGas !== BigInt(0) ? message.executeGas?.toString() : undefined;
     obj.sender = message.sender === "" ? undefined : message.sender;
+    obj.tss_encoder = message.tssEncoder === 0 ? undefined : message.tssEncoder;
     return obj;
   },
   fromAminoMsg(object: MsgRequestDataAminoMsg): MsgRequestData {

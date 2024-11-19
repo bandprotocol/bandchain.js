@@ -376,33 +376,35 @@ export interface BlockRelayProofSDKType {
  * MultiStoreProof stores a compact of other Cosmos-SDK modules' storage hash in multistore to
  * compute (in combination with oracle store hash) Tendermint's application state hash at a given block.
  * 
- *                                   ____________________[AppHash]____________________
- *                                  /                                                 \
- *                    ___________[N19]____________                               ______[N20]_______
- *                   /                            \                             /                  \
- *            _____[N15]_____                 ____[N16]______               __[N17]__           __[N18]__
- *           /               \               /               \             /         \         /         \
- *       __[N8]_          __[N9]_          _[N10]_         _[N11]_       [N12]      [N13]     [K]        [L]
- *      /       \        /       \        /       \        /      \      /   \      /   \
- *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]    [N7]   [G] [H]   [I]  [J]
- *   /   \    /   \    /  \    /   \   /   \    /   \   /   \   /   \
- *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D] [E] [F]
+ *                                   __________________________[AppHash]__________________________
+ *                                  /                                                             \
+ *                    ___________[N22]____________                                    ___________[N23]____________
+ *                   /                            \                                  /                            \
+ *            _____[N18]_____                 ____[N19]______                   ____[N20]______                __[N21]__
+ *           /               \               /               \                 /               \              /         \
+ *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_        [O]        [P]
+ *      /       \        /       \        /       \        /       \        /       \        /       \
+ *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11]
+ *   /   \    /   \    /  \    /   \   /   \    /   \   /   \    /   \   /   \    /   \   /   \    /   \
+ *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D]  [E] [F] [G] [H]  [I] [J] [K] [L]  [M] [N]
  * 
- * [0] - acc (auth)  [1] - authz      [2] - bank       [3] - capability  [4] - consensus   [5] - crisis
- * [6] - dist        [7] - evidence   [8] - feegrant   [9] - feeibc      [A] - globalfee   [B] - gov
- * [C] - group       [D] - ibccore    [E] - icahost    [F] - mint        [G] - oracle      [H] - params
- * [I] - slashing    [J] - staking    [K] - transfer   [L] - upgrade
+ * [0] - acc (auth) [1] - authz     [2] - bandtss     [3] - bank       [4] - capability [5] - consensus
+ * [6] - crisis     [7] - dist      [8] - evidence    [9] - feeds      [A] - feegrant   [B] - feeibc
+ * [C] - globalfee  [D] - gov       [E] - group       [F] - ibccore    [G] - icahost    [H] - mint
+ * [I] - oracle     [J] - params    [K] - rollingseed [L] - slashing   [M] - staking    [N] - transfer
+ * [O] - tss        [P] - upgrade
  * 
  * Notice that NOT all leaves of the Merkle tree are needed in order to compute the Merkle
- * root hash, since we only want to validate the correctness of [G] In fact, only
- * [H], [N13], [N17], and [N18] are needed in order to compute [AppHash].
+ * root hash, since we only want to validate the correctness of [H] In fact, only
+ * [G], [N9], [N17], [N21], and [N22] are needed in order to compute [AppHash].
  */
 export interface MultiStoreProof {
   oracleIavlStateHash: Uint8Array;
-  paramsStoreMerkleHash: Uint8Array;
-  slashingToStakingStoresMerkleHash: Uint8Array;
-  transferToUpgradeStoresMerkleHash: Uint8Array;
-  authToMintStoresMerkleHash: Uint8Array;
+  mintStoreMerkleHash: Uint8Array;
+  paramsToRollingseedStoresMerkleHash: Uint8Array;
+  slashingToTssStoresMerkleHash: Uint8Array;
+  upgradeStoreMerkleHash: Uint8Array;
+  authToIcahostStoresMerkleHash: Uint8Array;
 }
 export interface MultiStoreProofProtoMsg {
   typeUrl: "/band.base.oracle.v1.MultiStoreProof";
@@ -412,33 +414,35 @@ export interface MultiStoreProofProtoMsg {
  * MultiStoreProof stores a compact of other Cosmos-SDK modules' storage hash in multistore to
  * compute (in combination with oracle store hash) Tendermint's application state hash at a given block.
  * 
- *                                   ____________________[AppHash]____________________
- *                                  /                                                 \
- *                    ___________[N19]____________                               ______[N20]_______
- *                   /                            \                             /                  \
- *            _____[N15]_____                 ____[N16]______               __[N17]__           __[N18]__
- *           /               \               /               \             /         \         /         \
- *       __[N8]_          __[N9]_          _[N10]_         _[N11]_       [N12]      [N13]     [K]        [L]
- *      /       \        /       \        /       \        /      \      /   \      /   \
- *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]    [N7]   [G] [H]   [I]  [J]
- *   /   \    /   \    /  \    /   \   /   \    /   \   /   \   /   \
- *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D] [E] [F]
+ *                                   __________________________[AppHash]__________________________
+ *                                  /                                                             \
+ *                    ___________[N22]____________                                    ___________[N23]____________
+ *                   /                            \                                  /                            \
+ *            _____[N18]_____                 ____[N19]______                   ____[N20]______                __[N21]__
+ *           /               \               /               \                 /               \              /         \
+ *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_        [O]        [P]
+ *      /       \        /       \        /       \        /       \        /       \        /       \
+ *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11]
+ *   /   \    /   \    /  \    /   \   /   \    /   \   /   \    /   \   /   \    /   \   /   \    /   \
+ *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D]  [E] [F] [G] [H]  [I] [J] [K] [L]  [M] [N]
  * 
- * [0] - acc (auth)  [1] - authz      [2] - bank       [3] - capability  [4] - consensus   [5] - crisis
- * [6] - dist        [7] - evidence   [8] - feegrant   [9] - feeibc      [A] - globalfee   [B] - gov
- * [C] - group       [D] - ibccore    [E] - icahost    [F] - mint        [G] - oracle      [H] - params
- * [I] - slashing    [J] - staking    [K] - transfer   [L] - upgrade
+ * [0] - acc (auth) [1] - authz     [2] - bandtss     [3] - bank       [4] - capability [5] - consensus
+ * [6] - crisis     [7] - dist      [8] - evidence    [9] - feeds      [A] - feegrant   [B] - feeibc
+ * [C] - globalfee  [D] - gov       [E] - group       [F] - ibccore    [G] - icahost    [H] - mint
+ * [I] - oracle     [J] - params    [K] - rollingseed [L] - slashing   [M] - staking    [N] - transfer
+ * [O] - tss        [P] - upgrade
  * 
  * Notice that NOT all leaves of the Merkle tree are needed in order to compute the Merkle
- * root hash, since we only want to validate the correctness of [G] In fact, only
- * [H], [N13], [N17], and [N18] are needed in order to compute [AppHash].
+ * root hash, since we only want to validate the correctness of [H] In fact, only
+ * [G], [N9], [N17], [N21], and [N22] are needed in order to compute [AppHash].
  */
 export interface MultiStoreProofAmino {
   oracle_iavl_state_hash?: string;
-  params_store_merkle_hash?: string;
-  slashing_to_staking_stores_merkle_hash?: string;
-  transfer_to_upgrade_stores_merkle_hash?: string;
-  auth_to_mint_stores_merkle_hash?: string;
+  mint_store_merkle_hash?: string;
+  params_to_rollingseed_stores_merkle_hash?: string;
+  slashing_to_tss_stores_merkle_hash?: string;
+  upgrade_store_merkle_hash?: string;
+  auth_to_icahost_stores_merkle_hash?: string;
 }
 export interface MultiStoreProofAminoMsg {
   type: "/band.base.oracle.v1.MultiStoreProof";
@@ -448,33 +452,35 @@ export interface MultiStoreProofAminoMsg {
  * MultiStoreProof stores a compact of other Cosmos-SDK modules' storage hash in multistore to
  * compute (in combination with oracle store hash) Tendermint's application state hash at a given block.
  * 
- *                                   ____________________[AppHash]____________________
- *                                  /                                                 \
- *                    ___________[N19]____________                               ______[N20]_______
- *                   /                            \                             /                  \
- *            _____[N15]_____                 ____[N16]______               __[N17]__           __[N18]__
- *           /               \               /               \             /         \         /         \
- *       __[N8]_          __[N9]_          _[N10]_         _[N11]_       [N12]      [N13]     [K]        [L]
- *      /       \        /       \        /       \        /      \      /   \      /   \
- *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]    [N7]   [G] [H]   [I]  [J]
- *   /   \    /   \    /  \    /   \   /   \    /   \   /   \   /   \
- *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D] [E] [F]
+ *                                   __________________________[AppHash]__________________________
+ *                                  /                                                             \
+ *                    ___________[N22]____________                                    ___________[N23]____________
+ *                   /                            \                                  /                            \
+ *            _____[N18]_____                 ____[N19]______                   ____[N20]______                __[N21]__
+ *           /               \               /               \                 /               \              /         \
+ *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_        [O]        [P]
+ *      /       \        /       \        /       \        /       \        /       \        /       \
+ *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11]
+ *   /   \    /   \    /  \    /   \   /   \    /   \   /   \    /   \   /   \    /   \   /   \    /   \
+ *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D]  [E] [F] [G] [H]  [I] [J] [K] [L]  [M] [N]
  * 
- * [0] - acc (auth)  [1] - authz      [2] - bank       [3] - capability  [4] - consensus   [5] - crisis
- * [6] - dist        [7] - evidence   [8] - feegrant   [9] - feeibc      [A] - globalfee   [B] - gov
- * [C] - group       [D] - ibccore    [E] - icahost    [F] - mint        [G] - oracle      [H] - params
- * [I] - slashing    [J] - staking    [K] - transfer   [L] - upgrade
+ * [0] - acc (auth) [1] - authz     [2] - bandtss     [3] - bank       [4] - capability [5] - consensus
+ * [6] - crisis     [7] - dist      [8] - evidence    [9] - feeds      [A] - feegrant   [B] - feeibc
+ * [C] - globalfee  [D] - gov       [E] - group       [F] - ibccore    [G] - icahost    [H] - mint
+ * [I] - oracle     [J] - params    [K] - rollingseed [L] - slashing   [M] - staking    [N] - transfer
+ * [O] - tss        [P] - upgrade
  * 
  * Notice that NOT all leaves of the Merkle tree are needed in order to compute the Merkle
- * root hash, since we only want to validate the correctness of [G] In fact, only
- * [H], [N13], [N17], and [N18] are needed in order to compute [AppHash].
+ * root hash, since we only want to validate the correctness of [H] In fact, only
+ * [G], [N9], [N17], [N21], and [N22] are needed in order to compute [AppHash].
  */
 export interface MultiStoreProofSDKType {
   oracle_iavl_state_hash: Uint8Array;
-  params_store_merkle_hash: Uint8Array;
-  slashing_to_staking_stores_merkle_hash: Uint8Array;
-  transfer_to_upgrade_stores_merkle_hash: Uint8Array;
-  auth_to_mint_stores_merkle_hash: Uint8Array;
+  mint_store_merkle_hash: Uint8Array;
+  params_to_rollingseed_stores_merkle_hash: Uint8Array;
+  slashing_to_tss_stores_merkle_hash: Uint8Array;
+  upgrade_store_merkle_hash: Uint8Array;
+  auth_to_icahost_stores_merkle_hash: Uint8Array;
 }
 /**
  * BlockHeaderMerkleParts stores a group of hashes using for computing Tendermint's block
@@ -1910,10 +1916,11 @@ export const BlockRelayProof = {
 function createBaseMultiStoreProof(): MultiStoreProof {
   return {
     oracleIavlStateHash: new Uint8Array(),
-    paramsStoreMerkleHash: new Uint8Array(),
-    slashingToStakingStoresMerkleHash: new Uint8Array(),
-    transferToUpgradeStoresMerkleHash: new Uint8Array(),
-    authToMintStoresMerkleHash: new Uint8Array()
+    mintStoreMerkleHash: new Uint8Array(),
+    paramsToRollingseedStoresMerkleHash: new Uint8Array(),
+    slashingToTssStoresMerkleHash: new Uint8Array(),
+    upgradeStoreMerkleHash: new Uint8Array(),
+    authToIcahostStoresMerkleHash: new Uint8Array()
   };
 }
 export const MultiStoreProof = {
@@ -1922,17 +1929,20 @@ export const MultiStoreProof = {
     if (message.oracleIavlStateHash.length !== 0) {
       writer.uint32(10).bytes(message.oracleIavlStateHash);
     }
-    if (message.paramsStoreMerkleHash.length !== 0) {
-      writer.uint32(18).bytes(message.paramsStoreMerkleHash);
+    if (message.mintStoreMerkleHash.length !== 0) {
+      writer.uint32(18).bytes(message.mintStoreMerkleHash);
     }
-    if (message.slashingToStakingStoresMerkleHash.length !== 0) {
-      writer.uint32(26).bytes(message.slashingToStakingStoresMerkleHash);
+    if (message.paramsToRollingseedStoresMerkleHash.length !== 0) {
+      writer.uint32(26).bytes(message.paramsToRollingseedStoresMerkleHash);
     }
-    if (message.transferToUpgradeStoresMerkleHash.length !== 0) {
-      writer.uint32(34).bytes(message.transferToUpgradeStoresMerkleHash);
+    if (message.slashingToTssStoresMerkleHash.length !== 0) {
+      writer.uint32(34).bytes(message.slashingToTssStoresMerkleHash);
     }
-    if (message.authToMintStoresMerkleHash.length !== 0) {
-      writer.uint32(42).bytes(message.authToMintStoresMerkleHash);
+    if (message.upgradeStoreMerkleHash.length !== 0) {
+      writer.uint32(42).bytes(message.upgradeStoreMerkleHash);
+    }
+    if (message.authToIcahostStoresMerkleHash.length !== 0) {
+      writer.uint32(50).bytes(message.authToIcahostStoresMerkleHash);
     }
     return writer;
   },
@@ -1947,16 +1957,19 @@ export const MultiStoreProof = {
           message.oracleIavlStateHash = reader.bytes();
           break;
         case 2:
-          message.paramsStoreMerkleHash = reader.bytes();
+          message.mintStoreMerkleHash = reader.bytes();
           break;
         case 3:
-          message.slashingToStakingStoresMerkleHash = reader.bytes();
+          message.paramsToRollingseedStoresMerkleHash = reader.bytes();
           break;
         case 4:
-          message.transferToUpgradeStoresMerkleHash = reader.bytes();
+          message.slashingToTssStoresMerkleHash = reader.bytes();
           break;
         case 5:
-          message.authToMintStoresMerkleHash = reader.bytes();
+          message.upgradeStoreMerkleHash = reader.bytes();
+          break;
+        case 6:
+          message.authToIcahostStoresMerkleHash = reader.bytes();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1968,10 +1981,11 @@ export const MultiStoreProof = {
   fromPartial(object: Partial<MultiStoreProof>): MultiStoreProof {
     const message = createBaseMultiStoreProof();
     message.oracleIavlStateHash = object.oracleIavlStateHash ?? new Uint8Array();
-    message.paramsStoreMerkleHash = object.paramsStoreMerkleHash ?? new Uint8Array();
-    message.slashingToStakingStoresMerkleHash = object.slashingToStakingStoresMerkleHash ?? new Uint8Array();
-    message.transferToUpgradeStoresMerkleHash = object.transferToUpgradeStoresMerkleHash ?? new Uint8Array();
-    message.authToMintStoresMerkleHash = object.authToMintStoresMerkleHash ?? new Uint8Array();
+    message.mintStoreMerkleHash = object.mintStoreMerkleHash ?? new Uint8Array();
+    message.paramsToRollingseedStoresMerkleHash = object.paramsToRollingseedStoresMerkleHash ?? new Uint8Array();
+    message.slashingToTssStoresMerkleHash = object.slashingToTssStoresMerkleHash ?? new Uint8Array();
+    message.upgradeStoreMerkleHash = object.upgradeStoreMerkleHash ?? new Uint8Array();
+    message.authToIcahostStoresMerkleHash = object.authToIcahostStoresMerkleHash ?? new Uint8Array();
     return message;
   },
   fromAmino(object: MultiStoreProofAmino): MultiStoreProof {
@@ -1979,27 +1993,31 @@ export const MultiStoreProof = {
     if (object.oracle_iavl_state_hash !== undefined && object.oracle_iavl_state_hash !== null) {
       message.oracleIavlStateHash = bytesFromBase64(object.oracle_iavl_state_hash);
     }
-    if (object.params_store_merkle_hash !== undefined && object.params_store_merkle_hash !== null) {
-      message.paramsStoreMerkleHash = bytesFromBase64(object.params_store_merkle_hash);
+    if (object.mint_store_merkle_hash !== undefined && object.mint_store_merkle_hash !== null) {
+      message.mintStoreMerkleHash = bytesFromBase64(object.mint_store_merkle_hash);
     }
-    if (object.slashing_to_staking_stores_merkle_hash !== undefined && object.slashing_to_staking_stores_merkle_hash !== null) {
-      message.slashingToStakingStoresMerkleHash = bytesFromBase64(object.slashing_to_staking_stores_merkle_hash);
+    if (object.params_to_rollingseed_stores_merkle_hash !== undefined && object.params_to_rollingseed_stores_merkle_hash !== null) {
+      message.paramsToRollingseedStoresMerkleHash = bytesFromBase64(object.params_to_rollingseed_stores_merkle_hash);
     }
-    if (object.transfer_to_upgrade_stores_merkle_hash !== undefined && object.transfer_to_upgrade_stores_merkle_hash !== null) {
-      message.transferToUpgradeStoresMerkleHash = bytesFromBase64(object.transfer_to_upgrade_stores_merkle_hash);
+    if (object.slashing_to_tss_stores_merkle_hash !== undefined && object.slashing_to_tss_stores_merkle_hash !== null) {
+      message.slashingToTssStoresMerkleHash = bytesFromBase64(object.slashing_to_tss_stores_merkle_hash);
     }
-    if (object.auth_to_mint_stores_merkle_hash !== undefined && object.auth_to_mint_stores_merkle_hash !== null) {
-      message.authToMintStoresMerkleHash = bytesFromBase64(object.auth_to_mint_stores_merkle_hash);
+    if (object.upgrade_store_merkle_hash !== undefined && object.upgrade_store_merkle_hash !== null) {
+      message.upgradeStoreMerkleHash = bytesFromBase64(object.upgrade_store_merkle_hash);
+    }
+    if (object.auth_to_icahost_stores_merkle_hash !== undefined && object.auth_to_icahost_stores_merkle_hash !== null) {
+      message.authToIcahostStoresMerkleHash = bytesFromBase64(object.auth_to_icahost_stores_merkle_hash);
     }
     return message;
   },
   toAmino(message: MultiStoreProof): MultiStoreProofAmino {
     const obj: any = {};
     obj.oracle_iavl_state_hash = message.oracleIavlStateHash ? base64FromBytes(message.oracleIavlStateHash) : undefined;
-    obj.params_store_merkle_hash = message.paramsStoreMerkleHash ? base64FromBytes(message.paramsStoreMerkleHash) : undefined;
-    obj.slashing_to_staking_stores_merkle_hash = message.slashingToStakingStoresMerkleHash ? base64FromBytes(message.slashingToStakingStoresMerkleHash) : undefined;
-    obj.transfer_to_upgrade_stores_merkle_hash = message.transferToUpgradeStoresMerkleHash ? base64FromBytes(message.transferToUpgradeStoresMerkleHash) : undefined;
-    obj.auth_to_mint_stores_merkle_hash = message.authToMintStoresMerkleHash ? base64FromBytes(message.authToMintStoresMerkleHash) : undefined;
+    obj.mint_store_merkle_hash = message.mintStoreMerkleHash ? base64FromBytes(message.mintStoreMerkleHash) : undefined;
+    obj.params_to_rollingseed_stores_merkle_hash = message.paramsToRollingseedStoresMerkleHash ? base64FromBytes(message.paramsToRollingseedStoresMerkleHash) : undefined;
+    obj.slashing_to_tss_stores_merkle_hash = message.slashingToTssStoresMerkleHash ? base64FromBytes(message.slashingToTssStoresMerkleHash) : undefined;
+    obj.upgrade_store_merkle_hash = message.upgradeStoreMerkleHash ? base64FromBytes(message.upgradeStoreMerkleHash) : undefined;
+    obj.auth_to_icahost_stores_merkle_hash = message.authToIcahostStoresMerkleHash ? base64FromBytes(message.authToIcahostStoresMerkleHash) : undefined;
     return obj;
   },
   fromAminoMsg(object: MultiStoreProofAminoMsg): MultiStoreProof {

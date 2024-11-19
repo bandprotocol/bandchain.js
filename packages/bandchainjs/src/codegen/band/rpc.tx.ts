@@ -6,6 +6,9 @@ export const createRPCMsgClient = async ({
   rpc: Rpc;
 }) => ({
   band: {
+    bandtss: {
+      v1beta1: new (await import("./bandtss/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
     feeds: {
       v1beta1: new (await import("./feeds/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     },
@@ -17,6 +20,12 @@ export const createRPCMsgClient = async ({
     },
     restake: {
       v1beta1: new (await import("./restake/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    tss: {
+      v1beta1: new (await import("./tss/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    tunnel: {
+      v1beta1: new (await import("./tunnel/v1beta1/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
   cosmos: {

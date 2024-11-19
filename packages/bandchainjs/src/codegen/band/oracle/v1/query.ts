@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { DataSource, DataSourceAmino, DataSourceSDKType, OracleScript, OracleScriptAmino, OracleScriptSDKType, Request, RequestAmino, RequestSDKType, Report, ReportAmino, ReportSDKType, Result, ResultAmino, ResultSDKType, Params, ParamsAmino, ParamsSDKType, ValidatorStatus, ValidatorStatusAmino, ValidatorStatusSDKType, ActiveValidator, ActiveValidatorAmino, ActiveValidatorSDKType, PriceResult, PriceResultAmino, PriceResultSDKType } from "./oracle";
+import { DataSource, DataSourceAmino, DataSourceSDKType, OracleScript, OracleScriptAmino, OracleScriptSDKType, Request, RequestAmino, RequestSDKType, Report, ReportAmino, ReportSDKType, Result, ResultAmino, ResultSDKType, SigningResult, SigningResultAmino, SigningResultSDKType, Params, ParamsAmino, ParamsSDKType, ValidatorStatus, ValidatorStatusAmino, ValidatorStatusSDKType, ActiveValidator, ActiveValidatorAmino, ActiveValidatorSDKType, PriceResult, PriceResultAmino, PriceResultSDKType } from "./oracle";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** QueryCountsRequest is request type for the Query/Count RPC method. */
@@ -237,6 +237,8 @@ export interface QueryRequestResponse {
   reports: Report[];
   /** Result is a final form of result data */
   result?: Result;
+  /** Signing is the signing detail in the bandtss module. */
+  signing?: SigningResult;
 }
 export interface QueryRequestResponseProtoMsg {
   typeUrl: "/band.oracle.v1.QueryRequestResponse";
@@ -253,6 +255,8 @@ export interface QueryRequestResponseAmino {
   reports?: ReportAmino[];
   /** Result is a final form of result data */
   result?: ResultAmino;
+  /** Signing is the signing detail in the bandtss module. */
+  signing?: SigningResultAmino;
 }
 export interface QueryRequestResponseAminoMsg {
   type: "/band.oracle.v1.QueryRequestResponse";
@@ -263,6 +267,7 @@ export interface QueryRequestResponseSDKType {
   request?: RequestSDKType;
   reports: ReportSDKType[];
   result?: ResultSDKType;
+  signing?: SigningResultSDKType;
 }
 /**
  * QueryPendingRequestRequest is request type for the Query/PendingRequests RPC
@@ -1448,7 +1453,8 @@ function createBaseQueryRequestResponse(): QueryRequestResponse {
   return {
     request: undefined,
     reports: [],
-    result: undefined
+    result: undefined,
+    signing: undefined
   };
 }
 export const QueryRequestResponse = {
@@ -1462,6 +1468,9 @@ export const QueryRequestResponse = {
     }
     if (message.result !== undefined) {
       Result.encode(message.result, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.signing !== undefined) {
+      SigningResult.encode(message.signing, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -1481,6 +1490,9 @@ export const QueryRequestResponse = {
         case 3:
           message.result = Result.decode(reader, reader.uint32());
           break;
+        case 4:
+          message.signing = SigningResult.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1493,6 +1505,7 @@ export const QueryRequestResponse = {
     message.request = object.request !== undefined && object.request !== null ? Request.fromPartial(object.request) : undefined;
     message.reports = object.reports?.map(e => Report.fromPartial(e)) || [];
     message.result = object.result !== undefined && object.result !== null ? Result.fromPartial(object.result) : undefined;
+    message.signing = object.signing !== undefined && object.signing !== null ? SigningResult.fromPartial(object.signing) : undefined;
     return message;
   },
   fromAmino(object: QueryRequestResponseAmino): QueryRequestResponse {
@@ -1503,6 +1516,9 @@ export const QueryRequestResponse = {
     message.reports = object.reports?.map(e => Report.fromAmino(e)) || [];
     if (object.result !== undefined && object.result !== null) {
       message.result = Result.fromAmino(object.result);
+    }
+    if (object.signing !== undefined && object.signing !== null) {
+      message.signing = SigningResult.fromAmino(object.signing);
     }
     return message;
   },
@@ -1515,6 +1531,7 @@ export const QueryRequestResponse = {
       obj.reports = message.reports;
     }
     obj.result = message.result ? Result.toAmino(message.result) : undefined;
+    obj.signing = message.signing ? SigningResult.toAmino(message.signing) : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryRequestResponseAminoMsg): QueryRequestResponse {

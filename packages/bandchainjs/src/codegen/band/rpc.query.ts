@@ -10,6 +10,9 @@ export const createRPCQueryClient = async ({
   const client = new QueryClient(tmClient);
   return {
     band: {
+      bandtss: {
+        v1beta1: (await import("./bandtss/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
       base: {
         node: {
           v1: (await import("./base/node/v1/query.rpc.Service")).createRpcQueryExtension(client)
@@ -29,6 +32,12 @@ export const createRPCQueryClient = async ({
       },
       restake: {
         v1beta1: (await import("./restake/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      tss: {
+        v1beta1: (await import("./tss/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      tunnel: {
+        v1beta1: (await import("./tunnel/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

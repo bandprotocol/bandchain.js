@@ -105,6 +105,48 @@ export function signalPriceStatusToJSON(object: SignalPriceStatus): string {
       return "UNRECOGNIZED";
   }
 }
+/** Encoder is an enumerator that defines the mode of encoding message in tss module. */
+export enum Encoder {
+  /** ENCODER_UNSPECIFIED - ENCODER_UNSPECIFIED is an unspecified encoder mode. */
+  ENCODER_UNSPECIFIED = 0,
+  /** ENCODER_FIXED_POINT_ABI - ENCODER_FIXED_POINT_ABI is a fixed-point price abi encoder (price * 10^9). */
+  ENCODER_FIXED_POINT_ABI = 1,
+  /** ENCODER_TICK_ABI - ENCODER_TICK_ABI is a tick abi encoder. */
+  ENCODER_TICK_ABI = 2,
+  UNRECOGNIZED = -1,
+}
+export const EncoderSDKType = Encoder;
+export const EncoderAmino = Encoder;
+export function encoderFromJSON(object: any): Encoder {
+  switch (object) {
+    case 0:
+    case "ENCODER_UNSPECIFIED":
+      return Encoder.ENCODER_UNSPECIFIED;
+    case 1:
+    case "ENCODER_FIXED_POINT_ABI":
+      return Encoder.ENCODER_FIXED_POINT_ABI;
+    case 2:
+    case "ENCODER_TICK_ABI":
+      return Encoder.ENCODER_TICK_ABI;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return Encoder.UNRECOGNIZED;
+  }
+}
+export function encoderToJSON(object: Encoder): string {
+  switch (object) {
+    case Encoder.ENCODER_UNSPECIFIED:
+      return "ENCODER_UNSPECIFIED";
+    case Encoder.ENCODER_FIXED_POINT_ABI:
+      return "ENCODER_FIXED_POINT_ABI";
+    case Encoder.ENCODER_TICK_ABI:
+      return "ENCODER_TICK_ABI";
+    case Encoder.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
 /** Signal is the data structure that contains signal id and power of that signal. */
 export interface Signal {
   /** id is the id of the signal. */
@@ -474,6 +516,60 @@ export interface ReferenceSourceConfigAminoMsg {
 export interface ReferenceSourceConfigSDKType {
   registry_ipfs_hash: string;
   registry_version: string;
+}
+/** FeedsPriceData is a structure that defines the price data of the feeds for generating signature. */
+export interface FeedsPriceData {
+  /** Prices is the list of prices of the feeds. */
+  prices: Price[];
+  /** Timestamp is the timestamp at which the price was submitted. */
+  timestamp: bigint;
+}
+export interface FeedsPriceDataProtoMsg {
+  typeUrl: "/band.feeds.v1beta1.FeedsPriceData";
+  value: Uint8Array;
+}
+/** FeedsPriceData is a structure that defines the price data of the feeds for generating signature. */
+export interface FeedsPriceDataAmino {
+  /** Prices is the list of prices of the feeds. */
+  prices?: PriceAmino[];
+  /** Timestamp is the timestamp at which the price was submitted. */
+  timestamp?: string;
+}
+export interface FeedsPriceDataAminoMsg {
+  type: "/band.feeds.v1beta1.FeedsPriceData";
+  value: FeedsPriceDataAmino;
+}
+/** FeedsPriceData is a structure that defines the price data of the feeds for generating signature. */
+export interface FeedsPriceDataSDKType {
+  prices: PriceSDKType[];
+  timestamp: bigint;
+}
+/** FeedsSignatureOrder defines a general signature order for feed data. */
+export interface FeedsSignatureOrder {
+  /** signal_ids is the list of signal ids that require signatures. */
+  signalIds: string[];
+  /** encoder is the mode of encoding feeds signature order. */
+  encoder: Encoder;
+}
+export interface FeedsSignatureOrderProtoMsg {
+  typeUrl: "/band.feeds.v1beta1.FeedsSignatureOrder";
+  value: Uint8Array;
+}
+/** FeedsSignatureOrder defines a general signature order for feed data. */
+export interface FeedsSignatureOrderAmino {
+  /** signal_ids is the list of signal ids that require signatures. */
+  signal_ids?: string[];
+  /** encoder is the mode of encoding feeds signature order. */
+  encoder?: Encoder;
+}
+export interface FeedsSignatureOrderAminoMsg {
+  type: "/band.feeds.v1beta1.FeedsSignatureOrder";
+  value: FeedsSignatureOrderAmino;
+}
+/** FeedsSignatureOrder defines a general signature order for feed data. */
+export interface FeedsSignatureOrderSDKType {
+  signal_ids: string[];
+  encoder: Encoder;
 }
 function createBaseSignal(): Signal {
   return {
@@ -1437,6 +1533,160 @@ export const ReferenceSourceConfig = {
     return {
       typeUrl: "/band.feeds.v1beta1.ReferenceSourceConfig",
       value: ReferenceSourceConfig.encode(message).finish()
+    };
+  }
+};
+function createBaseFeedsPriceData(): FeedsPriceData {
+  return {
+    prices: [],
+    timestamp: BigInt(0)
+  };
+}
+export const FeedsPriceData = {
+  typeUrl: "/band.feeds.v1beta1.FeedsPriceData",
+  encode(message: FeedsPriceData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.prices) {
+      Price.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.timestamp !== BigInt(0)) {
+      writer.uint32(16).uint64(message.timestamp);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): FeedsPriceData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseFeedsPriceData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.prices.push(Price.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.timestamp = reader.uint64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<FeedsPriceData>): FeedsPriceData {
+    const message = createBaseFeedsPriceData();
+    message.prices = object.prices?.map(e => Price.fromPartial(e)) || [];
+    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: FeedsPriceDataAmino): FeedsPriceData {
+    const message = createBaseFeedsPriceData();
+    message.prices = object.prices?.map(e => Price.fromAmino(e)) || [];
+    if (object.timestamp !== undefined && object.timestamp !== null) {
+      message.timestamp = BigInt(object.timestamp);
+    }
+    return message;
+  },
+  toAmino(message: FeedsPriceData): FeedsPriceDataAmino {
+    const obj: any = {};
+    if (message.prices) {
+      obj.prices = message.prices.map(e => e ? Price.toAmino(e) : undefined);
+    } else {
+      obj.prices = message.prices;
+    }
+    obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: FeedsPriceDataAminoMsg): FeedsPriceData {
+    return FeedsPriceData.fromAmino(object.value);
+  },
+  fromProtoMsg(message: FeedsPriceDataProtoMsg): FeedsPriceData {
+    return FeedsPriceData.decode(message.value);
+  },
+  toProto(message: FeedsPriceData): Uint8Array {
+    return FeedsPriceData.encode(message).finish();
+  },
+  toProtoMsg(message: FeedsPriceData): FeedsPriceDataProtoMsg {
+    return {
+      typeUrl: "/band.feeds.v1beta1.FeedsPriceData",
+      value: FeedsPriceData.encode(message).finish()
+    };
+  }
+};
+function createBaseFeedsSignatureOrder(): FeedsSignatureOrder {
+  return {
+    signalIds: [],
+    encoder: 0
+  };
+}
+export const FeedsSignatureOrder = {
+  typeUrl: "/band.feeds.v1beta1.FeedsSignatureOrder",
+  encode(message: FeedsSignatureOrder, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.signalIds) {
+      writer.uint32(10).string(v!);
+    }
+    if (message.encoder !== 0) {
+      writer.uint32(16).int32(message.encoder);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): FeedsSignatureOrder {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseFeedsSignatureOrder();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.signalIds.push(reader.string());
+          break;
+        case 2:
+          message.encoder = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<FeedsSignatureOrder>): FeedsSignatureOrder {
+    const message = createBaseFeedsSignatureOrder();
+    message.signalIds = object.signalIds?.map(e => e) || [];
+    message.encoder = object.encoder ?? 0;
+    return message;
+  },
+  fromAmino(object: FeedsSignatureOrderAmino): FeedsSignatureOrder {
+    const message = createBaseFeedsSignatureOrder();
+    message.signalIds = object.signal_ids?.map(e => e) || [];
+    if (object.encoder !== undefined && object.encoder !== null) {
+      message.encoder = object.encoder;
+    }
+    return message;
+  },
+  toAmino(message: FeedsSignatureOrder): FeedsSignatureOrderAmino {
+    const obj: any = {};
+    if (message.signalIds) {
+      obj.signal_ids = message.signalIds.map(e => e);
+    } else {
+      obj.signal_ids = message.signalIds;
+    }
+    obj.encoder = message.encoder === 0 ? undefined : message.encoder;
+    return obj;
+  },
+  fromAminoMsg(object: FeedsSignatureOrderAminoMsg): FeedsSignatureOrder {
+    return FeedsSignatureOrder.fromAmino(object.value);
+  },
+  fromProtoMsg(message: FeedsSignatureOrderProtoMsg): FeedsSignatureOrder {
+    return FeedsSignatureOrder.decode(message.value);
+  },
+  toProto(message: FeedsSignatureOrder): Uint8Array {
+    return FeedsSignatureOrder.encode(message).finish();
+  },
+  toProtoMsg(message: FeedsSignatureOrder): FeedsSignatureOrderProtoMsg {
+    return {
+      typeUrl: "/band.feeds.v1beta1.FeedsSignatureOrder",
+      value: FeedsSignatureOrder.encode(message).finish()
     };
   }
 };

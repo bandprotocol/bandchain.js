@@ -10,6 +10,11 @@ export const createLCDClient = async ({
   });
   return {
     band: {
+      bandtss: {
+        v1beta1: new (await import("./bandtss/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       base: {
         node: {
           v1: new (await import("./base/node/v1/query.lcd")).LCDQueryClient({
@@ -39,6 +44,16 @@ export const createLCDClient = async ({
       },
       restake: {
         v1beta1: new (await import("./restake/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      tss: {
+        v1beta1: new (await import("./tss/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      tunnel: {
+        v1beta1: new (await import("./tunnel/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
         })
       }
