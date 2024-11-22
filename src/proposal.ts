@@ -1,17 +1,16 @@
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
-import { CommunityPoolSpendProposal as CommunityPoolSpendProposalPb } from '../proto/cosmos/distribution/v1beta1/distribution_pb'
-import { TextProposal as TextProposalPb } from '../proto/cosmos/gov/v1beta1/gov_pb'
+import { CommunityPoolSpendProposal as CommunityPoolSpendProposalPb } from '../codegen/cosmos/distribution/v1beta1/distribution_pb'
+import { TextProposal as TextProposalPb } from '../codegen/cosmos/gov/v1beta1/gov_pb'
 import {
   ParamChange,
   ParameterChangeProposal as ParameterChangeProposalPb,
-} from '../proto/cosmos/params/v1beta1/params_pb'
+} from '../codegen/cosmos/params/v1beta1/params_pb'
 import {
   CancelSoftwareUpgradeProposal as CancelSoftwareUpgradeProposalPb,
   Plan,
   SoftwareUpgradeProposal as SoftwareUpgradeProposalPb,
-} from '../proto/cosmos/upgrade/v1beta1/upgrade_pb'
-import { VetoProposal as VetoProposalPb } from '../proto/council/v1beta1/types_pb'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+} from '../codegen/cosmos/upgrade/v1beta1/upgrade_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
 import { BaseMsg } from 'message'
 
 export class TextProposal extends TextProposalPb implements BaseMsg {
@@ -181,30 +180,6 @@ export class CancelSoftwareUpgradeProposal
   }
 }
 
-export class VetoProposal extends VetoProposalPb implements BaseMsg {
-  constructor(proposalId: number, description: string) {
-    super()
-    this.setProposalId(proposalId)
-    this.setDescription(description)
-  }
-
-  toAny() {
-    const any = new Any()
-    any.pack(this.serializeBinary(), 'council.v1beta1.VetoProposal', '/')
-    return any
-  }
-
-  toJSON(): object {
-    return {
-      type: 'council/VetoProposal',
-      value: {
-        proposal_id: this.getProposalId().toString(),
-        description: this.getDescription().toString(),
-      },
-    }
-  }
-}
-
 export namespace Proposal {
   export type Content =
     | TextProposal
@@ -212,5 +187,4 @@ export namespace Proposal {
     | ParameterChangeProposal
     | SoftwareUpgradeProposal
     | CancelSoftwareUpgradeProposal
-    | VetoProposal
 }

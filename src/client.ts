@@ -4,11 +4,11 @@ import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport'
 import { NotFoundError, NotIntegerError, ValueError } from './error'
 import { ReferenceData } from './data'
 
-import { QueryClient } from '../proto/oracle/v1/query_pb_service'
-import { ServiceClient } from '../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
-import { QueryClient as AuthQueryClient } from '../proto/cosmos/auth/v1beta1/query_pb_service'
-import { ServiceClient as TxServiceClient } from '../proto/cosmos/tx/v1beta1/service_pb_service'
-import { QueryClient as QueryAllBalances } from '../proto/cosmos/bank/v1beta1/query_pb_service'
+import { QueryClient } from '../codegen/band/oracle/v1/query_pb_service'
+import { ServiceClient } from '../codegen/cosmos/base/tendermint/v1beta1/query_pb_service'
+import { QueryClient as AuthQueryClient } from '../codegen/cosmos/auth/v1beta1/query_pb_service'
+import { ServiceClient as TxServiceClient } from '../codegen/cosmos/tx/v1beta1/service_pb_service'
+import { QueryClient as QueryAllBalances } from '../codegen/cosmos/bank/v1beta1/query_pb_service'
 
 import {
   QueryDataSourceRequest,
@@ -18,26 +18,26 @@ import {
   QueryReportersRequest,
   QueryRequestPriceRequest,
   QueryRequestSearchRequest,
-} from '../proto/oracle/v1/query_pb'
+} from '../codegen/band/oracle/v1/query_pb'
 
 import {
   GetLatestBlockRequest,
   GetLatestBlockResponse,
-} from '../proto/cosmos/base/tendermint/v1beta1/query_pb'
-import { QueryAccountRequest } from '../proto/cosmos/auth/v1beta1/query_pb'
-import { GetTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
-import { BroadcastTxRequest } from '../proto/cosmos/tx/v1beta1/service_pb'
-import { TxResponse } from '../proto/cosmos/base/abci/v1beta1/abci_pb'
+} from '../codegen/cosmos/base/tendermint/v1beta1/query_pb'
+import { QueryAccountRequest } from '../codegen/cosmos/auth/v1beta1/query_pb'
+import { GetTxRequest } from '../codegen/cosmos/tx/v1beta1/service_pb'
+import { BroadcastTxRequest } from '../codegen/cosmos/tx/v1beta1/service_pb'
+import { TxResponse } from '../codegen/cosmos/base/abci/v1beta1/abci_pb'
 
 import {
   DataSource,
   OracleScript,
   PriceResult,
-} from '../proto/oracle/v1/oracle_pb'
-import { BaseAccount } from '../proto/cosmos/auth/v1beta1/auth_pb'
+} from '../codegen/band/oracle/v1/oracle_pb'
+import { BaseAccount } from '../codegen/cosmos/auth/v1beta1/auth_pb'
 
-import { QueryAllBalancesRequest } from '../proto/cosmos/bank/v1beta1/query_pb'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+import { QueryAllBalancesRequest } from '../codegen/cosmos/bank/v1beta1/query_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
 
 export default class Client {
   queryClient: QueryClient

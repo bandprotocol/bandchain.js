@@ -9,62 +9,57 @@ import {
   ValueTooLargeError,
 } from './error'
 
-import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
-import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../proto/cosmos/distribution/v1beta1/tx_pb'
+import { MsgSend as MsgSendProto } from '../codegen/cosmos/bank/v1beta1/tx_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
+import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../codegen/cosmos/distribution/v1beta1/tx_pb'
 import {
   Deposit as MsgDepositProto,
   Vote as MsgVoteProto,
   VoteOption,
   VoteOptionMap,
-} from '../proto/cosmos/gov/v1beta1/gov_pb'
+} from '../codegen/cosmos/gov/v1beta1/gov_pb'
 
 import {
   MsgVote as MsgVoteGroupProto,
   ExecMap as GroupExecMap,
-} from '../proto/cosmos/group/v1/tx_pb'
+} from '../codegen/cosmos/group/v1/tx_pb'
 
 import {
   VoteOption as VoteOptionGroup,
   VoteOptionMap as VoteOptionGroupMap,
-} from '../proto/cosmos/group/v1/types_pb'
+} from '../codegen/cosmos/group/v1/types_pb'
 
 import {
   MsgBeginRedelegate as MsgBeginRedelegateProto,
   MsgDelegate as MsgDelegateProto,
   MsgUndelegate as MsgUndelegateProto,
-} from '../proto/cosmos/staking/v1beta1/tx_pb'
-import { MsgVote as MsgVoteCouncilProto } from '../proto/council/v1beta1/tx_pb'
-import {
-  VoteOption as VoteOptionCouncil,
-  VoteOptionMap as VoteOptionMapCouncil,
-} from '../proto/council/v1beta1/types_pb'
-import { MsgTransfer as MsgTransferProto } from '../proto/ibc/applications/transfer/v1/tx_pb'
+} from '../codegen/cosmos/staking/v1beta1/tx_pb'
+
+import { MsgTransfer as MsgTransferProto } from '../codegen/ibc/applications/transfer/v1/tx_pb'
 import {
   MsgCreateDataSource as MsgCreateDataSourceProto,
   MsgCreateOracleScript as MsgCreateOracleScriptProto,
   MsgEditDataSource as MsgEditDataSourceProto,
   MsgEditOracleScript as MsgEditOracleScriptProto,
   MsgRequestData as MsgRequestDataProto,
-} from '../proto/oracle/v1/tx_pb'
+} from '../codegen/band/oracle/v1/tx_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
-import { MsgSubmitProposal as MsgSubmitProposalProto } from '../proto/cosmos/gov/v1beta1/tx_pb'
-import { MsgSubmitProposal as MsgSubmitCouncilProposalProto } from '../proto/council/v1beta1/tx_pb'
-import { CouncilType, CouncilTypeMap } from '../proto/council/v1beta1/types_pb'
+import { MsgSubmitProposal as MsgSubmitProposalProto } from '../codegen/cosmos/gov/v1beta1/tx_pb'
+
 import { Proposal } from 'proposal'
 import {
-  MsgSubmitSignals as MsgSubmitSignalsProto,
+  MsgVote as MsgVoteSignalProto,
   MsgSubmitSignalPrices as MsgSubmitSignalPricesProto,
   MsgUpdateReferenceSourceConfig as MsgUpdateReferenceSourceConfigProto,
   MsgUpdateParams as MsgUpdateParamsProto,
-} from '../proto/feeds/v1beta1/tx_pb'
+} from '../codegen/band/feeds/v1beta1/tx_pb'
 import {
   ReferenceSourceConfig,
   Signal,
   SignalPrice,
-} from '../proto/feeds/v1beta1/feeds_pb'
-import { Params } from '../proto/feeds/v1beta1/params_pb'
+} from '../codegen/band/feeds/v1beta1/feeds_pb'
+import { Params } from '../codegen/band/feeds/v1beta1/params_pb'
 import { bech32 } from 'bech32'
 
 export interface BaseMsg extends JSPBMesage {
@@ -779,115 +774,6 @@ export class MsgSubmitProposal
   }
 }
 
-export class MsgSubmitCouncilProposal
-  extends MsgSubmitCouncilProposalProto
-  implements BaseMsg
-{
-  constructor(
-    title: string,
-    council: CouncilTypeMap[keyof CouncilTypeMap],
-    proposer: string,
-    public messagesList: Array<BaseMsg>,
-    metadata: string,
-  ) {
-    super()
-    this.setTitle(title)
-    this.setCouncil(council)
-    this.setMessagesList(
-      messagesList.map((msg) => {
-        return msg.toAny()
-      }),
-    )
-    this.setProposer(proposer)
-    this.setMetadata(metadata)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'council.v1beta1.MsgSubmitProposal'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    const { messagesList } = this
-    return {
-      type: 'council/MsgSubmitProposal',
-      value: {
-        title: this.getTitle().toString(),
-        council: this.getCouncil().toString(),
-        messages: messagesList.map((msg: BaseMsg) => msg.toJSON()),
-        metadata: this.getMetadata().toString(),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getCouncil() == CouncilType.COUNCIL_TYPE_UNSPECIFIED) {
-      throw new ValueError('council should not be COUNCIL_TYPE_UNSPECIFIED')
-    }
-    if (this.getTitle() === '') {
-      throw new ValueError('title should not be an empty string')
-    }
-    if (this.getMessagesList().length === 0) {
-      throw new ValueError('messages should not be an empty string')
-    }
-    if (this.getMetadata() === '') {
-      throw new ValueError('metadata should not be an empty string')
-    }
-    if (this.getProposer() === '') {
-      throw new ValueError('proposer should not be an empty string')
-    }
-  }
-}
-
-export class MsgVoteCouncil extends MsgVoteCouncilProto implements BaseMsg {
-  constructor(
-    proposalId: number,
-    voter: string,
-    option: VoteOptionMapCouncil[keyof VoteOptionMapCouncil],
-  ) {
-    super()
-    this.setProposalId(proposalId)
-    this.setVoter(voter)
-    this.setOption(option)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'council.v1beta1.MsgVote'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    return {
-      type: 'council/MsgVote',
-      value: {
-        proposal_id: this.getProposalId().toString(),
-        voter: this.getVoter().toString(),
-        option: this.getOption().toString(),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getProposalId() <= 0) {
-      throw new NegativeIntegerError('proposalId cannot be less than zero')
-    }
-    if (this.getVoter() === '') {
-      throw new ValueError('Address should not be an empty string')
-    }
-    if (this.getOption() === VoteOptionCouncil.VOTE_OPTION_UNSPECIFIED) {
-      throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
-    }
-  }
-}
-
 export class MsgDeposit extends MsgDepositProto implements BaseMsg {
   constructor(proposalId: number, depositor: string, amountList: Coin[]) {
     super()
@@ -983,10 +869,10 @@ export class MsgVoteGroup extends MsgVoteGroupProto implements BaseMsg {
   }
 }
 
-export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
-  constructor(delegator: string, signals: Signal[]) {
+export class MsgVoteSignal extends MsgVoteSignalProto implements BaseMsg {
+  constructor(voter: string, signals: Signal[]) {
     super()
-    this.setDelegator(delegator)
+    this.setVoter(voter)
     this.setSignalsList(signals)
   }
 
@@ -994,24 +880,24 @@ export class MsgSubmitSignals extends MsgSubmitSignalsProto implements BaseMsg {
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgSubmitSignals'
+    const name = 'band.feeds.v1beta1.MsgVote'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
 
   toJSON(): object {
     return {
-      type: 'feeds.v1beta1.MsgSubmitSignals',
+      type: 'feeds/MsgVote',
       value: {
-        delegator_address: this.getDelegator(),
-        amount: this.getSignalsList(),
+        voter: this.getVoter(),
+        signalsList: this.getSignalsList(),
       },
     }
   }
 
   validate() {
-    if (this.getDelegator() === '') {
-      throw new ValueError('Delegator address should not be an empty string')
+    if (this.getVoter() === '') {
+      throw new ValueError('Voter address should not be an empty string')
     }
   }
 }
@@ -1024,25 +910,25 @@ export class MsgSubmitSignalPrices
     super()
     this.setValidator(validator)
     this.setTimestamp(timestamp)
-    this.setPricesList(pricesList)
+    this.setSignalPricesList(pricesList)
   }
 
   toAny(): Any {
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgSubmitSignalPrices'
+    const name = 'band.feeds.v1beta1.MsgSubmitSignalPrices'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
 
   toJSON(): object {
     return {
-      type: 'feeds.v1beta1.MsgSubmitSignalPrices',
+      type: 'feeds/MsgSubmitSignalPrices',
       value: {
         validator: this.getValidator(),
         timestamp: this.getTimestamp(),
-        pricesList: this.getPricesList(),
+        signalPricesList: this.getSignalPricesList(),
       },
     }
   }
