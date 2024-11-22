@@ -15,8 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
-var cometbft_abci_v1_types_pb = require('../../../../cometbft/abci/v1/types_pb.js');
-goog.object.extend(proto, cometbft_abci_v1_types_pb);
+var tendermint_abci_types_pb = require('../../../../tendermint/abci/types_pb.js');
+goog.object.extend(proto, tendermint_abci_types_pb);
 var cosmos_store_v1beta1_listening_pb = require('../../../../cosmos/store/v1beta1/listening_pb.js');
 goog.object.extend(proto, cosmos_store_v1beta1_listening_pb);
 goog.exportSymbol('proto.cosmos.store.streaming.abci.ListenCommitRequest', null, global);
@@ -139,8 +139,8 @@ proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.prototype.toObject 
  */
 proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    req: (f = msg.getReq()) && cometbft_abci_v1_types_pb.FinalizeBlockRequest.toObject(includeInstance, f),
-    res: (f = msg.getRes()) && cometbft_abci_v1_types_pb.FinalizeBlockResponse.toObject(includeInstance, f)
+    req: (f = msg.getReq()) && tendermint_abci_types_pb.RequestFinalizeBlock.toObject(includeInstance, f),
+    res: (f = msg.getRes()) && tendermint_abci_types_pb.ResponseFinalizeBlock.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -178,13 +178,13 @@ proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.deserializeBinaryFr
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new cometbft_abci_v1_types_pb.FinalizeBlockRequest;
-      reader.readMessage(value,cometbft_abci_v1_types_pb.FinalizeBlockRequest.deserializeBinaryFromReader);
+      var value = new tendermint_abci_types_pb.RequestFinalizeBlock;
+      reader.readMessage(value,tendermint_abci_types_pb.RequestFinalizeBlock.deserializeBinaryFromReader);
       msg.setReq(value);
       break;
     case 2:
-      var value = new cometbft_abci_v1_types_pb.FinalizeBlockResponse;
-      reader.readMessage(value,cometbft_abci_v1_types_pb.FinalizeBlockResponse.deserializeBinaryFromReader);
+      var value = new tendermint_abci_types_pb.ResponseFinalizeBlock;
+      reader.readMessage(value,tendermint_abci_types_pb.ResponseFinalizeBlock.deserializeBinaryFromReader);
       msg.setRes(value);
       break;
     default:
@@ -221,7 +221,7 @@ proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.serializeBinaryToWr
     writer.writeMessage(
       1,
       f,
-      cometbft_abci_v1_types_pb.FinalizeBlockRequest.serializeBinaryToWriter
+      tendermint_abci_types_pb.RequestFinalizeBlock.serializeBinaryToWriter
     );
   }
   f = message.getRes();
@@ -229,24 +229,24 @@ proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.serializeBinaryToWr
     writer.writeMessage(
       2,
       f,
-      cometbft_abci_v1_types_pb.FinalizeBlockResponse.serializeBinaryToWriter
+      tendermint_abci_types_pb.ResponseFinalizeBlock.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional cometbft.abci.v1.FinalizeBlockRequest req = 1;
- * @return {?proto.cometbft.abci.v1.FinalizeBlockRequest}
+ * optional tendermint.abci.RequestFinalizeBlock req = 1;
+ * @return {?proto.tendermint.abci.RequestFinalizeBlock}
  */
 proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.prototype.getReq = function() {
-  return /** @type{?proto.cometbft.abci.v1.FinalizeBlockRequest} */ (
-    jspb.Message.getWrapperField(this, cometbft_abci_v1_types_pb.FinalizeBlockRequest, 1));
+  return /** @type{?proto.tendermint.abci.RequestFinalizeBlock} */ (
+    jspb.Message.getWrapperField(this, tendermint_abci_types_pb.RequestFinalizeBlock, 1));
 };
 
 
 /**
- * @param {?proto.cometbft.abci.v1.FinalizeBlockRequest|undefined} value
+ * @param {?proto.tendermint.abci.RequestFinalizeBlock|undefined} value
  * @return {!proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest} returns this
 */
 proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.prototype.setReq = function(value) {
@@ -273,17 +273,17 @@ proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.prototype.hasReq = 
 
 
 /**
- * optional cometbft.abci.v1.FinalizeBlockResponse res = 2;
- * @return {?proto.cometbft.abci.v1.FinalizeBlockResponse}
+ * optional tendermint.abci.ResponseFinalizeBlock res = 2;
+ * @return {?proto.tendermint.abci.ResponseFinalizeBlock}
  */
 proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.prototype.getRes = function() {
-  return /** @type{?proto.cometbft.abci.v1.FinalizeBlockResponse} */ (
-    jspb.Message.getWrapperField(this, cometbft_abci_v1_types_pb.FinalizeBlockResponse, 2));
+  return /** @type{?proto.tendermint.abci.ResponseFinalizeBlock} */ (
+    jspb.Message.getWrapperField(this, tendermint_abci_types_pb.ResponseFinalizeBlock, 2));
 };
 
 
 /**
- * @param {?proto.cometbft.abci.v1.FinalizeBlockResponse|undefined} value
+ * @param {?proto.tendermint.abci.ResponseFinalizeBlock|undefined} value
  * @return {!proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest} returns this
 */
 proto.cosmos.store.streaming.abci.ListenFinalizeBlockRequest.prototype.setRes = function(value) {
@@ -450,7 +450,7 @@ proto.cosmos.store.streaming.abci.ListenCommitRequest.prototype.toObject = funct
 proto.cosmos.store.streaming.abci.ListenCommitRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     blockHeight: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    res: (f = msg.getRes()) && cometbft_abci_v1_types_pb.CommitResponse.toObject(includeInstance, f),
+    res: (f = msg.getRes()) && tendermint_abci_types_pb.ResponseCommit.toObject(includeInstance, f),
     changeSetList: jspb.Message.toObjectList(msg.getChangeSetList(),
     cosmos_store_v1beta1_listening_pb.StoreKVPair.toObject, includeInstance)
   };
@@ -494,8 +494,8 @@ proto.cosmos.store.streaming.abci.ListenCommitRequest.deserializeBinaryFromReade
       msg.setBlockHeight(value);
       break;
     case 2:
-      var value = new cometbft_abci_v1_types_pb.CommitResponse;
-      reader.readMessage(value,cometbft_abci_v1_types_pb.CommitResponse.deserializeBinaryFromReader);
+      var value = new tendermint_abci_types_pb.ResponseCommit;
+      reader.readMessage(value,tendermint_abci_types_pb.ResponseCommit.deserializeBinaryFromReader);
       msg.setRes(value);
       break;
     case 3:
@@ -544,7 +544,7 @@ proto.cosmos.store.streaming.abci.ListenCommitRequest.serializeBinaryToWriter = 
     writer.writeMessage(
       2,
       f,
-      cometbft_abci_v1_types_pb.CommitResponse.serializeBinaryToWriter
+      tendermint_abci_types_pb.ResponseCommit.serializeBinaryToWriter
     );
   }
   f = message.getChangeSetList();
@@ -577,17 +577,17 @@ proto.cosmos.store.streaming.abci.ListenCommitRequest.prototype.setBlockHeight =
 
 
 /**
- * optional cometbft.abci.v1.CommitResponse res = 2;
- * @return {?proto.cometbft.abci.v1.CommitResponse}
+ * optional tendermint.abci.ResponseCommit res = 2;
+ * @return {?proto.tendermint.abci.ResponseCommit}
  */
 proto.cosmos.store.streaming.abci.ListenCommitRequest.prototype.getRes = function() {
-  return /** @type{?proto.cometbft.abci.v1.CommitResponse} */ (
-    jspb.Message.getWrapperField(this, cometbft_abci_v1_types_pb.CommitResponse, 2));
+  return /** @type{?proto.tendermint.abci.ResponseCommit} */ (
+    jspb.Message.getWrapperField(this, tendermint_abci_types_pb.ResponseCommit, 2));
 };
 
 
 /**
- * @param {?proto.cometbft.abci.v1.CommitResponse|undefined} value
+ * @param {?proto.tendermint.abci.ResponseCommit|undefined} value
  * @return {!proto.cosmos.store.streaming.abci.ListenCommitRequest} returns this
 */
 proto.cosmos.store.streaming.abci.ListenCommitRequest.prototype.setRes = function(value) {

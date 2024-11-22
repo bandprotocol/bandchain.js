@@ -23,12 +23,10 @@ var cosmos_tx_v1beta1_tx_pb = require('../../../cosmos/tx/v1beta1/tx_pb.js');
 goog.object.extend(proto, cosmos_tx_v1beta1_tx_pb);
 var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
 goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
-var cometbft_types_v1_block_pb = require('../../../cometbft/types/v1/block_pb.js');
-goog.object.extend(proto, cometbft_types_v1_block_pb);
-var cometbft_types_v1_types_pb = require('../../../cometbft/types/v1/types_pb.js');
-goog.object.extend(proto, cometbft_types_v1_types_pb);
-var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
+var tendermint_types_block_pb = require('../../../tendermint/types/block_pb.js');
+goog.object.extend(proto, tendermint_types_block_pb);
+var tendermint_types_types_pb = require('../../../tendermint/types/types_pb.js');
+goog.object.extend(proto, tendermint_types_types_pb);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastMode', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastTxRequest', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastTxResponse', null, global);
@@ -2344,8 +2342,8 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.toObject = function(includeInsta
   var f, obj = {
     txsList: jspb.Message.toObjectList(msg.getTxsList(),
     cosmos_tx_v1beta1_tx_pb.Tx.toObject, includeInstance),
-    blockId: (f = msg.getBlockId()) && cometbft_types_v1_types_pb.BlockID.toObject(includeInstance, f),
-    block: (f = msg.getBlock()) && cometbft_types_v1_block_pb.Block.toObject(includeInstance, f),
+    blockId: (f = msg.getBlockId()) && tendermint_types_types_pb.BlockID.toObject(includeInstance, f),
+    block: (f = msg.getBlock()) && tendermint_types_block_pb.Block.toObject(includeInstance, f),
     pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
   };
 
@@ -2389,13 +2387,13 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinaryFromReader = fu
       msg.addTxs(value);
       break;
     case 2:
-      var value = new cometbft_types_v1_types_pb.BlockID;
-      reader.readMessage(value,cometbft_types_v1_types_pb.BlockID.deserializeBinaryFromReader);
+      var value = new tendermint_types_types_pb.BlockID;
+      reader.readMessage(value,tendermint_types_types_pb.BlockID.deserializeBinaryFromReader);
       msg.setBlockId(value);
       break;
     case 3:
-      var value = new cometbft_types_v1_block_pb.Block;
-      reader.readMessage(value,cometbft_types_v1_block_pb.Block.deserializeBinaryFromReader);
+      var value = new tendermint_types_block_pb.Block;
+      reader.readMessage(value,tendermint_types_block_pb.Block.deserializeBinaryFromReader);
       msg.setBlock(value);
       break;
     case 4:
@@ -2445,7 +2443,7 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.serializeBinaryToWriter = functi
     writer.writeMessage(
       2,
       f,
-      cometbft_types_v1_types_pb.BlockID.serializeBinaryToWriter
+      tendermint_types_types_pb.BlockID.serializeBinaryToWriter
     );
   }
   f = message.getBlock();
@@ -2453,7 +2451,7 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.serializeBinaryToWriter = functi
     writer.writeMessage(
       3,
       f,
-      cometbft_types_v1_block_pb.Block.serializeBinaryToWriter
+      tendermint_types_block_pb.Block.serializeBinaryToWriter
     );
   }
   f = message.getPagination();
@@ -2506,17 +2504,17 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearTxsList = functio
 
 
 /**
- * optional cometbft.types.v1.BlockID block_id = 2;
- * @return {?proto.cometbft.types.v1.BlockID}
+ * optional tendermint.types.BlockID block_id = 2;
+ * @return {?proto.tendermint.types.BlockID}
  */
 proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getBlockId = function() {
-  return /** @type{?proto.cometbft.types.v1.BlockID} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_types_pb.BlockID, 2));
+  return /** @type{?proto.tendermint.types.BlockID} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_types_pb.BlockID, 2));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.BlockID|undefined} value
+ * @param {?proto.tendermint.types.BlockID|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
 */
 proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setBlockId = function(value) {
@@ -2543,17 +2541,17 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasBlockId = function(
 
 
 /**
- * optional cometbft.types.v1.Block block = 3;
- * @return {?proto.cometbft.types.v1.Block}
+ * optional tendermint.types.Block block = 3;
+ * @return {?proto.tendermint.types.Block}
  */
 proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getBlock = function() {
-  return /** @type{?proto.cometbft.types.v1.Block} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_block_pb.Block, 3));
+  return /** @type{?proto.tendermint.types.Block} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_block_pb.Block, 3));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.Block|undefined} value
+ * @param {?proto.tendermint.types.Block|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
 */
 proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setBlock = function(value) {

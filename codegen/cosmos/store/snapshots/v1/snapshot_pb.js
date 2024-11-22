@@ -17,8 +17,6 @@ var global = (function() { return this || window || global || self || Function('
 
 var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
-var cosmos_proto_cosmos_pb = require('../../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
 goog.exportSymbol('proto.cosmos.store.snapshots.v1.Metadata', null, global);
 goog.exportSymbol('proto.cosmos.store.snapshots.v1.Snapshot', null, global);
 goog.exportSymbol('proto.cosmos.store.snapshots.v1.SnapshotExtensionMeta', null, global);

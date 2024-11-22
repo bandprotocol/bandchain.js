@@ -15,28 +15,26 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
-var amino_amino_pb = require('../../../../amino/amino_pb.js');
-goog.object.extend(proto, amino_amino_pb);
-var cometbft_crypto_v1_proof_pb = require('../../../../cometbft/crypto/v1/proof_pb.js');
-goog.object.extend(proto, cometbft_crypto_v1_proof_pb);
-var cometbft_p2p_v1_types_pb = require('../../../../cometbft/p2p/v1/types_pb.js');
-goog.object.extend(proto, cometbft_p2p_v1_types_pb);
-var cometbft_types_v1_block_pb = require('../../../../cometbft/types/v1/block_pb.js');
-goog.object.extend(proto, cometbft_types_v1_block_pb);
-var cometbft_types_v1_types_pb = require('../../../../cometbft/types/v1/types_pb.js');
-goog.object.extend(proto, cometbft_types_v1_types_pb);
+var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
+goog.object.extend(proto, gogoproto_gogo_pb);
+var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
+goog.object.extend(proto, google_protobuf_any_pb);
+var google_api_annotations_pb = require('../../../../google/api/annotations_pb.js');
+goog.object.extend(proto, google_api_annotations_pb);
+var tendermint_p2p_types_pb = require('../../../../tendermint/p2p/types_pb.js');
+goog.object.extend(proto, tendermint_p2p_types_pb);
+var tendermint_types_types_pb = require('../../../../tendermint/types/types_pb.js');
+goog.object.extend(proto, tendermint_types_types_pb);
 var cosmos_base_query_v1beta1_pagination_pb = require('../../../../cosmos/base/query/v1beta1/pagination_pb.js');
 goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
 var cosmos_base_tendermint_v1beta1_types_pb = require('../../../../cosmos/base/tendermint/v1beta1/types_pb.js');
 goog.object.extend(proto, cosmos_base_tendermint_v1beta1_types_pb);
 var cosmos_proto_cosmos_pb = require('../../../../cosmos_proto/cosmos_pb.js');
 goog.object.extend(proto, cosmos_proto_cosmos_pb);
-var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
-var google_api_annotations_pb = require('../../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
+var tendermint_types_block_pb = require('../../../../tendermint/types/block_pb.js');
+goog.object.extend(proto, tendermint_types_block_pb);
+var amino_amino_pb = require('../../../../amino/amino_pb.js');
+goog.object.extend(proto, amino_amino_pb);
 goog.exportSymbol('proto.cosmos.base.tendermint.v1beta1.ABCIQueryRequest', null, global);
 goog.exportSymbol('proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse', null, global);
 goog.exportSymbol('proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightRequest', null, global);
@@ -1672,8 +1670,8 @@ proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.prototype.toObject
  */
 proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    blockId: (f = msg.getBlockId()) && cometbft_types_v1_types_pb.BlockID.toObject(includeInstance, f),
-    block: (f = msg.getBlock()) && cometbft_types_v1_block_pb.Block.toObject(includeInstance, f),
+    blockId: (f = msg.getBlockId()) && tendermint_types_types_pb.BlockID.toObject(includeInstance, f),
+    block: (f = msg.getBlock()) && tendermint_types_block_pb.Block.toObject(includeInstance, f),
     sdkBlock: (f = msg.getSdkBlock()) && cosmos_base_tendermint_v1beta1_types_pb.Block.toObject(includeInstance, f)
   };
 
@@ -1712,13 +1710,13 @@ proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.deserializeBinaryF
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new cometbft_types_v1_types_pb.BlockID;
-      reader.readMessage(value,cometbft_types_v1_types_pb.BlockID.deserializeBinaryFromReader);
+      var value = new tendermint_types_types_pb.BlockID;
+      reader.readMessage(value,tendermint_types_types_pb.BlockID.deserializeBinaryFromReader);
       msg.setBlockId(value);
       break;
     case 2:
-      var value = new cometbft_types_v1_block_pb.Block;
-      reader.readMessage(value,cometbft_types_v1_block_pb.Block.deserializeBinaryFromReader);
+      var value = new tendermint_types_block_pb.Block;
+      reader.readMessage(value,tendermint_types_block_pb.Block.deserializeBinaryFromReader);
       msg.setBlock(value);
       break;
     case 3:
@@ -1760,7 +1758,7 @@ proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.serializeBinaryToW
     writer.writeMessage(
       1,
       f,
-      cometbft_types_v1_types_pb.BlockID.serializeBinaryToWriter
+      tendermint_types_types_pb.BlockID.serializeBinaryToWriter
     );
   }
   f = message.getBlock();
@@ -1768,7 +1766,7 @@ proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.serializeBinaryToW
     writer.writeMessage(
       2,
       f,
-      cometbft_types_v1_block_pb.Block.serializeBinaryToWriter
+      tendermint_types_block_pb.Block.serializeBinaryToWriter
     );
   }
   f = message.getSdkBlock();
@@ -1783,17 +1781,17 @@ proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.serializeBinaryToW
 
 
 /**
- * optional cometbft.types.v1.BlockID block_id = 1;
- * @return {?proto.cometbft.types.v1.BlockID}
+ * optional tendermint.types.BlockID block_id = 1;
+ * @return {?proto.tendermint.types.BlockID}
  */
 proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.prototype.getBlockId = function() {
-  return /** @type{?proto.cometbft.types.v1.BlockID} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_types_pb.BlockID, 1));
+  return /** @type{?proto.tendermint.types.BlockID} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_types_pb.BlockID, 1));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.BlockID|undefined} value
+ * @param {?proto.tendermint.types.BlockID|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.prototype.setBlockId = function(value) {
@@ -1820,17 +1818,17 @@ proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.prototype.hasBlock
 
 
 /**
- * optional cometbft.types.v1.Block block = 2;
- * @return {?proto.cometbft.types.v1.Block}
+ * optional tendermint.types.Block block = 2;
+ * @return {?proto.tendermint.types.Block}
  */
 proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.prototype.getBlock = function() {
-  return /** @type{?proto.cometbft.types.v1.Block} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_block_pb.Block, 2));
+  return /** @type{?proto.tendermint.types.Block} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_block_pb.Block, 2));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.Block|undefined} value
+ * @param {?proto.tendermint.types.Block|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.GetBlockByHeightResponse.prototype.setBlock = function(value) {
@@ -2026,8 +2024,8 @@ proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.prototype.toObject =
  */
 proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    blockId: (f = msg.getBlockId()) && cometbft_types_v1_types_pb.BlockID.toObject(includeInstance, f),
-    block: (f = msg.getBlock()) && cometbft_types_v1_block_pb.Block.toObject(includeInstance, f),
+    blockId: (f = msg.getBlockId()) && tendermint_types_types_pb.BlockID.toObject(includeInstance, f),
+    block: (f = msg.getBlock()) && tendermint_types_block_pb.Block.toObject(includeInstance, f),
     sdkBlock: (f = msg.getSdkBlock()) && cosmos_base_tendermint_v1beta1_types_pb.Block.toObject(includeInstance, f)
   };
 
@@ -2066,13 +2064,13 @@ proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.deserializeBinaryFro
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new cometbft_types_v1_types_pb.BlockID;
-      reader.readMessage(value,cometbft_types_v1_types_pb.BlockID.deserializeBinaryFromReader);
+      var value = new tendermint_types_types_pb.BlockID;
+      reader.readMessage(value,tendermint_types_types_pb.BlockID.deserializeBinaryFromReader);
       msg.setBlockId(value);
       break;
     case 2:
-      var value = new cometbft_types_v1_block_pb.Block;
-      reader.readMessage(value,cometbft_types_v1_block_pb.Block.deserializeBinaryFromReader);
+      var value = new tendermint_types_block_pb.Block;
+      reader.readMessage(value,tendermint_types_block_pb.Block.deserializeBinaryFromReader);
       msg.setBlock(value);
       break;
     case 3:
@@ -2114,7 +2112,7 @@ proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.serializeBinaryToWri
     writer.writeMessage(
       1,
       f,
-      cometbft_types_v1_types_pb.BlockID.serializeBinaryToWriter
+      tendermint_types_types_pb.BlockID.serializeBinaryToWriter
     );
   }
   f = message.getBlock();
@@ -2122,7 +2120,7 @@ proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.serializeBinaryToWri
     writer.writeMessage(
       2,
       f,
-      cometbft_types_v1_block_pb.Block.serializeBinaryToWriter
+      tendermint_types_block_pb.Block.serializeBinaryToWriter
     );
   }
   f = message.getSdkBlock();
@@ -2137,17 +2135,17 @@ proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.serializeBinaryToWri
 
 
 /**
- * optional cometbft.types.v1.BlockID block_id = 1;
- * @return {?proto.cometbft.types.v1.BlockID}
+ * optional tendermint.types.BlockID block_id = 1;
+ * @return {?proto.tendermint.types.BlockID}
  */
 proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.prototype.getBlockId = function() {
-  return /** @type{?proto.cometbft.types.v1.BlockID} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_types_pb.BlockID, 1));
+  return /** @type{?proto.tendermint.types.BlockID} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_types_pb.BlockID, 1));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.BlockID|undefined} value
+ * @param {?proto.tendermint.types.BlockID|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.prototype.setBlockId = function(value) {
@@ -2174,17 +2172,17 @@ proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.prototype.hasBlockId
 
 
 /**
- * optional cometbft.types.v1.Block block = 2;
- * @return {?proto.cometbft.types.v1.Block}
+ * optional tendermint.types.Block block = 2;
+ * @return {?proto.tendermint.types.Block}
  */
 proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.prototype.getBlock = function() {
-  return /** @type{?proto.cometbft.types.v1.Block} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_block_pb.Block, 2));
+  return /** @type{?proto.tendermint.types.Block} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_block_pb.Block, 2));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.Block|undefined} value
+ * @param {?proto.tendermint.types.Block|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.GetLatestBlockResponse.prototype.setBlock = function(value) {
@@ -2611,7 +2609,7 @@ proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.prototype.toObject = fu
  */
 proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    defaultNodeInfo: (f = msg.getDefaultNodeInfo()) && cometbft_p2p_v1_types_pb.DefaultNodeInfo.toObject(includeInstance, f),
+    defaultNodeInfo: (f = msg.getDefaultNodeInfo()) && tendermint_p2p_types_pb.DefaultNodeInfo.toObject(includeInstance, f),
     applicationVersion: (f = msg.getApplicationVersion()) && proto.cosmos.base.tendermint.v1beta1.VersionInfo.toObject(includeInstance, f)
   };
 
@@ -2650,8 +2648,8 @@ proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.deserializeBinaryFromRe
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new cometbft_p2p_v1_types_pb.DefaultNodeInfo;
-      reader.readMessage(value,cometbft_p2p_v1_types_pb.DefaultNodeInfo.deserializeBinaryFromReader);
+      var value = new tendermint_p2p_types_pb.DefaultNodeInfo;
+      reader.readMessage(value,tendermint_p2p_types_pb.DefaultNodeInfo.deserializeBinaryFromReader);
       msg.setDefaultNodeInfo(value);
       break;
     case 2:
@@ -2693,7 +2691,7 @@ proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.serializeBinaryToWriter
     writer.writeMessage(
       1,
       f,
-      cometbft_p2p_v1_types_pb.DefaultNodeInfo.serializeBinaryToWriter
+      tendermint_p2p_types_pb.DefaultNodeInfo.serializeBinaryToWriter
     );
   }
   f = message.getApplicationVersion();
@@ -2708,17 +2706,17 @@ proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.serializeBinaryToWriter
 
 
 /**
- * optional cometbft.p2p.v1.DefaultNodeInfo default_node_info = 1;
- * @return {?proto.cometbft.p2p.v1.DefaultNodeInfo}
+ * optional tendermint.p2p.DefaultNodeInfo default_node_info = 1;
+ * @return {?proto.tendermint.p2p.DefaultNodeInfo}
  */
 proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.prototype.getDefaultNodeInfo = function() {
-  return /** @type{?proto.cometbft.p2p.v1.DefaultNodeInfo} */ (
-    jspb.Message.getWrapperField(this, cometbft_p2p_v1_types_pb.DefaultNodeInfo, 1));
+  return /** @type{?proto.tendermint.p2p.DefaultNodeInfo} */ (
+    jspb.Message.getWrapperField(this, tendermint_p2p_types_pb.DefaultNodeInfo, 1));
 };
 
 
 /**
- * @param {?proto.cometbft.p2p.v1.DefaultNodeInfo|undefined} value
+ * @param {?proto.tendermint.p2p.DefaultNodeInfo|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.GetNodeInfoResponse.prototype.setDefaultNodeInfo = function(value) {
@@ -3623,9 +3621,9 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.toObject = function(inclu
     index: jspb.Message.getFieldWithDefault(msg, 5, 0),
     key: msg.getKey_asB64(),
     value: msg.getValue_asB64(),
+    proofOps: (f = msg.getProofOps()) && proto.cosmos.base.tendermint.v1beta1.ProofOps.toObject(includeInstance, f),
     height: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    codespace: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    proofOps: (f = msg.getProofOps()) && cometbft_crypto_v1_proof_pb.ProofOps.toObject(includeInstance, f)
+    codespace: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -3686,6 +3684,11 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.deserializeBinaryFromRead
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setValue(value);
       break;
+    case 8:
+      var value = new proto.cosmos.base.tendermint.v1beta1.ProofOps;
+      reader.readMessage(value,proto.cosmos.base.tendermint.v1beta1.ProofOps.deserializeBinaryFromReader);
+      msg.setProofOps(value);
+      break;
     case 9:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setHeight(value);
@@ -3693,11 +3696,6 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.deserializeBinaryFromRead
     case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.setCodespace(value);
-      break;
-    case 11:
-      var value = new cometbft_crypto_v1_proof_pb.ProofOps;
-      reader.readMessage(value,cometbft_crypto_v1_proof_pb.ProofOps.deserializeBinaryFromReader);
-      msg.setProofOps(value);
       break;
     default:
       reader.skipField();
@@ -3770,6 +3768,14 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.serializeBinaryToWriter =
       f
     );
   }
+  f = message.getProofOps();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      proto.cosmos.base.tendermint.v1beta1.ProofOps.serializeBinaryToWriter
+    );
+  }
   f = message.getHeight();
   if (f !== 0) {
     writer.writeInt64(
@@ -3782,14 +3788,6 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.serializeBinaryToWriter =
     writer.writeString(
       10,
       f
-    );
-  }
-  f = message.getProofOps();
-  if (f != null) {
-    writer.writeMessage(
-      11,
-      f,
-      cometbft_crypto_v1_proof_pb.ProofOps.serializeBinaryToWriter
     );
   }
 };
@@ -3952,6 +3950,43 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.setValue = func
 
 
 /**
+ * optional ProofOps proof_ops = 8;
+ * @return {?proto.cosmos.base.tendermint.v1beta1.ProofOps}
+ */
+proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.getProofOps = function() {
+  return /** @type{?proto.cosmos.base.tendermint.v1beta1.ProofOps} */ (
+    jspb.Message.getWrapperField(this, proto.cosmos.base.tendermint.v1beta1.ProofOps, 8));
+};
+
+
+/**
+ * @param {?proto.cosmos.base.tendermint.v1beta1.ProofOps|undefined} value
+ * @return {!proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse} returns this
+*/
+proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.setProofOps = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse} returns this
+ */
+proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.clearProofOps = function() {
+  return this.setProofOps(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.hasProofOps = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
  * optional int64 height = 9;
  * @return {number}
  */
@@ -3984,43 +4019,6 @@ proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.getCodespace = 
  */
 proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.setCodespace = function(value) {
   return jspb.Message.setProto3StringField(this, 10, value);
-};
-
-
-/**
- * optional cometbft.crypto.v1.ProofOps proof_ops = 11;
- * @return {?proto.cometbft.crypto.v1.ProofOps}
- */
-proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.getProofOps = function() {
-  return /** @type{?proto.cometbft.crypto.v1.ProofOps} */ (
-    jspb.Message.getWrapperField(this, cometbft_crypto_v1_proof_pb.ProofOps, 11));
-};
-
-
-/**
- * @param {?proto.cometbft.crypto.v1.ProofOps|undefined} value
- * @return {!proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse} returns this
-*/
-proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.setProofOps = function(value) {
-  return jspb.Message.setWrapperField(this, 11, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse} returns this
- */
-proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.clearProofOps = function() {
-  return this.setProofOps(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.cosmos.base.tendermint.v1beta1.ABCIQueryResponse.prototype.hasProofOps = function() {
-  return jspb.Message.getField(this, 11) != null;
 };
 
 

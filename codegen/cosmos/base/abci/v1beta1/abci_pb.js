@@ -17,14 +17,12 @@ var global = (function() { return this || window || global || self || Function('
 
 var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
-var cometbft_abci_v1_types_pb = require('../../../../cometbft/abci/v1/types_pb.js');
-goog.object.extend(proto, cometbft_abci_v1_types_pb);
-var cometbft_types_v1_block_pb = require('../../../../cometbft/types/v1/block_pb.js');
-goog.object.extend(proto, cometbft_types_v1_block_pb);
+var tendermint_abci_types_pb = require('../../../../tendermint/abci/types_pb.js');
+goog.object.extend(proto, tendermint_abci_types_pb);
+var tendermint_types_block_pb = require('../../../../tendermint/types/block_pb.js');
+goog.object.extend(proto, tendermint_types_block_pb);
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 goog.object.extend(proto, google_protobuf_any_pb);
-var cosmos_proto_cosmos_pb = require('../../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
 goog.exportSymbol('proto.cosmos.base.abci.v1beta1.ABCIMessageLog', null, global);
 goog.exportSymbol('proto.cosmos.base.abci.v1beta1.Attribute', null, global);
 goog.exportSymbol('proto.cosmos.base.abci.v1beta1.GasInfo', null, global);
@@ -320,7 +318,7 @@ proto.cosmos.base.abci.v1beta1.TxResponse.toObject = function(includeInstance, m
     tx: (f = msg.getTx()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
     timestamp: jspb.Message.getFieldWithDefault(msg, 12, ""),
     eventsList: jspb.Message.toObjectList(msg.getEventsList(),
-    cometbft_abci_v1_types_pb.Event.toObject, includeInstance)
+    tendermint_abci_types_pb.Event.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -408,8 +406,8 @@ proto.cosmos.base.abci.v1beta1.TxResponse.deserializeBinaryFromReader = function
       msg.setTimestamp(value);
       break;
     case 13:
-      var value = new cometbft_abci_v1_types_pb.Event;
-      reader.readMessage(value,cometbft_abci_v1_types_pb.Event.deserializeBinaryFromReader);
+      var value = new tendermint_abci_types_pb.Event;
+      reader.readMessage(value,tendermint_abci_types_pb.Event.deserializeBinaryFromReader);
       msg.addEvents(value);
       break;
     default:
@@ -532,7 +530,7 @@ proto.cosmos.base.abci.v1beta1.TxResponse.serializeBinaryToWriter = function(mes
     writer.writeRepeatedMessage(
       13,
       f,
-      cometbft_abci_v1_types_pb.Event.serializeBinaryToWriter
+      tendermint_abci_types_pb.Event.serializeBinaryToWriter
     );
   }
 };
@@ -794,17 +792,17 @@ proto.cosmos.base.abci.v1beta1.TxResponse.prototype.setTimestamp = function(valu
 
 
 /**
- * repeated cometbft.abci.v1.Event events = 13;
- * @return {!Array<!proto.cometbft.abci.v1.Event>}
+ * repeated tendermint.abci.Event events = 13;
+ * @return {!Array<!proto.tendermint.abci.Event>}
  */
 proto.cosmos.base.abci.v1beta1.TxResponse.prototype.getEventsList = function() {
-  return /** @type{!Array<!proto.cometbft.abci.v1.Event>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cometbft_abci_v1_types_pb.Event, 13));
+  return /** @type{!Array<!proto.tendermint.abci.Event>} */ (
+    jspb.Message.getRepeatedWrapperField(this, tendermint_abci_types_pb.Event, 13));
 };
 
 
 /**
- * @param {!Array<!proto.cometbft.abci.v1.Event>} value
+ * @param {!Array<!proto.tendermint.abci.Event>} value
  * @return {!proto.cosmos.base.abci.v1beta1.TxResponse} returns this
 */
 proto.cosmos.base.abci.v1beta1.TxResponse.prototype.setEventsList = function(value) {
@@ -813,12 +811,12 @@ proto.cosmos.base.abci.v1beta1.TxResponse.prototype.setEventsList = function(val
 
 
 /**
- * @param {!proto.cometbft.abci.v1.Event=} opt_value
+ * @param {!proto.tendermint.abci.Event=} opt_value
  * @param {number=} opt_index
- * @return {!proto.cometbft.abci.v1.Event}
+ * @return {!proto.tendermint.abci.Event}
  */
 proto.cosmos.base.abci.v1beta1.TxResponse.prototype.addEvents = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 13, opt_value, proto.cometbft.abci.v1.Event, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 13, opt_value, proto.tendermint.abci.Event, opt_index);
 };
 
 
@@ -1603,7 +1601,7 @@ proto.cosmos.base.abci.v1beta1.Result.toObject = function(includeInstance, msg) 
     data: msg.getData_asB64(),
     log: jspb.Message.getFieldWithDefault(msg, 2, ""),
     eventsList: jspb.Message.toObjectList(msg.getEventsList(),
-    cometbft_abci_v1_types_pb.Event.toObject, includeInstance),
+    tendermint_abci_types_pb.Event.toObject, includeInstance),
     msgResponsesList: jspb.Message.toObjectList(msg.getMsgResponsesList(),
     google_protobuf_any_pb.Any.toObject, includeInstance)
   };
@@ -1651,8 +1649,8 @@ proto.cosmos.base.abci.v1beta1.Result.deserializeBinaryFromReader = function(msg
       msg.setLog(value);
       break;
     case 3:
-      var value = new cometbft_abci_v1_types_pb.Event;
-      reader.readMessage(value,cometbft_abci_v1_types_pb.Event.deserializeBinaryFromReader);
+      var value = new tendermint_abci_types_pb.Event;
+      reader.readMessage(value,tendermint_abci_types_pb.Event.deserializeBinaryFromReader);
       msg.addEvents(value);
       break;
     case 4:
@@ -1708,7 +1706,7 @@ proto.cosmos.base.abci.v1beta1.Result.serializeBinaryToWriter = function(message
     writer.writeRepeatedMessage(
       3,
       f,
-      cometbft_abci_v1_types_pb.Event.serializeBinaryToWriter
+      tendermint_abci_types_pb.Event.serializeBinaryToWriter
     );
   }
   f = message.getMsgResponsesList();
@@ -1783,17 +1781,17 @@ proto.cosmos.base.abci.v1beta1.Result.prototype.setLog = function(value) {
 
 
 /**
- * repeated cometbft.abci.v1.Event events = 3;
- * @return {!Array<!proto.cometbft.abci.v1.Event>}
+ * repeated tendermint.abci.Event events = 3;
+ * @return {!Array<!proto.tendermint.abci.Event>}
  */
 proto.cosmos.base.abci.v1beta1.Result.prototype.getEventsList = function() {
-  return /** @type{!Array<!proto.cometbft.abci.v1.Event>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cometbft_abci_v1_types_pb.Event, 3));
+  return /** @type{!Array<!proto.tendermint.abci.Event>} */ (
+    jspb.Message.getRepeatedWrapperField(this, tendermint_abci_types_pb.Event, 3));
 };
 
 
 /**
- * @param {!Array<!proto.cometbft.abci.v1.Event>} value
+ * @param {!Array<!proto.tendermint.abci.Event>} value
  * @return {!proto.cosmos.base.abci.v1beta1.Result} returns this
 */
 proto.cosmos.base.abci.v1beta1.Result.prototype.setEventsList = function(value) {
@@ -1802,12 +1800,12 @@ proto.cosmos.base.abci.v1beta1.Result.prototype.setEventsList = function(value) 
 
 
 /**
- * @param {!proto.cometbft.abci.v1.Event=} opt_value
+ * @param {!proto.tendermint.abci.Event=} opt_value
  * @param {number=} opt_index
- * @return {!proto.cometbft.abci.v1.Event}
+ * @return {!proto.tendermint.abci.Event}
  */
 proto.cosmos.base.abci.v1beta1.Result.prototype.addEvents = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.cometbft.abci.v1.Event, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.tendermint.abci.Event, opt_index);
 };
 
 
@@ -2812,7 +2810,7 @@ proto.cosmos.base.abci.v1beta1.SearchBlocksResult.toObject = function(includeIns
     pageTotal: jspb.Message.getFieldWithDefault(msg, 4, 0),
     limit: jspb.Message.getFieldWithDefault(msg, 5, 0),
     blocksList: jspb.Message.toObjectList(msg.getBlocksList(),
-    cometbft_types_v1_block_pb.Block.toObject, includeInstance)
+    tendermint_types_block_pb.Block.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2870,8 +2868,8 @@ proto.cosmos.base.abci.v1beta1.SearchBlocksResult.deserializeBinaryFromReader = 
       msg.setLimit(value);
       break;
     case 6:
-      var value = new cometbft_types_v1_block_pb.Block;
-      reader.readMessage(value,cometbft_types_v1_block_pb.Block.deserializeBinaryFromReader);
+      var value = new tendermint_types_block_pb.Block;
+      reader.readMessage(value,tendermint_types_block_pb.Block.deserializeBinaryFromReader);
       msg.addBlocks(value);
       break;
     default:
@@ -2943,7 +2941,7 @@ proto.cosmos.base.abci.v1beta1.SearchBlocksResult.serializeBinaryToWriter = func
     writer.writeRepeatedMessage(
       6,
       f,
-      cometbft_types_v1_block_pb.Block.serializeBinaryToWriter
+      tendermint_types_block_pb.Block.serializeBinaryToWriter
     );
   }
 };
@@ -3040,17 +3038,17 @@ proto.cosmos.base.abci.v1beta1.SearchBlocksResult.prototype.setLimit = function(
 
 
 /**
- * repeated cometbft.types.v1.Block blocks = 6;
- * @return {!Array<!proto.cometbft.types.v1.Block>}
+ * repeated tendermint.types.Block blocks = 6;
+ * @return {!Array<!proto.tendermint.types.Block>}
  */
 proto.cosmos.base.abci.v1beta1.SearchBlocksResult.prototype.getBlocksList = function() {
-  return /** @type{!Array<!proto.cometbft.types.v1.Block>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cometbft_types_v1_block_pb.Block, 6));
+  return /** @type{!Array<!proto.tendermint.types.Block>} */ (
+    jspb.Message.getRepeatedWrapperField(this, tendermint_types_block_pb.Block, 6));
 };
 
 
 /**
- * @param {!Array<!proto.cometbft.types.v1.Block>} value
+ * @param {!Array<!proto.tendermint.types.Block>} value
  * @return {!proto.cosmos.base.abci.v1beta1.SearchBlocksResult} returns this
 */
 proto.cosmos.base.abci.v1beta1.SearchBlocksResult.prototype.setBlocksList = function(value) {
@@ -3059,12 +3057,12 @@ proto.cosmos.base.abci.v1beta1.SearchBlocksResult.prototype.setBlocksList = func
 
 
 /**
- * @param {!proto.cometbft.types.v1.Block=} opt_value
+ * @param {!proto.tendermint.types.Block=} opt_value
  * @param {number=} opt_index
- * @return {!proto.cometbft.types.v1.Block}
+ * @return {!proto.tendermint.types.Block}
  */
 proto.cosmos.base.abci.v1beta1.SearchBlocksResult.prototype.addBlocks = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.cometbft.types.v1.Block, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.tendermint.types.Block, opt_index);
 };
 
 

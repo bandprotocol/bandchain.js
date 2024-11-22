@@ -17,12 +17,12 @@ var global = (function() { return this || window || global || self || Function('
 
 var gogoproto_gogo_pb = require('../../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
-var cometbft_types_v1_types_pb = require('../../../../cometbft/types/v1/types_pb.js');
-goog.object.extend(proto, cometbft_types_v1_types_pb);
-var cometbft_types_v1_evidence_pb = require('../../../../cometbft/types/v1/evidence_pb.js');
-goog.object.extend(proto, cometbft_types_v1_evidence_pb);
-var cometbft_version_v1_types_pb = require('../../../../cometbft/version/v1/types_pb.js');
-goog.object.extend(proto, cometbft_version_v1_types_pb);
+var tendermint_types_types_pb = require('../../../../tendermint/types/types_pb.js');
+goog.object.extend(proto, tendermint_types_types_pb);
+var tendermint_types_evidence_pb = require('../../../../tendermint/types/evidence_pb.js');
+goog.object.extend(proto, tendermint_types_evidence_pb);
+var tendermint_version_types_pb = require('../../../../tendermint/version/types_pb.js');
+goog.object.extend(proto, tendermint_version_types_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var amino_amino_pb = require('../../../../amino/amino_pb.js');
@@ -104,9 +104,9 @@ proto.cosmos.base.tendermint.v1beta1.Block.prototype.toObject = function(opt_inc
 proto.cosmos.base.tendermint.v1beta1.Block.toObject = function(includeInstance, msg) {
   var f, obj = {
     header: (f = msg.getHeader()) && proto.cosmos.base.tendermint.v1beta1.Header.toObject(includeInstance, f),
-    data: (f = msg.getData()) && cometbft_types_v1_types_pb.Data.toObject(includeInstance, f),
-    evidence: (f = msg.getEvidence()) && cometbft_types_v1_evidence_pb.EvidenceList.toObject(includeInstance, f),
-    lastCommit: (f = msg.getLastCommit()) && cometbft_types_v1_types_pb.Commit.toObject(includeInstance, f)
+    data: (f = msg.getData()) && tendermint_types_types_pb.Data.toObject(includeInstance, f),
+    evidence: (f = msg.getEvidence()) && tendermint_types_evidence_pb.EvidenceList.toObject(includeInstance, f),
+    lastCommit: (f = msg.getLastCommit()) && tendermint_types_types_pb.Commit.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -149,18 +149,18 @@ proto.cosmos.base.tendermint.v1beta1.Block.deserializeBinaryFromReader = functio
       msg.setHeader(value);
       break;
     case 2:
-      var value = new cometbft_types_v1_types_pb.Data;
-      reader.readMessage(value,cometbft_types_v1_types_pb.Data.deserializeBinaryFromReader);
+      var value = new tendermint_types_types_pb.Data;
+      reader.readMessage(value,tendermint_types_types_pb.Data.deserializeBinaryFromReader);
       msg.setData(value);
       break;
     case 3:
-      var value = new cometbft_types_v1_evidence_pb.EvidenceList;
-      reader.readMessage(value,cometbft_types_v1_evidence_pb.EvidenceList.deserializeBinaryFromReader);
+      var value = new tendermint_types_evidence_pb.EvidenceList;
+      reader.readMessage(value,tendermint_types_evidence_pb.EvidenceList.deserializeBinaryFromReader);
       msg.setEvidence(value);
       break;
     case 4:
-      var value = new cometbft_types_v1_types_pb.Commit;
-      reader.readMessage(value,cometbft_types_v1_types_pb.Commit.deserializeBinaryFromReader);
+      var value = new tendermint_types_types_pb.Commit;
+      reader.readMessage(value,tendermint_types_types_pb.Commit.deserializeBinaryFromReader);
       msg.setLastCommit(value);
       break;
     default:
@@ -205,7 +205,7 @@ proto.cosmos.base.tendermint.v1beta1.Block.serializeBinaryToWriter = function(me
     writer.writeMessage(
       2,
       f,
-      cometbft_types_v1_types_pb.Data.serializeBinaryToWriter
+      tendermint_types_types_pb.Data.serializeBinaryToWriter
     );
   }
   f = message.getEvidence();
@@ -213,7 +213,7 @@ proto.cosmos.base.tendermint.v1beta1.Block.serializeBinaryToWriter = function(me
     writer.writeMessage(
       3,
       f,
-      cometbft_types_v1_evidence_pb.EvidenceList.serializeBinaryToWriter
+      tendermint_types_evidence_pb.EvidenceList.serializeBinaryToWriter
     );
   }
   f = message.getLastCommit();
@@ -221,7 +221,7 @@ proto.cosmos.base.tendermint.v1beta1.Block.serializeBinaryToWriter = function(me
     writer.writeMessage(
       4,
       f,
-      cometbft_types_v1_types_pb.Commit.serializeBinaryToWriter
+      tendermint_types_types_pb.Commit.serializeBinaryToWriter
     );
   }
 };
@@ -265,17 +265,17 @@ proto.cosmos.base.tendermint.v1beta1.Block.prototype.hasHeader = function() {
 
 
 /**
- * optional cometbft.types.v1.Data data = 2;
- * @return {?proto.cometbft.types.v1.Data}
+ * optional tendermint.types.Data data = 2;
+ * @return {?proto.tendermint.types.Data}
  */
 proto.cosmos.base.tendermint.v1beta1.Block.prototype.getData = function() {
-  return /** @type{?proto.cometbft.types.v1.Data} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_types_pb.Data, 2));
+  return /** @type{?proto.tendermint.types.Data} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_types_pb.Data, 2));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.Data|undefined} value
+ * @param {?proto.tendermint.types.Data|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.Block} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.Block.prototype.setData = function(value) {
@@ -302,17 +302,17 @@ proto.cosmos.base.tendermint.v1beta1.Block.prototype.hasData = function() {
 
 
 /**
- * optional cometbft.types.v1.EvidenceList evidence = 3;
- * @return {?proto.cometbft.types.v1.EvidenceList}
+ * optional tendermint.types.EvidenceList evidence = 3;
+ * @return {?proto.tendermint.types.EvidenceList}
  */
 proto.cosmos.base.tendermint.v1beta1.Block.prototype.getEvidence = function() {
-  return /** @type{?proto.cometbft.types.v1.EvidenceList} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_evidence_pb.EvidenceList, 3));
+  return /** @type{?proto.tendermint.types.EvidenceList} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_evidence_pb.EvidenceList, 3));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.EvidenceList|undefined} value
+ * @param {?proto.tendermint.types.EvidenceList|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.Block} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.Block.prototype.setEvidence = function(value) {
@@ -339,17 +339,17 @@ proto.cosmos.base.tendermint.v1beta1.Block.prototype.hasEvidence = function() {
 
 
 /**
- * optional cometbft.types.v1.Commit last_commit = 4;
- * @return {?proto.cometbft.types.v1.Commit}
+ * optional tendermint.types.Commit last_commit = 4;
+ * @return {?proto.tendermint.types.Commit}
  */
 proto.cosmos.base.tendermint.v1beta1.Block.prototype.getLastCommit = function() {
-  return /** @type{?proto.cometbft.types.v1.Commit} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_types_pb.Commit, 4));
+  return /** @type{?proto.tendermint.types.Commit} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_types_pb.Commit, 4));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.Commit|undefined} value
+ * @param {?proto.tendermint.types.Commit|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.Block} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.Block.prototype.setLastCommit = function(value) {
@@ -407,11 +407,11 @@ proto.cosmos.base.tendermint.v1beta1.Header.prototype.toObject = function(opt_in
  */
 proto.cosmos.base.tendermint.v1beta1.Header.toObject = function(includeInstance, msg) {
   var f, obj = {
-    version: (f = msg.getVersion()) && cometbft_version_v1_types_pb.Consensus.toObject(includeInstance, f),
+    version: (f = msg.getVersion()) && tendermint_version_types_pb.Consensus.toObject(includeInstance, f),
     chainId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     height: jspb.Message.getFieldWithDefault(msg, 3, 0),
     time: (f = msg.getTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    lastBlockId: (f = msg.getLastBlockId()) && cometbft_types_v1_types_pb.BlockID.toObject(includeInstance, f),
+    lastBlockId: (f = msg.getLastBlockId()) && tendermint_types_types_pb.BlockID.toObject(includeInstance, f),
     lastCommitHash: msg.getLastCommitHash_asB64(),
     dataHash: msg.getDataHash_asB64(),
     validatorsHash: msg.getValidatorsHash_asB64(),
@@ -458,8 +458,8 @@ proto.cosmos.base.tendermint.v1beta1.Header.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new cometbft_version_v1_types_pb.Consensus;
-      reader.readMessage(value,cometbft_version_v1_types_pb.Consensus.deserializeBinaryFromReader);
+      var value = new tendermint_version_types_pb.Consensus;
+      reader.readMessage(value,tendermint_version_types_pb.Consensus.deserializeBinaryFromReader);
       msg.setVersion(value);
       break;
     case 2:
@@ -476,8 +476,8 @@ proto.cosmos.base.tendermint.v1beta1.Header.deserializeBinaryFromReader = functi
       msg.setTime(value);
       break;
     case 5:
-      var value = new cometbft_types_v1_types_pb.BlockID;
-      reader.readMessage(value,cometbft_types_v1_types_pb.BlockID.deserializeBinaryFromReader);
+      var value = new tendermint_types_types_pb.BlockID;
+      reader.readMessage(value,tendermint_types_types_pb.BlockID.deserializeBinaryFromReader);
       msg.setLastBlockId(value);
       break;
     case 6:
@@ -550,7 +550,7 @@ proto.cosmos.base.tendermint.v1beta1.Header.serializeBinaryToWriter = function(m
     writer.writeMessage(
       1,
       f,
-      cometbft_version_v1_types_pb.Consensus.serializeBinaryToWriter
+      tendermint_version_types_pb.Consensus.serializeBinaryToWriter
     );
   }
   f = message.getChainId();
@@ -580,7 +580,7 @@ proto.cosmos.base.tendermint.v1beta1.Header.serializeBinaryToWriter = function(m
     writer.writeMessage(
       5,
       f,
-      cometbft_types_v1_types_pb.BlockID.serializeBinaryToWriter
+      tendermint_types_types_pb.BlockID.serializeBinaryToWriter
     );
   }
   f = message.getLastCommitHash_asU8();
@@ -650,17 +650,17 @@ proto.cosmos.base.tendermint.v1beta1.Header.serializeBinaryToWriter = function(m
 
 
 /**
- * optional cometbft.version.v1.Consensus version = 1;
- * @return {?proto.cometbft.version.v1.Consensus}
+ * optional tendermint.version.Consensus version = 1;
+ * @return {?proto.tendermint.version.Consensus}
  */
 proto.cosmos.base.tendermint.v1beta1.Header.prototype.getVersion = function() {
-  return /** @type{?proto.cometbft.version.v1.Consensus} */ (
-    jspb.Message.getWrapperField(this, cometbft_version_v1_types_pb.Consensus, 1));
+  return /** @type{?proto.tendermint.version.Consensus} */ (
+    jspb.Message.getWrapperField(this, tendermint_version_types_pb.Consensus, 1));
 };
 
 
 /**
- * @param {?proto.cometbft.version.v1.Consensus|undefined} value
+ * @param {?proto.tendermint.version.Consensus|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.Header} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.Header.prototype.setVersion = function(value) {
@@ -760,17 +760,17 @@ proto.cosmos.base.tendermint.v1beta1.Header.prototype.hasTime = function() {
 
 
 /**
- * optional cometbft.types.v1.BlockID last_block_id = 5;
- * @return {?proto.cometbft.types.v1.BlockID}
+ * optional tendermint.types.BlockID last_block_id = 5;
+ * @return {?proto.tendermint.types.BlockID}
  */
 proto.cosmos.base.tendermint.v1beta1.Header.prototype.getLastBlockId = function() {
-  return /** @type{?proto.cometbft.types.v1.BlockID} */ (
-    jspb.Message.getWrapperField(this, cometbft_types_v1_types_pb.BlockID, 5));
+  return /** @type{?proto.tendermint.types.BlockID} */ (
+    jspb.Message.getWrapperField(this, tendermint_types_types_pb.BlockID, 5));
 };
 
 
 /**
- * @param {?proto.cometbft.types.v1.BlockID|undefined} value
+ * @param {?proto.tendermint.types.BlockID|undefined} value
  * @return {!proto.cosmos.base.tendermint.v1beta1.Header} returns this
 */
 proto.cosmos.base.tendermint.v1beta1.Header.prototype.setLastBlockId = function(value) {

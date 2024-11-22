@@ -15,8 +15,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
-var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
 var amino_amino_pb = require('../../../amino/amino_pb.js');
 goog.object.extend(proto, amino_amino_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
@@ -29,8 +27,8 @@ var cosmos_tx_signing_v1beta1_signing_pb = require('../../../cosmos/tx/signing/v
 goog.object.extend(proto, cosmos_tx_signing_v1beta1_signing_pb);
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 goog.object.extend(proto, google_protobuf_any_pb);
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
-goog.object.extend(proto, google_protobuf_timestamp_pb);
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
+goog.object.extend(proto, cosmos_proto_cosmos_pb);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.AuthInfo', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.AuxSignerData', null, global);
 goog.exportSymbol('proto.cosmos.tx.v1beta1.Fee', null, global);
@@ -1545,8 +1543,6 @@ proto.cosmos.tx.v1beta1.TxBody.toObject = function(includeInstance, msg) {
     google_protobuf_any_pb.Any.toObject, includeInstance),
     memo: jspb.Message.getFieldWithDefault(msg, 2, ""),
     timeoutHeight: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    unordered: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    timeoutTimestamp: (f = msg.getTimeoutTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     extensionOptionsList: jspb.Message.toObjectList(msg.getExtensionOptionsList(),
     google_protobuf_any_pb.Any.toObject, includeInstance),
     nonCriticalExtensionOptionsList: jspb.Message.toObjectList(msg.getNonCriticalExtensionOptionsList(),
@@ -1599,15 +1595,6 @@ proto.cosmos.tx.v1beta1.TxBody.deserializeBinaryFromReader = function(msg, reade
     case 3:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setTimeoutHeight(value);
-      break;
-    case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setUnordered(value);
-      break;
-    case 5:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setTimeoutTimestamp(value);
       break;
     case 1023:
       var value = new google_protobuf_any_pb.Any;
@@ -1668,21 +1655,6 @@ proto.cosmos.tx.v1beta1.TxBody.serializeBinaryToWriter = function(message, write
     writer.writeUint64(
       3,
       f
-    );
-  }
-  f = message.getUnordered();
-  if (f) {
-    writer.writeBool(
-      4,
-      f
-    );
-  }
-  f = message.getTimeoutTimestamp();
-  if (f != null) {
-    writer.writeMessage(
-      5,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
   f = message.getExtensionOptionsList();
@@ -1775,61 +1747,6 @@ proto.cosmos.tx.v1beta1.TxBody.prototype.getTimeoutHeight = function() {
  */
 proto.cosmos.tx.v1beta1.TxBody.prototype.setTimeoutHeight = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
-};
-
-
-/**
- * optional bool unordered = 4;
- * @return {boolean}
- */
-proto.cosmos.tx.v1beta1.TxBody.prototype.getUnordered = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.cosmos.tx.v1beta1.TxBody} returns this
- */
-proto.cosmos.tx.v1beta1.TxBody.prototype.setUnordered = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
-};
-
-
-/**
- * optional google.protobuf.Timestamp timeout_timestamp = 5;
- * @return {?proto.google.protobuf.Timestamp}
- */
-proto.cosmos.tx.v1beta1.TxBody.prototype.getTimeoutTimestamp = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
- * @return {!proto.cosmos.tx.v1beta1.TxBody} returns this
-*/
-proto.cosmos.tx.v1beta1.TxBody.prototype.setTimeoutTimestamp = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.cosmos.tx.v1beta1.TxBody} returns this
- */
-proto.cosmos.tx.v1beta1.TxBody.prototype.clearTimeoutTimestamp = function() {
-  return this.setTimeoutTimestamp(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.cosmos.tx.v1beta1.TxBody.prototype.hasTimeoutTimestamp = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 

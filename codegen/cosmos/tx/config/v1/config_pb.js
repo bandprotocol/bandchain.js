@@ -71,7 +71,8 @@ proto.cosmos.tx.config.v1.Config.prototype.toObject = function(opt_includeInstan
  */
 proto.cosmos.tx.config.v1.Config.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    skipAnteHandler: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+    skipPostHandler: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -108,6 +109,14 @@ proto.cosmos.tx.config.v1.Config.deserializeBinaryFromReader = function(msg, rea
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSkipAnteHandler(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSkipPostHandler(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -137,6 +146,56 @@ proto.cosmos.tx.config.v1.Config.prototype.serializeBinary = function() {
  */
 proto.cosmos.tx.config.v1.Config.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getSkipAnteHandler();
+  if (f) {
+    writer.writeBool(
+      1,
+      f
+    );
+  }
+  f = message.getSkipPostHandler();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional bool skip_ante_handler = 1;
+ * @return {boolean}
+ */
+proto.cosmos.tx.config.v1.Config.prototype.getSkipAnteHandler = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.cosmos.tx.config.v1.Config} returns this
+ */
+proto.cosmos.tx.config.v1.Config.prototype.setSkipAnteHandler = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 1, value);
+};
+
+
+/**
+ * optional bool skip_post_handler = 2;
+ * @return {boolean}
+ */
+proto.cosmos.tx.config.v1.Config.prototype.getSkipPostHandler = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.cosmos.tx.config.v1.Config} returns this
+ */
+proto.cosmos.tx.config.v1.Config.prototype.setSkipPostHandler = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
 };
 
 

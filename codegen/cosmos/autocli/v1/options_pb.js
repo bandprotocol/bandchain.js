@@ -15,8 +15,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
-var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
 goog.exportSymbol('proto.cosmos.autocli.v1.FlagOptions', null, global);
 goog.exportSymbol('proto.cosmos.autocli.v1.ModuleOptions', null, global);
 goog.exportSymbol('proto.cosmos.autocli.v1.PositionalArgDescriptor', null, global);
@@ -371,9 +369,7 @@ proto.cosmos.autocli.v1.ServiceCommandDescriptor.toObject = function(includeInst
     service: jspb.Message.getFieldWithDefault(msg, 1, ""),
     rpcCommandOptionsList: jspb.Message.toObjectList(msg.getRpcCommandOptionsList(),
     proto.cosmos.autocli.v1.RpcCommandOptions.toObject, includeInstance),
-    subCommandsMap: (f = msg.getSubCommandsMap()) ? f.toObject(includeInstance, proto.cosmos.autocli.v1.ServiceCommandDescriptor.toObject) : [],
-    enhanceCustomCommand: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
-    pb_short: jspb.Message.getFieldWithDefault(msg, 5, "")
+    subCommandsMap: (f = msg.getSubCommandsMap()) ? f.toObject(includeInstance, proto.cosmos.autocli.v1.ServiceCommandDescriptor.toObject) : []
   };
 
   if (includeInstance) {
@@ -425,14 +421,6 @@ proto.cosmos.autocli.v1.ServiceCommandDescriptor.deserializeBinaryFromReader = f
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readMessage, proto.cosmos.autocli.v1.ServiceCommandDescriptor.deserializeBinaryFromReader, "", new proto.cosmos.autocli.v1.ServiceCommandDescriptor());
          });
       break;
-    case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setEnhanceCustomCommand(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setShort(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -480,20 +468,6 @@ proto.cosmos.autocli.v1.ServiceCommandDescriptor.serializeBinaryToWriter = funct
   f = message.getSubCommandsMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(3, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.cosmos.autocli.v1.ServiceCommandDescriptor.serializeBinaryToWriter);
-  }
-  f = message.getEnhanceCustomCommand();
-  if (f) {
-    writer.writeBool(
-      4,
-      f
-    );
-  }
-  f = message.getShort();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
-    );
   }
 };
 
@@ -576,42 +550,6 @@ proto.cosmos.autocli.v1.ServiceCommandDescriptor.prototype.clearSubCommandsMap =
   return this;};
 
 
-/**
- * optional bool enhance_custom_command = 4;
- * @return {boolean}
- */
-proto.cosmos.autocli.v1.ServiceCommandDescriptor.prototype.getEnhanceCustomCommand = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.cosmos.autocli.v1.ServiceCommandDescriptor} returns this
- */
-proto.cosmos.autocli.v1.ServiceCommandDescriptor.prototype.setEnhanceCustomCommand = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
-};
-
-
-/**
- * optional string short = 5;
- * @return {string}
- */
-proto.cosmos.autocli.v1.ServiceCommandDescriptor.prototype.getShort = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.cosmos.autocli.v1.ServiceCommandDescriptor} returns this
- */
-proto.cosmos.autocli.v1.ServiceCommandDescriptor.prototype.setShort = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
-};
-
-
 
 /**
  * List of repeated fields within this message type.
@@ -663,8 +601,7 @@ proto.cosmos.autocli.v1.RpcCommandOptions.toObject = function(includeInstance, m
     flagOptionsMap: (f = msg.getFlagOptionsMap()) ? f.toObject(includeInstance, proto.cosmos.autocli.v1.FlagOptions.toObject) : [],
     positionalArgsList: jspb.Message.toObjectList(msg.getPositionalArgsList(),
     proto.cosmos.autocli.v1.PositionalArgDescriptor.toObject, includeInstance),
-    skip: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
-    govProposal: jspb.Message.getBooleanFieldWithDefault(msg, 13, false)
+    skip: jspb.Message.getBooleanFieldWithDefault(msg, 12, false)
   };
 
   if (includeInstance) {
@@ -751,10 +688,6 @@ proto.cosmos.autocli.v1.RpcCommandOptions.deserializeBinaryFromReader = function
     case 12:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setSkip(value);
-      break;
-    case 13:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setGovProposal(value);
       break;
     default:
       reader.skipField();
@@ -864,13 +797,6 @@ proto.cosmos.autocli.v1.RpcCommandOptions.serializeBinaryToWriter = function(mes
   if (f) {
     writer.writeBool(
       12,
-      f
-    );
-  }
-  f = message.getGovProposal();
-  if (f) {
-    writer.writeBool(
-      13,
       f
     );
   }
@@ -1152,24 +1078,6 @@ proto.cosmos.autocli.v1.RpcCommandOptions.prototype.getSkip = function() {
  */
 proto.cosmos.autocli.v1.RpcCommandOptions.prototype.setSkip = function(value) {
   return jspb.Message.setProto3BooleanField(this, 12, value);
-};
-
-
-/**
- * optional bool gov_proposal = 13;
- * @return {boolean}
- */
-proto.cosmos.autocli.v1.RpcCommandOptions.prototype.getGovProposal = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 13, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.cosmos.autocli.v1.RpcCommandOptions} returns this
- */
-proto.cosmos.autocli.v1.RpcCommandOptions.prototype.setGovProposal = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 13, value);
 };
 
 
@@ -1516,8 +1424,7 @@ proto.cosmos.autocli.v1.PositionalArgDescriptor.prototype.toObject = function(op
 proto.cosmos.autocli.v1.PositionalArgDescriptor.toObject = function(includeInstance, msg) {
   var f, obj = {
     protoField: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    varargs: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
-    optional: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
+    varargs: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -1562,10 +1469,6 @@ proto.cosmos.autocli.v1.PositionalArgDescriptor.deserializeBinaryFromReader = fu
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setVarargs(value);
       break;
-    case 3:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setOptional(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1609,13 +1512,6 @@ proto.cosmos.autocli.v1.PositionalArgDescriptor.serializeBinaryToWriter = functi
       f
     );
   }
-  f = message.getOptional();
-  if (f) {
-    writer.writeBool(
-      3,
-      f
-    );
-  }
 };
 
 
@@ -1652,24 +1548,6 @@ proto.cosmos.autocli.v1.PositionalArgDescriptor.prototype.getVarargs = function(
  */
 proto.cosmos.autocli.v1.PositionalArgDescriptor.prototype.setVarargs = function(value) {
   return jspb.Message.setProto3BooleanField(this, 2, value);
-};
-
-
-/**
- * optional bool optional = 3;
- * @return {boolean}
- */
-proto.cosmos.autocli.v1.PositionalArgDescriptor.prototype.getOptional = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.cosmos.autocli.v1.PositionalArgDescriptor} returns this
- */
-proto.cosmos.autocli.v1.PositionalArgDescriptor.prototype.setOptional = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
