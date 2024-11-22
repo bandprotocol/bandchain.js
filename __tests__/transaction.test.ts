@@ -1,7 +1,7 @@
 import Transaction from '../src/transaction'
 import { MsgRequestData } from '../src/message'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
-import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
+import { Fee } from '../codegen/cosmos/tx/v1beta1/tx_pb'
 import { PrivateKey } from '../src/wallet'
 
 describe('Transaction', () => {

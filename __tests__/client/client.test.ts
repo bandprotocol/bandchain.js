@@ -5,7 +5,7 @@ import {
   QueryClient,
   ServiceError,
   UnaryResponse,
-} from '../../proto/oracle/v1/query_pb_service'
+} from '../../codegen/band/oracle/v1/query_pb_service'
 
 import {
   QueryDataSourceRequest,
@@ -19,7 +19,7 @@ import {
   QueryRequestSearchRequest,
   QueryRequestSearchResponse,
   QueryRequestResponse,
-} from '../../proto/oracle/v1/query_pb'
+} from '../../codegen/band/oracle/v1/query_pb'
 import {
   DataSource,
   OracleScript,
@@ -29,53 +29,53 @@ import {
   Report,
   RawReport,
   Result,
-} from '../../proto/oracle/v1/oracle_pb'
-import { ServiceClient } from '../../proto/cosmos/base/tendermint/v1beta1/query_pb_service'
+} from '../../codegen/band/oracle/v1/oracle_pb'
+import { ServiceClient } from '../../codegen/cosmos/base/tendermint/v1beta1/query_pb_service'
 
 import {
   GetLatestBlockRequest,
   GetLatestBlockResponse,
-} from '../../proto/cosmos/base/tendermint/v1beta1/query_pb'
-import { BlockID, Header } from '../../proto/tendermint/types/types_pb'
-import { Block } from '../../proto/tendermint/types/block_pb'
+} from '../../codegen/cosmos/base/tendermint/v1beta1/query_pb'
+import { BlockID, Header } from '../../codegen/tendermint/types/types_pb'
+import { Block } from '../../codegen/tendermint/types/block_pb'
 
-import { QueryClient as AuthQueryClient } from '../../proto/cosmos/auth/v1beta1/query_pb_service'
-import { QueryClient as QueryAllBalances } from '../../proto/cosmos/bank/v1beta1/query_pb_service'
+import { QueryClient as AuthQueryClient } from '../../codegen/cosmos/auth/v1beta1/query_pb_service'
+import { QueryClient as QueryAllBalances } from '../../codegen/cosmos/bank/v1beta1/query_pb_service'
 
 import {
   QueryAllBalancesRequest,
   QueryAllBalancesResponse,
-} from '../../proto/cosmos/bank/v1beta1/query_pb'
+} from '../../codegen/cosmos/bank/v1beta1/query_pb'
 
 import {
   QueryAccountRequest,
   QueryAccountResponse,
-} from '../../proto/cosmos/auth/v1beta1/query_pb'
+} from '../../codegen/cosmos/auth/v1beta1/query_pb'
 
-import { ServiceClient as TxServiceClient } from '../../proto/cosmos/tx/v1beta1/service_pb_service'
+import { ServiceClient as TxServiceClient } from '../../codegen/cosmos/tx/v1beta1/service_pb_service'
 import {
   GetTxRequest,
   GetTxResponse,
-} from '../../proto/cosmos/tx/v1beta1/service_pb'
+} from '../../codegen/cosmos/tx/v1beta1/service_pb'
 import {
   Tx,
   TxBody,
   AuthInfo,
   SignerInfo,
-} from '../../proto/cosmos/tx/v1beta1/tx_pb'
+} from '../../codegen/cosmos/tx/v1beta1/tx_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
-import { ABCIMessageLog } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
-import { TxResponse } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
-import { StringEvent } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
-import { Attribute } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
-import { SignMode } from '../../proto/cosmos/tx/signing/v1beta1/signing_pb'
-import { ModeInfo, Fee } from '../../proto/cosmos/tx/v1beta1/tx_pb'
+import { ABCIMessageLog } from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
+import { TxResponse } from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
+import { StringEvent } from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
+import { Attribute } from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
+import { SignMode } from '../../codegen/cosmos/tx/signing/v1beta1/signing_pb'
+import { ModeInfo, Fee } from '../../codegen/cosmos/tx/v1beta1/tx_pb'
 
-jest.mock('../../proto/oracle/v1/query_pb_service')
-jest.mock('../../proto/cosmos/base/tendermint/v1beta1/query_pb_service')
-jest.mock('../../proto/cosmos/auth/v1beta1/query_pb_service')
-jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
-jest.mock('../../proto/cosmos/bank/v1beta1/query_pb_service')
+jest.mock('../../codegen/band/oracle/v1/query_pb_service')
+jest.mock('../../codegen/cosmos/base/tendermint/v1beta1/query_pb_service')
+jest.mock('../../codegen/cosmos/auth/v1beta1/query_pb_service')
+jest.mock('../../codegen/cosmos/tx/v1beta1/service_pb_service')
+jest.mock('../../codegen/cosmos/bank/v1beta1/query_pb_service')
 
 const STATIC_DATE = 1625578450000
 Date.now = jest.fn(() => STATIC_DATE)
@@ -948,8 +948,11 @@ describe('get latest request', () => {
               'aHR0cHM6Ly91cy1ycGMuYmFuZGNoYWluLm9yZy9vcmFjbGUvcmVxdWVzdF9wcmljZXMgQlRDIEVUSA==',
           },
         ],
+        requester: '',
         executeGas: 1000000,
         ibcChannel: undefined,
+        feeLimitList: [],
+        tssEncoder: 0,
       },
       reportsList: [
         {
@@ -998,6 +1001,7 @@ describe('get latest request', () => {
         resolveStatus: 1,
         result: 'AAAAAgAAH4lLo7MAAAACGsSNTYA==',
       },
+      signing: undefined,
     }
     const response = await client.getLatestRequest(
       43,
