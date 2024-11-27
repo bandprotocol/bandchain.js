@@ -106,10 +106,10 @@ export namespace LatestPrices {
 }
 
 export class TotalFees extends jspb.Message {
-  clearTotalPacketFeeList(): void;
-  getTotalPacketFeeList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
-  setTotalPacketFeeList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
-  addTotalPacketFee(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+  clearTotalBasePacketFeeList(): void;
+  getTotalBasePacketFeeList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setTotalBasePacketFeeList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addTotalBasePacketFee(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TotalFees.AsObject;
@@ -123,7 +123,7 @@ export class TotalFees extends jspb.Message {
 
 export namespace TotalFees {
   export type AsObject = {
-    totalPacketFeeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
+    totalBasePacketFeeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
   }
 }
 
@@ -139,10 +139,10 @@ export class Packet extends jspb.Message {
   setPricesList(value: Array<band_feeds_v1beta1_feeds_pb.Price>): void;
   addPrices(value?: band_feeds_v1beta1_feeds_pb.Price, index?: number): band_feeds_v1beta1_feeds_pb.Price;
 
-  hasPacketContent(): boolean;
-  clearPacketContent(): void;
-  getPacketContent(): google_protobuf_any_pb.Any | undefined;
-  setPacketContent(value?: google_protobuf_any_pb.Any): void;
+  hasReceipt(): boolean;
+  clearReceipt(): void;
+  getReceipt(): google_protobuf_any_pb.Any | undefined;
+  setReceipt(value?: google_protobuf_any_pb.Any): void;
 
   clearBaseFeeList(): void;
   getBaseFeeList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
@@ -172,7 +172,7 @@ export namespace Packet {
     tunnelId: number,
     sequence: number,
     pricesList: Array<band_feeds_v1beta1_feeds_pb.Price.AsObject>,
-    packetContent?: google_protobuf_any_pb.Any.AsObject,
+    receipt?: google_protobuf_any_pb.Any.AsObject,
     baseFeeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     routeFeeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     createdAt: number,

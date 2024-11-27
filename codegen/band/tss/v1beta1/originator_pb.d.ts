@@ -40,11 +40,11 @@ export class TunnelOriginator extends jspb.Message {
   getTunnelId(): number;
   setTunnelId(value: number): void;
 
-  getContractAddress(): string;
-  setContractAddress(value: string): void;
+  getDestinationChainId(): string;
+  setDestinationChainId(value: string): void;
 
-  getTargetChainId(): string;
-  setTargetChainId(value: string): void;
+  getDestinationContractAddress(): string;
+  setDestinationContractAddress(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TunnelOriginator.AsObject;
@@ -60,8 +60,8 @@ export namespace TunnelOriginator {
   export type AsObject = {
     sourceChainId: string,
     tunnelId: number,
-    contractAddress: string,
-    targetChainId: string,
+    destinationChainId: string,
+    destinationContractAddress: string,
   }
 }
 

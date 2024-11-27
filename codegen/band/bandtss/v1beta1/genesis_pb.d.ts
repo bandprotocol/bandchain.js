@@ -50,15 +50,20 @@ export class Params extends jspb.Message {
   getInactivePenaltyDuration(): google_protobuf_duration_pb.Duration | undefined;
   setInactivePenaltyDuration(value?: google_protobuf_duration_pb.Duration): void;
 
+  hasMinTransitionDuration(): boolean;
+  clearMinTransitionDuration(): void;
+  getMinTransitionDuration(): google_protobuf_duration_pb.Duration | undefined;
+  setMinTransitionDuration(value?: google_protobuf_duration_pb.Duration): void;
+
   hasMaxTransitionDuration(): boolean;
   clearMaxTransitionDuration(): void;
   getMaxTransitionDuration(): google_protobuf_duration_pb.Duration | undefined;
   setMaxTransitionDuration(value?: google_protobuf_duration_pb.Duration): void;
 
-  clearFeeList(): void;
-  getFeeList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
-  setFeeList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
-  addFee(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+  clearFeePerSignerList(): void;
+  getFeePerSignerList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setFeePerSignerList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addFeePerSigner(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Params.AsObject;
@@ -74,8 +79,9 @@ export namespace Params {
   export type AsObject = {
     rewardPercentage: number,
     inactivePenaltyDuration?: google_protobuf_duration_pb.Duration.AsObject,
+    minTransitionDuration?: google_protobuf_duration_pb.Duration.AsObject,
     maxTransitionDuration?: google_protobuf_duration_pb.Duration.AsObject,
-    feeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
+    feePerSignerList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
   }
 }
 

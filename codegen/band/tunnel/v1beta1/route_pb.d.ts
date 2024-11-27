@@ -29,31 +29,23 @@ export namespace TSSRoute {
   }
 }
 
-export class TSSPacketContent extends jspb.Message {
+export class TSSPacketReceipt extends jspb.Message {
   getSigningId(): number;
   setSigningId(value: number): void;
 
-  getDestinationChainId(): string;
-  setDestinationChainId(value: string): void;
-
-  getDestinationContractAddress(): string;
-  setDestinationContractAddress(value: string): void;
-
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TSSPacketContent.AsObject;
-  static toObject(includeInstance: boolean, msg: TSSPacketContent): TSSPacketContent.AsObject;
+  toObject(includeInstance?: boolean): TSSPacketReceipt.AsObject;
+  static toObject(includeInstance: boolean, msg: TSSPacketReceipt): TSSPacketReceipt.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: TSSPacketContent, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TSSPacketContent;
-  static deserializeBinaryFromReader(message: TSSPacketContent, reader: jspb.BinaryReader): TSSPacketContent;
+  static serializeBinaryToWriter(message: TSSPacketReceipt, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TSSPacketReceipt;
+  static deserializeBinaryFromReader(message: TSSPacketReceipt, reader: jspb.BinaryReader): TSSPacketReceipt;
 }
 
-export namespace TSSPacketContent {
+export namespace TSSPacketReceipt {
   export type AsObject = {
     signingId: number,
-    destinationChainId: string,
-    destinationContractAddress: string,
   }
 }
 
