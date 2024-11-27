@@ -944,7 +944,7 @@ proto.band.tunnel.v1beta1.TotalFees.prototype.toObject = function(opt_includeIns
  */
 proto.band.tunnel.v1beta1.TotalFees.toObject = function(includeInstance, msg) {
   var f, obj = {
-    totalPacketFeeList: jspb.Message.toObjectList(msg.getTotalPacketFeeList(),
+    totalBasePacketFeeList: jspb.Message.toObjectList(msg.getTotalBasePacketFeeList(),
     cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance)
   };
 
@@ -985,7 +985,7 @@ proto.band.tunnel.v1beta1.TotalFees.deserializeBinaryFromReader = function(msg, 
     case 1:
       var value = new cosmos_base_v1beta1_coin_pb.Coin;
       reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addTotalPacketFee(value);
+      msg.addTotalBasePacketFee(value);
       break;
     default:
       reader.skipField();
@@ -1016,7 +1016,7 @@ proto.band.tunnel.v1beta1.TotalFees.prototype.serializeBinary = function() {
  */
 proto.band.tunnel.v1beta1.TotalFees.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getTotalPacketFeeList();
+  f = message.getTotalBasePacketFeeList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -1028,10 +1028,10 @@ proto.band.tunnel.v1beta1.TotalFees.serializeBinaryToWriter = function(message, 
 
 
 /**
- * repeated cosmos.base.v1beta1.Coin total_packet_fee = 1;
+ * repeated cosmos.base.v1beta1.Coin total_base_packet_fee = 1;
  * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
  */
-proto.band.tunnel.v1beta1.TotalFees.prototype.getTotalPacketFeeList = function() {
+proto.band.tunnel.v1beta1.TotalFees.prototype.getTotalBasePacketFeeList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
     jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
 };
@@ -1041,7 +1041,7 @@ proto.band.tunnel.v1beta1.TotalFees.prototype.getTotalPacketFeeList = function()
  * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
  * @return {!proto.band.tunnel.v1beta1.TotalFees} returns this
 */
-proto.band.tunnel.v1beta1.TotalFees.prototype.setTotalPacketFeeList = function(value) {
+proto.band.tunnel.v1beta1.TotalFees.prototype.setTotalBasePacketFeeList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -1051,7 +1051,7 @@ proto.band.tunnel.v1beta1.TotalFees.prototype.setTotalPacketFeeList = function(v
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.Coin}
  */
-proto.band.tunnel.v1beta1.TotalFees.prototype.addTotalPacketFee = function(opt_value, opt_index) {
+proto.band.tunnel.v1beta1.TotalFees.prototype.addTotalBasePacketFee = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
 };
 
@@ -1060,8 +1060,8 @@ proto.band.tunnel.v1beta1.TotalFees.prototype.addTotalPacketFee = function(opt_v
  * Clears the list making it empty but non-null.
  * @return {!proto.band.tunnel.v1beta1.TotalFees} returns this
  */
-proto.band.tunnel.v1beta1.TotalFees.prototype.clearTotalPacketFeeList = function() {
-  return this.setTotalPacketFeeList([]);
+proto.band.tunnel.v1beta1.TotalFees.prototype.clearTotalBasePacketFeeList = function() {
+  return this.setTotalBasePacketFeeList([]);
 };
 
 
@@ -1108,7 +1108,7 @@ proto.band.tunnel.v1beta1.Packet.toObject = function(includeInstance, msg) {
     sequence: jspb.Message.getFieldWithDefault(msg, 2, 0),
     pricesList: jspb.Message.toObjectList(msg.getPricesList(),
     band_feeds_v1beta1_feeds_pb.Price.toObject, includeInstance),
-    packetContent: (f = msg.getPacketContent()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
+    receipt: (f = msg.getReceipt()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
     baseFeeList: jspb.Message.toObjectList(msg.getBaseFeeList(),
     cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
     routeFeeList: jspb.Message.toObjectList(msg.getRouteFeeList(),
@@ -1166,7 +1166,7 @@ proto.band.tunnel.v1beta1.Packet.deserializeBinaryFromReader = function(msg, rea
     case 4:
       var value = new google_protobuf_any_pb.Any;
       reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setPacketContent(value);
+      msg.setReceipt(value);
       break;
     case 5:
       var value = new cosmos_base_v1beta1_coin_pb.Coin;
@@ -1233,7 +1233,7 @@ proto.band.tunnel.v1beta1.Packet.serializeBinaryToWriter = function(message, wri
       band_feeds_v1beta1_feeds_pb.Price.serializeBinaryToWriter
     );
   }
-  f = message.getPacketContent();
+  f = message.getReceipt();
   if (f != null) {
     writer.writeMessage(
       4,
@@ -1342,10 +1342,10 @@ proto.band.tunnel.v1beta1.Packet.prototype.clearPricesList = function() {
 
 
 /**
- * optional google.protobuf.Any packet_content = 4;
+ * optional google.protobuf.Any receipt = 4;
  * @return {?proto.google.protobuf.Any}
  */
-proto.band.tunnel.v1beta1.Packet.prototype.getPacketContent = function() {
+proto.band.tunnel.v1beta1.Packet.prototype.getReceipt = function() {
   return /** @type{?proto.google.protobuf.Any} */ (
     jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 4));
 };
@@ -1355,7 +1355,7 @@ proto.band.tunnel.v1beta1.Packet.prototype.getPacketContent = function() {
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.band.tunnel.v1beta1.Packet} returns this
 */
-proto.band.tunnel.v1beta1.Packet.prototype.setPacketContent = function(value) {
+proto.band.tunnel.v1beta1.Packet.prototype.setReceipt = function(value) {
   return jspb.Message.setWrapperField(this, 4, value);
 };
 
@@ -1364,8 +1364,8 @@ proto.band.tunnel.v1beta1.Packet.prototype.setPacketContent = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.band.tunnel.v1beta1.Packet} returns this
  */
-proto.band.tunnel.v1beta1.Packet.prototype.clearPacketContent = function() {
-  return this.setPacketContent(undefined);
+proto.band.tunnel.v1beta1.Packet.prototype.clearReceipt = function() {
+  return this.setReceipt(undefined);
 };
 
 
@@ -1373,7 +1373,7 @@ proto.band.tunnel.v1beta1.Packet.prototype.clearPacketContent = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.band.tunnel.v1beta1.Packet.prototype.hasPacketContent = function() {
+proto.band.tunnel.v1beta1.Packet.prototype.hasReceipt = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 

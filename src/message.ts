@@ -890,7 +890,7 @@ export class MsgVoteSignal extends MsgVoteSignalProto implements BaseMsg {
       type: 'feeds/MsgVote',
       value: {
         voter: this.getVoter(),
-        signalsList: this.getSignalsList(),
+        signals: this.getSignalsList(),
       },
     }
   }

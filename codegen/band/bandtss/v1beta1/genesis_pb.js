@@ -335,7 +335,7 @@ proto.band.bandtss.v1beta1.GenesisState.prototype.hasCurrentGroup = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.band.bandtss.v1beta1.Params.repeatedFields_ = [4];
+proto.band.bandtss.v1beta1.Params.repeatedFields_ = [5];
 
 
 
@@ -370,8 +370,9 @@ proto.band.bandtss.v1beta1.Params.toObject = function(includeInstance, msg) {
   var f, obj = {
     rewardPercentage: jspb.Message.getFieldWithDefault(msg, 1, 0),
     inactivePenaltyDuration: (f = msg.getInactivePenaltyDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+    minTransitionDuration: (f = msg.getMinTransitionDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
     maxTransitionDuration: (f = msg.getMaxTransitionDuration()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    feeList: jspb.Message.toObjectList(msg.getFeeList(),
+    feePerSignerList: jspb.Message.toObjectList(msg.getFeePerSignerList(),
     cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance)
   };
 
@@ -421,12 +422,17 @@ proto.band.bandtss.v1beta1.Params.deserializeBinaryFromReader = function(msg, re
     case 3:
       var value = new google_protobuf_duration_pb.Duration;
       reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
-      msg.setMaxTransitionDuration(value);
+      msg.setMinTransitionDuration(value);
       break;
     case 4:
+      var value = new google_protobuf_duration_pb.Duration;
+      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      msg.setMaxTransitionDuration(value);
+      break;
+    case 5:
       var value = new cosmos_base_v1beta1_coin_pb.Coin;
       reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addFee(value);
+      msg.addFeePerSigner(value);
       break;
     default:
       reader.skipField();
@@ -472,7 +478,7 @@ proto.band.bandtss.v1beta1.Params.serializeBinaryToWriter = function(message, wr
       google_protobuf_duration_pb.Duration.serializeBinaryToWriter
     );
   }
-  f = message.getMaxTransitionDuration();
+  f = message.getMinTransitionDuration();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -480,10 +486,18 @@ proto.band.bandtss.v1beta1.Params.serializeBinaryToWriter = function(message, wr
       google_protobuf_duration_pb.Duration.serializeBinaryToWriter
     );
   }
-  f = message.getFeeList();
+  f = message.getMaxTransitionDuration();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
+    );
+  }
+  f = message.getFeePerSignerList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      4,
+      5,
       f,
       cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
     );
@@ -547,10 +561,10 @@ proto.band.bandtss.v1beta1.Params.prototype.hasInactivePenaltyDuration = functio
 
 
 /**
- * optional google.protobuf.Duration max_transition_duration = 3;
+ * optional google.protobuf.Duration min_transition_duration = 3;
  * @return {?proto.google.protobuf.Duration}
  */
-proto.band.bandtss.v1beta1.Params.prototype.getMaxTransitionDuration = function() {
+proto.band.bandtss.v1beta1.Params.prototype.getMinTransitionDuration = function() {
   return /** @type{?proto.google.protobuf.Duration} */ (
     jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 3));
 };
@@ -560,8 +574,45 @@ proto.band.bandtss.v1beta1.Params.prototype.getMaxTransitionDuration = function(
  * @param {?proto.google.protobuf.Duration|undefined} value
  * @return {!proto.band.bandtss.v1beta1.Params} returns this
 */
-proto.band.bandtss.v1beta1.Params.prototype.setMaxTransitionDuration = function(value) {
+proto.band.bandtss.v1beta1.Params.prototype.setMinTransitionDuration = function(value) {
   return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.band.bandtss.v1beta1.Params} returns this
+ */
+proto.band.bandtss.v1beta1.Params.prototype.clearMinTransitionDuration = function() {
+  return this.setMinTransitionDuration(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.band.bandtss.v1beta1.Params.prototype.hasMinTransitionDuration = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.Duration max_transition_duration = 4;
+ * @return {?proto.google.protobuf.Duration}
+ */
+proto.band.bandtss.v1beta1.Params.prototype.getMaxTransitionDuration = function() {
+  return /** @type{?proto.google.protobuf.Duration} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Duration|undefined} value
+ * @return {!proto.band.bandtss.v1beta1.Params} returns this
+*/
+proto.band.bandtss.v1beta1.Params.prototype.setMaxTransitionDuration = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -579,17 +630,17 @@ proto.band.bandtss.v1beta1.Params.prototype.clearMaxTransitionDuration = functio
  * @return {boolean}
  */
 proto.band.bandtss.v1beta1.Params.prototype.hasMaxTransitionDuration = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
 /**
- * repeated cosmos.base.v1beta1.Coin fee = 4;
+ * repeated cosmos.base.v1beta1.Coin fee_per_signer = 5;
  * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
  */
-proto.band.bandtss.v1beta1.Params.prototype.getFeeList = function() {
+proto.band.bandtss.v1beta1.Params.prototype.getFeePerSignerList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 4));
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 5));
 };
 
 
@@ -597,8 +648,8 @@ proto.band.bandtss.v1beta1.Params.prototype.getFeeList = function() {
  * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
  * @return {!proto.band.bandtss.v1beta1.Params} returns this
 */
-proto.band.bandtss.v1beta1.Params.prototype.setFeeList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+proto.band.bandtss.v1beta1.Params.prototype.setFeePerSignerList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
 
 
@@ -607,8 +658,8 @@ proto.band.bandtss.v1beta1.Params.prototype.setFeeList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.Coin}
  */
-proto.band.bandtss.v1beta1.Params.prototype.addFee = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
+proto.band.bandtss.v1beta1.Params.prototype.addFeePerSigner = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
 };
 
 
@@ -616,8 +667,8 @@ proto.band.bandtss.v1beta1.Params.prototype.addFee = function(opt_value, opt_ind
  * Clears the list making it empty but non-null.
  * @return {!proto.band.bandtss.v1beta1.Params} returns this
  */
-proto.band.bandtss.v1beta1.Params.prototype.clearFeeList = function() {
-  return this.setFeeList([]);
+proto.band.bandtss.v1beta1.Params.prototype.clearFeePerSignerList = function() {
+  return this.setFeePerSignerList([]);
 };
 
 

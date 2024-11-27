@@ -287,8 +287,8 @@ proto.band.tss.v1beta1.TunnelOriginator.toObject = function(includeInstance, msg
   var f, obj = {
     sourceChainId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     tunnelId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    contractAddress: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    targetChainId: jspb.Message.getFieldWithDefault(msg, 4, "")
+    destinationChainId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    destinationContractAddress: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -335,11 +335,11 @@ proto.band.tss.v1beta1.TunnelOriginator.deserializeBinaryFromReader = function(m
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setContractAddress(value);
+      msg.setDestinationChainId(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTargetChainId(value);
+      msg.setDestinationContractAddress(value);
       break;
     default:
       reader.skipField();
@@ -384,14 +384,14 @@ proto.band.tss.v1beta1.TunnelOriginator.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getContractAddress();
+  f = message.getDestinationChainId();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getTargetChainId();
+  f = message.getDestinationContractAddress();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -438,10 +438,10 @@ proto.band.tss.v1beta1.TunnelOriginator.prototype.setTunnelId = function(value) 
 
 
 /**
- * optional string contract_address = 3;
+ * optional string destination_chain_id = 3;
  * @return {string}
  */
-proto.band.tss.v1beta1.TunnelOriginator.prototype.getContractAddress = function() {
+proto.band.tss.v1beta1.TunnelOriginator.prototype.getDestinationChainId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -450,16 +450,16 @@ proto.band.tss.v1beta1.TunnelOriginator.prototype.getContractAddress = function(
  * @param {string} value
  * @return {!proto.band.tss.v1beta1.TunnelOriginator} returns this
  */
-proto.band.tss.v1beta1.TunnelOriginator.prototype.setContractAddress = function(value) {
+proto.band.tss.v1beta1.TunnelOriginator.prototype.setDestinationChainId = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string target_chain_id = 4;
+ * optional string destination_contract_address = 4;
  * @return {string}
  */
-proto.band.tss.v1beta1.TunnelOriginator.prototype.getTargetChainId = function() {
+proto.band.tss.v1beta1.TunnelOriginator.prototype.getDestinationContractAddress = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -468,7 +468,7 @@ proto.band.tss.v1beta1.TunnelOriginator.prototype.getTargetChainId = function() 
  * @param {string} value
  * @return {!proto.band.tss.v1beta1.TunnelOriginator} returns this
  */
-proto.band.tss.v1beta1.TunnelOriginator.prototype.setTargetChainId = function(value) {
+proto.band.tss.v1beta1.TunnelOriginator.prototype.setDestinationContractAddress = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
