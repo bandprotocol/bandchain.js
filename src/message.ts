@@ -890,7 +890,7 @@ export class MsgVoteSignal extends MsgVoteSignalProto implements BaseMsg {
       type: 'feeds/MsgVote',
       value: {
         voter: this.getVoter(),
-        signals: this.getSignalsList(),
+        signals: this.getSignalsList().map((signal) => signal.toObject()),
       },
     }
   }
@@ -928,7 +928,9 @@ export class MsgSubmitSignalPrices
       value: {
         validator: this.getValidator(),
         timestamp: this.getTimestamp(),
-        signalPricesList: this.getSignalPricesList(),
+        signalPricesList: this.getSignalPricesList().map((signalPrice) =>
+          signalPrice.toObject(),
+        ),
       },
     }
   }
