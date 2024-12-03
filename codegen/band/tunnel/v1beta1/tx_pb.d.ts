@@ -8,7 +8,6 @@ import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_pb";
 import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
 import * as amino_amino_pb from "../../../amino/amino_pb";
-import * as band_feeds_v1beta1_feeds_pb from "../../../band/feeds/v1beta1/feeds_pb";
 import * as band_tunnel_v1beta1_params_pb from "../../../band/tunnel/v1beta1/params_pb";
 import * as band_tunnel_v1beta1_tunnel_pb from "../../../band/tunnel/v1beta1/tunnel_pb";
 
@@ -25,9 +24,6 @@ export class MsgCreateTunnel extends jspb.Message {
   clearRoute(): void;
   getRoute(): google_protobuf_any_pb.Any | undefined;
   setRoute(value?: google_protobuf_any_pb.Any): void;
-
-  getEncoder(): band_feeds_v1beta1_feeds_pb.EncoderMap[keyof band_feeds_v1beta1_feeds_pb.EncoderMap];
-  setEncoder(value: band_feeds_v1beta1_feeds_pb.EncoderMap[keyof band_feeds_v1beta1_feeds_pb.EncoderMap]): void;
 
   clearInitialDepositList(): void;
   getInitialDepositList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
@@ -52,7 +48,6 @@ export namespace MsgCreateTunnel {
     signalDeviationsList: Array<band_tunnel_v1beta1_tunnel_pb.SignalDeviation.AsObject>,
     interval: number,
     route?: google_protobuf_any_pb.Any.AsObject,
-    encoder: band_feeds_v1beta1_feeds_pb.EncoderMap[keyof band_feeds_v1beta1_feeds_pb.EncoderMap],
     initialDepositList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     creator: string,
   }

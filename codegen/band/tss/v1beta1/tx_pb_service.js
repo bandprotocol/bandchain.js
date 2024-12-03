@@ -55,6 +55,15 @@ Msg.SubmitDEs = {
   responseType: band_tss_v1beta1_tx_pb.MsgSubmitDEsResponse
 };
 
+Msg.ResetDE = {
+  methodName: "ResetDE",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: band_tss_v1beta1_tx_pb.MsgResetDE,
+  responseType: band_tss_v1beta1_tx_pb.MsgResetDEResponse
+};
+
 Msg.SubmitSignature = {
   methodName: "SubmitSignature",
   service: Msg,
@@ -209,6 +218,37 @@ MsgClient.prototype.submitDEs = function submitDEs(requestMessage, metadata, cal
     callback = arguments[1];
   }
   var client = grpc.unary(Msg.SubmitDEs, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.resetDE = function resetDE(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.ResetDE, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

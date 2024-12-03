@@ -2327,12 +2327,11 @@ proto.band.tss.v1beta1.Signing.toObject = function(includeInstance, msg) {
     currentAttempt: jspb.Message.getFieldWithDefault(msg, 2, 0),
     groupId: jspb.Message.getFieldWithDefault(msg, 3, 0),
     groupPubKey: msg.getGroupPubKey_asB64(),
-    originator: msg.getOriginator_asB64(),
     message: msg.getMessage_asB64(),
     groupPubNonce: msg.getGroupPubNonce_asB64(),
     signature: msg.getSignature_asB64(),
-    status: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    createdHeight: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    status: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    createdHeight: jspb.Message.getFieldWithDefault(msg, 9, 0),
     createdTimestamp: (f = msg.getCreatedTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -2388,29 +2387,25 @@ proto.band.tss.v1beta1.Signing.deserializeBinaryFromReader = function(msg, reade
       break;
     case 5:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setOriginator(value);
+      msg.setMessage(value);
       break;
     case 6:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setMessage(value);
+      msg.setGroupPubNonce(value);
       break;
     case 7:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setGroupPubNonce(value);
-      break;
-    case 8:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setSignature(value);
       break;
-    case 9:
+    case 8:
       var value = /** @type {!proto.band.tss.v1beta1.SigningStatus} */ (reader.readEnum());
       msg.setStatus(value);
       break;
-    case 10:
+    case 9:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setCreatedHeight(value);
       break;
-    case 11:
+    case 10:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setCreatedTimestamp(value);
@@ -2472,52 +2467,45 @@ proto.band.tss.v1beta1.Signing.serializeBinaryToWriter = function(message, write
       f
     );
   }
-  f = message.getOriginator_asU8();
+  f = message.getMessage_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       5,
       f
     );
   }
-  f = message.getMessage_asU8();
+  f = message.getGroupPubNonce_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       6,
       f
     );
   }
-  f = message.getGroupPubNonce_asU8();
+  f = message.getSignature_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       7,
       f
     );
   }
-  f = message.getSignature_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      8,
-      f
-    );
-  }
   f = message.getStatus();
   if (f !== 0.0) {
     writer.writeEnum(
-      9,
+      8,
       f
     );
   }
   f = message.getCreatedHeight();
   if (f !== 0) {
     writer.writeUint64(
-      10,
+      9,
       f
     );
   }
   f = message.getCreatedTimestamp();
   if (f != null) {
     writer.writeMessage(
-      11,
+      10,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -2622,58 +2610,16 @@ proto.band.tss.v1beta1.Signing.prototype.setGroupPubKey = function(value) {
 
 
 /**
- * optional bytes originator = 5;
+ * optional bytes message = 5;
  * @return {!(string|Uint8Array)}
  */
-proto.band.tss.v1beta1.Signing.prototype.getOriginator = function() {
+proto.band.tss.v1beta1.Signing.prototype.getMessage = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * optional bytes originator = 5;
- * This is a type-conversion wrapper around `getOriginator()`
- * @return {string}
- */
-proto.band.tss.v1beta1.Signing.prototype.getOriginator_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getOriginator()));
-};
-
-
-/**
- * optional bytes originator = 5;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getOriginator()`
- * @return {!Uint8Array}
- */
-proto.band.tss.v1beta1.Signing.prototype.getOriginator_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getOriginator()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.band.tss.v1beta1.Signing} returns this
- */
-proto.band.tss.v1beta1.Signing.prototype.setOriginator = function(value) {
-  return jspb.Message.setProto3BytesField(this, 5, value);
-};
-
-
-/**
- * optional bytes message = 6;
- * @return {!(string|Uint8Array)}
- */
-proto.band.tss.v1beta1.Signing.prototype.getMessage = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
-
-/**
- * optional bytes message = 6;
+ * optional bytes message = 5;
  * This is a type-conversion wrapper around `getMessage()`
  * @return {string}
  */
@@ -2684,7 +2630,7 @@ proto.band.tss.v1beta1.Signing.prototype.getMessage_asB64 = function() {
 
 
 /**
- * optional bytes message = 6;
+ * optional bytes message = 5;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getMessage()`
@@ -2701,21 +2647,21 @@ proto.band.tss.v1beta1.Signing.prototype.getMessage_asU8 = function() {
  * @return {!proto.band.tss.v1beta1.Signing} returns this
  */
 proto.band.tss.v1beta1.Signing.prototype.setMessage = function(value) {
-  return jspb.Message.setProto3BytesField(this, 6, value);
+  return jspb.Message.setProto3BytesField(this, 5, value);
 };
 
 
 /**
- * optional bytes group_pub_nonce = 7;
+ * optional bytes group_pub_nonce = 6;
  * @return {!(string|Uint8Array)}
  */
 proto.band.tss.v1beta1.Signing.prototype.getGroupPubNonce = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /**
- * optional bytes group_pub_nonce = 7;
+ * optional bytes group_pub_nonce = 6;
  * This is a type-conversion wrapper around `getGroupPubNonce()`
  * @return {string}
  */
@@ -2726,7 +2672,7 @@ proto.band.tss.v1beta1.Signing.prototype.getGroupPubNonce_asB64 = function() {
 
 
 /**
- * optional bytes group_pub_nonce = 7;
+ * optional bytes group_pub_nonce = 6;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getGroupPubNonce()`
@@ -2743,21 +2689,21 @@ proto.band.tss.v1beta1.Signing.prototype.getGroupPubNonce_asU8 = function() {
  * @return {!proto.band.tss.v1beta1.Signing} returns this
  */
 proto.band.tss.v1beta1.Signing.prototype.setGroupPubNonce = function(value) {
-  return jspb.Message.setProto3BytesField(this, 7, value);
+  return jspb.Message.setProto3BytesField(this, 6, value);
 };
 
 
 /**
- * optional bytes signature = 8;
+ * optional bytes signature = 7;
  * @return {!(string|Uint8Array)}
  */
 proto.band.tss.v1beta1.Signing.prototype.getSignature = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /**
- * optional bytes signature = 8;
+ * optional bytes signature = 7;
  * This is a type-conversion wrapper around `getSignature()`
  * @return {string}
  */
@@ -2768,7 +2714,7 @@ proto.band.tss.v1beta1.Signing.prototype.getSignature_asB64 = function() {
 
 
 /**
- * optional bytes signature = 8;
+ * optional bytes signature = 7;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getSignature()`
@@ -2785,16 +2731,16 @@ proto.band.tss.v1beta1.Signing.prototype.getSignature_asU8 = function() {
  * @return {!proto.band.tss.v1beta1.Signing} returns this
  */
 proto.band.tss.v1beta1.Signing.prototype.setSignature = function(value) {
-  return jspb.Message.setProto3BytesField(this, 8, value);
+  return jspb.Message.setProto3BytesField(this, 7, value);
 };
 
 
 /**
- * optional SigningStatus status = 9;
+ * optional SigningStatus status = 8;
  * @return {!proto.band.tss.v1beta1.SigningStatus}
  */
 proto.band.tss.v1beta1.Signing.prototype.getStatus = function() {
-  return /** @type {!proto.band.tss.v1beta1.SigningStatus} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {!proto.band.tss.v1beta1.SigningStatus} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
@@ -2803,16 +2749,16 @@ proto.band.tss.v1beta1.Signing.prototype.getStatus = function() {
  * @return {!proto.band.tss.v1beta1.Signing} returns this
  */
 proto.band.tss.v1beta1.Signing.prototype.setStatus = function(value) {
-  return jspb.Message.setProto3EnumField(this, 9, value);
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
 /**
- * optional uint64 created_height = 10;
+ * optional uint64 created_height = 9;
  * @return {number}
  */
 proto.band.tss.v1beta1.Signing.prototype.getCreatedHeight = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
@@ -2821,17 +2767,17 @@ proto.band.tss.v1beta1.Signing.prototype.getCreatedHeight = function() {
  * @return {!proto.band.tss.v1beta1.Signing} returns this
  */
 proto.band.tss.v1beta1.Signing.prototype.setCreatedHeight = function(value) {
-  return jspb.Message.setProto3IntField(this, 10, value);
+  return jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
 /**
- * optional google.protobuf.Timestamp created_timestamp = 11;
+ * optional google.protobuf.Timestamp created_timestamp = 10;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.band.tss.v1beta1.Signing.prototype.getCreatedTimestamp = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 10));
 };
 
 
@@ -2840,7 +2786,7 @@ proto.band.tss.v1beta1.Signing.prototype.getCreatedTimestamp = function() {
  * @return {!proto.band.tss.v1beta1.Signing} returns this
 */
 proto.band.tss.v1beta1.Signing.prototype.setCreatedTimestamp = function(value) {
-  return jspb.Message.setWrapperField(this, 11, value);
+  return jspb.Message.setWrapperField(this, 10, value);
 };
 
 
@@ -2858,7 +2804,7 @@ proto.band.tss.v1beta1.Signing.prototype.clearCreatedTimestamp = function() {
  * @return {boolean}
  */
 proto.band.tss.v1beta1.Signing.prototype.hasCreatedTimestamp = function() {
-  return jspb.Message.getField(this, 11) != null;
+  return jspb.Message.getField(this, 10) != null;
 };
 
 

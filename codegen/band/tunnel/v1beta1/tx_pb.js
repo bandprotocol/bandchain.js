@@ -27,8 +27,6 @@ var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
 goog.object.extend(proto, cosmos_msg_v1_msg_pb);
 var amino_amino_pb = require('../../../amino/amino_pb.js');
 goog.object.extend(proto, amino_amino_pb);
-var band_feeds_v1beta1_feeds_pb = require('../../../band/feeds/v1beta1/feeds_pb.js');
-goog.object.extend(proto, band_feeds_v1beta1_feeds_pb);
 var band_tunnel_v1beta1_params_pb = require('../../../band/tunnel/v1beta1/params_pb.js');
 goog.object.extend(proto, band_tunnel_v1beta1_params_pb);
 var band_tunnel_v1beta1_tunnel_pb = require('../../../band/tunnel/v1beta1/tunnel_pb.js');
@@ -391,7 +389,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.band.tunnel.v1beta1.MsgCreateTunnel.repeatedFields_ = [1,5];
+proto.band.tunnel.v1beta1.MsgCreateTunnel.repeatedFields_ = [1,4];
 
 
 
@@ -428,10 +426,9 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.toObject = function(includeInstance, m
     band_tunnel_v1beta1_tunnel_pb.SignalDeviation.toObject, includeInstance),
     interval: jspb.Message.getFieldWithDefault(msg, 2, 0),
     route: (f = msg.getRoute()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
-    encoder: jspb.Message.getFieldWithDefault(msg, 4, 0),
     initialDepositList: jspb.Message.toObjectList(msg.getInitialDepositList(),
     cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
-    creator: jspb.Message.getFieldWithDefault(msg, 6, "")
+    creator: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -483,15 +480,11 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.deserializeBinaryFromReader = function
       msg.setRoute(value);
       break;
     case 4:
-      var value = /** @type {!proto.band.feeds.v1beta1.Encoder} */ (reader.readEnum());
-      msg.setEncoder(value);
-      break;
-    case 5:
       var value = new cosmos_base_v1beta1_coin_pb.Coin;
       reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
       msg.addInitialDeposit(value);
       break;
-    case 6:
+    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setCreator(value);
       break;
@@ -547,17 +540,10 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.serializeBinaryToWriter = function(mes
       google_protobuf_any_pb.Any.serializeBinaryToWriter
     );
   }
-  f = message.getEncoder();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      4,
-      f
-    );
-  }
   f = message.getInitialDepositList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      5,
+      4,
       f,
       cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
     );
@@ -565,7 +551,7 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.serializeBinaryToWriter = function(mes
   f = message.getCreator();
   if (f.length > 0) {
     writer.writeString(
-      6,
+      5,
       f
     );
   }
@@ -666,30 +652,12 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.hasRoute = function() {
 
 
 /**
- * optional band.feeds.v1beta1.Encoder encoder = 4;
- * @return {!proto.band.feeds.v1beta1.Encoder}
- */
-proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.getEncoder = function() {
-  return /** @type {!proto.band.feeds.v1beta1.Encoder} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/**
- * @param {!proto.band.feeds.v1beta1.Encoder} value
- * @return {!proto.band.tunnel.v1beta1.MsgCreateTunnel} returns this
- */
-proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.setEncoder = function(value) {
-  return jspb.Message.setProto3EnumField(this, 4, value);
-};
-
-
-/**
- * repeated cosmos.base.v1beta1.Coin initial_deposit = 5;
+ * repeated cosmos.base.v1beta1.Coin initial_deposit = 4;
  * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
  */
 proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.getInitialDepositList = function() {
   return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 5));
+    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 4));
 };
 
 
@@ -698,7 +666,7 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.getInitialDepositList = func
  * @return {!proto.band.tunnel.v1beta1.MsgCreateTunnel} returns this
 */
 proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.setInitialDepositList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 5, value);
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -708,7 +676,7 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.setInitialDepositList = func
  * @return {!proto.cosmos.base.v1beta1.Coin}
  */
 proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.addInitialDeposit = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
 };
 
 
@@ -722,11 +690,11 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.clearInitialDepositList = fu
 
 
 /**
- * optional string creator = 6;
+ * optional string creator = 5;
  * @return {string}
  */
 proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.getCreator = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
@@ -735,7 +703,7 @@ proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.getCreator = function() {
  * @return {!proto.band.tunnel.v1beta1.MsgCreateTunnel} returns this
  */
 proto.band.tunnel.v1beta1.MsgCreateTunnel.prototype.setCreator = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

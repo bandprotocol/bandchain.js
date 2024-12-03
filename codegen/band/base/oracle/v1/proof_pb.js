@@ -3605,9 +3605,9 @@ proto.band.base.oracle.v1.MultiStoreProof.toObject = function(includeInstance, m
   var f, obj = {
     oracleIavlStateHash: msg.getOracleIavlStateHash_asB64(),
     mintStoreMerkleHash: msg.getMintStoreMerkleHash_asB64(),
-    paramsToRollingseedStoresMerkleHash: msg.getParamsToRollingseedStoresMerkleHash_asB64(),
-    slashingToTssStoresMerkleHash: msg.getSlashingToTssStoresMerkleHash_asB64(),
-    upgradeStoreMerkleHash: msg.getUpgradeStoreMerkleHash_asB64(),
+    paramsToRestakeStoresMerkleHash: msg.getParamsToRestakeStoresMerkleHash_asB64(),
+    rollingseedToTransferStoresMerkleHash: msg.getRollingseedToTransferStoresMerkleHash_asB64(),
+    tssToUpgradeStoresMerkleHash: msg.getTssToUpgradeStoresMerkleHash_asB64(),
     authToIcahostStoresMerkleHash: msg.getAuthToIcahostStoresMerkleHash_asB64()
   };
 
@@ -3655,15 +3655,15 @@ proto.band.base.oracle.v1.MultiStoreProof.deserializeBinaryFromReader = function
       break;
     case 3:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setParamsToRollingseedStoresMerkleHash(value);
+      msg.setParamsToRestakeStoresMerkleHash(value);
       break;
     case 4:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSlashingToTssStoresMerkleHash(value);
+      msg.setRollingseedToTransferStoresMerkleHash(value);
       break;
     case 5:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setUpgradeStoreMerkleHash(value);
+      msg.setTssToUpgradeStoresMerkleHash(value);
       break;
     case 6:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
@@ -3712,21 +3712,21 @@ proto.band.base.oracle.v1.MultiStoreProof.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getParamsToRollingseedStoresMerkleHash_asU8();
+  f = message.getParamsToRestakeStoresMerkleHash_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       3,
       f
     );
   }
-  f = message.getSlashingToTssStoresMerkleHash_asU8();
+  f = message.getRollingseedToTransferStoresMerkleHash_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       4,
       f
     );
   }
-  f = message.getUpgradeStoreMerkleHash_asU8();
+  f = message.getTssToUpgradeStoresMerkleHash_asU8();
   if (f.length > 0) {
     writer.writeBytes(
       5,
@@ -3828,35 +3828,35 @@ proto.band.base.oracle.v1.MultiStoreProof.prototype.setMintStoreMerkleHash = fun
 
 
 /**
- * optional bytes params_to_rollingseed_stores_merkle_hash = 3;
+ * optional bytes params_to_restake_stores_merkle_hash = 3;
  * @return {!(string|Uint8Array)}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRollingseedStoresMerkleHash = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRestakeStoresMerkleHash = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * optional bytes params_to_rollingseed_stores_merkle_hash = 3;
- * This is a type-conversion wrapper around `getParamsToRollingseedStoresMerkleHash()`
+ * optional bytes params_to_restake_stores_merkle_hash = 3;
+ * This is a type-conversion wrapper around `getParamsToRestakeStoresMerkleHash()`
  * @return {string}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRollingseedStoresMerkleHash_asB64 = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRestakeStoresMerkleHash_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getParamsToRollingseedStoresMerkleHash()));
+      this.getParamsToRestakeStoresMerkleHash()));
 };
 
 
 /**
- * optional bytes params_to_rollingseed_stores_merkle_hash = 3;
+ * optional bytes params_to_restake_stores_merkle_hash = 3;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getParamsToRollingseedStoresMerkleHash()`
+ * This is a type-conversion wrapper around `getParamsToRestakeStoresMerkleHash()`
  * @return {!Uint8Array}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRollingseedStoresMerkleHash_asU8 = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRestakeStoresMerkleHash_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getParamsToRollingseedStoresMerkleHash()));
+      this.getParamsToRestakeStoresMerkleHash()));
 };
 
 
@@ -3864,41 +3864,41 @@ proto.band.base.oracle.v1.MultiStoreProof.prototype.getParamsToRollingseedStores
  * @param {!(string|Uint8Array)} value
  * @return {!proto.band.base.oracle.v1.MultiStoreProof} returns this
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.setParamsToRollingseedStoresMerkleHash = function(value) {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.setParamsToRestakeStoresMerkleHash = function(value) {
   return jspb.Message.setProto3BytesField(this, 3, value);
 };
 
 
 /**
- * optional bytes slashing_to_tss_stores_merkle_hash = 4;
+ * optional bytes rollingseed_to_transfer_stores_merkle_hash = 4;
  * @return {!(string|Uint8Array)}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getSlashingToTssStoresMerkleHash = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getRollingseedToTransferStoresMerkleHash = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * optional bytes slashing_to_tss_stores_merkle_hash = 4;
- * This is a type-conversion wrapper around `getSlashingToTssStoresMerkleHash()`
+ * optional bytes rollingseed_to_transfer_stores_merkle_hash = 4;
+ * This is a type-conversion wrapper around `getRollingseedToTransferStoresMerkleHash()`
  * @return {string}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getSlashingToTssStoresMerkleHash_asB64 = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getRollingseedToTransferStoresMerkleHash_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSlashingToTssStoresMerkleHash()));
+      this.getRollingseedToTransferStoresMerkleHash()));
 };
 
 
 /**
- * optional bytes slashing_to_tss_stores_merkle_hash = 4;
+ * optional bytes rollingseed_to_transfer_stores_merkle_hash = 4;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSlashingToTssStoresMerkleHash()`
+ * This is a type-conversion wrapper around `getRollingseedToTransferStoresMerkleHash()`
  * @return {!Uint8Array}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getSlashingToTssStoresMerkleHash_asU8 = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getRollingseedToTransferStoresMerkleHash_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSlashingToTssStoresMerkleHash()));
+      this.getRollingseedToTransferStoresMerkleHash()));
 };
 
 
@@ -3906,41 +3906,41 @@ proto.band.base.oracle.v1.MultiStoreProof.prototype.getSlashingToTssStoresMerkle
  * @param {!(string|Uint8Array)} value
  * @return {!proto.band.base.oracle.v1.MultiStoreProof} returns this
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.setSlashingToTssStoresMerkleHash = function(value) {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.setRollingseedToTransferStoresMerkleHash = function(value) {
   return jspb.Message.setProto3BytesField(this, 4, value);
 };
 
 
 /**
- * optional bytes upgrade_store_merkle_hash = 5;
+ * optional bytes tss_to_upgrade_stores_merkle_hash = 5;
  * @return {!(string|Uint8Array)}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getUpgradeStoreMerkleHash = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getTssToUpgradeStoresMerkleHash = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * optional bytes upgrade_store_merkle_hash = 5;
- * This is a type-conversion wrapper around `getUpgradeStoreMerkleHash()`
+ * optional bytes tss_to_upgrade_stores_merkle_hash = 5;
+ * This is a type-conversion wrapper around `getTssToUpgradeStoresMerkleHash()`
  * @return {string}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getUpgradeStoreMerkleHash_asB64 = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getTssToUpgradeStoresMerkleHash_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getUpgradeStoreMerkleHash()));
+      this.getTssToUpgradeStoresMerkleHash()));
 };
 
 
 /**
- * optional bytes upgrade_store_merkle_hash = 5;
+ * optional bytes tss_to_upgrade_stores_merkle_hash = 5;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getUpgradeStoreMerkleHash()`
+ * This is a type-conversion wrapper around `getTssToUpgradeStoresMerkleHash()`
  * @return {!Uint8Array}
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.getUpgradeStoreMerkleHash_asU8 = function() {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.getTssToUpgradeStoresMerkleHash_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getUpgradeStoreMerkleHash()));
+      this.getTssToUpgradeStoresMerkleHash()));
 };
 
 
@@ -3948,7 +3948,7 @@ proto.band.base.oracle.v1.MultiStoreProof.prototype.getUpgradeStoreMerkleHash_as
  * @param {!(string|Uint8Array)} value
  * @return {!proto.band.base.oracle.v1.MultiStoreProof} returns this
  */
-proto.band.base.oracle.v1.MultiStoreProof.prototype.setUpgradeStoreMerkleHash = function(value) {
+proto.band.base.oracle.v1.MultiStoreProof.prototype.setTssToUpgradeStoresMerkleHash = function(value) {
   return jspb.Message.setProto3BytesField(this, 5, value);
 };
 

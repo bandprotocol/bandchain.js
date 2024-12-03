@@ -239,6 +239,42 @@ export namespace MsgSubmitDEsResponse {
   }
 }
 
+export class MsgResetDE extends jspb.Message {
+  getSender(): string;
+  setSender(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgResetDE.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgResetDE): MsgResetDE.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgResetDE, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgResetDE;
+  static deserializeBinaryFromReader(message: MsgResetDE, reader: jspb.BinaryReader): MsgResetDE;
+}
+
+export namespace MsgResetDE {
+  export type AsObject = {
+    sender: string,
+  }
+}
+
+export class MsgResetDEResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgResetDEResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgResetDEResponse): MsgResetDEResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgResetDEResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgResetDEResponse;
+  static deserializeBinaryFromReader(message: MsgResetDEResponse, reader: jspb.BinaryReader): MsgResetDEResponse;
+}
+
+export namespace MsgResetDEResponse {
+  export type AsObject = {
+  }
+}
+
 export class MsgSubmitSignature extends jspb.Message {
   getSigningId(): number;
   setSigningId(value: number): void;

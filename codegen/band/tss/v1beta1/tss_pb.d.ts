@@ -251,11 +251,6 @@ export class Signing extends jspb.Message {
   getGroupPubKey_asB64(): string;
   setGroupPubKey(value: Uint8Array | string): void;
 
-  getOriginator(): Uint8Array | string;
-  getOriginator_asU8(): Uint8Array;
-  getOriginator_asB64(): string;
-  setOriginator(value: Uint8Array | string): void;
-
   getMessage(): Uint8Array | string;
   getMessage_asU8(): Uint8Array;
   getMessage_asB64(): string;
@@ -298,7 +293,6 @@ export namespace Signing {
     currentAttempt: number,
     groupId: number,
     groupPubKey: Uint8Array | string,
-    originator: Uint8Array | string,
     message: Uint8Array | string,
     groupPubNonce: Uint8Array | string,
     signature: Uint8Array | string,

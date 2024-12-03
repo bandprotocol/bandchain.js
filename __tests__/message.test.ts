@@ -15,7 +15,7 @@ import {
   MsgCreateOracleScript,
   MsgEditOracleScript,
   MsgDeposit,
-  MsgVoteSignal,
+  MsgVoteSignals,
   MsgSubmitSignalPrices,
   MsgUpdateReferenceSourceConfig,
   MsgUpdateParams,
@@ -964,30 +964,30 @@ describe('MsgDeposit', () => {
   })
 })
 
-describe('MsgVoteSignal', () => {
+describe('MsgVoteSignals', () => {
   let signal = new Signal()
   signal.setId('crypto_prices.btcbusd')
   signal.setPower(1)
 
   it('create successfully', () => {
-    const msgVoteSignal = new MsgVoteSignal(
+    const msgVoteSignals = new MsgVoteSignals(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       [signal],
     )
     const anyMsg = new Any()
     const name = 'band.feeds.v1beta1.MsgVote'
-    anyMsg.pack(msgVoteSignal.serializeBinary(), name, '/')
+    anyMsg.pack(msgVoteSignals.serializeBinary(), name, '/')
 
-    expect(msgVoteSignal.toAny()).toEqual(anyMsg)
+    expect(msgVoteSignals.toAny()).toEqual(anyMsg)
 
-    expect(() => msgVoteSignal.validate()).not.toThrow()
+    expect(() => msgVoteSignals.validate()).not.toThrow()
   })
 
-  it('error MsgVoteSignal', () => {
-    let msgs: MsgVoteSignal[] = []
+  it('error MsgVoteSignals', () => {
+    let msgs: MsgVoteSignals[] = []
     let errorText: string[] = []
 
-    msgs.push(new MsgVoteSignal('', [signal]))
+    msgs.push(new MsgVoteSignals('', [signal]))
 
     errorText.push('Voter address should not be an empty string')
 

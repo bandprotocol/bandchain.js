@@ -304,6 +304,44 @@ export namespace QueryPacketResponse {
   }
 }
 
+export class QueryTotalFeesRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryTotalFeesRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryTotalFeesRequest): QueryTotalFeesRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryTotalFeesRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryTotalFeesRequest;
+  static deserializeBinaryFromReader(message: QueryTotalFeesRequest, reader: jspb.BinaryReader): QueryTotalFeesRequest;
+}
+
+export namespace QueryTotalFeesRequest {
+  export type AsObject = {
+  }
+}
+
+export class QueryTotalFeesResponse extends jspb.Message {
+  hasTotalFees(): boolean;
+  clearTotalFees(): void;
+  getTotalFees(): band_tunnel_v1beta1_tunnel_pb.TotalFees | undefined;
+  setTotalFees(value?: band_tunnel_v1beta1_tunnel_pb.TotalFees): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryTotalFeesResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryTotalFeesResponse): QueryTotalFeesResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: QueryTotalFeesResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryTotalFeesResponse;
+  static deserializeBinaryFromReader(message: QueryTotalFeesResponse, reader: jspb.BinaryReader): QueryTotalFeesResponse;
+}
+
+export namespace QueryTotalFeesResponse {
+  export type AsObject = {
+    totalFees?: band_tunnel_v1beta1_tunnel_pb.TotalFees.AsObject,
+  }
+}
+
 export class QueryParamsRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryParamsRequest.AsObject;

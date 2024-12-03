@@ -58,6 +58,15 @@ type QueryPacket = {
   readonly responseType: typeof band_tunnel_v1beta1_query_pb.QueryPacketResponse;
 };
 
+type QueryTotalFees = {
+  readonly methodName: string;
+  readonly service: typeof Query;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof band_tunnel_v1beta1_query_pb.QueryTotalFeesRequest;
+  readonly responseType: typeof band_tunnel_v1beta1_query_pb.QueryTotalFeesResponse;
+};
+
 type QueryParams = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -75,6 +84,7 @@ export class Query {
   static readonly Deposit: QueryDeposit;
   static readonly Packets: QueryPackets;
   static readonly Packet: QueryPacket;
+  static readonly TotalFees: QueryTotalFees;
   static readonly Params: QueryParams;
 }
 
@@ -163,6 +173,15 @@ export class QueryClient {
   packet(
     requestMessage: band_tunnel_v1beta1_query_pb.QueryPacketRequest,
     callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_query_pb.QueryPacketResponse|null) => void
+  ): UnaryResponse;
+  totalFees(
+    requestMessage: band_tunnel_v1beta1_query_pb.QueryTotalFeesRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_query_pb.QueryTotalFeesResponse|null) => void
+  ): UnaryResponse;
+  totalFees(
+    requestMessage: band_tunnel_v1beta1_query_pb.QueryTotalFeesRequest,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_query_pb.QueryTotalFeesResponse|null) => void
   ): UnaryResponse;
   params(
     requestMessage: band_tunnel_v1beta1_query_pb.QueryParamsRequest,

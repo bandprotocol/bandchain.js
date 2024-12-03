@@ -19,9 +19,10 @@ var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
 goog.object.extend(proto, cosmos_proto_cosmos_pb);
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
+var band_feeds_v1beta1_encoder_pb = require('../../../band/feeds/v1beta1/encoder_pb.js');
+goog.object.extend(proto, band_feeds_v1beta1_encoder_pb);
 goog.exportSymbol('proto.band.feeds.v1beta1.CurrentFeedWithDeviations', null, global);
 goog.exportSymbol('proto.band.feeds.v1beta1.CurrentFeeds', null, global);
-goog.exportSymbol('proto.band.feeds.v1beta1.Encoder', null, global);
 goog.exportSymbol('proto.band.feeds.v1beta1.Feed', null, global);
 goog.exportSymbol('proto.band.feeds.v1beta1.FeedWithDeviation', null, global);
 goog.exportSymbol('proto.band.feeds.v1beta1.FeedsSignatureOrder', null, global);
@@ -2701,15 +2702,6 @@ proto.band.feeds.v1beta1.SignalPriceStatus = {
   SIGNAL_PRICE_STATUS_UNSUPPORTED: 1,
   SIGNAL_PRICE_STATUS_UNAVAILABLE: 2,
   SIGNAL_PRICE_STATUS_AVAILABLE: 3
-};
-
-/**
- * @enum {number}
- */
-proto.band.feeds.v1beta1.Encoder = {
-  ENCODER_UNSPECIFIED: 0,
-  ENCODER_FIXED_POINT_ABI: 1,
-  ENCODER_TICK_ABI: 2
 };
 
 goog.object.extend(exports, proto.band.feeds.v1beta1);

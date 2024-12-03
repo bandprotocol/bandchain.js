@@ -447,20 +447,20 @@ export class MultiStoreProof extends jspb.Message {
   getMintStoreMerkleHash_asB64(): string;
   setMintStoreMerkleHash(value: Uint8Array | string): void;
 
-  getParamsToRollingseedStoresMerkleHash(): Uint8Array | string;
-  getParamsToRollingseedStoresMerkleHash_asU8(): Uint8Array;
-  getParamsToRollingseedStoresMerkleHash_asB64(): string;
-  setParamsToRollingseedStoresMerkleHash(value: Uint8Array | string): void;
+  getParamsToRestakeStoresMerkleHash(): Uint8Array | string;
+  getParamsToRestakeStoresMerkleHash_asU8(): Uint8Array;
+  getParamsToRestakeStoresMerkleHash_asB64(): string;
+  setParamsToRestakeStoresMerkleHash(value: Uint8Array | string): void;
 
-  getSlashingToTssStoresMerkleHash(): Uint8Array | string;
-  getSlashingToTssStoresMerkleHash_asU8(): Uint8Array;
-  getSlashingToTssStoresMerkleHash_asB64(): string;
-  setSlashingToTssStoresMerkleHash(value: Uint8Array | string): void;
+  getRollingseedToTransferStoresMerkleHash(): Uint8Array | string;
+  getRollingseedToTransferStoresMerkleHash_asU8(): Uint8Array;
+  getRollingseedToTransferStoresMerkleHash_asB64(): string;
+  setRollingseedToTransferStoresMerkleHash(value: Uint8Array | string): void;
 
-  getUpgradeStoreMerkleHash(): Uint8Array | string;
-  getUpgradeStoreMerkleHash_asU8(): Uint8Array;
-  getUpgradeStoreMerkleHash_asB64(): string;
-  setUpgradeStoreMerkleHash(value: Uint8Array | string): void;
+  getTssToUpgradeStoresMerkleHash(): Uint8Array | string;
+  getTssToUpgradeStoresMerkleHash_asU8(): Uint8Array;
+  getTssToUpgradeStoresMerkleHash_asB64(): string;
+  setTssToUpgradeStoresMerkleHash(value: Uint8Array | string): void;
 
   getAuthToIcahostStoresMerkleHash(): Uint8Array | string;
   getAuthToIcahostStoresMerkleHash_asU8(): Uint8Array;
@@ -481,9 +481,9 @@ export namespace MultiStoreProof {
   export type AsObject = {
     oracleIavlStateHash: Uint8Array | string,
     mintStoreMerkleHash: Uint8Array | string,
-    paramsToRollingseedStoresMerkleHash: Uint8Array | string,
-    slashingToTssStoresMerkleHash: Uint8Array | string,
-    upgradeStoreMerkleHash: Uint8Array | string,
+    paramsToRestakeStoresMerkleHash: Uint8Array | string,
+    rollingseedToTransferStoresMerkleHash: Uint8Array | string,
+    tssToUpgradeStoresMerkleHash: Uint8Array | string,
     authToIcahostStoresMerkleHash: Uint8Array | string,
   }
 }

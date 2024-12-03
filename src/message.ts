@@ -869,7 +869,7 @@ export class MsgVoteGroup extends MsgVoteGroupProto implements BaseMsg {
   }
 }
 
-export class MsgVoteSignal extends MsgVoteSignalProto implements BaseMsg {
+export class MsgVoteSignals extends MsgVoteSignalProto implements BaseMsg {
   constructor(voter: string, signals: Signal[]) {
     super()
     this.setVoter(voter)
@@ -928,7 +928,7 @@ export class MsgSubmitSignalPrices
       value: {
         validator: this.getValidator(),
         timestamp: this.getTimestamp(),
-        signalPricesList: this.getSignalPricesList().map((signalPrice) =>
+        signalPrices: this.getSignalPricesList().map((signalPrice) =>
           signalPrice.toObject(),
         ),
       },

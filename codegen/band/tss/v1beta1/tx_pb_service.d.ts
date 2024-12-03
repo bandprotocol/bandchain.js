@@ -49,6 +49,15 @@ type MsgSubmitDEs = {
   readonly responseType: typeof band_tss_v1beta1_tx_pb.MsgSubmitDEsResponse;
 };
 
+type MsgResetDE = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof band_tss_v1beta1_tx_pb.MsgResetDE;
+  readonly responseType: typeof band_tss_v1beta1_tx_pb.MsgResetDEResponse;
+};
+
 type MsgSubmitSignature = {
   readonly methodName: string;
   readonly service: typeof Msg;
@@ -74,6 +83,7 @@ export class Msg {
   static readonly Complain: MsgComplain;
   static readonly Confirm: MsgConfirm;
   static readonly SubmitDEs: MsgSubmitDEs;
+  static readonly ResetDE: MsgResetDE;
   static readonly SubmitSignature: MsgSubmitSignature;
   static readonly UpdateParams: MsgUpdateParams;
 }
@@ -154,6 +164,15 @@ export class MsgClient {
   submitDEs(
     requestMessage: band_tss_v1beta1_tx_pb.MsgSubmitDEs,
     callback: (error: ServiceError|null, responseMessage: band_tss_v1beta1_tx_pb.MsgSubmitDEsResponse|null) => void
+  ): UnaryResponse;
+  resetDE(
+    requestMessage: band_tss_v1beta1_tx_pb.MsgResetDE,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: band_tss_v1beta1_tx_pb.MsgResetDEResponse|null) => void
+  ): UnaryResponse;
+  resetDE(
+    requestMessage: band_tss_v1beta1_tx_pb.MsgResetDE,
+    callback: (error: ServiceError|null, responseMessage: band_tss_v1beta1_tx_pb.MsgResetDEResponse|null) => void
   ): UnaryResponse;
   submitSignature(
     requestMessage: band_tss_v1beta1_tx_pb.MsgSubmitSignature,

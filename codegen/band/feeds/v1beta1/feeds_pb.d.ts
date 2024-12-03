@@ -4,6 +4,7 @@
 import * as jspb from "google-protobuf";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
+import * as band_feeds_v1beta1_encoder_pb from "../../../band/feeds/v1beta1/encoder_pb";
 
 export class Signal extends jspb.Message {
   getId(): string;
@@ -327,8 +328,8 @@ export class FeedsSignatureOrder extends jspb.Message {
   setSignalIdsList(value: Array<string>): void;
   addSignalIds(value: string, index?: number): string;
 
-  getEncoder(): EncoderMap[keyof EncoderMap];
-  setEncoder(value: EncoderMap[keyof EncoderMap]): void;
+  getEncoder(): band_feeds_v1beta1_encoder_pb.EncoderMap[keyof band_feeds_v1beta1_encoder_pb.EncoderMap];
+  setEncoder(value: band_feeds_v1beta1_encoder_pb.EncoderMap[keyof band_feeds_v1beta1_encoder_pb.EncoderMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FeedsSignatureOrder.AsObject;
@@ -343,7 +344,7 @@ export class FeedsSignatureOrder extends jspb.Message {
 export namespace FeedsSignatureOrder {
   export type AsObject = {
     signalIdsList: Array<string>,
-    encoder: EncoderMap[keyof EncoderMap],
+    encoder: band_feeds_v1beta1_encoder_pb.EncoderMap[keyof band_feeds_v1beta1_encoder_pb.EncoderMap],
   }
 }
 
@@ -365,12 +366,4 @@ export interface SignalPriceStatusMap {
 }
 
 export const SignalPriceStatus: SignalPriceStatusMap;
-
-export interface EncoderMap {
-  ENCODER_UNSPECIFIED: 0;
-  ENCODER_FIXED_POINT_ABI: 1;
-  ENCODER_TICK_ABI: 2;
-}
-
-export const Encoder: EncoderMap;
 

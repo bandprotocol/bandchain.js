@@ -7,6 +7,7 @@ import * as cosmos_base_v1beta1_coin_pb from "../../../cosmos/base/v1beta1/coin_
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as gogoproto_gogo_pb from "../../../gogoproto/gogo_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
+import * as band_feeds_v1beta1_encoder_pb from "../../../band/feeds/v1beta1/encoder_pb";
 import * as band_feeds_v1beta1_feeds_pb from "../../../band/feeds/v1beta1/feeds_pb";
 
 export class Tunnel extends jspb.Message {
@@ -20,9 +21,6 @@ export class Tunnel extends jspb.Message {
   clearRoute(): void;
   getRoute(): google_protobuf_any_pb.Any | undefined;
   setRoute(value?: google_protobuf_any_pb.Any): void;
-
-  getEncoder(): band_feeds_v1beta1_feeds_pb.EncoderMap[keyof band_feeds_v1beta1_feeds_pb.EncoderMap];
-  setEncoder(value: band_feeds_v1beta1_feeds_pb.EncoderMap[keyof band_feeds_v1beta1_feeds_pb.EncoderMap]): void;
 
   getFeePayer(): string;
   setFeePayer(value: string): void;
@@ -64,7 +62,6 @@ export namespace Tunnel {
     id: number,
     sequence: number,
     route?: google_protobuf_any_pb.Any.AsObject,
-    encoder: band_feeds_v1beta1_feeds_pb.EncoderMap[keyof band_feeds_v1beta1_feeds_pb.EncoderMap],
     feePayer: string,
     signalDeviationsList: Array<SignalDeviation.AsObject>,
     interval: number,
@@ -238,11 +235,19 @@ export namespace SignalDeviation {
 }
 
 export class TunnelSignatureOrder extends jspb.Message {
-  getTunnelId(): number;
-  setTunnelId(value: number): void;
-
   getSequence(): number;
   setSequence(value: number): void;
+
+  clearPricesList(): void;
+  getPricesList(): Array<band_feeds_v1beta1_feeds_pb.Price>;
+  setPricesList(value: Array<band_feeds_v1beta1_feeds_pb.Price>): void;
+  addPrices(value?: band_feeds_v1beta1_feeds_pb.Price, index?: number): band_feeds_v1beta1_feeds_pb.Price;
+
+  getCreatedAt(): number;
+  setCreatedAt(value: number): void;
+
+  getEncoder(): band_feeds_v1beta1_encoder_pb.EncoderMap[keyof band_feeds_v1beta1_encoder_pb.EncoderMap];
+  setEncoder(value: band_feeds_v1beta1_encoder_pb.EncoderMap[keyof band_feeds_v1beta1_encoder_pb.EncoderMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TunnelSignatureOrder.AsObject;
@@ -256,8 +261,10 @@ export class TunnelSignatureOrder extends jspb.Message {
 
 export namespace TunnelSignatureOrder {
   export type AsObject = {
-    tunnelId: number,
     sequence: number,
+    pricesList: Array<band_feeds_v1beta1_feeds_pb.Price.AsObject>,
+    createdAt: number,
+    encoder: band_feeds_v1beta1_encoder_pb.EncoderMap[keyof band_feeds_v1beta1_encoder_pb.EncoderMap],
   }
 }
 
