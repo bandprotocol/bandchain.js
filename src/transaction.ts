@@ -18,13 +18,13 @@ import {
   AuthInfo,
   SignDoc,
   TxRaw,
-} from '../proto/cosmos/tx/v1beta1/tx_pb'
+} from '../codegen/cosmos/tx/v1beta1/tx_pb'
 import {
   SignMode,
   SignModeMap,
-} from '../proto/cosmos/tx/signing/v1beta1/signing_pb'
+} from '../codegen/cosmos/tx/signing/v1beta1/signing_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
-import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { Fee } from '../codegen/cosmos/tx/v1beta1/tx_pb'
 
 export default class Transaction {
   msgs: Array<BaseMsg> = []
@@ -179,7 +179,7 @@ export default class Transaction {
         account_number: this.accountNum.toString(),
         chain_id: this.chainId,
         fee: {
-          amount: this.fee.getAmountList().map(coin => coin.toObject()),
+          amount: this.fee.getAmountList().map((coin) => coin.toObject()),
           gas: this.fee.getGasLimit().toString(),
         },
         memo: this.memo,

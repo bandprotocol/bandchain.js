@@ -1,24 +1,24 @@
 import { Client } from '../../src'
 import { grpc } from '@improbable-eng/grpc-web'
 
-import { ServiceClient as TxServiceClient } from '../../proto/cosmos/tx/v1beta1/service_pb_service'
+import { ServiceClient as TxServiceClient } from '../../codegen/cosmos/tx/v1beta1/service_pb_service'
 import {
   ServiceError,
   UnaryResponse,
-} from '../../proto/oracle/v1/query_pb_service'
+} from '../../codegen/band/oracle/v1/query_pb_service'
 
 import {
   BroadcastTxRequest,
   BroadcastTxResponse,
-} from '../../proto/cosmos/tx/v1beta1/service_pb'
-import { TxResponse } from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
+} from '../../codegen/cosmos/tx/v1beta1/service_pb'
+import { TxResponse } from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
 import {
   ABCIMessageLog,
   StringEvent,
   Attribute,
-} from '../../proto/cosmos/base/abci/v1beta1/abci_pb'
+} from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
 
-jest.mock('../../proto/cosmos/tx/v1beta1/service_pb_service')
+jest.mock('../../codegen/cosmos/tx/v1beta1/service_pb_service')
 
 const MockedTxService = jest.mocked(TxServiceClient)
 

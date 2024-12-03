@@ -1,0 +1,8 @@
+[submodule "proto/cosmos-proto"]
+	path = proto/cosmos-proto
+	url = https://github.com/cosmos/cosmos-proto.git
+	branch = main
+[submodule "proto/chain"]
+	path = proto/chain
+	url = https://github.com/bandprotocol/chain.git
+	branch = master

@@ -1,4 +1,4 @@
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
 import { Any } from 'google-protobuf/google/protobuf/any_pb'
 
 import {
@@ -14,30 +14,22 @@ import {
   MsgEditDataSource,
   MsgCreateOracleScript,
   MsgEditOracleScript,
-  MsgVoteCouncil,
   MsgDeposit,
-  MsgSubmitProposal,
-  MsgSubmitCouncilProposal,
-  MsgSubmitSignals,
+  MsgVoteSignals,
   MsgSubmitSignalPrices,
   MsgUpdateReferenceSourceConfig,
   MsgUpdateParams,
 } from '../src/message'
-import { VoteOption } from '../proto/cosmos/gov/v1beta1/gov_pb'
-import {
-  CouncilType,
-  VoteOption as VoteOptionCouncil,
-} from '../proto/council/v1beta1/types_pb'
+import { VoteOption } from '../codegen/cosmos/gov/v1beta1/gov_pb'
 
 import fs from 'fs'
 import path from 'path'
-import { VetoProposal } from '../src/proposal'
 import {
   Signal,
   SignalPrice,
   ReferenceSourceConfig,
-} from '../proto/feeds/v1beta1/feeds_pb'
-import { Params } from '../proto/feeds/v1beta1/params_pb'
+} from '../codegen/band/feeds/v1beta1/feeds_pb'
+import { Params } from '../codegen/band/feeds/v1beta1/params_pb'
 
 let coin = new Coin()
 coin.setDenom('uband')
@@ -925,55 +917,6 @@ describe('MsgEditOracleScript', () => {
   })
 })
 
-describe('MsgVoteCouncil', () => {
-  it('vote successfully', () => {
-    const msgVote = new MsgVoteCouncil(
-      1,
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      VoteOption.VOTE_OPTION_YES,
-    )
-
-    const anyMsg = new Any()
-    const name = 'council.v1beta1.MsgVote'
-    anyMsg.pack(msgVote.serializeBinary(), name, '/')
-
-    expect(msgVote.toAny()).toEqual(anyMsg)
-
-    expect(() => msgVote.validate()).not.toThrow()
-  })
-
-  it('error MsgVote', () => {
-    let msgs: MsgVoteCouncil[] = []
-    let errorText: string[] = []
-
-    msgs.push(
-      new MsgVoteCouncil(
-        0,
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        VoteOptionCouncil.VOTE_OPTION_YES,
-      ),
-    )
-    msgs.push(new MsgVoteCouncil(1, '', VoteOptionCouncil.VOTE_OPTION_YES))
-    msgs.push(
-      new MsgVoteCouncil(
-        1,
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        VoteOptionCouncil.VOTE_OPTION_UNSPECIFIED,
-      ),
-    )
-
-    errorText.push('proposalId cannot be less than zero')
-    errorText.push('Address should not be an empty string')
-    errorText.push('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
 describe('MsgDeposit', () => {
   it('deposit successfully', () => {
     const msgDeposit = new MsgDeposit(
@@ -1021,189 +964,32 @@ describe('MsgDeposit', () => {
   })
 })
 
-describe('MsgSubmitProposal', () => {
-  it('submit proposal successfully', () => {
-    const msgSubmitProposal = new MsgSubmitProposal(
-      [coin],
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      new VetoProposal(1, 'title'),
-    )
-
-    const anyMsg = new Any()
-    const name = 'cosmos.gov.v1beta1.MsgSubmitProposal'
-    anyMsg.pack(msgSubmitProposal.serializeBinary(), name, '/')
-
-    expect(msgSubmitProposal.toAny()).toEqual(anyMsg)
-
-    expect(() => msgSubmitProposal.validate()).not.toThrow()
-  })
-
-  it('error MsgSubmitProposal', () => {
-    let msgs: MsgSubmitProposal[] = []
-    let errorText: string[] = []
-
-    msgs.push(
-      new MsgSubmitProposal([], 'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c'),
-    )
-    msgs.push(new MsgSubmitProposal([coin], ''))
-
-    errorText.push('Expect at least 1 coin')
-    errorText.push('proposer should not be an empty string')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
-describe('MsgSubmitCouncilProposal', () => {
-  it('submit council proposal successfully', () => {
-    const msgSubmitProposal = new MsgSubmitCouncilProposal(
-      'council proposal',
-      CouncilType.COUNCIL_TYPE_BAND_DAO,
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      [
-        new MsgSend(
-          'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-          'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-          [coin],
-        ),
-      ],
-      'test metadata',
-    )
-
-    const anyMsg = new Any()
-    const name = 'council.v1beta1.MsgSubmitProposal'
-    anyMsg.pack(msgSubmitProposal.serializeBinary(), name, '/')
-
-    expect(msgSubmitProposal.toAny()).toEqual(anyMsg)
-
-    expect(() => msgSubmitProposal.validate()).not.toThrow()
-  })
-
-  it('error MsgSubmitCouncilProposal', () => {
-    let msgs: MsgSubmitCouncilProposal[] = []
-    let errorText: string[] = []
-
-    // title should not be an empty string
-    msgs.push(
-      new MsgSubmitCouncilProposal(
-        '',
-        CouncilType.COUNCIL_TYPE_BAND_DAO,
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        [
-          new MsgSend(
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            [coin],
-          ),
-        ],
-        'test metadata',
-      ),
-    )
-
-    // council should not be COUNCIL_TYPE_UNSPECIFIED
-    msgs.push(
-      new MsgSubmitCouncilProposal(
-        'council proposal',
-        CouncilType.COUNCIL_TYPE_UNSPECIFIED,
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        [
-          new MsgSend(
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            [coin],
-          ),
-        ],
-        'test metadata',
-      ),
-    )
-
-    msgs.push(
-      new MsgSubmitCouncilProposal(
-        'council proposal',
-        CouncilType.COUNCIL_TYPE_BAND_DAO,
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        [],
-        'test metadata',
-      ),
-    )
-
-    msgs.push(
-      new MsgSubmitCouncilProposal(
-        'council proposal',
-        CouncilType.COUNCIL_TYPE_BAND_DAO,
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        [
-          new MsgSend(
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            [coin],
-          ),
-        ],
-        '',
-      ),
-    )
-
-    msgs.push(
-      new MsgSubmitCouncilProposal(
-        'council proposal',
-        CouncilType.COUNCIL_TYPE_BAND_DAO,
-        '',
-        [
-          new MsgSend(
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-            [coin],
-          ),
-        ],
-        'meta',
-      ),
-    )
-
-    errorText.push('title should not be an empty string')
-    errorText.push('council should not be COUNCIL_TYPE_UNSPECIFIED')
-    errorText.push('messages should not be an empty string')
-    errorText.push('metadata should not be an empty string')
-    errorText.push('proposer should not be an empty string')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
-        // @ts-ignore
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
-describe('MsgSubmitSignals', () => {
+describe('MsgVoteSignals', () => {
   let signal = new Signal()
   signal.setId('crypto_prices.btcbusd')
   signal.setPower(1)
 
   it('create successfully', () => {
-    const msgSubmitSignals = new MsgSubmitSignals(
+    const msgVoteSignals = new MsgVoteSignals(
       'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
       [signal],
     )
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgSubmitSignals'
-    anyMsg.pack(msgSubmitSignals.serializeBinary(), name, '/')
+    const name = 'band.feeds.v1beta1.MsgVote'
+    anyMsg.pack(msgVoteSignals.serializeBinary(), name, '/')
 
-    expect(msgSubmitSignals.toAny()).toEqual(anyMsg)
+    expect(msgVoteSignals.toAny()).toEqual(anyMsg)
 
-    expect(() => msgSubmitSignals.validate()).not.toThrow()
+    expect(() => msgVoteSignals.validate()).not.toThrow()
   })
 
-  it('error MsgSubmitSignals', () => {
-    let msgs: MsgSubmitSignals[] = []
+  it('error MsgVoteSignals', () => {
+    let msgs: MsgVoteSignals[] = []
     let errorText: string[] = []
 
-    msgs.push(new MsgSubmitSignals('', [signal]))
+    msgs.push(new MsgVoteSignals('', [signal]))
 
-    errorText.push('Delegator address should not be an empty string')
+    errorText.push('Voter address should not be an empty string')
 
     msgs.forEach((msg, index) => {
       expect(() => {
@@ -1217,7 +1003,7 @@ describe('MsgSubmitSignalPrice', () => {
   const signalPrice = new SignalPrice()
   signalPrice.setSignalId('crypto_price.btcbusd')
   signalPrice.setPrice(1)
-  signalPrice.setPriceStatus(0)
+  signalPrice.setStatus(0)
 
   it('create successfully', () => {
     const msgSubmitSignalPrice = new MsgSubmitSignalPrices(
@@ -1227,7 +1013,7 @@ describe('MsgSubmitSignalPrice', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgSubmitSignalPrices'
+    const name = 'band.feeds.v1beta1.MsgSubmitSignalPrices'
     anyMsg.pack(msgSubmitSignalPrice.serializeBinary(), name, '/')
 
     expect(msgSubmitSignalPrice.toAny()).toEqual(anyMsg)
@@ -1235,7 +1021,7 @@ describe('MsgSubmitSignalPrice', () => {
     expect(() => msgSubmitSignalPrice.validate()).not.toThrow()
   })
 
-  it('error MsgSubmitSignals', () => {
+  it('error MsgSubmitSignalPrice', () => {
     let msgs: MsgSubmitSignalPrices[] = []
     let errorText: string[] = []
 
@@ -1261,8 +1047,10 @@ describe('MsgSubmitSignalPrice', () => {
 
 describe('MsgUpdateReferenceSourceConfig', () => {
   const referenceSource = new ReferenceSourceConfig()
-  referenceSource.setIpfsHash('QmTzQ1b4SijKVDe3XZPq3N5tHk3PvCjAosYtK6KDxDZXn6')
-  referenceSource.setVersion('1.1')
+  referenceSource.setRegistryIpfsHash(
+    'QmTzQ1b4SijKVDe3XZPq3N5tHk3PvCjAosYtK6KDxDZXn6',
+  )
+  referenceSource.setRegistryVersion('1.1')
 
   it('create successfully', () => {
     const msgUpdateReferenceSourceConfig = new MsgUpdateReferenceSourceConfig(
@@ -1279,7 +1067,7 @@ describe('MsgUpdateReferenceSourceConfig', () => {
     expect(() => msgUpdateReferenceSourceConfig.validate()).not.toThrow()
   })
 
-  it('error MsgSubmitSignals', () => {
+  it('error MsgUpdateReferenceSourceConfig', () => {
     let msgs: MsgUpdateReferenceSourceConfig[] = []
     let errorText: string[] = []
 
@@ -1324,7 +1112,7 @@ describe('MsgUpdateParams', () => {
     expect(() => msgUpdateParams.validate()).not.toThrow()
   })
 
-  it('error MsgSubmitSignals', () => {
+  it('error MsgUpdateParams', () => {
     let msgs: MsgUpdateParams[] = []
     let errorText: string[] = []
 

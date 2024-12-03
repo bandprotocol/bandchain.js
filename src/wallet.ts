@@ -17,7 +17,7 @@ import {
   DecodeError,
   ValueError,
 } from './error'
-import { PubKey as PublicKeyProto } from '../proto/cosmos/crypto/secp256k1/keys_pb'
+import { PubKey as PublicKeyProto } from '../codegen/cosmos/crypto/secp256k1/keys_pb'
 
 const ECPair = ECPairFactory(ecc)
 const bip32 = BIP32Factory(ecc)
