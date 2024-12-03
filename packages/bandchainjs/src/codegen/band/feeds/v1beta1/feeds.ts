@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { Encoder } from "./encoder";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** PriceStatus is a structure that defines the price status of a price. */
 export enum PriceStatus {
@@ -101,48 +102,6 @@ export function signalPriceStatusToJSON(object: SignalPriceStatus): string {
     case SignalPriceStatus.SIGNAL_PRICE_STATUS_AVAILABLE:
       return "SIGNAL_PRICE_STATUS_AVAILABLE";
     case SignalPriceStatus.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
-  }
-}
-/** Encoder is an enumerator that defines the mode of encoding message in tss module. */
-export enum Encoder {
-  /** ENCODER_UNSPECIFIED - ENCODER_UNSPECIFIED is an unspecified encoder mode. */
-  ENCODER_UNSPECIFIED = 0,
-  /** ENCODER_FIXED_POINT_ABI - ENCODER_FIXED_POINT_ABI is a fixed-point price abi encoder (price * 10^9). */
-  ENCODER_FIXED_POINT_ABI = 1,
-  /** ENCODER_TICK_ABI - ENCODER_TICK_ABI is a tick abi encoder. */
-  ENCODER_TICK_ABI = 2,
-  UNRECOGNIZED = -1,
-}
-export const EncoderSDKType = Encoder;
-export const EncoderAmino = Encoder;
-export function encoderFromJSON(object: any): Encoder {
-  switch (object) {
-    case 0:
-    case "ENCODER_UNSPECIFIED":
-      return Encoder.ENCODER_UNSPECIFIED;
-    case 1:
-    case "ENCODER_FIXED_POINT_ABI":
-      return Encoder.ENCODER_FIXED_POINT_ABI;
-    case 2:
-    case "ENCODER_TICK_ABI":
-      return Encoder.ENCODER_TICK_ABI;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return Encoder.UNRECOGNIZED;
-  }
-}
-export function encoderToJSON(object: Encoder): string {
-  switch (object) {
-    case Encoder.ENCODER_UNSPECIFIED:
-      return "ENCODER_UNSPECIFIED";
-    case Encoder.ENCODER_FIXED_POINT_ABI:
-      return "ENCODER_FIXED_POINT_ABI";
-    case Encoder.ENCODER_TICK_ABI:
-      return "ENCODER_TICK_ABI";
-    case Encoder.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
   }
@@ -516,33 +475,6 @@ export interface ReferenceSourceConfigAminoMsg {
 export interface ReferenceSourceConfigSDKType {
   registry_ipfs_hash: string;
   registry_version: string;
-}
-/** FeedsPriceData is a structure that defines the price data of the feeds for generating signature. */
-export interface FeedsPriceData {
-  /** Prices is the list of prices of the feeds. */
-  prices: Price[];
-  /** Timestamp is the timestamp at which the price was submitted. */
-  timestamp: bigint;
-}
-export interface FeedsPriceDataProtoMsg {
-  typeUrl: "/band.feeds.v1beta1.FeedsPriceData";
-  value: Uint8Array;
-}
-/** FeedsPriceData is a structure that defines the price data of the feeds for generating signature. */
-export interface FeedsPriceDataAmino {
-  /** Prices is the list of prices of the feeds. */
-  prices?: PriceAmino[];
-  /** Timestamp is the timestamp at which the price was submitted. */
-  timestamp?: string;
-}
-export interface FeedsPriceDataAminoMsg {
-  type: "/band.feeds.v1beta1.FeedsPriceData";
-  value: FeedsPriceDataAmino;
-}
-/** FeedsPriceData is a structure that defines the price data of the feeds for generating signature. */
-export interface FeedsPriceDataSDKType {
-  prices: PriceSDKType[];
-  timestamp: bigint;
 }
 /** FeedsSignatureOrder defines a general signature order for feed data. */
 export interface FeedsSignatureOrder {
@@ -1533,83 +1465,6 @@ export const ReferenceSourceConfig = {
     return {
       typeUrl: "/band.feeds.v1beta1.ReferenceSourceConfig",
       value: ReferenceSourceConfig.encode(message).finish()
-    };
-  }
-};
-function createBaseFeedsPriceData(): FeedsPriceData {
-  return {
-    prices: [],
-    timestamp: BigInt(0)
-  };
-}
-export const FeedsPriceData = {
-  typeUrl: "/band.feeds.v1beta1.FeedsPriceData",
-  encode(message: FeedsPriceData, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.prices) {
-      Price.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.timestamp !== BigInt(0)) {
-      writer.uint32(16).uint64(message.timestamp);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): FeedsPriceData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseFeedsPriceData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.prices.push(Price.decode(reader, reader.uint32()));
-          break;
-        case 2:
-          message.timestamp = reader.uint64();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<FeedsPriceData>): FeedsPriceData {
-    const message = createBaseFeedsPriceData();
-    message.prices = object.prices?.map(e => Price.fromPartial(e)) || [];
-    message.timestamp = object.timestamp !== undefined && object.timestamp !== null ? BigInt(object.timestamp.toString()) : BigInt(0);
-    return message;
-  },
-  fromAmino(object: FeedsPriceDataAmino): FeedsPriceData {
-    const message = createBaseFeedsPriceData();
-    message.prices = object.prices?.map(e => Price.fromAmino(e)) || [];
-    if (object.timestamp !== undefined && object.timestamp !== null) {
-      message.timestamp = BigInt(object.timestamp);
-    }
-    return message;
-  },
-  toAmino(message: FeedsPriceData): FeedsPriceDataAmino {
-    const obj: any = {};
-    if (message.prices) {
-      obj.prices = message.prices.map(e => e ? Price.toAmino(e) : undefined);
-    } else {
-      obj.prices = message.prices;
-    }
-    obj.timestamp = message.timestamp !== BigInt(0) ? message.timestamp?.toString() : undefined;
-    return obj;
-  },
-  fromAminoMsg(object: FeedsPriceDataAminoMsg): FeedsPriceData {
-    return FeedsPriceData.fromAmino(object.value);
-  },
-  fromProtoMsg(message: FeedsPriceDataProtoMsg): FeedsPriceData {
-    return FeedsPriceData.decode(message.value);
-  },
-  toProto(message: FeedsPriceData): Uint8Array {
-    return FeedsPriceData.encode(message).finish();
-  },
-  toProtoMsg(message: FeedsPriceData): FeedsPriceDataProtoMsg {
-    return {
-      typeUrl: "/band.feeds.v1beta1.FeedsPriceData",
-      value: FeedsPriceData.encode(message).finish()
     };
   }
 };

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
-import { Tunnel, TunnelAmino, TunnelSDKType, Deposit, DepositAmino, DepositSDKType, Packet, PacketAmino, PacketSDKType } from "./tunnel";
+import { Tunnel, TunnelAmino, TunnelSDKType, Deposit, DepositAmino, DepositSDKType, Packet, PacketAmino, PacketSDKType, TotalFees, TotalFeesAmino, TotalFeesSDKType } from "./tunnel";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** TunnelStatusFilter defines a filter for tunnel status. */
@@ -348,6 +348,42 @@ export interface QueryPacketResponseAminoMsg {
 /** QueryPacketResponse is the response type for the Query/Packet RPC method. */
 export interface QueryPacketResponseSDKType {
   packet?: PacketSDKType;
+}
+/** QueryTotalFeesRequest is the request type for the Query/TotalFees RPC method. */
+export interface QueryTotalFeesRequest {}
+export interface QueryTotalFeesRequestProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.QueryTotalFeesRequest";
+  value: Uint8Array;
+}
+/** QueryTotalFeesRequest is the request type for the Query/TotalFees RPC method. */
+export interface QueryTotalFeesRequestAmino {}
+export interface QueryTotalFeesRequestAminoMsg {
+  type: "/band.tunnel.v1beta1.QueryTotalFeesRequest";
+  value: QueryTotalFeesRequestAmino;
+}
+/** QueryTotalFeesRequest is the request type for the Query/TotalFees RPC method. */
+export interface QueryTotalFeesRequestSDKType {}
+/** QueryTotalFeesResponse is the response type for the Query/TotalFees RPC method. */
+export interface QueryTotalFeesResponse {
+  /** total_fees is the total fees collected by the tunnel. */
+  totalFees: TotalFees;
+}
+export interface QueryTotalFeesResponseProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.QueryTotalFeesResponse";
+  value: Uint8Array;
+}
+/** QueryTotalFeesResponse is the response type for the Query/TotalFees RPC method. */
+export interface QueryTotalFeesResponseAmino {
+  /** total_fees is the total fees collected by the tunnel. */
+  total_fees?: TotalFeesAmino;
+}
+export interface QueryTotalFeesResponseAminoMsg {
+  type: "/band.tunnel.v1beta1.QueryTotalFeesResponse";
+  value: QueryTotalFeesResponseAmino;
+}
+/** QueryTotalFeesResponse is the response type for the Query/TotalFees RPC method. */
+export interface QueryTotalFeesResponseSDKType {
+  total_fees: TotalFeesSDKType;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -1240,6 +1276,119 @@ export const QueryPacketResponse = {
     return {
       typeUrl: "/band.tunnel.v1beta1.QueryPacketResponse",
       value: QueryPacketResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryTotalFeesRequest(): QueryTotalFeesRequest {
+  return {};
+}
+export const QueryTotalFeesRequest = {
+  typeUrl: "/band.tunnel.v1beta1.QueryTotalFeesRequest",
+  encode(_: QueryTotalFeesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalFeesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalFeesRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<QueryTotalFeesRequest>): QueryTotalFeesRequest {
+    const message = createBaseQueryTotalFeesRequest();
+    return message;
+  },
+  fromAmino(_: QueryTotalFeesRequestAmino): QueryTotalFeesRequest {
+    const message = createBaseQueryTotalFeesRequest();
+    return message;
+  },
+  toAmino(_: QueryTotalFeesRequest): QueryTotalFeesRequestAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: QueryTotalFeesRequestAminoMsg): QueryTotalFeesRequest {
+    return QueryTotalFeesRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryTotalFeesRequestProtoMsg): QueryTotalFeesRequest {
+    return QueryTotalFeesRequest.decode(message.value);
+  },
+  toProto(message: QueryTotalFeesRequest): Uint8Array {
+    return QueryTotalFeesRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryTotalFeesRequest): QueryTotalFeesRequestProtoMsg {
+    return {
+      typeUrl: "/band.tunnel.v1beta1.QueryTotalFeesRequest",
+      value: QueryTotalFeesRequest.encode(message).finish()
+    };
+  }
+};
+function createBaseQueryTotalFeesResponse(): QueryTotalFeesResponse {
+  return {
+    totalFees: TotalFees.fromPartial({})
+  };
+}
+export const QueryTotalFeesResponse = {
+  typeUrl: "/band.tunnel.v1beta1.QueryTotalFeesResponse",
+  encode(message: QueryTotalFeesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.totalFees !== undefined) {
+      TotalFees.encode(message.totalFees, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryTotalFeesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryTotalFeesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.totalFees = TotalFees.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryTotalFeesResponse>): QueryTotalFeesResponse {
+    const message = createBaseQueryTotalFeesResponse();
+    message.totalFees = object.totalFees !== undefined && object.totalFees !== null ? TotalFees.fromPartial(object.totalFees) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryTotalFeesResponseAmino): QueryTotalFeesResponse {
+    const message = createBaseQueryTotalFeesResponse();
+    if (object.total_fees !== undefined && object.total_fees !== null) {
+      message.totalFees = TotalFees.fromAmino(object.total_fees);
+    }
+    return message;
+  },
+  toAmino(message: QueryTotalFeesResponse): QueryTotalFeesResponseAmino {
+    const obj: any = {};
+    obj.total_fees = message.totalFees ? TotalFees.toAmino(message.totalFees) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryTotalFeesResponseAminoMsg): QueryTotalFeesResponse {
+    return QueryTotalFeesResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryTotalFeesResponseProtoMsg): QueryTotalFeesResponse {
+    return QueryTotalFeesResponse.decode(message.value);
+  },
+  toProto(message: QueryTotalFeesResponse): Uint8Array {
+    return QueryTotalFeesResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryTotalFeesResponse): QueryTotalFeesResponseProtoMsg {
+    return {
+      typeUrl: "/band.tunnel.v1beta1.QueryTotalFeesResponse",
+      value: QueryTotalFeesResponse.encode(message).finish()
     };
   }
 };

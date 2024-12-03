@@ -53,10 +53,10 @@ export interface TunnelOriginator {
   sourceChainId: string;
   /** tunnel_id is the tunnel ID that the request is originated from. */
   tunnelId: bigint;
-  /** contract_address is the target address that the data should be relayed to. */
-  contractAddress: string;
-  /** target_chain_id is the target chain ID that the data should be relayed to. */
-  targetChainId: string;
+  /** destination_chain_id is the destination chain ID that the data should be relayed to. */
+  destinationChainId: string;
+  /** destination_contract_address is the destination address that the data should be relayed to. */
+  destinationContractAddress: string;
 }
 export interface TunnelOriginatorProtoMsg {
   typeUrl: "/band.tss.v1beta1.TunnelOriginator";
@@ -71,10 +71,10 @@ export interface TunnelOriginatorAmino {
   source_chain_id?: string;
   /** tunnel_id is the tunnel ID that the request is originated from. */
   tunnel_id?: string;
-  /** contract_address is the target address that the data should be relayed to. */
-  contract_address?: string;
-  /** target_chain_id is the target chain ID that the data should be relayed to. */
-  target_chain_id?: string;
+  /** destination_chain_id is the destination chain ID that the data should be relayed to. */
+  destination_chain_id?: string;
+  /** destination_contract_address is the destination address that the data should be relayed to. */
+  destination_contract_address?: string;
 }
 export interface TunnelOriginatorAminoMsg {
   type: "/band.tss.v1beta1.TunnelOriginator";
@@ -88,8 +88,8 @@ export interface TunnelOriginatorSDKType {
   $typeUrl?: "/band.tss.v1beta1.TunnelOriginator";
   source_chain_id: string;
   tunnel_id: bigint;
-  contract_address: string;
-  target_chain_id: string;
+  destination_chain_id: string;
+  destination_contract_address: string;
 }
 function createBaseDirectOriginator(): DirectOriginator {
   return {
@@ -184,8 +184,8 @@ function createBaseTunnelOriginator(): TunnelOriginator {
     $typeUrl: "/band.tss.v1beta1.TunnelOriginator",
     sourceChainId: "",
     tunnelId: BigInt(0),
-    contractAddress: "",
-    targetChainId: ""
+    destinationChainId: "",
+    destinationContractAddress: ""
   };
 }
 export const TunnelOriginator = {
@@ -197,11 +197,11 @@ export const TunnelOriginator = {
     if (message.tunnelId !== BigInt(0)) {
       writer.uint32(16).uint64(message.tunnelId);
     }
-    if (message.contractAddress !== "") {
-      writer.uint32(26).string(message.contractAddress);
+    if (message.destinationChainId !== "") {
+      writer.uint32(26).string(message.destinationChainId);
     }
-    if (message.targetChainId !== "") {
-      writer.uint32(34).string(message.targetChainId);
+    if (message.destinationContractAddress !== "") {
+      writer.uint32(34).string(message.destinationContractAddress);
     }
     return writer;
   },
@@ -219,10 +219,10 @@ export const TunnelOriginator = {
           message.tunnelId = reader.uint64();
           break;
         case 3:
-          message.contractAddress = reader.string();
+          message.destinationChainId = reader.string();
           break;
         case 4:
-          message.targetChainId = reader.string();
+          message.destinationContractAddress = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -235,8 +235,8 @@ export const TunnelOriginator = {
     const message = createBaseTunnelOriginator();
     message.sourceChainId = object.sourceChainId ?? "";
     message.tunnelId = object.tunnelId !== undefined && object.tunnelId !== null ? BigInt(object.tunnelId.toString()) : BigInt(0);
-    message.contractAddress = object.contractAddress ?? "";
-    message.targetChainId = object.targetChainId ?? "";
+    message.destinationChainId = object.destinationChainId ?? "";
+    message.destinationContractAddress = object.destinationContractAddress ?? "";
     return message;
   },
   fromAmino(object: TunnelOriginatorAmino): TunnelOriginator {
@@ -247,11 +247,11 @@ export const TunnelOriginator = {
     if (object.tunnel_id !== undefined && object.tunnel_id !== null) {
       message.tunnelId = BigInt(object.tunnel_id);
     }
-    if (object.contract_address !== undefined && object.contract_address !== null) {
-      message.contractAddress = object.contract_address;
+    if (object.destination_chain_id !== undefined && object.destination_chain_id !== null) {
+      message.destinationChainId = object.destination_chain_id;
     }
-    if (object.target_chain_id !== undefined && object.target_chain_id !== null) {
-      message.targetChainId = object.target_chain_id;
+    if (object.destination_contract_address !== undefined && object.destination_contract_address !== null) {
+      message.destinationContractAddress = object.destination_contract_address;
     }
     return message;
   },
@@ -259,8 +259,8 @@ export const TunnelOriginator = {
     const obj: any = {};
     obj.source_chain_id = message.sourceChainId === "" ? undefined : message.sourceChainId;
     obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
-    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
-    obj.target_chain_id = message.targetChainId === "" ? undefined : message.targetChainId;
+    obj.destination_chain_id = message.destinationChainId === "" ? undefined : message.destinationChainId;
+    obj.destination_contract_address = message.destinationContractAddress === "" ? undefined : message.destinationContractAddress;
     return obj;
   },
   fromAminoMsg(object: TunnelOriginatorAminoMsg): TunnelOriginator {

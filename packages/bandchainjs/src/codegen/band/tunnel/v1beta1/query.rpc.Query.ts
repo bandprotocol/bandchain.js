@@ -2,7 +2,7 @@
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryTunnelsRequest, QueryTunnelsResponse, QueryTunnelRequest, QueryTunnelResponse, QueryDepositsRequest, QueryDepositsResponse, QueryDepositRequest, QueryDepositResponse, QueryPacketsRequest, QueryPacketsResponse, QueryPacketRequest, QueryPacketResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { QueryTunnelsRequest, QueryTunnelsResponse, QueryTunnelRequest, QueryTunnelResponse, QueryDepositsRequest, QueryDepositsResponse, QueryDepositRequest, QueryDepositResponse, QueryPacketsRequest, QueryPacketsResponse, QueryPacketRequest, QueryPacketResponse, QueryTotalFeesRequest, QueryTotalFeesResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
 /** Query service defines the gRPC querier service. */
 export interface Query {
   /** Tunnels is a RPC method that returns all tunnels. */
@@ -17,6 +17,8 @@ export interface Query {
   packets(request: QueryPacketsRequest): Promise<QueryPacketsResponse>;
   /** Packet is a RPC method that returns a packet by its tunnel ID and sequence. */
   packet(request: QueryPacketRequest): Promise<QueryPacketResponse>;
+  /** TotalFees is a RPC method that returns the total fees collected by the tunnel */
+  totalFees(request?: QueryTotalFeesRequest): Promise<QueryTotalFeesResponse>;
   /** Params is a RPC method that returns all parameters of the module. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
 }
@@ -30,6 +32,7 @@ export class QueryClientImpl implements Query {
     this.deposit = this.deposit.bind(this);
     this.packets = this.packets.bind(this);
     this.packet = this.packet.bind(this);
+    this.totalFees = this.totalFees.bind(this);
     this.params = this.params.bind(this);
   }
   tunnels(request: QueryTunnelsRequest): Promise<QueryTunnelsResponse> {
@@ -62,6 +65,11 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("band.tunnel.v1beta1.Query", "Packet", data);
     return promise.then(data => QueryPacketResponse.decode(new BinaryReader(data)));
   }
+  totalFees(request: QueryTotalFeesRequest = {}): Promise<QueryTotalFeesResponse> {
+    const data = QueryTotalFeesRequest.encode(request).finish();
+    const promise = this.rpc.request("band.tunnel.v1beta1.Query", "TotalFees", data);
+    return promise.then(data => QueryTotalFeesResponse.decode(new BinaryReader(data)));
+  }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("band.tunnel.v1beta1.Query", "Params", data);
@@ -89,6 +97,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     },
     packet(request: QueryPacketRequest): Promise<QueryPacketResponse> {
       return queryService.packet(request);
+    },
+    totalFees(request?: QueryTotalFeesRequest): Promise<QueryTotalFeesResponse> {
+      return queryService.totalFees(request);
     },
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);

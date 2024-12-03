@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgSubmitDKGRound1, MsgSubmitDKGRound2, MsgComplain, MsgConfirm, MsgSubmitDEs, MsgSubmitSignature, MsgUpdateParams } from "./tx";
+import { MsgSubmitDKGRound1, MsgSubmitDKGRound2, MsgComplain, MsgConfirm, MsgSubmitDEs, MsgResetDE, MsgSubmitSignature, MsgUpdateParams } from "./tx";
 export const AminoConverter = {
   "/band.tss.v1beta1.MsgSubmitDKGRound1": {
     aminoType: "tss/MsgSubmitDKGRound1",
@@ -25,6 +25,11 @@ export const AminoConverter = {
     aminoType: "tss/MsgSubmitDEs",
     toAmino: MsgSubmitDEs.toAmino,
     fromAmino: MsgSubmitDEs.fromAmino
+  },
+  "/band.tss.v1beta1.MsgResetDE": {
+    aminoType: "tss/MsgResetDE",
+    toAmino: MsgResetDE.toAmino,
+    fromAmino: MsgResetDE.fromAmino
   },
   "/band.tss.v1beta1.MsgSubmitSignature": {
     aminoType: "tss/MsgSubmitSignature",

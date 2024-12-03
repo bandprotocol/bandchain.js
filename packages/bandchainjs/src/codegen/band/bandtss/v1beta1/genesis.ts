@@ -44,13 +44,12 @@ export interface Params {
   rewardPercentage: bigint;
   /** inactive_penalty_duration is the duration where a member cannot activate back after being set to inactive. */
   inactivePenaltyDuration: Duration;
-  /**
-   * max_transition_duration is the maximum duration where the transition process waits
-   * since the start of the process until an incoming group replaces a current group.
-   */
+  /** min_transition_duration is the minimum duration that the transition process waits before execution. */
+  minTransitionDuration: Duration;
+  /** max_transition_duration is the maximum duration that the transition process waits before execution. */
   maxTransitionDuration: Duration;
-  /** fee is the tokens that will be paid per signer. */
-  fee: Coin[];
+  /** fee_per_signer is the tokens that will be paid per signer. */
+  feePerSigner: Coin[];
 }
 export interface ParamsProtoMsg {
   typeUrl: "/band.bandtss.v1beta1.Params";
@@ -65,13 +64,12 @@ export interface ParamsAmino {
   reward_percentage?: string;
   /** inactive_penalty_duration is the duration where a member cannot activate back after being set to inactive. */
   inactive_penalty_duration?: DurationAmino;
-  /**
-   * max_transition_duration is the maximum duration where the transition process waits
-   * since the start of the process until an incoming group replaces a current group.
-   */
+  /** min_transition_duration is the minimum duration that the transition process waits before execution. */
+  min_transition_duration?: DurationAmino;
+  /** max_transition_duration is the maximum duration that the transition process waits before execution. */
   max_transition_duration?: DurationAmino;
-  /** fee is the tokens that will be paid per signer. */
-  fee?: CoinAmino[];
+  /** fee_per_signer is the tokens that will be paid per signer. */
+  fee_per_signer?: CoinAmino[];
 }
 export interface ParamsAminoMsg {
   type: "/band.bandtss.v1beta1.Params";
@@ -81,8 +79,9 @@ export interface ParamsAminoMsg {
 export interface ParamsSDKType {
   reward_percentage: bigint;
   inactive_penalty_duration: DurationSDKType;
+  min_transition_duration: DurationSDKType;
   max_transition_duration: DurationSDKType;
-  fee: CoinSDKType[];
+  fee_per_signer: CoinSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -177,8 +176,9 @@ function createBaseParams(): Params {
   return {
     rewardPercentage: BigInt(0),
     inactivePenaltyDuration: Duration.fromPartial({}),
+    minTransitionDuration: Duration.fromPartial({}),
     maxTransitionDuration: Duration.fromPartial({}),
-    fee: []
+    feePerSigner: []
   };
 }
 export const Params = {
@@ -190,11 +190,14 @@ export const Params = {
     if (message.inactivePenaltyDuration !== undefined) {
       Duration.encode(message.inactivePenaltyDuration, writer.uint32(18).fork()).ldelim();
     }
-    if (message.maxTransitionDuration !== undefined) {
-      Duration.encode(message.maxTransitionDuration, writer.uint32(26).fork()).ldelim();
+    if (message.minTransitionDuration !== undefined) {
+      Duration.encode(message.minTransitionDuration, writer.uint32(26).fork()).ldelim();
     }
-    for (const v of message.fee) {
-      Coin.encode(v!, writer.uint32(34).fork()).ldelim();
+    if (message.maxTransitionDuration !== undefined) {
+      Duration.encode(message.maxTransitionDuration, writer.uint32(34).fork()).ldelim();
+    }
+    for (const v of message.feePerSigner) {
+      Coin.encode(v!, writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
@@ -212,10 +215,13 @@ export const Params = {
           message.inactivePenaltyDuration = Duration.decode(reader, reader.uint32());
           break;
         case 3:
-          message.maxTransitionDuration = Duration.decode(reader, reader.uint32());
+          message.minTransitionDuration = Duration.decode(reader, reader.uint32());
           break;
         case 4:
-          message.fee.push(Coin.decode(reader, reader.uint32()));
+          message.maxTransitionDuration = Duration.decode(reader, reader.uint32());
+          break;
+        case 5:
+          message.feePerSigner.push(Coin.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -228,8 +234,9 @@ export const Params = {
     const message = createBaseParams();
     message.rewardPercentage = object.rewardPercentage !== undefined && object.rewardPercentage !== null ? BigInt(object.rewardPercentage.toString()) : BigInt(0);
     message.inactivePenaltyDuration = object.inactivePenaltyDuration !== undefined && object.inactivePenaltyDuration !== null ? Duration.fromPartial(object.inactivePenaltyDuration) : undefined;
+    message.minTransitionDuration = object.minTransitionDuration !== undefined && object.minTransitionDuration !== null ? Duration.fromPartial(object.minTransitionDuration) : undefined;
     message.maxTransitionDuration = object.maxTransitionDuration !== undefined && object.maxTransitionDuration !== null ? Duration.fromPartial(object.maxTransitionDuration) : undefined;
-    message.fee = object.fee?.map(e => Coin.fromPartial(e)) || [];
+    message.feePerSigner = object.feePerSigner?.map(e => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -240,21 +247,25 @@ export const Params = {
     if (object.inactive_penalty_duration !== undefined && object.inactive_penalty_duration !== null) {
       message.inactivePenaltyDuration = Duration.fromAmino(object.inactive_penalty_duration);
     }
+    if (object.min_transition_duration !== undefined && object.min_transition_duration !== null) {
+      message.minTransitionDuration = Duration.fromAmino(object.min_transition_duration);
+    }
     if (object.max_transition_duration !== undefined && object.max_transition_duration !== null) {
       message.maxTransitionDuration = Duration.fromAmino(object.max_transition_duration);
     }
-    message.fee = object.fee?.map(e => Coin.fromAmino(e)) || [];
+    message.feePerSigner = object.fee_per_signer?.map(e => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
     obj.reward_percentage = message.rewardPercentage !== BigInt(0) ? message.rewardPercentage?.toString() : undefined;
     obj.inactive_penalty_duration = message.inactivePenaltyDuration ? Duration.toAmino(message.inactivePenaltyDuration) : undefined;
+    obj.min_transition_duration = message.minTransitionDuration ? Duration.toAmino(message.minTransitionDuration) : undefined;
     obj.max_transition_duration = message.maxTransitionDuration ? Duration.toAmino(message.maxTransitionDuration) : undefined;
-    if (message.fee) {
-      obj.fee = message.fee.map(e => e ? Coin.toAmino(e) : undefined);
+    if (message.feePerSigner) {
+      obj.fee_per_signer = message.feePerSigner.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
-      obj.fee = message.fee;
+      obj.fee_per_signer = message.feePerSigner;
     }
     return obj;
   },

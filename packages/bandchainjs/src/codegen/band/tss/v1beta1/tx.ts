@@ -263,6 +263,42 @@ export interface MsgSubmitDEsResponseAminoMsg {
 }
 /** MsgSubmitDEsResponse is response data for MsgSubmitDEs message */
 export interface MsgSubmitDEsResponseSDKType {}
+/** MsgResetDE is a message used to reset the DEs that being stored on chain. */
+export interface MsgResetDE {
+  /** sender is the user address that request for resetting DEs. */
+  sender: string;
+}
+export interface MsgResetDEProtoMsg {
+  typeUrl: "/band.tss.v1beta1.MsgResetDE";
+  value: Uint8Array;
+}
+/** MsgResetDE is a message used to reset the DEs that being stored on chain. */
+export interface MsgResetDEAmino {
+  /** sender is the user address that request for resetting DEs. */
+  sender?: string;
+}
+export interface MsgResetDEAminoMsg {
+  type: "tss/MsgResetDE";
+  value: MsgResetDEAmino;
+}
+/** MsgResetDE is a message used to reset the DEs that being stored on chain. */
+export interface MsgResetDESDKType {
+  sender: string;
+}
+/** MsgResetDEResponse is response data for MsgResetDE message */
+export interface MsgResetDEResponse {}
+export interface MsgResetDEResponseProtoMsg {
+  typeUrl: "/band.tss.v1beta1.MsgResetDEResponse";
+  value: Uint8Array;
+}
+/** MsgResetDEResponse is response data for MsgResetDE message */
+export interface MsgResetDEResponseAmino {}
+export interface MsgResetDEResponseAminoMsg {
+  type: "/band.tss.v1beta1.MsgResetDEResponse";
+  value: MsgResetDEResponseAmino;
+}
+/** MsgResetDEResponse is response data for MsgResetDE message */
+export interface MsgResetDEResponseSDKType {}
 /** MsgSubmitSignature is a message used to submitting signature data. */
 export interface MsgSubmitSignature {
   /** signing_id is the unique identifier of the signing process. */
@@ -1080,6 +1116,125 @@ export const MsgSubmitDEsResponse = {
     return {
       typeUrl: "/band.tss.v1beta1.MsgSubmitDEsResponse",
       value: MsgSubmitDEsResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgResetDE(): MsgResetDE {
+  return {
+    sender: ""
+  };
+}
+export const MsgResetDE = {
+  typeUrl: "/band.tss.v1beta1.MsgResetDE",
+  encode(message: MsgResetDE, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.sender !== "") {
+      writer.uint32(10).string(message.sender);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgResetDE {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgResetDE();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.sender = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgResetDE>): MsgResetDE {
+    const message = createBaseMsgResetDE();
+    message.sender = object.sender ?? "";
+    return message;
+  },
+  fromAmino(object: MsgResetDEAmino): MsgResetDE {
+    const message = createBaseMsgResetDE();
+    if (object.sender !== undefined && object.sender !== null) {
+      message.sender = object.sender;
+    }
+    return message;
+  },
+  toAmino(message: MsgResetDE): MsgResetDEAmino {
+    const obj: any = {};
+    obj.sender = message.sender === "" ? undefined : message.sender;
+    return obj;
+  },
+  fromAminoMsg(object: MsgResetDEAminoMsg): MsgResetDE {
+    return MsgResetDE.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgResetDE): MsgResetDEAminoMsg {
+    return {
+      type: "tss/MsgResetDE",
+      value: MsgResetDE.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgResetDEProtoMsg): MsgResetDE {
+    return MsgResetDE.decode(message.value);
+  },
+  toProto(message: MsgResetDE): Uint8Array {
+    return MsgResetDE.encode(message).finish();
+  },
+  toProtoMsg(message: MsgResetDE): MsgResetDEProtoMsg {
+    return {
+      typeUrl: "/band.tss.v1beta1.MsgResetDE",
+      value: MsgResetDE.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgResetDEResponse(): MsgResetDEResponse {
+  return {};
+}
+export const MsgResetDEResponse = {
+  typeUrl: "/band.tss.v1beta1.MsgResetDEResponse",
+  encode(_: MsgResetDEResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgResetDEResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgResetDEResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgResetDEResponse>): MsgResetDEResponse {
+    const message = createBaseMsgResetDEResponse();
+    return message;
+  },
+  fromAmino(_: MsgResetDEResponseAmino): MsgResetDEResponse {
+    const message = createBaseMsgResetDEResponse();
+    return message;
+  },
+  toAmino(_: MsgResetDEResponse): MsgResetDEResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgResetDEResponseAminoMsg): MsgResetDEResponse {
+    return MsgResetDEResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgResetDEResponseProtoMsg): MsgResetDEResponse {
+    return MsgResetDEResponse.decode(message.value);
+  },
+  toProto(message: MsgResetDEResponse): Uint8Array {
+    return MsgResetDEResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgResetDEResponse): MsgResetDEResponseProtoMsg {
+    return {
+      typeUrl: "/band.tss.v1beta1.MsgResetDEResponse",
+      value: MsgResetDEResponse.encode(message).finish()
     };
   }
 };

@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgSubmitDKGRound1, MsgSubmitDKGRound1Response, MsgSubmitDKGRound2, MsgSubmitDKGRound2Response, MsgComplain, MsgComplainResponse, MsgConfirm, MsgConfirmResponse, MsgSubmitDEs, MsgSubmitDEsResponse, MsgSubmitSignature, MsgSubmitSignatureResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { MsgSubmitDKGRound1, MsgSubmitDKGRound1Response, MsgSubmitDKGRound2, MsgSubmitDKGRound2Response, MsgComplain, MsgComplainResponse, MsgConfirm, MsgConfirmResponse, MsgSubmitDEs, MsgSubmitDEsResponse, MsgResetDE, MsgResetDEResponse, MsgSubmitSignature, MsgSubmitSignatureResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 /** Msg defines the tss Msg service. */
 export interface Msg {
   /** SubmitDKGRound1 submits dkg for computing round 1. */
@@ -14,6 +14,8 @@ export interface Msg {
   confirm(request: MsgConfirm): Promise<MsgConfirmResponse>;
   /** SubmitDEs submits list of pre-commits DE for signing process. */
   submitDEs(request: MsgSubmitDEs): Promise<MsgSubmitDEsResponse>;
+  /** ResetDE resets the submitted DEs that being stored on chain. */
+  resetDE(request: MsgResetDE): Promise<MsgResetDEResponse>;
   /** SubmitSignature submits signature on task participant need to do. */
   submitSignature(request: MsgSubmitSignature): Promise<MsgSubmitSignatureResponse>;
   /**
@@ -31,6 +33,7 @@ export class MsgClientImpl implements Msg {
     this.complain = this.complain.bind(this);
     this.confirm = this.confirm.bind(this);
     this.submitDEs = this.submitDEs.bind(this);
+    this.resetDE = this.resetDE.bind(this);
     this.submitSignature = this.submitSignature.bind(this);
     this.updateParams = this.updateParams.bind(this);
   }
@@ -58,6 +61,11 @@ export class MsgClientImpl implements Msg {
     const data = MsgSubmitDEs.encode(request).finish();
     const promise = this.rpc.request("band.tss.v1beta1.Msg", "SubmitDEs", data);
     return promise.then(data => MsgSubmitDEsResponse.decode(new BinaryReader(data)));
+  }
+  resetDE(request: MsgResetDE): Promise<MsgResetDEResponse> {
+    const data = MsgResetDE.encode(request).finish();
+    const promise = this.rpc.request("band.tss.v1beta1.Msg", "ResetDE", data);
+    return promise.then(data => MsgResetDEResponse.decode(new BinaryReader(data)));
   }
   submitSignature(request: MsgSubmitSignature): Promise<MsgSubmitSignatureResponse> {
     const data = MsgSubmitSignature.encode(request).finish();

@@ -378,32 +378,32 @@ export interface BlockRelayProofSDKType {
  * 
  *                                   __________________________[AppHash]__________________________
  *                                  /                                                             \
- *                    ___________[N22]____________                                    ___________[N23]____________
- *                   /                            \                                  /                            \
- *            _____[N18]_____                 ____[N19]______                   ____[N20]______                __[N21]__
- *           /               \               /               \                 /               \              /         \
- *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_        [O]        [P]
- *      /       \        /       \        /       \        /       \        /       \        /       \
- *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11]
+ *                    ___________[N24]____________                                    ___________[N25]________
+ *                   /                            \                                  /                        \
+ *            _____[N20]_____                 ____[N21]______                   ____[N22]______              _[N23]_
+ *           /               \               /               \                 /               \            /       \
+ *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_     [N18]     [Q]
+ *      /       \        /       \        /       \        /       \        /       \        /       \    /   \
+ *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11] [O] [P]
  *   /   \    /   \    /  \    /   \   /   \    /   \   /   \    /   \   /   \    /   \   /   \    /   \
  *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D]  [E] [F] [G] [H]  [I] [J] [K] [L]  [M] [N]
  * 
- * [0] - acc (auth) [1] - authz     [2] - bandtss     [3] - bank       [4] - capability [5] - consensus
- * [6] - crisis     [7] - dist      [8] - evidence    [9] - feeds      [A] - feegrant   [B] - feeibc
- * [C] - globalfee  [D] - gov       [E] - group       [F] - ibccore    [G] - icahost    [H] - mint
- * [I] - oracle     [J] - params    [K] - rollingseed [L] - slashing   [M] - staking    [N] - transfer
- * [O] - tss        [P] - upgrade
+ * [0] - acc (auth) [1] - authz         [2] - bandtss       [3] - bank        [4] - capability [5] - consensus
+ * [6] - crisis     [7] - distribution  [8] - evidence      [9] - feeds       [A] - feegrant   [B] - feeibc
+ * [C] - globalfee  [D] - gov           [E] - ibc           [F] - icahost     [G] - mint       [H] - oracle
+ * [I] - params     [J] - restake       [K] - rollingseed   [L] - slashing    [M] - staking    [N] - transfer
+ * [O] - tss        [P] - tunnel        [Q] - upgrade
  * 
  * Notice that NOT all leaves of the Merkle tree are needed in order to compute the Merkle
  * root hash, since we only want to validate the correctness of [H] In fact, only
- * [G], [N9], [N17], [N21], and [N22] are needed in order to compute [AppHash].
+ * [G], [N9], [N17], [N23], and [N24] are needed in order to compute [AppHash].
  */
 export interface MultiStoreProof {
   oracleIavlStateHash: Uint8Array;
   mintStoreMerkleHash: Uint8Array;
-  paramsToRollingseedStoresMerkleHash: Uint8Array;
-  slashingToTssStoresMerkleHash: Uint8Array;
-  upgradeStoreMerkleHash: Uint8Array;
+  paramsToRestakeStoresMerkleHash: Uint8Array;
+  rollingseedToTransferStoresMerkleHash: Uint8Array;
+  tssToUpgradeStoresMerkleHash: Uint8Array;
   authToIcahostStoresMerkleHash: Uint8Array;
 }
 export interface MultiStoreProofProtoMsg {
@@ -416,32 +416,32 @@ export interface MultiStoreProofProtoMsg {
  * 
  *                                   __________________________[AppHash]__________________________
  *                                  /                                                             \
- *                    ___________[N22]____________                                    ___________[N23]____________
- *                   /                            \                                  /                            \
- *            _____[N18]_____                 ____[N19]______                   ____[N20]______                __[N21]__
- *           /               \               /               \                 /               \              /         \
- *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_        [O]        [P]
- *      /       \        /       \        /       \        /       \        /       \        /       \
- *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11]
+ *                    ___________[N24]____________                                    ___________[N25]________
+ *                   /                            \                                  /                        \
+ *            _____[N20]_____                 ____[N21]______                   ____[N22]______              _[N23]_
+ *           /               \               /               \                 /               \            /       \
+ *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_     [N18]     [Q]
+ *      /       \        /       \        /       \        /       \        /       \        /       \    /   \
+ *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11] [O] [P]
  *   /   \    /   \    /  \    /   \   /   \    /   \   /   \    /   \   /   \    /   \   /   \    /   \
  *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D]  [E] [F] [G] [H]  [I] [J] [K] [L]  [M] [N]
  * 
- * [0] - acc (auth) [1] - authz     [2] - bandtss     [3] - bank       [4] - capability [5] - consensus
- * [6] - crisis     [7] - dist      [8] - evidence    [9] - feeds      [A] - feegrant   [B] - feeibc
- * [C] - globalfee  [D] - gov       [E] - group       [F] - ibccore    [G] - icahost    [H] - mint
- * [I] - oracle     [J] - params    [K] - rollingseed [L] - slashing   [M] - staking    [N] - transfer
- * [O] - tss        [P] - upgrade
+ * [0] - acc (auth) [1] - authz         [2] - bandtss       [3] - bank        [4] - capability [5] - consensus
+ * [6] - crisis     [7] - distribution  [8] - evidence      [9] - feeds       [A] - feegrant   [B] - feeibc
+ * [C] - globalfee  [D] - gov           [E] - ibc           [F] - icahost     [G] - mint       [H] - oracle
+ * [I] - params     [J] - restake       [K] - rollingseed   [L] - slashing    [M] - staking    [N] - transfer
+ * [O] - tss        [P] - tunnel        [Q] - upgrade
  * 
  * Notice that NOT all leaves of the Merkle tree are needed in order to compute the Merkle
  * root hash, since we only want to validate the correctness of [H] In fact, only
- * [G], [N9], [N17], [N21], and [N22] are needed in order to compute [AppHash].
+ * [G], [N9], [N17], [N23], and [N24] are needed in order to compute [AppHash].
  */
 export interface MultiStoreProofAmino {
   oracle_iavl_state_hash?: string;
   mint_store_merkle_hash?: string;
-  params_to_rollingseed_stores_merkle_hash?: string;
-  slashing_to_tss_stores_merkle_hash?: string;
-  upgrade_store_merkle_hash?: string;
+  params_to_restake_stores_merkle_hash?: string;
+  rollingseed_to_transfer_stores_merkle_hash?: string;
+  tss_to_upgrade_stores_merkle_hash?: string;
   auth_to_icahost_stores_merkle_hash?: string;
 }
 export interface MultiStoreProofAminoMsg {
@@ -454,32 +454,32 @@ export interface MultiStoreProofAminoMsg {
  * 
  *                                   __________________________[AppHash]__________________________
  *                                  /                                                             \
- *                    ___________[N22]____________                                    ___________[N23]____________
- *                   /                            \                                  /                            \
- *            _____[N18]_____                 ____[N19]______                   ____[N20]______                __[N21]__
- *           /               \               /               \                 /               \              /         \
- *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_        [O]        [P]
- *      /       \        /       \        /       \        /       \        /       \        /       \
- *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11]
+ *                    ___________[N24]____________                                    ___________[N25]________
+ *                   /                            \                                  /                        \
+ *            _____[N20]_____                 ____[N21]______                   ____[N22]______              _[N23]_
+ *           /               \               /               \                 /               \            /       \
+ *       _[N12]_          _[N13]_          _[N14]_          _[N15]_          _[N16]_          _[N17]_     [N18]     [Q]
+ *      /       \        /       \        /       \        /       \        /       \        /       \    /   \
+ *    [N0]     [N1]    [N2]     [N3]    [N4]     [N5]    [N6]     [N7]    [N8]     [N9]   [N10]    [N11] [O] [P]
  *   /   \    /   \    /  \    /   \   /   \    /   \   /   \    /   \   /   \    /   \   /   \    /   \
  *  [0] [1]  [2] [3] [4] [5]  [6] [7] [8] [9]  [A] [B] [C] [D]  [E] [F] [G] [H]  [I] [J] [K] [L]  [M] [N]
  * 
- * [0] - acc (auth) [1] - authz     [2] - bandtss     [3] - bank       [4] - capability [5] - consensus
- * [6] - crisis     [7] - dist      [8] - evidence    [9] - feeds      [A] - feegrant   [B] - feeibc
- * [C] - globalfee  [D] - gov       [E] - group       [F] - ibccore    [G] - icahost    [H] - mint
- * [I] - oracle     [J] - params    [K] - rollingseed [L] - slashing   [M] - staking    [N] - transfer
- * [O] - tss        [P] - upgrade
+ * [0] - acc (auth) [1] - authz         [2] - bandtss       [3] - bank        [4] - capability [5] - consensus
+ * [6] - crisis     [7] - distribution  [8] - evidence      [9] - feeds       [A] - feegrant   [B] - feeibc
+ * [C] - globalfee  [D] - gov           [E] - ibc           [F] - icahost     [G] - mint       [H] - oracle
+ * [I] - params     [J] - restake       [K] - rollingseed   [L] - slashing    [M] - staking    [N] - transfer
+ * [O] - tss        [P] - tunnel        [Q] - upgrade
  * 
  * Notice that NOT all leaves of the Merkle tree are needed in order to compute the Merkle
  * root hash, since we only want to validate the correctness of [H] In fact, only
- * [G], [N9], [N17], [N21], and [N22] are needed in order to compute [AppHash].
+ * [G], [N9], [N17], [N23], and [N24] are needed in order to compute [AppHash].
  */
 export interface MultiStoreProofSDKType {
   oracle_iavl_state_hash: Uint8Array;
   mint_store_merkle_hash: Uint8Array;
-  params_to_rollingseed_stores_merkle_hash: Uint8Array;
-  slashing_to_tss_stores_merkle_hash: Uint8Array;
-  upgrade_store_merkle_hash: Uint8Array;
+  params_to_restake_stores_merkle_hash: Uint8Array;
+  rollingseed_to_transfer_stores_merkle_hash: Uint8Array;
+  tss_to_upgrade_stores_merkle_hash: Uint8Array;
   auth_to_icahost_stores_merkle_hash: Uint8Array;
 }
 /**
@@ -1917,9 +1917,9 @@ function createBaseMultiStoreProof(): MultiStoreProof {
   return {
     oracleIavlStateHash: new Uint8Array(),
     mintStoreMerkleHash: new Uint8Array(),
-    paramsToRollingseedStoresMerkleHash: new Uint8Array(),
-    slashingToTssStoresMerkleHash: new Uint8Array(),
-    upgradeStoreMerkleHash: new Uint8Array(),
+    paramsToRestakeStoresMerkleHash: new Uint8Array(),
+    rollingseedToTransferStoresMerkleHash: new Uint8Array(),
+    tssToUpgradeStoresMerkleHash: new Uint8Array(),
     authToIcahostStoresMerkleHash: new Uint8Array()
   };
 }
@@ -1932,14 +1932,14 @@ export const MultiStoreProof = {
     if (message.mintStoreMerkleHash.length !== 0) {
       writer.uint32(18).bytes(message.mintStoreMerkleHash);
     }
-    if (message.paramsToRollingseedStoresMerkleHash.length !== 0) {
-      writer.uint32(26).bytes(message.paramsToRollingseedStoresMerkleHash);
+    if (message.paramsToRestakeStoresMerkleHash.length !== 0) {
+      writer.uint32(26).bytes(message.paramsToRestakeStoresMerkleHash);
     }
-    if (message.slashingToTssStoresMerkleHash.length !== 0) {
-      writer.uint32(34).bytes(message.slashingToTssStoresMerkleHash);
+    if (message.rollingseedToTransferStoresMerkleHash.length !== 0) {
+      writer.uint32(34).bytes(message.rollingseedToTransferStoresMerkleHash);
     }
-    if (message.upgradeStoreMerkleHash.length !== 0) {
-      writer.uint32(42).bytes(message.upgradeStoreMerkleHash);
+    if (message.tssToUpgradeStoresMerkleHash.length !== 0) {
+      writer.uint32(42).bytes(message.tssToUpgradeStoresMerkleHash);
     }
     if (message.authToIcahostStoresMerkleHash.length !== 0) {
       writer.uint32(50).bytes(message.authToIcahostStoresMerkleHash);
@@ -1960,13 +1960,13 @@ export const MultiStoreProof = {
           message.mintStoreMerkleHash = reader.bytes();
           break;
         case 3:
-          message.paramsToRollingseedStoresMerkleHash = reader.bytes();
+          message.paramsToRestakeStoresMerkleHash = reader.bytes();
           break;
         case 4:
-          message.slashingToTssStoresMerkleHash = reader.bytes();
+          message.rollingseedToTransferStoresMerkleHash = reader.bytes();
           break;
         case 5:
-          message.upgradeStoreMerkleHash = reader.bytes();
+          message.tssToUpgradeStoresMerkleHash = reader.bytes();
           break;
         case 6:
           message.authToIcahostStoresMerkleHash = reader.bytes();
@@ -1982,9 +1982,9 @@ export const MultiStoreProof = {
     const message = createBaseMultiStoreProof();
     message.oracleIavlStateHash = object.oracleIavlStateHash ?? new Uint8Array();
     message.mintStoreMerkleHash = object.mintStoreMerkleHash ?? new Uint8Array();
-    message.paramsToRollingseedStoresMerkleHash = object.paramsToRollingseedStoresMerkleHash ?? new Uint8Array();
-    message.slashingToTssStoresMerkleHash = object.slashingToTssStoresMerkleHash ?? new Uint8Array();
-    message.upgradeStoreMerkleHash = object.upgradeStoreMerkleHash ?? new Uint8Array();
+    message.paramsToRestakeStoresMerkleHash = object.paramsToRestakeStoresMerkleHash ?? new Uint8Array();
+    message.rollingseedToTransferStoresMerkleHash = object.rollingseedToTransferStoresMerkleHash ?? new Uint8Array();
+    message.tssToUpgradeStoresMerkleHash = object.tssToUpgradeStoresMerkleHash ?? new Uint8Array();
     message.authToIcahostStoresMerkleHash = object.authToIcahostStoresMerkleHash ?? new Uint8Array();
     return message;
   },
@@ -1996,14 +1996,14 @@ export const MultiStoreProof = {
     if (object.mint_store_merkle_hash !== undefined && object.mint_store_merkle_hash !== null) {
       message.mintStoreMerkleHash = bytesFromBase64(object.mint_store_merkle_hash);
     }
-    if (object.params_to_rollingseed_stores_merkle_hash !== undefined && object.params_to_rollingseed_stores_merkle_hash !== null) {
-      message.paramsToRollingseedStoresMerkleHash = bytesFromBase64(object.params_to_rollingseed_stores_merkle_hash);
+    if (object.params_to_restake_stores_merkle_hash !== undefined && object.params_to_restake_stores_merkle_hash !== null) {
+      message.paramsToRestakeStoresMerkleHash = bytesFromBase64(object.params_to_restake_stores_merkle_hash);
     }
-    if (object.slashing_to_tss_stores_merkle_hash !== undefined && object.slashing_to_tss_stores_merkle_hash !== null) {
-      message.slashingToTssStoresMerkleHash = bytesFromBase64(object.slashing_to_tss_stores_merkle_hash);
+    if (object.rollingseed_to_transfer_stores_merkle_hash !== undefined && object.rollingseed_to_transfer_stores_merkle_hash !== null) {
+      message.rollingseedToTransferStoresMerkleHash = bytesFromBase64(object.rollingseed_to_transfer_stores_merkle_hash);
     }
-    if (object.upgrade_store_merkle_hash !== undefined && object.upgrade_store_merkle_hash !== null) {
-      message.upgradeStoreMerkleHash = bytesFromBase64(object.upgrade_store_merkle_hash);
+    if (object.tss_to_upgrade_stores_merkle_hash !== undefined && object.tss_to_upgrade_stores_merkle_hash !== null) {
+      message.tssToUpgradeStoresMerkleHash = bytesFromBase64(object.tss_to_upgrade_stores_merkle_hash);
     }
     if (object.auth_to_icahost_stores_merkle_hash !== undefined && object.auth_to_icahost_stores_merkle_hash !== null) {
       message.authToIcahostStoresMerkleHash = bytesFromBase64(object.auth_to_icahost_stores_merkle_hash);
@@ -2014,9 +2014,9 @@ export const MultiStoreProof = {
     const obj: any = {};
     obj.oracle_iavl_state_hash = message.oracleIavlStateHash ? base64FromBytes(message.oracleIavlStateHash) : undefined;
     obj.mint_store_merkle_hash = message.mintStoreMerkleHash ? base64FromBytes(message.mintStoreMerkleHash) : undefined;
-    obj.params_to_rollingseed_stores_merkle_hash = message.paramsToRollingseedStoresMerkleHash ? base64FromBytes(message.paramsToRollingseedStoresMerkleHash) : undefined;
-    obj.slashing_to_tss_stores_merkle_hash = message.slashingToTssStoresMerkleHash ? base64FromBytes(message.slashingToTssStoresMerkleHash) : undefined;
-    obj.upgrade_store_merkle_hash = message.upgradeStoreMerkleHash ? base64FromBytes(message.upgradeStoreMerkleHash) : undefined;
+    obj.params_to_restake_stores_merkle_hash = message.paramsToRestakeStoresMerkleHash ? base64FromBytes(message.paramsToRestakeStoresMerkleHash) : undefined;
+    obj.rollingseed_to_transfer_stores_merkle_hash = message.rollingseedToTransferStoresMerkleHash ? base64FromBytes(message.rollingseedToTransferStoresMerkleHash) : undefined;
+    obj.tss_to_upgrade_stores_merkle_hash = message.tssToUpgradeStoresMerkleHash ? base64FromBytes(message.tssToUpgradeStoresMerkleHash) : undefined;
     obj.auth_to_icahost_stores_merkle_hash = message.authToIcahostStoresMerkleHash ? base64FromBytes(message.authToIcahostStoresMerkleHash) : undefined;
     return obj;
   },

@@ -1,20 +1,18 @@
 //@ts-nocheck
 import { SignalDeviation, SignalDeviationAmino, SignalDeviationSDKType } from "./tunnel";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Encoder } from "../../feeds/v1beta1/feeds";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType } from "./route";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgCreateTunnel is the transaction message to create a new tunnel. */
 export interface MsgCreateTunnel {
   /** signal_deviations is the list of signal deviations. */
   signalDeviations: SignalDeviation[];
-  /** interval is the interval for delivering the signal prices. */
+  /** interval is the interval for delivering the signal prices in seconds. */
   interval: bigint;
   /** route is the route for delivering the signal prices */
-  route?: Any | undefined;
-  /** encoder is the mode of encoding price signal data. */
-  encoder: Encoder;
+  route?: TSSRoute | Any | undefined;
   /** initial_deposit is the deposit value that must be paid at tunnel creation. */
   initialDeposit: Coin[];
   /** creator is the address of the creator. */
@@ -25,18 +23,16 @@ export interface MsgCreateTunnelProtoMsg {
   value: Uint8Array;
 }
 export type MsgCreateTunnelEncoded = Omit<MsgCreateTunnel, "route"> & {
-  /** route is the route for delivering the signal prices */route?: AnyProtoMsg | undefined;
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | AnyProtoMsg | undefined;
 };
 /** MsgCreateTunnel is the transaction message to create a new tunnel. */
 export interface MsgCreateTunnelAmino {
   /** signal_deviations is the list of signal deviations. */
   signal_deviations?: SignalDeviationAmino[];
-  /** interval is the interval for delivering the signal prices. */
+  /** interval is the interval for delivering the signal prices in seconds. */
   interval?: string;
   /** route is the route for delivering the signal prices */
   route?: AnyAmino;
-  /** encoder is the mode of encoding price signal data. */
-  encoder?: Encoder;
   /** initial_deposit is the deposit value that must be paid at tunnel creation. */
   initial_deposit: CoinAmino[];
   /** creator is the address of the creator. */
@@ -50,8 +46,7 @@ export interface MsgCreateTunnelAminoMsg {
 export interface MsgCreateTunnelSDKType {
   signal_deviations: SignalDeviationSDKType[];
   interval: bigint;
-  route?: AnySDKType | undefined;
-  encoder: Encoder;
+  route?: TSSRouteSDKType | AnySDKType | undefined;
   initial_deposit: CoinSDKType[];
   creator: string;
 }
@@ -274,7 +269,7 @@ export interface MsgDepositToTunnelProtoMsg {
 /** MsgDepositToTunnel defines a message to deposit to an existing tunnel. */
 export interface MsgDepositToTunnelAmino {
   /** tunnel_id defines the unique id of the tunnel. */
-  tunnel_id: string;
+  tunnel_id?: string;
   /** amount to be deposited by depositor. */
   amount: CoinAmino[];
   /** depositor defines the deposit addresses from the tunnel. */
@@ -320,7 +315,7 @@ export interface MsgWithdrawFromTunnelProtoMsg {
 /** MsgWithdrawFromTunnel is the transaction message to withdraw a deposit from an existing tunnel. */
 export interface MsgWithdrawFromTunnelAmino {
   /** tunnel_id defines the unique id of the tunnel. */
-  tunnel_id: string;
+  tunnel_id?: string;
   /** amount to be withdrawn by withdrawer. */
   amount: CoinAmino[];
   /** withdrawer defines the withdraw addresses from the tunnel. */
@@ -396,7 +391,6 @@ function createBaseMsgCreateTunnel(): MsgCreateTunnel {
     signalDeviations: [],
     interval: BigInt(0),
     route: undefined,
-    encoder: 0,
     initialDeposit: [],
     creator: ""
   };
@@ -413,14 +407,11 @@ export const MsgCreateTunnel = {
     if (message.route !== undefined) {
       Any.encode(message.route as Any, writer.uint32(26).fork()).ldelim();
     }
-    if (message.encoder !== 0) {
-      writer.uint32(32).int32(message.encoder);
-    }
     for (const v of message.initialDeposit) {
-      Coin.encode(v!, writer.uint32(42).fork()).ldelim();
+      Coin.encode(v!, writer.uint32(34).fork()).ldelim();
     }
     if (message.creator !== "") {
-      writer.uint32(50).string(message.creator);
+      writer.uint32(42).string(message.creator);
     }
     return writer;
   },
@@ -438,15 +429,12 @@ export const MsgCreateTunnel = {
           message.interval = reader.uint64();
           break;
         case 3:
-          message.route = Route_InterfaceDecoder(reader) as Any;
+          message.route = RouteI_InterfaceDecoder(reader) as Any;
           break;
         case 4:
-          message.encoder = reader.int32() as any;
-          break;
-        case 5:
           message.initialDeposit.push(Coin.decode(reader, reader.uint32()));
           break;
-        case 6:
+        case 5:
           message.creator = reader.string();
           break;
         default:
@@ -461,7 +449,6 @@ export const MsgCreateTunnel = {
     message.signalDeviations = object.signalDeviations?.map(e => SignalDeviation.fromPartial(e)) || [];
     message.interval = object.interval !== undefined && object.interval !== null ? BigInt(object.interval.toString()) : BigInt(0);
     message.route = object.route !== undefined && object.route !== null ? Any.fromPartial(object.route) : undefined;
-    message.encoder = object.encoder ?? 0;
     message.initialDeposit = object.initialDeposit?.map(e => Coin.fromPartial(e)) || [];
     message.creator = object.creator ?? "";
     return message;
@@ -473,10 +460,7 @@ export const MsgCreateTunnel = {
       message.interval = BigInt(object.interval);
     }
     if (object.route !== undefined && object.route !== null) {
-      message.route = Route_FromAmino(object.route);
-    }
-    if (object.encoder !== undefined && object.encoder !== null) {
-      message.encoder = object.encoder;
+      message.route = RouteI_FromAmino(object.route);
     }
     message.initialDeposit = object.initial_deposit?.map(e => Coin.fromAmino(e)) || [];
     if (object.creator !== undefined && object.creator !== null) {
@@ -492,8 +476,7 @@ export const MsgCreateTunnel = {
       obj.signal_deviations = message.signalDeviations;
     }
     obj.interval = message.interval !== BigInt(0) ? message.interval?.toString() : undefined;
-    obj.route = message.route ? Route_ToAmino(message.route as Any) : undefined;
-    obj.encoder = message.encoder === 0 ? undefined : message.encoder;
+    obj.route = message.route ? RouteI_ToAmino(message.route as Any) : undefined;
     if (message.initialDeposit) {
       obj.initial_deposit = message.initialDeposit.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
@@ -1201,7 +1184,7 @@ export const MsgDepositToTunnel = {
   },
   toAmino(message: MsgDepositToTunnel): MsgDepositToTunnelAmino {
     const obj: any = {};
-    obj.tunnel_id = message.tunnelId ? message.tunnelId?.toString() : "0";
+    obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
@@ -1346,7 +1329,7 @@ export const MsgWithdrawFromTunnel = {
   },
   toAmino(message: MsgWithdrawFromTunnel): MsgWithdrawFromTunnelAmino {
     const obj: any = {};
-    obj.tunnel_id = message.tunnelId ? message.tunnelId?.toString() : "0";
+    obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
     } else {
@@ -1558,17 +1541,35 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
-export const Route_InterfaceDecoder = (input: BinaryReader | Uint8Array): Any => {
+export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
+    case "/band.tunnel.v1beta1.TSSRoute":
+      return TSSRoute.decode(data.value);
     default:
       return data;
   }
 };
-export const Route_FromAmino = (content: AnyAmino): Any => {
-  return Any.fromAmino(content);
+export const RouteI_FromAmino = (content: AnyAmino): Any => {
+  switch (content.type) {
+    case "/band.tunnel.v1beta1.TSSRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.TSSRoute",
+        value: TSSRoute.encode(TSSRoute.fromPartial(TSSRoute.fromAmino(content.value))).finish()
+      });
+    default:
+      return Any.fromAmino(content);
+  }
 };
-export const Route_ToAmino = (content: Any) => {
-  return Any.toAmino(content);
+export const RouteI_ToAmino = (content: Any) => {
+  switch (content.typeUrl) {
+    case "/band.tunnel.v1beta1.TSSRoute":
+      return {
+        type: "/band.tunnel.v1beta1.TSSRoute",
+        value: TSSRoute.toAmino(TSSRoute.decode(content.value, undefined))
+      };
+    default:
+      return Any.toAmino(content);
+  }
 };

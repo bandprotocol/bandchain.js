@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as _35 from "./cosmos";
+import * as _37 from "./cosmos";
 export const cosmos_proto = {
-  ..._35
+  ..._37
 };

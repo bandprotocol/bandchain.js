@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgSubmitDKGRound1, MsgSubmitDKGRound2, MsgComplain, MsgConfirm, MsgSubmitDEs, MsgSubmitSignature, MsgUpdateParams } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/band.tss.v1beta1.MsgSubmitDKGRound1", MsgSubmitDKGRound1], ["/band.tss.v1beta1.MsgSubmitDKGRound2", MsgSubmitDKGRound2], ["/band.tss.v1beta1.MsgComplain", MsgComplain], ["/band.tss.v1beta1.MsgConfirm", MsgConfirm], ["/band.tss.v1beta1.MsgSubmitDEs", MsgSubmitDEs], ["/band.tss.v1beta1.MsgSubmitSignature", MsgSubmitSignature], ["/band.tss.v1beta1.MsgUpdateParams", MsgUpdateParams]];
+import { MsgSubmitDKGRound1, MsgSubmitDKGRound2, MsgComplain, MsgConfirm, MsgSubmitDEs, MsgResetDE, MsgSubmitSignature, MsgUpdateParams } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/band.tss.v1beta1.MsgSubmitDKGRound1", MsgSubmitDKGRound1], ["/band.tss.v1beta1.MsgSubmitDKGRound2", MsgSubmitDKGRound2], ["/band.tss.v1beta1.MsgComplain", MsgComplain], ["/band.tss.v1beta1.MsgConfirm", MsgConfirm], ["/band.tss.v1beta1.MsgSubmitDEs", MsgSubmitDEs], ["/band.tss.v1beta1.MsgResetDE", MsgResetDE], ["/band.tss.v1beta1.MsgSubmitSignature", MsgSubmitSignature], ["/band.tss.v1beta1.MsgUpdateParams", MsgUpdateParams]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -37,6 +37,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/band.tss.v1beta1.MsgSubmitDEs",
         value: MsgSubmitDEs.encode(value).finish()
+      };
+    },
+    resetDE(value: MsgResetDE) {
+      return {
+        typeUrl: "/band.tss.v1beta1.MsgResetDE",
+        value: MsgResetDE.encode(value).finish()
       };
     },
     submitSignature(value: MsgSubmitSignature) {
@@ -83,6 +89,12 @@ export const MessageComposer = {
         value
       };
     },
+    resetDE(value: MsgResetDE) {
+      return {
+        typeUrl: "/band.tss.v1beta1.MsgResetDE",
+        value
+      };
+    },
     submitSignature(value: MsgSubmitSignature) {
       return {
         typeUrl: "/band.tss.v1beta1.MsgSubmitSignature",
@@ -125,6 +137,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/band.tss.v1beta1.MsgSubmitDEs",
         value: MsgSubmitDEs.fromPartial(value)
+      };
+    },
+    resetDE(value: MsgResetDE) {
+      return {
+        typeUrl: "/band.tss.v1beta1.MsgResetDE",
+        value: MsgResetDE.fromPartial(value)
       };
     },
     submitSignature(value: MsgSubmitSignature) {
