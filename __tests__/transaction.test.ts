@@ -1,7 +1,7 @@
 import Transaction from '../src/transaction'
 import { MsgRequestData } from '../src/message'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
-import { Fee } from '../proto/cosmos/tx/v1beta1/tx_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
+import { Fee } from '../codegen/cosmos/tx/v1beta1/tx_pb'
 import { PrivateKey } from '../src/wallet'
 
 describe('Transaction', () => {
@@ -114,7 +114,7 @@ describe('Transaction', () => {
 
     const signMessage = tx.getSignMessage()
     expect(Buffer.from(signMessage).toString('utf-8')).toEqual(
-      `{\"account_number\":\"20\",\"chain_id\":\"bandchain\",\"fee\":{\"amount\":[{\"amount\":\"100\",\"denom\":\"uband\"}],\"gas\":\"2000000\"},\"memo\":\"\",\"msgs\":[{\"type\":\"oracle/Request\",\"value\":{\"ask_count\":\"3\",\"calldata\":\"AAAAA0JUQwAAAAAAAAAB\",\"client_id\":\"test\",\"execute_gas\":\"20000\",\"fee_limit\":[{\"amount\":\"100\",\"denom\":\"uband\"}],\"min_count\":\"2\",\"oracle_script_id\":\"1\",\"prepare_gas\":\"20000\",\"sender\":\"band18p27yl962l8283ct7srr5l3g7ydazj07dqrwph\",\"tss_group_id\":\"0\"}}],\"sequence\":\"100\"}`,
+      `{\"account_number\":\"20\",\"chain_id\":\"bandchain\",\"fee\":{\"amount\":[{\"amount\":\"100\",\"denom\":\"uband\"}],\"gas\":\"2000000\"},\"memo\":\"\",\"msgs\":[{\"type\":\"oracle/Request\",\"value\":{\"ask_count\":\"3\",\"calldata\":\"AAAAA0JUQwAAAAAAAAAB\",\"client_id\":\"test\",\"execute_gas\":\"20000\",\"fee_limit\":[{\"amount\":\"100\",\"denom\":\"uband\"}],\"min_count\":\"2\",\"oracle_script_id\":\"1\",\"prepare_gas\":\"20000\",\"sender\":\"band18p27yl962l8283ct7srr5l3g7ydazj07dqrwph\"}}],\"sequence\":\"100\"}`,
     )
   })
 

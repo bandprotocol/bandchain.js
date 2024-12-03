@@ -9,50 +9,58 @@ import {
   ValueTooLargeError,
 } from './error'
 
-import { MsgSend as MsgSendProto } from '../proto/cosmos/bank/v1beta1/tx_pb'
-import { Coin } from '../proto/cosmos/base/v1beta1/coin_pb'
-import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../proto/cosmos/distribution/v1beta1/tx_pb'
+import { MsgSend as MsgSendProto } from '../codegen/cosmos/bank/v1beta1/tx_pb'
+import { Coin } from '../codegen/cosmos/base/v1beta1/coin_pb'
+import { MsgWithdrawDelegatorReward as MsgWithdrawDelegatorRewardProto } from '../codegen/cosmos/distribution/v1beta1/tx_pb'
 import {
   Deposit as MsgDepositProto,
   Vote as MsgVoteProto,
   VoteOption,
   VoteOptionMap,
-} from '../proto/cosmos/gov/v1beta1/gov_pb'
+} from '../codegen/cosmos/gov/v1beta1/gov_pb'
 
 import {
   MsgVote as MsgVoteGroupProto,
   ExecMap as GroupExecMap,
-} from '../proto/cosmos/group/v1/tx_pb'
+} from '../codegen/cosmos/group/v1/tx_pb'
 
 import {
   VoteOption as VoteOptionGroup,
   VoteOptionMap as VoteOptionGroupMap,
-} from '../proto/cosmos/group/v1/types_pb'
+} from '../codegen/cosmos/group/v1/types_pb'
 
 import {
   MsgBeginRedelegate as MsgBeginRedelegateProto,
   MsgDelegate as MsgDelegateProto,
   MsgUndelegate as MsgUndelegateProto,
-} from '../proto/cosmos/staking/v1beta1/tx_pb'
-import { MsgVote as MsgVoteCouncilProto } from '../proto/council/v1beta1/tx_pb'
-import {
-  VoteOption as VoteOptionCouncil,
-  VoteOptionMap as VoteOptionMapCouncil,
-} from '../proto/council/v1beta1/types_pb'
-import { MsgTransfer as MsgTransferProto } from '../proto/ibc/applications/transfer/v1/tx_pb'
+} from '../codegen/cosmos/staking/v1beta1/tx_pb'
+
+import { MsgTransfer as MsgTransferProto } from '../codegen/ibc/applications/transfer/v1/tx_pb'
 import {
   MsgCreateDataSource as MsgCreateDataSourceProto,
   MsgCreateOracleScript as MsgCreateOracleScriptProto,
   MsgEditDataSource as MsgEditDataSourceProto,
   MsgEditOracleScript as MsgEditOracleScriptProto,
   MsgRequestData as MsgRequestDataProto,
-} from '../proto/oracle/v1/tx_pb'
+} from '../codegen/band/oracle/v1/tx_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
-import { MsgSubmitProposal as MsgSubmitProposalProto } from '../proto/cosmos/gov/v1beta1/tx_pb'
-import { MsgSubmitProposal as MsgSubmitCouncilProposalProto } from '../proto/council/v1beta1/tx_pb'
-import { CouncilType, CouncilTypeMap } from '../proto/council/v1beta1/types_pb'
+import { MsgSubmitProposal as MsgSubmitProposalProto } from '../codegen/cosmos/gov/v1beta1/tx_pb'
+
 import { Proposal } from 'proposal'
+import {
+  MsgVote as MsgVoteSignalProto,
+  MsgSubmitSignalPrices as MsgSubmitSignalPricesProto,
+  MsgUpdateReferenceSourceConfig as MsgUpdateReferenceSourceConfigProto,
+  MsgUpdateParams as MsgUpdateParamsProto,
+} from '../codegen/band/feeds/v1beta1/tx_pb'
+import {
+  ReferenceSourceConfig,
+  Signal,
+  SignalPrice,
+} from '../codegen/band/feeds/v1beta1/feeds_pb'
+import { Params } from '../codegen/band/feeds/v1beta1/params_pb'
+import { bech32 } from 'bech32'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
@@ -69,7 +77,6 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     feeLimitList: Coin[] = [],
     prepareGas: number = 50000,
     executeGas: number = 300000,
-    tssGroupId: number = 0
   ) {
     super()
     this.setOracleScriptId(oracleScriptId)
@@ -81,7 +88,6 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     this.setPrepareGas(prepareGas)
     this.setExecuteGas(executeGas)
     this.setSender(sender)
-    this.setTssGroupId(tssGroupId)
   }
 
   toAny(): Any {
@@ -106,7 +112,6 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
         fee_limit: this.getFeeLimitList().map((coin) => coin.toObject()),
         prepare_gas: this.getPrepareGas().toString(),
         execute_gas: this.getExecuteGas().toString(),
-        tss_group_id: this.getTssGroupId().toString()
       },
     }
   }
@@ -769,115 +774,6 @@ export class MsgSubmitProposal
   }
 }
 
-export class MsgSubmitCouncilProposal
-  extends MsgSubmitCouncilProposalProto
-  implements BaseMsg
-{
-  constructor(
-    title: string,
-    council: CouncilTypeMap[keyof CouncilTypeMap],
-    proposer: string,
-    public messagesList: Array<BaseMsg>,
-    metadata: string,
-  ) {
-    super()
-    this.setTitle(title)
-    this.setCouncil(council)
-    this.setMessagesList(
-      messagesList.map((msg) => {
-        return msg.toAny()
-      }),
-    )
-    this.setProposer(proposer)
-    this.setMetadata(metadata)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'council.v1beta1.MsgSubmitProposal'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    const { messagesList } = this
-    return {
-      type: 'council/MsgSubmitProposal',
-      value: {
-        title: this.getTitle().toString(),
-        council: this.getCouncil().toString(),
-        messages: messagesList.map((msg: BaseMsg) => msg.toJSON()),
-        metadata: this.getMetadata().toString(),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getCouncil() == CouncilType.COUNCIL_TYPE_UNSPECIFIED) {
-      throw new ValueError('council should not be COUNCIL_TYPE_UNSPECIFIED')
-    }
-    if (this.getTitle() === '') {
-      throw new ValueError('title should not be an empty string')
-    }
-    if (this.getMessagesList().length === 0) {
-      throw new ValueError('messages should not be an empty string')
-    }
-    if (this.getMetadata() === '') {
-      throw new ValueError('metadata should not be an empty string')
-    }
-    if (this.getProposer() === '') {
-      throw new ValueError('proposer should not be an empty string')
-    }
-  }
-}
-
-export class MsgVoteCouncil extends MsgVoteCouncilProto implements BaseMsg {
-  constructor(
-    proposalId: number,
-    voter: string,
-    option: VoteOptionMapCouncil[keyof VoteOptionMapCouncil],
-  ) {
-    super()
-    this.setProposalId(proposalId)
-    this.setVoter(voter)
-    this.setOption(option)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'council.v1beta1.MsgVote'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    return {
-      type: 'council/MsgVote',
-      value: {
-        proposal_id: this.getProposalId().toString(),
-        voter: this.getVoter().toString(),
-        option: this.getOption().toString(),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getProposalId() <= 0) {
-      throw new NegativeIntegerError('proposalId cannot be less than zero')
-    }
-    if (this.getVoter() === '') {
-      throw new ValueError('Address should not be an empty string')
-    }
-    if (this.getOption() === VoteOptionCouncil.VOTE_OPTION_UNSPECIFIED) {
-      throw new ValueError('VoteOption should not be VOTE_OPTION_UNSPECIFIED')
-    }
-  }
-}
-
 export class MsgDeposit extends MsgDepositProto implements BaseMsg {
   constructor(proposalId: number, depositor: string, amountList: Coin[]) {
     super()
@@ -969,6 +865,156 @@ export class MsgVoteGroup extends MsgVoteGroupProto implements BaseMsg {
     }
     if (this.getMetadata() === '') {
       throw new ValueError('metadata should not be an empty string')
+    }
+  }
+}
+
+export class MsgVoteSignals extends MsgVoteSignalProto implements BaseMsg {
+  constructor(voter: string, signals: Signal[]) {
+    super()
+    this.setVoter(voter)
+    this.setSignalsList(signals)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'band.feeds.v1beta1.MsgVote'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds/MsgVote',
+      value: {
+        voter: this.getVoter(),
+        signals: this.getSignalsList().map((signal) => signal.toObject()),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getVoter() === '') {
+      throw new ValueError('Voter address should not be an empty string')
+    }
+  }
+}
+
+export class MsgSubmitSignalPrices
+  extends MsgSubmitSignalPricesProto
+  implements BaseMsg
+{
+  constructor(validator: string, timestamp: number, pricesList: SignalPrice[]) {
+    super()
+    this.setValidator(validator)
+    this.setTimestamp(timestamp)
+    this.setSignalPricesList(pricesList)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'band.feeds.v1beta1.MsgSubmitSignalPrices'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds/MsgSubmitSignalPrices',
+      value: {
+        validator: this.getValidator(),
+        timestamp: this.getTimestamp(),
+        signalPrices: this.getSignalPricesList().map((signalPrice) =>
+          signalPrice.toObject(),
+        ),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getValidator() === '') {
+      throw new ValueError('Validator address should not be an empty string')
+    }
+
+    const { prefix } = bech32.decode(this.getValidator())
+
+    if (prefix != 'bandvaloper') {
+      throw new ValueError(
+        `invalid Bech32 prefix; expected bandvaloper, got ${prefix}`,
+      )
+    }
+  }
+}
+
+export class MsgUpdateReferenceSourceConfig
+  extends MsgUpdateReferenceSourceConfigProto
+  implements BaseMsg
+{
+  constructor(admin: string, referenceSourceConfig: ReferenceSourceConfig) {
+    super()
+    this.setAdmin(admin)
+    this.setReferenceSourceConfig(referenceSourceConfig)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateReferenceSourceConfig'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgUpdateReferenceSourceConfig',
+      value: {
+        admin: this.getAdmin(),
+        referenceSourceConfig: this.getReferenceSourceConfig(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getAdmin() === '') {
+      throw new ValueError('Authority address should not be an empty string')
+    }
+  }
+}
+
+export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
+  constructor(authority: string, params: Params) {
+    super()
+    this.setAuthority(authority)
+    this.setParams(params)
+  }
+
+  toAny(): Any {
+    this.validate()
+
+    const anyMsg = new Any()
+    const name = 'feeds.v1beta1.MsgUpdateParams'
+    anyMsg.pack(this.serializeBinary(), name, '/')
+    return anyMsg
+  }
+
+  toJSON(): object {
+    return {
+      type: 'feeds.v1beta1.MsgUpdateParams',
+      value: {
+        authority: this.getAuthority(),
+        params: this.getParams(),
+      },
+    }
+  }
+
+  validate() {
+    if (this.getAuthority() === '') {
+      throw new ValueError('Admin address should not be an empty string')
     }
   }
 }

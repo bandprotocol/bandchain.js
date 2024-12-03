@@ -1,6 +1,6 @@
 {
   "name": "@bandprotocol/bandchain.js",
-  "version": "2.4.0-rc",
+  "version": "2.5.0-alpha",
   "description": "Library for interacting with BandChain in browser and Node.js environments",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -47,7 +47,7 @@
     "@bitcoinerlab/secp256k1": "^1.0.5",
     "@improbable-eng/grpc-web": "^0.15.0",
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
-    "@ledgerhq/hw-transport-node-hid": "^6.27.13",
+    "@ledgerhq/hw-transport-node-hid": "^6.29.3",
     "@ledgerhq/hw-transport-webhid": "^6.27.13",
     "@ledgerhq/hw-transport-webusb": "^6.27.13",
     "@types/google-protobuf": "^3.15.6",
