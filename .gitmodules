@@ -11,7 +11,7 @@
 	url = https://github.com/cosmos/ics23.git
 [submodule "proto/gogoproto"]
 	path = proto/gogoproto
-	url = https://github.com/cosmos/gogoproto
+	url = https://github.com/cosmos/gogoproto.git
 [submodule "proto/cosmos-sdk"]
 	path = proto/cosmos-sdk
 	url = https://github.com/cosmos/cosmos-sdk.git
