@@ -12,3 +12,6 @@
 [submodule "proto/gogoproto"]
 	path = proto/gogoproto
 	url = https://github.com/cosmos/gogoproto
+[submodule "proto/cosmos-sdk"]
+	path = proto/cosmos-sdk
+	url = https://github.com/cosmos/cosmos-sdk.git
