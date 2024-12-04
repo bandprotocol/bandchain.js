@@ -6,3 +6,9 @@
 	path = proto/chain
 	url = https://github.com/bandprotocol/chain.git
 	branch = master
+[submodule "proto/ics23"]
+	path = proto/ics23
+	url = https://github.com/cosmos/ics23.git
+[submodule "proto/gogoproto"]
+	path = proto/gogoproto
+	url = https://github.com/cosmos/gogoproto
