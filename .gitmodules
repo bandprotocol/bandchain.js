@@ -15,3 +15,6 @@
 [submodule "proto/cosmos-sdk"]
 	path = proto/cosmos-sdk
 	url = https://github.com/cosmos/cosmos-sdk.git
+[submodule "proto/ibc-go"]
+	path = proto/ibc-go
+	url = https://github.com/cosmos/ibc-go.git
