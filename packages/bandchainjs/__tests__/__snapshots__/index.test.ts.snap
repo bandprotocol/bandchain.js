@@ -15,6 +15,7 @@ exports[`encode 1`] = `
   "oracleScriptId": 1n,
   "prepareGas": 0n,
   "sender": "",
+  "tssEncoder": 0,
 }
 `;
 
@@ -38,6 +39,7 @@ exports[`fromPartial 1`] = `
   "oracleScriptId": 1n,
   "prepareGas": 1n,
   "sender": "sender",
+  "tssEncoder": 0,
 }
 `;
 
@@ -61,5 +63,6 @@ exports[`fromPartial.scoped 1`] = `
   "oracleScriptId": 1n,
   "prepareGas": 1n,
   "sender": "sender",
+  "tssEncoder": 0,
 }
 `;

@@ -16,6 +16,7 @@ exports[`AminoConverter 1`] = `
   "oracle_script_id": "1",
   "prepare_gas": "1",
   "sender": "sender",
+  "tss_encoder": undefined,
 }
 `;
 
@@ -39,6 +40,7 @@ exports[`AminoConverter 2`] = `
   "oracleScriptId": 1n,
   "prepareGas": 1n,
   "sender": "sender",
+  "tssEncoder": 0,
 }
 `;
 
@@ -58,6 +60,7 @@ exports[`AminoConverter 3`] = `
   "oracle_script_id": "1",
   "prepare_gas": "1",
   "sender": "sender",
+  "tss_encoder": undefined,
 }
 `;
 
@@ -77,6 +80,7 @@ exports[`AminoConverter.scoped 1`] = `
   "oracle_script_id": "1",
   "prepare_gas": "1",
   "sender": "sender",
+  "tss_encoder": undefined,
 }
 `;
 
@@ -100,6 +104,7 @@ exports[`AminoConverter.scoped 2`] = `
   "oracleScriptId": 1n,
   "prepareGas": 1n,
   "sender": "sender",
+  "tssEncoder": 0,
 }
 `;
 
@@ -119,5 +124,6 @@ exports[`AminoConverter.scoped 3`] = `
   "oracle_script_id": "1",
   "prepare_gas": "1",
   "sender": "sender",
+  "tss_encoder": undefined,
 }
 `;

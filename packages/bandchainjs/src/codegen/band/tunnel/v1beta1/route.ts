@@ -60,7 +60,7 @@ export interface TSSPacketReceiptSDKType {
   $typeUrl?: "/band.tunnel.v1beta1.TSSPacketReceipt";
   signing_id: bigint;
 }
-/** IBCRoute is the type for an IBC route */
+/** IBCRoute represents a route for IBC packets and implements the RouteI interface. */
 export interface IBCRoute {
   $typeUrl?: "/band.tunnel.v1beta1.IBCRoute";
   /** channel_id is the IBC channel ID */
@@ -70,7 +70,7 @@ export interface IBCRouteProtoMsg {
   typeUrl: "/band.tunnel.v1beta1.IBCRoute";
   value: Uint8Array;
 }
-/** IBCRoute is the type for an IBC route */
+/** IBCRoute represents a route for IBC packets and implements the RouteI interface. */
 export interface IBCRouteAmino {
   /** channel_id is the IBC channel ID */
   channel_id?: string;
@@ -79,7 +79,7 @@ export interface IBCRouteAminoMsg {
   type: "/band.tunnel.v1beta1.IBCRoute";
   value: IBCRouteAmino;
 }
-/** IBCRoute is the type for an IBC route */
+/** IBCRoute represents a route for IBC packets and implements the RouteI interface. */
 export interface IBCRouteSDKType {
   $typeUrl?: "/band.tunnel.v1beta1.IBCRoute";
   channel_id: string;

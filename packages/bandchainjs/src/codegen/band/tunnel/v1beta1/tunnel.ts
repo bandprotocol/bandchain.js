@@ -3,7 +3,7 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Price, PriceAmino, PriceSDKType } from "../../feeds/v1beta1/feeds";
 import { Encoder } from "../../feeds/v1beta1/encoder";
-import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, TSSPacketReceipt, TSSPacketReceiptProtoMsg, TSSPacketReceiptSDKType } from "./route";
+import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, IBCRoute, IBCRouteProtoMsg, IBCRouteSDKType, TSSPacketReceipt, TSSPacketReceiptProtoMsg, TSSPacketReceiptSDKType, IBCPacketReceipt, IBCPacketReceiptProtoMsg, IBCPacketReceiptSDKType } from "./route";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Tunnel contains the information of the tunnel that is created by the user */
 export interface Tunnel {
@@ -12,7 +12,7 @@ export interface Tunnel {
   /** sequence is representing the sequence of the tunnel packet. */
   sequence: bigint;
   /** route is the route for delivering the signal prices */
-  route?: TSSRoute | Any | undefined;
+  route?: TSSRoute | IBCRoute | Any | undefined;
   /** fee_payer is the address of the fee payer */
   feePayer: string;
   /** signal_deviations is the list of signal deviations */
@@ -33,7 +33,7 @@ export interface TunnelProtoMsg {
   value: Uint8Array;
 }
 export type TunnelEncoded = Omit<Tunnel, "route"> & {
-  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | AnyProtoMsg | undefined;
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | AnyProtoMsg | undefined;
 };
 /** Tunnel contains the information of the tunnel that is created by the user */
 export interface TunnelAmino {
@@ -66,7 +66,7 @@ export interface TunnelAminoMsg {
 export interface TunnelSDKType {
   id: bigint;
   sequence: bigint;
-  route?: TSSRouteSDKType | AnySDKType | undefined;
+  route?: TSSRouteSDKType | IBCRouteSDKType | AnySDKType | undefined;
   fee_payer: string;
   signal_deviations: SignalDeviationSDKType[];
   interval: bigint;
@@ -138,7 +138,7 @@ export interface Packet {
   /** prices is the list of prices information from feeds module. */
   prices: Price[];
   /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */
-  receipt?: TSSPacketReceipt | Any | undefined;
+  receipt?: TSSPacketReceipt | IBCPacketReceipt | Any | undefined;
   /** base_fee is the base fee of the packet */
   baseFee: Coin[];
   /** route_fee is the route fee of the packet */
@@ -151,7 +151,7 @@ export interface PacketProtoMsg {
   value: Uint8Array;
 }
 export type PacketEncoded = Omit<Packet, "receipt"> & {
-  /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */receipt?: TSSPacketReceiptProtoMsg | AnyProtoMsg | undefined;
+  /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */receipt?: TSSPacketReceiptProtoMsg | IBCPacketReceiptProtoMsg | AnyProtoMsg | undefined;
 };
 /** Packet is the packet that tunnel produces */
 export interface PacketAmino {
@@ -179,7 +179,7 @@ export interface PacketSDKType {
   tunnel_id: bigint;
   sequence: bigint;
   prices: PriceSDKType[];
-  receipt?: TSSPacketReceiptSDKType | AnySDKType | undefined;
+  receipt?: TSSPacketReceiptSDKType | IBCPacketReceiptSDKType | AnySDKType | undefined;
   base_fee: CoinSDKType[];
   route_fee: CoinSDKType[];
   created_at: bigint;
@@ -1032,12 +1032,14 @@ export const TunnelSignatureOrder = {
     };
   }
 };
-export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | Any => {
+export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | IBCRoute | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/band.tunnel.v1beta1.TSSRoute":
       return TSSRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.IBCRoute":
+      return IBCRoute.decode(data.value);
     default:
       return data;
   }
@@ -1048,6 +1050,11 @@ export const RouteI_FromAmino = (content: AnyAmino): Any => {
       return Any.fromPartial({
         typeUrl: "/band.tunnel.v1beta1.TSSRoute",
         value: TSSRoute.encode(TSSRoute.fromPartial(TSSRoute.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.IBCRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.IBCRoute",
+        value: IBCRoute.encode(IBCRoute.fromPartial(IBCRoute.fromAmino(content.value))).finish()
       });
     default:
       return Any.fromAmino(content);
@@ -1060,16 +1067,23 @@ export const RouteI_ToAmino = (content: Any) => {
         type: "/band.tunnel.v1beta1.TSSRoute",
         value: TSSRoute.toAmino(TSSRoute.decode(content.value, undefined))
       };
+    case "/band.tunnel.v1beta1.IBCRoute":
+      return {
+        type: "/band.tunnel.v1beta1.IBCRoute",
+        value: IBCRoute.toAmino(IBCRoute.decode(content.value, undefined))
+      };
     default:
       return Any.toAmino(content);
   }
 };
-export const PacketReceiptI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSPacketReceipt | Any => {
+export const PacketReceiptI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSPacketReceipt | IBCPacketReceipt | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/band.tunnel.v1beta1.TSSPacketReceipt":
       return TSSPacketReceipt.decode(data.value);
+    case "/band.tunnel.v1beta1.IBCPacketReceipt":
+      return IBCPacketReceipt.decode(data.value);
     default:
       return data;
   }
@@ -1081,6 +1095,11 @@ export const PacketReceiptI_FromAmino = (content: AnyAmino): Any => {
         typeUrl: "/band.tunnel.v1beta1.TSSPacketReceipt",
         value: TSSPacketReceipt.encode(TSSPacketReceipt.fromPartial(TSSPacketReceipt.fromAmino(content.value))).finish()
       });
+    case "/band.tunnel.v1beta1.IBCPacketReceipt":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.IBCPacketReceipt",
+        value: IBCPacketReceipt.encode(IBCPacketReceipt.fromPartial(IBCPacketReceipt.fromAmino(content.value))).finish()
+      });
     default:
       return Any.fromAmino(content);
   }
@@ -1091,6 +1110,11 @@ export const PacketReceiptI_ToAmino = (content: Any) => {
       return {
         type: "/band.tunnel.v1beta1.TSSPacketReceipt",
         value: TSSPacketReceipt.toAmino(TSSPacketReceipt.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.IBCPacketReceipt":
+      return {
+        type: "/band.tunnel.v1beta1.IBCPacketReceipt",
+        value: IBCPacketReceipt.toAmino(IBCPacketReceipt.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

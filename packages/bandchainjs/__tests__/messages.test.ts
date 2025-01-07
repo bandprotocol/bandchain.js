@@ -16,6 +16,7 @@ describe("Band messages", () => {
         prepareGas: BigInt(1),
         executeGas: BigInt(1),
         sender: "sender",
+        tssEncoder: 0,
       })
     ).toMatchSnapshot();
   });
@@ -32,6 +33,7 @@ describe("Band messages", () => {
         prepareGas: BigInt(1),
         executeGas: BigInt(1),
         sender: "sender",
+        tssEncoder: 0,
       })
     ).toMatchSnapshot();
   });

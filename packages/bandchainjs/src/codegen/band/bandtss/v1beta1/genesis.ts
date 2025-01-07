@@ -5,7 +5,7 @@ import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin"
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the bandtss module's genesis state. */
 export interface GenesisState {
-  /** params defines all the paramiters of the module. */
+  /** params defines all the parameters of the module. */
   params: Params;
   /** members is an array containing members information. */
   members: Member[];
@@ -18,7 +18,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the bandtss module's genesis state. */
 export interface GenesisStateAmino {
-  /** params defines all the paramiters of the module. */
+  /** params defines all the parameters of the module. */
   params?: ParamsAmino;
   /** members is an array containing members information. */
   members?: MemberAmino[];

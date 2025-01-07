@@ -9,7 +9,7 @@ export enum ResolveStatus {
   RESOLVE_STATUS_OPEN_UNSPECIFIED = 0,
   /** RESOLVE_STATUS_SUCCESS - Success - the request has been resolved successfully with no errors. */
   RESOLVE_STATUS_SUCCESS = 1,
-  /** RESOLVE_STATUS_FAILURE - Failure - an error occured during the request's resolve call. */
+  /** RESOLVE_STATUS_FAILURE - Failure - an error occurred during the request's resolve call. */
   RESOLVE_STATUS_FAILURE = 2,
   /**
    * RESOLVE_STATUS_EXPIRED - Expired - the request does not get enough reports from validator within the

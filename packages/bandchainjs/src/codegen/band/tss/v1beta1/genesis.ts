@@ -3,7 +3,7 @@ import { Group, GroupAmino, GroupSDKType, Member, MemberAmino, MemberSDKType, DE
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** GenesisState defines the tss module's genesis state. */
 export interface GenesisState {
-  /** params defines all the paramiters of the module. */
+  /** params defines all the parameters of the module. */
   params: Params;
   /** groups is an array containing information about each group. */
   groups: Group[];
@@ -18,7 +18,7 @@ export interface GenesisStateProtoMsg {
 }
 /** GenesisState defines the tss module's genesis state. */
 export interface GenesisStateAmino {
-  /** params defines all the paramiters of the module. */
+  /** params defines all the parameters of the module. */
   params?: ParamsAmino;
   /** groups is an array containing information about each group. */
   groups?: GroupAmino[];

@@ -1,13 +1,17 @@
 //@ts-nocheck
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgCreateTunnel, MsgCreateTunnelResponse, MsgUpdateAndResetTunnel, MsgUpdateAndResetTunnelResponse, MsgActivate, MsgActivateResponse, MsgDeactivate, MsgDeactivateResponse, MsgTriggerTunnel, MsgTriggerTunnelResponse, MsgDepositToTunnel, MsgDepositToTunnelResponse, MsgWithdrawFromTunnel, MsgWithdrawFromTunnelResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { MsgCreateTunnel, MsgCreateTunnelResponse, MsgUpdateRoute, MsgUpdateRouteResponse, MsgUpdateSignalsAndInterval, MsgUpdateSignalsAndIntervalResponse, MsgWithdrawFeePayerFunds, MsgWithdrawFeePayerFundsResponse, MsgActivate, MsgActivateResponse, MsgDeactivate, MsgDeactivateResponse, MsgTriggerTunnel, MsgTriggerTunnelResponse, MsgDepositToTunnel, MsgDepositToTunnelResponse, MsgWithdrawFromTunnel, MsgWithdrawFromTunnelResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 /** Service definition for Msg. */
 export interface Msg {
   /** CreateTunnel is a RPC method to create a new tunnel. */
   createTunnel(request: MsgCreateTunnel): Promise<MsgCreateTunnelResponse>;
-  /** UpdateAndResetTunnel is a RPC method to update a tunnel information and reset the interval. */
-  updateAndResetTunnel(request: MsgUpdateAndResetTunnel): Promise<MsgUpdateAndResetTunnelResponse>;
+  /** UpdateRoute is a RPC method to update a route information of the tunnel. */
+  updateRoute(request: MsgUpdateRoute): Promise<MsgUpdateRouteResponse>;
+  /** UpdateSignalsAndInterval is a RPC method to update a signals and interval of the tunnel. */
+  updateSignalsAndInterval(request: MsgUpdateSignalsAndInterval): Promise<MsgUpdateSignalsAndIntervalResponse>;
+  /** WithdrawFeePayerFunds is a RPC method to withdraw fee payer funds to creator. */
+  withdrawFeePayerFunds(request: MsgWithdrawFeePayerFunds): Promise<MsgWithdrawFeePayerFundsResponse>;
   /** Activate is a RPC method to activate a tunnel. */
   activate(request: MsgActivate): Promise<MsgActivateResponse>;
   /** Deactivate is a RPC method to deactivate a tunnel. */
@@ -26,7 +30,9 @@ export class MsgClientImpl implements Msg {
   constructor(rpc: Rpc) {
     this.rpc = rpc;
     this.createTunnel = this.createTunnel.bind(this);
-    this.updateAndResetTunnel = this.updateAndResetTunnel.bind(this);
+    this.updateRoute = this.updateRoute.bind(this);
+    this.updateSignalsAndInterval = this.updateSignalsAndInterval.bind(this);
+    this.withdrawFeePayerFunds = this.withdrawFeePayerFunds.bind(this);
     this.activate = this.activate.bind(this);
     this.deactivate = this.deactivate.bind(this);
     this.triggerTunnel = this.triggerTunnel.bind(this);
@@ -39,10 +45,20 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "CreateTunnel", data);
     return promise.then(data => MsgCreateTunnelResponse.decode(new BinaryReader(data)));
   }
-  updateAndResetTunnel(request: MsgUpdateAndResetTunnel): Promise<MsgUpdateAndResetTunnelResponse> {
-    const data = MsgUpdateAndResetTunnel.encode(request).finish();
-    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "UpdateAndResetTunnel", data);
-    return promise.then(data => MsgUpdateAndResetTunnelResponse.decode(new BinaryReader(data)));
+  updateRoute(request: MsgUpdateRoute): Promise<MsgUpdateRouteResponse> {
+    const data = MsgUpdateRoute.encode(request).finish();
+    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "UpdateRoute", data);
+    return promise.then(data => MsgUpdateRouteResponse.decode(new BinaryReader(data)));
+  }
+  updateSignalsAndInterval(request: MsgUpdateSignalsAndInterval): Promise<MsgUpdateSignalsAndIntervalResponse> {
+    const data = MsgUpdateSignalsAndInterval.encode(request).finish();
+    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "UpdateSignalsAndInterval", data);
+    return promise.then(data => MsgUpdateSignalsAndIntervalResponse.decode(new BinaryReader(data)));
+  }
+  withdrawFeePayerFunds(request: MsgWithdrawFeePayerFunds): Promise<MsgWithdrawFeePayerFundsResponse> {
+    const data = MsgWithdrawFeePayerFunds.encode(request).finish();
+    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "WithdrawFeePayerFunds", data);
+    return promise.then(data => MsgWithdrawFeePayerFundsResponse.decode(new BinaryReader(data)));
   }
   activate(request: MsgActivate): Promise<MsgActivateResponse> {
     const data = MsgActivate.encode(request).finish();

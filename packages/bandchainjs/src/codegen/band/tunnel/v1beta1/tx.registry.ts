@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateTunnel, MsgUpdateAndResetTunnel, MsgActivate, MsgDeactivate, MsgTriggerTunnel, MsgDepositToTunnel, MsgWithdrawFromTunnel, MsgUpdateParams } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/band.tunnel.v1beta1.MsgCreateTunnel", MsgCreateTunnel], ["/band.tunnel.v1beta1.MsgUpdateAndResetTunnel", MsgUpdateAndResetTunnel], ["/band.tunnel.v1beta1.MsgActivate", MsgActivate], ["/band.tunnel.v1beta1.MsgDeactivate", MsgDeactivate], ["/band.tunnel.v1beta1.MsgTriggerTunnel", MsgTriggerTunnel], ["/band.tunnel.v1beta1.MsgDepositToTunnel", MsgDepositToTunnel], ["/band.tunnel.v1beta1.MsgWithdrawFromTunnel", MsgWithdrawFromTunnel], ["/band.tunnel.v1beta1.MsgUpdateParams", MsgUpdateParams]];
+import { MsgCreateTunnel, MsgUpdateRoute, MsgUpdateSignalsAndInterval, MsgWithdrawFeePayerFunds, MsgActivate, MsgDeactivate, MsgTriggerTunnel, MsgDepositToTunnel, MsgWithdrawFromTunnel, MsgUpdateParams } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/band.tunnel.v1beta1.MsgCreateTunnel", MsgCreateTunnel], ["/band.tunnel.v1beta1.MsgUpdateRoute", MsgUpdateRoute], ["/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval", MsgUpdateSignalsAndInterval], ["/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds", MsgWithdrawFeePayerFunds], ["/band.tunnel.v1beta1.MsgActivate", MsgActivate], ["/band.tunnel.v1beta1.MsgDeactivate", MsgDeactivate], ["/band.tunnel.v1beta1.MsgTriggerTunnel", MsgTriggerTunnel], ["/band.tunnel.v1beta1.MsgDepositToTunnel", MsgDepositToTunnel], ["/band.tunnel.v1beta1.MsgWithdrawFromTunnel", MsgWithdrawFromTunnel], ["/band.tunnel.v1beta1.MsgUpdateParams", MsgUpdateParams]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -15,10 +15,22 @@ export const MessageComposer = {
         value: MsgCreateTunnel.encode(value).finish()
       };
     },
-    updateAndResetTunnel(value: MsgUpdateAndResetTunnel) {
+    updateRoute(value: MsgUpdateRoute) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnel",
-        value: MsgUpdateAndResetTunnel.encode(value).finish()
+        typeUrl: "/band.tunnel.v1beta1.MsgUpdateRoute",
+        value: MsgUpdateRoute.encode(value).finish()
+      };
+    },
+    updateSignalsAndInterval(value: MsgUpdateSignalsAndInterval) {
+      return {
+        typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval",
+        value: MsgUpdateSignalsAndInterval.encode(value).finish()
+      };
+    },
+    withdrawFeePayerFunds(value: MsgWithdrawFeePayerFunds) {
+      return {
+        typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds",
+        value: MsgWithdrawFeePayerFunds.encode(value).finish()
       };
     },
     activate(value: MsgActivate) {
@@ -65,9 +77,21 @@ export const MessageComposer = {
         value
       };
     },
-    updateAndResetTunnel(value: MsgUpdateAndResetTunnel) {
+    updateRoute(value: MsgUpdateRoute) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnel",
+        typeUrl: "/band.tunnel.v1beta1.MsgUpdateRoute",
+        value
+      };
+    },
+    updateSignalsAndInterval(value: MsgUpdateSignalsAndInterval) {
+      return {
+        typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval",
+        value
+      };
+    },
+    withdrawFeePayerFunds(value: MsgWithdrawFeePayerFunds) {
+      return {
+        typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds",
         value
       };
     },
@@ -115,10 +139,22 @@ export const MessageComposer = {
         value: MsgCreateTunnel.fromPartial(value)
       };
     },
-    updateAndResetTunnel(value: MsgUpdateAndResetTunnel) {
+    updateRoute(value: MsgUpdateRoute) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnel",
-        value: MsgUpdateAndResetTunnel.fromPartial(value)
+        typeUrl: "/band.tunnel.v1beta1.MsgUpdateRoute",
+        value: MsgUpdateRoute.fromPartial(value)
+      };
+    },
+    updateSignalsAndInterval(value: MsgUpdateSignalsAndInterval) {
+      return {
+        typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval",
+        value: MsgUpdateSignalsAndInterval.fromPartial(value)
+      };
+    },
+    withdrawFeePayerFunds(value: MsgWithdrawFeePayerFunds) {
+      return {
+        typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds",
+        value: MsgWithdrawFeePayerFunds.fromPartial(value)
       };
     },
     activate(value: MsgActivate) {

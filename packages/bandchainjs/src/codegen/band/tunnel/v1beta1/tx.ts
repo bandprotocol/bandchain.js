@@ -3,7 +3,7 @@ import { SignalDeviation, SignalDeviationAmino, SignalDeviationSDKType } from ".
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType } from "./route";
+import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, IBCRoute, IBCRouteProtoMsg, IBCRouteSDKType } from "./route";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgCreateTunnel is the transaction message to create a new tunnel. */
 export interface MsgCreateTunnel {
@@ -12,7 +12,7 @@ export interface MsgCreateTunnel {
   /** interval is the interval for delivering the signal prices in seconds. */
   interval: bigint;
   /** route is the route for delivering the signal prices */
-  route?: TSSRoute | Any | undefined;
+  route?: TSSRoute | IBCRoute | Any | undefined;
   /** initial_deposit is the deposit value that must be paid at tunnel creation. */
   initialDeposit: Coin[];
   /** creator is the address of the creator. */
@@ -23,7 +23,7 @@ export interface MsgCreateTunnelProtoMsg {
   value: Uint8Array;
 }
 export type MsgCreateTunnelEncoded = Omit<MsgCreateTunnel, "route"> & {
-  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | AnyProtoMsg | undefined;
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | AnyProtoMsg | undefined;
 };
 /** MsgCreateTunnel is the transaction message to create a new tunnel. */
 export interface MsgCreateTunnelAmino {
@@ -46,7 +46,7 @@ export interface MsgCreateTunnelAminoMsg {
 export interface MsgCreateTunnelSDKType {
   signal_deviations: SignalDeviationSDKType[];
   interval: bigint;
-  route?: TSSRouteSDKType | AnySDKType | undefined;
+  route?: TSSRouteSDKType | IBCRouteSDKType | AnySDKType | undefined;
   initial_deposit: CoinSDKType[];
   creator: string;
 }
@@ -70,11 +70,57 @@ export interface MsgCreateTunnelResponseAminoMsg {
 export interface MsgCreateTunnelResponseSDKType {
   tunnel_id: bigint;
 }
-/**
- * MsgUpdateAndResetTunnel is the transaction message to update a tunnel information
- * and reset the interval.
- */
-export interface MsgUpdateAndResetTunnel {
+/** MsgUpdateRoute is the transaction message to update a route information of the tunnel. */
+export interface MsgUpdateRoute {
+  /** tunnel_id is the ID of the tunnel to edit. */
+  tunnelId: bigint;
+  /** route is the route for delivering the signal prices */
+  route?: TSSRoute | IBCRoute | Any | undefined;
+  /** creator is the address of the creator. */
+  creator: string;
+}
+export interface MsgUpdateRouteProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateRoute";
+  value: Uint8Array;
+}
+export type MsgUpdateRouteEncoded = Omit<MsgUpdateRoute, "route"> & {
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | AnyProtoMsg | undefined;
+};
+/** MsgUpdateRoute is the transaction message to update a route information of the tunnel. */
+export interface MsgUpdateRouteAmino {
+  /** tunnel_id is the ID of the tunnel to edit. */
+  tunnel_id?: string;
+  /** route is the route for delivering the signal prices */
+  route?: AnyAmino;
+  /** creator is the address of the creator. */
+  creator?: string;
+}
+export interface MsgUpdateRouteAminoMsg {
+  type: "tunnel/MsgUpdateRoute";
+  value: MsgUpdateRouteAmino;
+}
+/** MsgUpdateRoute is the transaction message to update a route information of the tunnel. */
+export interface MsgUpdateRouteSDKType {
+  tunnel_id: bigint;
+  route?: TSSRouteSDKType | IBCRouteSDKType | AnySDKType | undefined;
+  creator: string;
+}
+/** MsgUpdateRouteResponse is the response type for the Msg/UpdateRoute RPC method. */
+export interface MsgUpdateRouteResponse {}
+export interface MsgUpdateRouteResponseProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateRouteResponse";
+  value: Uint8Array;
+}
+/** MsgUpdateRouteResponse is the response type for the Msg/UpdateRoute RPC method. */
+export interface MsgUpdateRouteResponseAmino {}
+export interface MsgUpdateRouteResponseAminoMsg {
+  type: "/band.tunnel.v1beta1.MsgUpdateRouteResponse";
+  value: MsgUpdateRouteResponseAmino;
+}
+/** MsgUpdateRouteResponse is the response type for the Msg/UpdateRoute RPC method. */
+export interface MsgUpdateRouteResponseSDKType {}
+/** MsgUpdateSignalsAndInterval is the transaction message to update signals and interval of the tunnel. */
+export interface MsgUpdateSignalsAndInterval {
   /** tunnel_id is the ID of the tunnel to edit. */
   tunnelId: bigint;
   /** signal_deviations is the list of signal deviations. */
@@ -84,15 +130,12 @@ export interface MsgUpdateAndResetTunnel {
   /** creator is the address of the creator. */
   creator: string;
 }
-export interface MsgUpdateAndResetTunnelProtoMsg {
-  typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnel";
+export interface MsgUpdateSignalsAndIntervalProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval";
   value: Uint8Array;
 }
-/**
- * MsgUpdateAndResetTunnel is the transaction message to update a tunnel information
- * and reset the interval.
- */
-export interface MsgUpdateAndResetTunnelAmino {
+/** MsgUpdateSignalsAndInterval is the transaction message to update signals and interval of the tunnel. */
+export interface MsgUpdateSignalsAndIntervalAmino {
   /** tunnel_id is the ID of the tunnel to edit. */
   tunnel_id?: string;
   /** signal_deviations is the list of signal deviations. */
@@ -102,34 +145,77 @@ export interface MsgUpdateAndResetTunnelAmino {
   /** creator is the address of the creator. */
   creator?: string;
 }
-export interface MsgUpdateAndResetTunnelAminoMsg {
-  type: "tunnel/MsgUpdateAndResetTunnel";
-  value: MsgUpdateAndResetTunnelAmino;
+export interface MsgUpdateSignalsAndIntervalAminoMsg {
+  type: "tunnel/MsgUpdateSignalsAndInterval";
+  value: MsgUpdateSignalsAndIntervalAmino;
 }
-/**
- * MsgUpdateAndResetTunnel is the transaction message to update a tunnel information
- * and reset the interval.
- */
-export interface MsgUpdateAndResetTunnelSDKType {
+/** MsgUpdateSignalsAndInterval is the transaction message to update signals and interval of the tunnel. */
+export interface MsgUpdateSignalsAndIntervalSDKType {
   tunnel_id: bigint;
   signal_deviations: SignalDeviationSDKType[];
   interval: bigint;
   creator: string;
 }
-/** MsgUpdateAndResetTunnelResponse is the response type for the Msg/UpdateAndResetTunnel RPC method. */
-export interface MsgUpdateAndResetTunnelResponse {}
-export interface MsgUpdateAndResetTunnelResponseProtoMsg {
-  typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnelResponse";
+/** MsgUpdateSignalsAndIntervalResponse is the response type for the Msg/UpdateSignalsAndInterval RPC method. */
+export interface MsgUpdateSignalsAndIntervalResponse {}
+export interface MsgUpdateSignalsAndIntervalResponseProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndIntervalResponse";
   value: Uint8Array;
 }
-/** MsgUpdateAndResetTunnelResponse is the response type for the Msg/UpdateAndResetTunnel RPC method. */
-export interface MsgUpdateAndResetTunnelResponseAmino {}
-export interface MsgUpdateAndResetTunnelResponseAminoMsg {
-  type: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnelResponse";
-  value: MsgUpdateAndResetTunnelResponseAmino;
+/** MsgUpdateSignalsAndIntervalResponse is the response type for the Msg/UpdateSignalsAndInterval RPC method. */
+export interface MsgUpdateSignalsAndIntervalResponseAmino {}
+export interface MsgUpdateSignalsAndIntervalResponseAminoMsg {
+  type: "/band.tunnel.v1beta1.MsgUpdateSignalsAndIntervalResponse";
+  value: MsgUpdateSignalsAndIntervalResponseAmino;
 }
-/** MsgUpdateAndResetTunnelResponse is the response type for the Msg/UpdateAndResetTunnel RPC method. */
-export interface MsgUpdateAndResetTunnelResponseSDKType {}
+/** MsgUpdateSignalsAndIntervalResponse is the response type for the Msg/UpdateSignalsAndInterval RPC method. */
+export interface MsgUpdateSignalsAndIntervalResponseSDKType {}
+/** MsgWithdrawFeePayerFunds is the transaction message to withdraw fee payer funds to creator. */
+export interface MsgWithdrawFeePayerFunds {
+  /** tunnel_id is the ID of the tunnel to withdraw fee payer coins. */
+  tunnelId: bigint;
+  /** amount is the coins to withdraw. */
+  amount: Coin[];
+  /** creator is the address of the creator. */
+  creator: string;
+}
+export interface MsgWithdrawFeePayerFundsProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds";
+  value: Uint8Array;
+}
+/** MsgWithdrawFeePayerFunds is the transaction message to withdraw fee payer funds to creator. */
+export interface MsgWithdrawFeePayerFundsAmino {
+  /** tunnel_id is the ID of the tunnel to withdraw fee payer coins. */
+  tunnel_id?: string;
+  /** amount is the coins to withdraw. */
+  amount: CoinAmino[];
+  /** creator is the address of the creator. */
+  creator?: string;
+}
+export interface MsgWithdrawFeePayerFundsAminoMsg {
+  type: "tunnel/MsgWithdrawFeePayerFunds";
+  value: MsgWithdrawFeePayerFundsAmino;
+}
+/** MsgWithdrawFeePayerFunds is the transaction message to withdraw fee payer funds to creator. */
+export interface MsgWithdrawFeePayerFundsSDKType {
+  tunnel_id: bigint;
+  amount: CoinSDKType[];
+  creator: string;
+}
+/** MsgWithdrawFeePayerFundsResponse is the response type for the Msg/WithdrawFeePayerFunds RPC method. */
+export interface MsgWithdrawFeePayerFundsResponse {}
+export interface MsgWithdrawFeePayerFundsResponseProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFundsResponse";
+  value: Uint8Array;
+}
+/** MsgWithdrawFeePayerFundsResponse is the response type for the Msg/WithdrawFeePayerFunds RPC method. */
+export interface MsgWithdrawFeePayerFundsResponseAmino {}
+export interface MsgWithdrawFeePayerFundsResponseAminoMsg {
+  type: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFundsResponse";
+  value: MsgWithdrawFeePayerFundsResponseAmino;
+}
+/** MsgWithdrawFeePayerFundsResponse is the response type for the Msg/WithdrawFeePayerFunds RPC method. */
+export interface MsgWithdrawFeePayerFundsResponseSDKType {}
 /** Activate is the transaction message to activate a tunnel. */
 export interface MsgActivate {
   /** tunnel_id is the ID of the tunnel to activate. */
@@ -570,7 +656,150 @@ export const MsgCreateTunnelResponse = {
     };
   }
 };
-function createBaseMsgUpdateAndResetTunnel(): MsgUpdateAndResetTunnel {
+function createBaseMsgUpdateRoute(): MsgUpdateRoute {
+  return {
+    tunnelId: BigInt(0),
+    route: undefined,
+    creator: ""
+  };
+}
+export const MsgUpdateRoute = {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateRoute",
+  encode(message: MsgUpdateRoute, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.tunnelId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.tunnelId);
+    }
+    if (message.route !== undefined) {
+      Any.encode(message.route as Any, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.creator !== "") {
+      writer.uint32(26).string(message.creator);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateRoute {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateRoute();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.tunnelId = reader.uint64();
+          break;
+        case 2:
+          message.route = RouteI_InterfaceDecoder(reader) as Any;
+          break;
+        case 3:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateRoute>): MsgUpdateRoute {
+    const message = createBaseMsgUpdateRoute();
+    message.tunnelId = object.tunnelId !== undefined && object.tunnelId !== null ? BigInt(object.tunnelId.toString()) : BigInt(0);
+    message.route = object.route !== undefined && object.route !== null ? Any.fromPartial(object.route) : undefined;
+    message.creator = object.creator ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUpdateRouteAmino): MsgUpdateRoute {
+    const message = createBaseMsgUpdateRoute();
+    if (object.tunnel_id !== undefined && object.tunnel_id !== null) {
+      message.tunnelId = BigInt(object.tunnel_id);
+    }
+    if (object.route !== undefined && object.route !== null) {
+      message.route = RouteI_FromAmino(object.route);
+    }
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateRoute): MsgUpdateRouteAmino {
+    const obj: any = {};
+    obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
+    obj.route = message.route ? RouteI_ToAmino(message.route as Any) : undefined;
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateRouteAminoMsg): MsgUpdateRoute {
+    return MsgUpdateRoute.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUpdateRoute): MsgUpdateRouteAminoMsg {
+    return {
+      type: "tunnel/MsgUpdateRoute",
+      value: MsgUpdateRoute.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUpdateRouteProtoMsg): MsgUpdateRoute {
+    return MsgUpdateRoute.decode(message.value);
+  },
+  toProto(message: MsgUpdateRoute): Uint8Array {
+    return MsgUpdateRoute.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateRoute): MsgUpdateRouteProtoMsg {
+    return {
+      typeUrl: "/band.tunnel.v1beta1.MsgUpdateRoute",
+      value: MsgUpdateRoute.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateRouteResponse(): MsgUpdateRouteResponse {
+  return {};
+}
+export const MsgUpdateRouteResponse = {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateRouteResponse",
+  encode(_: MsgUpdateRouteResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateRouteResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateRouteResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgUpdateRouteResponse>): MsgUpdateRouteResponse {
+    const message = createBaseMsgUpdateRouteResponse();
+    return message;
+  },
+  fromAmino(_: MsgUpdateRouteResponseAmino): MsgUpdateRouteResponse {
+    const message = createBaseMsgUpdateRouteResponse();
+    return message;
+  },
+  toAmino(_: MsgUpdateRouteResponse): MsgUpdateRouteResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateRouteResponseAminoMsg): MsgUpdateRouteResponse {
+    return MsgUpdateRouteResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateRouteResponseProtoMsg): MsgUpdateRouteResponse {
+    return MsgUpdateRouteResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateRouteResponse): Uint8Array {
+    return MsgUpdateRouteResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateRouteResponse): MsgUpdateRouteResponseProtoMsg {
+    return {
+      typeUrl: "/band.tunnel.v1beta1.MsgUpdateRouteResponse",
+      value: MsgUpdateRouteResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateSignalsAndInterval(): MsgUpdateSignalsAndInterval {
   return {
     tunnelId: BigInt(0),
     signalDeviations: [],
@@ -578,9 +807,9 @@ function createBaseMsgUpdateAndResetTunnel(): MsgUpdateAndResetTunnel {
     creator: ""
   };
 }
-export const MsgUpdateAndResetTunnel = {
-  typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnel",
-  encode(message: MsgUpdateAndResetTunnel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgUpdateSignalsAndInterval = {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval",
+  encode(message: MsgUpdateSignalsAndInterval, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tunnelId !== BigInt(0)) {
       writer.uint32(8).uint64(message.tunnelId);
     }
@@ -595,10 +824,10 @@ export const MsgUpdateAndResetTunnel = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAndResetTunnel {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateSignalsAndInterval {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgUpdateAndResetTunnel();
+    const message = createBaseMsgUpdateSignalsAndInterval();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -621,16 +850,16 @@ export const MsgUpdateAndResetTunnel = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgUpdateAndResetTunnel>): MsgUpdateAndResetTunnel {
-    const message = createBaseMsgUpdateAndResetTunnel();
+  fromPartial(object: Partial<MsgUpdateSignalsAndInterval>): MsgUpdateSignalsAndInterval {
+    const message = createBaseMsgUpdateSignalsAndInterval();
     message.tunnelId = object.tunnelId !== undefined && object.tunnelId !== null ? BigInt(object.tunnelId.toString()) : BigInt(0);
     message.signalDeviations = object.signalDeviations?.map(e => SignalDeviation.fromPartial(e)) || [];
     message.interval = object.interval !== undefined && object.interval !== null ? BigInt(object.interval.toString()) : BigInt(0);
     message.creator = object.creator ?? "";
     return message;
   },
-  fromAmino(object: MsgUpdateAndResetTunnelAmino): MsgUpdateAndResetTunnel {
-    const message = createBaseMsgUpdateAndResetTunnel();
+  fromAmino(object: MsgUpdateSignalsAndIntervalAmino): MsgUpdateSignalsAndInterval {
+    const message = createBaseMsgUpdateSignalsAndInterval();
     if (object.tunnel_id !== undefined && object.tunnel_id !== null) {
       message.tunnelId = BigInt(object.tunnel_id);
     }
@@ -643,7 +872,7 @@ export const MsgUpdateAndResetTunnel = {
     }
     return message;
   },
-  toAmino(message: MsgUpdateAndResetTunnel): MsgUpdateAndResetTunnelAmino {
+  toAmino(message: MsgUpdateSignalsAndInterval): MsgUpdateSignalsAndIntervalAmino {
     const obj: any = {};
     obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
     if (message.signalDeviations) {
@@ -655,40 +884,40 @@ export const MsgUpdateAndResetTunnel = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateAndResetTunnelAminoMsg): MsgUpdateAndResetTunnel {
-    return MsgUpdateAndResetTunnel.fromAmino(object.value);
+  fromAminoMsg(object: MsgUpdateSignalsAndIntervalAminoMsg): MsgUpdateSignalsAndInterval {
+    return MsgUpdateSignalsAndInterval.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgUpdateAndResetTunnel): MsgUpdateAndResetTunnelAminoMsg {
+  toAminoMsg(message: MsgUpdateSignalsAndInterval): MsgUpdateSignalsAndIntervalAminoMsg {
     return {
-      type: "tunnel/MsgUpdateAndResetTunnel",
-      value: MsgUpdateAndResetTunnel.toAmino(message)
+      type: "tunnel/MsgUpdateSignalsAndInterval",
+      value: MsgUpdateSignalsAndInterval.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgUpdateAndResetTunnelProtoMsg): MsgUpdateAndResetTunnel {
-    return MsgUpdateAndResetTunnel.decode(message.value);
+  fromProtoMsg(message: MsgUpdateSignalsAndIntervalProtoMsg): MsgUpdateSignalsAndInterval {
+    return MsgUpdateSignalsAndInterval.decode(message.value);
   },
-  toProto(message: MsgUpdateAndResetTunnel): Uint8Array {
-    return MsgUpdateAndResetTunnel.encode(message).finish();
+  toProto(message: MsgUpdateSignalsAndInterval): Uint8Array {
+    return MsgUpdateSignalsAndInterval.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateAndResetTunnel): MsgUpdateAndResetTunnelProtoMsg {
+  toProtoMsg(message: MsgUpdateSignalsAndInterval): MsgUpdateSignalsAndIntervalProtoMsg {
     return {
-      typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnel",
-      value: MsgUpdateAndResetTunnel.encode(message).finish()
+      typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval",
+      value: MsgUpdateSignalsAndInterval.encode(message).finish()
     };
   }
 };
-function createBaseMsgUpdateAndResetTunnelResponse(): MsgUpdateAndResetTunnelResponse {
+function createBaseMsgUpdateSignalsAndIntervalResponse(): MsgUpdateSignalsAndIntervalResponse {
   return {};
 }
-export const MsgUpdateAndResetTunnelResponse = {
-  typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnelResponse",
-  encode(_: MsgUpdateAndResetTunnelResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgUpdateSignalsAndIntervalResponse = {
+  typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndIntervalResponse",
+  encode(_: MsgUpdateSignalsAndIntervalResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateAndResetTunnelResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateSignalsAndIntervalResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgUpdateAndResetTunnelResponse();
+    const message = createBaseMsgUpdateSignalsAndIntervalResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -699,31 +928,176 @@ export const MsgUpdateAndResetTunnelResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgUpdateAndResetTunnelResponse>): MsgUpdateAndResetTunnelResponse {
-    const message = createBaseMsgUpdateAndResetTunnelResponse();
+  fromPartial(_: Partial<MsgUpdateSignalsAndIntervalResponse>): MsgUpdateSignalsAndIntervalResponse {
+    const message = createBaseMsgUpdateSignalsAndIntervalResponse();
     return message;
   },
-  fromAmino(_: MsgUpdateAndResetTunnelResponseAmino): MsgUpdateAndResetTunnelResponse {
-    const message = createBaseMsgUpdateAndResetTunnelResponse();
+  fromAmino(_: MsgUpdateSignalsAndIntervalResponseAmino): MsgUpdateSignalsAndIntervalResponse {
+    const message = createBaseMsgUpdateSignalsAndIntervalResponse();
     return message;
   },
-  toAmino(_: MsgUpdateAndResetTunnelResponse): MsgUpdateAndResetTunnelResponseAmino {
+  toAmino(_: MsgUpdateSignalsAndIntervalResponse): MsgUpdateSignalsAndIntervalResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateAndResetTunnelResponseAminoMsg): MsgUpdateAndResetTunnelResponse {
-    return MsgUpdateAndResetTunnelResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgUpdateSignalsAndIntervalResponseAminoMsg): MsgUpdateSignalsAndIntervalResponse {
+    return MsgUpdateSignalsAndIntervalResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateAndResetTunnelResponseProtoMsg): MsgUpdateAndResetTunnelResponse {
-    return MsgUpdateAndResetTunnelResponse.decode(message.value);
+  fromProtoMsg(message: MsgUpdateSignalsAndIntervalResponseProtoMsg): MsgUpdateSignalsAndIntervalResponse {
+    return MsgUpdateSignalsAndIntervalResponse.decode(message.value);
   },
-  toProto(message: MsgUpdateAndResetTunnelResponse): Uint8Array {
-    return MsgUpdateAndResetTunnelResponse.encode(message).finish();
+  toProto(message: MsgUpdateSignalsAndIntervalResponse): Uint8Array {
+    return MsgUpdateSignalsAndIntervalResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateAndResetTunnelResponse): MsgUpdateAndResetTunnelResponseProtoMsg {
+  toProtoMsg(message: MsgUpdateSignalsAndIntervalResponse): MsgUpdateSignalsAndIntervalResponseProtoMsg {
     return {
-      typeUrl: "/band.tunnel.v1beta1.MsgUpdateAndResetTunnelResponse",
-      value: MsgUpdateAndResetTunnelResponse.encode(message).finish()
+      typeUrl: "/band.tunnel.v1beta1.MsgUpdateSignalsAndIntervalResponse",
+      value: MsgUpdateSignalsAndIntervalResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgWithdrawFeePayerFunds(): MsgWithdrawFeePayerFunds {
+  return {
+    tunnelId: BigInt(0),
+    amount: [],
+    creator: ""
+  };
+}
+export const MsgWithdrawFeePayerFunds = {
+  typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds",
+  encode(message: MsgWithdrawFeePayerFunds, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.tunnelId !== BigInt(0)) {
+      writer.uint32(8).uint64(message.tunnelId);
+    }
+    for (const v of message.amount) {
+      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.creator !== "") {
+      writer.uint32(26).string(message.creator);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawFeePayerFunds {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgWithdrawFeePayerFunds();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.tunnelId = reader.uint64();
+          break;
+        case 2:
+          message.amount.push(Coin.decode(reader, reader.uint32()));
+          break;
+        case 3:
+          message.creator = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgWithdrawFeePayerFunds>): MsgWithdrawFeePayerFunds {
+    const message = createBaseMsgWithdrawFeePayerFunds();
+    message.tunnelId = object.tunnelId !== undefined && object.tunnelId !== null ? BigInt(object.tunnelId.toString()) : BigInt(0);
+    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    message.creator = object.creator ?? "";
+    return message;
+  },
+  fromAmino(object: MsgWithdrawFeePayerFundsAmino): MsgWithdrawFeePayerFunds {
+    const message = createBaseMsgWithdrawFeePayerFunds();
+    if (object.tunnel_id !== undefined && object.tunnel_id !== null) {
+      message.tunnelId = BigInt(object.tunnel_id);
+    }
+    message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    return message;
+  },
+  toAmino(message: MsgWithdrawFeePayerFunds): MsgWithdrawFeePayerFundsAmino {
+    const obj: any = {};
+    obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
+    if (message.amount) {
+      obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.amount = message.amount;
+    }
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    return obj;
+  },
+  fromAminoMsg(object: MsgWithdrawFeePayerFundsAminoMsg): MsgWithdrawFeePayerFunds {
+    return MsgWithdrawFeePayerFunds.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgWithdrawFeePayerFunds): MsgWithdrawFeePayerFundsAminoMsg {
+    return {
+      type: "tunnel/MsgWithdrawFeePayerFunds",
+      value: MsgWithdrawFeePayerFunds.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgWithdrawFeePayerFundsProtoMsg): MsgWithdrawFeePayerFunds {
+    return MsgWithdrawFeePayerFunds.decode(message.value);
+  },
+  toProto(message: MsgWithdrawFeePayerFunds): Uint8Array {
+    return MsgWithdrawFeePayerFunds.encode(message).finish();
+  },
+  toProtoMsg(message: MsgWithdrawFeePayerFunds): MsgWithdrawFeePayerFundsProtoMsg {
+    return {
+      typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds",
+      value: MsgWithdrawFeePayerFunds.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgWithdrawFeePayerFundsResponse(): MsgWithdrawFeePayerFundsResponse {
+  return {};
+}
+export const MsgWithdrawFeePayerFundsResponse = {
+  typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFundsResponse",
+  encode(_: MsgWithdrawFeePayerFundsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgWithdrawFeePayerFundsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgWithdrawFeePayerFundsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgWithdrawFeePayerFundsResponse>): MsgWithdrawFeePayerFundsResponse {
+    const message = createBaseMsgWithdrawFeePayerFundsResponse();
+    return message;
+  },
+  fromAmino(_: MsgWithdrawFeePayerFundsResponseAmino): MsgWithdrawFeePayerFundsResponse {
+    const message = createBaseMsgWithdrawFeePayerFundsResponse();
+    return message;
+  },
+  toAmino(_: MsgWithdrawFeePayerFundsResponse): MsgWithdrawFeePayerFundsResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgWithdrawFeePayerFundsResponseAminoMsg): MsgWithdrawFeePayerFundsResponse {
+    return MsgWithdrawFeePayerFundsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgWithdrawFeePayerFundsResponseProtoMsg): MsgWithdrawFeePayerFundsResponse {
+    return MsgWithdrawFeePayerFundsResponse.decode(message.value);
+  },
+  toProto(message: MsgWithdrawFeePayerFundsResponse): Uint8Array {
+    return MsgWithdrawFeePayerFundsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgWithdrawFeePayerFundsResponse): MsgWithdrawFeePayerFundsResponseProtoMsg {
+    return {
+      typeUrl: "/band.tunnel.v1beta1.MsgWithdrawFeePayerFundsResponse",
+      value: MsgWithdrawFeePayerFundsResponse.encode(message).finish()
     };
   }
 };
@@ -1541,12 +1915,14 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
-export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | Any => {
+export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | IBCRoute | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
     case "/band.tunnel.v1beta1.TSSRoute":
       return TSSRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.IBCRoute":
+      return IBCRoute.decode(data.value);
     default:
       return data;
   }
@@ -1558,6 +1934,11 @@ export const RouteI_FromAmino = (content: AnyAmino): Any => {
         typeUrl: "/band.tunnel.v1beta1.TSSRoute",
         value: TSSRoute.encode(TSSRoute.fromPartial(TSSRoute.fromAmino(content.value))).finish()
       });
+    case "/band.tunnel.v1beta1.IBCRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.IBCRoute",
+        value: IBCRoute.encode(IBCRoute.fromPartial(IBCRoute.fromAmino(content.value))).finish()
+      });
     default:
       return Any.fromAmino(content);
   }
@@ -1568,6 +1949,11 @@ export const RouteI_ToAmino = (content: Any) => {
       return {
         type: "/band.tunnel.v1beta1.TSSRoute",
         value: TSSRoute.toAmino(TSSRoute.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.IBCRoute":
+      return {
+        type: "/band.tunnel.v1beta1.IBCRoute",
+        value: IBCRoute.toAmino(IBCRoute.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

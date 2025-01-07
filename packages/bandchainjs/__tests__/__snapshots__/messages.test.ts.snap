@@ -22,6 +22,7 @@ exports[`Band messages messages 1`] = `
     "oracleScriptId": 1n,
     "prepareGas": 1n,
     "sender": "sender",
+    "tssEncoder": 0,
   },
 }
 `;
@@ -48,6 +49,7 @@ exports[`Band messages messages.scoped 1`] = `
     "oracleScriptId": 1n,
     "prepareGas": 1n,
     "sender": "sender",
+    "tssEncoder": 0,
   },
 }
 `;

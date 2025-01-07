@@ -14,6 +14,7 @@ it("AminoConverter", async () => {
     prepareGas: BigInt(1),
     executeGas: BigInt(1),
     sender: "sender",
+    tssEncoder: 0,
   });
   expect(msg).toMatchSnapshot();
 
@@ -41,6 +42,7 @@ it("AminoConverter.scoped", async () => {
     prepareGas: BigInt(1),
     executeGas: BigInt(1),
     sender: "sender",
+    tssEncoder: 0,
   });
   expect(msg).toMatchSnapshot();
 
