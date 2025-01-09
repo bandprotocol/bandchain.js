@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 // Import this in your top-level route/layout
 import "@interchain-ui/react/styles";
+
+import type { Metadata } from "next";
+import localFont from "next/font/local";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

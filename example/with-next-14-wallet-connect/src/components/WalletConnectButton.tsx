@@ -2,20 +2,23 @@
 "use client";
 
 import { useChain } from "@cosmos-kit/react";
-import { WalletStatus } from "cosmos-kit";
+import { ChainProvider } from "@cosmos-kit/react";
+import { assets, chains } from "chain-registry";
+import { SignerOptions, WalletStatus } from "cosmos-kit";
+import { wallets } from "cosmos-kit";
+import { devnetRpc } from "src/constants/endpoints";
+import {
+  localbandchain,
+  localbandchainAssets,
+  signerOptions,
+} from "src/constants/registry";
 
-const WalletConnectButton = ({
-  walletStatus,
-  connect,
-  disconnect,
-  message,
-}: {
-  walletStatus: WalletStatus;
-  connect: () => void;
-  disconnect: () => void;
-  message?: string;
-}) => {
-  switch (walletStatus) {
+const WalletConnectButton = () => {
+  const chainContext = useChain("localbandchain");
+
+  const { status, connect, message, disconnect } = chainContext;
+
+  switch (status) {
     case WalletStatus.Disconnected:
       return (
         <button
@@ -29,7 +32,7 @@ const WalletConnectButton = ({
       return (
         <button
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={disconnect}
+          onClick={() => disconnect}
         >
           Disconnect Wallet
         </button>
@@ -40,23 +43,29 @@ const WalletConnectButton = ({
       return (
         <div className="p-2 bg-red-500 text-center text-white rounded">
           Error: {message}
+          <button onClick={() => disconnect()}>Disconnect</button>
         </div>
       );
   }
 };
 
 const Wallet = () => {
-  const chainContext = useChain("band-laozi-testnet6");
-
-  const { status, connect, message, disconnect } = chainContext;
-
   return (
-    <WalletConnectButton
-      walletStatus={status}
-      connect={connect}
-      message={message}
-      disconnect={disconnect}
-    />
+    <ChainProvider
+      chains={[...chains, localbandchain]}
+      assetLists={[...assets, localbandchainAssets]}
+      wallets={wallets.ledger}
+      endpointOptions={{
+        endpoints: {
+          localbandchain: {
+            rpc: [devnetRpc],
+          },
+        },
+      }}
+      signerOptions={signerOptions as unknown as SignerOptions}
+    >
+      <WalletConnectButton />
+    </ChainProvider>
   );
 };
 

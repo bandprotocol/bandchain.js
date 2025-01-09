@@ -1,15 +1,22 @@
+import { getSigningClientOptions } from "@bandprotocol/bandchainjs";
 import { AssetList, Chain } from "@chain-registry/types";
 
-export const bandchaindevnet: Chain = {
-  chain_name: "band-laozi-testnet6",
-  chain_type: "cosmos",
-  chain_id: "band-laozi-testnet6",
+export const signerOptions = {
+  signingStargate: (_chain: Chain) => {
+    return getSigningClientOptions();
+  },
 };
 
-export const bandchaindevnetAssets: AssetList = {
+export const localbandchain: Chain = {
+  chain_name: "localbandchain",
+  chain_type: "cosmos",
+  chain_id: "band-laozi-v3-devnet",
+};
+
+export const localbandchainAssets: AssetList = {
   $schema:
     "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/chain.schema.json",
-  chain_name: "band-laozi-testnet6",
+  chain_name: "localbandchain",
   assets: [
     {
       description: "The native token of BandChain",
