@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bandprotocol/bandchainjs": "../../packages/bandchainjs",
     "@cosmjs/amino": "^0.32.4",
     "@cosmos-kit/react": "^2.20.1",
     "@interchain-ui/react": "^1.26.1",

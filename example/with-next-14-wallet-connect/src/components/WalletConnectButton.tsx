@@ -2,21 +2,11 @@
 "use client";
 
 import { useChain } from "@cosmos-kit/react";
-import { ChainProvider } from "@cosmos-kit/react";
-import { assets, chains } from "chain-registry";
-import { SignerOptions, WalletStatus } from "cosmos-kit";
-import { wallets } from "cosmos-kit";
-import { devnetRpc } from "src/constants/endpoints";
-import {
-  localbandchain,
-  localbandchainAssets,
-  signerOptions,
-} from "src/constants/registry";
+import { WalletStatus } from "cosmos-kit";
 
-const WalletConnectButton = () => {
-  const chainContext = useChain("localbandchain");
-
-  const { status, connect, message, disconnect } = chainContext;
+const WalletConnectButton = ({ chainName }: { chainName: string }) => {
+  const { status, connect, message, disconnect, username, address } =
+    useChain(chainName);
 
   switch (status) {
     case WalletStatus.Disconnected:
@@ -30,12 +20,16 @@ const WalletConnectButton = () => {
       );
     case WalletStatus.Connected:
       return (
-        <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => disconnect}
-        >
-          Disconnect Wallet
-        </button>
+        <div>
+          <p className="mb-3">{username}</p>
+          <p className="mb-3">{address}</p>
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => disconnect()}
+          >
+            Disconnect Wallet
+          </button>
+        </div>
       );
     case WalletStatus.Connecting:
       return <button disabled>Connecting...</button>;
@@ -49,24 +43,4 @@ const WalletConnectButton = () => {
   }
 };
 
-const Wallet = () => {
-  return (
-    <ChainProvider
-      chains={[...chains, localbandchain]}
-      assetLists={[...assets, localbandchainAssets]}
-      wallets={wallets.ledger}
-      endpointOptions={{
-        endpoints: {
-          localbandchain: {
-            rpc: [devnetRpc],
-          },
-        },
-      }}
-      signerOptions={signerOptions as unknown as SignerOptions}
-    >
-      <WalletConnectButton />
-    </ChainProvider>
-  );
-};
-
-export default Wallet;
+export default WalletConnectButton;
