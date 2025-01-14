@@ -1,67 +1,158 @@
 "use client";
-import { cosmos } from "@bandprotocol/bandchainjs";
-import { StdFee } from "@cosmjs/amino";
+
+import { band, cosmos } from "@bandprotocol/bandchainjs";
+import { coin, StdFee } from "@cosmjs/amino";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { useChain } from "@cosmos-kit/react";
 import { useState } from "react";
+import { explorer } from "src/constants/endpoints";
+
+function hexToUint8Array(hex: string) {
+  // Remove any leading "0x" if present
+  if (hex.startsWith("0x")) {
+    hex = hex.slice(2);
+  }
+
+  // Ensure the hex string length is even
+  if (hex.length % 2 !== 0) {
+    throw new Error("Hex string must have an even length");
+  }
+
+  // Create a Uint8Array and populate it with parsed values
+  const byteArray = new Uint8Array(hex.length / 2);
+  for (let i = 0; i < byteArray.length; i++) {
+    byteArray[i] = parseInt(hex.substr(i * 2, 2), 16);
+  }
+
+  return byteArray;
+}
+
+const requestData = (
+  getSigningStargateClient: () => Promise<SigningStargateClient>,
+  setResp: (resp: any) => any,
+  address: string
+) => {
+  return async () => {
+    console.log("requestData");
+    const stargateClient = await getSigningStargateClient();
+    const { requestData } = band.oracle.v1.MessageComposer.fromPartial;
+    const msg = requestData({
+      oracleScriptId: BigInt(401),
+      calldata: hexToUint8Array(
+        "000000040000000342544300000004434f544900000003455448000000045553444303"
+      ),
+      askCount: BigInt(4),
+      minCount: BigInt(2),
+      clientId: "client",
+      feeLimit: [coin("200", "uband")],
+      prepareGas: BigInt(6600),
+      executeGas: BigInt(118000),
+      sender: address,
+      tssEncoder: 0,
+    });
+
+    const fee = {
+      amount: [
+        {
+          denom: "uband",
+          amount: "5000",
+        },
+      ],
+      gas: "500000",
+    };
+
+    const response = await stargateClient.signAndBroadcast(
+      address as string,
+      [msg],
+      fee
+    );
+
+    setResp(response);
+
+    console.log(response);
+  };
+};
 
 const sendTokens = (
   getSigningStargateClient: () => Promise<SigningStargateClient>,
-  setResp: (resp: string) => any,
+  setResp: (resp: any) => any,
   address: string,
   chainName: string
 ) => {
   return async () => {
-    const stargateClient = await getSigningStargateClient();
-    if (!stargateClient || !address) {
-      console.error("stargateClient undefined or address undefined.");
-      return;
-    }
-
-    const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
-
-    const msg = send({
-      amount: [
-        {
-          denom: chainName == "localbandchain" ? "uband" : "uosmo",
-          amount: "1000",
-        },
-      ],
-      toAddress: address,
-      fromAddress: address,
-    });
-
-    const fee: StdFee = {
-      amount: [
-        {
-          denom: chainName == "localbandchain" ? "uband" : "uosmo",
-          amount: "100",
-        },
-      ],
-      gas: "100000",
-    };
+    console.log("sendTokens");
 
     try {
-      const response = await stargateClient.signAndBroadcast(
-        address,
-        [msg],
-        fee
-      );
-      setResp(JSON.stringify(response, null, 2));
+      const stargateClient = await getSigningStargateClient();
+
+      if (!stargateClient || !address) {
+        console.error("stargateClient undefined or address undefined.");
+        return;
+      }
+
+      const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
+
+      const msg = send({
+        amount: [
+          {
+            denom: chainName == "localbandchain" ? "uband" : "uosmo",
+            amount: "1000",
+          },
+        ],
+        toAddress: address,
+        fromAddress: address,
+      });
+
+      const fee: StdFee = {
+        amount: [
+          {
+            denom: chainName == "localbandchain" ? "uband" : "uosmo",
+            amount: "100",
+          },
+        ],
+        gas: "100000",
+      };
+
+      try {
+        const response = await stargateClient.signAndBroadcast(
+          address,
+          [msg],
+          fee
+        );
+        console.log(response);
+
+        setResp(response);
+      } catch (error) {
+        console.error(error);
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 };
 
 const RequestDataExample = ({ chainName }: { chainName: string }) => {
   const { getSigningStargateClient, address } = useChain(chainName);
-  const [resp, setResp] = useState("");
+  const [resp, setResp] = useState<any>({});
 
   return (
     <div className="relative overflow-x-auto mt-5">
-      <p>{resp}</p>
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <div>
+        <p>Height: {resp.height}</p>
+        <div className="flex gap-2">
+          <p>TX Hash: </p>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`${explorer}/tx/${resp.transactionHash}`}
+            className="text-blue-500 underline"
+          >
+            {resp.transactionHash}
+          </a>
+        </div>
+      </div>
+
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th className="px-6 py-3">Message</th>
@@ -84,7 +175,25 @@ const RequestDataExample = ({ chainName }: { chainName: string }) => {
                   chainName
                 )}
               >
-                Send
+                Test
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td className="px-6 py-4">
+              <p className="font-mono p-1 font-bold text-white inline-block">
+                Request Data
+              </p>
+            </td>
+            <td className="px-6 py-4">
+              <button
+                onClick={requestData(
+                  getSigningStargateClient as () => Promise<SigningStargateClient>,
+                  setResp as () => any,
+                  address as string
+                )}
+              >
+                Test
               </button>
             </td>
           </tr>
