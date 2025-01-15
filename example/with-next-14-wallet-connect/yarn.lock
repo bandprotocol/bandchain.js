@@ -289,6 +289,26 @@
     nock "13.5.4"
     uuid "^9.0.1"
 
+"@cosmos-kit/core@^2.15.1":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/@cosmos-kit/core/-/core-2.15.1.tgz#c19668c25fdcfc15a4db8949490c636c3e5e9564"
+  integrity sha512-Of1QbBHK+x4Da2NxmkMwaXAFpKwO0lLqp46ZahW/C0HnT4gK0DjudCkjNT1wryCrrNab1ARsW2SadP/CT2+Trg==
+  dependencies:
+    "@chain-registry/client" "^1.49.11"
+    "@chain-registry/keplr" "^1.69.13"
+    "@chain-registry/types" "^0.46.11"
+    "@cosmjs/amino" "^0.32.3"
+    "@cosmjs/cosmwasm-stargate" "^0.32.3"
+    "@cosmjs/proto-signing" "^0.32.3"
+    "@cosmjs/stargate" "^0.32.3"
+    "@dao-dao/cosmiframe" "^1.0.0-rc.1"
+    "@walletconnect/types" "2.11.0"
+    bowser "2.11.0"
+    cosmjs-types "^0.9.0"
+    events "3.3.0"
+    nock "13.5.4"
+    uuid "^9.0.1"
+
 "@cosmos-kit/cosmostation-extension@^2.15.0":
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/@cosmos-kit/cosmostation-extension/-/cosmostation-extension-2.15.0.tgz#1dd280debdda4f1642f8673d8629f8989ce6a3c3"
@@ -451,6 +471,16 @@
     "@ledgerhq/hw-app-cosmos" "^6.28.1"
     "@ledgerhq/hw-transport-webhid" "^6.27.15"
     "@ledgerhq/hw-transport-webusb" "^6.27.15"
+
+"@cosmos-kit/ledger@^2.13.3":
+  version "2.13.3"
+  resolved "https://registry.yarnpkg.com/@cosmos-kit/ledger/-/ledger-2.13.3.tgz#da51179ad2d4282c2c6cc3860205631805fe1d7b"
+  integrity sha512-U8cWxJ2mNz63Rp+ho52puXhRvafcQi0rEoTQV62x6PTeziL3dhMUN+XEw3fbl86Fec372N6Ae1n+1kTn5GYr1A==
+  dependencies:
+    "@cosmos-kit/core" "^2.15.1"
+    "@ledgerhq/hw-app-cosmos" "^6.30.4"
+    "@ledgerhq/hw-transport-webhid" "^6.30.0"
+    "@ledgerhq/hw-transport-webusb" "^6.29.4"
 
 "@cosmos-kit/okxwallet-extension@^2.13.0":
   version "2.13.0"
@@ -627,6 +657,13 @@
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@dao-dao/cosmiframe/-/cosmiframe-0.1.0.tgz#5ba241d0c14a45d62df60cff7d48ba26844ebeac"
   integrity sha512-NW4pGt1ctqDfhn/A6RU2vwnFEu3O4aBNnBMrGnw31n+L35drYNEsA9ZB7KZsHmRRlkNx+jSuJSv2Fv0BFBDDJQ==
+  dependencies:
+    uuid "^9.0.1"
+
+"@dao-dao/cosmiframe@^1.0.0-rc.1":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@dao-dao/cosmiframe/-/cosmiframe-1.0.0-rc.1.tgz#51d4d1801605b8abfd01ae0425c797b6b876991e"
+  integrity sha512-XftJPwbqgS1RWg9SUNBI58vTGnjINZ995OYRwDuUZ6CsuENS2DifAzqgzDgdac+0o5Hqvy/5Aq+HN1Jl/dptTw==
   dependencies:
     uuid "^9.0.1"
 
@@ -1373,7 +1410,7 @@
     bignumber.js "^9.1.2"
     long "^5.2.3"
 
-"@ledgerhq/devices@^8.4.4":
+"@ledgerhq/devices@8.4.4", "@ledgerhq/devices@^8.4.4":
   version "8.4.4"
   resolved "https://registry.yarnpkg.com/@ledgerhq/devices/-/devices-8.4.4.tgz#0d195c1650fe57da2fad7f0d9074a0190947cd6f"
   integrity sha512-sz/ryhe/R687RHtevIE9RlKaV8kkKykUV4k29e7GAVwzHX1gqG+O75cu1NCJUHLbp3eABV5FdvZejqRUlLis9A==
@@ -1388,7 +1425,7 @@
   resolved "https://registry.yarnpkg.com/@ledgerhq/errors/-/errors-6.19.1.tgz#d9ac45ad4ff839e468b8f63766e665537aaede58"
   integrity sha512-75yK7Nnit/Gp7gdrJAz0ipp31CCgncRp+evWt6QawQEtQKYEDfGo10QywgrrBBixeRxwnMy1DP6g2oCWRf1bjw==
 
-"@ledgerhq/hw-app-cosmos@^6.28.1":
+"@ledgerhq/hw-app-cosmos@^6.28.1", "@ledgerhq/hw-app-cosmos@^6.30.4":
   version "6.30.4"
   resolved "https://registry.yarnpkg.com/@ledgerhq/hw-app-cosmos/-/hw-app-cosmos-6.30.4.tgz#4e583c658da8c0b15b09090e5608f60537a4c635"
   integrity sha512-YyX2zKHvCbT8aehLQPE0dNyT1Bl9ZmN0WabpE+RaKvBgmrid6Kp5CypvOTVRrKyv06E3yKlX06yM2EESlILlzA==
@@ -1407,7 +1444,17 @@
     "@ledgerhq/hw-transport" "^6.31.4"
     "@ledgerhq/logs" "^6.12.0"
 
-"@ledgerhq/hw-transport-webusb@^6.27.15":
+"@ledgerhq/hw-transport-webhid@^6.30.0":
+  version "6.30.0"
+  resolved "https://registry.yarnpkg.com/@ledgerhq/hw-transport-webhid/-/hw-transport-webhid-6.30.0.tgz#cd86b0055eb77276892024abbd38e6ed2471b59e"
+  integrity sha512-HoTzjmYwO7+TVwK+GNbglRepUoDywBL6vjhKnhGqJSUPqAqJJyEXcnKnFDBMN7Phqm55O+YHDYfpcHGBNg5XlQ==
+  dependencies:
+    "@ledgerhq/devices" "8.4.4"
+    "@ledgerhq/errors" "^6.19.1"
+    "@ledgerhq/hw-transport" "^6.31.4"
+    "@ledgerhq/logs" "^6.12.0"
+
+"@ledgerhq/hw-transport-webusb@^6.27.15", "@ledgerhq/hw-transport-webusb@^6.29.4":
   version "6.29.4"
   resolved "https://registry.yarnpkg.com/@ledgerhq/hw-transport-webusb/-/hw-transport-webusb-6.29.4.tgz#5926421b8db4b474c7aba4851f21ddd4ad4bcc70"
   integrity sha512-HoGF1LlBT9HEGBQy2XeCHrFdv/FEOZU0+J+yfKcgAQIAiASr2MLvdzwoJbUS8h6Gn+vc+/BjzBSO3JNn7Loqbg==

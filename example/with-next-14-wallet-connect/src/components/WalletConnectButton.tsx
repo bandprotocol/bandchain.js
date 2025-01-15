@@ -1,11 +1,11 @@
 /* eslint-disable indent */
 "use client";
 
+import { MainWalletBase } from "@cosmos-kit/core";
+import { wallets as ledger } from "@cosmos-kit/ledger";
 import { useChain } from "@cosmos-kit/react";
 import { ChainProvider } from "@cosmos-kit/react";
-import { assets, chains } from "chain-registry";
 import { SignerOptions, WalletStatus } from "cosmos-kit";
-import { wallets } from "cosmos-kit";
 import { devnetRpc } from "src/constants/endpoints";
 import {
   localbandchain,
@@ -13,10 +13,12 @@ import {
   signerOptions,
 } from "src/constants/registry";
 
+import { RequestDataButton } from "./RequestDataExample";
+
 const WalletConnectButton = () => {
   const chainContext = useChain("localbandchain");
 
-  const { status, connect, message, disconnect } = chainContext;
+  const { status, connect, message, disconnect, address } = chainContext;
 
   switch (status) {
     case WalletStatus.Disconnected:
@@ -25,17 +27,20 @@ const WalletConnectButton = () => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={connect}
         >
-          Connect Wallet
+          Connect Wallet Here
         </button>
       );
     case WalletStatus.Connected:
       return (
-        <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => disconnect}
-        >
-          Disconnect Wallet
-        </button>
+        <>
+          <p>{address}</p>
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => disconnect()}
+          >
+            Disconnect Wallet
+          </button>
+        </>
       );
     case WalletStatus.Connecting:
       return <button disabled>Connecting...</button>;
@@ -52,9 +57,9 @@ const WalletConnectButton = () => {
 const Wallet = () => {
   return (
     <ChainProvider
-      chains={[...chains, localbandchain]}
-      assetLists={[...assets, localbandchainAssets]}
-      wallets={wallets.ledger}
+      chains={[localbandchain]} // supported chains
+      assetLists={[localbandchainAssets]} // supported asset lists
+      wallets={ledger as unknown as MainWalletBase[]} // supported wallets
       endpointOptions={{
         endpoints: {
           localbandchain: {
@@ -65,6 +70,8 @@ const Wallet = () => {
       signerOptions={signerOptions as unknown as SignerOptions}
     >
       <WalletConnectButton />
+
+      <RequestDataButton />
     </ChainProvider>
   );
 };
