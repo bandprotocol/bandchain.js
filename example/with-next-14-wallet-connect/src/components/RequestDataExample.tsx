@@ -1,47 +1,55 @@
 "use client";
 
-// const RequestDataButton = () => {
-//   const { getSigningStargateClient, address } = useChain(
-//     "band-laozi-v3-devnet"
-//   );
+import { band } from "@bandprotocol/bandchainjs";
+import { coin } from "@cosmjs/amino";
+import { useChain } from "@cosmos-kit/react";
 
-//   const handleOnClick = async () => {
-//     const aminoSigningClient = await getSigningStargateClient();
-//     const { requestData } = band.oracle.v1.MessageComposer.fromPartial;
-//     const msg = requestData({
-//       oracleScriptId: BigInt(1),
-//       calldata: new Uint8Array([1, 2, 3]),
-//       askCount: BigInt(1),
-//       minCount: BigInt(1),
-//       clientId: "client",
-//       feeLimit: [coin("1", "uband")],
-//       prepareGas: BigInt(1),
-//       executeGas: BigInt(1),
-//       sender: "sender",
-//       tssEncoder: 0,
-//     });
+export const RequestDataButton = () => {
+  const { address, getSigningStargateClient } = useChain("localbandchain");
 
-//     const fee = {
-//       amount: [
-//         {
-//           denom: "uband",
-//           amount: "5000",
-//         },
-//       ],
-//       gas: "200000",
-//     };
+  const handleOnClick = async () => {
+    const client = await getSigningStargateClient();
 
-//     const result = aminoSigningClient.signAndBroadcast(
-//       address as string,
-//       [msg],
-//       fee
-//     );
+    const { requestData } = band.oracle.v1.MessageComposer.withTypeUrl;
 
-//     console.log(result);
-//   };
+    const msgRequest = requestData({
+      oracleScriptId: BigInt(401),
+      calldata: Buffer.from(
+        "000000040000000342544300000004434f544900000003455448000000045553444303",
+        "hex"
+      ),
+      askCount: BigInt(3),
+      minCount: BigInt(2),
+      clientId: "client",
+      feeLimit: [coin("1000", "uband")],
+      prepareGas: BigInt(6600),
+      executeGas: BigInt(118000),
+      sender: address as string,
+      tssEncoder: 0,
+    });
 
-//   return <button onClick={handleOnClick}>Request Data</button>;
-// };
+    const fee = {
+      amount: [
+        {
+          denom: "uband",
+          amount: "5000",
+        },
+      ],
+      gas: "500000",
+    };
+
+    const tx = await client.signAndBroadcast(
+      address as string,
+      [msgRequest],
+      fee,
+      "From Ledger Nano S"
+    );
+
+    return tx;
+  };
+
+  return <button onClick={handleOnClick}>Request Data</button>;
+};
 
 const RequestDataExample = () => {
   return (
@@ -60,7 +68,9 @@ const RequestDataExample = () => {
                 MsgRequestData
               </p>
             </td>
-            <td className="px-6 py-4">{/* <RequestDataButton /> */}</td>
+            <td className="px-6 py-4">
+              <RequestDataButton />
+            </td>
           </tr>
         </tbody>
       </table>

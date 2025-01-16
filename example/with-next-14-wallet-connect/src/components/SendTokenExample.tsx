@@ -58,8 +58,7 @@ const requestData = (
 const sendTokens = (
   getSigningStargateClient: () => Promise<SigningStargateClient>,
   setResp: (resp: any) => any,
-  address: string,
-  chainName: string
+  address: string
 ) => {
   return async () => {
     console.log("sendTokens");
@@ -77,7 +76,7 @@ const sendTokens = (
       const msg = send({
         amount: [
           {
-            denom: chainName == "localbandchain" ? "uband" : "uosmo",
+            denom: "uband",
             amount: "100000000",
           },
         ],
@@ -88,7 +87,7 @@ const sendTokens = (
       const fee: StdFee = {
         amount: [
           {
-            denom: chainName == "localbandchain" ? "uband" : "uosmo",
+            denom: "uband",
             amount: "100",
           },
         ],
@@ -113,8 +112,8 @@ const sendTokens = (
   };
 };
 
-const RequestDataExample = ({ chainName }: { chainName: string }) => {
-  const { getSigningStargateClient, address } = useChain(chainName);
+const RequestDataExample = () => {
+  const { getSigningStargateClient, address } = useChain("localbandchain");
   const [resp, setResp] = useState<any>({});
 
   return (
@@ -153,8 +152,7 @@ const RequestDataExample = ({ chainName }: { chainName: string }) => {
                 onClick={sendTokens(
                   getSigningStargateClient as () => Promise<SigningStargateClient>,
                   setResp as () => any,
-                  address as string,
-                  chainName
+                  address as string
                 )}
               >
                 Test

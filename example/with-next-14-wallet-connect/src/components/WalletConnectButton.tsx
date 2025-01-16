@@ -4,9 +4,9 @@
 import { useChain } from "@cosmos-kit/react";
 import { WalletStatus } from "cosmos-kit";
 
-const WalletConnectButton = ({ chainName }: { chainName: string }) => {
+const WalletConnectButton = () => {
   const { status, connect, message, disconnect, username, address } =
-    useChain(chainName);
+    useChain("localbandchain");
 
   switch (status) {
     case WalletStatus.Disconnected:

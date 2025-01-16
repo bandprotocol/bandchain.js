@@ -10,7 +10,7 @@ export const signerOptions = {
 export const localbandchain: Chain = {
   chain_name: "localbandchain",
   chain_type: "cosmos",
-  chain_id: "band-laozi-v3-devnet",
+  chain_id: "laozi-mainnet",
 };
 
 export const localbandchainAssets: AssetList = {
