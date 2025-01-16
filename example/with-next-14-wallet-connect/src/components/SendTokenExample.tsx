@@ -7,26 +7,6 @@ import { useChain } from "@cosmos-kit/react";
 import { useState } from "react";
 import { explorer } from "src/constants/endpoints";
 
-function hexToUint8Array(hex: string) {
-  // Remove any leading "0x" if present
-  if (hex.startsWith("0x")) {
-    hex = hex.slice(2);
-  }
-
-  // Ensure the hex string length is even
-  if (hex.length % 2 !== 0) {
-    throw new Error("Hex string must have an even length");
-  }
-
-  // Create a Uint8Array and populate it with parsed values
-  const byteArray = new Uint8Array(hex.length / 2);
-  for (let i = 0; i < byteArray.length; i++) {
-    byteArray[i] = parseInt(hex.substr(i * 2, 2), 16);
-  }
-
-  return byteArray;
-}
-
 const requestData = (
   getSigningStargateClient: () => Promise<SigningStargateClient>,
   setResp: (resp: any) => any,
@@ -36,10 +16,12 @@ const requestData = (
     console.log("requestData");
     const stargateClient = await getSigningStargateClient();
     const { requestData } = band.oracle.v1.MessageComposer.fromPartial;
+
     const msg = requestData({
       oracleScriptId: BigInt(401),
-      calldata: hexToUint8Array(
-        "000000040000000342544300000004434f544900000003455448000000045553444303"
+      calldata: Buffer.from(
+        "000000040000000342544300000004434f544900000003455448000000045553444303",
+        "hex"
       ),
       askCount: BigInt(4),
       minCount: BigInt(2),
@@ -96,11 +78,11 @@ const sendTokens = (
         amount: [
           {
             denom: chainName == "localbandchain" ? "uband" : "uosmo",
-            amount: "1000",
+            amount: "100000000",
           },
         ],
-        toAddress: address,
         fromAddress: address,
+        toAddress: address,
       });
 
       const fee: StdFee = {
