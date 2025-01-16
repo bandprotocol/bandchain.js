@@ -4,6 +4,7 @@ import "@interchain-ui/react/styles";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Provider from "src/components/Provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

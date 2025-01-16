@@ -1,1 +1,2 @@
-export const devnetRpc = "https://band-v3-devnet.bandchain.org/api/";
+export const devnetRpc = "https://rpc.band-v3-devnet.bandchain.org/";
+export const devnetRestApi = "https://band-v3-devnet.bandchain.org/api/";
