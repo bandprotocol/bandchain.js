@@ -45,7 +45,7 @@ export const RequestDataButton = () => {
       "From Ledger Nano S"
     );
 
-    console.log(tx);
+    return tx;
   };
 
   return <button onClick={handleOnClick}>Request Data</button>;
@@ -68,7 +68,9 @@ const RequestDataExample = () => {
                 MsgRequestData
               </p>
             </td>
-            <td className="px-6 py-4"></td>
+            <td className="px-6 py-4">
+              <RequestDataButton />
+            </td>
           </tr>
         </tbody>
       </table>

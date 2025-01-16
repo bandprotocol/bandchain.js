@@ -1,19 +1,8 @@
 /* eslint-disable indent */
 "use client";
 
-import { MainWalletBase } from "@cosmos-kit/core";
-import { wallets as ledger } from "@cosmos-kit/ledger";
 import { useChain } from "@cosmos-kit/react";
-import { ChainProvider } from "@cosmos-kit/react";
-import { SignerOptions, WalletStatus } from "cosmos-kit";
-import { devnetRpc } from "src/constants/endpoints";
-import {
-  localbandchain,
-  localbandchainAssets,
-  signerOptions,
-} from "src/constants/registry";
-
-import { RequestDataButton } from "./RequestDataExample";
+import { WalletStatus } from "cosmos-kit";
 
 const WalletConnectButton = () => {
   const chainContext = useChain("localbandchain");
@@ -27,7 +16,7 @@ const WalletConnectButton = () => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={connect}
         >
-          Connect Wallet Here
+          Connect Wallet
         </button>
       );
     case WalletStatus.Connected:
@@ -55,25 +44,7 @@ const WalletConnectButton = () => {
 };
 
 const Wallet = () => {
-  return (
-    <ChainProvider
-      chains={[localbandchain]} // supported chains
-      assetLists={[localbandchainAssets]} // supported asset lists
-      wallets={ledger as unknown as MainWalletBase[]} // supported wallets
-      endpointOptions={{
-        endpoints: {
-          localbandchain: {
-            rpc: [devnetRpc],
-          },
-        },
-      }}
-      signerOptions={signerOptions as unknown as SignerOptions}
-    >
-      <WalletConnectButton />
-
-      <RequestDataButton />
-    </ChainProvider>
-  );
+  return <WalletConnectButton />;
 };
 
 export default Wallet;
