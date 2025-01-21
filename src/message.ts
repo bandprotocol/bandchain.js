@@ -84,7 +84,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgRequestData'
+    const name = 'band.oracle.v1.MsgRequestData'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -478,7 +478,7 @@ export class MsgCreateDataSource
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgCreateDataSource'
+    const name = 'band.oracle.v1.MsgCreateDataSource'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -548,7 +548,7 @@ export class MsgEditDataSource
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgEditDataSource'
+    const name = 'band.oracle.v1.MsgEditDataSource'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -615,7 +615,7 @@ export class MsgCreateOracleScript
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgCreateOracleScript'
+    const name = 'band.oracle.v1.MsgCreateOracleScript'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -676,7 +676,7 @@ export class MsgEditOracleScript
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgEditOracleScript'
+    const name = 'band.oracle.v1.MsgEditOracleScript'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -900,14 +900,14 @@ export class MsgUpdateReferenceSourceConfig
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgUpdateReferenceSourceConfig'
+    const name = 'band.feeds.v1beta1.MsgUpdateReferenceSourceConfig'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
 
   toJSON(): object {
     return {
-      type: 'feeds.v1beta1.MsgUpdateReferenceSourceConfig',
+      type: 'feeds/MsgUpdateReferenceSourceConfig',
       value: {
         admin: this.getAdmin(),
         referenceSourceConfig: this.getReferenceSourceConfig(),
@@ -933,14 +933,14 @@ export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgUpdateParams'
+    const name = 'band.feeds.v1beta1.MsgUpdateParams'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
 
   toJSON(): object {
     return {
-      type: 'feeds.v1beta1.MsgUpdateParams',
+      type: 'feeds/MsgUpdateParams',
       value: {
         authority: this.getAuthority(),
         params: this.getParams(),

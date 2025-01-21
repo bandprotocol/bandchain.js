@@ -54,7 +54,7 @@ describe('MsgRequest', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgRequestData'
+    const name = 'band.oracle.v1.MsgRequestData'
     anyMsg.pack(msgRequest.serializeBinary(), name, '/')
 
     expect(msgRequest.toAny()).toEqual(anyMsg)
@@ -570,7 +570,7 @@ describe('MsgCreateDataSource', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgCreateDataSource'
+    const name = 'band.oracle.v1.MsgCreateDataSource'
     anyMsg.pack(msgCreateDs.serializeBinary(), name, '/')
 
     expect(msgCreateDs.toAny()).toEqual(anyMsg)
@@ -691,7 +691,7 @@ describe('MsgEditDataSource', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgEditDataSource'
+    const name = 'band.oracle.v1.MsgEditDataSource'
     anyMsg.pack(msgCreateDs.serializeBinary(), name, '/')
 
     expect(msgCreateDs.toAny()).toEqual(anyMsg)
@@ -768,7 +768,7 @@ describe('MsgCreateOracleScript', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgCreateOracleScript'
+    const name = 'band.oracle.v1.MsgCreateOracleScript'
     anyMsg.pack(msgCreateOs.serializeBinary(), name, '/')
     expect(msgCreateOs.toAny()).toEqual(anyMsg)
     expect(() => msgCreateOs.validate()).not.toThrow()
@@ -870,7 +870,7 @@ describe('MsgEditOracleScript', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'oracle.v1.MsgEditOracleScript'
+    const name = 'band.oracle.v1.MsgEditOracleScript'
     anyMsg.pack(msgEditOs.serializeBinary(), name, '/')
     expect(msgEditOs.toAny()).toEqual(anyMsg)
     expect(() => msgEditOs.validate()).not.toThrow()
@@ -1059,7 +1059,7 @@ describe('MsgUpdateReferenceSourceConfig', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgUpdateReferenceSourceConfig'
+    const name = 'band.feeds.v1beta1.MsgUpdateReferenceSourceConfig'
     anyMsg.pack(msgUpdateReferenceSourceConfig.serializeBinary(), name, '/')
 
     expect(msgUpdateReferenceSourceConfig.toAny()).toEqual(anyMsg)
@@ -1104,7 +1104,7 @@ describe('MsgUpdateParams', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'feeds.v1beta1.MsgUpdateParams'
+    const name = 'band.feeds.v1beta1.MsgUpdateParams'
     anyMsg.pack(msgUpdateParams.serializeBinary(), name, '/')
 
     expect(msgUpdateParams.toAny()).toEqual(anyMsg)
