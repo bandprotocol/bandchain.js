@@ -141,16 +141,6 @@ export class Packet extends jspb.Message {
   getReceipt(): google_protobuf_any_pb.Any | undefined;
   setReceipt(value?: google_protobuf_any_pb.Any): void;
 
-  clearBaseFeeList(): void;
-  getBaseFeeList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
-  setBaseFeeList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
-  addBaseFee(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
-
-  clearRouteFeeList(): void;
-  getRouteFeeList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
-  setRouteFeeList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
-  addRouteFee(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
-
   getCreatedAt(): number;
   setCreatedAt(value: number): void;
 
@@ -170,8 +160,6 @@ export namespace Packet {
     sequence: number,
     pricesList: Array<band_feeds_v1beta1_feeds_pb.Price.AsObject>,
     receipt?: google_protobuf_any_pb.Any.AsObject,
-    baseFeeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
-    routeFeeList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     createdAt: number,
   }
 }

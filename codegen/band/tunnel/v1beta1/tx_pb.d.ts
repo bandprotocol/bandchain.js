@@ -73,7 +73,53 @@ export namespace MsgCreateTunnelResponse {
   }
 }
 
-export class MsgUpdateAndResetTunnel extends jspb.Message {
+export class MsgUpdateRoute extends jspb.Message {
+  getTunnelId(): number;
+  setTunnelId(value: number): void;
+
+  hasRoute(): boolean;
+  clearRoute(): void;
+  getRoute(): google_protobuf_any_pb.Any | undefined;
+  setRoute(value?: google_protobuf_any_pb.Any): void;
+
+  getCreator(): string;
+  setCreator(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateRoute.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateRoute): MsgUpdateRoute.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgUpdateRoute, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateRoute;
+  static deserializeBinaryFromReader(message: MsgUpdateRoute, reader: jspb.BinaryReader): MsgUpdateRoute;
+}
+
+export namespace MsgUpdateRoute {
+  export type AsObject = {
+    tunnelId: number,
+    route?: google_protobuf_any_pb.Any.AsObject,
+    creator: string,
+  }
+}
+
+export class MsgUpdateRouteResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateRouteResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateRouteResponse): MsgUpdateRouteResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgUpdateRouteResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateRouteResponse;
+  static deserializeBinaryFromReader(message: MsgUpdateRouteResponse, reader: jspb.BinaryReader): MsgUpdateRouteResponse;
+}
+
+export namespace MsgUpdateRouteResponse {
+  export type AsObject = {
+  }
+}
+
+export class MsgUpdateSignalsAndInterval extends jspb.Message {
   getTunnelId(): number;
   setTunnelId(value: number): void;
 
@@ -89,16 +135,16 @@ export class MsgUpdateAndResetTunnel extends jspb.Message {
   setCreator(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgUpdateAndResetTunnel.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgUpdateAndResetTunnel): MsgUpdateAndResetTunnel.AsObject;
+  toObject(includeInstance?: boolean): MsgUpdateSignalsAndInterval.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateSignalsAndInterval): MsgUpdateSignalsAndInterval.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgUpdateAndResetTunnel, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgUpdateAndResetTunnel;
-  static deserializeBinaryFromReader(message: MsgUpdateAndResetTunnel, reader: jspb.BinaryReader): MsgUpdateAndResetTunnel;
+  static serializeBinaryToWriter(message: MsgUpdateSignalsAndInterval, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateSignalsAndInterval;
+  static deserializeBinaryFromReader(message: MsgUpdateSignalsAndInterval, reader: jspb.BinaryReader): MsgUpdateSignalsAndInterval;
 }
 
-export namespace MsgUpdateAndResetTunnel {
+export namespace MsgUpdateSignalsAndInterval {
   export type AsObject = {
     tunnelId: number,
     signalDeviationsList: Array<band_tunnel_v1beta1_tunnel_pb.SignalDeviation.AsObject>,
@@ -107,23 +153,69 @@ export namespace MsgUpdateAndResetTunnel {
   }
 }
 
-export class MsgUpdateAndResetTunnelResponse extends jspb.Message {
+export class MsgUpdateSignalsAndIntervalResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgUpdateAndResetTunnelResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgUpdateAndResetTunnelResponse): MsgUpdateAndResetTunnelResponse.AsObject;
+  toObject(includeInstance?: boolean): MsgUpdateSignalsAndIntervalResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateSignalsAndIntervalResponse): MsgUpdateSignalsAndIntervalResponse.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgUpdateAndResetTunnelResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgUpdateAndResetTunnelResponse;
-  static deserializeBinaryFromReader(message: MsgUpdateAndResetTunnelResponse, reader: jspb.BinaryReader): MsgUpdateAndResetTunnelResponse;
+  static serializeBinaryToWriter(message: MsgUpdateSignalsAndIntervalResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateSignalsAndIntervalResponse;
+  static deserializeBinaryFromReader(message: MsgUpdateSignalsAndIntervalResponse, reader: jspb.BinaryReader): MsgUpdateSignalsAndIntervalResponse;
 }
 
-export namespace MsgUpdateAndResetTunnelResponse {
+export namespace MsgUpdateSignalsAndIntervalResponse {
   export type AsObject = {
   }
 }
 
-export class MsgActivate extends jspb.Message {
+export class MsgWithdrawFeePayerFunds extends jspb.Message {
+  getTunnelId(): number;
+  setTunnelId(value: number): void;
+
+  clearAmountList(): void;
+  getAmountList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
+  setAmountList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
+  addAmount(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
+
+  getCreator(): string;
+  setCreator(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgWithdrawFeePayerFunds.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgWithdrawFeePayerFunds): MsgWithdrawFeePayerFunds.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgWithdrawFeePayerFunds, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgWithdrawFeePayerFunds;
+  static deserializeBinaryFromReader(message: MsgWithdrawFeePayerFunds, reader: jspb.BinaryReader): MsgWithdrawFeePayerFunds;
+}
+
+export namespace MsgWithdrawFeePayerFunds {
+  export type AsObject = {
+    tunnelId: number,
+    amountList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
+    creator: string,
+  }
+}
+
+export class MsgWithdrawFeePayerFundsResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgWithdrawFeePayerFundsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgWithdrawFeePayerFundsResponse): MsgWithdrawFeePayerFundsResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: MsgWithdrawFeePayerFundsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgWithdrawFeePayerFundsResponse;
+  static deserializeBinaryFromReader(message: MsgWithdrawFeePayerFundsResponse, reader: jspb.BinaryReader): MsgWithdrawFeePayerFundsResponse;
+}
+
+export namespace MsgWithdrawFeePayerFundsResponse {
+  export type AsObject = {
+  }
+}
+
+export class MsgActivateTunnel extends jspb.Message {
   getTunnelId(): number;
   setTunnelId(value: number): void;
 
@@ -131,39 +223,39 @@ export class MsgActivate extends jspb.Message {
   setCreator(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgActivate.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgActivate): MsgActivate.AsObject;
+  toObject(includeInstance?: boolean): MsgActivateTunnel.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgActivateTunnel): MsgActivateTunnel.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgActivate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgActivate;
-  static deserializeBinaryFromReader(message: MsgActivate, reader: jspb.BinaryReader): MsgActivate;
+  static serializeBinaryToWriter(message: MsgActivateTunnel, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgActivateTunnel;
+  static deserializeBinaryFromReader(message: MsgActivateTunnel, reader: jspb.BinaryReader): MsgActivateTunnel;
 }
 
-export namespace MsgActivate {
+export namespace MsgActivateTunnel {
   export type AsObject = {
     tunnelId: number,
     creator: string,
   }
 }
 
-export class MsgActivateResponse extends jspb.Message {
+export class MsgActivateTunnelResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgActivateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgActivateResponse): MsgActivateResponse.AsObject;
+  toObject(includeInstance?: boolean): MsgActivateTunnelResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgActivateTunnelResponse): MsgActivateTunnelResponse.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgActivateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgActivateResponse;
-  static deserializeBinaryFromReader(message: MsgActivateResponse, reader: jspb.BinaryReader): MsgActivateResponse;
+  static serializeBinaryToWriter(message: MsgActivateTunnelResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgActivateTunnelResponse;
+  static deserializeBinaryFromReader(message: MsgActivateTunnelResponse, reader: jspb.BinaryReader): MsgActivateTunnelResponse;
 }
 
-export namespace MsgActivateResponse {
+export namespace MsgActivateTunnelResponse {
   export type AsObject = {
   }
 }
 
-export class MsgDeactivate extends jspb.Message {
+export class MsgDeactivateTunnel extends jspb.Message {
   getTunnelId(): number;
   setTunnelId(value: number): void;
 
@@ -171,34 +263,34 @@ export class MsgDeactivate extends jspb.Message {
   setCreator(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgDeactivate.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgDeactivate): MsgDeactivate.AsObject;
+  toObject(includeInstance?: boolean): MsgDeactivateTunnel.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgDeactivateTunnel): MsgDeactivateTunnel.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgDeactivate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgDeactivate;
-  static deserializeBinaryFromReader(message: MsgDeactivate, reader: jspb.BinaryReader): MsgDeactivate;
+  static serializeBinaryToWriter(message: MsgDeactivateTunnel, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgDeactivateTunnel;
+  static deserializeBinaryFromReader(message: MsgDeactivateTunnel, reader: jspb.BinaryReader): MsgDeactivateTunnel;
 }
 
-export namespace MsgDeactivate {
+export namespace MsgDeactivateTunnel {
   export type AsObject = {
     tunnelId: number,
     creator: string,
   }
 }
 
-export class MsgDeactivateResponse extends jspb.Message {
+export class MsgDeactivateTunnelResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgDeactivateResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgDeactivateResponse): MsgDeactivateResponse.AsObject;
+  toObject(includeInstance?: boolean): MsgDeactivateTunnelResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgDeactivateTunnelResponse): MsgDeactivateTunnelResponse.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgDeactivateResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgDeactivateResponse;
-  static deserializeBinaryFromReader(message: MsgDeactivateResponse, reader: jspb.BinaryReader): MsgDeactivateResponse;
+  static serializeBinaryToWriter(message: MsgDeactivateTunnelResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgDeactivateTunnelResponse;
+  static deserializeBinaryFromReader(message: MsgDeactivateTunnelResponse, reader: jspb.BinaryReader): MsgDeactivateTunnelResponse;
 }
 
-export namespace MsgDeactivateResponse {
+export namespace MsgDeactivateTunnelResponse {
   export type AsObject = {
   }
 }
