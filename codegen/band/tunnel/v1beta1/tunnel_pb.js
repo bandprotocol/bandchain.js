@@ -1043,7 +1043,7 @@ proto.band.tunnel.v1beta1.TotalFees.prototype.clearTotalBasePacketFeeList = func
  * @private {!Array<number>}
  * @const
  */
-proto.band.tunnel.v1beta1.Packet.repeatedFields_ = [3,5,6];
+proto.band.tunnel.v1beta1.Packet.repeatedFields_ = [3];
 
 
 
@@ -1081,11 +1081,7 @@ proto.band.tunnel.v1beta1.Packet.toObject = function(includeInstance, msg) {
     pricesList: jspb.Message.toObjectList(msg.getPricesList(),
     band_feeds_v1beta1_feeds_pb.Price.toObject, includeInstance),
     receipt: (f = msg.getReceipt()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
-    baseFeeList: jspb.Message.toObjectList(msg.getBaseFeeList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
-    routeFeeList: jspb.Message.toObjectList(msg.getRouteFeeList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
-    createdAt: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    createdAt: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -1141,16 +1137,6 @@ proto.band.tunnel.v1beta1.Packet.deserializeBinaryFromReader = function(msg, rea
       msg.setReceipt(value);
       break;
     case 5:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addBaseFee(value);
-      break;
-    case 6:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addRouteFee(value);
-      break;
-    case 7:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setCreatedAt(value);
       break;
@@ -1213,26 +1199,10 @@ proto.band.tunnel.v1beta1.Packet.serializeBinaryToWriter = function(message, wri
       google_protobuf_any_pb.Any.serializeBinaryToWriter
     );
   }
-  f = message.getBaseFeeList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      5,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
-  }
-  f = message.getRouteFeeList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      6,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
-  }
   f = message.getCreatedAt();
   if (f !== 0) {
     writer.writeInt64(
-      7,
+      5,
       f
     );
   }
@@ -1351,87 +1321,11 @@ proto.band.tunnel.v1beta1.Packet.prototype.hasReceipt = function() {
 
 
 /**
- * repeated cosmos.base.v1beta1.Coin base_fee = 5;
- * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
- */
-proto.band.tunnel.v1beta1.Packet.prototype.getBaseFeeList = function() {
-  return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 5));
-};
-
-
-/**
- * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
- * @return {!proto.band.tunnel.v1beta1.Packet} returns this
-*/
-proto.band.tunnel.v1beta1.Packet.prototype.setBaseFeeList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 5, value);
-};
-
-
-/**
- * @param {!proto.cosmos.base.v1beta1.Coin=} opt_value
- * @param {number=} opt_index
- * @return {!proto.cosmos.base.v1beta1.Coin}
- */
-proto.band.tunnel.v1beta1.Packet.prototype.addBaseFee = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.band.tunnel.v1beta1.Packet} returns this
- */
-proto.band.tunnel.v1beta1.Packet.prototype.clearBaseFeeList = function() {
-  return this.setBaseFeeList([]);
-};
-
-
-/**
- * repeated cosmos.base.v1beta1.Coin route_fee = 6;
- * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
- */
-proto.band.tunnel.v1beta1.Packet.prototype.getRouteFeeList = function() {
-  return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 6));
-};
-
-
-/**
- * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
- * @return {!proto.band.tunnel.v1beta1.Packet} returns this
-*/
-proto.band.tunnel.v1beta1.Packet.prototype.setRouteFeeList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 6, value);
-};
-
-
-/**
- * @param {!proto.cosmos.base.v1beta1.Coin=} opt_value
- * @param {number=} opt_index
- * @return {!proto.cosmos.base.v1beta1.Coin}
- */
-proto.band.tunnel.v1beta1.Packet.prototype.addRouteFee = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.band.tunnel.v1beta1.Packet} returns this
- */
-proto.band.tunnel.v1beta1.Packet.prototype.clearRouteFeeList = function() {
-  return this.setRouteFeeList([]);
-};
-
-
-/**
- * optional int64 created_at = 7;
+ * optional int64 created_at = 5;
  * @return {number}
  */
 proto.band.tunnel.v1beta1.Packet.prototype.getCreatedAt = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
@@ -1440,7 +1334,7 @@ proto.band.tunnel.v1beta1.Packet.prototype.getCreatedAt = function() {
  * @return {!proto.band.tunnel.v1beta1.Packet} returns this
  */
 proto.band.tunnel.v1beta1.Packet.prototype.setCreatedAt = function(value) {
-  return jspb.Message.setProto3IntField(this, 7, value);
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 

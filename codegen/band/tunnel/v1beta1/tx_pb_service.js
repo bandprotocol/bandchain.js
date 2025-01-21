@@ -19,31 +19,49 @@ Msg.CreateTunnel = {
   responseType: band_tunnel_v1beta1_tx_pb.MsgCreateTunnelResponse
 };
 
-Msg.UpdateAndResetTunnel = {
-  methodName: "UpdateAndResetTunnel",
+Msg.UpdateRoute = {
+  methodName: "UpdateRoute",
   service: Msg,
   requestStream: false,
   responseStream: false,
-  requestType: band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnel,
-  responseType: band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnelResponse
+  requestType: band_tunnel_v1beta1_tx_pb.MsgUpdateRoute,
+  responseType: band_tunnel_v1beta1_tx_pb.MsgUpdateRouteResponse
 };
 
-Msg.Activate = {
-  methodName: "Activate",
+Msg.UpdateSignalsAndInterval = {
+  methodName: "UpdateSignalsAndInterval",
   service: Msg,
   requestStream: false,
   responseStream: false,
-  requestType: band_tunnel_v1beta1_tx_pb.MsgActivate,
-  responseType: band_tunnel_v1beta1_tx_pb.MsgActivateResponse
+  requestType: band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndInterval,
+  responseType: band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndIntervalResponse
 };
 
-Msg.Deactivate = {
-  methodName: "Deactivate",
+Msg.WithdrawFeePayerFunds = {
+  methodName: "WithdrawFeePayerFunds",
   service: Msg,
   requestStream: false,
   responseStream: false,
-  requestType: band_tunnel_v1beta1_tx_pb.MsgDeactivate,
-  responseType: band_tunnel_v1beta1_tx_pb.MsgDeactivateResponse
+  requestType: band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFunds,
+  responseType: band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFundsResponse
+};
+
+Msg.ActivateTunnel = {
+  methodName: "ActivateTunnel",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: band_tunnel_v1beta1_tx_pb.MsgActivateTunnel,
+  responseType: band_tunnel_v1beta1_tx_pb.MsgActivateTunnelResponse
+};
+
+Msg.DeactivateTunnel = {
+  methodName: "DeactivateTunnel",
+  service: Msg,
+  requestStream: false,
+  responseStream: false,
+  requestType: band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnel,
+  responseType: band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnelResponse
 };
 
 Msg.TriggerTunnel = {
@@ -120,11 +138,11 @@ MsgClient.prototype.createTunnel = function createTunnel(requestMessage, metadat
   };
 };
 
-MsgClient.prototype.updateAndResetTunnel = function updateAndResetTunnel(requestMessage, metadata, callback) {
+MsgClient.prototype.updateRoute = function updateRoute(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Msg.UpdateAndResetTunnel, {
+  var client = grpc.unary(Msg.UpdateRoute, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -151,11 +169,11 @@ MsgClient.prototype.updateAndResetTunnel = function updateAndResetTunnel(request
   };
 };
 
-MsgClient.prototype.activate = function activate(requestMessage, metadata, callback) {
+MsgClient.prototype.updateSignalsAndInterval = function updateSignalsAndInterval(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Msg.Activate, {
+  var client = grpc.unary(Msg.UpdateSignalsAndInterval, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -182,11 +200,73 @@ MsgClient.prototype.activate = function activate(requestMessage, metadata, callb
   };
 };
 
-MsgClient.prototype.deactivate = function deactivate(requestMessage, metadata, callback) {
+MsgClient.prototype.withdrawFeePayerFunds = function withdrawFeePayerFunds(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Msg.Deactivate, {
+  var client = grpc.unary(Msg.WithdrawFeePayerFunds, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.activateTunnel = function activateTunnel(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.ActivateTunnel, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+MsgClient.prototype.deactivateTunnel = function deactivateTunnel(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Msg.DeactivateTunnel, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

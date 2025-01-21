@@ -13,31 +13,49 @@ type MsgCreateTunnel = {
   readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgCreateTunnelResponse;
 };
 
-type MsgUpdateAndResetTunnel = {
+type MsgUpdateRoute = {
   readonly methodName: string;
   readonly service: typeof Msg;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnel;
-  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnelResponse;
+  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgUpdateRoute;
+  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgUpdateRouteResponse;
 };
 
-type MsgActivate = {
+type MsgUpdateSignalsAndInterval = {
   readonly methodName: string;
   readonly service: typeof Msg;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgActivate;
-  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgActivateResponse;
+  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndInterval;
+  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndIntervalResponse;
 };
 
-type MsgDeactivate = {
+type MsgWithdrawFeePayerFunds = {
   readonly methodName: string;
   readonly service: typeof Msg;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgDeactivate;
-  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgDeactivateResponse;
+  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFunds;
+  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFundsResponse;
+};
+
+type MsgActivateTunnel = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgActivateTunnel;
+  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgActivateTunnelResponse;
+};
+
+type MsgDeactivateTunnel = {
+  readonly methodName: string;
+  readonly service: typeof Msg;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnel;
+  readonly responseType: typeof band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnelResponse;
 };
 
 type MsgTriggerTunnel = {
@@ -79,9 +97,11 @@ type MsgUpdateParams = {
 export class Msg {
   static readonly serviceName: string;
   static readonly CreateTunnel: MsgCreateTunnel;
-  static readonly UpdateAndResetTunnel: MsgUpdateAndResetTunnel;
-  static readonly Activate: MsgActivate;
-  static readonly Deactivate: MsgDeactivate;
+  static readonly UpdateRoute: MsgUpdateRoute;
+  static readonly UpdateSignalsAndInterval: MsgUpdateSignalsAndInterval;
+  static readonly WithdrawFeePayerFunds: MsgWithdrawFeePayerFunds;
+  static readonly ActivateTunnel: MsgActivateTunnel;
+  static readonly DeactivateTunnel: MsgDeactivateTunnel;
   static readonly TriggerTunnel: MsgTriggerTunnel;
   static readonly DepositToTunnel: MsgDepositToTunnel;
   static readonly WithdrawFromTunnel: MsgWithdrawFromTunnel;
@@ -129,32 +149,50 @@ export class MsgClient {
     requestMessage: band_tunnel_v1beta1_tx_pb.MsgCreateTunnel,
     callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgCreateTunnelResponse|null) => void
   ): UnaryResponse;
-  updateAndResetTunnel(
-    requestMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnel,
+  updateRoute(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateRoute,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnelResponse|null) => void
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateRouteResponse|null) => void
   ): UnaryResponse;
-  updateAndResetTunnel(
-    requestMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnel,
-    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateAndResetTunnelResponse|null) => void
+  updateRoute(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateRoute,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateRouteResponse|null) => void
   ): UnaryResponse;
-  activate(
-    requestMessage: band_tunnel_v1beta1_tx_pb.MsgActivate,
+  updateSignalsAndInterval(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndInterval,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgActivateResponse|null) => void
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndIntervalResponse|null) => void
   ): UnaryResponse;
-  activate(
-    requestMessage: band_tunnel_v1beta1_tx_pb.MsgActivate,
-    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgActivateResponse|null) => void
+  updateSignalsAndInterval(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndInterval,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgUpdateSignalsAndIntervalResponse|null) => void
   ): UnaryResponse;
-  deactivate(
-    requestMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivate,
+  withdrawFeePayerFunds(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFunds,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivateResponse|null) => void
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFundsResponse|null) => void
   ): UnaryResponse;
-  deactivate(
-    requestMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivate,
-    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivateResponse|null) => void
+  withdrawFeePayerFunds(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFunds,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgWithdrawFeePayerFundsResponse|null) => void
+  ): UnaryResponse;
+  activateTunnel(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgActivateTunnel,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgActivateTunnelResponse|null) => void
+  ): UnaryResponse;
+  activateTunnel(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgActivateTunnel,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgActivateTunnelResponse|null) => void
+  ): UnaryResponse;
+  deactivateTunnel(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnel,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnelResponse|null) => void
+  ): UnaryResponse;
+  deactivateTunnel(
+    requestMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnel,
+    callback: (error: ServiceError|null, responseMessage: band_tunnel_v1beta1_tx_pb.MsgDeactivateTunnelResponse|null) => void
   ): UnaryResponse;
   triggerTunnel(
     requestMessage: band_tunnel_v1beta1_tx_pb.MsgTriggerTunnel,
