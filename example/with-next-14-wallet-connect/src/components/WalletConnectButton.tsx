@@ -5,9 +5,8 @@ import { useChain } from "@cosmos-kit/react";
 import { WalletStatus } from "cosmos-kit";
 
 const WalletConnectButton = () => {
-  const chainContext = useChain("localbandchain");
-
-  const { status, connect, message, disconnect, address } = chainContext;
+  const { status, connect, message, disconnect, username, address } =
+    useChain("localbandchain");
 
   switch (status) {
     case WalletStatus.Disconnected:
@@ -21,15 +20,16 @@ const WalletConnectButton = () => {
       );
     case WalletStatus.Connected:
       return (
-        <>
-          <p>{address}</p>
+        <div>
+          <p className="mb-3">{username}</p>
+          <p className="mb-3">{address}</p>
           <button
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => disconnect()}
           >
             Disconnect Wallet
           </button>
-        </>
+        </div>
       );
     case WalletStatus.Connecting:
       return <button disabled>Connecting...</button>;
@@ -43,8 +43,4 @@ const WalletConnectButton = () => {
   }
 };
 
-const Wallet = () => {
-  return <WalletConnectButton />;
-};
-
-export default Wallet;
+export default WalletConnectButton;
