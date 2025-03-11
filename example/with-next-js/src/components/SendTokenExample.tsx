@@ -1,6 +1,6 @@
 "use client";
 
-import { cosmos } from "@bandprotocol/bandchainjs/dist";
+import { cosmos } from "@bandprotocol/bandchain.js/dist";
 import { useState } from "react";
 
 import { getSignerClient } from "@/utils";
@@ -76,7 +76,7 @@ export const SendTokenExample = () => {
       title="cosmos.bank.v1beta1.MsgSend"
       exampleChildren={
         <CodeBlock
-          code={`import { cosmos } from "@bandprotocol/bandchainjs";
+          code={`import { cosmos } from "@bandprotocol/bandchain.js";
 
 async function sendTokens() {
     const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;

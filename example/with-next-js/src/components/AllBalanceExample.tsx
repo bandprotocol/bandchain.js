@@ -1,4 +1,4 @@
-import { band } from "@bandprotocol/bandchainjs";
+import { band } from "@bandprotocol/bandchain.js";
 
 import { devnetRpc } from "@/constants/constants";
 
@@ -35,7 +35,7 @@ export const AllBalanceExample = async () => {
       title="client.cosmos.bank.v1beta1.allBalances"
       exampleChildren={
         <CodeBlock
-          code={`import { band } from "@bandprotocol/bandchainjs";
+          code={`import { band } from "@bandprotocol/bandchain.js";
 async function getAllBalances() {
   const rpcEndpoint = "${devnetRpc}";
 

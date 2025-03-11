@@ -1,6 +1,6 @@
 "use client";
 
-import { band, cosmos } from "@bandprotocol/bandchainjs";
+import { band, cosmos } from "@bandprotocol/bandchain.js";
 import { Obi } from "@bandprotocol/obi-ts";
 
 import CodeBlock from "@/components/common/CodeBlock";
@@ -13,7 +13,7 @@ import CodeDefault from "./common/CodeDefault";
 const CodeExmaple = () => {
   return (
     <CodeBlock
-      code={`import { band, cosmos } from "@bandprotocol/bandchainjs";
+      code={`import { band, cosmos } from "@bandprotocol/bandchain.js";
 async function requestDataOracle() {
   const fromAddress = "";
   const oracleScriptSchema =

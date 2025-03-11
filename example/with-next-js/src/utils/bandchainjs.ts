@@ -2,7 +2,7 @@ import { devnetRpc } from "@/constants/constants";
 import {
   getSigningBandClient,
   getSigningClient,
-} from "@bandprotocol/bandchainjs";
+} from "@bandprotocol/bandchain.js";
 import { getOfflineSignerAmino as getOfflineSigner } from "cosmjs-utils";
 
 const mnemonic =
