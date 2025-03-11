@@ -1,4 +1,4 @@
-import { getSigningClientOptions } from "@bandprotocol/bandchainjs";
+import { getSigningClientOptions } from "@bandprotocol/bandchain.js";
 import { AssetList, Chain } from "@chain-registry/types";
 
 export const signerOptions = {

@@ -1,6 +1,6 @@
 {
-  "name": "@bandprotocol/bandchainjs",
-  "version": "0.0.1",
+  "name": "@bandprotocol/bandchain.js",
+  "version": "3.0.0-beta.1",
   "author": "Band Protocol <dev@bandprotocol.com>",
   "description": "TypeScript library for Cosmos SDK and BandChain",
   "main": "dist/index.js",
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bandprotocol/bandchainjs"
+    "url": "https://github.com/bandprotocol/bandchain.js"
   },
   "bugs": {
-    "url": "https://github.com/bandprotocol/bandchainjs/issues"
+    "url": "https://github.com/bandprotocol/bandchain.js/issues"
   },
   "scripts": {
     "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
@@ -38,13 +38,13 @@
     "@protobufs/stargaze": "^0.1.0"
   },
   "dependencies": {
+    "@cosmjs/amino": "0.32.3",
     "@cosmjs/encoding": "0.32.3",
     "@cosmjs/math": "0.32.3",
-    "@cosmjs/amino": "0.32.3",
     "@cosmjs/proto-signing": "0.32.3",
     "@cosmjs/stargate": "0.32.3",
-    "@cosmology/lcd": "^0.14.0",
-    "@cosmjs/tendermint-rpc": "^0.32.4"
+    "@cosmjs/tendermint-rpc": "^0.32.4",
+    "@cosmology/lcd": "^0.14.0"
   },
   "keywords": [
     "band",

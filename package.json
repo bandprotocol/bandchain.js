@@ -18,8 +18,8 @@
     "clean": "lerna run clean",
     "build": "lerna run build --stream",
     "lint": "lerna run lint --parallel",
-    "test": "lerna run test --stream --scope @bandprotocol/bandchainjs",
-    "codegen": "lerna run codegen --stream --scope @bandprotocol/bandchainjs",
+    "test": "lerna run test --stream --scope @bandprotocol/bandchain.js",
+    "codegen": "lerna run codegen --stream --scope @bandprotocol/bandchain.js",
     "symlink": "symlink-workspace --logLevel error",
     "postinstall": "yarn symlink"
   },

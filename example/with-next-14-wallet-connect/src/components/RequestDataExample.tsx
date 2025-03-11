@@ -1,6 +1,6 @@
 "use client";
 
-import { band } from "@bandprotocol/bandchainjs";
+import { band } from "@bandprotocol/bandchain.js";
 import { coin } from "@cosmjs/amino";
 import { useChain } from "@cosmos-kit/react";
 

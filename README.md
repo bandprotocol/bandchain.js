@@ -1,4 +1,4 @@
-# @bandprotocol/bandchainjs
+# @bandprotocol/bandchain.js
 
 <p align="center">
   <img src="https://avatars.githubusercontent.com/u/39086992?s=200&v=4" width="80"><br />
@@ -6,21 +6,21 @@
 </p>
 
 <p align="center" width="100%">
-  <a href="https://github.com/bandprotocol/bandchainjs/actions/workflows/run-tests.yml">
-    <img height="20" src="https://github.com/bandprotocol/bandchainjs/actions/workflows/run-tests.yml/badge.svg" />
+  <a href="https://github.com/bandprotocol/bandchain.js/actions/workflows/run-tests.yml">
+    <img height="20" src="https://github.com/bandprotocol/bandchain.js/actions/workflows/run-tests.yml/badge.svg" />
   </a>
-   <a href="https://github.com/bandprotocol/bandchainjs/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://github.com/bandprotocol/bandchain.js/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 
 ## install
 
 ```sh
-npm install @bandprotocol/bandchainjs
+npm install @bandprotocol/bandchain.js
 ```
 
 ## Table of contents
 
-- [@bandprotocol/bandchainjs](#bandprotocolbandchainjs)
+- [@bandprotocol/bandchain.js](#bandprotocolbandchainjs)
   - [install](#install)
   - [Table of contents](#table-of-contents)
   - [Usage](#usage)
@@ -48,7 +48,7 @@ npm install @bandprotocol/bandchainjs
 ### RPC Clients
 
 ```js
-import { band } from "@bandprotocol/bandchainjs";
+import { band } from "@bandprotocol/bandchain.js";
 
 const { createRPCQueryClient } = band.ClientFactory;
 const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
@@ -64,10 +64,10 @@ const balances = await client.band.exchange.v1beta1.exchangeBalances();
 
 ### Composing Messages
 
-Import the `band` object from `@bandprotocol/bandchainjs`.
+Import the `band` object from `@bandprotocol/bandchain.js`.
 
 ```js
-import { band } from "@bandprotocol/bandchainjs";
+import { band } from "@bandprotocol/bandchain.js";
 
 const { createSpotLimitOrder, createSpotMarketOrder, deposit } =
   band.exchange.v1beta1.MessageComposer.withTypeUrl;
@@ -76,7 +76,7 @@ const { createSpotLimitOrder, createSpotMarketOrder, deposit } =
 #### CosmWasm Messages
 
 ```js
-import { cosmwasm } from "@bandprotocol/bandchainjs";
+import { cosmwasm } from "@bandprotocol/bandchain.js";
 
 const {
   clearAdmin,
@@ -91,7 +91,7 @@ const {
 #### IBC Messages
 
 ```js
-import { ibc } from "@bandprotocol/bandchainjs";
+import { ibc } from "@bandprotocol/bandchain.js";
 
 const { transfer } = ibc.applications.transfer.v1.MessageComposer.withTypeUrl;
 ```
@@ -99,7 +99,7 @@ const { transfer } = ibc.applications.transfer.v1.MessageComposer.withTypeUrl;
 #### Cosmos Messages
 
 ```js
-import { cosmos } from "@bandprotocol/bandchainjs";
+import { cosmos } from "@bandprotocol/bandchain.js";
 
 const {
   fundCommunityPool,
@@ -133,7 +133,7 @@ Here are the docs on [creating signers](https://docs.cosmology.zone/cosmos-kit) 
 Use `getSigningBandClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
 
 ```js
-import { getSigningBandClient } from "bandchainjs";
+import { getSigningBandClient } from "@bandprotocol/bandchain.js";
 
 const stargateClient = await getSigningBandClient({
   rpcEndpoint,
@@ -224,7 +224,7 @@ import {
     ibcAminoConverters,
     bandAminoConverters,
     bandProtoRegistry
-} from 'bandchainjs';
+} from 'bandchain.js';
 
 const signer: OfflineSigner = /* create your signer (see above)  */
 const rpcEndpint = 'https://rpc.cosmos.directory/band'; // or another URL
@@ -263,7 +263,7 @@ yarn build
 
 ### Codegen
 
-Look inside of `scripts/codegen.ts` and configure the settings for bundling your SDK and contracts into `@bandprotocol/bandchainjs`:
+Look inside of `scripts/codegen.ts` and configure the settings for bundling your SDK and contracts into `@bandprotocol/bandchain.js`:
 
 ```
 yarn codegen

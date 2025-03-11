@@ -1,6 +1,6 @@
 "use client";
 
-import { band, cosmos } from "@bandprotocol/bandchainjs";
+import { band, cosmos } from "@bandprotocol/bandchain.js";
 import { coin, StdFee } from "@cosmjs/amino";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { useChain } from "@cosmos-kit/react";
