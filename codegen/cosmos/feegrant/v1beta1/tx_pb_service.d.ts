@@ -22,20 +22,10 @@ type MsgRevokeAllowance = {
   readonly responseType: typeof cosmos_feegrant_v1beta1_tx_pb.MsgRevokeAllowanceResponse;
 };
 
-type MsgPruneAllowances = {
-  readonly methodName: string;
-  readonly service: typeof Msg;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowances;
-  readonly responseType: typeof cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowancesResponse;
-};
-
 export class Msg {
   static readonly serviceName: string;
   static readonly GrantAllowance: MsgGrantAllowance;
   static readonly RevokeAllowance: MsgRevokeAllowance;
-  static readonly PruneAllowances: MsgPruneAllowances;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -87,15 +77,6 @@ export class MsgClient {
   revokeAllowance(
     requestMessage: cosmos_feegrant_v1beta1_tx_pb.MsgRevokeAllowance,
     callback: (error: ServiceError|null, responseMessage: cosmos_feegrant_v1beta1_tx_pb.MsgRevokeAllowanceResponse|null) => void
-  ): UnaryResponse;
-  pruneAllowances(
-    requestMessage: cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowances,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowancesResponse|null) => void
-  ): UnaryResponse;
-  pruneAllowances(
-    requestMessage: cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowances,
-    callback: (error: ServiceError|null, responseMessage: cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowancesResponse|null) => void
   ): UnaryResponse;
 }
 

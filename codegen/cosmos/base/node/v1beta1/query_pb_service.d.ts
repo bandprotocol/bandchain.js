@@ -13,19 +13,9 @@ type ServiceConfig = {
   readonly responseType: typeof cosmos_base_node_v1beta1_query_pb.ConfigResponse;
 };
 
-type ServiceStatus = {
-  readonly methodName: string;
-  readonly service: typeof Service;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof cosmos_base_node_v1beta1_query_pb.StatusRequest;
-  readonly responseType: typeof cosmos_base_node_v1beta1_query_pb.StatusResponse;
-};
-
 export class Service {
   static readonly serviceName: string;
   static readonly Config: ServiceConfig;
-  static readonly Status: ServiceStatus;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -68,15 +58,6 @@ export class ServiceClient {
   config(
     requestMessage: cosmos_base_node_v1beta1_query_pb.ConfigRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_base_node_v1beta1_query_pb.ConfigResponse|null) => void
-  ): UnaryResponse;
-  status(
-    requestMessage: cosmos_base_node_v1beta1_query_pb.StatusRequest,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: cosmos_base_node_v1beta1_query_pb.StatusResponse|null) => void
-  ): UnaryResponse;
-  status(
-    requestMessage: cosmos_base_node_v1beta1_query_pb.StatusRequest,
-    callback: (error: ServiceError|null, responseMessage: cosmos_base_node_v1beta1_query_pb.StatusResponse|null) => void
   ): UnaryResponse;
 }
 

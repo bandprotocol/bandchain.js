@@ -13,12 +13,6 @@ export class Module extends jspb.Message {
   getAuthority(): string;
   setAuthority(value: string): void;
 
-  getBech32PrefixValidator(): string;
-  setBech32PrefixValidator(value: string): void;
-
-  getBech32PrefixConsensus(): string;
-  setBech32PrefixConsensus(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Module.AsObject;
   static toObject(includeInstance: boolean, msg: Module): Module.AsObject;
@@ -33,8 +27,6 @@ export namespace Module {
   export type AsObject = {
     hooksOrderList: Array<string>,
     authority: string,
-    bech32PrefixValidator: string,
-    bech32PrefixConsensus: string,
   }
 }
 

@@ -121,15 +121,6 @@ type QueryTallyResult = {
   readonly responseType: typeof cosmos_group_v1_query_pb.QueryTallyResultResponse;
 };
 
-type QueryGroups = {
-  readonly methodName: string;
-  readonly service: typeof Query;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof cosmos_group_v1_query_pb.QueryGroupsRequest;
-  readonly responseType: typeof cosmos_group_v1_query_pb.QueryGroupsResponse;
-};
-
 export class Query {
   static readonly serviceName: string;
   static readonly GroupInfo: QueryGroupInfo;
@@ -145,7 +136,6 @@ export class Query {
   static readonly VotesByVoter: QueryVotesByVoter;
   static readonly GroupsByMember: QueryGroupsByMember;
   static readonly TallyResult: QueryTallyResult;
-  static readonly Groups: QueryGroups;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -296,15 +286,6 @@ export class QueryClient {
   tallyResult(
     requestMessage: cosmos_group_v1_query_pb.QueryTallyResultRequest,
     callback: (error: ServiceError|null, responseMessage: cosmos_group_v1_query_pb.QueryTallyResultResponse|null) => void
-  ): UnaryResponse;
-  groups(
-    requestMessage: cosmos_group_v1_query_pb.QueryGroupsRequest,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: cosmos_group_v1_query_pb.QueryGroupsResponse|null) => void
-  ): UnaryResponse;
-  groups(
-    requestMessage: cosmos_group_v1_query_pb.QueryGroupsRequest,
-    callback: (error: ServiceError|null, responseMessage: cosmos_group_v1_query_pb.QueryGroupsResponse|null) => void
   ): UnaryResponse;
 }
 

@@ -58,15 +58,6 @@ type MsgCommunityPoolSpend = {
   readonly responseType: typeof cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpendResponse;
 };
 
-type MsgDepositValidatorRewardsPool = {
-  readonly methodName: string;
-  readonly service: typeof Msg;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPool;
-  readonly responseType: typeof cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPoolResponse;
-};
-
 export class Msg {
   static readonly serviceName: string;
   static readonly SetWithdrawAddress: MsgSetWithdrawAddress;
@@ -75,7 +66,6 @@ export class Msg {
   static readonly FundCommunityPool: MsgFundCommunityPool;
   static readonly UpdateParams: MsgUpdateParams;
   static readonly CommunityPoolSpend: MsgCommunityPoolSpend;
-  static readonly DepositValidatorRewardsPool: MsgDepositValidatorRewardsPool;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -163,15 +153,6 @@ export class MsgClient {
   communityPoolSpend(
     requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpend,
     callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpendResponse|null) => void
-  ): UnaryResponse;
-  depositValidatorRewardsPool(
-    requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPool,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPoolResponse|null) => void
-  ): UnaryResponse;
-  depositValidatorRewardsPool(
-    requestMessage: cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPool,
-    callback: (error: ServiceError|null, responseMessage: cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPoolResponse|null) => void
   ): UnaryResponse;
 }
 

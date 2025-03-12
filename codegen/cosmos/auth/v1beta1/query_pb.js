@@ -11,44 +11,108 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require('google-protobuf');
-var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var jspb = require('google-protobuf')
+var goog = jspb
+var global = Function('return this')()
 
-var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
-goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
-var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
-var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
-var cosmos_auth_v1beta1_auth_pb = require('../../../cosmos/auth/v1beta1/auth_pb.js');
-goog.object.extend(proto, cosmos_auth_v1beta1_auth_pb);
-var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
-var cosmos_query_v1_query_pb = require('../../../cosmos/query/v1/query_pb.js');
-goog.object.extend(proto, cosmos_query_v1_query_pb);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.AddressBytesToStringRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.AddressBytesToStringResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.AddressStringToBytesRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.AddressStringToBytesResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.Bech32PrefixRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.Bech32PrefixResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountInfoRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountInfoResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountsRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountsResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryParamsRequest', null, global);
-goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryParamsResponse', null, global);
+var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js')
+goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb)
+var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js')
+goog.object.extend(proto, gogoproto_gogo_pb)
+var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js')
+goog.object.extend(proto, google_protobuf_any_pb)
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js')
+goog.object.extend(proto, google_api_annotations_pb)
+var cosmos_auth_v1beta1_auth_pb = require('../../../cosmos/auth/v1beta1/auth_pb.js')
+goog.object.extend(proto, cosmos_auth_v1beta1_auth_pb)
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js')
+goog.object.extend(proto, cosmos_proto_cosmos_pb)
+var cosmos_query_v1_query_pb = require('../../../cosmos/query/v1/query_pb.js')
+goog.object.extend(proto, cosmos_query_v1_query_pb)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.AddressBytesToStringRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.AddressBytesToStringResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.AddressStringToBytesRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.AddressStringToBytesResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.auth.v1beta1.Bech32PrefixRequest', null, global)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.Bech32PrefixResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountInfoRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountInfoResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryAccountRequest', null, global)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountsRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryAccountsResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryParamsRequest', null, global)
+goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryParamsResponse', null, global)
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -59,16 +123,17 @@ goog.exportSymbol('proto.cosmos.auth.v1beta1.QueryParamsResponse', null, global)
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountsRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountsRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountsRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountsRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountsRequest';
+  proto.cosmos.auth.v1beta1.QueryAccountsRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountsRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -80,16 +145,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.auth.v1beta1.QueryAccountsResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountsResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountsResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.auth.v1beta1.QueryAccountsResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountsResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountsResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountsResponse';
+  proto.cosmos.auth.v1beta1.QueryAccountsResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountsResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -101,16 +174,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountRequest';
+  proto.cosmos.auth.v1beta1.QueryAccountRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -122,16 +196,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountResponse';
+  proto.cosmos.auth.v1beta1.QueryAccountResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -143,16 +218,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryParamsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryParamsRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryParamsRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryParamsRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryParamsRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryParamsRequest';
+  proto.cosmos.auth.v1beta1.QueryParamsRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryParamsRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -164,16 +240,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryParamsResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryParamsResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryParamsResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryParamsResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryParamsResponse';
+  proto.cosmos.auth.v1beta1.QueryParamsResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryParamsResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -185,16 +262,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest';
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -206,16 +287,27 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse';
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -227,16 +319,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest';
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -248,16 +346,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse';
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -269,16 +373,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.Bech32PrefixRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.Bech32PrefixRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.Bech32PrefixRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.Bech32PrefixRequest.displayName = 'proto.cosmos.auth.v1beta1.Bech32PrefixRequest';
+  proto.cosmos.auth.v1beta1.Bech32PrefixRequest.displayName =
+    'proto.cosmos.auth.v1beta1.Bech32PrefixRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -290,16 +395,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.Bech32PrefixResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.Bech32PrefixResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.Bech32PrefixResponse.displayName = 'proto.cosmos.auth.v1beta1.Bech32PrefixResponse';
+  proto.cosmos.auth.v1beta1.Bech32PrefixResponse.displayName =
+    'proto.cosmos.auth.v1beta1.Bech32PrefixResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -311,16 +417,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.AddressBytesToStringRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.AddressBytesToStringRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.displayName = 'proto.cosmos.auth.v1beta1.AddressBytesToStringRequest';
+  proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.displayName =
+    'proto.cosmos.auth.v1beta1.AddressBytesToStringRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -332,16 +442,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.AddressBytesToStringResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.AddressBytesToStringResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.displayName = 'proto.cosmos.auth.v1beta1.AddressBytesToStringResponse';
+  proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.displayName =
+    'proto.cosmos.auth.v1beta1.AddressBytesToStringResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -353,16 +467,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.AddressStringToBytesRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.AddressStringToBytesRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.displayName = 'proto.cosmos.auth.v1beta1.AddressStringToBytesRequest';
+  proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.displayName =
+    'proto.cosmos.auth.v1beta1.AddressStringToBytesRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -374,16 +492,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.AddressStringToBytesResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.AddressStringToBytesResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.displayName = 'proto.cosmos.auth.v1beta1.AddressStringToBytesResponse';
+  proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.displayName =
+    'proto.cosmos.auth.v1beta1.AddressStringToBytesResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -395,16 +517,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest';
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -416,16 +542,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse';
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -437,16 +569,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountInfoRequest, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountInfoRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountInfoRequest';
+  proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountInfoRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -458,71 +591,86 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountInfoResponse, jspb.Message);
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.auth.v1beta1.QueryAccountInfoResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.displayName = 'proto.cosmos.auth.v1beta1.QueryAccountInfoResponse';
+  proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.displayName =
+    'proto.cosmos.auth.v1beta1.QueryAccountInfoResponse'
 }
-
-
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountsRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountsRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.QueryAccountsRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountsRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountsRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountsRequest;
-  return proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryAccountsRequest()
+  return proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -531,37 +679,44 @@ proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountsRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountsRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -570,119 +725,140 @@ proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 1;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsRequest} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsRequest} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
+proto.cosmos.auth.v1beta1.QueryAccountsRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountsResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryAccountsResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountsResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountsResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        accountsList: jspb.Message.toObjectList(
+          msg.getAccountsList(),
+          google_protobuf_any_pb.Any.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountsResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    accountsList: jspb.Message.toObjectList(msg.getAccountsList(),
-    google_protobuf_any_pb.Any.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountsResponse;
-  return proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryAccountsResponse()
+  return proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -691,42 +867,52 @@ proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinary = function(byt
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.addAccounts(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.addAccounts(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountsResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountsResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -735,156 +921,177 @@ proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAccountsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAccountsList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        google_protobuf_any_pb.Any.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated google.protobuf.Any accounts = 1;
  * @return {!Array<!proto.google.protobuf.Any>}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.getAccountsList = function() {
-  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.getAccountsList =
+  function () {
+    return /** @type{!Array<!proto.google.protobuf.Any>} */ (
+      jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 1)
+    )
+  }
 
 /**
  * @param {!Array<!proto.google.protobuf.Any>} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.setAccountsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.setAccountsList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.google.protobuf.Any=} opt_value
  * @param {number=} opt_index
  * @return {!proto.google.protobuf.Any}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.addAccounts = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.google.protobuf.Any, opt_index);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.addAccounts =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.google.protobuf.Any,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.clearAccountsList = function() {
-  return this.setAccountsList([]);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.clearAccountsList =
+  function () {
+    return this.setAccountsList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountsResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryAccountsResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.QueryAccountRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountRequest;
-  return proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryAccountRequest()
+  return proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -893,36 +1100,39 @@ proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -931,90 +1141,98 @@ proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.QueryAccountRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountRequest} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    account: (f = msg.getAccount()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.auth.v1beta1.QueryAccountRequest.prototype.setAddress = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.QueryAccountResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        account:
+          (f = msg.getAccount()) &&
+          google_protobuf_any_pb.Any.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountResponse;
-  return proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryAccountResponse()
+  return proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1023,37 +1241,43 @@ proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.setAccount(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setAccount(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1062,110 +1286,118 @@ proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAccount();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryAccountResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAccount()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        google_protobuf_any_pb.Any.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional google.protobuf.Any account = 1;
  * @return {?proto.google.protobuf.Any}
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.getAccount = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.getAccount =
+  function () {
+    return /** @type{?proto.google.protobuf.Any} */ (
+      jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 1)
+    )
+  }
 
 /**
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.setAccount = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.setAccount = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.clearAccount = function() {
-  return this.setAccount(undefined);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.clearAccount =
+  function () {
+    return this.setAccount(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.hasAccount = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryAccountResponse.prototype.hasAccount =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryParamsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryParamsRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryParamsRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryParamsRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryParamsRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.QueryParamsRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryParamsRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryParamsRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryParamsRequest}
  */
-proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryParamsRequest;
-  return proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryParamsRequest()
+  return proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1174,32 +1406,35 @@ proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinary = function(bytes)
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryParamsRequest}
  */
-proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryParamsRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryParamsRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryParamsRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryParamsRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryParamsRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1208,65 +1443,75 @@ proto.cosmos.auth.v1beta1.QueryParamsRequest.prototype.serializeBinary = functio
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryParamsRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryParamsRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryParamsResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryParamsResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    params: (f = msg.getParams()) && cosmos_auth_v1beta1_auth_pb.Params.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.QueryParamsResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryParamsResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryParamsResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        params:
+          (f = msg.getParams()) &&
+          cosmos_auth_v1beta1_auth_pb.Params.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryParamsResponse}
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryParamsResponse;
-  return proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryParamsResponse()
+  return proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1275,37 +1520,43 @@ proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryParamsResponse}
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryParamsResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_auth_v1beta1_auth_pb.Params()
+          reader.readMessage(
+            value,
+            cosmos_auth_v1beta1_auth_pb.Params.deserializeBinaryFromReader,
+          )
+          msg.setParams(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_auth_v1beta1_auth_pb.Params;
-      reader.readMessage(value,cosmos_auth_v1beta1_auth_pb.Params.deserializeBinaryFromReader);
-      msg.setParams(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryParamsResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryParamsResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1314,110 +1565,116 @@ proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getParams();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_auth_v1beta1_auth_pb.Params.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryParamsResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getParams()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_auth_v1beta1_auth_pb.Params.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional Params params = 1;
  * @return {?proto.cosmos.auth.v1beta1.Params}
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.getParams = function() {
-  return /** @type{?proto.cosmos.auth.v1beta1.Params} */ (
-    jspb.Message.getWrapperField(this, cosmos_auth_v1beta1_auth_pb.Params, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.getParams =
+  function () {
+    return /** @type{?proto.cosmos.auth.v1beta1.Params} */ (
+      jspb.Message.getWrapperField(this, cosmos_auth_v1beta1_auth_pb.Params, 1)
+    )
+  }
 
 /**
  * @param {?proto.cosmos.auth.v1beta1.Params|undefined} value
  * @return {!proto.cosmos.auth.v1beta1.QueryParamsResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.setParams = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.setParams = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.auth.v1beta1.QueryParamsResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.clearParams = function() {
-  return this.setParams(undefined);
-};
-
+proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.clearParams =
+  function () {
+    return this.setParams(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.hasParams = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryParamsResponse.prototype.hasParams =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest;
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest()
+    return proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1426,32 +1683,35 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1460,73 +1720,82 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        accountsList: jspb.Message.toObjectList(
+          msg.getAccountsList(),
+          google_protobuf_any_pb.Any.toObject,
+          includeInstance,
+        ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    accountsList: jspb.Message.toObjectList(msg.getAccountsList(),
-    google_protobuf_any_pb.Any.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse;
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse()
+    return proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1535,37 +1804,43 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinary = functi
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.addAccounts(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.addAccounts(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1574,111 +1849,122 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.serializeBinary 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAccountsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAccountsList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        google_protobuf_any_pb.Any.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * repeated google.protobuf.Any accounts = 1;
  * @return {!Array<!proto.google.protobuf.Any>}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.getAccountsList = function() {
-  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.getAccountsList =
+  function () {
+    return /** @type{!Array<!proto.google.protobuf.Any>} */ (
+      jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 1)
+    )
+  }
 
 /**
  * @param {!Array<!proto.google.protobuf.Any>} value
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.setAccountsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.setAccountsList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.google.protobuf.Any=} opt_value
  * @param {number=} opt_index
  * @return {!proto.google.protobuf.Any}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.addAccounts = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.google.protobuf.Any, opt_index);
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.addAccounts =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.google.protobuf.Any,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.clearAccountsList = function() {
-  return this.setAccountsList([]);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountsResponse.prototype.clearAccountsList =
+  function () {
+    return this.setAccountsList([])
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {
+          name: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest;
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest()
+    return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1687,36 +1973,39 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinary = fu
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setName(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1725,90 +2014,93 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.serializeBin
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getName()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string name = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.getName =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest} returns this
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameRequest.prototype.setName =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {
+          account:
+            (f = msg.getAccount()) &&
+            google_protobuf_any_pb.Any.toObject(includeInstance, f),
+        }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    account: (f = msg.getAccount()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse;
-  return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse()
+    return proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1817,37 +2109,43 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinary = f
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.setAccount(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setAccount(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1856,110 +2154,117 @@ proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.serializeBi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAccount();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAccount()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        google_protobuf_any_pb.Any.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional google.protobuf.Any account = 1;
  * @return {?proto.google.protobuf.Any}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.getAccount = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.getAccount =
+  function () {
+    return /** @type{?proto.google.protobuf.Any} */ (
+      jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 1)
+    )
+  }
 
 /**
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.setAccount = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.setAccount =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.clearAccount = function() {
-  return this.setAccount(undefined);
-};
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.clearAccount =
+  function () {
+    return this.setAccount(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.hasAccount = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryModuleAccountByNameResponse.prototype.hasAccount =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.Bech32PrefixRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.Bech32PrefixRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.Bech32PrefixRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.Bech32PrefixRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.Bech32PrefixRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.Bech32PrefixRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.Bech32PrefixRequest}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.Bech32PrefixRequest;
-  return proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.Bech32PrefixRequest()
+  return proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1968,32 +2273,35 @@ proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.Bech32PrefixRequest}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.Bech32PrefixRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.Bech32PrefixRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.Bech32PrefixRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.Bech32PrefixRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2002,65 +2310,73 @@ proto.cosmos.auth.v1beta1.Bech32PrefixRequest.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.Bech32PrefixRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.Bech32PrefixResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.Bech32PrefixResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    bech32Prefix: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.auth.v1beta1.Bech32PrefixResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.Bech32PrefixResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.Bech32PrefixResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        bech32Prefix: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.Bech32PrefixResponse}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.Bech32PrefixResponse;
-  return proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.Bech32PrefixResponse()
+  return proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2069,36 +2385,39 @@ proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.Bech32PrefixResponse}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setBech32Prefix(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setBech32Prefix(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.Bech32PrefixResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.Bech32PrefixResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2107,90 +2426,93 @@ proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getBech32Prefix();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getBech32Prefix()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string bech32_prefix = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.getBech32Prefix = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.getBech32Prefix =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.Bech32PrefixResponse} returns this
  */
-proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.setBech32Prefix = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.Bech32PrefixResponse.prototype.setBech32Prefix =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.AddressBytesToStringRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        addressBytes: msg.getAddressBytes_asB64(),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.AddressBytesToStringRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    addressBytes: msg.getAddressBytes_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.AddressBytesToStringRequest}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.AddressBytesToStringRequest;
-  return proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.AddressBytesToStringRequest()
+    return proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2199,36 +2521,39 @@ proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinary = functi
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.AddressBytesToStringRequest}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {!Uint8Array} */ (reader.readBytes())
+          msg.setAddressBytes(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setAddressBytes(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2237,37 +2562,37 @@ proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.serializeBinary 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddressBytes_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddressBytes_asU8()
+    if (f.length > 0) {
+      writer.writeBytes(1, f)
+    }
   }
-};
-
 
 /**
  * optional bytes address_bytes = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes =
+  function () {
+    return /** @type {!(string|Uint8Array)} */ (
+      jspb.Message.getFieldWithDefault(this, 1, '')
+    )
+  }
 
 /**
  * optional bytes address_bytes = 1;
  * This is a type-conversion wrapper around `getAddressBytes()`
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getAddressBytes()));
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes_asB64 =
+  function () {
+    return /** @type {string} */ (
+      jspb.Message.bytesAsB64(this.getAddressBytes())
+    )
+  }
 
 /**
  * optional bytes address_bytes = 1;
@@ -2276,75 +2601,82 @@ proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes_
  * This is a type-conversion wrapper around `getAddressBytes()`
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getAddressBytes()));
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.getAddressBytes_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getAddressBytes())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.auth.v1beta1.AddressBytesToStringRequest} returns this
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.setAddressBytes = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringRequest.prototype.setAddressBytes =
+  function (value) {
+    return jspb.Message.setProto3BytesField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.AddressBytesToStringResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        addressString: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.AddressBytesToStringResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    addressString: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.AddressBytesToStringResponse}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.AddressBytesToStringResponse;
-  return proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.AddressBytesToStringResponse()
+    return proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2353,36 +2685,39 @@ proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinary = funct
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.AddressBytesToStringResponse}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddressString(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddressString(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2391,90 +2726,93 @@ proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.serializeBinary
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddressString();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddressString()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string address_string = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.getAddressString = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.getAddressString =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.AddressBytesToStringResponse} returns this
  */
-proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.setAddressString = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.AddressBytesToStringResponse.prototype.setAddressString =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.AddressStringToBytesRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        addressString: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.AddressStringToBytesRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    addressString: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.AddressStringToBytesRequest}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.AddressStringToBytesRequest;
-  return proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.AddressStringToBytesRequest()
+    return proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2483,36 +2821,39 @@ proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinary = functi
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.AddressStringToBytesRequest}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddressString(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddressString(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2521,90 +2862,93 @@ proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.serializeBinary 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddressString();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddressString()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string address_string = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.getAddressString = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.getAddressString =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.AddressStringToBytesRequest} returns this
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.setAddressString = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesRequest.prototype.setAddressString =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.AddressStringToBytesResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        addressBytes: msg.getAddressBytes_asB64(),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.AddressStringToBytesResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    addressBytes: msg.getAddressBytes_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.AddressStringToBytesResponse}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.AddressStringToBytesResponse;
-  return proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.AddressStringToBytesResponse()
+    return proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2613,36 +2957,39 @@ proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinary = funct
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.AddressStringToBytesResponse}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {!Uint8Array} */ (reader.readBytes())
+          msg.setAddressBytes(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setAddressBytes(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2651,37 +2998,37 @@ proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.serializeBinary
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddressBytes_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddressBytes_asU8()
+    if (f.length > 0) {
+      writer.writeBytes(1, f)
+    }
   }
-};
-
 
 /**
  * optional bytes address_bytes = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes =
+  function () {
+    return /** @type {!(string|Uint8Array)} */ (
+      jspb.Message.getFieldWithDefault(this, 1, '')
+    )
+  }
 
 /**
  * optional bytes address_bytes = 1;
  * This is a type-conversion wrapper around `getAddressBytes()`
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getAddressBytes()));
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes_asB64 =
+  function () {
+    return /** @type {string} */ (
+      jspb.Message.bytesAsB64(this.getAddressBytes())
+    )
+  }
 
 /**
  * optional bytes address_bytes = 1;
@@ -2690,76 +3037,83 @@ proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes
  * This is a type-conversion wrapper around `getAddressBytes()`
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getAddressBytes()));
-};
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.getAddressBytes_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getAddressBytes())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.auth.v1beta1.AddressStringToBytesResponse} returns this
  */
-proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.setAddressBytes = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.AddressStringToBytesResponse.prototype.setAddressBytes =
+  function (value) {
+    return jspb.Message.setProto3BytesField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        accountId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    accountId: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest;
-  return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest()
+    return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2768,40 +3122,43 @@ proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinary = fun
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {number} */ (reader.readInt64())
+          msg.setId(value)
+          break
+        case 2:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setAccountId(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setId(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setAccountId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2810,115 +3167,113 @@ proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.serializeBina
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getId();
-  if (f !== 0) {
-    writer.writeInt64(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getId()
+    if (f !== 0) {
+      writer.writeInt64(1, f)
+    }
+    f = message.getAccountId()
+    if (f !== 0) {
+      writer.writeUint64(2, f)
+    }
   }
-  f = message.getAccountId();
-  if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
-  }
-};
-
 
 /**
  * optional int64 id = 1;
  * @return {number}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.getId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.setId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.setId =
+  function (value) {
+    return jspb.Message.setProto3IntField(this, 1, value)
+  }
 
 /**
  * optional uint64 account_id = 2;
  * @return {number}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.getAccountId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.getAccountId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.setAccountId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDRequest.prototype.setAccountId =
+  function (value) {
+    return jspb.Message.setProto3IntField(this, 2, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {
+          accountAddress: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    accountAddress: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse;
-  return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse()
+    return proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2927,36 +3282,39 @@ proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinary = fu
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAccountAddress(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAccountAddress(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2965,90 +3323,94 @@ proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.serializeBin
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAccountAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAccountAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string account_address = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.getAccountAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.getAccountAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.setAccountAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryAccountAddressByIDResponse.prototype.setAccountAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountInfoRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountInfoRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountInfoRequest;
-  return proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.auth.v1beta1.QueryAccountInfoRequest()
+  return proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3057,36 +3419,39 @@ proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoRequest}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3095,90 +3460,95 @@ proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoRequest} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoRequest.prototype.setAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.auth.v1beta1.QueryAccountInfoResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        info:
+          (f = msg.getInfo()) &&
+          cosmos_auth_v1beta1_auth_pb.BaseAccount.toObject(includeInstance, f),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.auth.v1beta1.QueryAccountInfoResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    info: (f = msg.getInfo()) && cosmos_auth_v1beta1_auth_pb.BaseAccount.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.auth.v1beta1.QueryAccountInfoResponse;
-  return proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.auth.v1beta1.QueryAccountInfoResponse()
+    return proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3187,37 +3557,43 @@ proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoResponse}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_auth_v1beta1_auth_pb.BaseAccount()
+          reader.readMessage(
+            value,
+            cosmos_auth_v1beta1_auth_pb.BaseAccount.deserializeBinaryFromReader,
+          )
+          msg.setInfo(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_auth_v1beta1_auth_pb.BaseAccount;
-      reader.readMessage(value,cosmos_auth_v1beta1_auth_pb.BaseAccount.deserializeBinaryFromReader);
-      msg.setInfo(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3226,54 +3602,59 @@ proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getInfo();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_auth_v1beta1_auth_pb.BaseAccount.serializeBinaryToWriter
-    );
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getInfo()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_auth_v1beta1_auth_pb.BaseAccount.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional BaseAccount info = 1;
  * @return {?proto.cosmos.auth.v1beta1.BaseAccount}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.getInfo = function() {
-  return /** @type{?proto.cosmos.auth.v1beta1.BaseAccount} */ (
-    jspb.Message.getWrapperField(this, cosmos_auth_v1beta1_auth_pb.BaseAccount, 1));
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.getInfo =
+  function () {
+    return /** @type{?proto.cosmos.auth.v1beta1.BaseAccount} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_auth_v1beta1_auth_pb.BaseAccount,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.auth.v1beta1.BaseAccount|undefined} value
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoResponse} returns this
-*/
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.setInfo = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.setInfo =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.auth.v1beta1.QueryAccountInfoResponse} returns this
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.clearInfo = function() {
-  return this.setInfo(undefined);
-};
-
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.clearInfo =
+  function () {
+    return this.setInfo(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.hasInfo = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
+proto.cosmos.auth.v1beta1.QueryAccountInfoResponse.prototype.hasInfo =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
-
-goog.object.extend(exports, proto.cosmos.auth.v1beta1);
+goog.object.extend(exports, proto.cosmos.auth.v1beta1)

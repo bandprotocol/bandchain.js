@@ -4,15 +4,6 @@
 import * as cosmos_gov_v1_query_pb from "../../../cosmos/gov/v1/query_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
-type QueryConstitution = {
-  readonly methodName: string;
-  readonly service: typeof Query;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof cosmos_gov_v1_query_pb.QueryConstitutionRequest;
-  readonly responseType: typeof cosmos_gov_v1_query_pb.QueryConstitutionResponse;
-};
-
 type QueryProposal = {
   readonly methodName: string;
   readonly service: typeof Query;
@@ -87,7 +78,6 @@ type QueryTallyResult = {
 
 export class Query {
   static readonly serviceName: string;
-  static readonly Constitution: QueryConstitution;
   static readonly Proposal: QueryProposal;
   static readonly Proposals: QueryProposals;
   static readonly Vote: QueryVote;
@@ -130,15 +120,6 @@ export class QueryClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
-  constitution(
-    requestMessage: cosmos_gov_v1_query_pb.QueryConstitutionRequest,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1_query_pb.QueryConstitutionResponse|null) => void
-  ): UnaryResponse;
-  constitution(
-    requestMessage: cosmos_gov_v1_query_pb.QueryConstitutionRequest,
-    callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1_query_pb.QueryConstitutionResponse|null) => void
-  ): UnaryResponse;
   proposal(
     requestMessage: cosmos_gov_v1_query_pb.QueryProposalRequest,
     metadata: grpc.Metadata,

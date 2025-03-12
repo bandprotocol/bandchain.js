@@ -11,51 +11,107 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require('google-protobuf');
-var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var jspb = require('google-protobuf')
+var goog = jspb
+var global = Function('return this')()
 
-var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
-var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
-var cosmos_group_v1_types_pb = require('../../../cosmos/group/v1/types_pb.js');
-goog.object.extend(proto, cosmos_group_v1_types_pb);
-var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js');
-goog.object.extend(proto, cosmos_msg_v1_msg_pb);
-var amino_amino_pb = require('../../../amino/amino_pb.js');
-goog.object.extend(proto, amino_amino_pb);
-goog.exportSymbol('proto.cosmos.group.v1.Exec', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroup', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupPolicy', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupPolicyResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupWithPolicy', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgExec', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgExecResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgLeaveGroup', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgLeaveGroupResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgSubmitProposal', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgSubmitProposalResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupAdmin', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupAdminResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupMembers', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupMembersResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupMetadata', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgVote', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgVoteResponse', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgWithdrawProposal', null, global);
-goog.exportSymbol('proto.cosmos.group.v1.MsgWithdrawProposalResponse', null, global);
+var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js')
+goog.object.extend(proto, gogoproto_gogo_pb)
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js')
+goog.object.extend(proto, cosmos_proto_cosmos_pb)
+var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js')
+goog.object.extend(proto, google_protobuf_any_pb)
+var cosmos_group_v1_types_pb = require('../../../cosmos/group/v1/types_pb.js')
+goog.object.extend(proto, cosmos_group_v1_types_pb)
+var cosmos_msg_v1_msg_pb = require('../../../cosmos/msg/v1/msg_pb.js')
+goog.object.extend(proto, cosmos_msg_v1_msg_pb)
+var amino_amino_pb = require('../../../amino/amino_pb.js')
+goog.object.extend(proto, amino_amino_pb)
+goog.exportSymbol('proto.cosmos.group.v1.Exec', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroup', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupPolicy', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgCreateGroupPolicyResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.group.v1.MsgCreateGroupResponse', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgCreateGroupWithPolicy',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.group.v1.MsgExec', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgExecResponse', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgLeaveGroup', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgLeaveGroupResponse', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgSubmitProposal', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgSubmitProposalResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupAdmin', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupAdminResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupMembers', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupMembersResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.group.v1.MsgUpdateGroupMetadata', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.group.v1.MsgVote', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgVoteResponse', null, global)
+goog.exportSymbol('proto.cosmos.group.v1.MsgWithdrawProposal', null, global)
+goog.exportSymbol(
+  'proto.cosmos.group.v1.MsgWithdrawProposalResponse',
+  null,
+  global,
+)
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -66,16 +122,24 @@ goog.exportSymbol('proto.cosmos.group.v1.MsgWithdrawProposalResponse', null, glo
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgCreateGroup = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.group.v1.MsgCreateGroup.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgCreateGroup, jspb.Message);
+proto.cosmos.group.v1.MsgCreateGroup = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.group.v1.MsgCreateGroup.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.group.v1.MsgCreateGroup, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgCreateGroup.displayName = 'proto.cosmos.group.v1.MsgCreateGroup';
+  proto.cosmos.group.v1.MsgCreateGroup.displayName =
+    'proto.cosmos.group.v1.MsgCreateGroup'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -87,16 +151,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgCreateGroupResponse, jspb.Message);
+proto.cosmos.group.v1.MsgCreateGroupResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgCreateGroupResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgCreateGroupResponse.displayName = 'proto.cosmos.group.v1.MsgCreateGroupResponse';
+  proto.cosmos.group.v1.MsgCreateGroupResponse.displayName =
+    'proto.cosmos.group.v1.MsgCreateGroupResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -108,16 +173,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.group.v1.MsgUpdateGroupMembers.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMembers, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupMembers = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.group.v1.MsgUpdateGroupMembers.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMembers, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupMembers.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupMembers';
+  proto.cosmos.group.v1.MsgUpdateGroupMembers.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupMembers'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -129,16 +202,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMembersResponse, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupMembersResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMembersResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupMembersResponse';
+  proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupMembersResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -150,16 +224,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupAdmin, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupAdmin = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupAdmin, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupAdmin.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupAdmin';
+  proto.cosmos.group.v1.MsgUpdateGroupAdmin.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupAdmin'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -171,16 +246,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupAdminResponse, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupAdminResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupAdminResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupAdminResponse';
+  proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupAdminResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -192,16 +268,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMetadata, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupMetadata = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMetadata, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupMetadata.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupMetadata';
+  proto.cosmos.group.v1.MsgUpdateGroupMetadata.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupMetadata'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -213,16 +290,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse';
+  proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -234,16 +315,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgCreateGroupPolicy, jspb.Message);
+proto.cosmos.group.v1.MsgCreateGroupPolicy = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgCreateGroupPolicy, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgCreateGroupPolicy.displayName = 'proto.cosmos.group.v1.MsgCreateGroupPolicy';
+  proto.cosmos.group.v1.MsgCreateGroupPolicy.displayName =
+    'proto.cosmos.group.v1.MsgCreateGroupPolicy'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -255,16 +337,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgCreateGroupPolicyResponse, jspb.Message);
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgCreateGroupPolicyResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.displayName = 'proto.cosmos.group.v1.MsgCreateGroupPolicyResponse';
+  proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.displayName =
+    'proto.cosmos.group.v1.MsgCreateGroupPolicyResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -276,16 +359,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin';
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -297,16 +381,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse';
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -318,16 +406,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.group.v1.MsgCreateGroupWithPolicy.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgCreateGroupWithPolicy, jspb.Message);
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.group.v1.MsgCreateGroupWithPolicy.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.group.v1.MsgCreateGroupWithPolicy, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgCreateGroupWithPolicy.displayName = 'proto.cosmos.group.v1.MsgCreateGroupWithPolicy';
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicy.displayName =
+    'proto.cosmos.group.v1.MsgCreateGroupWithPolicy'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -339,16 +435,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse, jspb.Message);
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.displayName = 'proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse';
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.displayName =
+    'proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -360,16 +460,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy';
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -381,16 +485,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse';
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -402,16 +512,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata';
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -423,16 +534,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse, jspb.Message);
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.displayName = 'proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse';
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.displayName =
+    'proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -444,16 +561,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgSubmitProposal = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.group.v1.MsgSubmitProposal.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgSubmitProposal, jspb.Message);
+proto.cosmos.group.v1.MsgSubmitProposal = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.group.v1.MsgSubmitProposal.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.group.v1.MsgSubmitProposal, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgSubmitProposal.displayName = 'proto.cosmos.group.v1.MsgSubmitProposal';
+  proto.cosmos.group.v1.MsgSubmitProposal.displayName =
+    'proto.cosmos.group.v1.MsgSubmitProposal'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -465,16 +590,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgSubmitProposalResponse, jspb.Message);
+proto.cosmos.group.v1.MsgSubmitProposalResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgSubmitProposalResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgSubmitProposalResponse.displayName = 'proto.cosmos.group.v1.MsgSubmitProposalResponse';
+  proto.cosmos.group.v1.MsgSubmitProposalResponse.displayName =
+    'proto.cosmos.group.v1.MsgSubmitProposalResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -486,16 +612,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgWithdrawProposal = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgWithdrawProposal, jspb.Message);
+proto.cosmos.group.v1.MsgWithdrawProposal = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgWithdrawProposal, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgWithdrawProposal.displayName = 'proto.cosmos.group.v1.MsgWithdrawProposal';
+  proto.cosmos.group.v1.MsgWithdrawProposal.displayName =
+    'proto.cosmos.group.v1.MsgWithdrawProposal'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -507,16 +634,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgWithdrawProposalResponse, jspb.Message);
+proto.cosmos.group.v1.MsgWithdrawProposalResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgWithdrawProposalResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgWithdrawProposalResponse.displayName = 'proto.cosmos.group.v1.MsgWithdrawProposalResponse';
+  proto.cosmos.group.v1.MsgWithdrawProposalResponse.displayName =
+    'proto.cosmos.group.v1.MsgWithdrawProposalResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -528,16 +656,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgVote = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgVote, jspb.Message);
+proto.cosmos.group.v1.MsgVote = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgVote, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgVote.displayName = 'proto.cosmos.group.v1.MsgVote';
+  proto.cosmos.group.v1.MsgVote.displayName = 'proto.cosmos.group.v1.MsgVote'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -549,16 +677,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgVoteResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgVoteResponse, jspb.Message);
+proto.cosmos.group.v1.MsgVoteResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgVoteResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgVoteResponse.displayName = 'proto.cosmos.group.v1.MsgVoteResponse';
+  proto.cosmos.group.v1.MsgVoteResponse.displayName =
+    'proto.cosmos.group.v1.MsgVoteResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -570,16 +699,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgExec = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgExec, jspb.Message);
+proto.cosmos.group.v1.MsgExec = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgExec, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgExec.displayName = 'proto.cosmos.group.v1.MsgExec';
+  proto.cosmos.group.v1.MsgExec.displayName = 'proto.cosmos.group.v1.MsgExec'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -591,16 +720,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgExecResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgExecResponse, jspb.Message);
+proto.cosmos.group.v1.MsgExecResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgExecResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgExecResponse.displayName = 'proto.cosmos.group.v1.MsgExecResponse';
+  proto.cosmos.group.v1.MsgExecResponse.displayName =
+    'proto.cosmos.group.v1.MsgExecResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -612,16 +742,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgLeaveGroup = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgLeaveGroup, jspb.Message);
+proto.cosmos.group.v1.MsgLeaveGroup = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgLeaveGroup, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgLeaveGroup.displayName = 'proto.cosmos.group.v1.MsgLeaveGroup';
+  proto.cosmos.group.v1.MsgLeaveGroup.displayName =
+    'proto.cosmos.group.v1.MsgLeaveGroup'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -633,16 +764,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.group.v1.MsgLeaveGroupResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.group.v1.MsgLeaveGroupResponse, jspb.Message);
+proto.cosmos.group.v1.MsgLeaveGroupResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.group.v1.MsgLeaveGroupResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.group.v1.MsgLeaveGroupResponse.displayName = 'proto.cosmos.group.v1.MsgLeaveGroupResponse';
+  proto.cosmos.group.v1.MsgLeaveGroupResponse.displayName =
+    'proto.cosmos.group.v1.MsgLeaveGroupResponse'
 }
 
 /**
@@ -650,64 +782,74 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.group.v1.MsgCreateGroup.repeatedFields_ = [2];
-
-
+proto.cosmos.group.v1.MsgCreateGroup.repeatedFields_ = [2]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgCreateGroup.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgCreateGroup} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgCreateGroup.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    membersList: jspb.Message.toObjectList(msg.getMembersList(),
-    cosmos_group_v1_types_pb.MemberRequest.toObject, includeInstance),
-    metadata: jspb.Message.getFieldWithDefault(msg, 3, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgCreateGroup.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgCreateGroup.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgCreateGroup} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgCreateGroup.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        membersList: jspb.Message.toObjectList(
+          msg.getMembersList(),
+          cosmos_group_v1_types_pb.MemberRequest.toObject,
+          includeInstance,
+        ),
+        metadata: jspb.Message.getFieldWithDefault(msg, 3, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgCreateGroup}
  */
-proto.cosmos.group.v1.MsgCreateGroup.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgCreateGroup;
-  return proto.cosmos.group.v1.MsgCreateGroup.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgCreateGroup()
+  return proto.cosmos.group.v1.MsgCreateGroup.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -716,45 +858,49 @@ proto.cosmos.group.v1.MsgCreateGroup.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgCreateGroup}
  */
-proto.cosmos.group.v1.MsgCreateGroup.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgCreateGroup.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = new cosmos_group_v1_types_pb.MemberRequest;
-      reader.readMessage(value,cosmos_group_v1_types_pb.MemberRequest.deserializeBinaryFromReader);
-      msg.addMembers(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMetadata(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setAdmin(value)
+        break
+      case 2:
+        var value = new cosmos_group_v1_types_pb.MemberRequest()
+        reader.readMessage(
+          value,
+          cosmos_group_v1_types_pb.MemberRequest.deserializeBinaryFromReader,
+        )
+        msg.addMembers(value)
+        break
+      case 3:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setMetadata(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgCreateGroup.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.group.v1.MsgCreateGroup.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -763,161 +909,173 @@ proto.cosmos.group.v1.MsgCreateGroup.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgCreateGroup.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
+proto.cosmos.group.v1.MsgCreateGroup.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getAdmin()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getMembersList();
+  f = message.getMembersList()
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       2,
       f,
-      cosmos_group_v1_types_pb.MemberRequest.serializeBinaryToWriter
-    );
+      cosmos_group_v1_types_pb.MemberRequest.serializeBinaryToWriter,
+    )
   }
-  f = message.getMetadata();
+  f = message.getMetadata()
   if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
+    writer.writeString(3, f)
   }
-};
-
+}
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.prototype.getAdmin = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroup} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.prototype.setAdmin = function (value) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * repeated MemberRequest members = 2;
  * @return {!Array<!proto.cosmos.group.v1.MemberRequest>}
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.getMembersList = function() {
+proto.cosmos.group.v1.MsgCreateGroup.prototype.getMembersList = function () {
   return /** @type{!Array<!proto.cosmos.group.v1.MemberRequest>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_group_v1_types_pb.MemberRequest, 2));
-};
-
+    jspb.Message.getRepeatedWrapperField(
+      this,
+      cosmos_group_v1_types_pb.MemberRequest,
+      2,
+    )
+  )
+}
 
 /**
  * @param {!Array<!proto.cosmos.group.v1.MemberRequest>} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroup} returns this
-*/
-proto.cosmos.group.v1.MsgCreateGroup.prototype.setMembersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgCreateGroup.prototype.setMembersList = function (
+  value,
+) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value)
+}
 
 /**
  * @param {!proto.cosmos.group.v1.MemberRequest=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.group.v1.MemberRequest}
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.addMembers = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.cosmos.group.v1.MemberRequest, opt_index);
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.prototype.addMembers = function (
+  opt_value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    2,
+    opt_value,
+    proto.cosmos.group.v1.MemberRequest,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.group.v1.MsgCreateGroup} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.clearMembersList = function() {
-  return this.setMembersList([]);
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.prototype.clearMembersList = function () {
+  return this.setMembersList([])
+}
 
 /**
  * optional string metadata = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.getMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroup.prototype.getMetadata = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroup} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroup.prototype.setMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgCreateGroupResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgCreateGroupResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgCreateGroupResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    groupId: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgCreateGroup.prototype.setMetadata = function (value) {
+  return jspb.Message.setProto3StringField(this, 3, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgCreateGroupResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgCreateGroupResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgCreateGroupResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        groupId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupResponse}
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgCreateGroupResponse;
-  return proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgCreateGroupResponse()
+  return proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -926,36 +1084,39 @@ proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinary = function(bytes)
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupResponse}
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgCreateGroupResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setGroupId(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgCreateGroupResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgCreateGroupResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -964,100 +1125,109 @@ proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.serializeBinary = functio
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getGroupId();
-  if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgCreateGroupResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getGroupId()
+    if (f !== 0) {
+      writer.writeUint64(1, f)
+    }
   }
-};
-
 
 /**
  * optional uint64 group_id = 1;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.getGroupId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupResponse} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
+proto.cosmos.group.v1.MsgCreateGroupResponse.prototype.setGroupId = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 1, value)
+}
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.repeatedFields_ = [3];
-
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.repeatedFields_ = [3]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupMembers.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupMembers} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    memberUpdatesList: jspb.Message.toObjectList(msg.getMemberUpdatesList(),
-    cosmos_group_v1_types_pb.MemberRequest.toObject, includeInstance)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgUpdateGroupMembers.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupMembers} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMembers.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+        memberUpdatesList: jspb.Message.toObjectList(
+          msg.getMemberUpdatesList(),
+          cosmos_group_v1_types_pb.MemberRequest.toObject,
+          includeInstance,
+        ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembers}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupMembers;
-  return proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgUpdateGroupMembers()
+  return proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1066,45 +1236,51 @@ proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinary = function(bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembers}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupMembers.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setGroupId(value)
+          break
+        case 3:
+          var value = new cosmos_group_v1_types_pb.MemberRequest()
+          reader.readMessage(
+            value,
+            cosmos_group_v1_types_pb.MemberRequest.deserializeBinaryFromReader,
+          )
+          msg.addMemberUpdates(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    case 3:
-      var value = new cosmos_group_v1_types_pb.MemberRequest;
-      reader.readMessage(value,cosmos_group_v1_types_pb.MemberRequest.deserializeBinaryFromReader);
-      msg.addMemberUpdates(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupMembers.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupMembers.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1113,161 +1289,172 @@ proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.serializeBinary = function
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
+proto.cosmos.group.v1.MsgUpdateGroupMembers.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getAdmin()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getGroupId();
+  f = message.getGroupId()
   if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
+    writer.writeUint64(2, f)
   }
-  f = message.getMemberUpdatesList();
+  f = message.getMemberUpdatesList()
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
       f,
-      cosmos_group_v1_types_pb.MemberRequest.serializeBinaryToWriter
-    );
+      cosmos_group_v1_types_pb.MemberRequest.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.getAdmin = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembers} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.setAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional uint64 group_id = 2;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.getGroupId = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembers} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.setGroupId = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 2, value)
+}
 
 /**
  * repeated MemberRequest member_updates = 3;
  * @return {!Array<!proto.cosmos.group.v1.MemberRequest>}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.getMemberUpdatesList = function() {
-  return /** @type{!Array<!proto.cosmos.group.v1.MemberRequest>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_group_v1_types_pb.MemberRequest, 3));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.getMemberUpdatesList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.group.v1.MemberRequest>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_group_v1_types_pb.MemberRequest,
+        3,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.group.v1.MemberRequest>} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembers} returns this
-*/
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.setMemberUpdatesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 3, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.setMemberUpdatesList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 3, value)
+  }
 
 /**
  * @param {!proto.cosmos.group.v1.MemberRequest=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.group.v1.MemberRequest}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.addMemberUpdates = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.cosmos.group.v1.MemberRequest, opt_index);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.addMemberUpdates =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      3,
+      opt_value,
+      proto.cosmos.group.v1.MemberRequest,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembers} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.clearMemberUpdatesList = function() {
-  return this.setMemberUpdatesList([]);
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupMembers.prototype.clearMemberUpdatesList =
+  function () {
+    return this.setMemberUpdatesList([])
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupMembersResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupMembersResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembersResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupMembersResponse;
-  return proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgUpdateGroupMembersResponse()
+    return proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1276,32 +1463,35 @@ proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinary = function
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMembersResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1310,67 +1500,73 @@ proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.prototype.serializeBinary = 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupMembersResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupAdmin.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupAdmin} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    newAdmin: jspb.Message.getFieldWithDefault(msg, 3, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgUpdateGroupAdmin.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupAdmin} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupAdmin.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+        newAdmin: jspb.Message.getFieldWithDefault(msg, 3, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdmin}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupAdmin;
-  return proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgUpdateGroupAdmin()
+  return proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1379,44 +1575,47 @@ proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdmin}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setGroupId(value)
+          break
+        case 3:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setNewAdmin(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setNewAdmin(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupAdmin.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupAdmin.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1425,140 +1624,138 @@ proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.serializeBinary = function()
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getAdmin()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getGroupId();
+  f = message.getGroupId()
   if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
+    writer.writeUint64(2, f)
   }
-  f = message.getNewAdmin();
+  f = message.getNewAdmin()
   if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
+    writer.writeString(3, f)
   }
-};
-
+}
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.getAdmin = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdmin} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.setAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional uint64 group_id = 2;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.getGroupId = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdmin} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.setGroupId = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 2, value)
+}
 
 /**
  * optional string new_admin = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.getNewAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.getNewAdmin = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdmin} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.setNewAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupAdminResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgUpdateGroupAdmin.prototype.setNewAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 3, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupAdminResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdminResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupAdminResponse;
-  return proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgUpdateGroupAdminResponse()
+  return proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1567,32 +1764,35 @@ proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupAdminResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1601,67 +1801,75 @@ proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupAdminResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupMetadata.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupMetadata} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    metadata: jspb.Message.getFieldWithDefault(msg, 3, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgUpdateGroupMetadata.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupMetadata} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMetadata.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+        metadata: jspb.Message.getFieldWithDefault(msg, 3, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadata}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupMetadata;
-  return proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgUpdateGroupMetadata()
+  return proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1670,44 +1878,47 @@ proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinary = function(bytes)
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadata}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setGroupId(value)
+          break
+        case 3:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setMetadata(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMetadata(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupMetadata.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupMetadata.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1716,140 +1927,137 @@ proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.serializeBinary = functio
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAdmin()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getGroupId()
+    if (f !== 0) {
+      writer.writeUint64(2, f)
+    }
+    f = message.getMetadata()
+    if (f.length > 0) {
+      writer.writeString(3, f)
+    }
   }
-  f = message.getGroupId();
-  if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
-  }
-  f = message.getMetadata();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-};
-
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.getAdmin = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadata} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.setAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional uint64 group_id = 2;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.getGroupId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadata} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.setGroupId = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 2, value)
+}
 
 /**
  * optional string metadata = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.getMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.getMetadata =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadata} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.setMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgUpdateGroupMetadata.prototype.setMetadata = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 3, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse;
-  return proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse()
+    return proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1858,32 +2066,35 @@ proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1892,68 +2103,78 @@ proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupMetadataResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgCreateGroupPolicy.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgCreateGroupPolicy} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    metadata: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    decisionPolicy: (f = msg.getDecisionPolicy()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgCreateGroupPolicy.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgCreateGroupPolicy} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgCreateGroupPolicy.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+        metadata: jspb.Message.getFieldWithDefault(msg, 3, ''),
+        decisionPolicy:
+          (f = msg.getDecisionPolicy()) &&
+          google_protobuf_any_pb.Any.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgCreateGroupPolicy;
-  return proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgCreateGroupPolicy()
+  return proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1962,49 +2183,55 @@ proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgCreateGroupPolicy.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setGroupId(value)
+          break
+        case 3:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setMetadata(value)
+          break
+        case 4:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.setDecisionPolicy(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMetadata(value);
-      break;
-    case 4:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setDecisionPolicy(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgCreateGroupPolicy.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgCreateGroupPolicy.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2013,185 +2240,185 @@ proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.serializeBinary = function(
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
+proto.cosmos.group.v1.MsgCreateGroupPolicy.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getAdmin()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getGroupId();
+  f = message.getGroupId()
   if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
+    writer.writeUint64(2, f)
   }
-  f = message.getMetadata();
+  f = message.getMetadata()
   if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
+    writer.writeString(3, f)
   }
-  f = message.getDecisionPolicy();
+  f = message.getDecisionPolicy()
   if (f != null) {
     writer.writeMessage(
       4,
       f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
+      google_protobuf_any_pb.Any.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getAdmin = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional uint64 group_id = 2;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getGroupId = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setGroupId = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 2, value)
+}
 
 /**
  * optional string metadata = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getMetadata = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setMetadata = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 3, value)
+}
 
 /**
  * optional google.protobuf.Any decision_policy = 4;
  * @return {?proto.google.protobuf.Any}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getDecisionPolicy = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 4));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.getDecisionPolicy =
+  function () {
+    return /** @type{?proto.google.protobuf.Any} */ (
+      jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 4)
+    )
+  }
 
 /**
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy} returns this
-*/
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setDecisionPolicy = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.setDecisionPolicy =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 4, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.clearDecisionPolicy = function() {
-  return this.setDecisionPolicy(undefined);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.clearDecisionPolicy =
+  function () {
+    return this.setDecisionPolicy(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.hasDecisionPolicy = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgCreateGroupPolicy.prototype.hasDecisionPolicy =
+  function () {
+    return jspb.Message.getField(this, 4) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgCreateGroupPolicyResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgCreateGroupPolicyResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicyResponse}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgCreateGroupPolicyResponse;
-  return proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgCreateGroupPolicyResponse()
+    return proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2200,36 +2427,39 @@ proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicyResponse}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2238,92 +2468,96 @@ proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupPolicyResponse} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.group.v1.MsgCreateGroupPolicyResponse.prototype.setAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        newAdmin: jspb.Message.getFieldWithDefault(msg, 3, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    newAdmin: jspb.Message.getFieldWithDefault(msg, 3, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin;
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin()
+  return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2332,44 +2566,47 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinary = function(byt
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setGroupPolicyAddress(value)
+          break
+        case 3:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setNewAdmin(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupPolicyAddress(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setNewAdmin(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2378,140 +2615,136 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAdmin()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getGroupPolicyAddress()
+    if (f.length > 0) {
+      writer.writeString(2, f)
+    }
+    f = message.getNewAdmin()
+    if (f.length > 0) {
+      writer.writeString(3, f)
+    }
   }
-  f = message.getGroupPolicyAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-  f = message.getNewAdmin();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-};
-
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.getAdmin =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.setAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional string group_policy_address = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.getGroupPolicyAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.getGroupPolicyAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.setGroupPolicyAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.setGroupPolicyAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 2, value)
+  }
 
 /**
  * optional string new_admin = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.getNewAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.getNewAdmin =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.setNewAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdmin.prototype.setNewAdmin =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 3, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse;
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse()
+    return proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2520,32 +2753,35 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinary = func
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2554,78 +2790,95 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.prototype.serializeBinar
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyAdminResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.repeatedFields_ = [2];
-
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.repeatedFields_ = [2]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgCreateGroupWithPolicy.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    membersList: jspb.Message.toObjectList(msg.getMembersList(),
-    cosmos_group_v1_types_pb.MemberRequest.toObject, includeInstance),
-    groupMetadata: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    groupPolicyMetadata: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    groupPolicyAsAdmin: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
-    decisionPolicy: (f = msg.getDecisionPolicy()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgCreateGroupWithPolicy.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicy.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        membersList: jspb.Message.toObjectList(
+          msg.getMembersList(),
+          cosmos_group_v1_types_pb.MemberRequest.toObject,
+          includeInstance,
+        ),
+        groupMetadata: jspb.Message.getFieldWithDefault(msg, 3, ''),
+        groupPolicyMetadata: jspb.Message.getFieldWithDefault(msg, 4, ''),
+        groupPolicyAsAdmin: jspb.Message.getBooleanFieldWithDefault(
+          msg,
+          5,
+          false,
+        ),
+        decisionPolicy:
+          (f = msg.getDecisionPolicy()) &&
+          google_protobuf_any_pb.Any.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgCreateGroupWithPolicy;
-  return proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgCreateGroupWithPolicy()
+  return proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2634,58 +2887,67 @@ proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = new cosmos_group_v1_types_pb.MemberRequest()
+          reader.readMessage(
+            value,
+            cosmos_group_v1_types_pb.MemberRequest.deserializeBinaryFromReader,
+          )
+          msg.addMembers(value)
+          break
+        case 3:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setGroupMetadata(value)
+          break
+        case 4:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setGroupPolicyMetadata(value)
+          break
+        case 5:
+          var value = /** @type {boolean} */ (reader.readBool())
+          msg.setGroupPolicyAsAdmin(value)
+          break
+        case 6:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.setDecisionPolicy(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = new cosmos_group_v1_types_pb.MemberRequest;
-      reader.readMessage(value,cosmos_group_v1_types_pb.MemberRequest.deserializeBinaryFromReader);
-      msg.addMembers(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupMetadata(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupPolicyMetadata(value);
-      break;
-    case 5:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setGroupPolicyAsAdmin(value);
-      break;
-    case 6:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setDecisionPolicy(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgCreateGroupWithPolicy.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgCreateGroupWithPolicy.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2694,257 +2956,268 @@ proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAdmin()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getMembersList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        2,
+        f,
+        cosmos_group_v1_types_pb.MemberRequest.serializeBinaryToWriter,
+      )
+    }
+    f = message.getGroupMetadata()
+    if (f.length > 0) {
+      writer.writeString(3, f)
+    }
+    f = message.getGroupPolicyMetadata()
+    if (f.length > 0) {
+      writer.writeString(4, f)
+    }
+    f = message.getGroupPolicyAsAdmin()
+    if (f) {
+      writer.writeBool(5, f)
+    }
+    f = message.getDecisionPolicy()
+    if (f != null) {
+      writer.writeMessage(
+        6,
+        f,
+        google_protobuf_any_pb.Any.serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getMembersList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      2,
-      f,
-      cosmos_group_v1_types_pb.MemberRequest.serializeBinaryToWriter
-    );
-  }
-  f = message.getGroupMetadata();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-  f = message.getGroupPolicyMetadata();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-  f = message.getGroupPolicyAsAdmin();
-  if (f) {
-    writer.writeBool(
-      5,
-      f
-    );
-  }
-  f = message.getDecisionPolicy();
-  if (f != null) {
-    writer.writeMessage(
-      6,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getAdmin =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setAdmin = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * repeated MemberRequest members = 2;
  * @return {!Array<!proto.cosmos.group.v1.MemberRequest>}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getMembersList = function() {
-  return /** @type{!Array<!proto.cosmos.group.v1.MemberRequest>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_group_v1_types_pb.MemberRequest, 2));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getMembersList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.group.v1.MemberRequest>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_group_v1_types_pb.MemberRequest,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.group.v1.MemberRequest>} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
-*/
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setMembersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setMembersList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 2, value)
+  }
 
 /**
  * @param {!proto.cosmos.group.v1.MemberRequest=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.group.v1.MemberRequest}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.addMembers = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.cosmos.group.v1.MemberRequest, opt_index);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.addMembers = function (
+  opt_value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    2,
+    opt_value,
+    proto.cosmos.group.v1.MemberRequest,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.clearMembersList = function() {
-  return this.setMembersList([]);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.clearMembersList =
+  function () {
+    return this.setMembersList([])
+  }
 
 /**
  * optional string group_metadata = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getGroupMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getGroupMetadata =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setGroupMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setGroupMetadata =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 3, value)
+  }
 
 /**
  * optional string group_policy_metadata = 4;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getGroupPolicyMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getGroupPolicyMetadata =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setGroupPolicyMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setGroupPolicyMetadata =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 4, value)
+  }
 
 /**
  * optional bool group_policy_as_admin = 5;
  * @return {boolean}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getGroupPolicyAsAdmin = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getGroupPolicyAsAdmin =
+  function () {
+    return /** @type {boolean} */ (
+      jspb.Message.getBooleanFieldWithDefault(this, 5, false)
+    )
+  }
 
 /**
  * @param {boolean} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setGroupPolicyAsAdmin = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 5, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setGroupPolicyAsAdmin =
+  function (value) {
+    return jspb.Message.setProto3BooleanField(this, 5, value)
+  }
 
 /**
  * optional google.protobuf.Any decision_policy = 6;
  * @return {?proto.google.protobuf.Any}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getDecisionPolicy = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 6));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.getDecisionPolicy =
+  function () {
+    return /** @type{?proto.google.protobuf.Any} */ (
+      jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 6)
+    )
+  }
 
 /**
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
-*/
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setDecisionPolicy = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.setDecisionPolicy =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 6, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicy} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.clearDecisionPolicy = function() {
-  return this.setDecisionPolicy(undefined);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.clearDecisionPolicy =
+  function () {
+    return this.setDecisionPolicy(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.hasDecisionPolicy = function() {
-  return jspb.Message.getField(this, 6) != null;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicy.prototype.hasDecisionPolicy =
+  function () {
+    return jspb.Message.getField(this, 6) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        groupId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    groupId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse;
-  return proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse()
+    return proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2953,40 +3226,43 @@ proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinary = funct
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setGroupId(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setGroupPolicyAddress(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupPolicyAddress(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2995,117 +3271,119 @@ proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.serializeBinary
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getGroupId();
-  if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getGroupId()
+    if (f !== 0) {
+      writer.writeUint64(1, f)
+    }
+    f = message.getGroupPolicyAddress()
+    if (f.length > 0) {
+      writer.writeString(2, f)
+    }
   }
-  f = message.getGroupPolicyAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
 
 /**
  * optional uint64 group_id = 1;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.getGroupId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.setGroupId =
+  function (value) {
+    return jspb.Message.setProto3IntField(this, 1, value)
+  }
 
 /**
  * optional string group_policy_address = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.getGroupPolicyAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.getGroupPolicyAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse} returns this
  */
-proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.setGroupPolicyAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
+proto.cosmos.group.v1.MsgCreateGroupWithPolicyResponse.prototype.setGroupPolicyAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 2, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        decisionPolicy:
+          (f = msg.getDecisionPolicy()) &&
+          google_protobuf_any_pb.Any.toObject(includeInstance, f),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    decisionPolicy: (f = msg.getDecisionPolicy()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy;
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy()
+    return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3114,45 +3392,51 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinary = fun
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setGroupPolicyAddress(value)
+          break
+        case 3:
+          var value = new google_protobuf_any_pb.Any()
+          reader.readMessage(
+            value,
+            google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+          )
+          msg.setDecisionPolicy(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupPolicyAddress(value);
-      break;
-    case 3:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setDecisionPolicy(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3161,160 +3445,158 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.serializeBina
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAdmin()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getGroupPolicyAddress()
+    if (f.length > 0) {
+      writer.writeString(2, f)
+    }
+    f = message.getDecisionPolicy()
+    if (f != null) {
+      writer.writeMessage(
+        3,
+        f,
+        google_protobuf_any_pb.Any.serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getGroupPolicyAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-  f = message.getDecisionPolicy();
-  if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.getAdmin =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.setAdmin =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * optional string group_policy_address = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.getGroupPolicyAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.getGroupPolicyAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.setGroupPolicyAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.setGroupPolicyAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 2, value)
+  }
 
 /**
  * optional google.protobuf.Any decision_policy = 3;
  * @return {?proto.google.protobuf.Any}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.getDecisionPolicy = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 3));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.getDecisionPolicy =
+  function () {
+    return /** @type{?proto.google.protobuf.Any} */ (
+      jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 3)
+    )
+  }
 
 /**
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy} returns this
-*/
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.setDecisionPolicy = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.setDecisionPolicy =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 3, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.clearDecisionPolicy = function() {
-  return this.setDecisionPolicy(undefined);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.clearDecisionPolicy =
+  function () {
+    return this.setDecisionPolicy(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.hasDecisionPolicy = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy.prototype.hasDecisionPolicy =
+  function () {
+    return jspb.Message.getField(this, 3) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {}
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse;
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg =
+      new proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse()
+    return proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3323,32 +3605,35 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBina
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3357,67 +3642,73 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.prototype.seria
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicyResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        admin: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        metadata: jspb.Message.getFieldWithDefault(msg, 3, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    admin: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    metadata: jspb.Message.getFieldWithDefault(msg, 3, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata;
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata()
+    return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3426,44 +3717,47 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAdmin(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setGroupPolicyAddress(value)
+          break
+        case 3:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setMetadata(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAdmin(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupPolicyAddress(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMetadata(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3472,140 +3766,133 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAdmin();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAdmin()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getGroupPolicyAddress()
+    if (f.length > 0) {
+      writer.writeString(2, f)
+    }
+    f = message.getMetadata()
+    if (f.length > 0) {
+      writer.writeString(3, f)
+    }
   }
-  f = message.getGroupPolicyAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-  f = message.getMetadata();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
-};
-
 
 /**
  * optional string admin = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.getAdmin = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.getAdmin =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.setAdmin = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.setAdmin =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * optional string group_policy_address = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.getGroupPolicyAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.getGroupPolicyAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.setGroupPolicyAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.setGroupPolicyAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 2, value)
+  }
 
 /**
  * optional string metadata = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.getMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.getMetadata =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata} returns this
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.setMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadata.prototype.setMetadata =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 3, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {}
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse;
-  return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse()
+    return proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3614,32 +3901,35 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinary = f
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3648,79 +3938,89 @@ proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.prototype.serializeBi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
+proto.cosmos.group.v1.MsgUpdateGroupPolicyMetadataResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.group.v1.MsgSubmitProposal.repeatedFields_ = [2,4];
-
-
+proto.cosmos.group.v1.MsgSubmitProposal.repeatedFields_ = [2, 4]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgSubmitProposal.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgSubmitProposal} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgSubmitProposal.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    proposersList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
-    metadata: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    messagesList: jspb.Message.toObjectList(msg.getMessagesList(),
-    google_protobuf_any_pb.Any.toObject, includeInstance),
-    exec: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    title: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    summary: jspb.Message.getFieldWithDefault(msg, 7, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgSubmitProposal.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgSubmitProposal.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgSubmitProposal} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgSubmitProposal.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        groupPolicyAddress: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        proposersList:
+          (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+        metadata: jspb.Message.getFieldWithDefault(msg, 3, ''),
+        messagesList: jspb.Message.toObjectList(
+          msg.getMessagesList(),
+          google_protobuf_any_pb.Any.toObject,
+          includeInstance,
+        ),
+        exec: jspb.Message.getFieldWithDefault(msg, 5, 0),
+        title: jspb.Message.getFieldWithDefault(msg, 6, ''),
+        summary: jspb.Message.getFieldWithDefault(msg, 7, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgSubmitProposal;
-  return proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgSubmitProposal()
+  return proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3729,61 +4029,71 @@ proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgSubmitProposal.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setGroupPolicyAddress(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.addProposers(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMetadata(value);
-      break;
-    case 4:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.addMessages(value);
-      break;
-    case 5:
-      var value = /** @type {!proto.cosmos.group.v1.Exec} */ (reader.readEnum());
-      msg.setExec(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTitle(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSummary(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setGroupPolicyAddress(value)
+        break
+      case 2:
+        var value = /** @type {string} */ (reader.readString())
+        msg.addProposers(value)
+        break
+      case 3:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setMetadata(value)
+        break
+      case 4:
+        var value = new google_protobuf_any_pb.Any()
+        reader.readMessage(
+          value,
+          google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+        )
+        msg.addMessages(value)
+        break
+      case 5:
+        var value = /** @type {!proto.cosmos.group.v1.Exec} */ (
+          reader.readEnum()
+        )
+        msg.setExec(value)
+        break
+      case 6:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setTitle(value)
+        break
+      case 7:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setSummary(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgSubmitProposal.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgSubmitProposal.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3792,280 +4102,284 @@ proto.cosmos.group.v1.MsgSubmitProposal.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgSubmitProposal.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getGroupPolicyAddress();
+proto.cosmos.group.v1.MsgSubmitProposal.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getGroupPolicyAddress()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getProposersList();
+  f = message.getProposersList()
   if (f.length > 0) {
-    writer.writeRepeatedString(
-      2,
-      f
-    );
+    writer.writeRepeatedString(2, f)
   }
-  f = message.getMetadata();
+  f = message.getMetadata()
   if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
+    writer.writeString(3, f)
   }
-  f = message.getMessagesList();
+  f = message.getMessagesList()
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       4,
       f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
+      google_protobuf_any_pb.Any.serializeBinaryToWriter,
+    )
   }
-  f = message.getExec();
+  f = message.getExec()
   if (f !== 0.0) {
-    writer.writeEnum(
-      5,
-      f
-    );
+    writer.writeEnum(5, f)
   }
-  f = message.getTitle();
+  f = message.getTitle()
   if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
+    writer.writeString(6, f)
   }
-  f = message.getSummary();
+  f = message.getSummary()
   if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
+    writer.writeString(7, f)
   }
-};
-
+}
 
 /**
  * optional string group_policy_address = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getGroupPolicyAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getGroupPolicyAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setGroupPolicyAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setGroupPolicyAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * repeated string proposers = 2;
  * @return {!Array<string>}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getProposersList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getProposersList =
+  function () {
+    return /** @type {!Array<string>} */ (
+      jspb.Message.getRepeatedField(this, 2)
+    )
+  }
 
 /**
  * @param {!Array<string>} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setProposersList = function(value) {
-  return jspb.Message.setField(this, 2, value || []);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setProposersList = function (
+  value,
+) {
+  return jspb.Message.setField(this, 2, value || [])
+}
 
 /**
  * @param {string} value
  * @param {number=} opt_index
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.addProposers = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.addProposers = function (
+  value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index)
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.clearProposersList = function() {
-  return this.setProposersList([]);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.clearProposersList =
+  function () {
+    return this.setProposersList([])
+  }
 
 /**
  * optional string metadata = 3;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getMetadata = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setMetadata = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 3, value)
+}
 
 /**
  * repeated google.protobuf.Any messages = 4;
  * @return {!Array<!proto.google.protobuf.Any>}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getMessagesList = function() {
-  return /** @type{!Array<!proto.google.protobuf.Any>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 4));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getMessagesList =
+  function () {
+    return /** @type{!Array<!proto.google.protobuf.Any>} */ (
+      jspb.Message.getRepeatedWrapperField(this, google_protobuf_any_pb.Any, 4)
+    )
+  }
 
 /**
  * @param {!Array<!proto.google.protobuf.Any>} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
-*/
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setMessagesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 4, value);
-};
-
+ */
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setMessagesList = function (
+  value,
+) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value)
+}
 
 /**
  * @param {!proto.google.protobuf.Any=} opt_value
  * @param {number=} opt_index
  * @return {!proto.google.protobuf.Any}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.addMessages = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.google.protobuf.Any, opt_index);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.addMessages = function (
+  opt_value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    4,
+    opt_value,
+    proto.google.protobuf.Any,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.clearMessagesList = function() {
-  return this.setMessagesList([]);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.clearMessagesList =
+  function () {
+    return this.setMessagesList([])
+  }
 
 /**
  * optional Exec exec = 5;
  * @return {!proto.cosmos.group.v1.Exec}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getExec = function() {
-  return /** @type {!proto.cosmos.group.v1.Exec} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getExec = function () {
+  return /** @type {!proto.cosmos.group.v1.Exec} */ (
+    jspb.Message.getFieldWithDefault(this, 5, 0)
+  )
+}
 
 /**
  * @param {!proto.cosmos.group.v1.Exec} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setExec = function(value) {
-  return jspb.Message.setProto3EnumField(this, 5, value);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setExec = function (value) {
+  return jspb.Message.setProto3EnumField(this, 5, value)
+}
 
 /**
  * optional string title = 6;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getTitle = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getTitle = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setTitle = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setTitle = function (value) {
+  return jspb.Message.setProto3StringField(this, 6, value)
+}
 
 /**
  * optional string summary = 7;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.getSummary = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.getSummary = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposal} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposal.prototype.setSummary = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgSubmitProposalResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgSubmitProposalResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgSubmitProposal.prototype.setSummary = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 7, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgSubmitProposalResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgSubmitProposalResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgSubmitProposalResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgSubmitProposalResponse}
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgSubmitProposalResponse;
-  return proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgSubmitProposalResponse()
+  return proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4074,36 +4388,39 @@ proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinary = function(byt
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgSubmitProposalResponse}
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgSubmitProposalResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setProposalId(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setProposalId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgSubmitProposalResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgSubmitProposalResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4112,91 +4429,94 @@ proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getProposalId();
-  if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+proto.cosmos.group.v1.MsgSubmitProposalResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getProposalId()
+    if (f !== 0) {
+      writer.writeUint64(1, f)
+    }
   }
-};
-
 
 /**
  * optional uint64 proposal_id = 1;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.getProposalId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.getProposalId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgSubmitProposalResponse} returns this
  */
-proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.setProposalId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.group.v1.MsgSubmitProposalResponse.prototype.setProposalId =
+  function (value) {
+    return jspb.Message.setProto3IntField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgWithdrawProposal.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgWithdrawProposal.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgWithdrawProposal} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgWithdrawProposal.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    address: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgWithdrawProposal.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgWithdrawProposal.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgWithdrawProposal} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgWithdrawProposal.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        address: jspb.Message.getFieldWithDefault(msg, 2, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgWithdrawProposal}
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgWithdrawProposal;
-  return proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgWithdrawProposal()
+  return proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4205,40 +4525,43 @@ proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgWithdrawProposal}
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgWithdrawProposal.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setProposalId(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setProposalId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgWithdrawProposal.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposal.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgWithdrawProposal.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4247,115 +4570,117 @@ proto.cosmos.group.v1.MsgWithdrawProposal.prototype.serializeBinary = function()
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getProposalId();
+proto.cosmos.group.v1.MsgWithdrawProposal.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getProposalId()
   if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+    writer.writeUint64(1, f)
   }
-  f = message.getAddress();
+  f = message.getAddress()
   if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
+    writer.writeString(2, f)
   }
-};
-
+}
 
 /**
  * optional uint64 proposal_id = 1;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.prototype.getProposalId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposal.prototype.getProposalId =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgWithdrawProposal} returns this
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.prototype.setProposalId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposal.prototype.setProposalId = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 1, value)
+}
 
 /**
  * optional string address = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposal.prototype.getAddress = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgWithdrawProposal} returns this
  */
-proto.cosmos.group.v1.MsgWithdrawProposal.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgWithdrawProposalResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgWithdrawProposalResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgWithdrawProposal.prototype.setAddress = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgWithdrawProposalResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.group.v1.MsgWithdrawProposalResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgWithdrawProposalResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgWithdrawProposalResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgWithdrawProposalResponse}
  */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgWithdrawProposalResponse;
-  return proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgWithdrawProposalResponse()
+  return proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4364,32 +4689,35 @@ proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgWithdrawProposalResponse}
  */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgWithdrawProposalResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgWithdrawProposalResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgWithdrawProposalResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgWithdrawProposalResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4398,69 +4726,66 @@ proto.cosmos.group.v1.MsgWithdrawProposalResponse.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgWithdrawProposalResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.group.v1.MsgWithdrawProposalResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgVote.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgVote.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgVote} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgVote.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    voter: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    option: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    metadata: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    exec: jspb.Message.getFieldWithDefault(msg, 5, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgVote.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgVote.toObject(opt_includeInstance, this)
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgVote} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgVote.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        voter: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        option: jspb.Message.getFieldWithDefault(msg, 3, 0),
+        metadata: jspb.Message.getFieldWithDefault(msg, 4, ''),
+        exec: jspb.Message.getFieldWithDefault(msg, 5, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgVote}
  */
-proto.cosmos.group.v1.MsgVote.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgVote;
-  return proto.cosmos.group.v1.MsgVote.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgVote.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgVote()
+  return proto.cosmos.group.v1.MsgVote.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4469,52 +4794,57 @@ proto.cosmos.group.v1.MsgVote.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgVote}
  */
-proto.cosmos.group.v1.MsgVote.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgVote.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setProposalId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setVoter(value);
-      break;
-    case 3:
-      var value = /** @type {!proto.cosmos.group.v1.VoteOption} */ (reader.readEnum());
-      msg.setOption(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMetadata(value);
-      break;
-    case 5:
-      var value = /** @type {!proto.cosmos.group.v1.Exec} */ (reader.readEnum());
-      msg.setExec(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint64())
+        msg.setProposalId(value)
+        break
+      case 2:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setVoter(value)
+        break
+      case 3:
+        var value = /** @type {!proto.cosmos.group.v1.VoteOption} */ (
+          reader.readEnum()
+        )
+        msg.setOption(value)
+        break
+      case 4:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setMetadata(value)
+        break
+      case 5:
+        var value = /** @type {!proto.cosmos.group.v1.Exec} */ (
+          reader.readEnum()
+        )
+        msg.setExec(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgVote.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgVote.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.group.v1.MsgVote.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4523,190 +4853,175 @@ proto.cosmos.group.v1.MsgVote.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgVote.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getProposalId();
+proto.cosmos.group.v1.MsgVote.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getProposalId()
   if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+    writer.writeUint64(1, f)
   }
-  f = message.getVoter();
+  f = message.getVoter()
   if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
+    writer.writeString(2, f)
   }
-  f = message.getOption();
+  f = message.getOption()
   if (f !== 0.0) {
-    writer.writeEnum(
-      3,
-      f
-    );
+    writer.writeEnum(3, f)
   }
-  f = message.getMetadata();
+  f = message.getMetadata()
   if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
+    writer.writeString(4, f)
   }
-  f = message.getExec();
+  f = message.getExec()
   if (f !== 0.0) {
-    writer.writeEnum(
-      5,
-      f
-    );
+    writer.writeEnum(5, f)
   }
-};
-
+}
 
 /**
  * optional uint64 proposal_id = 1;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgVote.prototype.getProposalId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.getProposalId = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgVote} returns this
  */
-proto.cosmos.group.v1.MsgVote.prototype.setProposalId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.setProposalId = function (value) {
+  return jspb.Message.setProto3IntField(this, 1, value)
+}
 
 /**
  * optional string voter = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgVote.prototype.getVoter = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.getVoter = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgVote} returns this
  */
-proto.cosmos.group.v1.MsgVote.prototype.setVoter = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.setVoter = function (value) {
+  return jspb.Message.setProto3StringField(this, 2, value)
+}
 
 /**
  * optional VoteOption option = 3;
  * @return {!proto.cosmos.group.v1.VoteOption}
  */
-proto.cosmos.group.v1.MsgVote.prototype.getOption = function() {
-  return /** @type {!proto.cosmos.group.v1.VoteOption} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.getOption = function () {
+  return /** @type {!proto.cosmos.group.v1.VoteOption} */ (
+    jspb.Message.getFieldWithDefault(this, 3, 0)
+  )
+}
 
 /**
  * @param {!proto.cosmos.group.v1.VoteOption} value
  * @return {!proto.cosmos.group.v1.MsgVote} returns this
  */
-proto.cosmos.group.v1.MsgVote.prototype.setOption = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.setOption = function (value) {
+  return jspb.Message.setProto3EnumField(this, 3, value)
+}
 
 /**
  * optional string metadata = 4;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgVote.prototype.getMetadata = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.getMetadata = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgVote} returns this
  */
-proto.cosmos.group.v1.MsgVote.prototype.setMetadata = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.setMetadata = function (value) {
+  return jspb.Message.setProto3StringField(this, 4, value)
+}
 
 /**
  * optional Exec exec = 5;
  * @return {!proto.cosmos.group.v1.Exec}
  */
-proto.cosmos.group.v1.MsgVote.prototype.getExec = function() {
-  return /** @type {!proto.cosmos.group.v1.Exec} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
+proto.cosmos.group.v1.MsgVote.prototype.getExec = function () {
+  return /** @type {!proto.cosmos.group.v1.Exec} */ (
+    jspb.Message.getFieldWithDefault(this, 5, 0)
+  )
+}
 
 /**
  * @param {!proto.cosmos.group.v1.Exec} value
  * @return {!proto.cosmos.group.v1.MsgVote} returns this
  */
-proto.cosmos.group.v1.MsgVote.prototype.setExec = function(value) {
-  return jspb.Message.setProto3EnumField(this, 5, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgVoteResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgVoteResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgVoteResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgVoteResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgVote.prototype.setExec = function (value) {
+  return jspb.Message.setProto3EnumField(this, 5, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgVoteResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgVoteResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgVoteResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgVoteResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgVoteResponse}
  */
-proto.cosmos.group.v1.MsgVoteResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgVoteResponse;
-  return proto.cosmos.group.v1.MsgVoteResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgVoteResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgVoteResponse()
+  return proto.cosmos.group.v1.MsgVoteResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4715,32 +5030,33 @@ proto.cosmos.group.v1.MsgVoteResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgVoteResponse}
  */
-proto.cosmos.group.v1.MsgVoteResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgVoteResponse.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    default:
-      reader.skipField();
-      break;
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgVoteResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgVoteResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgVoteResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.group.v1.MsgVoteResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4749,66 +5065,65 @@ proto.cosmos.group.v1.MsgVoteResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgVoteResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgExec.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgExec.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgExec} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgExec.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    executor: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgVoteResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgExec.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgExec.toObject(opt_includeInstance, this)
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgExec} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgExec.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        proposalId: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        executor: jspb.Message.getFieldWithDefault(msg, 2, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgExec}
  */
-proto.cosmos.group.v1.MsgExec.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgExec;
-  return proto.cosmos.group.v1.MsgExec.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgExec.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgExec()
+  return proto.cosmos.group.v1.MsgExec.deserializeBinaryFromReader(msg, reader)
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4817,40 +5132,41 @@ proto.cosmos.group.v1.MsgExec.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgExec}
  */
-proto.cosmos.group.v1.MsgExec.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgExec.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setProposalId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setExecutor(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint64())
+        msg.setProposalId(value)
+        break
+      case 2:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setExecutor(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgExec.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgExec.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgExec.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.group.v1.MsgExec.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4859,115 +5175,113 @@ proto.cosmos.group.v1.MsgExec.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgExec.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getProposalId();
+proto.cosmos.group.v1.MsgExec.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getProposalId()
   if (f !== 0) {
-    writer.writeUint64(
-      1,
-      f
-    );
+    writer.writeUint64(1, f)
   }
-  f = message.getExecutor();
+  f = message.getExecutor()
   if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
+    writer.writeString(2, f)
   }
-};
-
+}
 
 /**
  * optional uint64 proposal_id = 1;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgExec.prototype.getProposalId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.group.v1.MsgExec.prototype.getProposalId = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgExec} returns this
  */
-proto.cosmos.group.v1.MsgExec.prototype.setProposalId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgExec.prototype.setProposalId = function (value) {
+  return jspb.Message.setProto3IntField(this, 1, value)
+}
 
 /**
  * optional string executor = 2;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgExec.prototype.getExecutor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.group.v1.MsgExec.prototype.getExecutor = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgExec} returns this
  */
-proto.cosmos.group.v1.MsgExec.prototype.setExecutor = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgExecResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgExecResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgExecResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgExecResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    result: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgExec.prototype.setExecutor = function (value) {
+  return jspb.Message.setProto3StringField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgExecResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgExecResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgExecResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgExecResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        result: jspb.Message.getFieldWithDefault(msg, 2, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgExecResponse}
  */
-proto.cosmos.group.v1.MsgExecResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgExecResponse;
-  return proto.cosmos.group.v1.MsgExecResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgExecResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgExecResponse()
+  return proto.cosmos.group.v1.MsgExecResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4976,36 +5290,40 @@ proto.cosmos.group.v1.MsgExecResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgExecResponse}
  */
-proto.cosmos.group.v1.MsgExecResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgExecResponse.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 2:
-      var value = /** @type {!proto.cosmos.group.v1.ProposalExecutorResult} */ (reader.readEnum());
-      msg.setResult(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 2:
+        var value =
+          /** @type {!proto.cosmos.group.v1.ProposalExecutorResult} */ (
+            reader.readEnum()
+          )
+        msg.setResult(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgExecResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgExecResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgExecResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.group.v1.MsgExecResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5014,91 +5332,96 @@ proto.cosmos.group.v1.MsgExecResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgExecResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getResult();
+proto.cosmos.group.v1.MsgExecResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getResult()
   if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
+    writer.writeEnum(2, f)
   }
-};
-
+}
 
 /**
  * optional ProposalExecutorResult result = 2;
  * @return {!proto.cosmos.group.v1.ProposalExecutorResult}
  */
-proto.cosmos.group.v1.MsgExecResponse.prototype.getResult = function() {
-  return /** @type {!proto.cosmos.group.v1.ProposalExecutorResult} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.group.v1.MsgExecResponse.prototype.getResult = function () {
+  return /** @type {!proto.cosmos.group.v1.ProposalExecutorResult} */ (
+    jspb.Message.getFieldWithDefault(this, 2, 0)
+  )
+}
 
 /**
  * @param {!proto.cosmos.group.v1.ProposalExecutorResult} value
  * @return {!proto.cosmos.group.v1.MsgExecResponse} returns this
  */
-proto.cosmos.group.v1.MsgExecResponse.prototype.setResult = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgLeaveGroup.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgLeaveGroup.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgLeaveGroup} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgLeaveGroup.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    groupId: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgExecResponse.prototype.setResult = function (value) {
+  return jspb.Message.setProto3EnumField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgLeaveGroup.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgLeaveGroup.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgLeaveGroup} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgLeaveGroup.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        groupId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgLeaveGroup}
  */
-proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgLeaveGroup;
-  return proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgLeaveGroup()
+  return proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5107,40 +5430,41 @@ proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgLeaveGroup}
  */
-proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.group.v1.MsgLeaveGroup.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setGroupId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setAddress(value)
+        break
+      case 2:
+        var value = /** @type {number} */ (reader.readUint64())
+        msg.setGroupId(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgLeaveGroup.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgLeaveGroup.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgLeaveGroup.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.group.v1.MsgLeaveGroup.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5149,115 +5473,113 @@ proto.cosmos.group.v1.MsgLeaveGroup.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgLeaveGroup.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
+proto.cosmos.group.v1.MsgLeaveGroup.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getAddress()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getGroupId();
+  f = message.getGroupId()
   if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
+    writer.writeUint64(2, f)
   }
-};
-
+}
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.group.v1.MsgLeaveGroup.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.group.v1.MsgLeaveGroup.prototype.getAddress = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.group.v1.MsgLeaveGroup} returns this
  */
-proto.cosmos.group.v1.MsgLeaveGroup.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.group.v1.MsgLeaveGroup.prototype.setAddress = function (value) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional uint64 group_id = 2;
  * @return {number}
  */
-proto.cosmos.group.v1.MsgLeaveGroup.prototype.getGroupId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.group.v1.MsgLeaveGroup.prototype.getGroupId = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.group.v1.MsgLeaveGroup} returns this
  */
-proto.cosmos.group.v1.MsgLeaveGroup.prototype.setGroupId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.group.v1.MsgLeaveGroupResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.group.v1.MsgLeaveGroupResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.group.v1.MsgLeaveGroupResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.group.v1.MsgLeaveGroupResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.group.v1.MsgLeaveGroup.prototype.setGroupId = function (value) {
+  return jspb.Message.setProto3IntField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.group.v1.MsgLeaveGroupResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.group.v1.MsgLeaveGroupResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.group.v1.MsgLeaveGroupResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.group.v1.MsgLeaveGroupResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.group.v1.MsgLeaveGroupResponse}
  */
-proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.group.v1.MsgLeaveGroupResponse;
-  return proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.group.v1.MsgLeaveGroupResponse()
+  return proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5266,32 +5588,35 @@ proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinary = function(bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.group.v1.MsgLeaveGroupResponse}
  */
-proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.group.v1.MsgLeaveGroupResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.group.v1.MsgLeaveGroupResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.group.v1.MsgLeaveGroupResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.group.v1.MsgLeaveGroupResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.group.v1.MsgLeaveGroupResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5300,17 +5625,19 @@ proto.cosmos.group.v1.MsgLeaveGroupResponse.prototype.serializeBinary = function
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.group.v1.MsgLeaveGroupResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
+proto.cosmos.group.v1.MsgLeaveGroupResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+}
 
 /**
  * @enum {number}
  */
 proto.cosmos.group.v1.Exec = {
   EXEC_UNSPECIFIED: 0,
-  EXEC_TRY: 1
-};
+  EXEC_TRY: 1,
+}
 
-goog.object.extend(exports, proto.cosmos.group.v1);
+goog.object.extend(exports, proto.cosmos.group.v1)

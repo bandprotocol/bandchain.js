@@ -21,7 +21,7 @@ jobs:
 
       - name: Cache node_modules
         id: bandchainjs-node-modules-cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ./node_modules
           key: ${{ runner.OS }}-bandchainjs-test-${{ hashFiles('**/yarn.lock') }}-node-v${{ matrix.node-version }}

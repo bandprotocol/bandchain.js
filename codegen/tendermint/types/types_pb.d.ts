@@ -247,16 +247,6 @@ export class Vote extends jspb.Message {
   getSignature_asB64(): string;
   setSignature(value: Uint8Array | string): void;
 
-  getExtension$(): Uint8Array | string;
-  getExtension_asU8(): Uint8Array;
-  getExtension_asB64(): string;
-  setExtension$(value: Uint8Array | string): void;
-
-  getExtensionSignature(): Uint8Array | string;
-  getExtensionSignature_asU8(): Uint8Array;
-  getExtensionSignature_asB64(): string;
-  setExtensionSignature(value: Uint8Array | string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Vote.AsObject;
   static toObject(includeInstance: boolean, msg: Vote): Vote.AsObject;
@@ -277,8 +267,6 @@ export namespace Vote {
     validatorAddress: Uint8Array | string,
     validatorIndex: number,
     signature: Uint8Array | string,
-    extension: Uint8Array | string,
-    extensionSignature: Uint8Array | string,
   }
 }
 
@@ -319,8 +307,8 @@ export namespace Commit {
 }
 
 export class CommitSig extends jspb.Message {
-  getBlockIdFlag(): tendermint_types_validator_pb.BlockIDFlagMap[keyof tendermint_types_validator_pb.BlockIDFlagMap];
-  setBlockIdFlag(value: tendermint_types_validator_pb.BlockIDFlagMap[keyof tendermint_types_validator_pb.BlockIDFlagMap]): void;
+  getBlockIdFlag(): BlockIDFlagMap[keyof BlockIDFlagMap];
+  setBlockIdFlag(value: BlockIDFlagMap[keyof BlockIDFlagMap]): void;
 
   getValidatorAddress(): Uint8Array | string;
   getValidatorAddress_asU8(): Uint8Array;
@@ -349,96 +337,10 @@ export class CommitSig extends jspb.Message {
 
 export namespace CommitSig {
   export type AsObject = {
-    blockIdFlag: tendermint_types_validator_pb.BlockIDFlagMap[keyof tendermint_types_validator_pb.BlockIDFlagMap],
+    blockIdFlag: BlockIDFlagMap[keyof BlockIDFlagMap],
     validatorAddress: Uint8Array | string,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     signature: Uint8Array | string,
-  }
-}
-
-export class ExtendedCommit extends jspb.Message {
-  getHeight(): number;
-  setHeight(value: number): void;
-
-  getRound(): number;
-  setRound(value: number): void;
-
-  hasBlockId(): boolean;
-  clearBlockId(): void;
-  getBlockId(): BlockID | undefined;
-  setBlockId(value?: BlockID): void;
-
-  clearExtendedSignaturesList(): void;
-  getExtendedSignaturesList(): Array<ExtendedCommitSig>;
-  setExtendedSignaturesList(value: Array<ExtendedCommitSig>): void;
-  addExtendedSignatures(value?: ExtendedCommitSig, index?: number): ExtendedCommitSig;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExtendedCommit.AsObject;
-  static toObject(includeInstance: boolean, msg: ExtendedCommit): ExtendedCommit.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ExtendedCommit, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExtendedCommit;
-  static deserializeBinaryFromReader(message: ExtendedCommit, reader: jspb.BinaryReader): ExtendedCommit;
-}
-
-export namespace ExtendedCommit {
-  export type AsObject = {
-    height: number,
-    round: number,
-    blockId?: BlockID.AsObject,
-    extendedSignaturesList: Array<ExtendedCommitSig.AsObject>,
-  }
-}
-
-export class ExtendedCommitSig extends jspb.Message {
-  getBlockIdFlag(): tendermint_types_validator_pb.BlockIDFlagMap[keyof tendermint_types_validator_pb.BlockIDFlagMap];
-  setBlockIdFlag(value: tendermint_types_validator_pb.BlockIDFlagMap[keyof tendermint_types_validator_pb.BlockIDFlagMap]): void;
-
-  getValidatorAddress(): Uint8Array | string;
-  getValidatorAddress_asU8(): Uint8Array;
-  getValidatorAddress_asB64(): string;
-  setValidatorAddress(value: Uint8Array | string): void;
-
-  hasTimestamp(): boolean;
-  clearTimestamp(): void;
-  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
-
-  getSignature(): Uint8Array | string;
-  getSignature_asU8(): Uint8Array;
-  getSignature_asB64(): string;
-  setSignature(value: Uint8Array | string): void;
-
-  getExtension$(): Uint8Array | string;
-  getExtension_asU8(): Uint8Array;
-  getExtension_asB64(): string;
-  setExtension$(value: Uint8Array | string): void;
-
-  getExtensionSignature(): Uint8Array | string;
-  getExtensionSignature_asU8(): Uint8Array;
-  getExtensionSignature_asB64(): string;
-  setExtensionSignature(value: Uint8Array | string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExtendedCommitSig.AsObject;
-  static toObject(includeInstance: boolean, msg: ExtendedCommitSig): ExtendedCommitSig.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ExtendedCommitSig, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExtendedCommitSig;
-  static deserializeBinaryFromReader(message: ExtendedCommitSig, reader: jspb.BinaryReader): ExtendedCommitSig;
-}
-
-export namespace ExtendedCommitSig {
-  export type AsObject = {
-    blockIdFlag: tendermint_types_validator_pb.BlockIDFlagMap[keyof tendermint_types_validator_pb.BlockIDFlagMap],
-    validatorAddress: Uint8Array | string,
-    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    signature: Uint8Array | string,
-    extension: Uint8Array | string,
-    extensionSignature: Uint8Array | string,
   }
 }
 
@@ -617,6 +519,15 @@ export namespace TxProof {
     proof?: tendermint_crypto_proof_pb.Proof.AsObject,
   }
 }
+
+export interface BlockIDFlagMap {
+  BLOCK_ID_FLAG_UNKNOWN: 0;
+  BLOCK_ID_FLAG_ABSENT: 1;
+  BLOCK_ID_FLAG_COMMIT: 2;
+  BLOCK_ID_FLAG_NIL: 3;
+}
+
+export const BlockIDFlag: BlockIDFlagMap;
 
 export interface SignedMsgTypeMap {
   SIGNED_MSG_TYPE_UNKNOWN: 0;

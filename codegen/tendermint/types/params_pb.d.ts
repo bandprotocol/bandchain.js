@@ -26,11 +26,6 @@ export class ConsensusParams extends jspb.Message {
   getVersion(): VersionParams | undefined;
   setVersion(value?: VersionParams): void;
 
-  hasAbci(): boolean;
-  clearAbci(): void;
-  getAbci(): ABCIParams | undefined;
-  setAbci(value?: ABCIParams): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConsensusParams.AsObject;
   static toObject(includeInstance: boolean, msg: ConsensusParams): ConsensusParams.AsObject;
@@ -47,7 +42,6 @@ export namespace ConsensusParams {
     evidence?: EvidenceParams.AsObject,
     validator?: ValidatorParams.AsObject,
     version?: VersionParams.AsObject,
-    abci?: ABCIParams.AsObject,
   }
 }
 
@@ -168,26 +162,6 @@ export namespace HashedParams {
   export type AsObject = {
     blockMaxBytes: number,
     blockMaxGas: number,
-  }
-}
-
-export class ABCIParams extends jspb.Message {
-  getVoteExtensionsEnableHeight(): number;
-  setVoteExtensionsEnableHeight(value: number): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ABCIParams.AsObject;
-  static toObject(includeInstance: boolean, msg: ABCIParams): ABCIParams.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ABCIParams, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ABCIParams;
-  static deserializeBinaryFromReader(message: ABCIParams, reader: jspb.BinaryReader): ABCIParams;
-}
-
-export namespace ABCIParams {
-  export type AsObject = {
-    voteExtensionsEnableHeight: number,
   }
 }
 

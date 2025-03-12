@@ -14,5 +14,3 @@ import * as google_protobuf_descriptor_pb from "google-protobuf/google/protobuf/
 
   export const dontOmitempty: jspb.ExtensionFieldInfo<boolean>;
 
-  export const oneofName: jspb.ExtensionFieldInfo<string>;
-

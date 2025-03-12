@@ -11,13 +11,13 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require('google-protobuf');
-var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var jspb = require('google-protobuf')
+var goog = jspb
+var global = Function('return this')()
 
-var google_protobuf_descriptor_pb = require('google-protobuf/google/protobuf/descriptor_pb.js');
-goog.object.extend(proto, google_protobuf_descriptor_pb);
-goog.exportSymbol('proto.cosmos.query.v1.moduleQuerySafe', null, global);
+var google_protobuf_descriptor_pb = require('google-protobuf/google/protobuf/descriptor_pb.js')
+goog.object.extend(proto, google_protobuf_descriptor_pb)
+goog.exportSymbol('proto.cosmos.query.v1.moduleQuerySafe', null, global)
 
 /**
  * A tuple of {field number, class constructor} for the extension
@@ -25,22 +25,25 @@ goog.exportSymbol('proto.cosmos.query.v1.moduleQuerySafe', null, global);
  * @type {!jspb.ExtensionFieldInfo<boolean>}
  */
 proto.cosmos.query.v1.moduleQuerySafe = new jspb.ExtensionFieldInfo(
-    11110001,
-    {moduleQuerySafe: 0},
-    null,
-     /** @type {?function((boolean|undefined),!jspb.Message=): !Object} */ (
-         null),
-    0);
+  11110001,
+  { moduleQuerySafe: 0 },
+  null,
+  /** @type {?function((boolean|undefined),!jspb.Message=): !Object} */ (null),
+  0,
+)
 
-google_protobuf_descriptor_pb.MethodOptions.extensionsBinary[11110001] = new jspb.ExtensionFieldBinaryInfo(
+google_protobuf_descriptor_pb.MethodOptions.extensionsBinary[11110001] =
+  new jspb.ExtensionFieldBinaryInfo(
     proto.cosmos.query.v1.moduleQuerySafe,
     jspb.BinaryReader.prototype.readBool,
     jspb.BinaryWriter.prototype.writeBool,
     undefined,
     undefined,
-    false);
+    false,
+  )
 // This registers the extension field with the extended class, so that
 // toObject() will function correctly.
-google_protobuf_descriptor_pb.MethodOptions.extensions[11110001] = proto.cosmos.query.v1.moduleQuerySafe;
+google_protobuf_descriptor_pb.MethodOptions.extensions[11110001] =
+  proto.cosmos.query.v1.moduleQuerySafe
 
-goog.object.extend(exports, proto.cosmos.query.v1);
+goog.object.extend(exports, proto.cosmos.query.v1)

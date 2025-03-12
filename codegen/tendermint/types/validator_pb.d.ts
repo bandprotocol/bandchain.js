@@ -99,12 +99,3 @@ export namespace SimpleValidator {
   }
 }
 
-export interface BlockIDFlagMap {
-  BLOCK_ID_FLAG_UNKNOWN: 0;
-  BLOCK_ID_FLAG_ABSENT: 1;
-  BLOCK_ID_FLAG_COMMIT: 2;
-  BLOCK_ID_FLAG_NIL: 3;
-}
-
-export const BlockIDFlag: BlockIDFlagMap;
-

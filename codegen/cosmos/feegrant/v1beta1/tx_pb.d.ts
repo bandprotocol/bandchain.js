@@ -93,39 +93,3 @@ export namespace MsgRevokeAllowanceResponse {
   }
 }
 
-export class MsgPruneAllowances extends jspb.Message {
-  getPruner(): string;
-  setPruner(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgPruneAllowances.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgPruneAllowances): MsgPruneAllowances.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgPruneAllowances, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgPruneAllowances;
-  static deserializeBinaryFromReader(message: MsgPruneAllowances, reader: jspb.BinaryReader): MsgPruneAllowances;
-}
-
-export namespace MsgPruneAllowances {
-  export type AsObject = {
-    pruner: string,
-  }
-}
-
-export class MsgPruneAllowancesResponse extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgPruneAllowancesResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgPruneAllowancesResponse): MsgPruneAllowancesResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgPruneAllowancesResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgPruneAllowancesResponse;
-  static deserializeBinaryFromReader(message: MsgPruneAllowancesResponse, reader: jspb.BinaryReader): MsgPruneAllowancesResponse;
-}
-
-export namespace MsgPruneAllowancesResponse {
-  export type AsObject = {
-  }
-}
-

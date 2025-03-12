@@ -11,53 +11,125 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require('google-protobuf');
-var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var jspb = require('google-protobuf')
+var goog = jspb
+var global = Function('return this')()
 
-var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
-goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
-var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
-goog.object.extend(proto, gogoproto_gogo_pb);
-var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
-var cosmos_base_v1beta1_coin_pb = require('../../../cosmos/base/v1beta1/coin_pb.js');
-goog.object.extend(proto, cosmos_base_v1beta1_coin_pb);
-var cosmos_bank_v1beta1_bank_pb = require('../../../cosmos/bank/v1beta1/bank_pb.js');
-goog.object.extend(proto, cosmos_bank_v1beta1_bank_pb);
-var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js');
-goog.object.extend(proto, cosmos_proto_cosmos_pb);
-var cosmos_query_v1_query_pb = require('../../../cosmos/query/v1/query_pb.js');
-goog.object.extend(proto, cosmos_query_v1_query_pb);
-var amino_amino_pb = require('../../../amino/amino_pb.js');
-goog.object.extend(proto, amino_amino_pb);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.DenomOwner', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryAllBalancesRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryAllBalancesResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryBalanceRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryBalanceResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryParamsRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryParamsResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySendEnabledRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySendEnabledResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySupplyOfRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QuerySupplyOfResponse', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest', null, global);
-goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse', null, global);
+var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js')
+goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb)
+var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js')
+goog.object.extend(proto, gogoproto_gogo_pb)
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js')
+goog.object.extend(proto, google_api_annotations_pb)
+var cosmos_base_v1beta1_coin_pb = require('../../../cosmos/base/v1beta1/coin_pb.js')
+goog.object.extend(proto, cosmos_base_v1beta1_coin_pb)
+var cosmos_bank_v1beta1_bank_pb = require('../../../cosmos/bank/v1beta1/bank_pb.js')
+goog.object.extend(proto, cosmos_bank_v1beta1_bank_pb)
+var cosmos_proto_cosmos_pb = require('../../../cosmos_proto/cosmos_pb.js')
+goog.object.extend(proto, cosmos_proto_cosmos_pb)
+var cosmos_query_v1_query_pb = require('../../../cosmos/query/v1/query_pb.js')
+goog.object.extend(proto, cosmos_query_v1_query_pb)
+var amino_amino_pb = require('../../../amino/amino_pb.js')
+goog.object.extend(proto, amino_amino_pb)
+goog.exportSymbol('proto.cosmos.bank.v1beta1.DenomOwner', null, global)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryAllBalancesRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryAllBalancesResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryBalanceRequest', null, global)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryBalanceResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryParamsRequest', null, global)
+goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryParamsResponse', null, global)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySendEnabledRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySendEnabledResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySupplyOfRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QuerySupplyOfResponse',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse',
+  null,
+  global,
+)
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -68,16 +140,17 @@ goog.exportSymbol('proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse', null, gl
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryBalanceRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryBalanceRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryBalanceRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryBalanceRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryBalanceRequest';
+  proto.cosmos.bank.v1beta1.QueryBalanceRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryBalanceRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -89,16 +162,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryBalanceResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryBalanceResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryBalanceResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryBalanceResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryBalanceResponse';
+  proto.cosmos.bank.v1beta1.QueryBalanceResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryBalanceResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -110,16 +184,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryAllBalancesRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryAllBalancesRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryAllBalancesRequest';
+  proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryAllBalancesRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -131,16 +206,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryAllBalancesResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryAllBalancesResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryAllBalancesResponse';
+  proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryAllBalancesResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -152,16 +235,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.displayName = 'proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest';
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -173,16 +260,27 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.displayName = 'proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse';
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -194,16 +292,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.displayName = 'proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest';
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -215,16 +319,22 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse = function (
+  opt_data,
+) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.displayName = 'proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse';
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -236,16 +346,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest';
+  proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -257,16 +368,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse';
+  proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -278,16 +397,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySupplyOfRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QuerySupplyOfRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.displayName = 'proto.cosmos.bank.v1beta1.QuerySupplyOfRequest';
+  proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySupplyOfRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -299,16 +419,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySupplyOfResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QuerySupplyOfResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.displayName = 'proto.cosmos.bank.v1beta1.QuerySupplyOfResponse';
+  proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySupplyOfResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -320,16 +441,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryParamsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryParamsRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryParamsRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryParamsRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryParamsRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryParamsRequest';
+  proto.cosmos.bank.v1beta1.QueryParamsRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryParamsRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -341,16 +463,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryParamsResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryParamsResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryParamsResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryParamsResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryParamsResponse';
+  proto.cosmos.bank.v1beta1.QueryParamsResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryParamsResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -362,16 +485,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest';
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -383,16 +510,27 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse';
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -404,16 +542,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest';
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -425,16 +564,20 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse,
+  jspb.Message,
+)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse';
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -446,16 +589,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest';
+  proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -467,16 +611,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.DenomOwner = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.bank.v1beta1.DenomOwner, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse';
+  proto.cosmos.bank.v1beta1.DenomOwner.displayName =
+    'proto.cosmos.bank.v1beta1.DenomOwner'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -488,16 +633,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest, jspb.Message);
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest';
+  proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -509,16 +662,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.DenomOwner = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.DenomOwner, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QuerySendEnabledRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.DenomOwner.displayName = 'proto.cosmos.bank.v1beta1.DenomOwner';
+  proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySendEnabledRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -530,156 +691,89 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse, jspb.Message);
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.bank.v1beta1.QuerySendEnabledResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse';
+  proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.displayName =
+    'proto.cosmos.bank.v1beta1.QuerySendEnabledResponse'
 }
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest';
-}
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.displayName = 'proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse';
-}
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySendEnabledRequest, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.displayName = 'proto.cosmos.bank.v1beta1.QuerySendEnabledRequest';
-}
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.bank.v1beta1.QuerySendEnabledResponse, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.displayName = 'proto.cosmos.bank.v1beta1.QuerySendEnabledResponse';
-}
-
-
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryBalanceRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryBalanceRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    denom: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.bank.v1beta1.QueryBalanceRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryBalanceRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryBalanceRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        denom: jspb.Message.getFieldWithDefault(msg, 2, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceRequest}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryBalanceRequest;
-  return proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryBalanceRequest()
+  return proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -688,40 +782,43 @@ proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceRequest}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setDenom(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryBalanceRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryBalanceRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -730,115 +827,120 @@ proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getDenom()
+    if (f.length > 0) {
+      writer.writeString(2, f)
+    }
   }
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.setAddress = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional string denom = 2;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.getDenom = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryBalanceResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryBalanceResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    balance: (f = msg.getBalance()) && cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.bank.v1beta1.QueryBalanceRequest.prototype.setDenom = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.bank.v1beta1.QueryBalanceResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryBalanceResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryBalanceResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        balance:
+          (f = msg.getBalance()) &&
+          cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceResponse}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryBalanceResponse;
-  return proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryBalanceResponse()
+  return proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -847,37 +949,43 @@ proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceResponse}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_v1beta1_coin_pb.Coin()
+          reader.readMessage(
+            value,
+            cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+          )
+          msg.setBalance(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.setBalance(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryBalanceResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryBalanceResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -886,112 +994,125 @@ proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getBalance();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getBalance()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional cosmos.base.v1beta1.Coin balance = 1;
  * @return {?proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.getBalance = function() {
-  return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.getBalance =
+  function () {
+    return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
+      jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1)
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.v1beta1.Coin|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.setBalance = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.setBalance = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryBalanceResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.clearBalance = function() {
-  return this.setBalance(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.clearBalance =
+  function () {
+    return this.setBalance(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.hasBalance = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryBalanceResponse.prototype.hasBalance =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f),
-    resolveDenom: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryAllBalancesRequest;
-  return proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryAllBalancesRequest()
+  return proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1000,45 +1121,48 @@ proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    case 3:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setResolveDenom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1047,169 +1171,161 @@ proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-  f = message.getResolveDenom();
-  if (f) {
-    writer.writeBool(
-      3,
-      f
-    );
-  }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.setAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 2));
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional bool resolve_denom = 3;
- * @return {boolean}
- */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.getResolveDenom = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesRequest} returns this
- */
-proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.setResolveDenom = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 3, value);
-};
-
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        balancesList: jspb.Message.toObjectList(
+          msg.getBalancesList(),
+          cosmos_base_v1beta1_coin_pb.Coin.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    balancesList: jspb.Message.toObjectList(msg.getBalancesList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryAllBalancesResponse;
-  return proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryAllBalancesResponse()
+    return proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1218,42 +1334,52 @@ proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_v1beta1_coin_pb.Coin()
+          reader.readMessage(
+            value,
+            cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+          )
+          msg.addBalances(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addBalances(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1262,157 +1388,185 @@ proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getBalancesList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getBalancesList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated cosmos.base.v1beta1.Coin balances = 1;
  * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.getBalancesList = function() {
-  return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.getBalancesList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_base_v1beta1_coin_pb.Coin,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.setBalancesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.setBalancesList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.base.v1beta1.Coin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.addBalances = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.addBalances =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.cosmos.base.v1beta1.Coin,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.clearBalancesList = function() {
-  return this.setBalancesList([]);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.clearBalancesList =
+  function () {
+    return this.setBalancesList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryAllBalancesResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryAllBalancesResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest;
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest()
+    return proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1421,41 +1575,48 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinary = func
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1464,144 +1625,161 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.serializeBinar
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.setAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 2));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        balancesList: jspb.Message.toObjectList(
+          msg.getBalancesList(),
+          cosmos_base_v1beta1_coin_pb.Coin.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    balancesList: jspb.Message.toObjectList(msg.getBalancesList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse;
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse()
+    return proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1610,42 +1788,52 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinary = fun
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_v1beta1_coin_pb.Coin()
+          reader.readMessage(
+            value,
+            cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+          )
+          msg.addBalances(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addBalances(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1654,157 +1842,179 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.serializeBina
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getBalancesList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getBalancesList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated cosmos.base.v1beta1.Coin balances = 1;
  * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.getBalancesList = function() {
-  return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.getBalancesList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_base_v1beta1_coin_pb.Coin,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.setBalancesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.setBalancesList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.base.v1beta1.Coin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.addBalances = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.addBalances =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.cosmos.base.v1beta1.Coin,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.clearBalancesList = function() {
-  return this.setBalancesList([]);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.clearBalancesList =
+  function () {
+    return this.setBalancesList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalancesResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {
+          address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+          denom: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    denom: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest;
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg =
+      new proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest()
+    return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1813,40 +2023,43 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinary 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAddress(value)
+          break
+        case 2:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setDenom(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1855,115 +2068,116 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.serializ
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAddress()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getDenom()
+    if (f.length > 0) {
+      writer.writeString(2, f)
+    }
   }
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.getAddress =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.setAddress =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * optional string denom = 2;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.getDenom =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomRequest.prototype.setDenom =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 2, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.toObject =
+    function (includeInstance, msg) {
+      var f,
+        obj = {
+          balance:
+            (f = msg.getBalance()) &&
+            cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f),
+        }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    balance: (f = msg.getBalance()) && cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+      if (includeInstance) {
+        obj.$jspbMessageInstance = msg
+      }
+      return obj
+    }
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse;
-  return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg =
+      new proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse()
+    return proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1972,37 +2186,43 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinary
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_v1beta1_coin_pb.Coin()
+          reader.readMessage(
+            value,
+            cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+          )
+          msg.setBalance(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.setBalance(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2011,110 +2231,123 @@ proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.seriali
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getBalance();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getBalance()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional cosmos.base.v1beta1.Coin balance = 1;
  * @return {?proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.getBalance = function() {
-  return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.getBalance =
+  function () {
+    return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
+      jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1)
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.v1beta1.Coin|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.setBalance = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.setBalance =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.clearBalance = function() {
-  return this.setBalance(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.clearBalance =
+  function () {
+    return this.setBalance(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.hasBalance = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QuerySpendableBalanceByDenomResponse.prototype.hasBalance =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest;
-  return proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest()
+  return proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2123,37 +2356,44 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2162,119 +2402,139 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 1;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        supplyList: jspb.Message.toObjectList(
+          msg.getSupplyList(),
+          cosmos_base_v1beta1_coin_pb.Coin.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    supplyList: jspb.Message.toObjectList(msg.getSupplyList(),
-    cosmos_base_v1beta1_coin_pb.Coin.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse;
-  return proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse()
+    return proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2283,42 +2543,52 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_v1beta1_coin_pb.Coin()
+          reader.readMessage(
+            value,
+            cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+          )
+          msg.addSupply(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.addSupply(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2327,156 +2597,181 @@ proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSupplyList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getSupplyList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated cosmos.base.v1beta1.Coin supply = 1;
  * @return {!Array<!proto.cosmos.base.v1beta1.Coin>}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.getSupplyList = function() {
-  return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.getSupplyList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.base.v1beta1.Coin>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_base_v1beta1_coin_pb.Coin,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.base.v1beta1.Coin>} value
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.setSupplyList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.setSupplyList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.base.v1beta1.Coin=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.addSupply = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.base.v1beta1.Coin, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.addSupply =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.cosmos.base.v1beta1.Coin,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.clearSupplyList = function() {
-  return this.setSupplyList([]);
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.clearSupplyList =
+  function () {
+    return this.setSupplyList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryTotalSupplyResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySupplyOfRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denom: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySupplyOfRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        denom: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySupplyOfRequest;
-  return proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QuerySupplyOfRequest()
+  return proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2485,36 +2780,39 @@ proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setDenom(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2523,90 +2821,97 @@ proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getDenom()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string denom = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.getDenom =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySupplyOfResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    amount: (f = msg.getAmount()) && cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.bank.v1beta1.QuerySupplyOfRequest.prototype.setDenom = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySupplyOfResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        amount:
+          (f = msg.getAmount()) &&
+          cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySupplyOfResponse;
-  return proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QuerySupplyOfResponse()
+  return proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2615,37 +2920,43 @@ proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinary = function(byt
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_v1beta1_coin_pb.Coin()
+          reader.readMessage(
+            value,
+            cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+          )
+          msg.setAmount(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.setAmount(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2654,110 +2965,118 @@ proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAmount();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAmount()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional cosmos.base.v1beta1.Coin amount = 1;
  * @return {?proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.getAmount = function() {
-  return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1));
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.getAmount =
+  function () {
+    return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
+      jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 1)
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.v1beta1.Coin|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.setAmount = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.setAmount = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QuerySupplyOfResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.clearAmount = function() {
-  return this.setAmount(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.clearAmount =
+  function () {
+    return this.setAmount(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.hasAmount = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QuerySupplyOfResponse.prototype.hasAmount =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryParamsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryParamsRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryParamsRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryParamsRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryParamsRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.bank.v1beta1.QueryParamsRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryParamsRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryParamsRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {}
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryParamsRequest}
  */
-proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryParamsRequest;
-  return proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryParamsRequest()
+  return proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2766,32 +3085,35 @@ proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinary = function(bytes)
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryParamsRequest}
  */
-proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryParamsRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryParamsRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryParamsRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryParamsRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryParamsRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2800,65 +3122,75 @@ proto.cosmos.bank.v1beta1.QueryParamsRequest.prototype.serializeBinary = functio
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryParamsRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryParamsRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryParamsResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryParamsResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    params: (f = msg.getParams()) && cosmos_bank_v1beta1_bank_pb.Params.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.bank.v1beta1.QueryParamsResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryParamsResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryParamsResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        params:
+          (f = msg.getParams()) &&
+          cosmos_bank_v1beta1_bank_pb.Params.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryParamsResponse}
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryParamsResponse;
-  return proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryParamsResponse()
+  return proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2867,37 +3199,43 @@ proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryParamsResponse}
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryParamsResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_bank_v1beta1_bank_pb.Params()
+          reader.readMessage(
+            value,
+            cosmos_bank_v1beta1_bank_pb.Params.deserializeBinaryFromReader,
+          )
+          msg.setParams(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_bank_v1beta1_bank_pb.Params;
-      reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.Params.deserializeBinaryFromReader);
-      msg.setParams(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryParamsResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryParamsResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2906,110 +3244,123 @@ proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getParams();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_bank_v1beta1_bank_pb.Params.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryParamsResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getParams()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_bank_v1beta1_bank_pb.Params.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional Params params = 1;
  * @return {?proto.cosmos.bank.v1beta1.Params}
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.getParams = function() {
-  return /** @type{?proto.cosmos.bank.v1beta1.Params} */ (
-    jspb.Message.getWrapperField(this, cosmos_bank_v1beta1_bank_pb.Params, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.getParams =
+  function () {
+    return /** @type{?proto.cosmos.bank.v1beta1.Params} */ (
+      jspb.Message.getWrapperField(this, cosmos_bank_v1beta1_bank_pb.Params, 1)
+    )
+  }
 
 /**
  * @param {?proto.cosmos.bank.v1beta1.Params|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryParamsResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.setParams = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.setParams = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryParamsResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.clearParams = function() {
-  return this.setParams(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.clearParams =
+  function () {
+    return this.setParams(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.hasParams = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryParamsResponse.prototype.hasParams =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest;
-  return proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest()
+    return proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3018,37 +3369,44 @@ proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3057,119 +3415,139 @@ proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 1;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        metadatasList: jspb.Message.toObjectList(
+          msg.getMetadatasList(),
+          cosmos_bank_v1beta1_bank_pb.Metadata.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    metadatasList: jspb.Message.toObjectList(msg.getMetadatasList(),
-    cosmos_bank_v1beta1_bank_pb.Metadata.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse;
-  return proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse()
+    return proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3178,42 +3556,52 @@ proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinary = functi
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_bank_v1beta1_bank_pb.Metadata()
+          reader.readMessage(
+            value,
+            cosmos_bank_v1beta1_bank_pb.Metadata.deserializeBinaryFromReader,
+          )
+          msg.addMetadatas(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_bank_v1beta1_bank_pb.Metadata;
-      reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.Metadata.deserializeBinaryFromReader);
-      msg.addMetadatas(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3222,156 +3610,179 @@ proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.serializeBinary 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getMetadatasList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      cosmos_bank_v1beta1_bank_pb.Metadata.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getMetadatasList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        cosmos_bank_v1beta1_bank_pb.Metadata.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated Metadata metadatas = 1;
  * @return {!Array<!proto.cosmos.bank.v1beta1.Metadata>}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.getMetadatasList = function() {
-  return /** @type{!Array<!proto.cosmos.bank.v1beta1.Metadata>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_bank_v1beta1_bank_pb.Metadata, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.getMetadatasList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.bank.v1beta1.Metadata>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_bank_v1beta1_bank_pb.Metadata,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.bank.v1beta1.Metadata>} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.setMetadatasList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.setMetadatasList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.bank.v1beta1.Metadata=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.bank.v1beta1.Metadata}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.addMetadatas = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.bank.v1beta1.Metadata, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.addMetadatas =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.cosmos.bank.v1beta1.Metadata,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.clearMetadatasList = function() {
-  return this.setMetadatasList([]);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.clearMetadatasList =
+  function () {
+    return this.setMetadatasList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryDenomsMetadataResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        denom: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denom: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest;
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest()
+    return proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3380,36 +3791,39 @@ proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinary = function
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setDenom(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3418,90 +3832,95 @@ proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.serializeBinary = 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getDenom()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string denom = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.getDenom =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataRequest.prototype.setDenom =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        metadata:
+          (f = msg.getMetadata()) &&
+          cosmos_bank_v1beta1_bank_pb.Metadata.toObject(includeInstance, f),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    metadata: (f = msg.getMetadata()) && cosmos_bank_v1beta1_bank_pb.Metadata.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse;
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse()
+    return proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3510,37 +3929,43 @@ proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinary = functio
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_bank_v1beta1_bank_pb.Metadata()
+          reader.readMessage(
+            value,
+            cosmos_bank_v1beta1_bank_pb.Metadata.deserializeBinaryFromReader,
+          )
+          msg.setMetadata(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_bank_v1beta1_bank_pb.Metadata;
-      reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.Metadata.deserializeBinaryFromReader);
-      msg.setMetadata(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3549,392 +3974,128 @@ proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.serializeBinary =
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getMetadata();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_bank_v1beta1_bank_pb.Metadata.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getMetadata()
+    if (f != null) {
+      writer.writeMessage(
+        1,
+        f,
+        cosmos_bank_v1beta1_bank_pb.Metadata.serializeBinaryToWriter,
+      )
+    }
   }
-};
-
 
 /**
  * optional Metadata metadata = 1;
  * @return {?proto.cosmos.bank.v1beta1.Metadata}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.getMetadata = function() {
-  return /** @type{?proto.cosmos.bank.v1beta1.Metadata} */ (
-    jspb.Message.getWrapperField(this, cosmos_bank_v1beta1_bank_pb.Metadata, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.getMetadata =
+  function () {
+    return /** @type{?proto.cosmos.bank.v1beta1.Metadata} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_bank_v1beta1_bank_pb.Metadata,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.bank.v1beta1.Metadata|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.setMetadata = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.setMetadata =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 1, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.clearMetadata = function() {
-  return this.setMetadata(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.clearMetadata =
+  function () {
+    return this.setMetadata(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.hasMetadata = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryDenomMetadataResponse.prototype.hasMetadata =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        denom: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denom: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest;
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string denom = 1;
- * @return {string}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest} returns this
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    metadata: (f = msg.getMetadata()) && cosmos_bank_v1beta1_bank_pb.Metadata.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse;
-  return proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_bank_v1beta1_bank_pb.Metadata;
-      reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.Metadata.deserializeBinaryFromReader);
-      msg.setMetadata(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getMetadata();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      cosmos_bank_v1beta1_bank_pb.Metadata.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional Metadata metadata = 1;
- * @return {?proto.cosmos.bank.v1beta1.Metadata}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.prototype.getMetadata = function() {
-  return /** @type{?proto.cosmos.bank.v1beta1.Metadata} */ (
-    jspb.Message.getWrapperField(this, cosmos_bank_v1beta1_bank_pb.Metadata, 1));
-};
-
-
-/**
- * @param {?proto.cosmos.bank.v1beta1.Metadata|undefined} value
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.prototype.setMetadata = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse} returns this
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.prototype.clearMetadata = function() {
-  return this.setMetadata(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.cosmos.bank.v1beta1.QueryDenomMetadataByQueryStringResponse.prototype.hasMetadata = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denom: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest;
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest()
+  return proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3943,41 +4104,48 @@ proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setDenom(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3986,136 +4154,147 @@ proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getDenom()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * optional string denom = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.getDenom =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.setDenom =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 2));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.DenomOwner.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.DenomOwner} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.DenomOwner.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    address: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    balance: (f = msg.getBalance()) && cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.DenomOwner.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.bank.v1beta1.DenomOwner.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.DenomOwner} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.DenomOwner.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        address: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        balance:
+          (f = msg.getBalance()) &&
+          cosmos_base_v1beta1_coin_pb.Coin.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.DenomOwner}
  */
-proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.DenomOwner;
-  return proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.DenomOwner()
+  return proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4124,41 +4303,45 @@ proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.DenomOwner}
  */
-proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAddress(value);
-      break;
-    case 2:
-      var value = new cosmos_base_v1beta1_coin_pb.Coin;
-      reader.readMessage(value,cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader);
-      msg.setBalance(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setAddress(value)
+        break
+      case 2:
+        var value = new cosmos_base_v1beta1_coin_pb.Coin()
+        reader.readMessage(
+          value,
+          cosmos_base_v1beta1_coin_pb.Coin.deserializeBinaryFromReader,
+        )
+        msg.setBalance(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4167,144 +4350,152 @@ proto.cosmos.bank.v1beta1.DenomOwner.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAddress();
+proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getAddress()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-  f = message.getBalance();
+  f = message.getBalance()
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter
-    );
+      cosmos_base_v1beta1_coin_pb.Coin.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional string address = 1;
  * @return {string}
  */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.getAddress = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.getAddress = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.bank.v1beta1.DenomOwner} returns this
  */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.setAddress = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.setAddress = function (value) {
+  return jspb.Message.setProto3StringField(this, 1, value)
+}
 
 /**
  * optional cosmos.base.v1beta1.Coin balance = 2;
  * @return {?proto.cosmos.base.v1beta1.Coin}
  */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.getBalance = function() {
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.getBalance = function () {
   return /** @type{?proto.cosmos.base.v1beta1.Coin} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 2));
-};
-
+    jspb.Message.getWrapperField(this, cosmos_base_v1beta1_coin_pb.Coin, 2)
+  )
+}
 
 /**
  * @param {?proto.cosmos.base.v1beta1.Coin|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.DenomOwner} returns this
-*/
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.setBalance = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.setBalance = function (value) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.DenomOwner} returns this
  */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.clearBalance = function() {
-  return this.setBalance(undefined);
-};
-
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.clearBalance = function () {
+  return this.setBalance(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.DenomOwner.prototype.hasBalance = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
+proto.cosmos.bank.v1beta1.DenomOwner.prototype.hasBalance = function () {
+  return jspb.Message.getField(this, 2) != null
+}
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        denomOwnersList: jspb.Message.toObjectList(
+          msg.getDenomOwnersList(),
+          proto.cosmos.bank.v1beta1.DenomOwner.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denomOwnersList: jspb.Message.toObjectList(msg.getDenomOwnersList(),
-    proto.cosmos.bank.v1beta1.DenomOwner.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse;
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse()
+    return proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4313,42 +4504,52 @@ proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new proto.cosmos.bank.v1beta1.DenomOwner()
+          reader.readMessage(
+            value,
+            proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader,
+          )
+          msg.addDenomOwners(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.cosmos.bank.v1beta1.DenomOwner;
-      reader.readMessage(value,proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader);
-      msg.addDenomOwners(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4357,556 +4558,194 @@ proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenomOwnersList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getDenomOwnersList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated DenomOwner denom_owners = 1;
  * @return {!Array<!proto.cosmos.bank.v1beta1.DenomOwner>}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.getDenomOwnersList = function() {
-  return /** @type{!Array<!proto.cosmos.bank.v1beta1.DenomOwner>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.cosmos.bank.v1beta1.DenomOwner, 1));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.getDenomOwnersList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.bank.v1beta1.DenomOwner>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        proto.cosmos.bank.v1beta1.DenomOwner,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.bank.v1beta1.DenomOwner>} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.setDenomOwnersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.setDenomOwnersList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.bank.v1beta1.DenomOwner=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.bank.v1beta1.DenomOwner}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.addDenomOwners = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.bank.v1beta1.DenomOwner, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.addDenomOwners =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.cosmos.bank.v1beta1.DenomOwner,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.clearDenomOwnersList = function() {
-  return this.setDenomOwnersList([]);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.clearDenomOwnersList =
+  function () {
+    return this.setDenomOwnersList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denom: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+proto.cosmos.bank.v1beta1.QueryDenomOwnersResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
   }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest;
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setDenom(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenom();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional string denom = 1;
- * @return {string}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.getDenom = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest} returns this
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.setDenom = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional cosmos.base.query.v1beta1.PageRequest pagination = 2;
- * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 2));
-};
-
-
-/**
- * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest} returns this
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denomOwnersList: jspb.Message.toObjectList(msg.getDenomOwnersList(),
-    proto.cosmos.bank.v1beta1.DenomOwner.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse;
-  return proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.toObject(
+        opt_includeInstance,
+        this,
+      )
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.cosmos.bank.v1beta1.DenomOwner;
-      reader.readMessage(value,proto.cosmos.bank.v1beta1.DenomOwner.deserializeBinaryFromReader);
-      msg.addDenomOwners(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        denomsList:
+          (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
     }
+    return obj
   }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenomOwnersList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      proto.cosmos.bank.v1beta1.DenomOwner.serializeBinaryToWriter
-    );
-  }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * repeated DenomOwner denom_owners = 1;
- * @return {!Array<!proto.cosmos.bank.v1beta1.DenomOwner>}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.getDenomOwnersList = function() {
-  return /** @type{!Array<!proto.cosmos.bank.v1beta1.DenomOwner>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.cosmos.bank.v1beta1.DenomOwner, 1));
-};
-
-
-/**
- * @param {!Array<!proto.cosmos.bank.v1beta1.DenomOwner>} value
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.setDenomOwnersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
-
-/**
- * @param {!proto.cosmos.bank.v1beta1.DenomOwner=} opt_value
- * @param {number=} opt_index
- * @return {!proto.cosmos.bank.v1beta1.DenomOwner}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.addDenomOwners = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.bank.v1beta1.DenomOwner, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} returns this
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.clearDenomOwnersList = function() {
-  return this.setDenomOwnersList([]);
-};
-
-
-/**
- * optional cosmos.base.query.v1beta1.PageResponse pagination = 2;
- * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 2));
-};
-
-
-/**
- * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse} returns this
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.cosmos.bank.v1beta1.QueryDenomOwnersByQueryResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.repeatedFields_ = [1];
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    denomsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySendEnabledRequest;
-  return proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.bank.v1beta1.QuerySendEnabledRequest()
+  return proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4915,41 +4754,48 @@ proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinary = function(b
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.addDenoms(value)
+          break
+        case 99:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.addDenoms(value);
-      break;
-    case 99:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4958,163 +4804,182 @@ proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.serializeBinary = fu
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getDenomsList();
-  if (f.length > 0) {
-    writer.writeRepeatedString(
-      1,
-      f
-    );
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getDenomsList()
+    if (f.length > 0) {
+      writer.writeRepeatedString(1, f)
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        99,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      99,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated string denoms = 1;
  * @return {!Array<string>}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.getDenomsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.getDenomsList =
+  function () {
+    return /** @type {!Array<string>} */ (
+      jspb.Message.getRepeatedField(this, 1)
+    )
+  }
 
 /**
  * @param {!Array<string>} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.setDenomsList = function(value) {
-  return jspb.Message.setField(this, 1, value || []);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.setDenomsList =
+  function (value) {
+    return jspb.Message.setField(this, 1, value || [])
+  }
 
 /**
  * @param {string} value
  * @param {number=} opt_index
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.addDenoms = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.addDenoms =
+  function (value, opt_index) {
+    return jspb.Message.addToRepeatedField(this, 1, value, opt_index)
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.clearDenomsList = function() {
-  return this.setDenomsList([]);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.clearDenomsList =
+  function () {
+    return this.setDenomsList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 99;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 99));
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        99,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 99, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 99, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledRequest} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 99) != null;
-};
-
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 99) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        sendEnabledList: jspb.Message.toObjectList(
+          msg.getSendEnabledList(),
+          cosmos_bank_v1beta1_bank_pb.SendEnabled.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    sendEnabledList: jspb.Message.toObjectList(msg.getSendEnabledList(),
-    cosmos_bank_v1beta1_bank_pb.SendEnabled.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.bank.v1beta1.QuerySendEnabledResponse;
-  return proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinary =
+  function (bytes) {
+    var reader = new jspb.BinaryReader(bytes)
+    var msg = new proto.cosmos.bank.v1beta1.QuerySendEnabledResponse()
+    return proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinaryFromReader(
+      msg,
+      reader,
+    )
+  }
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5123,42 +4988,52 @@ proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinary = function(
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_bank_v1beta1_bank_pb.SendEnabled()
+          reader.readMessage(
+            value,
+            cosmos_bank_v1beta1_bank_pb.SendEnabled.deserializeBinaryFromReader,
+          )
+          msg.addSendEnabled(value)
+          break
+        case 99:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_bank_v1beta1_bank_pb.SendEnabled;
-      reader.readMessage(value,cosmos_bank_v1beta1_bank_pb.SendEnabled.deserializeBinaryFromReader);
-      msg.addSendEnabled(value);
-      break;
-    case 99:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5167,100 +5042,117 @@ proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.serializeBinary = f
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getSendEnabledList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      cosmos_bank_v1beta1_bank_pb.SendEnabled.serializeBinaryToWriter
-    );
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getSendEnabledList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        cosmos_bank_v1beta1_bank_pb.SendEnabled.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        99,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      99,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated SendEnabled send_enabled = 1;
  * @return {!Array<!proto.cosmos.bank.v1beta1.SendEnabled>}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.getSendEnabledList = function() {
-  return /** @type{!Array<!proto.cosmos.bank.v1beta1.SendEnabled>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_bank_v1beta1_bank_pb.SendEnabled, 1));
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.getSendEnabledList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.bank.v1beta1.SendEnabled>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_bank_v1beta1_bank_pb.SendEnabled,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.bank.v1beta1.SendEnabled>} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.setSendEnabledList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.setSendEnabledList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.bank.v1beta1.SendEnabled=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.bank.v1beta1.SendEnabled}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.addSendEnabled = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.bank.v1beta1.SendEnabled, opt_index);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.addSendEnabled =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      1,
+      opt_value,
+      proto.cosmos.bank.v1beta1.SendEnabled,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.clearSendEnabledList = function() {
-  return this.setSendEnabledList([]);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.clearSendEnabledList =
+  function () {
+    return this.setSendEnabledList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 99;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 99));
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        99,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse} returns this
-*/
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 99, value);
-};
-
+ */
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 99, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.bank.v1beta1.QuerySendEnabledResponse} returns this
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 99) != null;
-};
+proto.cosmos.bank.v1beta1.QuerySendEnabledResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 99) != null
+  }
 
-
-goog.object.extend(exports, proto.cosmos.bank.v1beta1);
+goog.object.extend(exports, proto.cosmos.bank.v1beta1)

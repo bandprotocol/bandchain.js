@@ -79,7 +79,6 @@ export interface AuthorizationTypeMap {
   AUTHORIZATION_TYPE_DELEGATE: 1;
   AUTHORIZATION_TYPE_UNDELEGATE: 2;
   AUTHORIZATION_TYPE_REDELEGATE: 3;
-  AUTHORIZATION_TYPE_CANCEL_UNBONDING_DELEGATION: 4;
 }
 
 export const AuthorizationType: AuthorizationTypeMap;

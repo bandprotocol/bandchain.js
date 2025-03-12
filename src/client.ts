@@ -4,7 +4,7 @@ import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport'
 import { NotFoundError, NotIntegerError, ValueError } from './error'
 import { ReferenceData } from './data'
 
-import { QueryClient } from '../codegen/band/oracle/v1/query_pb_service'
+import { QueryClient } from '../codegen/oracle/v1/query_pb_service'
 import { ServiceClient } from '../codegen/cosmos/base/tendermint/v1beta1/query_pb_service'
 import { QueryClient as AuthQueryClient } from '../codegen/cosmos/auth/v1beta1/query_pb_service'
 import { ServiceClient as TxServiceClient } from '../codegen/cosmos/tx/v1beta1/service_pb_service'
@@ -18,7 +18,7 @@ import {
   QueryReportersRequest,
   QueryRequestPriceRequest,
   QueryRequestSearchRequest,
-} from '../codegen/band/oracle/v1/query_pb'
+} from '../codegen/oracle/v1/query_pb'
 
 import {
   GetLatestBlockRequest,
@@ -33,7 +33,7 @@ import {
   DataSource,
   OracleScript,
   PriceResult,
-} from '../codegen/band/oracle/v1/oracle_pb'
+} from '../codegen/oracle/v1/oracle_pb'
 import { BaseAccount } from '../codegen/cosmos/auth/v1beta1/auth_pb'
 
 import { QueryAllBalancesRequest } from '../codegen/cosmos/bank/v1beta1/query_pb'

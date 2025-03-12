@@ -197,33 +197,3 @@ export namespace EventLeaveGroup {
   }
 }
 
-export class EventProposalPruned extends jspb.Message {
-  getProposalId(): number;
-  setProposalId(value: number): void;
-
-  getStatus(): cosmos_group_v1_types_pb.ProposalStatusMap[keyof cosmos_group_v1_types_pb.ProposalStatusMap];
-  setStatus(value: cosmos_group_v1_types_pb.ProposalStatusMap[keyof cosmos_group_v1_types_pb.ProposalStatusMap]): void;
-
-  hasTallyResult(): boolean;
-  clearTallyResult(): void;
-  getTallyResult(): cosmos_group_v1_types_pb.TallyResult | undefined;
-  setTallyResult(value?: cosmos_group_v1_types_pb.TallyResult): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): EventProposalPruned.AsObject;
-  static toObject(includeInstance: boolean, msg: EventProposalPruned): EventProposalPruned.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: EventProposalPruned, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): EventProposalPruned;
-  static deserializeBinaryFromReader(message: EventProposalPruned, reader: jspb.BinaryReader): EventProposalPruned;
-}
-
-export namespace EventProposalPruned {
-  export type AsObject = {
-    proposalId: number,
-    status: cosmos_group_v1_types_pb.ProposalStatusMap[keyof cosmos_group_v1_types_pb.ProposalStatusMap],
-    tallyResult?: cosmos_group_v1_types_pb.TallyResult.AsObject,
-  }
-}
-

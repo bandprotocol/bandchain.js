@@ -10,15 +10,6 @@ var Query = (function () {
   return Query;
 }());
 
-Query.Constitution = {
-  methodName: "Constitution",
-  service: Query,
-  requestStream: false,
-  responseStream: false,
-  requestType: cosmos_gov_v1_query_pb.QueryConstitutionRequest,
-  responseType: cosmos_gov_v1_query_pb.QueryConstitutionResponse
-};
-
 Query.Proposal = {
   methodName: "Proposal",
   service: Query,
@@ -97,37 +88,6 @@ function QueryClient(serviceHost, options) {
   this.serviceHost = serviceHost;
   this.options = options || {};
 }
-
-QueryClient.prototype.constitution = function constitution(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Query.Constitution, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
 
 QueryClient.prototype.proposal = function proposal(requestMessage, metadata, callback) {
   if (arguments.length === 2) {

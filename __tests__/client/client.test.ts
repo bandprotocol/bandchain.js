@@ -5,7 +5,7 @@ import {
   QueryClient,
   ServiceError,
   UnaryResponse,
-} from '../../codegen/band/oracle/v1/query_pb_service'
+} from '../../codegen/oracle/v1/query_pb_service'
 
 import {
   QueryDataSourceRequest,
@@ -19,7 +19,7 @@ import {
   QueryRequestSearchRequest,
   QueryRequestSearchResponse,
   QueryRequestResponse,
-} from '../../codegen/band/oracle/v1/query_pb'
+} from '../../codegen/oracle/v1/query_pb'
 import {
   DataSource,
   OracleScript,
@@ -29,7 +29,7 @@ import {
   Report,
   RawReport,
   Result,
-} from '../../codegen/band/oracle/v1/oracle_pb'
+} from '../../codegen/oracle/v1/oracle_pb'
 import { ServiceClient } from '../../codegen/cosmos/base/tendermint/v1beta1/query_pb_service'
 
 import {
@@ -71,7 +71,7 @@ import { Attribute } from '../../codegen/cosmos/base/abci/v1beta1/abci_pb'
 import { SignMode } from '../../codegen/cosmos/tx/signing/v1beta1/signing_pb'
 import { ModeInfo, Fee } from '../../codegen/cosmos/tx/v1beta1/tx_pb'
 
-jest.mock('../../codegen/band/oracle/v1/query_pb_service')
+jest.mock('../../codegen/oracle/v1/query_pb_service')
 jest.mock('../../codegen/cosmos/base/tendermint/v1beta1/query_pb_service')
 jest.mock('../../codegen/cosmos/auth/v1beta1/query_pb_service')
 jest.mock('../../codegen/cosmos/tx/v1beta1/service_pb_service')
@@ -948,11 +948,8 @@ describe('get latest request', () => {
               'aHR0cHM6Ly91cy1ycGMuYmFuZGNoYWluLm9yZy9vcmFjbGUvcmVxdWVzdF9wcmljZXMgQlRDIEVUSA==',
           },
         ],
-        requester: '',
         executeGas: 1000000,
         ibcChannel: undefined,
-        feeLimitList: [],
-        tssEncoder: 0,
       },
       reportsList: [
         {

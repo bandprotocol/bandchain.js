@@ -33,21 +33,6 @@ export class Module extends jspb.Message {
   setOverrideStoreKeysList(value: Array<StoreKeyConfig>): void;
   addOverrideStoreKeys(value?: StoreKeyConfig, index?: number): StoreKeyConfig;
 
-  clearOrderMigrationsList(): void;
-  getOrderMigrationsList(): Array<string>;
-  setOrderMigrationsList(value: Array<string>): void;
-  addOrderMigrations(value: string, index?: number): string;
-
-  clearPrecommitersList(): void;
-  getPrecommitersList(): Array<string>;
-  setPrecommitersList(value: Array<string>): void;
-  addPrecommiters(value: string, index?: number): string;
-
-  clearPrepareCheckStatersList(): void;
-  getPrepareCheckStatersList(): Array<string>;
-  setPrepareCheckStatersList(value: Array<string>): void;
-  addPrepareCheckStaters(value: string, index?: number): string;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Module.AsObject;
   static toObject(includeInstance: boolean, msg: Module): Module.AsObject;
@@ -66,9 +51,6 @@ export namespace Module {
     initGenesisList: Array<string>,
     exportGenesisList: Array<string>,
     overrideStoreKeysList: Array<StoreKeyConfig.AsObject>,
-    orderMigrationsList: Array<string>,
-    precommitersList: Array<string>,
-    prepareCheckStatersList: Array<string>,
   }
 }
 
