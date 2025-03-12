@@ -66,6 +66,8 @@ export interface StorageTypeMap {
   STORAGE_TYPE_DEFAULT_UNSPECIFIED: 0;
   STORAGE_TYPE_MEMORY: 1;
   STORAGE_TYPE_TRANSIENT: 2;
+  STORAGE_TYPE_INDEX: 3;
+  STORAGE_TYPE_COMMITMENT: 4;
 }
 
 export const StorageType: StorageTypeMap;

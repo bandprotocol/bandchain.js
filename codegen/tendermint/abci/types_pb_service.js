@@ -4,168 +4,168 @@
 var tendermint_abci_types_pb = require("../../tendermint/abci/types_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
-var ABCI = (function () {
-  function ABCI() {}
-  ABCI.serviceName = "tendermint.abci.ABCI";
-  return ABCI;
+var ABCIApplication = (function () {
+  function ABCIApplication() {}
+  ABCIApplication.serviceName = "tendermint.abci.ABCIApplication";
+  return ABCIApplication;
 }());
 
-ABCI.Echo = {
+ABCIApplication.Echo = {
   methodName: "Echo",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestEcho,
   responseType: tendermint_abci_types_pb.ResponseEcho
 };
 
-ABCI.Flush = {
+ABCIApplication.Flush = {
   methodName: "Flush",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestFlush,
   responseType: tendermint_abci_types_pb.ResponseFlush
 };
 
-ABCI.Info = {
+ABCIApplication.Info = {
   methodName: "Info",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestInfo,
   responseType: tendermint_abci_types_pb.ResponseInfo
 };
 
-ABCI.CheckTx = {
+ABCIApplication.DeliverTx = {
+  methodName: "DeliverTx",
+  service: ABCIApplication,
+  requestStream: false,
+  responseStream: false,
+  requestType: tendermint_abci_types_pb.RequestDeliverTx,
+  responseType: tendermint_abci_types_pb.ResponseDeliverTx
+};
+
+ABCIApplication.CheckTx = {
   methodName: "CheckTx",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestCheckTx,
   responseType: tendermint_abci_types_pb.ResponseCheckTx
 };
 
-ABCI.Query = {
+ABCIApplication.Query = {
   methodName: "Query",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestQuery,
   responseType: tendermint_abci_types_pb.ResponseQuery
 };
 
-ABCI.Commit = {
+ABCIApplication.Commit = {
   methodName: "Commit",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestCommit,
   responseType: tendermint_abci_types_pb.ResponseCommit
 };
 
-ABCI.InitChain = {
+ABCIApplication.InitChain = {
   methodName: "InitChain",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestInitChain,
   responseType: tendermint_abci_types_pb.ResponseInitChain
 };
 
-ABCI.ListSnapshots = {
+ABCIApplication.BeginBlock = {
+  methodName: "BeginBlock",
+  service: ABCIApplication,
+  requestStream: false,
+  responseStream: false,
+  requestType: tendermint_abci_types_pb.RequestBeginBlock,
+  responseType: tendermint_abci_types_pb.ResponseBeginBlock
+};
+
+ABCIApplication.EndBlock = {
+  methodName: "EndBlock",
+  service: ABCIApplication,
+  requestStream: false,
+  responseStream: false,
+  requestType: tendermint_abci_types_pb.RequestEndBlock,
+  responseType: tendermint_abci_types_pb.ResponseEndBlock
+};
+
+ABCIApplication.ListSnapshots = {
   methodName: "ListSnapshots",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestListSnapshots,
   responseType: tendermint_abci_types_pb.ResponseListSnapshots
 };
 
-ABCI.OfferSnapshot = {
+ABCIApplication.OfferSnapshot = {
   methodName: "OfferSnapshot",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestOfferSnapshot,
   responseType: tendermint_abci_types_pb.ResponseOfferSnapshot
 };
 
-ABCI.LoadSnapshotChunk = {
+ABCIApplication.LoadSnapshotChunk = {
   methodName: "LoadSnapshotChunk",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestLoadSnapshotChunk,
   responseType: tendermint_abci_types_pb.ResponseLoadSnapshotChunk
 };
 
-ABCI.ApplySnapshotChunk = {
+ABCIApplication.ApplySnapshotChunk = {
   methodName: "ApplySnapshotChunk",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestApplySnapshotChunk,
   responseType: tendermint_abci_types_pb.ResponseApplySnapshotChunk
 };
 
-ABCI.PrepareProposal = {
+ABCIApplication.PrepareProposal = {
   methodName: "PrepareProposal",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestPrepareProposal,
   responseType: tendermint_abci_types_pb.ResponsePrepareProposal
 };
 
-ABCI.ProcessProposal = {
+ABCIApplication.ProcessProposal = {
   methodName: "ProcessProposal",
-  service: ABCI,
+  service: ABCIApplication,
   requestStream: false,
   responseStream: false,
   requestType: tendermint_abci_types_pb.RequestProcessProposal,
   responseType: tendermint_abci_types_pb.ResponseProcessProposal
 };
 
-ABCI.ExtendVote = {
-  methodName: "ExtendVote",
-  service: ABCI,
-  requestStream: false,
-  responseStream: false,
-  requestType: tendermint_abci_types_pb.RequestExtendVote,
-  responseType: tendermint_abci_types_pb.ResponseExtendVote
-};
+exports.ABCIApplication = ABCIApplication;
 
-ABCI.VerifyVoteExtension = {
-  methodName: "VerifyVoteExtension",
-  service: ABCI,
-  requestStream: false,
-  responseStream: false,
-  requestType: tendermint_abci_types_pb.RequestVerifyVoteExtension,
-  responseType: tendermint_abci_types_pb.ResponseVerifyVoteExtension
-};
-
-ABCI.FinalizeBlock = {
-  methodName: "FinalizeBlock",
-  service: ABCI,
-  requestStream: false,
-  responseStream: false,
-  requestType: tendermint_abci_types_pb.RequestFinalizeBlock,
-  responseType: tendermint_abci_types_pb.ResponseFinalizeBlock
-};
-
-exports.ABCI = ABCI;
-
-function ABCIClient(serviceHost, options) {
+function ABCIApplicationClient(serviceHost, options) {
   this.serviceHost = serviceHost;
   this.options = options || {};
 }
 
-ABCIClient.prototype.echo = function echo(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.echo = function echo(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.Echo, {
+  var client = grpc.unary(ABCIApplication.Echo, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -192,11 +192,11 @@ ABCIClient.prototype.echo = function echo(requestMessage, metadata, callback) {
   };
 };
 
-ABCIClient.prototype.flush = function flush(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.flush = function flush(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.Flush, {
+  var client = grpc.unary(ABCIApplication.Flush, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -223,11 +223,11 @@ ABCIClient.prototype.flush = function flush(requestMessage, metadata, callback) 
   };
 };
 
-ABCIClient.prototype.info = function info(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.info = function info(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.Info, {
+  var client = grpc.unary(ABCIApplication.Info, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -254,11 +254,11 @@ ABCIClient.prototype.info = function info(requestMessage, metadata, callback) {
   };
 };
 
-ABCIClient.prototype.checkTx = function checkTx(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.deliverTx = function deliverTx(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.CheckTx, {
+  var client = grpc.unary(ABCIApplication.DeliverTx, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -285,11 +285,11 @@ ABCIClient.prototype.checkTx = function checkTx(requestMessage, metadata, callba
   };
 };
 
-ABCIClient.prototype.query = function query(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.checkTx = function checkTx(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.Query, {
+  var client = grpc.unary(ABCIApplication.CheckTx, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -316,11 +316,11 @@ ABCIClient.prototype.query = function query(requestMessage, metadata, callback) 
   };
 };
 
-ABCIClient.prototype.commit = function commit(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.query = function query(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.Commit, {
+  var client = grpc.unary(ABCIApplication.Query, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -347,11 +347,11 @@ ABCIClient.prototype.commit = function commit(requestMessage, metadata, callback
   };
 };
 
-ABCIClient.prototype.initChain = function initChain(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.commit = function commit(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.InitChain, {
+  var client = grpc.unary(ABCIApplication.Commit, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -378,11 +378,11 @@ ABCIClient.prototype.initChain = function initChain(requestMessage, metadata, ca
   };
 };
 
-ABCIClient.prototype.listSnapshots = function listSnapshots(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.initChain = function initChain(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.ListSnapshots, {
+  var client = grpc.unary(ABCIApplication.InitChain, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -409,11 +409,11 @@ ABCIClient.prototype.listSnapshots = function listSnapshots(requestMessage, meta
   };
 };
 
-ABCIClient.prototype.offerSnapshot = function offerSnapshot(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.beginBlock = function beginBlock(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.OfferSnapshot, {
+  var client = grpc.unary(ABCIApplication.BeginBlock, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -440,11 +440,11 @@ ABCIClient.prototype.offerSnapshot = function offerSnapshot(requestMessage, meta
   };
 };
 
-ABCIClient.prototype.loadSnapshotChunk = function loadSnapshotChunk(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.endBlock = function endBlock(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.LoadSnapshotChunk, {
+  var client = grpc.unary(ABCIApplication.EndBlock, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -471,11 +471,11 @@ ABCIClient.prototype.loadSnapshotChunk = function loadSnapshotChunk(requestMessa
   };
 };
 
-ABCIClient.prototype.applySnapshotChunk = function applySnapshotChunk(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.listSnapshots = function listSnapshots(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.ApplySnapshotChunk, {
+  var client = grpc.unary(ABCIApplication.ListSnapshots, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -502,11 +502,11 @@ ABCIClient.prototype.applySnapshotChunk = function applySnapshotChunk(requestMes
   };
 };
 
-ABCIClient.prototype.prepareProposal = function prepareProposal(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.offerSnapshot = function offerSnapshot(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.PrepareProposal, {
+  var client = grpc.unary(ABCIApplication.OfferSnapshot, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -533,11 +533,11 @@ ABCIClient.prototype.prepareProposal = function prepareProposal(requestMessage, 
   };
 };
 
-ABCIClient.prototype.processProposal = function processProposal(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.loadSnapshotChunk = function loadSnapshotChunk(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.ProcessProposal, {
+  var client = grpc.unary(ABCIApplication.LoadSnapshotChunk, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -564,11 +564,11 @@ ABCIClient.prototype.processProposal = function processProposal(requestMessage, 
   };
 };
 
-ABCIClient.prototype.extendVote = function extendVote(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.applySnapshotChunk = function applySnapshotChunk(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.ExtendVote, {
+  var client = grpc.unary(ABCIApplication.ApplySnapshotChunk, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -595,11 +595,11 @@ ABCIClient.prototype.extendVote = function extendVote(requestMessage, metadata, 
   };
 };
 
-ABCIClient.prototype.verifyVoteExtension = function verifyVoteExtension(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.prepareProposal = function prepareProposal(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.VerifyVoteExtension, {
+  var client = grpc.unary(ABCIApplication.PrepareProposal, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -626,11 +626,11 @@ ABCIClient.prototype.verifyVoteExtension = function verifyVoteExtension(requestM
   };
 };
 
-ABCIClient.prototype.finalizeBlock = function finalizeBlock(requestMessage, metadata, callback) {
+ABCIApplicationClient.prototype.processProposal = function processProposal(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ABCI.FinalizeBlock, {
+  var client = grpc.unary(ABCIApplication.ProcessProposal, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -657,5 +657,5 @@ ABCIClient.prototype.finalizeBlock = function finalizeBlock(requestMessage, meta
   };
 };
 
-exports.ABCIClient = ABCIClient;
+exports.ABCIApplicationClient = ABCIApplicationClient;
 

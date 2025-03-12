@@ -15,21 +15,11 @@ import {
   MsgCreateOracleScript,
   MsgEditOracleScript,
   MsgDeposit,
-  MsgVoteSignals,
-  MsgSubmitSignalPrices,
-  MsgUpdateReferenceSourceConfig,
-  MsgUpdateParams,
 } from '../src/message'
 import { VoteOption } from '../codegen/cosmos/gov/v1beta1/gov_pb'
 
 import fs from 'fs'
 import path from 'path'
-import {
-  Signal,
-  SignalPrice,
-  ReferenceSourceConfig,
-} from '../codegen/band/feeds/v1beta1/feeds_pb'
-import { Params } from '../codegen/band/feeds/v1beta1/params_pb'
 
 let coin = new Coin()
 coin.setDenom('uband')
@@ -54,7 +44,7 @@ describe('MsgRequest', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgRequestData'
+    const name = 'oracle.v1.MsgRequestData'
     anyMsg.pack(msgRequest.serializeBinary(), name, '/')
 
     expect(msgRequest.toAny()).toEqual(anyMsg)
@@ -570,7 +560,7 @@ describe('MsgCreateDataSource', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgCreateDataSource'
+    const name = 'oracle.v1.MsgCreateDataSource'
     anyMsg.pack(msgCreateDs.serializeBinary(), name, '/')
 
     expect(msgCreateDs.toAny()).toEqual(anyMsg)
@@ -691,7 +681,7 @@ describe('MsgEditDataSource', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgEditDataSource'
+    const name = 'oracle.v1.MsgEditDataSource'
     anyMsg.pack(msgCreateDs.serializeBinary(), name, '/')
 
     expect(msgCreateDs.toAny()).toEqual(anyMsg)
@@ -768,7 +758,7 @@ describe('MsgCreateOracleScript', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgCreateOracleScript'
+    const name = 'oracle.v1.MsgCreateOracleScript'
     anyMsg.pack(msgCreateOs.serializeBinary(), name, '/')
     expect(msgCreateOs.toAny()).toEqual(anyMsg)
     expect(() => msgCreateOs.validate()).not.toThrow()
@@ -870,7 +860,7 @@ describe('MsgEditOracleScript', () => {
     )
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgEditOracleScript'
+    const name = 'oracle.v1.MsgEditOracleScript'
     anyMsg.pack(msgEditOs.serializeBinary(), name, '/')
     expect(msgEditOs.toAny()).toEqual(anyMsg)
     expect(() => msgEditOs.validate()).not.toThrow()
@@ -958,170 +948,6 @@ describe('MsgDeposit', () => {
     msgs.forEach((msg, index) => {
       expect(() => {
         // @ts-ignore
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
-describe('MsgVoteSignals', () => {
-  let signal = new Signal()
-  signal.setId('crypto_prices.btcbusd')
-  signal.setPower(1)
-
-  it('create successfully', () => {
-    const msgVoteSignals = new MsgVoteSignals(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      [signal],
-    )
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgVote'
-    anyMsg.pack(msgVoteSignals.serializeBinary(), name, '/')
-
-    expect(msgVoteSignals.toAny()).toEqual(anyMsg)
-
-    expect(() => msgVoteSignals.validate()).not.toThrow()
-  })
-
-  it('error MsgVoteSignals', () => {
-    let msgs: MsgVoteSignals[] = []
-    let errorText: string[] = []
-
-    msgs.push(new MsgVoteSignals('', [signal]))
-
-    errorText.push('Voter address should not be an empty string')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
-describe('MsgSubmitSignalPrice', () => {
-  const signalPrice = new SignalPrice()
-  signalPrice.setSignalId('crypto_price.btcbusd')
-  signalPrice.setPrice(1)
-  signalPrice.setStatus(0)
-
-  it('create successfully', () => {
-    const msgSubmitSignalPrice = new MsgSubmitSignalPrices(
-      'bandvaloper1dqsqfh537nzdr3ue9whc9tk7zqre4322hkru33',
-      1723027871382,
-      [signalPrice],
-    )
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgSubmitSignalPrices'
-    anyMsg.pack(msgSubmitSignalPrice.serializeBinary(), name, '/')
-
-    expect(msgSubmitSignalPrice.toAny()).toEqual(anyMsg)
-
-    expect(() => msgSubmitSignalPrice.validate()).not.toThrow()
-  })
-
-  it('error MsgSubmitSignalPrice', () => {
-    let msgs: MsgSubmitSignalPrices[] = []
-    let errorText: string[] = []
-
-    msgs.push(new MsgSubmitSignalPrices('', 1723027871382, [signalPrice]))
-    msgs.push(
-      new MsgSubmitSignalPrices(
-        'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-        1723027871382,
-        [signalPrice],
-      ),
-    )
-
-    errorText.push('Validator address should not be an empty string')
-    errorText.push('invalid Bech32 prefix; expected bandvaloper, got band')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
-describe('MsgUpdateReferenceSourceConfig', () => {
-  const referenceSource = new ReferenceSourceConfig()
-  referenceSource.setRegistryIpfsHash(
-    'QmTzQ1b4SijKVDe3XZPq3N5tHk3PvCjAosYtK6KDxDZXn6',
-  )
-  referenceSource.setRegistryVersion('1.1')
-
-  it('create successfully', () => {
-    const msgUpdateReferenceSourceConfig = new MsgUpdateReferenceSourceConfig(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      referenceSource,
-    )
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgUpdateReferenceSourceConfig'
-    anyMsg.pack(msgUpdateReferenceSourceConfig.serializeBinary(), name, '/')
-
-    expect(msgUpdateReferenceSourceConfig.toAny()).toEqual(anyMsg)
-
-    expect(() => msgUpdateReferenceSourceConfig.validate()).not.toThrow()
-  })
-
-  it('error MsgUpdateReferenceSourceConfig', () => {
-    let msgs: MsgUpdateReferenceSourceConfig[] = []
-    let errorText: string[] = []
-
-    msgs.push(new MsgUpdateReferenceSourceConfig('', referenceSource))
-
-    errorText.push('Authority address should not be an empty string')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
-        msg.validate()
-      }).toThrowError(errorText[index])
-    })
-  })
-})
-
-describe('MsgUpdateParams', () => {
-  const param = new Params()
-  param.setAdmin('band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c')
-  param.setAllowableBlockTimeDiscrepancy(1)
-  param.setGracePeriod(1)
-  param.setMinInterval(1)
-  param.setMaxInterval(1)
-  param.setPowerStepThreshold(1)
-  param.setMaxCurrentFeeds(1)
-  param.setCooldownTime(1)
-  param.setMinDeviationBasisPoint(1)
-  param.setMaxDeviationBasisPoint(1)
-  param.setCurrentFeedsUpdateInterval(1)
-
-  it('create successfully', () => {
-    const msgUpdateParams = new MsgUpdateParams(
-      'band13eznuehmqzd3r84fkxu8wklxl22r2qfmtlth8c',
-      param,
-    )
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgUpdateParams'
-    anyMsg.pack(msgUpdateParams.serializeBinary(), name, '/')
-
-    expect(msgUpdateParams.toAny()).toEqual(anyMsg)
-
-    expect(() => msgUpdateParams.validate()).not.toThrow()
-  })
-
-  it('error MsgUpdateParams', () => {
-    let msgs: MsgUpdateParams[] = []
-    let errorText: string[] = []
-
-    msgs.push(new MsgUpdateParams('', param))
-
-    errorText.push('Admin address should not be an empty string')
-
-    msgs.forEach((msg, index) => {
-      expect(() => {
         msg.validate()
       }).toThrowError(errorText[index])
     })

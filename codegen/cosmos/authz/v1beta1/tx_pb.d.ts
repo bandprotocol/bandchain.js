@@ -39,19 +39,27 @@ export namespace MsgGrant {
   }
 }
 
-export class MsgGrantResponse extends jspb.Message {
+export class MsgExecResponse extends jspb.Message {
+  clearResultsList(): void;
+  getResultsList(): Array<Uint8Array | string>;
+  getResultsList_asU8(): Array<Uint8Array>;
+  getResultsList_asB64(): Array<string>;
+  setResultsList(value: Array<Uint8Array | string>): void;
+  addResults(value: Uint8Array | string, index?: number): Uint8Array | string;
+
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgGrantResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgGrantResponse): MsgGrantResponse.AsObject;
+  toObject(includeInstance?: boolean): MsgExecResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgExecResponse): MsgExecResponse.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgGrantResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgGrantResponse;
-  static deserializeBinaryFromReader(message: MsgGrantResponse, reader: jspb.BinaryReader): MsgGrantResponse;
+  static serializeBinaryToWriter(message: MsgExecResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgExecResponse;
+  static deserializeBinaryFromReader(message: MsgExecResponse, reader: jspb.BinaryReader): MsgExecResponse;
 }
 
-export namespace MsgGrantResponse {
+export namespace MsgExecResponse {
   export type AsObject = {
+    resultsList: Array<Uint8Array | string>,
   }
 }
 
@@ -81,27 +89,19 @@ export namespace MsgExec {
   }
 }
 
-export class MsgExecResponse extends jspb.Message {
-  clearResultsList(): void;
-  getResultsList(): Array<Uint8Array | string>;
-  getResultsList_asU8(): Array<Uint8Array>;
-  getResultsList_asB64(): Array<string>;
-  setResultsList(value: Array<Uint8Array | string>): void;
-  addResults(value: Uint8Array | string, index?: number): Uint8Array | string;
-
+export class MsgGrantResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgExecResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgExecResponse): MsgExecResponse.AsObject;
+  toObject(includeInstance?: boolean): MsgGrantResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgGrantResponse): MsgGrantResponse.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgExecResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgExecResponse;
-  static deserializeBinaryFromReader(message: MsgExecResponse, reader: jspb.BinaryReader): MsgExecResponse;
+  static serializeBinaryToWriter(message: MsgGrantResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgGrantResponse;
+  static deserializeBinaryFromReader(message: MsgGrantResponse, reader: jspb.BinaryReader): MsgGrantResponse;
 }
 
-export namespace MsgExecResponse {
+export namespace MsgGrantResponse {
   export type AsObject = {
-    resultsList: Array<Uint8Array | string>,
   }
 }
 

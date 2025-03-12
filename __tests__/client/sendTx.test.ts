@@ -5,7 +5,7 @@ import { ServiceClient as TxServiceClient } from '../../codegen/cosmos/tx/v1beta
 import {
   ServiceError,
   UnaryResponse,
-} from '../../codegen/band/oracle/v1/query_pb_service'
+} from '../../codegen/oracle/v1/query_pb_service'
 
 import {
   BroadcastTxRequest,

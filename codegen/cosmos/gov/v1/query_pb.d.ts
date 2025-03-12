@@ -7,42 +7,6 @@ import * as google_api_annotations_pb from "../../../google/api/annotations_pb";
 import * as cosmos_gov_v1_gov_pb from "../../../cosmos/gov/v1/gov_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 
-export class QueryConstitutionRequest extends jspb.Message {
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryConstitutionRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryConstitutionRequest): QueryConstitutionRequest.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryConstitutionRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryConstitutionRequest;
-  static deserializeBinaryFromReader(message: QueryConstitutionRequest, reader: jspb.BinaryReader): QueryConstitutionRequest;
-}
-
-export namespace QueryConstitutionRequest {
-  export type AsObject = {
-  }
-}
-
-export class QueryConstitutionResponse extends jspb.Message {
-  getConstitution(): string;
-  setConstitution(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryConstitutionResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryConstitutionResponse): QueryConstitutionResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryConstitutionResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryConstitutionResponse;
-  static deserializeBinaryFromReader(message: QueryConstitutionResponse, reader: jspb.BinaryReader): QueryConstitutionResponse;
-}
-
-export namespace QueryConstitutionResponse {
-  export type AsObject = {
-    constitution: string,
-  }
-}
-
 export class QueryProposalRequest extends jspb.Message {
   getProposalId(): number;
   setProposalId(value: number): void;

@@ -58,15 +58,6 @@ type MsgUpdateParams = {
   readonly responseType: typeof cosmos_gov_v1_tx_pb.MsgUpdateParamsResponse;
 };
 
-type MsgCancelProposal = {
-  readonly methodName: string;
-  readonly service: typeof Msg;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof cosmos_gov_v1_tx_pb.MsgCancelProposal;
-  readonly responseType: typeof cosmos_gov_v1_tx_pb.MsgCancelProposalResponse;
-};
-
 export class Msg {
   static readonly serviceName: string;
   static readonly SubmitProposal: MsgSubmitProposal;
@@ -75,7 +66,6 @@ export class Msg {
   static readonly VoteWeighted: MsgVoteWeighted;
   static readonly Deposit: MsgDeposit;
   static readonly UpdateParams: MsgUpdateParams;
-  static readonly CancelProposal: MsgCancelProposal;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -163,15 +153,6 @@ export class MsgClient {
   updateParams(
     requestMessage: cosmos_gov_v1_tx_pb.MsgUpdateParams,
     callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1_tx_pb.MsgUpdateParamsResponse|null) => void
-  ): UnaryResponse;
-  cancelProposal(
-    requestMessage: cosmos_gov_v1_tx_pb.MsgCancelProposal,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1_tx_pb.MsgCancelProposalResponse|null) => void
-  ): UnaryResponse;
-  cancelProposal(
-    requestMessage: cosmos_gov_v1_tx_pb.MsgCancelProposal,
-    callback: (error: ServiceError|null, responseMessage: cosmos_gov_v1_tx_pb.MsgCancelProposalResponse|null) => void
   ): UnaryResponse;
 }
 

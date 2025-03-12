@@ -28,15 +28,6 @@ Msg.RevokeAllowance = {
   responseType: cosmos_feegrant_v1beta1_tx_pb.MsgRevokeAllowanceResponse
 };
 
-Msg.PruneAllowances = {
-  methodName: "PruneAllowances",
-  service: Msg,
-  requestStream: false,
-  responseStream: false,
-  requestType: cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowances,
-  responseType: cosmos_feegrant_v1beta1_tx_pb.MsgPruneAllowancesResponse
-};
-
 exports.Msg = Msg;
 
 function MsgClient(serviceHost, options) {
@@ -80,37 +71,6 @@ MsgClient.prototype.revokeAllowance = function revokeAllowance(requestMessage, m
     callback = arguments[1];
   }
   var client = grpc.unary(Msg.RevokeAllowance, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-MsgClient.prototype.pruneAllowances = function pruneAllowances(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Msg.PruneAllowances, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

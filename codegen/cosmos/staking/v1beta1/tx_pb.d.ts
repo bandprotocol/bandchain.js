@@ -267,11 +267,6 @@ export class MsgUndelegateResponse extends jspb.Message {
   getCompletionTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setCompletionTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
-  hasAmount(): boolean;
-  clearAmount(): void;
-  getAmount(): cosmos_base_v1beta1_coin_pb.Coin | undefined;
-  setAmount(value?: cosmos_base_v1beta1_coin_pb.Coin): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MsgUndelegateResponse.AsObject;
   static toObject(includeInstance: boolean, msg: MsgUndelegateResponse): MsgUndelegateResponse.AsObject;
@@ -285,7 +280,6 @@ export class MsgUndelegateResponse extends jspb.Message {
 export namespace MsgUndelegateResponse {
   export type AsObject = {
     completionTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    amount?: cosmos_base_v1beta1_coin_pb.Coin.AsObject,
   }
 }
 

@@ -2,7 +2,6 @@
 // file: cosmos/consensus/v1/tx.proto
 
 import * as jspb from "google-protobuf";
-import * as amino_amino_pb from "../../../amino/amino_pb";
 import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
 import * as tendermint_types_params_pb from "../../../tendermint/types/params_pb";
@@ -26,11 +25,6 @@ export class MsgUpdateParams extends jspb.Message {
   getValidator(): tendermint_types_params_pb.ValidatorParams | undefined;
   setValidator(value?: tendermint_types_params_pb.ValidatorParams): void;
 
-  hasAbci(): boolean;
-  clearAbci(): void;
-  getAbci(): tendermint_types_params_pb.ABCIParams | undefined;
-  setAbci(value?: tendermint_types_params_pb.ABCIParams): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MsgUpdateParams.AsObject;
   static toObject(includeInstance: boolean, msg: MsgUpdateParams): MsgUpdateParams.AsObject;
@@ -47,7 +41,6 @@ export namespace MsgUpdateParams {
     block?: tendermint_types_params_pb.BlockParams.AsObject,
     evidence?: tendermint_types_params_pb.EvidenceParams.AsObject,
     validator?: tendermint_types_params_pb.ValidatorParams.AsObject,
-    abci?: tendermint_types_params_pb.ABCIParams.AsObject,
   }
 }
 

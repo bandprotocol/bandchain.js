@@ -4,7 +4,6 @@
 import * as jspb from "google-protobuf";
 import * as gogoproto_gogo_pb from "../../../../gogoproto/gogo_pb";
 import * as tendermint_abci_types_pb from "../../../../tendermint/abci/types_pb";
-import * as tendermint_types_block_pb from "../../../../tendermint/types/block_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 
 export class TxResponse extends jspb.Message {
@@ -344,48 +343,6 @@ export namespace SearchTxsResult {
     pageTotal: number,
     limit: number,
     txsList: Array<TxResponse.AsObject>,
-  }
-}
-
-export class SearchBlocksResult extends jspb.Message {
-  getTotalCount(): number;
-  setTotalCount(value: number): void;
-
-  getCount(): number;
-  setCount(value: number): void;
-
-  getPageNumber(): number;
-  setPageNumber(value: number): void;
-
-  getPageTotal(): number;
-  setPageTotal(value: number): void;
-
-  getLimit(): number;
-  setLimit(value: number): void;
-
-  clearBlocksList(): void;
-  getBlocksList(): Array<tendermint_types_block_pb.Block>;
-  setBlocksList(value: Array<tendermint_types_block_pb.Block>): void;
-  addBlocks(value?: tendermint_types_block_pb.Block, index?: number): tendermint_types_block_pb.Block;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SearchBlocksResult.AsObject;
-  static toObject(includeInstance: boolean, msg: SearchBlocksResult): SearchBlocksResult.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: SearchBlocksResult, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SearchBlocksResult;
-  static deserializeBinaryFromReader(message: SearchBlocksResult, reader: jspb.BinaryReader): SearchBlocksResult;
-}
-
-export namespace SearchBlocksResult {
-  export type AsObject = {
-    totalCount: number,
-    count: number,
-    pageNumber: number,
-    pageTotal: number,
-    limit: number,
-    blocksList: Array<tendermint_types_block_pb.Block.AsObject>,
   }
 }
 

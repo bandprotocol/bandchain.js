@@ -32,25 +32,12 @@ import {
   MsgEditDataSource as MsgEditDataSourceProto,
   MsgEditOracleScript as MsgEditOracleScriptProto,
   MsgRequestData as MsgRequestDataProto,
-} from '../codegen/band/oracle/v1/tx_pb'
+} from '../codegen/oracle/v1/tx_pb'
 
 import { Message as JSPBMesage } from 'google-protobuf'
 import { MsgSubmitProposal as MsgSubmitProposalProto } from '../codegen/cosmos/gov/v1beta1/tx_pb'
 
 import { Proposal } from 'proposal'
-import {
-  MsgVote as MsgVoteSignalProto,
-  MsgSubmitSignalPrices as MsgSubmitSignalPricesProto,
-  MsgUpdateReferenceSourceConfig as MsgUpdateReferenceSourceConfigProto,
-  MsgUpdateParams as MsgUpdateParamsProto,
-} from '../codegen/band/feeds/v1beta1/tx_pb'
-import {
-  ReferenceSourceConfig,
-  Signal,
-  SignalPrice,
-} from '../codegen/band/feeds/v1beta1/feeds_pb'
-import { Params } from '../codegen/band/feeds/v1beta1/params_pb'
-import { bech32 } from 'bech32'
 
 export interface BaseMsg extends JSPBMesage {
   toJSON(): object
@@ -84,7 +71,7 @@ export class MsgRequestData extends MsgRequestDataProto implements BaseMsg {
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgRequestData'
+    const name = 'oracle.v1.MsgRequestData'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -478,7 +465,7 @@ export class MsgCreateDataSource
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgCreateDataSource'
+    const name = 'oracle.v1.MsgCreateDataSource'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -548,7 +535,7 @@ export class MsgEditDataSource
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgEditDataSource'
+    const name = 'oracle.v1.MsgEditDataSource'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -615,7 +602,7 @@ export class MsgCreateOracleScript
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgCreateOracleScript'
+    const name = 'oracle.v1.MsgCreateOracleScript'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -676,7 +663,7 @@ export class MsgEditOracleScript
     this.validate()
 
     const anyMsg = new Any()
-    const name = 'band.oracle.v1.MsgEditOracleScript'
+    const name = 'oracle.v1.MsgEditOracleScript'
     anyMsg.pack(this.serializeBinary(), name, '/')
     return anyMsg
   }
@@ -801,156 +788,6 @@ export class MsgDeposit extends MsgDepositProto implements BaseMsg {
     }
     if (this.getDepositor() === '') {
       throw new ValueError('depositor should not be an empty string')
-    }
-  }
-}
-
-export class MsgVoteSignals extends MsgVoteSignalProto implements BaseMsg {
-  constructor(voter: string, signals: Signal[]) {
-    super()
-    this.setVoter(voter)
-    this.setSignalsList(signals)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgVote'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    return {
-      type: 'feeds/MsgVote',
-      value: {
-        voter: this.getVoter(),
-        signals: this.getSignalsList().map((signal) => signal.toObject()),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getVoter() === '') {
-      throw new ValueError('Voter address should not be an empty string')
-    }
-  }
-}
-
-export class MsgSubmitSignalPrices
-  extends MsgSubmitSignalPricesProto
-  implements BaseMsg
-{
-  constructor(validator: string, timestamp: number, pricesList: SignalPrice[]) {
-    super()
-    this.setValidator(validator)
-    this.setTimestamp(timestamp)
-    this.setSignalPricesList(pricesList)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgSubmitSignalPrices'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    return {
-      type: 'feeds/MsgSubmitSignalPrices',
-      value: {
-        validator: this.getValidator(),
-        timestamp: this.getTimestamp(),
-        signalPrices: this.getSignalPricesList().map((signalPrice) =>
-          signalPrice.toObject(),
-        ),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getValidator() === '') {
-      throw new ValueError('Validator address should not be an empty string')
-    }
-
-    const { prefix } = bech32.decode(this.getValidator())
-
-    if (prefix != 'bandvaloper') {
-      throw new ValueError(
-        `invalid Bech32 prefix; expected bandvaloper, got ${prefix}`,
-      )
-    }
-  }
-}
-
-export class MsgUpdateReferenceSourceConfig
-  extends MsgUpdateReferenceSourceConfigProto
-  implements BaseMsg
-{
-  constructor(admin: string, referenceSourceConfig: ReferenceSourceConfig) {
-    super()
-    this.setAdmin(admin)
-    this.setReferenceSourceConfig(referenceSourceConfig)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgUpdateReferenceSourceConfig'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    return {
-      type: 'feeds/MsgUpdateReferenceSourceConfig',
-      value: {
-        admin: this.getAdmin(),
-        referenceSourceConfig: this.getReferenceSourceConfig(),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getAdmin() === '') {
-      throw new ValueError('Authority address should not be an empty string')
-    }
-  }
-}
-
-export class MsgUpdateParams extends MsgUpdateParamsProto implements BaseMsg {
-  constructor(authority: string, params: Params) {
-    super()
-    this.setAuthority(authority)
-    this.setParams(params)
-  }
-
-  toAny(): Any {
-    this.validate()
-
-    const anyMsg = new Any()
-    const name = 'band.feeds.v1beta1.MsgUpdateParams'
-    anyMsg.pack(this.serializeBinary(), name, '/')
-    return anyMsg
-  }
-
-  toJSON(): object {
-    return {
-      type: 'feeds/MsgUpdateParams',
-      value: {
-        authority: this.getAuthority(),
-        params: this.getParams(),
-      },
-    }
-  }
-
-  validate() {
-    if (this.getAuthority() === '') {
-      throw new ValueError('Admin address should not be an empty string')
     }
   }
 }

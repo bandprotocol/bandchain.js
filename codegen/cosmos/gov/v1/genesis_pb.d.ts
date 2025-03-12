@@ -43,9 +43,6 @@ export class GenesisState extends jspb.Message {
   getParams(): cosmos_gov_v1_gov_pb.Params | undefined;
   setParams(value?: cosmos_gov_v1_gov_pb.Params): void;
 
-  getConstitution(): string;
-  setConstitution(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
   static toObject(includeInstance: boolean, msg: GenesisState): GenesisState.AsObject;
@@ -66,7 +63,6 @@ export namespace GenesisState {
     votingParams?: cosmos_gov_v1_gov_pb.VotingParams.AsObject,
     tallyParams?: cosmos_gov_v1_gov_pb.TallyParams.AsObject,
     params?: cosmos_gov_v1_gov_pb.Params.AsObject,
-    constitution: string,
   }
 }
 

@@ -118,12 +118,6 @@ export class Proposal extends jspb.Message {
   getProposer(): string;
   setProposer(value: string): void;
 
-  getExpedited(): boolean;
-  setExpedited(value: boolean): void;
-
-  getFailedReason(): string;
-  setFailedReason(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Proposal.AsObject;
   static toObject(includeInstance: boolean, msg: Proposal): Proposal.AsObject;
@@ -149,8 +143,6 @@ export namespace Proposal {
     title: string,
     summary: string,
     proposer: string,
-    expedited: boolean,
-    failedReason: string,
   }
 }
 
@@ -326,25 +318,6 @@ export class Params extends jspb.Message {
   getMinInitialDepositRatio(): string;
   setMinInitialDepositRatio(value: string): void;
 
-  getProposalCancelRatio(): string;
-  setProposalCancelRatio(value: string): void;
-
-  getProposalCancelDest(): string;
-  setProposalCancelDest(value: string): void;
-
-  hasExpeditedVotingPeriod(): boolean;
-  clearExpeditedVotingPeriod(): void;
-  getExpeditedVotingPeriod(): google_protobuf_duration_pb.Duration | undefined;
-  setExpeditedVotingPeriod(value?: google_protobuf_duration_pb.Duration): void;
-
-  getExpeditedThreshold(): string;
-  setExpeditedThreshold(value: string): void;
-
-  clearExpeditedMinDepositList(): void;
-  getExpeditedMinDepositList(): Array<cosmos_base_v1beta1_coin_pb.Coin>;
-  setExpeditedMinDepositList(value: Array<cosmos_base_v1beta1_coin_pb.Coin>): void;
-  addExpeditedMinDeposit(value?: cosmos_base_v1beta1_coin_pb.Coin, index?: number): cosmos_base_v1beta1_coin_pb.Coin;
-
   getBurnVoteQuorum(): boolean;
   setBurnVoteQuorum(value: boolean): void;
 
@@ -353,9 +326,6 @@ export class Params extends jspb.Message {
 
   getBurnVoteVeto(): boolean;
   setBurnVoteVeto(value: boolean): void;
-
-  getMinDepositRatio(): string;
-  setMinDepositRatio(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Params.AsObject;
@@ -376,15 +346,9 @@ export namespace Params {
     threshold: string,
     vetoThreshold: string,
     minInitialDepositRatio: string,
-    proposalCancelRatio: string,
-    proposalCancelDest: string,
-    expeditedVotingPeriod?: google_protobuf_duration_pb.Duration.AsObject,
-    expeditedThreshold: string,
-    expeditedMinDepositList: Array<cosmos_base_v1beta1_coin_pb.Coin.AsObject>,
     burnVoteQuorum: boolean,
     burnProposalDepositPrevote: boolean,
     burnVoteVeto: boolean,
-    minDepositRatio: string,
   }
 }
 

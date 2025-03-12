@@ -13,11 +13,6 @@ export class Module extends jspb.Message {
   getAuthority(): string;
   setAuthority(value: string): void;
 
-  clearRestrictionsOrderList(): void;
-  getRestrictionsOrderList(): Array<string>;
-  setRestrictionsOrderList(value: Array<string>): void;
-  addRestrictionsOrder(value: string, index?: number): string;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Module.AsObject;
   static toObject(includeInstance: boolean, msg: Module): Module.AsObject;
@@ -32,7 +27,6 @@ export namespace Module {
   export type AsObject = {
     blockedModuleAccountsOverrideList: Array<string>,
     authority: string,
-    restrictionsOrderList: Array<string>,
   }
 }
 

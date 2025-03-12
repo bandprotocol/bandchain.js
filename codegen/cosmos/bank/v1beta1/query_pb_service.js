@@ -82,15 +82,6 @@ Query.DenomMetadata = {
   responseType: cosmos_bank_v1beta1_query_pb.QueryDenomMetadataResponse
 };
 
-Query.DenomMetadataByQueryString = {
-  methodName: "DenomMetadataByQueryString",
-  service: Query,
-  requestStream: false,
-  responseStream: false,
-  requestType: cosmos_bank_v1beta1_query_pb.QueryDenomMetadataByQueryStringRequest,
-  responseType: cosmos_bank_v1beta1_query_pb.QueryDenomMetadataByQueryStringResponse
-};
-
 Query.DenomsMetadata = {
   methodName: "DenomsMetadata",
   service: Query,
@@ -107,15 +98,6 @@ Query.DenomOwners = {
   responseStream: false,
   requestType: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersRequest,
   responseType: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersResponse
-};
-
-Query.DenomOwnersByQuery = {
-  methodName: "DenomOwnersByQuery",
-  service: Query,
-  requestStream: false,
-  responseStream: false,
-  requestType: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersByQueryRequest,
-  responseType: cosmos_bank_v1beta1_query_pb.QueryDenomOwnersByQueryResponse
 };
 
 Query.SendEnabled = {
@@ -382,37 +364,6 @@ QueryClient.prototype.denomMetadata = function denomMetadata(requestMessage, met
   };
 };
 
-QueryClient.prototype.denomMetadataByQueryString = function denomMetadataByQueryString(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Query.DenomMetadataByQueryString, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
 QueryClient.prototype.denomsMetadata = function denomsMetadata(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
@@ -449,37 +400,6 @@ QueryClient.prototype.denomOwners = function denomOwners(requestMessage, metadat
     callback = arguments[1];
   }
   var client = grpc.unary(Query.DenomOwners, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-QueryClient.prototype.denomOwnersByQuery = function denomOwnersByQuery(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Query.DenomOwnersByQuery, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

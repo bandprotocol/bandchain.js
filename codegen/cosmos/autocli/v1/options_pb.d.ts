@@ -142,6 +142,9 @@ export class FlagOptions extends jspb.Message {
   getDefaultValue(): string;
   setDefaultValue(value: string): void;
 
+  getNoOptDefaultValue(): string;
+  setNoOptDefaultValue(value: string): void;
+
   getDeprecated(): string;
   setDeprecated(value: string): void;
 
@@ -167,6 +170,7 @@ export namespace FlagOptions {
     shorthand: string,
     usage: string,
     defaultValue: string,
+    noOptDefaultValue: string,
     deprecated: string,
     shorthandDeprecated: string,
     hidden: boolean,

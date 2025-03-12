@@ -64,15 +64,6 @@ Msg.CommunityPoolSpend = {
   responseType: cosmos_distribution_v1beta1_tx_pb.MsgCommunityPoolSpendResponse
 };
 
-Msg.DepositValidatorRewardsPool = {
-  methodName: "DepositValidatorRewardsPool",
-  service: Msg,
-  requestStream: false,
-  responseStream: false,
-  requestType: cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPool,
-  responseType: cosmos_distribution_v1beta1_tx_pb.MsgDepositValidatorRewardsPoolResponse
-};
-
 exports.Msg = Msg;
 
 function MsgClient(serviceHost, options) {
@@ -240,37 +231,6 @@ MsgClient.prototype.communityPoolSpend = function communityPoolSpend(requestMess
     callback = arguments[1];
   }
   var client = grpc.unary(Msg.CommunityPoolSpend, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-MsgClient.prototype.depositValidatorRewardsPool = function depositValidatorRewardsPool(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Msg.DepositValidatorRewardsPool, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

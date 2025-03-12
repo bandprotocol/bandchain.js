@@ -127,15 +127,6 @@ Query.TallyResult = {
   responseType: cosmos_group_v1_query_pb.QueryTallyResultResponse
 };
 
-Query.Groups = {
-  methodName: "Groups",
-  service: Query,
-  requestStream: false,
-  responseStream: false,
-  requestType: cosmos_group_v1_query_pb.QueryGroupsRequest,
-  responseType: cosmos_group_v1_query_pb.QueryGroupsResponse
-};
-
 exports.Query = Query;
 
 function QueryClient(serviceHost, options) {
@@ -520,37 +511,6 @@ QueryClient.prototype.tallyResult = function tallyResult(requestMessage, metadat
     callback = arguments[1];
   }
   var client = grpc.unary(Query.TallyResult, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-QueryClient.prototype.groups = function groups(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(Query.Groups, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

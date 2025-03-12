@@ -66,9 +66,6 @@ export class QueryAllBalancesRequest extends jspb.Message {
   getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageRequest | undefined;
   setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageRequest): void;
 
-  getResolveDenom(): boolean;
-  setResolveDenom(value: boolean): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryAllBalancesRequest.AsObject;
   static toObject(includeInstance: boolean, msg: QueryAllBalancesRequest): QueryAllBalancesRequest.AsObject;
@@ -83,7 +80,6 @@ export namespace QueryAllBalancesRequest {
   export type AsObject = {
     address: string,
     pagination?: cosmos_base_query_v1beta1_pagination_pb.PageRequest.AsObject,
-    resolveDenom: boolean,
   }
 }
 
@@ -437,48 +433,6 @@ export namespace QueryDenomMetadataResponse {
   }
 }
 
-export class QueryDenomMetadataByQueryStringRequest extends jspb.Message {
-  getDenom(): string;
-  setDenom(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryDenomMetadataByQueryStringRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryDenomMetadataByQueryStringRequest): QueryDenomMetadataByQueryStringRequest.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryDenomMetadataByQueryStringRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryDenomMetadataByQueryStringRequest;
-  static deserializeBinaryFromReader(message: QueryDenomMetadataByQueryStringRequest, reader: jspb.BinaryReader): QueryDenomMetadataByQueryStringRequest;
-}
-
-export namespace QueryDenomMetadataByQueryStringRequest {
-  export type AsObject = {
-    denom: string,
-  }
-}
-
-export class QueryDenomMetadataByQueryStringResponse extends jspb.Message {
-  hasMetadata(): boolean;
-  clearMetadata(): void;
-  getMetadata(): cosmos_bank_v1beta1_bank_pb.Metadata | undefined;
-  setMetadata(value?: cosmos_bank_v1beta1_bank_pb.Metadata): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryDenomMetadataByQueryStringResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryDenomMetadataByQueryStringResponse): QueryDenomMetadataByQueryStringResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryDenomMetadataByQueryStringResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryDenomMetadataByQueryStringResponse;
-  static deserializeBinaryFromReader(message: QueryDenomMetadataByQueryStringResponse, reader: jspb.BinaryReader): QueryDenomMetadataByQueryStringResponse;
-}
-
-export namespace QueryDenomMetadataByQueryStringResponse {
-  export type AsObject = {
-    metadata?: cosmos_bank_v1beta1_bank_pb.Metadata.AsObject,
-  }
-}
-
 export class QueryDenomOwnersRequest extends jspb.Message {
   getDenom(): string;
   setDenom(value: string): void;
@@ -553,60 +507,6 @@ export class QueryDenomOwnersResponse extends jspb.Message {
 }
 
 export namespace QueryDenomOwnersResponse {
-  export type AsObject = {
-    denomOwnersList: Array<DenomOwner.AsObject>,
-    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageResponse.AsObject,
-  }
-}
-
-export class QueryDenomOwnersByQueryRequest extends jspb.Message {
-  getDenom(): string;
-  setDenom(value: string): void;
-
-  hasPagination(): boolean;
-  clearPagination(): void;
-  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageRequest | undefined;
-  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageRequest): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryDenomOwnersByQueryRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryDenomOwnersByQueryRequest): QueryDenomOwnersByQueryRequest.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryDenomOwnersByQueryRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryDenomOwnersByQueryRequest;
-  static deserializeBinaryFromReader(message: QueryDenomOwnersByQueryRequest, reader: jspb.BinaryReader): QueryDenomOwnersByQueryRequest;
-}
-
-export namespace QueryDenomOwnersByQueryRequest {
-  export type AsObject = {
-    denom: string,
-    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageRequest.AsObject,
-  }
-}
-
-export class QueryDenomOwnersByQueryResponse extends jspb.Message {
-  clearDenomOwnersList(): void;
-  getDenomOwnersList(): Array<DenomOwner>;
-  setDenomOwnersList(value: Array<DenomOwner>): void;
-  addDenomOwners(value?: DenomOwner, index?: number): DenomOwner;
-
-  hasPagination(): boolean;
-  clearPagination(): void;
-  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageResponse | undefined;
-  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageResponse): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryDenomOwnersByQueryResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryDenomOwnersByQueryResponse): QueryDenomOwnersByQueryResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: QueryDenomOwnersByQueryResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryDenomOwnersByQueryResponse;
-  static deserializeBinaryFromReader(message: QueryDenomOwnersByQueryResponse, reader: jspb.BinaryReader): QueryDenomOwnersByQueryResponse;
-}
-
-export namespace QueryDenomOwnersByQueryResponse {
   export type AsObject = {
     denomOwnersList: Array<DenomOwner.AsObject>,
     pagination?: cosmos_base_query_v1beta1_pagination_pb.PageResponse.AsObject,

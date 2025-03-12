@@ -11,42 +11,50 @@
 /* eslint-disable */
 // @ts-nocheck
 
-var jspb = require('google-protobuf');
-var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var jspb = require('google-protobuf')
+var goog = jspb
+var global = Function('return this')()
 
-var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
-goog.object.extend(proto, google_api_annotations_pb);
-var cosmos_base_abci_v1beta1_abci_pb = require('../../../cosmos/base/abci/v1beta1/abci_pb.js');
-goog.object.extend(proto, cosmos_base_abci_v1beta1_abci_pb);
-var cosmos_tx_v1beta1_tx_pb = require('../../../cosmos/tx/v1beta1/tx_pb.js');
-goog.object.extend(proto, cosmos_tx_v1beta1_tx_pb);
-var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js');
-goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb);
-var tendermint_types_block_pb = require('../../../tendermint/types/block_pb.js');
-goog.object.extend(proto, tendermint_types_block_pb);
-var tendermint_types_types_pb = require('../../../tendermint/types/types_pb.js');
-goog.object.extend(proto, tendermint_types_types_pb);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastMode', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastTxRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastTxResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.OrderBy', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeAminoRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeAminoResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeAminoRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeAminoResponse', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeRequest', null, global);
-goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeResponse', null, global);
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js')
+goog.object.extend(proto, google_api_annotations_pb)
+var cosmos_base_abci_v1beta1_abci_pb = require('../../../cosmos/base/abci/v1beta1/abci_pb.js')
+goog.object.extend(proto, cosmos_base_abci_v1beta1_abci_pb)
+var cosmos_tx_v1beta1_tx_pb = require('../../../cosmos/tx/v1beta1/tx_pb.js')
+goog.object.extend(proto, cosmos_tx_v1beta1_tx_pb)
+var cosmos_base_query_v1beta1_pagination_pb = require('../../../cosmos/base/query/v1beta1/pagination_pb.js')
+goog.object.extend(proto, cosmos_base_query_v1beta1_pagination_pb)
+var tendermint_types_block_pb = require('../../../tendermint/types/block_pb.js')
+goog.object.extend(proto, tendermint_types_block_pb)
+var tendermint_types_types_pb = require('../../../tendermint/types/types_pb.js')
+goog.object.extend(proto, tendermint_types_types_pb)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastMode', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastTxRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.BroadcastTxResponse', null, global)
+goog.exportSymbol(
+  'proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest',
+  null,
+  global,
+)
+goog.exportSymbol(
+  'proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse',
+  null,
+  global,
+)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxResponse', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.GetTxsEventResponse', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.OrderBy', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.SimulateResponse', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeAminoRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeAminoResponse', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxDecodeResponse', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeAminoRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeAminoResponse', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeRequest', null, global)
+goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeResponse', null, global)
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -57,16 +65,24 @@ goog.exportSymbol('proto.cosmos.tx.v1beta1.TxEncodeResponse', null, global);
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.tx.v1beta1.GetTxsEventRequest.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.GetTxsEventRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.GetTxsEventRequest = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.tx.v1beta1.GetTxsEventRequest.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.tx.v1beta1.GetTxsEventRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.GetTxsEventRequest.displayName = 'proto.cosmos.tx.v1beta1.GetTxsEventRequest';
+  proto.cosmos.tx.v1beta1.GetTxsEventRequest.displayName =
+    'proto.cosmos.tx.v1beta1.GetTxsEventRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -78,16 +94,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.tx.v1beta1.GetTxsEventResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.GetTxsEventResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.GetTxsEventResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.tx.v1beta1.GetTxsEventResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.tx.v1beta1.GetTxsEventResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.GetTxsEventResponse.displayName = 'proto.cosmos.tx.v1beta1.GetTxsEventResponse';
+  proto.cosmos.tx.v1beta1.GetTxsEventResponse.displayName =
+    'proto.cosmos.tx.v1beta1.GetTxsEventResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -99,16 +123,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.BroadcastTxRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.BroadcastTxRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.BroadcastTxRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.BroadcastTxRequest.displayName = 'proto.cosmos.tx.v1beta1.BroadcastTxRequest';
+  proto.cosmos.tx.v1beta1.BroadcastTxRequest.displayName =
+    'proto.cosmos.tx.v1beta1.BroadcastTxRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -120,16 +145,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.BroadcastTxResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.BroadcastTxResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.BroadcastTxResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.BroadcastTxResponse.displayName = 'proto.cosmos.tx.v1beta1.BroadcastTxResponse';
+  proto.cosmos.tx.v1beta1.BroadcastTxResponse.displayName =
+    'proto.cosmos.tx.v1beta1.BroadcastTxResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -141,16 +167,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.SimulateRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.SimulateRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.SimulateRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.SimulateRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.SimulateRequest.displayName = 'proto.cosmos.tx.v1beta1.SimulateRequest';
+  proto.cosmos.tx.v1beta1.SimulateRequest.displayName =
+    'proto.cosmos.tx.v1beta1.SimulateRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -162,16 +189,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.SimulateResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.SimulateResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.SimulateResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.SimulateResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.SimulateResponse.displayName = 'proto.cosmos.tx.v1beta1.SimulateResponse';
+  proto.cosmos.tx.v1beta1.SimulateResponse.displayName =
+    'proto.cosmos.tx.v1beta1.SimulateResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -183,16 +211,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.GetTxRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.GetTxRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.GetTxRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.GetTxRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.GetTxRequest.displayName = 'proto.cosmos.tx.v1beta1.GetTxRequest';
+  proto.cosmos.tx.v1beta1.GetTxRequest.displayName =
+    'proto.cosmos.tx.v1beta1.GetTxRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -204,16 +233,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.GetTxResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.GetTxResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.GetTxResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.GetTxResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.GetTxResponse.displayName = 'proto.cosmos.tx.v1beta1.GetTxResponse';
+  proto.cosmos.tx.v1beta1.GetTxResponse.displayName =
+    'proto.cosmos.tx.v1beta1.GetTxResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -225,16 +255,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.displayName = 'proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest';
+  proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.displayName =
+    'proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -246,16 +277,24 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.repeatedFields_, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse = function (opt_data) {
+  jspb.Message.initialize(
+    this,
+    opt_data,
+    0,
+    -1,
+    proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.repeatedFields_,
+    null,
+  )
+}
+goog.inherits(proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.displayName = 'proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse';
+  proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.displayName =
+    'proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -267,16 +306,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.TxDecodeRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxDecodeRequest.displayName = 'proto.cosmos.tx.v1beta1.TxDecodeRequest';
+  proto.cosmos.tx.v1beta1.TxDecodeRequest.displayName =
+    'proto.cosmos.tx.v1beta1.TxDecodeRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -288,16 +328,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.TxDecodeResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxDecodeResponse.displayName = 'proto.cosmos.tx.v1beta1.TxDecodeResponse';
+  proto.cosmos.tx.v1beta1.TxDecodeResponse.displayName =
+    'proto.cosmos.tx.v1beta1.TxDecodeResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -309,16 +350,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.TxEncodeRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxEncodeRequest.displayName = 'proto.cosmos.tx.v1beta1.TxEncodeRequest';
+  proto.cosmos.tx.v1beta1.TxEncodeRequest.displayName =
+    'proto.cosmos.tx.v1beta1.TxEncodeRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -330,16 +372,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.TxEncodeResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxEncodeResponse.displayName = 'proto.cosmos.tx.v1beta1.TxEncodeResponse';
+  proto.cosmos.tx.v1beta1.TxEncodeResponse.displayName =
+    'proto.cosmos.tx.v1beta1.TxEncodeResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -351,16 +394,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeAminoRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeAminoRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.displayName = 'proto.cosmos.tx.v1beta1.TxEncodeAminoRequest';
+  proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.displayName =
+    'proto.cosmos.tx.v1beta1.TxEncodeAminoRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -372,16 +416,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeAminoResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxEncodeAminoResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.displayName = 'proto.cosmos.tx.v1beta1.TxEncodeAminoResponse';
+  proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.displayName =
+    'proto.cosmos.tx.v1beta1.TxEncodeAminoResponse'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -393,16 +438,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeAminoRequest, jspb.Message);
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeAminoRequest, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.displayName = 'proto.cosmos.tx.v1beta1.TxDecodeAminoRequest';
+  proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.displayName =
+    'proto.cosmos.tx.v1beta1.TxDecodeAminoRequest'
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -414,16 +460,17 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeAminoResponse, jspb.Message);
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse = function (opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
+}
+goog.inherits(proto.cosmos.tx.v1beta1.TxDecodeAminoResponse, jspb.Message)
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.displayName = 'proto.cosmos.tx.v1beta1.TxDecodeAminoResponse';
+  proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.displayName =
+    'proto.cosmos.tx.v1beta1.TxDecodeAminoResponse'
 }
 
 /**
@@ -431,66 +478,80 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.repeatedFields_ = [1];
-
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.GetTxsEventRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    eventsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f),
-    orderBy: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    page: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    limit: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    query: jspb.Message.getFieldWithDefault(msg, 6, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.GetTxsEventRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.GetTxsEventRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        eventsList:
+          (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+        orderBy: jspb.Message.getFieldWithDefault(msg, 3, 0),
+        page: jspb.Message.getFieldWithDefault(msg, 4, 0),
+        limit: jspb.Message.getFieldWithDefault(msg, 5, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.GetTxsEventRequest;
-  return proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.GetTxsEventRequest()
+  return proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -499,57 +560,62 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.addEvents(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        case 3:
+          var value = /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (
+            reader.readEnum()
+          )
+          msg.setOrderBy(value)
+          break
+        case 4:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setPage(value)
+          break
+        case 5:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setLimit(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.addEvents(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    case 3:
-      var value = /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (reader.readEnum());
-      msg.setOrderBy(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setPage(value);
-      break;
-    case 5:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setLimit(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setQuery(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.GetTxsEventRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.GetTxsEventRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -558,266 +624,264 @@ proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.serializeBinary = function(
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getEventsList();
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getEventsList()
   if (f.length > 0) {
-    writer.writeRepeatedString(
-      1,
-      f
-    );
+    writer.writeRepeatedString(1, f)
   }
-  f = message.getPagination();
+  f = message.getPagination()
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
+      cosmos_base_query_v1beta1_pagination_pb.PageRequest
+        .serializeBinaryToWriter,
+    )
   }
-  f = message.getOrderBy();
+  f = message.getOrderBy()
   if (f !== 0.0) {
-    writer.writeEnum(
-      3,
-      f
-    );
+    writer.writeEnum(3, f)
   }
-  f = message.getPage();
+  f = message.getPage()
   if (f !== 0) {
-    writer.writeUint64(
-      4,
-      f
-    );
+    writer.writeUint64(4, f)
   }
-  f = message.getLimit();
+  f = message.getLimit()
   if (f !== 0) {
-    writer.writeUint64(
-      5,
-      f
-    );
+    writer.writeUint64(5, f)
   }
-  f = message.getQuery();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-};
-
+}
 
 /**
  * repeated string events = 1;
  * @return {!Array<string>}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getEventsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getEventsList =
+  function () {
+    return /** @type {!Array<string>} */ (
+      jspb.Message.getRepeatedField(this, 1)
+    )
+  }
 
 /**
  * @param {!Array<string>} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setEventsList = function(value) {
-  return jspb.Message.setField(this, 1, value || []);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setEventsList = function (
+  value,
+) {
+  return jspb.Message.setField(this, 1, value || [])
+}
 
 /**
  * @param {string} value
  * @param {number=} opt_index
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.addEvents = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.addEvents = function (
+  value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index)
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.clearEventsList = function() {
-  return this.setEventsList([]);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.clearEventsList =
+  function () {
+    return this.setEventsList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 2));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
-*/
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setPagination = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 /**
  * optional OrderBy order_by = 3;
  * @return {!proto.cosmos.tx.v1beta1.OrderBy}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getOrderBy = function() {
-  return /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getOrderBy = function () {
+  return /** @type {!proto.cosmos.tx.v1beta1.OrderBy} */ (
+    jspb.Message.getFieldWithDefault(this, 3, 0)
+  )
+}
 
 /**
  * @param {!proto.cosmos.tx.v1beta1.OrderBy} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setOrderBy = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setOrderBy = function (
+  value,
+) {
+  return jspb.Message.setProto3EnumField(this, 3, value)
+}
 
 /**
  * optional uint64 page = 4;
  * @return {number}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getPage = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getPage = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setPage = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setPage = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 4, value)
+}
 
 /**
  * optional uint64 limit = 5;
  * @return {number}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getLimit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getLimit = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setLimit = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
-};
-
-
-/**
- * optional string query = 6;
- * @return {string}
- */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.getQuery = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.cosmos.tx.v1beta1.GetTxsEventRequest} returns this
- */
-proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setQuery = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
-};
-
-
+proto.cosmos.tx.v1beta1.GetTxsEventRequest.prototype.setLimit = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 5, value)
+}
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.repeatedFields_ = [1,2];
-
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.repeatedFields_ = [1, 2]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.GetTxsEventResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    txsList: jspb.Message.toObjectList(msg.getTxsList(),
-    cosmos_tx_v1beta1_tx_pb.Tx.toObject, includeInstance),
-    txResponsesList: jspb.Message.toObjectList(msg.getTxResponsesList(),
-    cosmos_base_abci_v1beta1_abci_pb.TxResponse.toObject, includeInstance),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f),
-    total: jspb.Message.getFieldWithDefault(msg, 4, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.GetTxsEventResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.GetTxsEventResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        txsList: jspb.Message.toObjectList(
+          msg.getTxsList(),
+          cosmos_tx_v1beta1_tx_pb.Tx.toObject,
+          includeInstance,
+        ),
+        txResponsesList: jspb.Message.toObjectList(
+          msg.getTxResponsesList(),
+          cosmos_base_abci_v1beta1_abci_pb.TxResponse.toObject,
+          includeInstance,
+        ),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+        total: jspb.Message.getFieldWithDefault(msg, 4, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.GetTxsEventResponse;
-  return proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.GetTxsEventResponse()
+  return proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -826,51 +890,65 @@ proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinary = function(bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_tx_v1beta1_tx_pb.Tx()
+          reader.readMessage(
+            value,
+            cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader,
+          )
+          msg.addTxs(value)
+          break
+        case 2:
+          var value = new cosmos_base_abci_v1beta1_abci_pb.TxResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_abci_v1beta1_abci_pb.TxResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.addTxResponses(value)
+          break
+        case 3:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        case 4:
+          var value = /** @type {number} */ (reader.readUint64())
+          msg.setTotal(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_tx_v1beta1_tx_pb.Tx;
-      reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
-      msg.addTxs(value);
-      break;
-    case 2:
-      var value = new cosmos_base_abci_v1beta1_abci_pb.TxResponse;
-      reader.readMessage(value,cosmos_base_abci_v1beta1_abci_pb.TxResponse.deserializeBinaryFromReader);
-      msg.addTxResponses(value);
-      break;
-    case 3:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    case 4:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setTotal(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.GetTxsEventResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.GetTxsEventResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -879,228 +957,262 @@ proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.serializeBinary = function
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTxsList();
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTxsList()
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
       f,
-      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
-    );
+      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter,
+    )
   }
-  f = message.getTxResponsesList();
+  f = message.getTxResponsesList()
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       2,
       f,
-      cosmos_base_abci_v1beta1_abci_pb.TxResponse.serializeBinaryToWriter
-    );
+      cosmos_base_abci_v1beta1_abci_pb.TxResponse.serializeBinaryToWriter,
+    )
   }
-  f = message.getPagination();
+  f = message.getPagination()
   if (f != null) {
     writer.writeMessage(
       3,
       f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
+      cosmos_base_query_v1beta1_pagination_pb.PageResponse
+        .serializeBinaryToWriter,
+    )
   }
-  f = message.getTotal();
+  f = message.getTotal()
   if (f !== 0) {
-    writer.writeUint64(
-      4,
-      f
-    );
+    writer.writeUint64(4, f)
   }
-};
-
+}
 
 /**
  * repeated Tx txs = 1;
  * @return {!Array<!proto.cosmos.tx.v1beta1.Tx>}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getTxsList = function() {
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getTxsList = function () {
   return /** @type{!Array<!proto.cosmos.tx.v1beta1.Tx>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1));
-};
-
+    jspb.Message.getRepeatedWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1)
+  )
+}
 
 /**
  * @param {!Array<!proto.cosmos.tx.v1beta1.Tx>} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setTxsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setTxsList = function (
+  value,
+) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value)
+}
 
 /**
  * @param {!proto.cosmos.tx.v1beta1.Tx=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.tx.v1beta1.Tx}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.addTxs = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.tx.v1beta1.Tx, opt_index);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.addTxs = function (
+  opt_value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    1,
+    opt_value,
+    proto.cosmos.tx.v1beta1.Tx,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.clearTxsList = function() {
-  return this.setTxsList([]);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.clearTxsList =
+  function () {
+    return this.setTxsList([])
+  }
 
 /**
  * repeated cosmos.base.abci.v1beta1.TxResponse tx_responses = 2;
  * @return {!Array<!proto.cosmos.base.abci.v1beta1.TxResponse>}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getTxResponsesList = function() {
-  return /** @type{!Array<!proto.cosmos.base.abci.v1beta1.TxResponse>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_base_abci_v1beta1_abci_pb.TxResponse, 2));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getTxResponsesList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.base.abci.v1beta1.TxResponse>} */ (
+      jspb.Message.getRepeatedWrapperField(
+        this,
+        cosmos_base_abci_v1beta1_abci_pb.TxResponse,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.base.abci.v1beta1.TxResponse>} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setTxResponsesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setTxResponsesList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 2, value)
+  }
 
 /**
  * @param {!proto.cosmos.base.abci.v1beta1.TxResponse=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.base.abci.v1beta1.TxResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.addTxResponses = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.cosmos.base.abci.v1beta1.TxResponse, opt_index);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.addTxResponses =
+  function (opt_value, opt_index) {
+    return jspb.Message.addToRepeatedWrapperField(
+      this,
+      2,
+      opt_value,
+      proto.cosmos.base.abci.v1beta1.TxResponse,
+      opt_index,
+    )
+  }
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.clearTxResponsesList = function() {
-  return this.setTxResponsesList([]);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.clearTxResponsesList =
+  function () {
+    return this.setTxResponsesList([])
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 3;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 3));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        3,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setPagination = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 3, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 3) != null
+  }
 
 /**
  * optional uint64 total = 4;
  * @return {number}
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getTotal = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.getTotal = function () {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0))
+}
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxsEventResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setTotal = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.BroadcastTxRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.BroadcastTxRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    txBytes: msg.getTxBytes_asB64(),
-    mode: jspb.Message.getFieldWithDefault(msg, 2, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.GetTxsEventResponse.prototype.setTotal = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 4, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.BroadcastTxRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.BroadcastTxRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.BroadcastTxRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        txBytes: msg.getTxBytes_asB64(),
+        mode: jspb.Message.getFieldWithDefault(msg, 2, 0),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxRequest}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.BroadcastTxRequest;
-  return proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.BroadcastTxRequest()
+  return proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1109,40 +1221,45 @@ proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxRequest}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {!Uint8Array} */ (reader.readBytes())
+          msg.setTxBytes(value)
+          break
+        case 2:
+          var value = /** @type {!proto.cosmos.tx.v1beta1.BroadcastMode} */ (
+            reader.readEnum()
+          )
+          msg.setMode(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setTxBytes(value);
-      break;
-    case 2:
-      var value = /** @type {!proto.cosmos.tx.v1beta1.BroadcastMode} */ (reader.readEnum());
-      msg.setMode(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.BroadcastTxRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.BroadcastTxRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1151,44 +1268,40 @@ proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.serializeBinary = function(
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTxBytes_asU8();
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTxBytes_asU8()
   if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+    writer.writeBytes(1, f)
   }
-  f = message.getMode();
+  f = message.getMode()
   if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
+    writer.writeEnum(2, f)
   }
-};
-
+}
 
 /**
  * optional bytes tx_bytes = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes = function () {
+  return /** @type {!(string|Uint8Array)} */ (
+    jspb.Message.getFieldWithDefault(this, 1, '')
+  )
+}
 
 /**
  * optional bytes tx_bytes = 1;
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes_asB64 =
+  function () {
+    return /** @type {string} */ (jspb.Message.bytesAsB64(this.getTxBytes()))
+  }
 
 /**
  * optional bytes tx_bytes = 1;
@@ -1197,93 +1310,110 @@ proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes_asB64 = function
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getTxBytes_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getTxBytes())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxRequest} returns this
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.setTxBytes = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.setTxBytes = function (
+  value,
+) {
+  return jspb.Message.setProto3BytesField(this, 1, value)
+}
 
 /**
  * optional BroadcastMode mode = 2;
  * @return {!proto.cosmos.tx.v1beta1.BroadcastMode}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getMode = function() {
-  return /** @type {!proto.cosmos.tx.v1beta1.BroadcastMode} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.getMode = function () {
+  return /** @type {!proto.cosmos.tx.v1beta1.BroadcastMode} */ (
+    jspb.Message.getFieldWithDefault(this, 2, 0)
+  )
+}
 
 /**
  * @param {!proto.cosmos.tx.v1beta1.BroadcastMode} value
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxRequest} returns this
  */
-proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.setMode = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.BroadcastTxResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.BroadcastTxResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    txResponse: (f = msg.getTxResponse()) && cosmos_base_abci_v1beta1_abci_pb.TxResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.BroadcastTxRequest.prototype.setMode = function (
+  value,
+) {
+  return jspb.Message.setProto3EnumField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.BroadcastTxResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.BroadcastTxResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.BroadcastTxResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        txResponse:
+          (f = msg.getTxResponse()) &&
+          cosmos_base_abci_v1beta1_abci_pb.TxResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxResponse}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.BroadcastTxResponse;
-  return proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.BroadcastTxResponse()
+  return proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1292,37 +1422,44 @@ proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinary = function(bytes) 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxResponse}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_abci_v1beta1_abci_pb.TxResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_abci_v1beta1_abci_pb.TxResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setTxResponse(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_abci_v1beta1_abci_pb.TxResponse;
-      reader.readMessage(value,cosmos_base_abci_v1beta1_abci_pb.TxResponse.deserializeBinaryFromReader);
-      msg.setTxResponse(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.BroadcastTxResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.BroadcastTxResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1331,111 +1468,127 @@ proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.serializeBinary = function
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTxResponse();
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTxResponse()
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      cosmos_base_abci_v1beta1_abci_pb.TxResponse.serializeBinaryToWriter
-    );
+      cosmos_base_abci_v1beta1_abci_pb.TxResponse.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional cosmos.base.abci.v1beta1.TxResponse tx_response = 1;
  * @return {?proto.cosmos.base.abci.v1beta1.TxResponse}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.getTxResponse = function() {
-  return /** @type{?proto.cosmos.base.abci.v1beta1.TxResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_abci_v1beta1_abci_pb.TxResponse, 1));
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.getTxResponse =
+  function () {
+    return /** @type{?proto.cosmos.base.abci.v1beta1.TxResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_abci_v1beta1_abci_pb.TxResponse,
+        1,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.abci.v1beta1.TxResponse|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.setTxResponse = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.setTxResponse = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.BroadcastTxResponse} returns this
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.clearTxResponse = function() {
-  return this.setTxResponse(undefined);
-};
-
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.clearTxResponse =
+  function () {
+    return this.setTxResponse(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.hasTxResponse = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
+proto.cosmos.tx.v1beta1.BroadcastTxResponse.prototype.hasTxResponse =
+  function () {
+    return jspb.Message.getField(this, 1) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.SimulateRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.SimulateRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.SimulateRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
-    txBytes: msg.getTxBytes_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.SimulateRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.SimulateRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.SimulateRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.SimulateRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        tx:
+          (f = msg.getTx()) &&
+          cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
+        txBytes: msg.getTxBytes_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.SimulateRequest}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.SimulateRequest;
-  return proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.SimulateRequest()
+  return proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1444,41 +1597,49 @@ proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.SimulateRequest}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.tx.v1beta1.SimulateRequest.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new cosmos_tx_v1beta1_tx_pb.Tx;
-      reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
-      msg.setTx(value);
-      break;
-    case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setTxBytes(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new cosmos_tx_v1beta1_tx_pb.Tx()
+        reader.readMessage(
+          value,
+          cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader,
+        )
+        msg.setTx(value)
+        break
+      case 2:
+        var value = /** @type {!Uint8Array} */ (reader.readBytes())
+        msg.setTxBytes(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.SimulateRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.SimulateRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1487,82 +1648,78 @@ proto.cosmos.tx.v1beta1.SimulateRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTx();
+proto.cosmos.tx.v1beta1.SimulateRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTx()
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
-    );
+      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter,
+    )
   }
-  f = message.getTxBytes_asU8();
+  f = message.getTxBytes_asU8()
   if (f.length > 0) {
-    writer.writeBytes(
-      2,
-      f
-    );
+    writer.writeBytes(2, f)
   }
-};
-
+}
 
 /**
  * optional Tx tx = 1;
  * @return {?proto.cosmos.tx.v1beta1.Tx}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTx = function() {
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTx = function () {
   return /** @type{?proto.cosmos.tx.v1beta1.Tx} */ (
-    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1));
-};
-
+    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1)
+  )
+}
 
 /**
  * @param {?proto.cosmos.tx.v1beta1.Tx|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.SimulateRequest} returns this
-*/
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.setTx = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.setTx = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.SimulateRequest} returns this
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.clearTx = function() {
-  return this.setTx(undefined);
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.clearTx = function () {
+  return this.setTx(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.hasTx = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.hasTx = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional bytes tx_bytes = 2;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes = function () {
+  return /** @type {!(string|Uint8Array)} */ (
+    jspb.Message.getFieldWithDefault(this, 2, '')
+  )
+}
 
 /**
  * optional bytes tx_bytes = 2;
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asB64 =
+  function () {
+    return /** @type {string} */ (jspb.Message.bytesAsB64(this.getTxBytes()))
+  }
 
 /**
  * optional bytes tx_bytes = 2;
@@ -1571,76 +1728,88 @@ proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asB64 = function() 
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.getTxBytes_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getTxBytes())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.tx.v1beta1.SimulateRequest} returns this
  */
-proto.cosmos.tx.v1beta1.SimulateRequest.prototype.setTxBytes = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.SimulateResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.SimulateResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.SimulateResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    gasInfo: (f = msg.getGasInfo()) && cosmos_base_abci_v1beta1_abci_pb.GasInfo.toObject(includeInstance, f),
-    result: (f = msg.getResult()) && cosmos_base_abci_v1beta1_abci_pb.Result.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.SimulateRequest.prototype.setTxBytes = function (
+  value,
+) {
+  return jspb.Message.setProto3BytesField(this, 2, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.SimulateResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.SimulateResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.SimulateResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.SimulateResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        gasInfo:
+          (f = msg.getGasInfo()) &&
+          cosmos_base_abci_v1beta1_abci_pb.GasInfo.toObject(includeInstance, f),
+        result:
+          (f = msg.getResult()) &&
+          cosmos_base_abci_v1beta1_abci_pb.Result.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.SimulateResponse}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.SimulateResponse;
-  return proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.SimulateResponse()
+  return proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1649,42 +1818,52 @@ proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.SimulateResponse}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.SimulateResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_base_abci_v1beta1_abci_pb.GasInfo()
+          reader.readMessage(
+            value,
+            cosmos_base_abci_v1beta1_abci_pb.GasInfo
+              .deserializeBinaryFromReader,
+          )
+          msg.setGasInfo(value)
+          break
+        case 2:
+          var value = new cosmos_base_abci_v1beta1_abci_pb.Result()
+          reader.readMessage(
+            value,
+            cosmos_base_abci_v1beta1_abci_pb.Result.deserializeBinaryFromReader,
+          )
+          msg.setResult(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_base_abci_v1beta1_abci_pb.GasInfo;
-      reader.readMessage(value,cosmos_base_abci_v1beta1_abci_pb.GasInfo.deserializeBinaryFromReader);
-      msg.setGasInfo(value);
-      break;
-    case 2:
-      var value = new cosmos_base_abci_v1beta1_abci_pb.Result;
-      reader.readMessage(value,cosmos_base_abci_v1beta1_abci_pb.Result.deserializeBinaryFromReader);
-      msg.setResult(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.SimulateResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.SimulateResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1693,155 +1872,169 @@ proto.cosmos.tx.v1beta1.SimulateResponse.prototype.serializeBinary = function() 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getGasInfo();
+proto.cosmos.tx.v1beta1.SimulateResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getGasInfo()
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      cosmos_base_abci_v1beta1_abci_pb.GasInfo.serializeBinaryToWriter
-    );
+      cosmos_base_abci_v1beta1_abci_pb.GasInfo.serializeBinaryToWriter,
+    )
   }
-  f = message.getResult();
+  f = message.getResult()
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      cosmos_base_abci_v1beta1_abci_pb.Result.serializeBinaryToWriter
-    );
+      cosmos_base_abci_v1beta1_abci_pb.Result.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional cosmos.base.abci.v1beta1.GasInfo gas_info = 1;
  * @return {?proto.cosmos.base.abci.v1beta1.GasInfo}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.getGasInfo = function() {
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.getGasInfo = function () {
   return /** @type{?proto.cosmos.base.abci.v1beta1.GasInfo} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_abci_v1beta1_abci_pb.GasInfo, 1));
-};
-
+    jspb.Message.getWrapperField(
+      this,
+      cosmos_base_abci_v1beta1_abci_pb.GasInfo,
+      1,
+    )
+  )
+}
 
 /**
  * @param {?proto.cosmos.base.abci.v1beta1.GasInfo|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.SimulateResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.setGasInfo = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.setGasInfo = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.SimulateResponse} returns this
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.clearGasInfo = function() {
-  return this.setGasInfo(undefined);
-};
-
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.clearGasInfo = function () {
+  return this.setGasInfo(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.hasGasInfo = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.hasGasInfo = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional cosmos.base.abci.v1beta1.Result result = 2;
  * @return {?proto.cosmos.base.abci.v1beta1.Result}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.getResult = function() {
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.getResult = function () {
   return /** @type{?proto.cosmos.base.abci.v1beta1.Result} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_abci_v1beta1_abci_pb.Result, 2));
-};
-
+    jspb.Message.getWrapperField(
+      this,
+      cosmos_base_abci_v1beta1_abci_pb.Result,
+      2,
+    )
+  )
+}
 
 /**
  * @param {?proto.cosmos.base.abci.v1beta1.Result|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.SimulateResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.setResult = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.setResult = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.SimulateResponse} returns this
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.clearResult = function() {
-  return this.setResult(undefined);
-};
-
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.clearResult = function () {
+  return this.setResult(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.SimulateResponse.prototype.hasResult = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.GetTxRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.GetTxRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.GetTxRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.GetTxRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    hash: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.SimulateResponse.prototype.hasResult = function () {
+  return jspb.Message.getField(this, 2) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.GetTxRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.GetTxRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.GetTxRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.GetTxRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        hash: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.GetTxRequest}
  */
-proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.GetTxRequest;
-  return proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.GetTxRequest()
+  return proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1850,36 +2043,37 @@ proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.GetTxRequest}
  */
-proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.tx.v1beta1.GetTxRequest.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setHash(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {string} */ (reader.readString())
+        msg.setHash(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.GetTxRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.GetTxRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.GetTxRequest.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.tx.v1beta1.GetTxRequest.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1888,91 +2082,101 @@ proto.cosmos.tx.v1beta1.GetTxRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.GetTxRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getHash();
+proto.cosmos.tx.v1beta1.GetTxRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getHash()
   if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+    writer.writeString(1, f)
   }
-};
-
+}
 
 /**
  * optional string hash = 1;
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.GetTxRequest.prototype.getHash = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.GetTxRequest.prototype.getHash = function () {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+}
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxRequest.prototype.setHash = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.GetTxResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.GetTxResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.GetTxResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
-    txResponse: (f = msg.getTxResponse()) && cosmos_base_abci_v1beta1_abci_pb.TxResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.GetTxRequest.prototype.setHash = function (value) {
+  return jspb.Message.setProto3StringField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.GetTxResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.GetTxResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.GetTxResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.GetTxResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        tx:
+          (f = msg.getTx()) &&
+          cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
+        txResponse:
+          (f = msg.getTxResponse()) &&
+          cosmos_base_abci_v1beta1_abci_pb.TxResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.GetTxResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.GetTxResponse;
-  return proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.GetTxResponse()
+  return proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1981,42 +2185,50 @@ proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.GetTxResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.tx.v1beta1.GetTxResponse.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new cosmos_tx_v1beta1_tx_pb.Tx;
-      reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
-      msg.setTx(value);
-      break;
-    case 2:
-      var value = new cosmos_base_abci_v1beta1_abci_pb.TxResponse;
-      reader.readMessage(value,cosmos_base_abci_v1beta1_abci_pb.TxResponse.deserializeBinaryFromReader);
-      msg.setTxResponse(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new cosmos_tx_v1beta1_tx_pb.Tx()
+        reader.readMessage(
+          value,
+          cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader,
+        )
+        msg.setTx(value)
+        break
+      case 2:
+        var value = new cosmos_base_abci_v1beta1_abci_pb.TxResponse()
+        reader.readMessage(
+          value,
+          cosmos_base_abci_v1beta1_abci_pb.TxResponse
+            .deserializeBinaryFromReader,
+        )
+        msg.setTxResponse(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.GetTxResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.serializeBinary = function () {
+  var writer = new jspb.BinaryWriter()
+  proto.cosmos.tx.v1beta1.GetTxResponse.serializeBinaryToWriter(this, writer)
+  return writer.getResultBuffer()
+}
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2025,156 +2237,171 @@ proto.cosmos.tx.v1beta1.GetTxResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTx();
+proto.cosmos.tx.v1beta1.GetTxResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTx()
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
-    );
+      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter,
+    )
   }
-  f = message.getTxResponse();
+  f = message.getTxResponse()
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      cosmos_base_abci_v1beta1_abci_pb.TxResponse.serializeBinaryToWriter
-    );
+      cosmos_base_abci_v1beta1_abci_pb.TxResponse.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional Tx tx = 1;
  * @return {?proto.cosmos.tx.v1beta1.Tx}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.getTx = function() {
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.getTx = function () {
   return /** @type{?proto.cosmos.tx.v1beta1.Tx} */ (
-    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1));
-};
-
+    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1)
+  )
+}
 
 /**
  * @param {?proto.cosmos.tx.v1beta1.Tx|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.setTx = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.setTx = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetTxResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.clearTx = function() {
-  return this.setTx(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.clearTx = function () {
+  return this.setTx(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.hasTx = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.hasTx = function () {
+  return jspb.Message.getField(this, 1) != null
+}
 
 /**
  * optional cosmos.base.abci.v1beta1.TxResponse tx_response = 2;
  * @return {?proto.cosmos.base.abci.v1beta1.TxResponse}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.getTxResponse = function() {
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.getTxResponse = function () {
   return /** @type{?proto.cosmos.base.abci.v1beta1.TxResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_abci_v1beta1_abci_pb.TxResponse, 2));
-};
-
+    jspb.Message.getWrapperField(
+      this,
+      cosmos_base_abci_v1beta1_abci_pb.TxResponse,
+      2,
+    )
+  )
+}
 
 /**
  * @param {?proto.cosmos.base.abci.v1beta1.TxResponse|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetTxResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.setTxResponse = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.setTxResponse = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 2, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetTxResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.clearTxResponse = function() {
-  return this.setTxResponse(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.clearTxResponse = function () {
+  return this.setTxResponse(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetTxResponse.prototype.hasTxResponse = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    height: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.GetTxResponse.prototype.hasTxResponse = function () {
+  return jspb.Message.getField(this, 2) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        height: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageRequest.toObject(
+            includeInstance,
+            f,
+          ),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest;
-  return proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest()
+  return proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2183,41 +2410,48 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinary = function(byte
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {number} */ (reader.readInt64())
+          msg.setHeight(value)
+          break
+        case 2:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageRequest
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setHeight(value);
-      break;
-    case 2:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageRequest;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageRequest.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2226,146 +2460,169 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.serializeBinary = funct
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getHeight();
-  if (f !== 0) {
-    writer.writeInt64(
-      1,
-      f
-    );
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getHeight()
+    if (f !== 0) {
+      writer.writeInt64(1, f)
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageRequest.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * optional int64 height = 1;
  * @return {number}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.getHeight = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.getHeight =
+  function () {
+    return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0))
+  }
 
 /**
  * @param {number} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.setHeight = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.setHeight = function (
+  value,
+) {
+  return jspb.Message.setProto3IntField(this, 1, value)
+}
 
 /**
  * optional cosmos.base.query.v1beta1.PageRequest pagination = 2;
  * @return {?proto.cosmos.base.query.v1beta1.PageRequest}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageRequest, 2));
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageRequest} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageRequest,
+        2,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageRequest|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest} returns this
-*/
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest} returns this
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsRequest.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.repeatedFields_ = [1];
-
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.repeatedFields_ = [1]
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.toObject(opt_includeInstance, this);
-};
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.toObject =
+    function (opt_includeInstance) {
+      return proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.toObject(
+        opt_includeInstance,
+        this,
+      )
+    }
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        txsList: jspb.Message.toObjectList(
+          msg.getTxsList(),
+          cosmos_tx_v1beta1_tx_pb.Tx.toObject,
+          includeInstance,
+        ),
+        blockId:
+          (f = msg.getBlockId()) &&
+          tendermint_types_types_pb.BlockID.toObject(includeInstance, f),
+        block:
+          (f = msg.getBlock()) &&
+          tendermint_types_block_pb.Block.toObject(includeInstance, f),
+        pagination:
+          (f = msg.getPagination()) &&
+          cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(
+            includeInstance,
+            f,
+          ),
+      }
 
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    txsList: jspb.Message.toObjectList(msg.getTxsList(),
-    cosmos_tx_v1beta1_tx_pb.Tx.toObject, includeInstance),
-    blockId: (f = msg.getBlockId()) && tendermint_types_types_pb.BlockID.toObject(includeInstance, f),
-    block: (f = msg.getBlock()) && tendermint_types_block_pb.Block.toObject(includeInstance, f),
-    pagination: (f = msg.getPagination()) && cosmos_base_query_v1beta1_pagination_pb.PageResponse.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
   }
-  return obj;
-};
 }
-
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse;
-  return proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse()
+  return proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2374,52 +2631,68 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinary = function(byt
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_tx_v1beta1_tx_pb.Tx()
+          reader.readMessage(
+            value,
+            cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader,
+          )
+          msg.addTxs(value)
+          break
+        case 2:
+          var value = new tendermint_types_types_pb.BlockID()
+          reader.readMessage(
+            value,
+            tendermint_types_types_pb.BlockID.deserializeBinaryFromReader,
+          )
+          msg.setBlockId(value)
+          break
+        case 3:
+          var value = new tendermint_types_block_pb.Block()
+          reader.readMessage(
+            value,
+            tendermint_types_block_pb.Block.deserializeBinaryFromReader,
+          )
+          msg.setBlock(value)
+          break
+        case 4:
+          var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse()
+          reader.readMessage(
+            value,
+            cosmos_base_query_v1beta1_pagination_pb.PageResponse
+              .deserializeBinaryFromReader,
+          )
+          msg.setPagination(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_tx_v1beta1_tx_pb.Tx;
-      reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
-      msg.addTxs(value);
-      break;
-    case 2:
-      var value = new tendermint_types_types_pb.BlockID;
-      reader.readMessage(value,tendermint_types_types_pb.BlockID.deserializeBinaryFromReader);
-      msg.setBlockId(value);
-      break;
-    case 3:
-      var value = new tendermint_types_block_pb.Block;
-      reader.readMessage(value,tendermint_types_block_pb.Block.deserializeBinaryFromReader);
-      msg.setBlock(value);
-      break;
-    case 4:
-      var value = new cosmos_base_query_v1beta1_pagination_pb.PageResponse;
-      reader.readMessage(value,cosmos_base_query_v1beta1_pagination_pb.PageResponse.deserializeBinaryFromReader);
-      msg.setPagination(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2428,246 +2701,270 @@ proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.serializeBinary = func
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTxsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      1,
-      f,
-      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
-    );
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getTxsList()
+    if (f.length > 0) {
+      writer.writeRepeatedMessage(
+        1,
+        f,
+        cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter,
+      )
+    }
+    f = message.getBlockId()
+    if (f != null) {
+      writer.writeMessage(
+        2,
+        f,
+        tendermint_types_types_pb.BlockID.serializeBinaryToWriter,
+      )
+    }
+    f = message.getBlock()
+    if (f != null) {
+      writer.writeMessage(
+        3,
+        f,
+        tendermint_types_block_pb.Block.serializeBinaryToWriter,
+      )
+    }
+    f = message.getPagination()
+    if (f != null) {
+      writer.writeMessage(
+        4,
+        f,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse
+          .serializeBinaryToWriter,
+      )
+    }
   }
-  f = message.getBlockId();
-  if (f != null) {
-    writer.writeMessage(
-      2,
-      f,
-      tendermint_types_types_pb.BlockID.serializeBinaryToWriter
-    );
-  }
-  f = message.getBlock();
-  if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      tendermint_types_block_pb.Block.serializeBinaryToWriter
-    );
-  }
-  f = message.getPagination();
-  if (f != null) {
-    writer.writeMessage(
-      4,
-      f,
-      cosmos_base_query_v1beta1_pagination_pb.PageResponse.serializeBinaryToWriter
-    );
-  }
-};
-
 
 /**
  * repeated Tx txs = 1;
  * @return {!Array<!proto.cosmos.tx.v1beta1.Tx>}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getTxsList = function() {
-  return /** @type{!Array<!proto.cosmos.tx.v1beta1.Tx>} */ (
-    jspb.Message.getRepeatedWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1));
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getTxsList =
+  function () {
+    return /** @type{!Array<!proto.cosmos.tx.v1beta1.Tx>} */ (
+      jspb.Message.getRepeatedWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1)
+    )
+  }
 
 /**
  * @param {!Array<!proto.cosmos.tx.v1beta1.Tx>} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setTxsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setTxsList =
+  function (value) {
+    return jspb.Message.setRepeatedWrapperField(this, 1, value)
+  }
 
 /**
  * @param {!proto.cosmos.tx.v1beta1.Tx=} opt_value
  * @param {number=} opt_index
  * @return {!proto.cosmos.tx.v1beta1.Tx}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.addTxs = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.cosmos.tx.v1beta1.Tx, opt_index);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.addTxs = function (
+  opt_value,
+  opt_index,
+) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    1,
+    opt_value,
+    proto.cosmos.tx.v1beta1.Tx,
+    opt_index,
+  )
+}
 
 /**
  * Clears the list making it empty but non-null.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearTxsList = function() {
-  return this.setTxsList([]);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearTxsList =
+  function () {
+    return this.setTxsList([])
+  }
 
 /**
  * optional tendermint.types.BlockID block_id = 2;
  * @return {?proto.tendermint.types.BlockID}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getBlockId = function() {
-  return /** @type{?proto.tendermint.types.BlockID} */ (
-    jspb.Message.getWrapperField(this, tendermint_types_types_pb.BlockID, 2));
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getBlockId =
+  function () {
+    return /** @type{?proto.tendermint.types.BlockID} */ (
+      jspb.Message.getWrapperField(this, tendermint_types_types_pb.BlockID, 2)
+    )
+  }
 
 /**
  * @param {?proto.tendermint.types.BlockID|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setBlockId = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setBlockId =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 2, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearBlockId = function() {
-  return this.setBlockId(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearBlockId =
+  function () {
+    return this.setBlockId(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasBlockId = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasBlockId =
+  function () {
+    return jspb.Message.getField(this, 2) != null
+  }
 
 /**
  * optional tendermint.types.Block block = 3;
  * @return {?proto.tendermint.types.Block}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getBlock = function() {
-  return /** @type{?proto.tendermint.types.Block} */ (
-    jspb.Message.getWrapperField(this, tendermint_types_block_pb.Block, 3));
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getBlock =
+  function () {
+    return /** @type{?proto.tendermint.types.Block} */ (
+      jspb.Message.getWrapperField(this, tendermint_types_block_pb.Block, 3)
+    )
+  }
 
 /**
  * @param {?proto.tendermint.types.Block|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setBlock = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setBlock = function (
+  value,
+) {
+  return jspb.Message.setWrapperField(this, 3, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearBlock = function() {
-  return this.setBlock(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearBlock =
+  function () {
+    return this.setBlock(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasBlock = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasBlock =
+  function () {
+    return jspb.Message.getField(this, 3) != null
+  }
 
 /**
  * optional cosmos.base.query.v1beta1.PageResponse pagination = 4;
  * @return {?proto.cosmos.base.query.v1beta1.PageResponse}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getPagination = function() {
-  return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
-    jspb.Message.getWrapperField(this, cosmos_base_query_v1beta1_pagination_pb.PageResponse, 4));
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.getPagination =
+  function () {
+    return /** @type{?proto.cosmos.base.query.v1beta1.PageResponse} */ (
+      jspb.Message.getWrapperField(
+        this,
+        cosmos_base_query_v1beta1_pagination_pb.PageResponse,
+        4,
+      )
+    )
+  }
 
 /**
  * @param {?proto.cosmos.base.query.v1beta1.PageResponse|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setPagination = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.setPagination =
+  function (value) {
+    return jspb.Message.setWrapperField(this, 4, value)
+  }
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse} returns this
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearPagination = function() {
-  return this.setPagination(undefined);
-};
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.clearPagination =
+  function () {
+    return this.setPagination(undefined)
+  }
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasPagination = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-
-
+proto.cosmos.tx.v1beta1.GetBlockWithTxsResponse.prototype.hasPagination =
+  function () {
+    return jspb.Message.getField(this, 4) != null
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxDecodeRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxDecodeRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    txBytes: msg.getTxBytes_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxDecodeRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxDecodeRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        txBytes: msg.getTxBytes_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeRequest}
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxDecodeRequest;
-  return proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxDecodeRequest()
+  return proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2676,36 +2973,41 @@ proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeRequest}
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.tx.v1beta1.TxDecodeRequest.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setTxBytes(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {!Uint8Array} */ (reader.readBytes())
+        msg.setTxBytes(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxDecodeRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxDecodeRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2714,37 +3016,36 @@ proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTxBytes_asU8();
+proto.cosmos.tx.v1beta1.TxDecodeRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTxBytes_asU8()
   if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+    writer.writeBytes(1, f)
   }
-};
-
+}
 
 /**
  * optional bytes tx_bytes = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes = function () {
+  return /** @type {!(string|Uint8Array)} */ (
+    jspb.Message.getFieldWithDefault(this, 1, '')
+  )
+}
 
 /**
  * optional bytes tx_bytes = 1;
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes_asB64 =
+  function () {
+    return /** @type {string} */ (jspb.Message.bytesAsB64(this.getTxBytes()))
+  }
 
 /**
  * optional bytes tx_bytes = 1;
@@ -2753,75 +3054,85 @@ proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes_asB64 = function() 
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.getTxBytes_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getTxBytes())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeRequest} returns this
  */
-proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.setTxBytes = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxDecodeResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxDecodeResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.TxDecodeRequest.prototype.setTxBytes = function (
+  value,
+) {
+  return jspb.Message.setProto3BytesField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxDecodeResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxDecodeResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        tx:
+          (f = msg.getTx()) &&
+          cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeResponse}
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxDecodeResponse;
-  return proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxDecodeResponse()
+  return proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2830,37 +3141,43 @@ proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeResponse}
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.TxDecodeResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = new cosmos_tx_v1beta1_tx_pb.Tx()
+          reader.readMessage(
+            value,
+            cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader,
+          )
+          msg.setTx(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new cosmos_tx_v1beta1_tx_pb.Tx;
-      reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
-      msg.setTx(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxDecodeResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxDecodeResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2869,110 +3186,117 @@ proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.serializeBinary = function() 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTx();
+proto.cosmos.tx.v1beta1.TxDecodeResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTx()
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
-    );
+      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional Tx tx = 1;
  * @return {?proto.cosmos.tx.v1beta1.Tx}
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.getTx = function() {
+proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.getTx = function () {
   return /** @type{?proto.cosmos.tx.v1beta1.Tx} */ (
-    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1));
-};
-
+    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1)
+  )
+}
 
 /**
  * @param {?proto.cosmos.tx.v1beta1.Tx|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeResponse} returns this
-*/
-proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.setTx = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.setTx = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeResponse} returns this
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.clearTx = function() {
-  return this.setTx(undefined);
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.clearTx = function () {
+  return this.setTx(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.hasTx = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxEncodeRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxEncodeRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    tx: (f = msg.getTx()) && cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.TxDecodeResponse.prototype.hasTx = function () {
+  return jspb.Message.getField(this, 1) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxEncodeRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxEncodeRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        tx:
+          (f = msg.getTx()) &&
+          cosmos_tx_v1beta1_tx_pb.Tx.toObject(includeInstance, f),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeRequest}
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxEncodeRequest;
-  return proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxEncodeRequest()
+  return proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2981,37 +3305,45 @@ proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeRequest}
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.cosmos.tx.v1beta1.TxEncodeRequest.deserializeBinaryFromReader = function (
+  msg,
+  reader,
+) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
-      break;
+      break
     }
-    var field = reader.getFieldNumber();
+    var field = reader.getFieldNumber()
     switch (field) {
-    case 1:
-      var value = new cosmos_tx_v1beta1_tx_pb.Tx;
-      reader.readMessage(value,cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader);
-      msg.setTx(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = new cosmos_tx_v1beta1_tx_pb.Tx()
+        reader.readMessage(
+          value,
+          cosmos_tx_v1beta1_tx_pb.Tx.deserializeBinaryFromReader,
+        )
+        msg.setTx(value)
+        break
+      default:
+        reader.skipField()
+        break
     }
   }
-  return msg;
-};
-
+  return msg
+}
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxEncodeRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxEncodeRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3020,110 +3352,115 @@ proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTx();
+proto.cosmos.tx.v1beta1.TxEncodeRequest.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTx()
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter
-    );
+      cosmos_tx_v1beta1_tx_pb.Tx.serializeBinaryToWriter,
+    )
   }
-};
-
+}
 
 /**
  * optional Tx tx = 1;
  * @return {?proto.cosmos.tx.v1beta1.Tx}
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.getTx = function() {
+proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.getTx = function () {
   return /** @type{?proto.cosmos.tx.v1beta1.Tx} */ (
-    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1));
-};
-
+    jspb.Message.getWrapperField(this, cosmos_tx_v1beta1_tx_pb.Tx, 1)
+  )
+}
 
 /**
  * @param {?proto.cosmos.tx.v1beta1.Tx|undefined} value
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeRequest} returns this
-*/
-proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.setTx = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
+ */
+proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.setTx = function (value) {
+  return jspb.Message.setWrapperField(this, 1, value)
+}
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeRequest} returns this
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.clearTx = function() {
-  return this.setTx(undefined);
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.clearTx = function () {
+  return this.setTx(undefined)
+}
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.hasTx = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxEncodeResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxEncodeResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    txBytes: msg.getTxBytes_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.TxEncodeRequest.prototype.hasTx = function () {
+  return jspb.Message.getField(this, 1) != null
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxEncodeResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxEncodeResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        txBytes: msg.getTxBytes_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeResponse}
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxEncodeResponse;
-  return proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinary = function (bytes) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxEncodeResponse()
+  return proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3132,36 +3469,39 @@ proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeResponse}
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.TxEncodeResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {!Uint8Array} */ (reader.readBytes())
+          msg.setTxBytes(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setTxBytes(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxEncodeResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxEncodeResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3170,37 +3510,36 @@ proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.serializeBinary = function() 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getTxBytes_asU8();
+proto.cosmos.tx.v1beta1.TxEncodeResponse.serializeBinaryToWriter = function (
+  message,
+  writer,
+) {
+  var f = undefined
+  f = message.getTxBytes_asU8()
   if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+    writer.writeBytes(1, f)
   }
-};
-
+}
 
 /**
  * optional bytes tx_bytes = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes = function () {
+  return /** @type {!(string|Uint8Array)} */ (
+    jspb.Message.getFieldWithDefault(this, 1, '')
+  )
+}
 
 /**
  * optional bytes tx_bytes = 1;
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes_asB64 =
+  function () {
+    return /** @type {string} */ (jspb.Message.bytesAsB64(this.getTxBytes()))
+  }
 
 /**
  * optional bytes tx_bytes = 1;
@@ -3209,75 +3548,85 @@ proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes_asB64 = function()
  * This is a type-conversion wrapper around `getTxBytes()`
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getTxBytes()));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.getTxBytes_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getTxBytes())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeResponse} returns this
  */
-proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.setTxBytes = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxEncodeAminoRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    aminoJson: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.TxEncodeResponse.prototype.setTxBytes = function (
+  value,
+) {
+  return jspb.Message.setProto3BytesField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxEncodeAminoRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        aminoJson: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeAminoRequest}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxEncodeAminoRequest;
-  return proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxEncodeAminoRequest()
+  return proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3286,36 +3635,39 @@ proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinary = function(bytes)
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeAminoRequest}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAminoJson(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAminoJson(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3324,90 +3676,96 @@ proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.serializeBinary = functio
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAminoJson();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAminoJson()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string amino_json = 1;
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.getAminoJson = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.getAminoJson =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeAminoRequest} returns this
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.setAminoJson = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxEncodeAminoResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    aminoBinary: msg.getAminoBinary_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
+proto.cosmos.tx.v1beta1.TxEncodeAminoRequest.prototype.setAminoJson = function (
+  value,
+) {
+  return jspb.Message.setProto3StringField(this, 1, value)
 }
 
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
+  }
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxEncodeAminoResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        aminoBinary: msg.getAminoBinary_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeAminoResponse}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxEncodeAminoResponse;
-  return proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxEncodeAminoResponse()
+  return proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3416,36 +3774,39 @@ proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeAminoResponse}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {!Uint8Array} */ (reader.readBytes())
+          msg.setAminoBinary(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setAminoBinary(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3454,37 +3815,37 @@ proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAminoBinary_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAminoBinary_asU8()
+    if (f.length > 0) {
+      writer.writeBytes(1, f)
+    }
   }
-};
-
 
 /**
  * optional bytes amino_binary = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary =
+  function () {
+    return /** @type {!(string|Uint8Array)} */ (
+      jspb.Message.getFieldWithDefault(this, 1, '')
+    )
+  }
 
 /**
  * optional bytes amino_binary = 1;
  * This is a type-conversion wrapper around `getAminoBinary()`
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getAminoBinary()));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary_asB64 =
+  function () {
+    return /** @type {string} */ (
+      jspb.Message.bytesAsB64(this.getAminoBinary())
+    )
+  }
 
 /**
  * optional bytes amino_binary = 1;
@@ -3493,75 +3854,84 @@ proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary_asB64 = f
  * This is a type-conversion wrapper around `getAminoBinary()`
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getAminoBinary()));
-};
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.getAminoBinary_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getAminoBinary())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.tx.v1beta1.TxEncodeAminoResponse} returns this
  */
-proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.setAminoBinary = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.tx.v1beta1.TxEncodeAminoResponse.prototype.setAminoBinary =
+  function (value) {
+    return jspb.Message.setProto3BytesField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxDecodeAminoRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    aminoBinary: msg.getAminoBinary_asB64()
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxDecodeAminoRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        aminoBinary: msg.getAminoBinary_asB64(),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeAminoRequest}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxDecodeAminoRequest;
-  return proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxDecodeAminoRequest()
+  return proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3570,36 +3940,39 @@ proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinary = function(bytes)
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeAminoRequest}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {!Uint8Array} */ (reader.readBytes())
+          msg.setAminoBinary(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setAminoBinary(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3608,37 +3981,37 @@ proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.serializeBinary = functio
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAminoBinary_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
-      1,
-      f
-    );
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAminoBinary_asU8()
+    if (f.length > 0) {
+      writer.writeBytes(1, f)
+    }
   }
-};
-
 
 /**
  * optional bytes amino_binary = 1;
  * @return {!(string|Uint8Array)}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary =
+  function () {
+    return /** @type {!(string|Uint8Array)} */ (
+      jspb.Message.getFieldWithDefault(this, 1, '')
+    )
+  }
 
 /**
  * optional bytes amino_binary = 1;
  * This is a type-conversion wrapper around `getAminoBinary()`
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getAminoBinary()));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary_asB64 =
+  function () {
+    return /** @type {string} */ (
+      jspb.Message.bytesAsB64(this.getAminoBinary())
+    )
+  }
 
 /**
  * optional bytes amino_binary = 1;
@@ -3647,75 +4020,84 @@ proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary_asB64 = fu
  * This is a type-conversion wrapper around `getAminoBinary()`
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getAminoBinary()));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.getAminoBinary_asU8 =
+  function () {
+    return /** @type {!Uint8Array} */ (
+      jspb.Message.bytesAsU8(this.getAminoBinary())
+    )
+  }
 
 /**
  * @param {!(string|Uint8Array)} value
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeAminoRequest} returns this
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.setAminoBinary = function(value) {
-  return jspb.Message.setProto3BytesField(this, 1, value);
-};
-
-
-
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoRequest.prototype.setAminoBinary =
+  function (value) {
+    return jspb.Message.setProto3BytesField(this, 1, value)
+  }
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.cosmos.tx.v1beta1.TxDecodeAminoResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    aminoJson: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.toObject = function (
+    opt_includeInstance,
+  ) {
+    return proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.toObject(
+      opt_includeInstance,
+      this,
+    )
   }
-  return obj;
-};
-}
 
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.cosmos.tx.v1beta1.TxDecodeAminoResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.toObject = function (
+    includeInstance,
+    msg,
+  ) {
+    var f,
+      obj = {
+        aminoJson: jspb.Message.getFieldWithDefault(msg, 1, ''),
+      }
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg
+    }
+    return obj
+  }
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeAminoResponse}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.cosmos.tx.v1beta1.TxDecodeAminoResponse;
-  return proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinaryFromReader(msg, reader);
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinary = function (
+  bytes,
+) {
+  var reader = new jspb.BinaryReader(bytes)
+  var msg = new proto.cosmos.tx.v1beta1.TxDecodeAminoResponse()
+  return proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinaryFromReader(
+    msg,
+    reader,
+  )
+}
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3724,36 +4106,39 @@ proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinary = function(bytes
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeAminoResponse}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.deserializeBinaryFromReader =
+  function (msg, reader) {
+    while (reader.nextField()) {
+      if (reader.isEndGroup()) {
+        break
+      }
+      var field = reader.getFieldNumber()
+      switch (field) {
+        case 1:
+          var value = /** @type {string} */ (reader.readString())
+          msg.setAminoJson(value)
+          break
+        default:
+          reader.skipField()
+          break
+      }
     }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAminoJson(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
+    return msg
   }
-  return msg;
-};
-
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.serializeBinary =
+  function () {
+    var writer = new jspb.BinaryWriter()
+    proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.serializeBinaryToWriter(
+      this,
+      writer,
+    )
+    return writer.getResultBuffer()
+  }
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3762,35 +4147,32 @@ proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.serializeBinary = functi
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getAminoJson();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.serializeBinaryToWriter =
+  function (message, writer) {
+    var f = undefined
+    f = message.getAminoJson()
+    if (f.length > 0) {
+      writer.writeString(1, f)
+    }
   }
-};
-
 
 /**
  * optional string amino_json = 1;
  * @return {string}
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.getAminoJson = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.getAminoJson =
+  function () {
+    return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
+  }
 
 /**
  * @param {string} value
  * @return {!proto.cosmos.tx.v1beta1.TxDecodeAminoResponse} returns this
  */
-proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.setAminoJson = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
+proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.setAminoJson =
+  function (value) {
+    return jspb.Message.setProto3StringField(this, 1, value)
+  }
 
 /**
  * @enum {number}
@@ -3798,8 +4180,8 @@ proto.cosmos.tx.v1beta1.TxDecodeAminoResponse.prototype.setAminoJson = function(
 proto.cosmos.tx.v1beta1.OrderBy = {
   ORDER_BY_UNSPECIFIED: 0,
   ORDER_BY_ASC: 1,
-  ORDER_BY_DESC: 2
-};
+  ORDER_BY_DESC: 2,
+}
 
 /**
  * @enum {number}
@@ -3808,7 +4190,7 @@ proto.cosmos.tx.v1beta1.BroadcastMode = {
   BROADCAST_MODE_UNSPECIFIED: 0,
   BROADCAST_MODE_BLOCK: 1,
   BROADCAST_MODE_SYNC: 2,
-  BROADCAST_MODE_ASYNC: 3
-};
+  BROADCAST_MODE_ASYNC: 3,
+}
 
-goog.object.extend(exports, proto.cosmos.tx.v1beta1);
+goog.object.extend(exports, proto.cosmos.tx.v1beta1)

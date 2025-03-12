@@ -9,7 +9,6 @@ import * as cosmos_proto_cosmos_pb from "../../../cosmos_proto/cosmos_pb";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as cosmos_msg_v1_msg_pb from "../../../cosmos/msg/v1/msg_pb";
 import * as amino_amino_pb from "../../../amino/amino_pb";
-import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 export class MsgSubmitProposal extends jspb.Message {
   clearMessagesList(): void;
@@ -34,9 +33,6 @@ export class MsgSubmitProposal extends jspb.Message {
   getSummary(): string;
   setSummary(value: string): void;
 
-  getExpedited(): boolean;
-  setExpedited(value: boolean): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MsgSubmitProposal.AsObject;
   static toObject(includeInstance: boolean, msg: MsgSubmitProposal): MsgSubmitProposal.AsObject;
@@ -55,7 +51,6 @@ export namespace MsgSubmitProposal {
     metadata: string,
     title: string,
     summary: string,
-    expedited: boolean,
   }
 }
 
@@ -304,60 +299,6 @@ export class MsgUpdateParamsResponse extends jspb.Message {
 
 export namespace MsgUpdateParamsResponse {
   export type AsObject = {
-  }
-}
-
-export class MsgCancelProposal extends jspb.Message {
-  getProposalId(): number;
-  setProposalId(value: number): void;
-
-  getProposer(): string;
-  setProposer(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgCancelProposal.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgCancelProposal): MsgCancelProposal.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgCancelProposal, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgCancelProposal;
-  static deserializeBinaryFromReader(message: MsgCancelProposal, reader: jspb.BinaryReader): MsgCancelProposal;
-}
-
-export namespace MsgCancelProposal {
-  export type AsObject = {
-    proposalId: number,
-    proposer: string,
-  }
-}
-
-export class MsgCancelProposalResponse extends jspb.Message {
-  getProposalId(): number;
-  setProposalId(value: number): void;
-
-  hasCanceledTime(): boolean;
-  clearCanceledTime(): void;
-  getCanceledTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCanceledTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
-
-  getCanceledHeight(): number;
-  setCanceledHeight(value: number): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): MsgCancelProposalResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: MsgCancelProposalResponse): MsgCancelProposalResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: MsgCancelProposalResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): MsgCancelProposalResponse;
-  static deserializeBinaryFromReader(message: MsgCancelProposalResponse, reader: jspb.BinaryReader): MsgCancelProposalResponse;
-}
-
-export namespace MsgCancelProposalResponse {
-  export type AsObject = {
-    proposalId: number,
-    canceledTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    canceledHeight: number,
   }
 }
 

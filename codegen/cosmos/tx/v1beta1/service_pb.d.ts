@@ -29,9 +29,6 @@ export class GetTxsEventRequest extends jspb.Message {
   getLimit(): number;
   setLimit(value: number): void;
 
-  getQuery(): string;
-  setQuery(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetTxsEventRequest.AsObject;
   static toObject(includeInstance: boolean, msg: GetTxsEventRequest): GetTxsEventRequest.AsObject;
@@ -49,7 +46,6 @@ export namespace GetTxsEventRequest {
     orderBy: OrderByMap[keyof OrderByMap],
     page: number,
     limit: number,
-    query: string,
   }
 }
 
