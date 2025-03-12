@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
-import { MsgCreateTunnel, MsgCreateTunnelResponse, MsgUpdateRoute, MsgUpdateRouteResponse, MsgUpdateSignalsAndInterval, MsgUpdateSignalsAndIntervalResponse, MsgWithdrawFeePayerFunds, MsgWithdrawFeePayerFundsResponse, MsgActivate, MsgActivateResponse, MsgDeactivate, MsgDeactivateResponse, MsgTriggerTunnel, MsgTriggerTunnelResponse, MsgDepositToTunnel, MsgDepositToTunnelResponse, MsgWithdrawFromTunnel, MsgWithdrawFromTunnelResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { MsgCreateTunnel, MsgCreateTunnelResponse, MsgUpdateRoute, MsgUpdateRouteResponse, MsgUpdateSignalsAndInterval, MsgUpdateSignalsAndIntervalResponse, MsgWithdrawFeePayerFunds, MsgWithdrawFeePayerFundsResponse, MsgActivateTunnel, MsgActivateTunnelResponse, MsgDeactivateTunnel, MsgDeactivateTunnelResponse, MsgTriggerTunnel, MsgTriggerTunnelResponse, MsgDepositToTunnel, MsgDepositToTunnelResponse, MsgWithdrawFromTunnel, MsgWithdrawFromTunnelResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
 /** Service definition for Msg. */
 export interface Msg {
   /** CreateTunnel is a RPC method to create a new tunnel. */
@@ -12,10 +12,10 @@ export interface Msg {
   updateSignalsAndInterval(request: MsgUpdateSignalsAndInterval): Promise<MsgUpdateSignalsAndIntervalResponse>;
   /** WithdrawFeePayerFunds is a RPC method to withdraw fee payer funds to creator. */
   withdrawFeePayerFunds(request: MsgWithdrawFeePayerFunds): Promise<MsgWithdrawFeePayerFundsResponse>;
-  /** Activate is a RPC method to activate a tunnel. */
-  activate(request: MsgActivate): Promise<MsgActivateResponse>;
-  /** Deactivate is a RPC method to deactivate a tunnel. */
-  deactivate(request: MsgDeactivate): Promise<MsgDeactivateResponse>;
+  /** ActivateTunnel is a RPC method to activate a tunnel. */
+  activateTunnel(request: MsgActivateTunnel): Promise<MsgActivateTunnelResponse>;
+  /** DeactivateTunnel is a RPC method to deactivate a tunnel. */
+  deactivateTunnel(request: MsgDeactivateTunnel): Promise<MsgDeactivateTunnelResponse>;
   /** TriggerTunnel is a RPC method to manually trigger a tunnel. */
   triggerTunnel(request: MsgTriggerTunnel): Promise<MsgTriggerTunnelResponse>;
   /** DepositToTunnel is a RPC method to deposit to an existing tunnel. */
@@ -33,8 +33,8 @@ export class MsgClientImpl implements Msg {
     this.updateRoute = this.updateRoute.bind(this);
     this.updateSignalsAndInterval = this.updateSignalsAndInterval.bind(this);
     this.withdrawFeePayerFunds = this.withdrawFeePayerFunds.bind(this);
-    this.activate = this.activate.bind(this);
-    this.deactivate = this.deactivate.bind(this);
+    this.activateTunnel = this.activateTunnel.bind(this);
+    this.deactivateTunnel = this.deactivateTunnel.bind(this);
     this.triggerTunnel = this.triggerTunnel.bind(this);
     this.depositToTunnel = this.depositToTunnel.bind(this);
     this.withdrawFromTunnel = this.withdrawFromTunnel.bind(this);
@@ -60,15 +60,15 @@ export class MsgClientImpl implements Msg {
     const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "WithdrawFeePayerFunds", data);
     return promise.then(data => MsgWithdrawFeePayerFundsResponse.decode(new BinaryReader(data)));
   }
-  activate(request: MsgActivate): Promise<MsgActivateResponse> {
-    const data = MsgActivate.encode(request).finish();
-    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "Activate", data);
-    return promise.then(data => MsgActivateResponse.decode(new BinaryReader(data)));
+  activateTunnel(request: MsgActivateTunnel): Promise<MsgActivateTunnelResponse> {
+    const data = MsgActivateTunnel.encode(request).finish();
+    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "ActivateTunnel", data);
+    return promise.then(data => MsgActivateTunnelResponse.decode(new BinaryReader(data)));
   }
-  deactivate(request: MsgDeactivate): Promise<MsgDeactivateResponse> {
-    const data = MsgDeactivate.encode(request).finish();
-    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "Deactivate", data);
-    return promise.then(data => MsgDeactivateResponse.decode(new BinaryReader(data)));
+  deactivateTunnel(request: MsgDeactivateTunnel): Promise<MsgDeactivateTunnelResponse> {
+    const data = MsgDeactivateTunnel.encode(request).finish();
+    const promise = this.rpc.request("band.tunnel.v1beta1.Msg", "DeactivateTunnel", data);
+    return promise.then(data => MsgDeactivateTunnelResponse.decode(new BinaryReader(data)));
   }
   triggerTunnel(request: MsgTriggerTunnel): Promise<MsgTriggerTunnelResponse> {
     const data = MsgTriggerTunnel.encode(request).finish();

@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateTunnel, MsgUpdateRoute, MsgUpdateSignalsAndInterval, MsgWithdrawFeePayerFunds, MsgActivate, MsgDeactivate, MsgTriggerTunnel, MsgDepositToTunnel, MsgWithdrawFromTunnel, MsgUpdateParams } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/band.tunnel.v1beta1.MsgCreateTunnel", MsgCreateTunnel], ["/band.tunnel.v1beta1.MsgUpdateRoute", MsgUpdateRoute], ["/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval", MsgUpdateSignalsAndInterval], ["/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds", MsgWithdrawFeePayerFunds], ["/band.tunnel.v1beta1.MsgActivate", MsgActivate], ["/band.tunnel.v1beta1.MsgDeactivate", MsgDeactivate], ["/band.tunnel.v1beta1.MsgTriggerTunnel", MsgTriggerTunnel], ["/band.tunnel.v1beta1.MsgDepositToTunnel", MsgDepositToTunnel], ["/band.tunnel.v1beta1.MsgWithdrawFromTunnel", MsgWithdrawFromTunnel], ["/band.tunnel.v1beta1.MsgUpdateParams", MsgUpdateParams]];
+import { MsgCreateTunnel, MsgUpdateRoute, MsgUpdateSignalsAndInterval, MsgWithdrawFeePayerFunds, MsgActivateTunnel, MsgDeactivateTunnel, MsgTriggerTunnel, MsgDepositToTunnel, MsgWithdrawFromTunnel, MsgUpdateParams } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/band.tunnel.v1beta1.MsgCreateTunnel", MsgCreateTunnel], ["/band.tunnel.v1beta1.MsgUpdateRoute", MsgUpdateRoute], ["/band.tunnel.v1beta1.MsgUpdateSignalsAndInterval", MsgUpdateSignalsAndInterval], ["/band.tunnel.v1beta1.MsgWithdrawFeePayerFunds", MsgWithdrawFeePayerFunds], ["/band.tunnel.v1beta1.MsgActivateTunnel", MsgActivateTunnel], ["/band.tunnel.v1beta1.MsgDeactivateTunnel", MsgDeactivateTunnel], ["/band.tunnel.v1beta1.MsgTriggerTunnel", MsgTriggerTunnel], ["/band.tunnel.v1beta1.MsgDepositToTunnel", MsgDepositToTunnel], ["/band.tunnel.v1beta1.MsgWithdrawFromTunnel", MsgWithdrawFromTunnel], ["/band.tunnel.v1beta1.MsgUpdateParams", MsgUpdateParams]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -33,16 +33,16 @@ export const MessageComposer = {
         value: MsgWithdrawFeePayerFunds.encode(value).finish()
       };
     },
-    activate(value: MsgActivate) {
+    activateTunnel(value: MsgActivateTunnel) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgActivate",
-        value: MsgActivate.encode(value).finish()
+        typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnel",
+        value: MsgActivateTunnel.encode(value).finish()
       };
     },
-    deactivate(value: MsgDeactivate) {
+    deactivateTunnel(value: MsgDeactivateTunnel) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgDeactivate",
-        value: MsgDeactivate.encode(value).finish()
+        typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnel",
+        value: MsgDeactivateTunnel.encode(value).finish()
       };
     },
     triggerTunnel(value: MsgTriggerTunnel) {
@@ -95,15 +95,15 @@ export const MessageComposer = {
         value
       };
     },
-    activate(value: MsgActivate) {
+    activateTunnel(value: MsgActivateTunnel) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgActivate",
+        typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnel",
         value
       };
     },
-    deactivate(value: MsgDeactivate) {
+    deactivateTunnel(value: MsgDeactivateTunnel) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgDeactivate",
+        typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnel",
         value
       };
     },
@@ -157,16 +157,16 @@ export const MessageComposer = {
         value: MsgWithdrawFeePayerFunds.fromPartial(value)
       };
     },
-    activate(value: MsgActivate) {
+    activateTunnel(value: MsgActivateTunnel) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgActivate",
-        value: MsgActivate.fromPartial(value)
+        typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnel",
+        value: MsgActivateTunnel.fromPartial(value)
       };
     },
-    deactivate(value: MsgDeactivate) {
+    deactivateTunnel(value: MsgDeactivateTunnel) {
       return {
-        typeUrl: "/band.tunnel.v1beta1.MsgDeactivate",
-        value: MsgDeactivate.fromPartial(value)
+        typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnel",
+        value: MsgDeactivateTunnel.fromPartial(value)
       };
     },
     triggerTunnel(value: MsgTriggerTunnel) {

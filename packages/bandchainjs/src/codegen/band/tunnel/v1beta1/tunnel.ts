@@ -139,10 +139,6 @@ export interface Packet {
   prices: Price[];
   /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */
   receipt?: TSSPacketReceipt | IBCPacketReceipt | Any | undefined;
-  /** base_fee is the base fee of the packet */
-  baseFee: Coin[];
-  /** route_fee is the route fee of the packet */
-  routeFee: Coin[];
   /** created_at is the timestamp when the packet is created */
   createdAt: bigint;
 }
@@ -163,10 +159,6 @@ export interface PacketAmino {
   prices?: PriceAmino[];
   /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */
   receipt?: AnyAmino;
-  /** base_fee is the base fee of the packet */
-  base_fee?: CoinAmino[];
-  /** route_fee is the route fee of the packet */
-  route_fee?: CoinAmino[];
   /** created_at is the timestamp when the packet is created */
   created_at?: string;
 }
@@ -180,8 +172,6 @@ export interface PacketSDKType {
   sequence: bigint;
   prices: PriceSDKType[];
   receipt?: TSSPacketReceiptSDKType | IBCPacketReceiptSDKType | AnySDKType | undefined;
-  base_fee: CoinSDKType[];
-  route_fee: CoinSDKType[];
   created_at: bigint;
 }
 /** Deposit defines an amount deposited by an account address to the tunnel. */
@@ -620,8 +610,6 @@ function createBasePacket(): Packet {
     sequence: BigInt(0),
     prices: [],
     receipt: undefined,
-    baseFee: [],
-    routeFee: [],
     createdAt: BigInt(0)
   };
 }
@@ -640,14 +628,8 @@ export const Packet = {
     if (message.receipt !== undefined) {
       Any.encode(message.receipt as Any, writer.uint32(34).fork()).ldelim();
     }
-    for (const v of message.baseFee) {
-      Coin.encode(v!, writer.uint32(42).fork()).ldelim();
-    }
-    for (const v of message.routeFee) {
-      Coin.encode(v!, writer.uint32(50).fork()).ldelim();
-    }
     if (message.createdAt !== BigInt(0)) {
-      writer.uint32(56).int64(message.createdAt);
+      writer.uint32(40).int64(message.createdAt);
     }
     return writer;
   },
@@ -671,12 +653,6 @@ export const Packet = {
           message.receipt = PacketReceiptI_InterfaceDecoder(reader) as Any;
           break;
         case 5:
-          message.baseFee.push(Coin.decode(reader, reader.uint32()));
-          break;
-        case 6:
-          message.routeFee.push(Coin.decode(reader, reader.uint32()));
-          break;
-        case 7:
           message.createdAt = reader.int64();
           break;
         default:
@@ -692,8 +668,6 @@ export const Packet = {
     message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
     message.prices = object.prices?.map(e => Price.fromPartial(e)) || [];
     message.receipt = object.receipt !== undefined && object.receipt !== null ? Any.fromPartial(object.receipt) : undefined;
-    message.baseFee = object.baseFee?.map(e => Coin.fromPartial(e)) || [];
-    message.routeFee = object.routeFee?.map(e => Coin.fromPartial(e)) || [];
     message.createdAt = object.createdAt !== undefined && object.createdAt !== null ? BigInt(object.createdAt.toString()) : BigInt(0);
     return message;
   },
@@ -709,8 +683,6 @@ export const Packet = {
     if (object.receipt !== undefined && object.receipt !== null) {
       message.receipt = PacketReceiptI_FromAmino(object.receipt);
     }
-    message.baseFee = object.base_fee?.map(e => Coin.fromAmino(e)) || [];
-    message.routeFee = object.route_fee?.map(e => Coin.fromAmino(e)) || [];
     if (object.created_at !== undefined && object.created_at !== null) {
       message.createdAt = BigInt(object.created_at);
     }
@@ -726,16 +698,6 @@ export const Packet = {
       obj.prices = message.prices;
     }
     obj.receipt = message.receipt ? PacketReceiptI_ToAmino(message.receipt as Any) : undefined;
-    if (message.baseFee) {
-      obj.base_fee = message.baseFee.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.base_fee = message.baseFee;
-    }
-    if (message.routeFee) {
-      obj.route_fee = message.routeFee.map(e => e ? Coin.toAmino(e) : undefined);
-    } else {
-      obj.route_fee = message.routeFee;
-    }
     obj.created_at = message.createdAt !== BigInt(0) ? message.createdAt?.toString() : undefined;
     return obj;
   },

@@ -216,88 +216,88 @@ export interface MsgWithdrawFeePayerFundsResponseAminoMsg {
 }
 /** MsgWithdrawFeePayerFundsResponse is the response type for the Msg/WithdrawFeePayerFunds RPC method. */
 export interface MsgWithdrawFeePayerFundsResponseSDKType {}
-/** Activate is the transaction message to activate a tunnel. */
-export interface MsgActivate {
+/** MsgActivateTunnel is the transaction message to activate a tunnel. */
+export interface MsgActivateTunnel {
   /** tunnel_id is the ID of the tunnel to activate. */
   tunnelId: bigint;
   /** creator is the address of the creator. */
   creator: string;
 }
-export interface MsgActivateProtoMsg {
-  typeUrl: "/band.tunnel.v1beta1.MsgActivate";
+export interface MsgActivateTunnelProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnel";
   value: Uint8Array;
 }
-/** Activate is the transaction message to activate a tunnel. */
-export interface MsgActivateAmino {
+/** MsgActivateTunnel is the transaction message to activate a tunnel. */
+export interface MsgActivateTunnelAmino {
   /** tunnel_id is the ID of the tunnel to activate. */
   tunnel_id?: string;
   /** creator is the address of the creator. */
   creator?: string;
 }
-export interface MsgActivateAminoMsg {
-  type: "tunnel/MsgActivate";
-  value: MsgActivateAmino;
+export interface MsgActivateTunnelAminoMsg {
+  type: "tunnel/MsgActivateTunnel";
+  value: MsgActivateTunnelAmino;
 }
-/** Activate is the transaction message to activate a tunnel. */
-export interface MsgActivateSDKType {
+/** MsgActivateTunnel is the transaction message to activate a tunnel. */
+export interface MsgActivateTunnelSDKType {
   tunnel_id: bigint;
   creator: string;
 }
-/** MsgActivateResponse is the response type for the Msg/Activate RPC method. */
-export interface MsgActivateResponse {}
-export interface MsgActivateResponseProtoMsg {
-  typeUrl: "/band.tunnel.v1beta1.MsgActivateResponse";
+/** MsgActivateTunnelResponse is the response type for the Msg/Activate RPC method. */
+export interface MsgActivateTunnelResponse {}
+export interface MsgActivateTunnelResponseProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnelResponse";
   value: Uint8Array;
 }
-/** MsgActivateResponse is the response type for the Msg/Activate RPC method. */
-export interface MsgActivateResponseAmino {}
-export interface MsgActivateResponseAminoMsg {
-  type: "/band.tunnel.v1beta1.MsgActivateResponse";
-  value: MsgActivateResponseAmino;
+/** MsgActivateTunnelResponse is the response type for the Msg/Activate RPC method. */
+export interface MsgActivateTunnelResponseAmino {}
+export interface MsgActivateTunnelResponseAminoMsg {
+  type: "/band.tunnel.v1beta1.MsgActivateTunnelResponse";
+  value: MsgActivateTunnelResponseAmino;
 }
-/** MsgActivateResponse is the response type for the Msg/Activate RPC method. */
-export interface MsgActivateResponseSDKType {}
-/** MsgDeactivate is the transaction message to deactivate a tunnel. */
-export interface MsgDeactivate {
+/** MsgActivateTunnelResponse is the response type for the Msg/Activate RPC method. */
+export interface MsgActivateTunnelResponseSDKType {}
+/** MsgDeactivateTunnel is the transaction message to deactivate a tunnel. */
+export interface MsgDeactivateTunnel {
   /** tunnel_id is the ID of the tunnel to deactivate. */
   tunnelId: bigint;
   /** creator is the address of the creator. */
   creator: string;
 }
-export interface MsgDeactivateProtoMsg {
-  typeUrl: "/band.tunnel.v1beta1.MsgDeactivate";
+export interface MsgDeactivateTunnelProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnel";
   value: Uint8Array;
 }
-/** MsgDeactivate is the transaction message to deactivate a tunnel. */
-export interface MsgDeactivateAmino {
+/** MsgDeactivateTunnel is the transaction message to deactivate a tunnel. */
+export interface MsgDeactivateTunnelAmino {
   /** tunnel_id is the ID of the tunnel to deactivate. */
   tunnel_id?: string;
   /** creator is the address of the creator. */
   creator?: string;
 }
-export interface MsgDeactivateAminoMsg {
-  type: "tunnel/MsgDeactivate";
-  value: MsgDeactivateAmino;
+export interface MsgDeactivateTunnelAminoMsg {
+  type: "tunnel/MsgDeactivateTunnel";
+  value: MsgDeactivateTunnelAmino;
 }
-/** MsgDeactivate is the transaction message to deactivate a tunnel. */
-export interface MsgDeactivateSDKType {
+/** MsgDeactivateTunnel is the transaction message to deactivate a tunnel. */
+export interface MsgDeactivateTunnelSDKType {
   tunnel_id: bigint;
   creator: string;
 }
 /** MsgDeactivateTunnelResponse is the response type for the Msg/Deactivate RPC method. */
-export interface MsgDeactivateResponse {}
-export interface MsgDeactivateResponseProtoMsg {
-  typeUrl: "/band.tunnel.v1beta1.MsgDeactivateResponse";
+export interface MsgDeactivateTunnelResponse {}
+export interface MsgDeactivateTunnelResponseProtoMsg {
+  typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnelResponse";
   value: Uint8Array;
 }
 /** MsgDeactivateTunnelResponse is the response type for the Msg/Deactivate RPC method. */
-export interface MsgDeactivateResponseAmino {}
-export interface MsgDeactivateResponseAminoMsg {
-  type: "/band.tunnel.v1beta1.MsgDeactivateResponse";
-  value: MsgDeactivateResponseAmino;
+export interface MsgDeactivateTunnelResponseAmino {}
+export interface MsgDeactivateTunnelResponseAminoMsg {
+  type: "/band.tunnel.v1beta1.MsgDeactivateTunnelResponse";
+  value: MsgDeactivateTunnelResponseAmino;
 }
 /** MsgDeactivateTunnelResponse is the response type for the Msg/Deactivate RPC method. */
-export interface MsgDeactivateResponseSDKType {}
+export interface MsgDeactivateTunnelResponseSDKType {}
 /** MsgTriggerTunnel is the transaction message to manually trigger a tunnel. */
 export interface MsgTriggerTunnel {
   /** tunnel_id is the ID of the tunnel to manually trigger. */
@@ -1101,15 +1101,15 @@ export const MsgWithdrawFeePayerFundsResponse = {
     };
   }
 };
-function createBaseMsgActivate(): MsgActivate {
+function createBaseMsgActivateTunnel(): MsgActivateTunnel {
   return {
     tunnelId: BigInt(0),
     creator: ""
   };
 }
-export const MsgActivate = {
-  typeUrl: "/band.tunnel.v1beta1.MsgActivate",
-  encode(message: MsgActivate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgActivateTunnel = {
+  typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnel",
+  encode(message: MsgActivateTunnel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tunnelId !== BigInt(0)) {
       writer.uint32(8).uint64(message.tunnelId);
     }
@@ -1118,10 +1118,10 @@ export const MsgActivate = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgActivate {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgActivateTunnel {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgActivate();
+    const message = createBaseMsgActivateTunnel();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1138,14 +1138,14 @@ export const MsgActivate = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgActivate>): MsgActivate {
-    const message = createBaseMsgActivate();
+  fromPartial(object: Partial<MsgActivateTunnel>): MsgActivateTunnel {
+    const message = createBaseMsgActivateTunnel();
     message.tunnelId = object.tunnelId !== undefined && object.tunnelId !== null ? BigInt(object.tunnelId.toString()) : BigInt(0);
     message.creator = object.creator ?? "";
     return message;
   },
-  fromAmino(object: MsgActivateAmino): MsgActivate {
-    const message = createBaseMsgActivate();
+  fromAmino(object: MsgActivateTunnelAmino): MsgActivateTunnel {
+    const message = createBaseMsgActivateTunnel();
     if (object.tunnel_id !== undefined && object.tunnel_id !== null) {
       message.tunnelId = BigInt(object.tunnel_id);
     }
@@ -1154,46 +1154,46 @@ export const MsgActivate = {
     }
     return message;
   },
-  toAmino(message: MsgActivate): MsgActivateAmino {
+  toAmino(message: MsgActivateTunnel): MsgActivateTunnelAmino {
     const obj: any = {};
     obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
-  fromAminoMsg(object: MsgActivateAminoMsg): MsgActivate {
-    return MsgActivate.fromAmino(object.value);
+  fromAminoMsg(object: MsgActivateTunnelAminoMsg): MsgActivateTunnel {
+    return MsgActivateTunnel.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgActivate): MsgActivateAminoMsg {
+  toAminoMsg(message: MsgActivateTunnel): MsgActivateTunnelAminoMsg {
     return {
-      type: "tunnel/MsgActivate",
-      value: MsgActivate.toAmino(message)
+      type: "tunnel/MsgActivateTunnel",
+      value: MsgActivateTunnel.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgActivateProtoMsg): MsgActivate {
-    return MsgActivate.decode(message.value);
+  fromProtoMsg(message: MsgActivateTunnelProtoMsg): MsgActivateTunnel {
+    return MsgActivateTunnel.decode(message.value);
   },
-  toProto(message: MsgActivate): Uint8Array {
-    return MsgActivate.encode(message).finish();
+  toProto(message: MsgActivateTunnel): Uint8Array {
+    return MsgActivateTunnel.encode(message).finish();
   },
-  toProtoMsg(message: MsgActivate): MsgActivateProtoMsg {
+  toProtoMsg(message: MsgActivateTunnel): MsgActivateTunnelProtoMsg {
     return {
-      typeUrl: "/band.tunnel.v1beta1.MsgActivate",
-      value: MsgActivate.encode(message).finish()
+      typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnel",
+      value: MsgActivateTunnel.encode(message).finish()
     };
   }
 };
-function createBaseMsgActivateResponse(): MsgActivateResponse {
+function createBaseMsgActivateTunnelResponse(): MsgActivateTunnelResponse {
   return {};
 }
-export const MsgActivateResponse = {
-  typeUrl: "/band.tunnel.v1beta1.MsgActivateResponse",
-  encode(_: MsgActivateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgActivateTunnelResponse = {
+  typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnelResponse",
+  encode(_: MsgActivateTunnelResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgActivateResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgActivateTunnelResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgActivateResponse();
+    const message = createBaseMsgActivateTunnelResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1204,43 +1204,43 @@ export const MsgActivateResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgActivateResponse>): MsgActivateResponse {
-    const message = createBaseMsgActivateResponse();
+  fromPartial(_: Partial<MsgActivateTunnelResponse>): MsgActivateTunnelResponse {
+    const message = createBaseMsgActivateTunnelResponse();
     return message;
   },
-  fromAmino(_: MsgActivateResponseAmino): MsgActivateResponse {
-    const message = createBaseMsgActivateResponse();
+  fromAmino(_: MsgActivateTunnelResponseAmino): MsgActivateTunnelResponse {
+    const message = createBaseMsgActivateTunnelResponse();
     return message;
   },
-  toAmino(_: MsgActivateResponse): MsgActivateResponseAmino {
+  toAmino(_: MsgActivateTunnelResponse): MsgActivateTunnelResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgActivateResponseAminoMsg): MsgActivateResponse {
-    return MsgActivateResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgActivateTunnelResponseAminoMsg): MsgActivateTunnelResponse {
+    return MsgActivateTunnelResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgActivateResponseProtoMsg): MsgActivateResponse {
-    return MsgActivateResponse.decode(message.value);
+  fromProtoMsg(message: MsgActivateTunnelResponseProtoMsg): MsgActivateTunnelResponse {
+    return MsgActivateTunnelResponse.decode(message.value);
   },
-  toProto(message: MsgActivateResponse): Uint8Array {
-    return MsgActivateResponse.encode(message).finish();
+  toProto(message: MsgActivateTunnelResponse): Uint8Array {
+    return MsgActivateTunnelResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgActivateResponse): MsgActivateResponseProtoMsg {
+  toProtoMsg(message: MsgActivateTunnelResponse): MsgActivateTunnelResponseProtoMsg {
     return {
-      typeUrl: "/band.tunnel.v1beta1.MsgActivateResponse",
-      value: MsgActivateResponse.encode(message).finish()
+      typeUrl: "/band.tunnel.v1beta1.MsgActivateTunnelResponse",
+      value: MsgActivateTunnelResponse.encode(message).finish()
     };
   }
 };
-function createBaseMsgDeactivate(): MsgDeactivate {
+function createBaseMsgDeactivateTunnel(): MsgDeactivateTunnel {
   return {
     tunnelId: BigInt(0),
     creator: ""
   };
 }
-export const MsgDeactivate = {
-  typeUrl: "/band.tunnel.v1beta1.MsgDeactivate",
-  encode(message: MsgDeactivate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgDeactivateTunnel = {
+  typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnel",
+  encode(message: MsgDeactivateTunnel, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.tunnelId !== BigInt(0)) {
       writer.uint32(8).uint64(message.tunnelId);
     }
@@ -1249,10 +1249,10 @@ export const MsgDeactivate = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeactivate {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeactivateTunnel {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgDeactivate();
+    const message = createBaseMsgDeactivateTunnel();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1269,14 +1269,14 @@ export const MsgDeactivate = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgDeactivate>): MsgDeactivate {
-    const message = createBaseMsgDeactivate();
+  fromPartial(object: Partial<MsgDeactivateTunnel>): MsgDeactivateTunnel {
+    const message = createBaseMsgDeactivateTunnel();
     message.tunnelId = object.tunnelId !== undefined && object.tunnelId !== null ? BigInt(object.tunnelId.toString()) : BigInt(0);
     message.creator = object.creator ?? "";
     return message;
   },
-  fromAmino(object: MsgDeactivateAmino): MsgDeactivate {
-    const message = createBaseMsgDeactivate();
+  fromAmino(object: MsgDeactivateTunnelAmino): MsgDeactivateTunnel {
+    const message = createBaseMsgDeactivateTunnel();
     if (object.tunnel_id !== undefined && object.tunnel_id !== null) {
       message.tunnelId = BigInt(object.tunnel_id);
     }
@@ -1285,46 +1285,46 @@ export const MsgDeactivate = {
     }
     return message;
   },
-  toAmino(message: MsgDeactivate): MsgDeactivateAmino {
+  toAmino(message: MsgDeactivateTunnel): MsgDeactivateTunnelAmino {
     const obj: any = {};
     obj.tunnel_id = message.tunnelId !== BigInt(0) ? message.tunnelId?.toString() : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
     return obj;
   },
-  fromAminoMsg(object: MsgDeactivateAminoMsg): MsgDeactivate {
-    return MsgDeactivate.fromAmino(object.value);
+  fromAminoMsg(object: MsgDeactivateTunnelAminoMsg): MsgDeactivateTunnel {
+    return MsgDeactivateTunnel.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgDeactivate): MsgDeactivateAminoMsg {
+  toAminoMsg(message: MsgDeactivateTunnel): MsgDeactivateTunnelAminoMsg {
     return {
-      type: "tunnel/MsgDeactivate",
-      value: MsgDeactivate.toAmino(message)
+      type: "tunnel/MsgDeactivateTunnel",
+      value: MsgDeactivateTunnel.toAmino(message)
     };
   },
-  fromProtoMsg(message: MsgDeactivateProtoMsg): MsgDeactivate {
-    return MsgDeactivate.decode(message.value);
+  fromProtoMsg(message: MsgDeactivateTunnelProtoMsg): MsgDeactivateTunnel {
+    return MsgDeactivateTunnel.decode(message.value);
   },
-  toProto(message: MsgDeactivate): Uint8Array {
-    return MsgDeactivate.encode(message).finish();
+  toProto(message: MsgDeactivateTunnel): Uint8Array {
+    return MsgDeactivateTunnel.encode(message).finish();
   },
-  toProtoMsg(message: MsgDeactivate): MsgDeactivateProtoMsg {
+  toProtoMsg(message: MsgDeactivateTunnel): MsgDeactivateTunnelProtoMsg {
     return {
-      typeUrl: "/band.tunnel.v1beta1.MsgDeactivate",
-      value: MsgDeactivate.encode(message).finish()
+      typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnel",
+      value: MsgDeactivateTunnel.encode(message).finish()
     };
   }
 };
-function createBaseMsgDeactivateResponse(): MsgDeactivateResponse {
+function createBaseMsgDeactivateTunnelResponse(): MsgDeactivateTunnelResponse {
   return {};
 }
-export const MsgDeactivateResponse = {
-  typeUrl: "/band.tunnel.v1beta1.MsgDeactivateResponse",
-  encode(_: MsgDeactivateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+export const MsgDeactivateTunnelResponse = {
+  typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnelResponse",
+  encode(_: MsgDeactivateTunnelResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeactivateResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeactivateTunnelResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgDeactivateResponse();
+    const message = createBaseMsgDeactivateTunnelResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1335,31 +1335,31 @@ export const MsgDeactivateResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgDeactivateResponse>): MsgDeactivateResponse {
-    const message = createBaseMsgDeactivateResponse();
+  fromPartial(_: Partial<MsgDeactivateTunnelResponse>): MsgDeactivateTunnelResponse {
+    const message = createBaseMsgDeactivateTunnelResponse();
     return message;
   },
-  fromAmino(_: MsgDeactivateResponseAmino): MsgDeactivateResponse {
-    const message = createBaseMsgDeactivateResponse();
+  fromAmino(_: MsgDeactivateTunnelResponseAmino): MsgDeactivateTunnelResponse {
+    const message = createBaseMsgDeactivateTunnelResponse();
     return message;
   },
-  toAmino(_: MsgDeactivateResponse): MsgDeactivateResponseAmino {
+  toAmino(_: MsgDeactivateTunnelResponse): MsgDeactivateTunnelResponseAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgDeactivateResponseAminoMsg): MsgDeactivateResponse {
-    return MsgDeactivateResponse.fromAmino(object.value);
+  fromAminoMsg(object: MsgDeactivateTunnelResponseAminoMsg): MsgDeactivateTunnelResponse {
+    return MsgDeactivateTunnelResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgDeactivateResponseProtoMsg): MsgDeactivateResponse {
-    return MsgDeactivateResponse.decode(message.value);
+  fromProtoMsg(message: MsgDeactivateTunnelResponseProtoMsg): MsgDeactivateTunnelResponse {
+    return MsgDeactivateTunnelResponse.decode(message.value);
   },
-  toProto(message: MsgDeactivateResponse): Uint8Array {
-    return MsgDeactivateResponse.encode(message).finish();
+  toProto(message: MsgDeactivateTunnelResponse): Uint8Array {
+    return MsgDeactivateTunnelResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgDeactivateResponse): MsgDeactivateResponseProtoMsg {
+  toProtoMsg(message: MsgDeactivateTunnelResponse): MsgDeactivateTunnelResponseProtoMsg {
     return {
-      typeUrl: "/band.tunnel.v1beta1.MsgDeactivateResponse",
-      value: MsgDeactivateResponse.encode(message).finish()
+      typeUrl: "/band.tunnel.v1beta1.MsgDeactivateTunnelResponse",
+      value: MsgDeactivateTunnelResponse.encode(message).finish()
     };
   }
 };

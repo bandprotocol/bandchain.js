@@ -24,7 +24,7 @@ export interface Msg {
   updateGroupPolicyMetadata(request: MsgUpdateGroupPolicyMetadata): Promise<MsgUpdateGroupPolicyMetadataResponse>;
   /** SubmitProposal submits a new proposal. */
   submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponse>;
-  /** WithdrawProposal withdraws a proposal. */
+  /** WithdrawProposal aborts a proposal. */
   withdrawProposal(request: MsgWithdrawProposal): Promise<MsgWithdrawProposalResponse>;
   /** Vote allows a voter to vote on a proposal. */
   vote(request: MsgVote): Promise<MsgVoteResponse>;

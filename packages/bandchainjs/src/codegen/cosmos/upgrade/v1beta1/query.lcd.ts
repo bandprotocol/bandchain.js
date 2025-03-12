@@ -48,9 +48,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/upgrade/v1beta1/module_versions`;
     return await this.req.get<QueryModuleVersionsResponseSDKType>(endpoint, options);
   }
-  /* Returns the account with authority to conduct upgrades
-  
-   Since: cosmos-sdk 0.46 */
+  /* Returns the account with authority to conduct upgrades */
   async authority(_params: QueryAuthorityRequest = {}): Promise<QueryAuthorityResponseSDKType> {
     const endpoint = `cosmos/upgrade/v1beta1/authority`;
     return await this.req.get<QueryAuthorityResponseSDKType>(endpoint);

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { MsgCreateTunnel, MsgUpdateRoute, MsgUpdateSignalsAndInterval, MsgWithdrawFeePayerFunds, MsgActivate, MsgDeactivate, MsgTriggerTunnel, MsgDepositToTunnel, MsgWithdrawFromTunnel, MsgUpdateParams } from "./tx";
+import { MsgCreateTunnel, MsgUpdateRoute, MsgUpdateSignalsAndInterval, MsgWithdrawFeePayerFunds, MsgActivateTunnel, MsgDeactivateTunnel, MsgTriggerTunnel, MsgDepositToTunnel, MsgWithdrawFromTunnel, MsgUpdateParams } from "./tx";
 export const AminoConverter = {
   "/band.tunnel.v1beta1.MsgCreateTunnel": {
     aminoType: "tunnel/MsgCreateTunnel",
@@ -21,15 +21,15 @@ export const AminoConverter = {
     toAmino: MsgWithdrawFeePayerFunds.toAmino,
     fromAmino: MsgWithdrawFeePayerFunds.fromAmino
   },
-  "/band.tunnel.v1beta1.MsgActivate": {
-    aminoType: "tunnel/MsgActivate",
-    toAmino: MsgActivate.toAmino,
-    fromAmino: MsgActivate.fromAmino
+  "/band.tunnel.v1beta1.MsgActivateTunnel": {
+    aminoType: "tunnel/MsgActivateTunnel",
+    toAmino: MsgActivateTunnel.toAmino,
+    fromAmino: MsgActivateTunnel.fromAmino
   },
-  "/band.tunnel.v1beta1.MsgDeactivate": {
-    aminoType: "tunnel/MsgDeactivate",
-    toAmino: MsgDeactivate.toAmino,
-    fromAmino: MsgDeactivate.fromAmino
+  "/band.tunnel.v1beta1.MsgDeactivateTunnel": {
+    aminoType: "tunnel/MsgDeactivateTunnel",
+    toAmino: MsgDeactivateTunnel.toAmino,
+    fromAmino: MsgDeactivateTunnel.fromAmino
   },
   "/band.tunnel.v1beta1.MsgTriggerTunnel": {
     aminoType: "tunnel/MsgTriggerTunnel",
