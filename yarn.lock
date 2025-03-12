@@ -2317,7 +2317,7 @@
 
 "@protobufs/cosmos@^0.1.0":
   version "0.1.0"
-  resolved "https://registry.npmjs.org/@protobufs/cosmos/-/cosmos-0.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/@protobufs/cosmos/-/cosmos-0.1.0.tgz#492251de16be3e0a89820f48637cd3f42114f24c"
   integrity sha512-L3NZ+z0kI6GMTiD2HASNe3WbopPhQlaQaKZNRue+8LiGEv/vbbxD1lox8cwOqes3AN5dHiT0i3+gvzIbKBb7gw==
   dependencies:
     "@protobufs/amino" "^0.0.11"
@@ -2356,16 +2356,6 @@
     "@protobufs/gogoproto" "^0.0.10"
     "@protobufs/google" "^0.0.10"
     "@protobufs/tendermint" "^0.0.10"
-
-"@protobufs/osmosis@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.npmjs.org/@protobufs/osmosis/-/osmosis-0.4.0.tgz"
-  integrity sha512-1LiJBva5X2mnchZfHxCY92CkDom4R2xx1o8BzF6HHHrXwhdTof6G6juYVgzlesfTT4p4HiwAhMGnDs3zF/YWTA==
-  dependencies:
-    "@protobufs/amino" "^0.0.11"
-    "@protobufs/cosmos" "^0.1.0"
-    "@protobufs/gogoproto" "^0.0.10"
-    "@protobufs/google" "^0.0.10"
 
 "@protobufs/stargaze@^0.1.0":
   version "0.1.0"

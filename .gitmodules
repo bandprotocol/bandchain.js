@@ -1,9 +1,0 @@
-[submodule "packages/bandchainjs/proto/chain"]
-	path = packages/bandchainjs/proto/chain
-	url = https://github.com/bandprotocol/chain.git
-[submodule "packages/bandchainjs/proto/cosmos-sdk"]
-	path = packages/bandchainjs/proto/cosmos-sdk
-	url = https://github.com/cosmos/cosmos-sdk.git
-[submodule "packages/bandchainjs/proto/cosmos-proto"]
-	path = packages/bandchainjs/proto/cosmos-proto
-	url = https://github.com/cosmos/cosmos-proto.git

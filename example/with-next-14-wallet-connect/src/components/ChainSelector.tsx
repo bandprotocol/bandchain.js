@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-const ChainSelector = ({ chainName, setChainName }: any) => {
-  const handleChange = (event: any) => {
+const ChainSelector = ({ chainName, setChainName }) => {
+  const handleChange = (event) => {
     setChainName(event.target.value);
   };
 
