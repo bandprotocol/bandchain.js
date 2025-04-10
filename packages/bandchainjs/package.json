@@ -1,6 +1,6 @@
 {
   "name": "@bandprotocol/bandchain.js",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "author": "Band Protocol <dev@bandprotocol.com>",
   "description": "TypeScript library for Cosmos SDK and BandChain",
   "main": "dist/index.js",
@@ -28,7 +28,8 @@
     "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.esm.json; npm run copy",
     "lint": "eslint . --fix",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "pack": "cd dist && npm pack"
   },
   "devDependencies": {
     "@cosmology/telescope": "^1.10.0",

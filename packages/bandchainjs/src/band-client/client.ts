@@ -8,18 +8,22 @@ import {
   cosmosProtoRegistry,
   ibcAminoConverters,
   ibcProtoRegistry,
+  oracleAminoConverters,
+  oracleProtoRegistry,
 } from "../codegen";
 
 const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
   ...cosmosProtoRegistry,
   ...ibcProtoRegistry,
   ...bandProtoRegistry,
+  ...oracleProtoRegistry,
 ];
 
 const aminoConverters = {
   ...cosmosAminoConverters,
   ...ibcAminoConverters,
   ...bandAminoConverters,
+  ...oracleAminoConverters,
 };
 
 export const getSigningClientOptions = ({

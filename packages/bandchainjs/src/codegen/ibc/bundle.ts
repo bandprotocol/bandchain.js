@@ -21,29 +21,29 @@ import * as _124 from "./lightclients/localhost/v1/localhost";
 import * as _125 from "./lightclients/solomachine/v1/solomachine";
 import * as _126 from "./lightclients/solomachine/v2/solomachine";
 import * as _127 from "./lightclients/tendermint/v1/tendermint";
-import * as _234 from "./applications/transfer/v1/tx.amino";
-import * as _235 from "./core/channel/v1/tx.amino";
-import * as _236 from "./core/client/v1/tx.amino";
-import * as _237 from "./core/connection/v1/tx.amino";
-import * as _238 from "./applications/transfer/v1/tx.registry";
-import * as _239 from "./core/channel/v1/tx.registry";
-import * as _240 from "./core/client/v1/tx.registry";
-import * as _241 from "./core/connection/v1/tx.registry";
-import * as _242 from "./applications/transfer/v1/query.lcd";
-import * as _243 from "./core/channel/v1/query.lcd";
-import * as _244 from "./core/client/v1/query.lcd";
-import * as _245 from "./core/connection/v1/query.lcd";
-import * as _246 from "./applications/transfer/v1/query.rpc.Query";
-import * as _247 from "./core/channel/v1/query.rpc.Query";
-import * as _248 from "./core/client/v1/query.rpc.Query";
-import * as _249 from "./core/connection/v1/query.rpc.Query";
-import * as _250 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _251 from "./core/channel/v1/tx.rpc.msg";
-import * as _252 from "./core/client/v1/tx.rpc.msg";
-import * as _253 from "./core/connection/v1/tx.rpc.msg";
-import * as _260 from "./lcd";
-import * as _261 from "./rpc.query";
-import * as _262 from "./rpc.tx";
+import * as _238 from "./applications/transfer/v1/tx.amino";
+import * as _239 from "./core/channel/v1/tx.amino";
+import * as _240 from "./core/client/v1/tx.amino";
+import * as _241 from "./core/connection/v1/tx.amino";
+import * as _242 from "./applications/transfer/v1/tx.registry";
+import * as _243 from "./core/channel/v1/tx.registry";
+import * as _244 from "./core/client/v1/tx.registry";
+import * as _245 from "./core/connection/v1/tx.registry";
+import * as _246 from "./applications/transfer/v1/query.lcd";
+import * as _247 from "./core/channel/v1/query.lcd";
+import * as _248 from "./core/client/v1/query.lcd";
+import * as _249 from "./core/connection/v1/query.lcd";
+import * as _250 from "./applications/transfer/v1/query.rpc.Query";
+import * as _251 from "./core/channel/v1/query.rpc.Query";
+import * as _252 from "./core/client/v1/query.rpc.Query";
+import * as _253 from "./core/connection/v1/query.rpc.Query";
+import * as _254 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _255 from "./core/channel/v1/tx.rpc.msg";
+import * as _256 from "./core/client/v1/tx.rpc.msg";
+import * as _257 from "./core/connection/v1/tx.rpc.msg";
+import * as _269 from "./lcd";
+import * as _270 from "./rpc.query";
+import * as _271 from "./rpc.tx";
 export namespace ibc {
   export namespace applications {
     export namespace transfer {
@@ -52,11 +52,11 @@ export namespace ibc {
         ..._107,
         ..._108,
         ..._109,
-        ..._234,
         ..._238,
         ..._242,
         ..._246,
-        ..._250
+        ..._250,
+        ..._254
       };
       export const v2 = {
         ..._110
@@ -70,11 +70,11 @@ export namespace ibc {
         ..._112,
         ..._113,
         ..._114,
-        ..._235,
         ..._239,
         ..._243,
         ..._247,
-        ..._251
+        ..._251,
+        ..._255
       };
     }
     export namespace client {
@@ -83,11 +83,11 @@ export namespace ibc {
         ..._116,
         ..._117,
         ..._118,
-        ..._236,
         ..._240,
         ..._244,
         ..._248,
-        ..._252
+        ..._252,
+        ..._256
       };
     }
     export namespace commitment {
@@ -101,11 +101,11 @@ export namespace ibc {
         ..._121,
         ..._122,
         ..._123,
-        ..._237,
         ..._241,
         ..._245,
         ..._249,
-        ..._253
+        ..._253,
+        ..._257
       };
     }
   }
@@ -130,8 +130,8 @@ export namespace ibc {
     }
   }
   export const ClientFactory = {
-    ..._260,
-    ..._261,
-    ..._262
+    ..._269,
+    ..._270,
+    ..._271
   };
 }

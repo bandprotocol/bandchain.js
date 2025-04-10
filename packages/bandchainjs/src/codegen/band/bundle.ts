@@ -34,48 +34,48 @@ import * as _32 from "./tunnel/v1beta1/query";
 import * as _33 from "./tunnel/v1beta1/route";
 import * as _34 from "./tunnel/v1beta1/tunnel";
 import * as _35 from "./tunnel/v1beta1/tx";
-import * as _139 from "./bandtss/v1beta1/tx.amino";
-import * as _140 from "./feeds/v1beta1/tx.amino";
-import * as _141 from "./globalfee/v1beta1/tx.amino";
-import * as _142 from "./oracle/v1/tx.amino";
-import * as _143 from "./restake/v1beta1/tx.amino";
-import * as _144 from "./tss/v1beta1/tx.amino";
-import * as _145 from "./tunnel/v1beta1/tx.amino";
-import * as _146 from "./bandtss/v1beta1/tx.registry";
-import * as _147 from "./feeds/v1beta1/tx.registry";
-import * as _148 from "./globalfee/v1beta1/tx.registry";
-import * as _149 from "./oracle/v1/tx.registry";
-import * as _150 from "./restake/v1beta1/tx.registry";
-import * as _151 from "./tss/v1beta1/tx.registry";
-import * as _152 from "./tunnel/v1beta1/tx.registry";
-import * as _153 from "./bandtss/v1beta1/query.lcd";
-import * as _154 from "./base/node/v1/query.lcd";
-import * as _155 from "./base/oracle/v1/proof.lcd";
-import * as _156 from "./feeds/v1beta1/query.lcd";
-import * as _157 from "./globalfee/v1beta1/query.lcd";
-import * as _158 from "./oracle/v1/query.lcd";
-import * as _159 from "./restake/v1beta1/query.lcd";
-import * as _160 from "./tss/v1beta1/query.lcd";
-import * as _161 from "./tunnel/v1beta1/query.lcd";
-import * as _162 from "./bandtss/v1beta1/query.rpc.Query";
-import * as _163 from "./base/node/v1/query.rpc.Service";
-import * as _164 from "./base/oracle/v1/proof.rpc.Service";
-import * as _165 from "./feeds/v1beta1/query.rpc.Query";
-import * as _166 from "./globalfee/v1beta1/query.rpc.Query";
-import * as _167 from "./oracle/v1/query.rpc.Query";
-import * as _168 from "./restake/v1beta1/query.rpc.Query";
-import * as _169 from "./tss/v1beta1/query.rpc.Query";
-import * as _170 from "./tunnel/v1beta1/query.rpc.Query";
-import * as _171 from "./bandtss/v1beta1/tx.rpc.msg";
-import * as _172 from "./feeds/v1beta1/tx.rpc.msg";
-import * as _173 from "./globalfee/v1beta1/tx.rpc.msg";
-import * as _174 from "./oracle/v1/tx.rpc.msg";
-import * as _175 from "./restake/v1beta1/tx.rpc.msg";
-import * as _176 from "./tss/v1beta1/tx.rpc.msg";
-import * as _177 from "./tunnel/v1beta1/tx.rpc.msg";
-import * as _254 from "./lcd";
-import * as _255 from "./rpc.query";
-import * as _256 from "./rpc.tx";
+import * as _143 from "./bandtss/v1beta1/tx.amino";
+import * as _144 from "./feeds/v1beta1/tx.amino";
+import * as _145 from "./globalfee/v1beta1/tx.amino";
+import * as _146 from "./oracle/v1/tx.amino";
+import * as _147 from "./restake/v1beta1/tx.amino";
+import * as _148 from "./tss/v1beta1/tx.amino";
+import * as _149 from "./tunnel/v1beta1/tx.amino";
+import * as _150 from "./bandtss/v1beta1/tx.registry";
+import * as _151 from "./feeds/v1beta1/tx.registry";
+import * as _152 from "./globalfee/v1beta1/tx.registry";
+import * as _153 from "./oracle/v1/tx.registry";
+import * as _154 from "./restake/v1beta1/tx.registry";
+import * as _155 from "./tss/v1beta1/tx.registry";
+import * as _156 from "./tunnel/v1beta1/tx.registry";
+import * as _157 from "./bandtss/v1beta1/query.lcd";
+import * as _158 from "./base/node/v1/query.lcd";
+import * as _159 from "./base/oracle/v1/proof.lcd";
+import * as _160 from "./feeds/v1beta1/query.lcd";
+import * as _161 from "./globalfee/v1beta1/query.lcd";
+import * as _162 from "./oracle/v1/query.lcd";
+import * as _163 from "./restake/v1beta1/query.lcd";
+import * as _164 from "./tss/v1beta1/query.lcd";
+import * as _165 from "./tunnel/v1beta1/query.lcd";
+import * as _166 from "./bandtss/v1beta1/query.rpc.Query";
+import * as _167 from "./base/node/v1/query.rpc.Service";
+import * as _168 from "./base/oracle/v1/proof.rpc.Service";
+import * as _169 from "./feeds/v1beta1/query.rpc.Query";
+import * as _170 from "./globalfee/v1beta1/query.rpc.Query";
+import * as _171 from "./oracle/v1/query.rpc.Query";
+import * as _172 from "./restake/v1beta1/query.rpc.Query";
+import * as _173 from "./tss/v1beta1/query.rpc.Query";
+import * as _174 from "./tunnel/v1beta1/query.rpc.Query";
+import * as _175 from "./bandtss/v1beta1/tx.rpc.msg";
+import * as _176 from "./feeds/v1beta1/tx.rpc.msg";
+import * as _177 from "./globalfee/v1beta1/tx.rpc.msg";
+import * as _178 from "./oracle/v1/tx.rpc.msg";
+import * as _179 from "./restake/v1beta1/tx.rpc.msg";
+import * as _180 from "./tss/v1beta1/tx.rpc.msg";
+import * as _181 from "./tunnel/v1beta1/tx.rpc.msg";
+import * as _263 from "./lcd";
+import * as _264 from "./rpc.query";
+import * as _265 from "./rpc.tx";
 export namespace band {
   export namespace bandtss {
     export const v1beta1 = {
@@ -83,26 +83,26 @@ export namespace band {
       ..._2,
       ..._3,
       ..._4,
-      ..._139,
-      ..._146,
-      ..._153,
-      ..._162,
-      ..._171
+      ..._143,
+      ..._150,
+      ..._157,
+      ..._166,
+      ..._175
     };
   }
   export namespace base {
     export namespace node {
       export const v1 = {
         ..._5,
-        ..._154,
-        ..._163
+        ..._158,
+        ..._167
       };
     }
     export namespace oracle {
       export const v1 = {
         ..._6,
-        ..._155,
-        ..._164
+        ..._159,
+        ..._168
       };
     }
   }
@@ -114,11 +114,11 @@ export namespace band {
       ..._10,
       ..._11,
       ..._12,
-      ..._140,
-      ..._147,
-      ..._156,
-      ..._165,
-      ..._172
+      ..._144,
+      ..._151,
+      ..._160,
+      ..._169,
+      ..._176
     };
   }
   export namespace globalfee {
@@ -126,11 +126,11 @@ export namespace band {
       ..._13,
       ..._14,
       ..._15,
-      ..._141,
-      ..._148,
-      ..._157,
-      ..._166,
-      ..._173
+      ..._145,
+      ..._152,
+      ..._161,
+      ..._170,
+      ..._177
     };
   }
   export namespace oracle {
@@ -139,11 +139,11 @@ export namespace band {
       ..._17,
       ..._18,
       ..._19,
-      ..._142,
-      ..._149,
-      ..._158,
-      ..._167,
-      ..._174
+      ..._146,
+      ..._153,
+      ..._162,
+      ..._171,
+      ..._178
     };
   }
   export namespace restake {
@@ -152,11 +152,11 @@ export namespace band {
       ..._21,
       ..._22,
       ..._23,
-      ..._143,
-      ..._150,
-      ..._159,
-      ..._168,
-      ..._175
+      ..._147,
+      ..._154,
+      ..._163,
+      ..._172,
+      ..._179
     };
   }
   export namespace rollingseed {
@@ -171,11 +171,11 @@ export namespace band {
       ..._27,
       ..._28,
       ..._29,
-      ..._144,
-      ..._151,
-      ..._160,
-      ..._169,
-      ..._176
+      ..._148,
+      ..._155,
+      ..._164,
+      ..._173,
+      ..._180
     };
   }
   export namespace tunnel {
@@ -186,16 +186,16 @@ export namespace band {
       ..._33,
       ..._34,
       ..._35,
-      ..._145,
-      ..._152,
-      ..._161,
-      ..._170,
-      ..._177
+      ..._149,
+      ..._156,
+      ..._165,
+      ..._174,
+      ..._181
     };
   }
   export const ClientFactory = {
-    ..._254,
-    ..._255,
-    ..._256
+    ..._263,
+    ..._264,
+    ..._265
   };
 }

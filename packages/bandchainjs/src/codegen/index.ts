@@ -16,6 +16,8 @@ export * from "./gogoproto/bundle";
 export * from "./google/bundle";
 export * from "./ibc/bundle";
 export * from "./ibc/client";
+export * from "./oracle/bundle";
+export * from "./oracle/client";
 export * from "./tendermint/bundle";
 export * from "./varint";
 export * from "./utf8";
