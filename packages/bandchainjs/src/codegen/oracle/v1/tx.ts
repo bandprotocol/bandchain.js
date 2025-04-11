@@ -62,7 +62,7 @@ export interface MsgRequestDataAmino {
   sender?: string;
 }
 export interface MsgRequestDataAminoMsg {
-  type: "/oracle.v1.MsgRequestData";
+  type: "oracle/Request";
   value: MsgRequestDataAmino;
 }
 /** MsgRequestData is a message for sending a data oracle request. */
@@ -120,7 +120,7 @@ export interface MsgReportDataAmino {
   validator?: string;
 }
 export interface MsgReportDataAminoMsg {
-  type: "/oracle.v1.MsgReportData";
+  type: "oracle/Report";
   value: MsgReportDataAmino;
 }
 /** MsgReportData is a message for reporting to a data request by a validator. */
@@ -206,7 +206,7 @@ export interface MsgCreateDataSourceAmino {
   sender?: string;
 }
 export interface MsgCreateDataSourceAminoMsg {
-  type: "/oracle.v1.MsgCreateDataSource";
+  type: "oracle/CreateDataSource";
   value: MsgCreateDataSourceAmino;
 }
 /** MsgCreateDataSource is a message for creating a new data source. */
@@ -306,7 +306,7 @@ export interface MsgEditDataSourceAmino {
   sender?: string;
 }
 export interface MsgEditDataSourceAminoMsg {
-  type: "/oracle.v1.MsgEditDataSource";
+  type: "oracle/EditDataSource";
   value: MsgEditDataSourceAmino;
 }
 /** MsgEditDataSource is a message for editing an existing data source. */
@@ -385,7 +385,7 @@ export interface MsgCreateOracleScriptAmino {
   sender?: string;
 }
 export interface MsgCreateOracleScriptAminoMsg {
-  type: "/oracle.v1.MsgCreateOracleScript";
+  type: "oracle/CreateOracleScript";
   value: MsgCreateOracleScriptAmino;
 }
 /** MsgCreateOracleScript is a message for creating an oracle script. */
@@ -482,7 +482,7 @@ export interface MsgEditOracleScriptAmino {
   sender?: string;
 }
 export interface MsgEditOracleScriptAminoMsg {
-  type: "/oracle.v1.MsgEditOracleScript";
+  type: "oracle/EditOracleScript";
   value: MsgEditOracleScriptAmino;
 }
 /** MsgEditOracleScript is a message for editing an existing oracle script. */
@@ -539,7 +539,7 @@ export interface MsgActivateAmino {
   validator?: string;
 }
 export interface MsgActivateAminoMsg {
-  type: "/oracle.v1.MsgActivate";
+  type: "oracle/Activate";
   value: MsgActivateAmino;
 }
 /**
@@ -712,6 +712,12 @@ export const MsgRequestData = {
   fromAminoMsg(object: MsgRequestDataAminoMsg): MsgRequestData {
     return MsgRequestData.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgRequestData): MsgRequestDataAminoMsg {
+    return {
+      type: "oracle/Request",
+      value: MsgRequestData.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgRequestDataProtoMsg): MsgRequestData {
     return MsgRequestData.decode(message.value);
   },
@@ -850,6 +856,12 @@ export const MsgReportData = {
   },
   fromAminoMsg(object: MsgReportDataAminoMsg): MsgReportData {
     return MsgReportData.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgReportData): MsgReportDataAminoMsg {
+    return {
+      type: "oracle/Report",
+      value: MsgReportData.toAmino(message)
+    };
   },
   fromProtoMsg(message: MsgReportDataProtoMsg): MsgReportData {
     return MsgReportData.decode(message.value);
@@ -1037,6 +1049,12 @@ export const MsgCreateDataSource = {
   },
   fromAminoMsg(object: MsgCreateDataSourceAminoMsg): MsgCreateDataSource {
     return MsgCreateDataSource.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgCreateDataSource): MsgCreateDataSourceAminoMsg {
+    return {
+      type: "oracle/CreateDataSource",
+      value: MsgCreateDataSource.toAmino(message)
+    };
   },
   fromProtoMsg(message: MsgCreateDataSourceProtoMsg): MsgCreateDataSource {
     return MsgCreateDataSource.decode(message.value);
@@ -1237,6 +1255,12 @@ export const MsgEditDataSource = {
   fromAminoMsg(object: MsgEditDataSourceAminoMsg): MsgEditDataSource {
     return MsgEditDataSource.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgEditDataSource): MsgEditDataSourceAminoMsg {
+    return {
+      type: "oracle/EditDataSource",
+      value: MsgEditDataSource.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgEditDataSourceProtoMsg): MsgEditDataSource {
     return MsgEditDataSource.decode(message.value);
   },
@@ -1421,6 +1445,12 @@ export const MsgCreateOracleScript = {
   },
   fromAminoMsg(object: MsgCreateOracleScriptAminoMsg): MsgCreateOracleScript {
     return MsgCreateOracleScript.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgCreateOracleScript): MsgCreateOracleScriptAminoMsg {
+    return {
+      type: "oracle/CreateOracleScript",
+      value: MsgCreateOracleScript.toAmino(message)
+    };
   },
   fromProtoMsg(message: MsgCreateOracleScriptProtoMsg): MsgCreateOracleScript {
     return MsgCreateOracleScript.decode(message.value);
@@ -1619,6 +1649,12 @@ export const MsgEditOracleScript = {
   fromAminoMsg(object: MsgEditOracleScriptAminoMsg): MsgEditOracleScript {
     return MsgEditOracleScript.fromAmino(object.value);
   },
+  toAminoMsg(message: MsgEditOracleScript): MsgEditOracleScriptAminoMsg {
+    return {
+      type: "oracle/EditOracleScript",
+      value: MsgEditOracleScript.toAmino(message)
+    };
+  },
   fromProtoMsg(message: MsgEditOracleScriptProtoMsg): MsgEditOracleScript {
     return MsgEditOracleScript.decode(message.value);
   },
@@ -1731,6 +1767,12 @@ export const MsgActivate = {
   },
   fromAminoMsg(object: MsgActivateAminoMsg): MsgActivate {
     return MsgActivate.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgActivate): MsgActivateAminoMsg {
+    return {
+      type: "oracle/Activate",
+      value: MsgActivate.toAmino(message)
+    };
   },
   fromProtoMsg(message: MsgActivateProtoMsg): MsgActivate {
     return MsgActivate.decode(message.value);

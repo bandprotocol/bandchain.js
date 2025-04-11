@@ -7,7 +7,7 @@ import Wallet from "src/components/WalletConnectButton";
 import TestUseChain from "./TestUseChain";
 
 export default function Home() {
-  const [chainName, setChainName] = useState("localbandchain");
+  const [chainName, setChainName] = useState("bandchain");
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">

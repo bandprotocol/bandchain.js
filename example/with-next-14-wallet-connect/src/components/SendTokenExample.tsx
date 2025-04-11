@@ -113,7 +113,7 @@ const sendTokens = (
 };
 
 const RequestDataExample = () => {
-  const { getSigningStargateClient, address } = useChain("localbandchain");
+  const { getSigningStargateClient, address } = useChain("bandchain");
   const [resp, setResp] = useState<any>({});
 
   return (

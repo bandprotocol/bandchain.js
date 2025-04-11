@@ -1,14 +1,16 @@
-import { getSigningClientOptions } from "@bandprotocol/bandchain.js";
+import { getSigningOracleClientOptions } from "@bandprotocol/bandchain.js";
 import { AssetList, Chain } from "@chain-registry/types";
 
 export const signerOptions = {
   signingStargate: (_chain: Chain) => {
-    return getSigningClientOptions();
+    return {
+      ...getSigningOracleClientOptions(),
+    };
   },
 };
 
 export const localbandchain: Chain = {
-  chain_name: "localbandchain",
+  chain_name: "bandchain",
   chain_type: "cosmos",
   chain_id: "laozi-mainnet",
 };

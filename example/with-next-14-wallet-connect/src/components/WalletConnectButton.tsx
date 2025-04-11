@@ -6,7 +6,7 @@ import { WalletStatus } from "cosmos-kit";
 
 const WalletConnectButton = () => {
   const { status, connect, message, disconnect, username, address } =
-    useChain("localbandchain");
+    useChain("bandchain");
 
   switch (status) {
     case WalletStatus.Disconnected:

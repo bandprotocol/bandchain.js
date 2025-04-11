@@ -1,17 +1,19 @@
 "use client";
 
-import { band } from "@bandprotocol/bandchain.js";
+import { oracle } from "@bandprotocol/bandchain.js";
 import { coin } from "@cosmjs/amino";
 import { useChain } from "@cosmos-kit/react";
 
 export const RequestDataButton = () => {
-  const { address, getSigningStargateClient } = useChain("localbandchain");
+  const { address, getSigningStargateClient } = useChain("bandchain");
 
   const handleOnClick = async () => {
     const client = await getSigningStargateClient();
+    console.log("client", client);
 
-    const { requestData } = band.oracle.v1.MessageComposer.withTypeUrl;
-    // const { requestData } = oracle.v1.MessageComposer.withTypeUrl;
+    // const { requestData } = band.oracle.v1.MessageComposer.withTypeUrl;
+    const { requestData } = oracle.v1.MessageComposer.withTypeUrl;
+    console.log("request data from v2");
 
     const msgRequest = requestData({
       oracleScriptId: BigInt(401),
@@ -26,7 +28,7 @@ export const RequestDataButton = () => {
       prepareGas: BigInt(6600),
       executeGas: BigInt(118000),
       sender: address as string,
-      tssEncoder: 0,
+      // tssEncoder: 0,
     });
 
     const fee = {

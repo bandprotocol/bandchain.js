@@ -1,15 +1,11 @@
 "use client";
 
-import { MainWalletBase } from "@cosmos-kit/core";
-import { wallets as ledger } from "@cosmos-kit/ledger";
+import { wallets as leap } from "@cosmos-kit/leap";
 import { ChainProvider } from "@cosmos-kit/react";
+import { assets, chains } from "chain-registry";
 import { SignerOptions } from "cosmos-kit";
-import { devnetRpc } from "src/constants/endpoints";
-import {
-  localbandchain,
-  localbandchainAssets,
-  signerOptions,
-} from "src/constants/registry";
+import { mainnetRpc } from "src/constants/endpoints";
+import { signerOptions } from "src/constants/registry";
 
 export default function Provider({
   children,
@@ -18,17 +14,22 @@ export default function Provider({
 }>) {
   return (
     <ChainProvider
-      chains={[localbandchain]} // supported chains
-      assetLists={[localbandchainAssets]} // supported asset lists
-      wallets={ledger as unknown as MainWalletBase[]} // supported wallets
+      chains={chains} // supported chains
+      assetLists={assets} // supported asset lists
+      wallets={leap} // supported wallets
       endpointOptions={{
         endpoints: {
-          localbandchain: {
-            rpc: [devnetRpc],
+          bandchain: {
+            rpc: [mainnetRpc],
           },
         },
       }}
       signerOptions={signerOptions as unknown as SignerOptions}
+      walletConnectOptions={{
+        signClient: {
+          projectId: process.env.NEXT_PUBLIC_PROJECT_ID as string,
+        },
+      }}
     >
       <div className="relative overflow-x-auto">{children}</div>;
     </ChainProvider>
