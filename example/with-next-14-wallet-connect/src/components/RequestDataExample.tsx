@@ -11,6 +11,7 @@ export const RequestDataButton = () => {
     const client = await getSigningStargateClient();
 
     const { requestData } = band.oracle.v1.MessageComposer.withTypeUrl;
+    // const { requestData } = oracle.v1.MessageComposer.withTypeUrl;
 
     const msgRequest = requestData({
       oracleScriptId: BigInt(401),
