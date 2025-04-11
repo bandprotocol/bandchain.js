@@ -7,6 +7,7 @@ export const signerOptions = {
       ...getSigningOracleClientOptions(),
     };
   },
+  preferredSignType: "amino",
 };
 
 export const localbandchain: Chain = {
