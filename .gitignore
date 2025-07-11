@@ -10,3 +10,5 @@ coverage
 dev
 
 .env
+.env.local
+**/.env
