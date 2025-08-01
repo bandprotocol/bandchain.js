@@ -16,6 +16,22 @@ const requestData = (
     console.log("requestData");
     const stargateClient = await getSigningStargateClient();
     const { requestData } = band.oracle.v1.MessageComposer.fromPartial;
+    const { vote } = cosmos.gov.v1beta1.MessageComposer.withTypeUrl;
+    const { delegate } = cosmos.staking.v1beta1.MessageComposer.fromPartial;
+    const delegateMsg = delegate({
+      validatorAddress: "bandvaloper1234567890",
+      amount: {
+        denom: "uband",
+        amount: "100000000",
+      },
+      delegatorAddress: address,
+    });
+
+    const votemsg = vote({
+      proposalId: BigInt(1),
+      voter: address,
+      option: 1,
+    });
 
     const msg = requestData({
       oracleScriptId: BigInt(401),
