@@ -1,6 +1,6 @@
 "use client";
 
-import { cosmos } from "@bandprotocol/bandchain.js/dist";
+import { cosmos } from "@bandprotocol/bandchain.js";
 import { useState } from "react";
 
 import { getSignerClient } from "@/utils";

@@ -15,7 +15,6 @@ const getAllBalances = async (address: string) => {
 
   const res = await client.cosmos.bank.v1beta1.allBalances({
     address,
-    resolveDenom: false,
   });
 
   return JSON.parse(
