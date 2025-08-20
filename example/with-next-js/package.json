@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@bandprotocol/bandchain.js": "^3.0.3",
+    "@bandprotocol/bandchain.js": "file:../../packages/bandchainjs",
     "@bandprotocol/obi-ts": "^1.0.0",
     "chain-registry": "^1.69.15",
     "cosmjs-utils": "^0.1.0",

@@ -1,4 +1,5 @@
 import { AllBalanceExample } from "@/components/AllBalanceExample";
+import { CreateTunnelExample } from "@/components/CreateTunnelExample";
 import { RequestDataExample } from "@/components/RequestDataExample";
 import { SendTokenExample } from "@/components/SendTokenExample";
 
@@ -9,6 +10,7 @@ export default function Home() {
         <AllBalanceExample />
         <SendTokenExample />
         <RequestDataExample />
+        <CreateTunnelExample />
       </main>
     </div>
   );
