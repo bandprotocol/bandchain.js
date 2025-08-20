@@ -3,7 +3,7 @@ import { SignalDeviation, SignalDeviationAmino, SignalDeviationSDKType } from ".
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, IBCRoute, IBCRouteProtoMsg, IBCRouteSDKType } from "./route";
+import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, IBCRoute, IBCRouteProtoMsg, IBCRouteSDKType, IBCHookRoute, IBCHookRouteProtoMsg, IBCHookRouteSDKType, RouterRoute, RouterRouteProtoMsg, RouterRouteSDKType, AxelarRoute, AxelarRouteProtoMsg, AxelarRouteSDKType } from "./route";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** MsgCreateTunnel is the transaction message to create a new tunnel. */
 export interface MsgCreateTunnel {
@@ -12,7 +12,7 @@ export interface MsgCreateTunnel {
   /** interval is the interval for delivering the signal prices in seconds. */
   interval: bigint;
   /** route is the route for delivering the signal prices */
-  route?: TSSRoute | IBCRoute | Any | undefined;
+  route?: TSSRoute | IBCRoute | IBCHookRoute | RouterRoute | AxelarRoute | Any | undefined;
   /** initial_deposit is the deposit value that must be paid at tunnel creation. */
   initialDeposit: Coin[];
   /** creator is the address of the creator. */
@@ -23,7 +23,7 @@ export interface MsgCreateTunnelProtoMsg {
   value: Uint8Array;
 }
 export type MsgCreateTunnelEncoded = Omit<MsgCreateTunnel, "route"> & {
-  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | AnyProtoMsg | undefined;
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | IBCHookRouteProtoMsg | RouterRouteProtoMsg | AxelarRouteProtoMsg | AnyProtoMsg | undefined;
 };
 /** MsgCreateTunnel is the transaction message to create a new tunnel. */
 export interface MsgCreateTunnelAmino {
@@ -46,7 +46,7 @@ export interface MsgCreateTunnelAminoMsg {
 export interface MsgCreateTunnelSDKType {
   signal_deviations: SignalDeviationSDKType[];
   interval: bigint;
-  route?: TSSRouteSDKType | IBCRouteSDKType | AnySDKType | undefined;
+  route?: TSSRouteSDKType | IBCRouteSDKType | IBCHookRouteSDKType | RouterRouteSDKType | AxelarRouteSDKType | AnySDKType | undefined;
   initial_deposit: CoinSDKType[];
   creator: string;
 }
@@ -75,7 +75,7 @@ export interface MsgUpdateRoute {
   /** tunnel_id is the ID of the tunnel to edit. */
   tunnelId: bigint;
   /** route is the route for delivering the signal prices */
-  route?: TSSRoute | IBCRoute | Any | undefined;
+  route?: TSSRoute | IBCRoute | IBCHookRoute | RouterRoute | AxelarRoute | Any | undefined;
   /** creator is the address of the creator. */
   creator: string;
 }
@@ -84,7 +84,7 @@ export interface MsgUpdateRouteProtoMsg {
   value: Uint8Array;
 }
 export type MsgUpdateRouteEncoded = Omit<MsgUpdateRoute, "route"> & {
-  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | AnyProtoMsg | undefined;
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | IBCHookRouteProtoMsg | RouterRouteProtoMsg | AxelarRouteProtoMsg | AnyProtoMsg | undefined;
 };
 /** MsgUpdateRoute is the transaction message to update a route information of the tunnel. */
 export interface MsgUpdateRouteAmino {
@@ -102,7 +102,7 @@ export interface MsgUpdateRouteAminoMsg {
 /** MsgUpdateRoute is the transaction message to update a route information of the tunnel. */
 export interface MsgUpdateRouteSDKType {
   tunnel_id: bigint;
-  route?: TSSRouteSDKType | IBCRouteSDKType | AnySDKType | undefined;
+  route?: TSSRouteSDKType | IBCRouteSDKType | IBCHookRouteSDKType | RouterRouteSDKType | AxelarRouteSDKType | AnySDKType | undefined;
   creator: string;
 }
 /** MsgUpdateRouteResponse is the response type for the Msg/UpdateRoute RPC method. */
@@ -1915,7 +1915,7 @@ export const MsgUpdateParamsResponse = {
     };
   }
 };
-export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | IBCRoute | Any => {
+export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | IBCRoute | IBCHookRoute | RouterRoute | AxelarRoute | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
@@ -1923,6 +1923,12 @@ export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRo
       return TSSRoute.decode(data.value);
     case "/band.tunnel.v1beta1.IBCRoute":
       return IBCRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.IBCHookRoute":
+      return IBCHookRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.RouterRoute":
+      return RouterRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.AxelarRoute":
+      return AxelarRoute.decode(data.value);
     default:
       return data;
   }
@@ -1939,6 +1945,21 @@ export const RouteI_FromAmino = (content: AnyAmino): Any => {
         typeUrl: "/band.tunnel.v1beta1.IBCRoute",
         value: IBCRoute.encode(IBCRoute.fromPartial(IBCRoute.fromAmino(content.value))).finish()
       });
+    case "/band.tunnel.v1beta1.IBCHookRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.IBCHookRoute",
+        value: IBCHookRoute.encode(IBCHookRoute.fromPartial(IBCHookRoute.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.RouterRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.RouterRoute",
+        value: RouterRoute.encode(RouterRoute.fromPartial(RouterRoute.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.AxelarRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.AxelarRoute",
+        value: AxelarRoute.encode(AxelarRoute.fromPartial(AxelarRoute.fromAmino(content.value))).finish()
+      });
     default:
       return Any.fromAmino(content);
   }
@@ -1954,6 +1975,21 @@ export const RouteI_ToAmino = (content: Any) => {
       return {
         type: "/band.tunnel.v1beta1.IBCRoute",
         value: IBCRoute.toAmino(IBCRoute.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.IBCHookRoute":
+      return {
+        type: "/band.tunnel.v1beta1.IBCHookRoute",
+        value: IBCHookRoute.toAmino(IBCHookRoute.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.RouterRoute":
+      return {
+        type: "/band.tunnel.v1beta1.RouterRoute",
+        value: RouterRoute.toAmino(RouterRoute.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.AxelarRoute":
+      return {
+        type: "/band.tunnel.v1beta1.AxelarRoute",
+        value: AxelarRoute.toAmino(AxelarRoute.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

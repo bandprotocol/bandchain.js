@@ -38,7 +38,7 @@ export interface GenesisStateSDKType {
 /** Params defines the set of module parameters. */
 export interface Params {
   /**
-   * reward_percentage is the percentage of block rewards allocated to active TSS members.
+   * reward_percentage is the percentage of block rewards allocated to active tss members.
    * The reward proportion is calculated after being allocated to oracle rewards.
    */
   rewardPercentage: bigint;
@@ -58,7 +58,7 @@ export interface ParamsProtoMsg {
 /** Params defines the set of module parameters. */
 export interface ParamsAmino {
   /**
-   * reward_percentage is the percentage of block rewards allocated to active TSS members.
+   * reward_percentage is the percentage of block rewards allocated to active tss members.
    * The reward proportion is calculated after being allocated to oracle rewards.
    */
   reward_percentage?: string;

@@ -17,6 +17,19 @@ export interface Params {
   maxSignals: bigint;
   /** base_packet_fee is the base fee for each packet. */
   basePacketFee: Coin[];
+  /** router_ibc_channel specifies the IBC channel used by the tunnel to communicate with the Router chain. */
+  routerIbcChannel: string;
+  /**
+   * router_integration_contract specifies the address of the Router integration contract on the Router chain
+   * that the tunnel module will interact with.
+   */
+  routerIntegrationContract: string;
+  /** axelar_ibc_channel specifies the IBC channel used by the tunnel to communicate with the axelar chain. */
+  axelarIbcChannel: string;
+  /** axelar_gmp_account is the account address on axelar chain that processes and verifies Axelar GMP transactions. */
+  axelarGmpAccount: string;
+  /** axelar_fee_recipient is the account address on axelar chain that receive fee from tunnel. */
+  axelarFeeRecipient: string;
 }
 export interface ParamsProtoMsg {
   typeUrl: "/band.tunnel.v1beta1.Params";
@@ -38,6 +51,19 @@ export interface ParamsAmino {
   max_signals?: string;
   /** base_packet_fee is the base fee for each packet. */
   base_packet_fee?: CoinAmino[];
+  /** router_ibc_channel specifies the IBC channel used by the tunnel to communicate with the Router chain. */
+  router_ibc_channel?: string;
+  /**
+   * router_integration_contract specifies the address of the Router integration contract on the Router chain
+   * that the tunnel module will interact with.
+   */
+  router_integration_contract?: string;
+  /** axelar_ibc_channel specifies the IBC channel used by the tunnel to communicate with the axelar chain. */
+  axelar_ibc_channel?: string;
+  /** axelar_gmp_account is the account address on axelar chain that processes and verifies Axelar GMP transactions. */
+  axelar_gmp_account?: string;
+  /** axelar_fee_recipient is the account address on axelar chain that receive fee from tunnel. */
+  axelar_fee_recipient?: string;
 }
 export interface ParamsAminoMsg {
   type: "/band.tunnel.v1beta1.Params";
@@ -52,6 +78,11 @@ export interface ParamsSDKType {
   max_deviation_bps: bigint;
   max_signals: bigint;
   base_packet_fee: CoinSDKType[];
+  router_ibc_channel: string;
+  router_integration_contract: string;
+  axelar_ibc_channel: string;
+  axelar_gmp_account: string;
+  axelar_fee_recipient: string;
 }
 function createBaseParams(): Params {
   return {
@@ -61,7 +92,12 @@ function createBaseParams(): Params {
     minDeviationBps: BigInt(0),
     maxDeviationBps: BigInt(0),
     maxSignals: BigInt(0),
-    basePacketFee: []
+    basePacketFee: [],
+    routerIbcChannel: "",
+    routerIntegrationContract: "",
+    axelarIbcChannel: "",
+    axelarGmpAccount: "",
+    axelarFeeRecipient: ""
   };
 }
 export const Params = {
@@ -87,6 +123,21 @@ export const Params = {
     }
     for (const v of message.basePacketFee) {
       Coin.encode(v!, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.routerIbcChannel !== "") {
+      writer.uint32(66).string(message.routerIbcChannel);
+    }
+    if (message.routerIntegrationContract !== "") {
+      writer.uint32(74).string(message.routerIntegrationContract);
+    }
+    if (message.axelarIbcChannel !== "") {
+      writer.uint32(82).string(message.axelarIbcChannel);
+    }
+    if (message.axelarGmpAccount !== "") {
+      writer.uint32(90).string(message.axelarGmpAccount);
+    }
+    if (message.axelarFeeRecipient !== "") {
+      writer.uint32(98).string(message.axelarFeeRecipient);
     }
     return writer;
   },
@@ -118,6 +169,21 @@ export const Params = {
         case 7:
           message.basePacketFee.push(Coin.decode(reader, reader.uint32()));
           break;
+        case 8:
+          message.routerIbcChannel = reader.string();
+          break;
+        case 9:
+          message.routerIntegrationContract = reader.string();
+          break;
+        case 10:
+          message.axelarIbcChannel = reader.string();
+          break;
+        case 11:
+          message.axelarGmpAccount = reader.string();
+          break;
+        case 12:
+          message.axelarFeeRecipient = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -134,6 +200,11 @@ export const Params = {
     message.maxDeviationBps = object.maxDeviationBps !== undefined && object.maxDeviationBps !== null ? BigInt(object.maxDeviationBps.toString()) : BigInt(0);
     message.maxSignals = object.maxSignals !== undefined && object.maxSignals !== null ? BigInt(object.maxSignals.toString()) : BigInt(0);
     message.basePacketFee = object.basePacketFee?.map(e => Coin.fromPartial(e)) || [];
+    message.routerIbcChannel = object.routerIbcChannel ?? "";
+    message.routerIntegrationContract = object.routerIntegrationContract ?? "";
+    message.axelarIbcChannel = object.axelarIbcChannel ?? "";
+    message.axelarGmpAccount = object.axelarGmpAccount ?? "";
+    message.axelarFeeRecipient = object.axelarFeeRecipient ?? "";
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -155,6 +226,21 @@ export const Params = {
       message.maxSignals = BigInt(object.max_signals);
     }
     message.basePacketFee = object.base_packet_fee?.map(e => Coin.fromAmino(e)) || [];
+    if (object.router_ibc_channel !== undefined && object.router_ibc_channel !== null) {
+      message.routerIbcChannel = object.router_ibc_channel;
+    }
+    if (object.router_integration_contract !== undefined && object.router_integration_contract !== null) {
+      message.routerIntegrationContract = object.router_integration_contract;
+    }
+    if (object.axelar_ibc_channel !== undefined && object.axelar_ibc_channel !== null) {
+      message.axelarIbcChannel = object.axelar_ibc_channel;
+    }
+    if (object.axelar_gmp_account !== undefined && object.axelar_gmp_account !== null) {
+      message.axelarGmpAccount = object.axelar_gmp_account;
+    }
+    if (object.axelar_fee_recipient !== undefined && object.axelar_fee_recipient !== null) {
+      message.axelarFeeRecipient = object.axelar_fee_recipient;
+    }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
@@ -174,6 +260,11 @@ export const Params = {
     } else {
       obj.base_packet_fee = message.basePacketFee;
     }
+    obj.router_ibc_channel = message.routerIbcChannel === "" ? undefined : message.routerIbcChannel;
+    obj.router_integration_contract = message.routerIntegrationContract === "" ? undefined : message.routerIntegrationContract;
+    obj.axelar_ibc_channel = message.axelarIbcChannel === "" ? undefined : message.axelarIbcChannel;
+    obj.axelar_gmp_account = message.axelarGmpAccount === "" ? undefined : message.axelarGmpAccount;
+    obj.axelar_fee_recipient = message.axelarFeeRecipient === "" ? undefined : message.axelarFeeRecipient;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
