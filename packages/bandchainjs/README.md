@@ -6,9 +6,6 @@
 </p>
 
 <p align="center" width="100%">
-  <a href="https://github.com/bandprotocol/bandchain.js/actions/workflows/run-tests.yml">
-    <img height="20" src="https://github.com/bandprotocol/bandchain.js/actions/workflows/run-tests.yml/badge.svg" />
-  </a>
    <a href="https://github.com/bandprotocol/bandchain.js/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 
@@ -26,7 +23,6 @@ npm install @bandprotocol/bandchain.js
   - [Usage](#usage)
     - [RPC Clients](#rpc-clients)
     - [Composing Messages](#composing-messages)
-      - [CosmWasm Messages](#cosmwasm-messages)
       - [IBC Messages](#ibc-messages)
       - [Cosmos Messages](#cosmos-messages)
   - [Connecting with Wallets and Signing Messages](#connecting-with-wallets-and-signing-messages)
@@ -59,7 +55,9 @@ const balance = await client.cosmos.bank.v1beta1.allBalances({
 });
 
 // you can also query the band modules
-const balances = await client.band.exchange.v1beta1.exchangeBalances();
+const oracleScript = await client.band.oracle.v1.oracleScript({
+  oracleScriptId: BigInt(37),
+});
 ```
 
 ### Composing Messages
@@ -69,23 +67,8 @@ Import the `band` object from `@bandprotocol/bandchain.js`.
 ```js
 import { band } from "@bandprotocol/bandchain.js";
 
-const { createSpotLimitOrder, createSpotMarketOrder, deposit } =
-  band.exchange.v1beta1.MessageComposer.withTypeUrl;
-```
-
-#### CosmWasm Messages
-
-```js
-import { cosmwasm } from "@bandprotocol/bandchain.js";
-
-const {
-  clearAdmin,
-  executeContract,
-  instantiateContract,
-  migrateContract,
-  storeCode,
-  updateAdmin,
-} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
+const { requestData, reportData, createDataSource } =
+  band.oracle.v1.MessageComposer.withTypeUrl;
 ```
 
 #### IBC Messages
