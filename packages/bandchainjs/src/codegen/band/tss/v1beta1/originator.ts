@@ -2,7 +2,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /**
  * DirectOriginator is a message originator defines an information of the requester
- * on direct TSS request.
+ * on direct tss request.
  */
 export interface DirectOriginator {
   $typeUrl?: "/band.tss.v1beta1.DirectOriginator";
@@ -19,7 +19,7 @@ export interface DirectOriginatorProtoMsg {
 }
 /**
  * DirectOriginator is a message originator defines an information of the requester
- * on direct TSS request.
+ * on direct tss request.
  */
 export interface DirectOriginatorAmino {
   /** source_chain_id is the source chain ID that the data is originated from. */
@@ -35,7 +35,7 @@ export interface DirectOriginatorAminoMsg {
 }
 /**
  * DirectOriginator is a message originator defines an information of the requester
- * on direct TSS request.
+ * on direct tss request.
  */
 export interface DirectOriginatorSDKType {
   $typeUrl?: "/band.tss.v1beta1.DirectOriginator";
@@ -45,7 +45,7 @@ export interface DirectOriginatorSDKType {
 }
 /**
  * TunnelOriginator is a message originator defines an information of the requester
- * on TSS request via tunnel module.
+ * on tss request via tunnel module.
  */
 export interface TunnelOriginator {
   $typeUrl?: "/band.tss.v1beta1.TunnelOriginator";
@@ -64,7 +64,7 @@ export interface TunnelOriginatorProtoMsg {
 }
 /**
  * TunnelOriginator is a message originator defines an information of the requester
- * on TSS request via tunnel module.
+ * on tss request via tunnel module.
  */
 export interface TunnelOriginatorAmino {
   /** source_chain_id is the source chain ID that the data is originated from. */
@@ -82,7 +82,7 @@ export interface TunnelOriginatorAminoMsg {
 }
 /**
  * TunnelOriginator is a message originator defines an information of the requester
- * on TSS request via tunnel module.
+ * on tss request via tunnel module.
  */
 export interface TunnelOriginatorSDKType {
   $typeUrl?: "/band.tss.v1beta1.TunnelOriginator";

@@ -99,7 +99,7 @@ export interface MemberSDKType {
   is_active: boolean;
   since: Date;
 }
-/** CuurentGroup is a bandtss current group information. */
+/** CurrentGroup is a bandtss current group information. */
 export interface CurrentGroup {
   /** group_id is the ID of the current group. */
   groupId: bigint;
@@ -110,7 +110,7 @@ export interface CurrentGroupProtoMsg {
   typeUrl: "/band.bandtss.v1beta1.CurrentGroup";
   value: Uint8Array;
 }
-/** CuurentGroup is a bandtss current group information. */
+/** CurrentGroup is a bandtss current group information. */
 export interface CurrentGroupAmino {
   /** group_id is the ID of the current group. */
   group_id?: string;
@@ -121,7 +121,7 @@ export interface CurrentGroupAminoMsg {
   type: "/band.bandtss.v1beta1.CurrentGroup";
   value: CurrentGroupAmino;
 }
-/** CuurentGroup is a bandtss current group information. */
+/** CurrentGroup is a bandtss current group information. */
 export interface CurrentGroupSDKType {
   group_id: bigint;
   active_time: Date;
@@ -132,7 +132,7 @@ export interface Signing {
   id: bigint;
   /** fee_per_signer is the tokens that will be paid per signer for this bandtss signing. */
   feePerSigner: Coin[];
-  /** requester is the address who pays the Bandtss signing. */
+  /** requester is the address who pays the bandtss signing. */
   requester: string;
   /** current_group_signing_id is a tss signing ID of a current group. */
   currentGroupSigningId: bigint;
@@ -149,7 +149,7 @@ export interface SigningAmino {
   id?: string;
   /** fee_per_signer is the tokens that will be paid per signer for this bandtss signing. */
   fee_per_signer?: CoinAmino[];
-  /** requester is the address who pays the Bandtss signing. */
+  /** requester is the address who pays the bandtss signing. */
   requester?: string;
   /** current_group_signing_id is a tss signing ID of a current group. */
   current_group_signing_id?: string;

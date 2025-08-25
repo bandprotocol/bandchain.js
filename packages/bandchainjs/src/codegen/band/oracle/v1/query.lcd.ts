@@ -77,7 +77,7 @@ export class LCDQueryClient {
     const endpoint = `oracle/v1/active_validators`;
     return await this.req.get<QueryActiveValidatorsResponseSDKType>(endpoint);
   }
-  /* Params queries parameters used for runnning bandchain network. */
+  /* Params queries parameters used for running BandChain network. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `oracle/v1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);

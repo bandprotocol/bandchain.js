@@ -3341,7 +3341,7 @@ export const OracleResultSignatureOrder = {
       writer.uint32(8).uint64(message.requestId);
     }
     if (message.encoder !== 0) {
-      writer.uint32(24).int32(message.encoder);
+      writer.uint32(16).int32(message.encoder);
     }
     return writer;
   },
@@ -3355,7 +3355,7 @@ export const OracleResultSignatureOrder = {
         case 1:
           message.requestId = reader.uint64();
           break;
-        case 3:
+        case 2:
           message.encoder = reader.int32() as any;
           break;
         default:

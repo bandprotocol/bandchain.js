@@ -111,6 +111,7 @@ const RequestDataButton = () => {
     sender: fromAddress,
     prepareGas: BigInt(200000),
     executeGas: BigInt(200000),
+    tssEncoder: 1,
   });
 
   const handleRequestDataButton = async () => {
