@@ -52,7 +52,7 @@ export interface EVMValidatorsRequestSDKType {}
 export interface EVMValidatorsResponse {
   /** BlockHeight is the latest block height */
   blockHeight: bigint;
-  /** Validators is list of validator's addresss and voting power */
+  /** Validators is list of validator's address and voting power */
   validators: ValidatorMinimal[];
 }
 export interface EVMValidatorsResponseProtoMsg {
@@ -63,7 +63,7 @@ export interface EVMValidatorsResponseProtoMsg {
 export interface EVMValidatorsResponseAmino {
   /** BlockHeight is the latest block height */
   block_height?: string;
-  /** Validators is list of validator's addresss and voting power */
+  /** Validators is list of validator's address and voting power */
   validators?: ValidatorMinimalAmino[];
 }
 export interface EVMValidatorsResponseAminoMsg {

@@ -2,7 +2,7 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params is the data structure that keeps the parameters of the feeds module. */
 export interface Params {
-  /** admin is the address of the admin that is allowed to perform operations on modules. */
+  /** admin is the address of the admin that is allowed to update reference source config on modules. */
   admin: string;
   /**
    * allowable_block_time_discrepancy is the allowed discrepancy (in seconds) between validator price timestamp and
@@ -35,7 +35,7 @@ export interface Params {
   currentFeedsUpdateInterval: bigint;
   /** price_quorum is the minimum percentage of power that needs to be reached for a price to be processed. */
   priceQuorum: string;
-  /** MaxSignalIDsPerSigning is the maximum number of signals allowed in a single tss signing request. */
+  /** max_signal_ids_per_signing is the maximum number of signals allowed in a single tss signing request. */
   maxSignalIdsPerSigning: bigint;
 }
 export interface ParamsProtoMsg {
@@ -44,7 +44,7 @@ export interface ParamsProtoMsg {
 }
 /** Params is the data structure that keeps the parameters of the feeds module. */
 export interface ParamsAmino {
-  /** admin is the address of the admin that is allowed to perform operations on modules. */
+  /** admin is the address of the admin that is allowed to update reference source config on modules. */
   admin?: string;
   /**
    * allowable_block_time_discrepancy is the allowed discrepancy (in seconds) between validator price timestamp and
@@ -77,7 +77,7 @@ export interface ParamsAmino {
   current_feeds_update_interval?: string;
   /** price_quorum is the minimum percentage of power that needs to be reached for a price to be processed. */
   price_quorum?: string;
-  /** MaxSignalIDsPerSigning is the maximum number of signals allowed in a single tss signing request. */
+  /** max_signal_ids_per_signing is the maximum number of signals allowed in a single tss signing request. */
   max_signal_ids_per_signing?: string;
 }
 export interface ParamsAminoMsg {

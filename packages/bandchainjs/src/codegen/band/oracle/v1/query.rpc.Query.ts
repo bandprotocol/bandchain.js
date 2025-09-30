@@ -34,7 +34,7 @@ export interface Query {
   reporters(request: QueryReportersRequest): Promise<QueryReportersResponse>;
   /** ActiveValidators queries all active oracle validators. */
   activeValidators(request?: QueryActiveValidatorsRequest): Promise<QueryActiveValidatorsResponse>;
-  /** Params queries parameters used for runnning bandchain network. */
+  /** Params queries parameters used for running BandChain network. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
   /** RequestSearch queries the latest request that match search criteria. */
   requestSearch(request: QueryRequestSearchRequest): Promise<QueryRequestSearchResponse>;

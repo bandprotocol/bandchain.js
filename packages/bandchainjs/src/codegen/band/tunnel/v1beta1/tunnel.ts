@@ -3,7 +3,7 @@ import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Price, PriceAmino, PriceSDKType } from "../../feeds/v1beta1/feeds";
 import { Encoder } from "../../feeds/v1beta1/encoder";
-import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, IBCRoute, IBCRouteProtoMsg, IBCRouteSDKType, TSSPacketReceipt, TSSPacketReceiptProtoMsg, TSSPacketReceiptSDKType, IBCPacketReceipt, IBCPacketReceiptProtoMsg, IBCPacketReceiptSDKType } from "./route";
+import { TSSRoute, TSSRouteProtoMsg, TSSRouteSDKType, IBCRoute, IBCRouteProtoMsg, IBCRouteSDKType, IBCHookRoute, IBCHookRouteProtoMsg, IBCHookRouteSDKType, RouterRoute, RouterRouteProtoMsg, RouterRouteSDKType, AxelarRoute, AxelarRouteProtoMsg, AxelarRouteSDKType, TSSPacketReceipt, TSSPacketReceiptProtoMsg, TSSPacketReceiptSDKType, IBCPacketReceipt, IBCPacketReceiptProtoMsg, IBCPacketReceiptSDKType, RouterPacketReceipt, RouterPacketReceiptProtoMsg, RouterPacketReceiptSDKType, AxelarPacketReceipt, AxelarPacketReceiptProtoMsg, AxelarPacketReceiptSDKType } from "./route";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Tunnel contains the information of the tunnel that is created by the user */
 export interface Tunnel {
@@ -12,7 +12,7 @@ export interface Tunnel {
   /** sequence is representing the sequence of the tunnel packet. */
   sequence: bigint;
   /** route is the route for delivering the signal prices */
-  route?: TSSRoute | IBCRoute | Any | undefined;
+  route?: TSSRoute | IBCRoute | IBCHookRoute | RouterRoute | AxelarRoute | Any | undefined;
   /** fee_payer is the address of the fee payer */
   feePayer: string;
   /** signal_deviations is the list of signal deviations */
@@ -33,7 +33,7 @@ export interface TunnelProtoMsg {
   value: Uint8Array;
 }
 export type TunnelEncoded = Omit<Tunnel, "route"> & {
-  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | AnyProtoMsg | undefined;
+  /** route is the route for delivering the signal prices */route?: TSSRouteProtoMsg | IBCRouteProtoMsg | IBCHookRouteProtoMsg | RouterRouteProtoMsg | AxelarRouteProtoMsg | AnyProtoMsg | undefined;
 };
 /** Tunnel contains the information of the tunnel that is created by the user */
 export interface TunnelAmino {
@@ -66,7 +66,7 @@ export interface TunnelAminoMsg {
 export interface TunnelSDKType {
   id: bigint;
   sequence: bigint;
-  route?: TSSRouteSDKType | IBCRouteSDKType | AnySDKType | undefined;
+  route?: TSSRouteSDKType | IBCRouteSDKType | IBCHookRouteSDKType | RouterRouteSDKType | AxelarRouteSDKType | AnySDKType | undefined;
   fee_payer: string;
   signal_deviations: SignalDeviationSDKType[];
   interval: bigint;
@@ -138,7 +138,7 @@ export interface Packet {
   /** prices is the list of prices information from feeds module. */
   prices: Price[];
   /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */
-  receipt?: TSSPacketReceipt | IBCPacketReceipt | Any | undefined;
+  receipt?: TSSPacketReceipt | IBCPacketReceipt | RouterPacketReceipt | AxelarPacketReceipt | Any | undefined;
   /** created_at is the timestamp when the packet is created */
   createdAt: bigint;
 }
@@ -147,7 +147,7 @@ export interface PacketProtoMsg {
   value: Uint8Array;
 }
 export type PacketEncoded = Omit<Packet, "receipt"> & {
-  /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */receipt?: TSSPacketReceiptProtoMsg | IBCPacketReceiptProtoMsg | AnyProtoMsg | undefined;
+  /** receipt represents the confirmation of the packet delivery to the destination via the specified route. */receipt?: TSSPacketReceiptProtoMsg | IBCPacketReceiptProtoMsg | RouterPacketReceiptProtoMsg | AxelarPacketReceiptProtoMsg | AnyProtoMsg | undefined;
 };
 /** Packet is the packet that tunnel produces */
 export interface PacketAmino {
@@ -171,7 +171,7 @@ export interface PacketSDKType {
   tunnel_id: bigint;
   sequence: bigint;
   prices: PriceSDKType[];
-  receipt?: TSSPacketReceiptSDKType | IBCPacketReceiptSDKType | AnySDKType | undefined;
+  receipt?: TSSPacketReceiptSDKType | IBCPacketReceiptSDKType | RouterPacketReceiptSDKType | AxelarPacketReceiptSDKType | AnySDKType | undefined;
   created_at: bigint;
 }
 /** Deposit defines an amount deposited by an account address to the tunnel. */
@@ -994,7 +994,7 @@ export const TunnelSignatureOrder = {
     };
   }
 };
-export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | IBCRoute | Any => {
+export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRoute | IBCRoute | IBCHookRoute | RouterRoute | AxelarRoute | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
@@ -1002,6 +1002,12 @@ export const RouteI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSRo
       return TSSRoute.decode(data.value);
     case "/band.tunnel.v1beta1.IBCRoute":
       return IBCRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.IBCHookRoute":
+      return IBCHookRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.RouterRoute":
+      return RouterRoute.decode(data.value);
+    case "/band.tunnel.v1beta1.AxelarRoute":
+      return AxelarRoute.decode(data.value);
     default:
       return data;
   }
@@ -1017,6 +1023,21 @@ export const RouteI_FromAmino = (content: AnyAmino): Any => {
       return Any.fromPartial({
         typeUrl: "/band.tunnel.v1beta1.IBCRoute",
         value: IBCRoute.encode(IBCRoute.fromPartial(IBCRoute.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.IBCHookRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.IBCHookRoute",
+        value: IBCHookRoute.encode(IBCHookRoute.fromPartial(IBCHookRoute.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.RouterRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.RouterRoute",
+        value: RouterRoute.encode(RouterRoute.fromPartial(RouterRoute.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.AxelarRoute":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.AxelarRoute",
+        value: AxelarRoute.encode(AxelarRoute.fromPartial(AxelarRoute.fromAmino(content.value))).finish()
       });
     default:
       return Any.fromAmino(content);
@@ -1034,11 +1055,26 @@ export const RouteI_ToAmino = (content: Any) => {
         type: "/band.tunnel.v1beta1.IBCRoute",
         value: IBCRoute.toAmino(IBCRoute.decode(content.value, undefined))
       };
+    case "/band.tunnel.v1beta1.IBCHookRoute":
+      return {
+        type: "/band.tunnel.v1beta1.IBCHookRoute",
+        value: IBCHookRoute.toAmino(IBCHookRoute.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.RouterRoute":
+      return {
+        type: "/band.tunnel.v1beta1.RouterRoute",
+        value: RouterRoute.toAmino(RouterRoute.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.AxelarRoute":
+      return {
+        type: "/band.tunnel.v1beta1.AxelarRoute",
+        value: AxelarRoute.toAmino(AxelarRoute.decode(content.value, undefined))
+      };
     default:
       return Any.toAmino(content);
   }
 };
-export const PacketReceiptI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSPacketReceipt | IBCPacketReceipt | Any => {
+export const PacketReceiptI_InterfaceDecoder = (input: BinaryReader | Uint8Array): TSSPacketReceipt | IBCPacketReceipt | RouterPacketReceipt | AxelarPacketReceipt | Any => {
   const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
@@ -1046,6 +1082,10 @@ export const PacketReceiptI_InterfaceDecoder = (input: BinaryReader | Uint8Array
       return TSSPacketReceipt.decode(data.value);
     case "/band.tunnel.v1beta1.IBCPacketReceipt":
       return IBCPacketReceipt.decode(data.value);
+    case "/band.tunnel.v1beta1.RouterPacketReceipt":
+      return RouterPacketReceipt.decode(data.value);
+    case "/band.tunnel.v1beta1.AxelarPacketReceipt":
+      return AxelarPacketReceipt.decode(data.value);
     default:
       return data;
   }
@@ -1062,6 +1102,16 @@ export const PacketReceiptI_FromAmino = (content: AnyAmino): Any => {
         typeUrl: "/band.tunnel.v1beta1.IBCPacketReceipt",
         value: IBCPacketReceipt.encode(IBCPacketReceipt.fromPartial(IBCPacketReceipt.fromAmino(content.value))).finish()
       });
+    case "/band.tunnel.v1beta1.RouterPacketReceipt":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.RouterPacketReceipt",
+        value: RouterPacketReceipt.encode(RouterPacketReceipt.fromPartial(RouterPacketReceipt.fromAmino(content.value))).finish()
+      });
+    case "/band.tunnel.v1beta1.AxelarPacketReceipt":
+      return Any.fromPartial({
+        typeUrl: "/band.tunnel.v1beta1.AxelarPacketReceipt",
+        value: AxelarPacketReceipt.encode(AxelarPacketReceipt.fromPartial(AxelarPacketReceipt.fromAmino(content.value))).finish()
+      });
     default:
       return Any.fromAmino(content);
   }
@@ -1077,6 +1127,16 @@ export const PacketReceiptI_ToAmino = (content: Any) => {
       return {
         type: "/band.tunnel.v1beta1.IBCPacketReceipt",
         value: IBCPacketReceipt.toAmino(IBCPacketReceipt.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.RouterPacketReceipt":
+      return {
+        type: "/band.tunnel.v1beta1.RouterPacketReceipt",
+        value: RouterPacketReceipt.toAmino(RouterPacketReceipt.decode(content.value, undefined))
+      };
+    case "/band.tunnel.v1beta1.AxelarPacketReceipt":
+      return {
+        type: "/band.tunnel.v1beta1.AxelarPacketReceipt",
+        value: AxelarPacketReceipt.toAmino(AxelarPacketReceipt.decode(content.value, undefined))
       };
     default:
       return Any.toAmino(content);

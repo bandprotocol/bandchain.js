@@ -764,7 +764,7 @@ export interface PendingProcessGroupsAminoMsg {
 export interface PendingProcessGroupsSDKType {
   group_ids: bigint[];
 }
-/** PendingProcessSignigns is a list of signings that are waiting to be processed. */
+/** PendingProcessSignings is a list of signings that are waiting to be processed. */
 export interface PendingProcessSignings {
   /** signing_ids is a list of signing IDs. */
   signingIds: bigint[];
@@ -773,7 +773,7 @@ export interface PendingProcessSigningsProtoMsg {
   typeUrl: "/band.tss.v1beta1.PendingProcessSignings";
   value: Uint8Array;
 }
-/** PendingProcessSignigns is a list of signings that are waiting to be processed. */
+/** PendingProcessSignings is a list of signings that are waiting to be processed. */
 export interface PendingProcessSigningsAmino {
   /** signing_ids is a list of signing IDs. */
   signing_ids?: string[];
@@ -782,7 +782,7 @@ export interface PendingProcessSigningsAminoMsg {
   type: "/band.tss.v1beta1.PendingProcessSignings";
   value: PendingProcessSigningsAmino;
 }
-/** PendingProcessSignigns is a list of signings that are waiting to be processed. */
+/** PendingProcessSignings is a list of signings that are waiting to be processed. */
 export interface PendingProcessSigningsSDKType {
   signing_ids: bigint[];
 }
