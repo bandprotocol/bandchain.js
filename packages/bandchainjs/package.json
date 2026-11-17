@@ -38,13 +38,13 @@
     "@protobufs/stargaze": "^0.1.0"
   },
   "dependencies": {
-    "@cosmjs/amino": "0.32.3",
-    "@cosmjs/encoding": "0.32.3",
-    "@cosmjs/math": "0.32.3",
-    "@cosmjs/proto-signing": "0.32.3",
-    "@cosmjs/stargate": "0.32.3",
-    "@cosmjs/tendermint-rpc": "^0.32.4",
-    "@cosmology/lcd": "^0.14.0"
+    "@cosmjs/amino": "0.39.0",
+    "@cosmjs/encoding": "0.39.0",
+    "@cosmjs/math": "0.39.0",
+    "@cosmjs/proto-signing": "0.39.0",
+    "@cosmjs/stargate": "0.39.0",
+    "@cosmjs/tendermint-rpc": "^0.39.0",
+    "@cosmology/lcd": "^0.17.0"
   },
   "keywords": [
     "band",
