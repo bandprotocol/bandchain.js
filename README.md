@@ -6,7 +6,7 @@
 </p>
 
 <p align="center" width="100%">
-   <a href="https://github.com/bandprotocol/bandchain.js/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://github.com/bandprotocol/bandchain.js/blob/master/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 
 ## install
